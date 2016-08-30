@@ -4188,4 +4188,8 @@ img {
     padding: 5px 2px;
   }
 }
-
+.reg_form{
+  float: left;
+  max-width: 45%;
+  margin-right: 10px;
+}
