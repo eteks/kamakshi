@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "todos";
+$route['default_controller'] = "index";
 $route['404_override'] = '';
 
 $route['view/(:any)'] = 'todos/view';
