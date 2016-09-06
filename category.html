@@ -12,7 +12,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Obaju : e-commerce template
+        Kamakshi -Giftshop
     </title>
 
     <meta name="keywords" content="">
@@ -31,7 +31,8 @@
 
     <!-- your stylesheet with modifications -->
     <link href="css/custom.css" rel="stylesheet">
-
+    <!-- <link href="css/main.css" rel="stylesheet">-->
+    <link href="css/addSlider.css" rel="stylesheet">
     <script src="js/respond.min.js"></script>
 
     <link rel="shortcut icon" href="favicon.png">
@@ -41,18 +42,20 @@
 </head>
 
 <body>
-    <!-- *** TOPBAR ***
+   <!-- *** TOPBAR ***
  _________________________________________________________ -->
     <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
-                <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a>
+                <a href="#" class="btn btn-success btn-sm" style="display: none;" data-animate-hover="shake"></a>  <a href="#"></a>
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
                     <li><a href="register.html">Register</a>
+                    </li>
+                    <li><a href="customer-orders.html">Profile</a>
                     </li>
                     <li><a href="contact.html">Contact</a>
                     </li>
@@ -104,8 +107,8 @@
             <div class="navbar-header">
 
                 <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
-                    <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
-                    <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                    <img src="" alt="Kamakshi" class="hidden-xs">
+                    <img src="" alt="Kamakshi" class="visible-xs"><span class="sr-only">Kamakshi -Giftshop</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -229,7 +232,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                       
+                                        
                                     </div>
                                 </div>
                                 <!-- /.yamm-content -->
@@ -240,11 +243,8 @@
                     </li>
                     <li class="contact-us"><a href="index.html">Contact US</a>
                     </li>
-
-                    
-
-                    
-                        </ul>
+                      
+                      </ul>
                     </li>
                 </ul>
 
@@ -274,9 +274,9 @@
                         <input type="text" class="form-control" placeholder="Search">
                         <span class="input-group-btn">
 
-			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
 
-		    </span>
+            </span>
                     </div>
                 </form>
 
@@ -289,7 +289,6 @@
     <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
-
     <div id="all">
 
         <div id="content">
@@ -315,19 +314,22 @@
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="category.html">Men <span class="badge pull-right">42</span></a>
+                                    <a href="category.html">Baby<span class="badge pull-right">42</span></a>
                                     <ul>
-                                        <li><a href="category.html">T-shirts</a>
+                                        <li><a href="category.html">Bathing & Changing</a>
                                         </li>
-                                        <li><a href="category.html">Shirts</a>
+                                        <li><a href="category.html">Toys & Activity</a>
                                         </li>
-                                        <li><a href="category.html">Pants</a>
+                                        <li><a href="category.html">Baby Gear</a>
                                         </li>
-                                        <li><a href="category.html">Accessories</a>
+                                        <li><a href="category.html">Collectibles</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="active">
+                                
+                               
+                        
+                                <!-- <li class="active">
                                     <a href="category.html">Ladies  <span class="badge pull-right">123</span></a>
                                     <ul>
                                         <li><a href="category.html">T-shirts</a>
@@ -352,7 +354,7 @@
                                         <li><a href="category.html">Accessories</a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> -->
 
                             </ul>
 
@@ -362,43 +364,31 @@
                     <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Brands <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                            <h3 class="panel-title">Recipient</h3>
                         </div>
 
                         <div class="panel-body">
-
-                            <form>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Armani (10)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Versace (12)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Carlo Bruni (15)
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">Jack Honey (14)
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
-
-                            </form>
+                            
+                                 <ul class="nav nav-pills nav-stacked category-menu">
+                                <li>
+                                   <!--  <a href="category.html">Baby<span class="badge pull-right">42</span></a> -->
+                                    <ul>
+                                        <li><a href="category.html">Men</a>
+                                        </li>
+                                        <li><a href="category.html">Women</a>
+                                        </li>
+                                        <li><a href="category.html">Boy</a>
+                                        </li>
+                                        <li><a href="category.html">Girl</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                        </ul>
 
                         </div>
                     </div>
 
-                    <div class="panel panel-default sidebar-menu">
+                    <!-- <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
                             <h3 class="panel-title">Colours <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
@@ -440,15 +430,15 @@
                             </form>
 
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- *** MENUS AND FILTERS END *** -->
 
-                    <div class="banner">
+                   <!--  <div class="banner">
                         <a href="#">
                             <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
                         </a>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="col-md-9">
@@ -509,7 +499,7 @@
                                     <img src="img/product1.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
+                                    <h3><a href="detail.html">Colourful Candle Set</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="detail.html" class="btn btn-default">View detail</a>
@@ -541,7 +531,7 @@
                                     <img src="img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">White Blouse Armani</a></h3>
+                                    <h3><a href="detail.html">Red Teddy, Candles & Chocolate Hamper</a></h3>
                                     <p class="price"><del>$280</del> $143.00</p>
                                     <p class="buttons">
                                         <a href="detail.html" class="btn btn-default">View detail</a>
@@ -591,7 +581,7 @@
                                     <img src="img/product3.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                                    <h3><a href="detail.html">Clock Cushion & Flower Hamper</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="detail.html" class="btn btn-default">View detail</a>
@@ -624,7 +614,7 @@
                                     <img src="img/product3.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                                    <h3><a href="detail.html">Chocolates & Candles Hamper</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="detail.html" class="btn btn-default">View detail</a>
@@ -657,7 +647,7 @@
                                     <img src="img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">White Blouse Versace</a></h3>
+                                    <h3><a href="detail.html">Beautiful Morning Hamper</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="detail.html" class="btn btn-default">View detail</a>
@@ -696,7 +686,7 @@
                                     <img src="img/product1.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="detail.html">Fur coat</a></h3>
+                                    <h3><a href="detail.html">Cushion & Photo Frame </a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="detail.html" class="btn btn-default">View detail</a>
@@ -752,7 +742,7 @@
         <!-- /#content -->
 
 
-        <!-- *** FOOTER ***
+         <!-- *** FOOTER ***
  _________________________________________________________ -->
         <div id="footer" data-animate="fadeInUp">
             <div class="container">
@@ -791,26 +781,26 @@
 
                         <h4>Top categories</h4>
 
-                        <h5>Men</h5>
+                        <h5>Gift By categories</h5>
 
                         <ul>
-                            <li><a href="category.html">T-shirts</a>
+                            <li><a href="category.html">Baby</a>
                             </li>
-                            <li><a href="category.html">Shirts</a>
+                            <li><a href="category.html">Beauty & Personal Care</a>
                             </li>
                             <li><a href="category.html">Accessories</a>
                             </li>
                         </ul>
-
-                        <h5>Ladies</h5>
+                         <hr />
+                        <h5>Gift By Recipient</h5>
                         <ul>
-                            <li><a href="category.html">T-shirts</a>
+                            <li><a href="category.html">Men</a>
                             </li>
-                            <li><a href="category.html">Skirts</a>
+                            <li><a href="category.html">Women</a>
                             </li>
-                            <li><a href="category.html">Pants</a>
+                            <li><a href="category.html">Boy</a>
                             </li>
-                            <li><a href="category.html">Accessories</a>
+                            <li><a href="category.html">Girl</a>
                             </li>
                         </ul>
 
@@ -854,9 +844,9 @@
 
                                 <span class="input-group-btn">
 
-			    <button class="btn btn-default" type="button">Subscribe!</button>
+                <button class="btn btn-default" type="button">Subscribe!</button>
 
-			</span>
+            </span>
 
                             </div>
                             <!-- /input-group -->
@@ -926,6 +916,7 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
+    <script src="js/addSlider.js"></script>
 
 
 
