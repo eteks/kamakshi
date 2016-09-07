@@ -129,13 +129,11 @@
     <!-- topbar ends -->
 <div class="ch-container">
     <div class="row">
-        
         <!-- left menu starts -->
         <div class="col-sm-2 col-lg-2">
             <div class="sidebar-nav">
                 <div class="nav-canvas">
                     <div class="nav-sm nav nav-stacked">
-
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
@@ -180,12 +178,10 @@
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
-
                 <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
                     enabled to use this site.</p>
             </div>
         </noscript>
-
         <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
                 <div>
@@ -198,7 +194,6 @@
             </li>
         </ul>
     </div>
-
     <div class="row">
     <div class="box col-md-12">
     <div class="box-inner">
@@ -213,7 +208,7 @@
         </div>
     </div>
    <div class="box-content">
-        <a class="btn btn-info" id="add" href="add_Category.php">
+        <a class="btn btn-info" id="add" href="add_category.php">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
