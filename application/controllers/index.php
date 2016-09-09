@@ -31,7 +31,54 @@ class Index extends CI_Controller {
 	{
 		$this->load->view('register');
 	}
-
+	public function detail()
+	{
+		$this->load->view('detail');
+	}
+    public function category()
+	{
+		$this->load->view('category');
+	}
+	public function contact()
+	{
+		$this->load->view('contact');
+	}
+	public function basket()
+	{
+		$this->load->view('basket');
+	}
+	public function checkout1()
+	{
+		$this->load->view('checkout1');
+	}
+	public function checkout2()
+	{
+		$this->load->view('checkout2');
+	}
+    public function checkout3()
+	{
+		$this->load->view('checkout3');
+	}
+	public function checkout4()
+	{
+		$this->load->view('checkout4');
+	}
+	public function customer_account()
+	{
+		$this->load->view('customer_account');
+	}
+	public function customer_wishlist()
+	{
+		$this->load->view('customer_wishlist');
+	}
+	public function customer_orders()
+	{
+		$this->load->view('customer_orders');
+	}
+	public function customer_order()
+	{
+		$this->load->view('customer_order');
+	}
 }
 
 /* End of file welcome.php */

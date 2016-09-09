@@ -45,6 +45,20 @@ $route['view/(:any)'] = 'todos/view';
 $route['adminindex/category'] = 'adminindex/category';
 
 $route['register'] = 'index/register';
+$route['detail'] = 'index/detail';
+$route['category'] = 'index/category';
+$route['contact'] = 'index/contact';
+$route['basket'] = 'index/basket';
+$route['checkout1'] = 'index/checkout1';
+$route['checkout2'] = 'index/checkout2';
+$route['checkout3'] = 'index/checkout3';
+$route['checkout4'] = 'index/checkout4';
+$route['customer_account'] = 'index/customer_account';
+$route['customer_wishlist'] = 'index/customer_wishlist';
+$route['customer_orders'] = 'index/customer_orders';
+$route['customer_order'] = 'index/customer_order';
+
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

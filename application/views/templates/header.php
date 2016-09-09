@@ -33,6 +33,8 @@
     <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/addSlider.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/nouislider.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/ion.rangeSlider.css" rel="stylesheet">
 
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
 
