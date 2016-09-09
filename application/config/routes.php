@@ -45,6 +45,7 @@ $route['view/(:any)'] = 'todos/view';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 
+$route['register'] = 'index/register';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

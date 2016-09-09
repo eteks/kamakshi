@@ -27,6 +27,11 @@ class Index extends CI_Controller {
 	{
 		$this->load->view('index');
 	}
+	public function register()
+	{
+		$this->load->view('register');
+	}
+
 }
 
 /* End of file welcome.php */

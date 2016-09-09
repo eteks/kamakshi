@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,6 +43,9 @@
 </head>
 
 <body>
+=======
+<?php include "templates/header.php"; ?>
+>>>>>>> b46dbc6e5811a6a610c50575c45aa8219972c4c0
      <!-- *** TOPBAR ***
  _________________________________________________________ -->
     <div id="top">
@@ -527,6 +531,7 @@
 
     </div>
     <!-- /#all -->
+<<<<<<< HEAD
 
 
     
@@ -547,3 +552,6 @@
 </body>
 
 </html>
+=======
+<?php include "templates/footer.php"; ?>
+>>>>>>> b46dbc6e5811a6a610c50575c45aa8219972c4c0
