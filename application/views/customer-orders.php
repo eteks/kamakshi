@@ -296,134 +296,119 @@
             <div class="container">
 
                 <div class="col-md-12">
+
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Checkout - Order review</li>
+                        <li>My orders</li>
                     </ul>
-                </div>
-
-                <div class="col-md-9" id="checkout">
-
-                    <div class="box">
-                        <form method="post" action="checkout4.php">
-                            <h1>Checkout - Order review</h1>
-                            <ul class="nav nav-pills nav-justified">
-                                <li><a href="checkout1.php"><i class="fa fa-map-marker"></i><br>Address</a>
-                                </li>
-                                <li><a href="checkout2.php"><i class="fa fa-truck"></i><br>Delivery Method</a>
-                                </li>
-                                <li><a href="checkout3.php"><i class="fa fa-money"></i><br>Payment Method</a>
-                                </li>
-                                <li class="active"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
-                                </li>
-                            </ul>
-
-                            <div class="content">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Product</th>
-                                                <th>Quantity</th>
-                                                <th>Unit price</th>
-                                                <th>Discount</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">
-                                                        <img src="img/detailsquare.jpg" alt="White Blouse Armani">
-                                                    </a>
-                                                </td>
-                                                <td><a href="#">White Blouse Armani</a>
-                                                </td>
-                                                <td>2</td>
-                                                <td>$123.00</td>
-                                                <td>$0.00</td>
-                                                <td>$246.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">
-                                                        <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                    </a>
-                                                </td>
-                                                <td><a href="#">Black Blouse Armani</a>
-                                                </td>
-                                                <td>1</td>
-                                                <td>$200.00</td>
-                                                <td>$0.00</td>
-                                                <td>$200.00</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th colspan="5">Total</th>
-                                                <th>$446.00</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-
-                                </div>
-                                <!-- /.table-responsive -->
-                            </div>
-                            <!-- /.content -->
-
-                            <div class="box-footer">
-                                <div class="pull-left">
-                                    <a href="checkout3.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Payment method</a>
-                                </div>
-                                <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Place an order<i class="fa fa-chevron-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.box -->
-
 
                 </div>
-                <!-- /.col-md-9 -->
 
                 <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
 
-                    <div class="box" id="order-summary">
-                        <div class="box-header">
-                            <h3>Order summary</h3>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Customer section</h3>
                         </div>
-                        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active">
+                                    <a href="customer-orders.php"><i class="fa fa-list"></i> My orders</a>
+                                </li>
+                                <li>
+                                    <a href="customer-wishlist.php"><i class="fa fa-heart"></i> My wishlist</a>
+                                </li>
+                                <li>
+                                    <a href="customer-account.php"><i class="fa fa-user"></i> My account</a>
+                                </li>
+                                <li>
+                                    <a href="index.php"><i class="fa fa-sign-out"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9" id="customer-orders">
+                    <div class="box">
+                        <h1>My orders</h1>
+
+                        <p class="lead">Your orders on one place.</p>
+                        <p class="text-muted">If you have any questions, please feel free to <a href="contact.php">contact us</a>, our customer service center is working for you 24/7.</p>
+
+                        <hr>
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Order subtotal</td>
-                                        <th>$446.00</th>
+                                        <th># 1735</th>
+                                        <td>22/06/2013</td>
+                                        <td>$ 150.00</td>
+                                        <td><span class="label label-info">Being prepared</span>
+                                        </td>
+                                        <td><a href="customer-order.php" class="btn btn-primary btn-sm">View</a>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
+                                        <th># 1735</th>
+                                        <td>22/06/2013</td>
+                                        <td>$ 150.00</td>
+                                        <td><span class="label label-info">Being prepared</span>
+                                        </td>
+                                        <td><a href="customer-order.php" class="btn btn-primary btn-sm">View</a>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Tax</td>
-                                        <th>$0.00</th>
+                                        <th># 1735</th>
+                                        <td>22/06/2013</td>
+                                        <td>$ 150.00</td>
+                                        <td><span class="label label-success">Received</span>
+                                        </td>
+                                        <td><a href="customer-order.php" class="btn btn-primary btn-sm">View</a>
+                                        </td>
                                     </tr>
-                                    <tr class="total">
-                                        <td>Total</td>
-                                        <th>$456.00</th>
+                                    <tr>
+                                        <th># 1735</th>
+                                        <td>22/06/2013</td>
+                                        <td>$ 150.00</td>
+                                        <td><span class="label label-danger">Cancelled</span>
+                                        </td>
+                                        <td><a href="customer-order.php" class="btn btn-primary btn-sm">View</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th># 1735</th>
+                                        <td>22/06/2013</td>
+                                        <td>$ 150.00</td>
+                                        <td><span class="label label-warning">On hold</span>
+                                        </td>
+                                        <td><a href="customer-order.php" class="btn btn-primary btn-sm">View</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-
                 </div>
-                <!-- /.col-md-3 -->
 
             </div>
             <!-- /.container -->
@@ -431,7 +416,7 @@
         <!-- /#content -->
 
 
-         <!-- *** FOOTER ***
+       <!-- *** FOOTER ***
  _________________________________________________________ -->
         <div id="footer" data-animate="fadeInUp">
             <div class="container">
@@ -605,9 +590,6 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
-
-
-
 
 
 

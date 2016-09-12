@@ -1,4 +1,47 @@
-<?php include "templates/header.php"; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Obaju e-commerce template">
+    <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
+    <meta name="keywords" content="">
+
+    <title>
+        Kamakshi -Giftshop
+    </title>
+
+    <meta name="keywords" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+
+    <!-- styles -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+
+    <!-- theme stylesheet -->
+    <link href="css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+    <!-- your stylesheet with modifications -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- <link href="css/main.css" rel="stylesheet">-->
+    <link href="css/addSlider.css" rel="stylesheet">
+    <script src="js/respond.min.js"></script>
+
+    <link rel="shortcut icon" href="favicon.png">
+
+
+
+</head>
+
+<body>
     <!-- *** TOPBAR ***
  _________________________________________________________ -->
     <div id="top">
@@ -10,11 +53,11 @@
                 <ul class="menu">
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
+                    <li><a href="register.php">Register</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/customer_orders/">Profile</a>
+                    <li><a href="customer-orders.php">Profile</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
+                    <li><a href="contact.php">Contact</a>
                     </li>
                     <li><a href="#">Recently viewed</a>
                     </li>
@@ -30,7 +73,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="customer-orders.php" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -45,7 +88,7 @@
                         </form>
 
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.php"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -63,7 +106,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="<?php echo base_url(); ?>index.php/" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="index.php" data-animate-hover="bounce">
                     <img src="" alt="Kamakshi" class="hidden-xs">
                     <img src="" alt="Kamakshi" class="visible-xs"><span class="sr-only">Kamakshi -Giftshop</span>
                 </a>
@@ -76,7 +119,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="<?php echo base_url(); ?>index.php/basket/">
+                    <a class="btn btn-default navbar-toggle" href="basket.php">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
                     </a>
                 </div>
@@ -86,7 +129,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="<?php echo base_url(); ?>index.php/">Home</a>
+                    <li class="active"><a href="index.php">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Categories<b class="caret"></b></a>
@@ -97,69 +140,69 @@
                                         <div class="col-sm-3">
                                             <h5>Category</h5>
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Baby</a>
+                                                <li><a href="category.php">Baby</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Beauty & Personal Care</a>
+                                                <li><a href="category.php">Beauty & Personal Care</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Business & Executive Gifts</a>
+                                                <li><a href="category.php">Business & Executive Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Chocolates & Cookies</a>
+                                                <li><a href="category.php">Chocolates & Cookies</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Computer & Mobile </a>
+                                                <li><a href="category.php">Computer & Mobile </a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                            <!--  <h5>Shoes</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Accessories</a>
+                                                <li><a href="category.php">Accessories</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Eco-Friendly</a>
+                                                <li><a href="category.php">Eco-Friendly</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Fashion & Style</a>
+                                                <li><a href="category.php">Fashion & Style</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Flowers & Cakes</a>
+                                                <li><a href="category.php">Flowers & Cakes</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Garden Gifts</a>
+                                                <li><a href="category.php">Garden Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Gag & Quirky Gifts</a>
+                                                <li><a href="category.php">Gag & Quirky Gifts</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <!-- <h5>Accessories</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Gift Baskets & Hampers</a>
+                                                <li><a href="category.php">Gift Baskets & Hampers</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Home & Living</a>
+                                                <li><a href="category.php">Home & Living</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Jewellery</a>
+                                                <li><a href="category.php">Jewellery</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Watches</a>
+                                                <li><a href="category.php">Watches</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Kids</a>
+                                                <li><a href="category.php">Kids</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Love & Romance</a>
+                                                <li><a href="category.php">Love & Romance</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <!-- <h5>Featured</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Naughty Gifts</a>
+                                                <li><a href="category.php">Naughty Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Party Return Gifts & Favours</a>
+                                                <li><a href="category.php">Party Return Gifts & Favours</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Perfumes</a>
+                                                <li><a href="category.php">Perfumes</a>
                                                 </li>
                                             </ul>
                                             <!-- <h5>Looks and trends</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Personalised Gifts</a>
+                                                <li><a href="category.php">Personalised Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Pets</a>
+                                                <li><a href="category.php">Pets</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Religious Gifts</a>
+                                                <li><a href="category.php">Religious Gifts</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -179,13 +222,13 @@
                                         <div class="col-sm-3">
                                             <h5>Recipient</h5>
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Men</a>
+                                                <li><a href="category.php">Men</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Women</a>
+                                                <li><a href="category.php">Women</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Boy</a>
+                                                <li><a href="category.php">Boy</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>/index.php/category/">Girl</a>
+                                                <li><a href="category.php">Girl</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -196,9 +239,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="about-us"><a href="<?php echo base_url(); ?>index.php/">About Us</a>
+                    <li class="about-us"><a href="index.php">About Us</a>
                     </li>
-                    <li class="contact-us"><a href="<?php echo base_url(); ?>index.php/">Contact US</a>
+                    <li class="contact-us"><a href="index.php">Contact US</a>
                     </li>
                       
                       </ul>
@@ -211,7 +254,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                    <a href="basket.php" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
@@ -277,31 +320,52 @@
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a>
+                                    <a href="category.php">Baby<span class="badge pull-right">42</span></a>
                                     <ul>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Bathing & Changing</a>
+                                        <li><a href="category.php">Bathing & Changing</a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Toys & Activity</a>
+                                        <li><a href="category.php">Toys & Activity</a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Baby Gear</a>
+                                        <li><a href="category.php">Baby Gear</a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Collectibles</a>
+                                        <li><a href="category.php">Collectibles</a>
                                         </li>
                                     </ul>
                                 </li>
 
-                                <div class="panel-heading"> 
-                            <h4 class="panel-title">                        
-                            Price                         
-                            </h4>  
-                            <input data-addui='slider' data-min='0' data-max='1000' data-range='true' value='0,2'/>                             
-                   </div>
+                               
+                        
+                                <!-- <li class="active">
+                                    <a href="category.php">Ladies  <span class="badge pull-right">123</span></a>
+                                    <ul>
+                                        <li><a href="category.php">T-shirts</a>
+                                        </li>
+                                        <li><a href="category.php">Skirts</a>
+                                        </li>
+                                        <li><a href="category.php">Pants</a>
+                                        </li>
+                                        <li><a href="category.php">Accessories</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="category.php">Kids  <span class="badge pull-right">11</span></a>
+                                    <ul>
+                                        <li><a href="category.php">T-shirts</a>
+                                        </li>
+                                        <li><a href="category.php">Skirts</a>
+                                        </li>
+                                        <li><a href="category.php">Pants</a>
+                                        </li>
+                                        <li><a href="category.php">Accessories</a>
+                                        </li>
+                                    </ul>
+                                </li> -->
+
                             </ul>
 
                         </div>
                     </div>
-                    
-                        
 
                     <div class="panel panel-default sidebar-menu">
 
@@ -313,15 +377,15 @@
                             
                                  <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                   <!--  <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a> -->
+                                   <!--  <a href="category.php">Baby<span class="badge pull-right">42</span></a> -->
                                     <ul>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Men</a>
+                                        <li><a href="category.php">Men</a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Women</a>
+                                        <li><a href="category.php">Women</a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Boy</a>
+                                        <li><a href="category.php">Boy</a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Girl</a>
+                                        <li><a href="category.php">Girl</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -329,7 +393,54 @@
 
                         </div>
                     </div>
-                   
+
+                    <!-- <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Colours <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <form>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour white"></span> White (14)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour blue"></span> Blue (10)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour green"></span> Green (20)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour yellow"></span> Yellow (13)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> <span class="colour red"></span> Red (10)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
+
+                            </form>
+
+                        </div>
+                    </div> -->
+
+                    <!-- *** MENUS AND FILTERS END *** -->
+
+                    
                 </div>
 
                 <div class="col-md-9">
@@ -337,7 +448,7 @@
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-                                <img src="<?php echo base_url(); ?>assets/img/detailbig1.jpg" alt="" class="img-responsive">
+                                <img src="img/detailbig1.jpg" alt="" class="img-responsive">
                             </div>
 
                             <div class="ribbon sale">
@@ -361,8 +472,8 @@
                                 <p class="price">$124.00</p>
 
                                 <p class="text-center buttons">
-                                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a> 
-                                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                    <a href="basket.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a> 
+                                    <a href="basket.php" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>
                                 </p>
 
 
@@ -370,18 +481,18 @@
 
                             <div class="row" id="thumbs">
                                 <div class="col-xs-4">
-                                    <a href="<?php echo base_url(); ?>assets/img/detailbig1.jpg" class="thumb">
-                                        <img src="<?php echo base_url(); ?>assets/img/detailsquare.jpg" alt="" class="img-responsive">
+                                    <a href="img/detailbig1.jpg" class="thumb">
+                                        <img src="img/detailsquare.jpg" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="<?php echo base_url(); ?>assets/img/detailbig2.jpg" class="thumb">
-                                        <img src="<?php echo base_url(); ?>assets/img/detailsquare2.jpg" alt="" class="img-responsive">
+                                    <a href="img/detailbig2.jpg" class="thumb">
+                                        <img src="img/detailsquare2.jpg" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="<?php echo base_url(); ?>assets/img/detailbig3.jpg" class="thumb">
-                                        <img src="<?php echo base_url(); ?>assets/img/detailsquare3.jpg" alt="" class="img-responsive">
+                                    <a href="img/detailbig3.jpg" class="thumb">
+                                        <img src="img/detailsquare3.jpg" alt="" class="img-responsive">
                                     </a>
                                 </div>
                             </div>
@@ -434,19 +545,19 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                <a href="detail.php" class="invisible">
+                                    <img src="img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -461,19 +572,19 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product1.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1_2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
+                                <a href="detail.php" class="invisible">
+                                    <img src="img/product1.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -489,19 +600,19 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product3.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3_2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                <a href="detail.php" class="invisible">
+                                    <img src="img/product3.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -527,19 +638,19 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                <a href="detail.php" class="invisible">
+                                    <img src="img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -554,19 +665,19 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product1.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1_2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
+                                <a href="detail.php" class="invisible">
+                                    <img src="img/product1.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -582,19 +693,19 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product3.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3_2.jpg" alt="" class="img-responsive">
+                                            <a href="detail.php">
+                                                <img src="img/product3_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                <a href="detail.php" class="invisible">
+                                    <img src="img/product3.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -630,7 +741,7 @@
                             </li>
                             <li><a href="faq.php">FAQ</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact us</a>
+                            <li><a href="contact.php">Contact us</a>
                             </li>
                         </ul>
 
@@ -641,7 +752,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/register/">Regiter</a>
+                            <li><a href="register.php">Regiter</a>
                             </li>
                         </ul>
 
@@ -657,23 +768,23 @@
                         <h5>Gift By categories</h5>
 
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Baby</a>
+                            <li><a href="category.php">Baby</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Beauty & Personal Care</a>
+                            <li><a href="category.php">Beauty & Personal Care</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Accessories</a>
+                            <li><a href="category.php">Accessories</a>
                             </li>
                         </ul>
                          <hr />
                         <h5>Gift By Recipient</h5>
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Men</a>
+                            <li><a href="category.php">Men</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Women</a>
+                            <li><a href="category.php">Women</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Boy</a>
+                            <li><a href="category.php">Boy</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>/index.php/category/">Girl</a>
+                            <li><a href="category.php">Girl</a>
                             </li>
                         </ul>
 
@@ -695,7 +806,7 @@
                             <strong>Great Britain</strong>
                         </p>
 
-                        <a href="<?php echo base_url(); ?>index.php/contact/">Go to contact page</a>
+                        <a href="contact.php">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -763,7 +874,8 @@
 
                 </div>
                 <div class="col-md-6">
-                    <p class="pull-right">Designed and Developed by <a href="http://etekchnoservices.com/">Etekchno Services</a> Pvt Ltd.
+                    <p class="pull-right">Template by <a href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a> with support from <a href="https://kakusei.cz">Kakusei</a> 
+                        <!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
                     </p>
                 </div>
             </div>
@@ -774,4 +886,26 @@
 
     </div>
     <!-- /#all -->
-<?php include "templates/footer.php"; ?>
+
+
+    
+
+    <!-- *** SCRIPTS TO INCLUDE ***
+ _________________________________________________________ -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/bootstrap-hover-dropdown.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/front.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>

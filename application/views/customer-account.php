@@ -42,7 +42,7 @@
 </head>
 
 <body>
-     <!-- *** TOPBAR ***
+    <!-- *** TOPBAR ***
  _________________________________________________________ -->
     <div id="top">
         <div class="container">
@@ -296,134 +296,168 @@
             <div class="container">
 
                 <div class="col-md-12">
+
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Checkout - Order review</li>
+                        <li>My account</li>
                     </ul>
+
                 </div>
 
-                <div class="col-md-9" id="checkout">
+                <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
 
-                    <div class="box">
-                        <form method="post" action="checkout4.php">
-                            <h1>Checkout - Order review</h1>
-                            <ul class="nav nav-pills nav-justified">
-                                <li><a href="checkout1.php"><i class="fa fa-map-marker"></i><br>Address</a>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Customer section</h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active">
+                                    <a href="customer-orders.php"><i class="fa fa-list"></i> My orders</a>
                                 </li>
-                                <li><a href="checkout2.php"><i class="fa fa-truck"></i><br>Delivery Method</a>
+                                <li>
+                                    <a href="customer-wishlist.php"><i class="fa fa-heart"></i> My wishlist</a>
                                 </li>
-                                <li><a href="checkout3.php"><i class="fa fa-money"></i><br>Payment Method</a>
+                                <li>
+                                    <a href="customer-account.php"><i class="fa fa-user"></i> My account</a>
                                 </li>
-                                <li class="active"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                                <li>
+                                    <a href="index.php"><i class="fa fa-sign-out"></i> Logout</a>
                                 </li>
                             </ul>
+                        </div>
 
-                            <div class="content">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Product</th>
-                                                <th>Quantity</th>
-                                                <th>Unit price</th>
-                                                <th>Discount</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">
-                                                        <img src="img/detailsquare.jpg" alt="White Blouse Armani">
-                                                    </a>
-                                                </td>
-                                                <td><a href="#">White Blouse Armani</a>
-                                                </td>
-                                                <td>2</td>
-                                                <td>$123.00</td>
-                                                <td>$0.00</td>
-                                                <td>$246.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">
-                                                        <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                    </a>
-                                                </td>
-                                                <td><a href="#">Black Blouse Armani</a>
-                                                </td>
-                                                <td>1</td>
-                                                <td>$200.00</td>
-                                                <td>$0.00</td>
-                                                <td>$200.00</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th colspan="5">Total</th>
-                                                <th>$446.00</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                    </div>
+                    <!-- /.col-md-3 -->
 
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9">
+                    <div class="box">
+                        <h1>My account</h1>
+                        <p class="lead">Change your personal details or your password here.</p>
+                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+
+                        <h3>Change password</h3>
+
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password_old">Old password</label>
+                                        <input type="password" class="form-control" id="password_old">
+                                    </div>
                                 </div>
-                                <!-- /.table-responsive -->
                             </div>
-                            <!-- /.content -->
-
-                            <div class="box-footer">
-                                <div class="pull-left">
-                                    <a href="checkout3.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Payment method</a>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password_1">New password</label>
+                                        <input type="password" class="form-control" id="password_1">
+                                    </div>
                                 </div>
-                                <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Place an order<i class="fa fa-chevron-right"></i>
-                                    </button>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password_2">Retype new password</label>
+                                        <input type="password" class="form-control" id="password_2">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="col-sm-12 text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save new password</button>
+                            </div>
+                        </form>
+
+                        <hr>
+
+                        <h3>Personal details</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="firstname">Firstname</label>
+                                        <input type="text" class="form-control" id="firstname">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Lastname</label>
+                                        <input type="text" class="form-control" id="lastname">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="company">Company</label>
+                                        <input type="text" class="form-control" id="company">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="street">Street</label>
+                                        <input type="text" class="form-control" id="street">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="city">Company</label>
+                                        <input type="text" class="form-control" id="city">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="zip">ZIP</label>
+                                        <input type="text" class="form-control" id="zip">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <select class="form-control" id="state"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="country">Country</label>
+                                        <select class="form-control" id="country"></select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="phone">Telephone</label>
+                                        <input type="text" class="form-control" id="phone">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <!-- /.box -->
-
-
                 </div>
-                <!-- /.col-md-9 -->
-
-                <div class="col-md-3">
-
-                    <div class="box" id="order-summary">
-                        <div class="box-header">
-                            <h3>Order summary</h3>
-                        </div>
-                        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>Order subtotal</td>
-                                        <th>$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <th>$0.00</th>
-                                    </tr>
-                                    <tr class="total">
-                                        <td>Total</td>
-                                        <th>$456.00</th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- /.col-md-3 -->
 
             </div>
             <!-- /.container -->
@@ -431,7 +465,7 @@
         <!-- /#content -->
 
 
-         <!-- *** FOOTER ***
+     <!-- *** FOOTER ***
  _________________________________________________________ -->
         <div id="footer" data-animate="fadeInUp">
             <div class="container">
@@ -605,9 +639,6 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
-
-
-
 
 
 
