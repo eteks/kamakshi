@@ -10,11 +10,11 @@
                 <ul class="menu">
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
+                    <li><a href="register.php">Register</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/customer_orders/">Profile</a>
+                    <li><a href="customer-orders.php">Profile</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
+                    <li><a href="contact.php">Contact</a>
                     </li>
                     <li><a href="#">Recently viewed</a>
                     </li>
@@ -30,7 +30,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="customer-orders.php" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -45,7 +45,7 @@
                         </form>
 
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.php"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -63,7 +63,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="<?php echo base_url(); ?>index.php/" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="index.php" data-animate-hover="bounce">
                     <img src="" alt="Kamakshi" class="hidden-xs">
                     <img src="" alt="Kamakshi" class="visible-xs"><span class="sr-only">Kamakshi -Giftshop</span>
                 </a>
@@ -86,7 +86,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="<?php echo base_url(); ?>index.php/">Home</a>
+                    <li class="active"><a href="index.php">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Categories<b class="caret"></b></a>
@@ -97,69 +97,69 @@
                                         <div class="col-sm-3">
                                             <h5>Category</h5>
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Baby</a>
+                                                <li><a href="category.php">Baby</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Beauty & Personal Care</a>
+                                                <li><a href="category.php">Beauty & Personal Care</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Business & Executive Gifts</a>
+                                                <li><a href="category.php">Business & Executive Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Chocolates & Cookies</a>
+                                                <li><a href="category.php">Chocolates & Cookies</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Computer & Mobile </a>
+                                                <li><a href="category.php">Computer & Mobile </a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                            <!--  <h5>Shoes</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Accessories</a>
+                                                <li><a href="category.php">Accessories</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Eco-Friendly</a>
+                                                <li><a href="category.php">Eco-Friendly</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Fashion & Style</a>
+                                                <li><a href="category.php">Fashion & Style</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Flowers & Cakes</a>
+                                                <li><a href="category.php">Flowers & Cakes</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Garden Gifts</a>
+                                                <li><a href="category.php">Garden Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Gag & Quirky Gifts</a>
+                                                <li><a href="category.php">Gag & Quirky Gifts</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <!-- <h5>Accessories</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Gift Baskets & Hampers</a>
+                                                <li><a href="category.php">Gift Baskets & Hampers</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Home & Living</a>
+                                                <li><a href="category.php">Home & Living</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Jewellery</a>
+                                                <li><a href="category.php">Jewellery</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Watches</a>
+                                                <li><a href="category.php">Watches</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Kids</a>
+                                                <li><a href="category.php">Kids</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Love & Romance</a>
+                                                <li><a href="category.php">Love & Romance</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
                                             <!-- <h5>Featured</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Naughty Gifts</a>
+                                                <li><a href="category.php">Naughty Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Party Return Gifts & Favours</a>
+                                                <li><a href="category.php">Party Return Gifts & Favours</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Perfumes</a>
+                                                <li><a href="category.php">Perfumes</a>
                                                 </li>
                                             </ul>
                                             <!-- <h5>Looks and trends</h5> -->
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Personalised Gifts</a>
+                                                <li><a href="category.php">Personalised Gifts</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Pets</a>
+                                                <li><a href="category.php">Pets</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Religious Gifts</a>
+                                                <li><a href="category.php">Religious Gifts</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -179,13 +179,13 @@
                                         <div class="col-sm-3">
                                             <h5>Recipient</h5>
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Men</a>
+                                                <li><a href="category.php">Men</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Women</a>
+                                                <li><a href="category.php">Women</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Boy</a>
+                                                <li><a href="category.php">Boy</a>
                                                 </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Girl</a>
+                                                <li><a href="category.php">Girl</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -196,9 +196,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="about-us"><a href="<?php echo base_url(); ?>index.php/">About Us</a>
+                    <li class="about-us"><a href="index.php">About Us</a>
                     </li>
-                    <li class="contact-us"><a href="<?php echo base_url(); ?>index.php/">Contact US</a>
+                    <li class="contact-us"><a href="index.php">Contact US</a>
                     </li>
                       
                       </ul>
@@ -268,11 +268,11 @@
 
                         <p class="lead">Not our registered customer yet?</p>
                         <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
-                        <p class="text-muted">If you have any questions, please feel free to <a href="<?php echo base_url(); ?>index.php/contact/">contact us</a>, our customer service center is working for you 24/7.</p>
+                        <p class="text-muted">If you have any questions, please feel free to <a href="contact.php">contact us</a>, our customer service center is working for you 24/7.</p>
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="customer-orders.php" id="signup" method="post">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name">
@@ -302,14 +302,14 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="customer-orders.php" id="login" method="post">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email">
+                                <input type="text" class="form-control" id="email-modal">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password-modal">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
@@ -340,7 +340,7 @@
                             </li>
                             <li><a href="faq.php">FAQ</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact us</a>
+                            <li><a href="contact.php">Contact us</a>
                             </li>
                         </ul>
 
@@ -351,7 +351,7 @@
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/register/">Regiter</a>
+                            <li><a href="register.php">Regiter</a>
                             </li>
                         </ul>
 
@@ -367,23 +367,23 @@
                         <h5>Gift By categories</h5>
 
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Baby</a>
+                            <li><a href="category.php">Baby</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Beauty & Personal Care</a>
+                            <li><a href="category.php">Beauty & Personal Care</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Accessories</a>
+                            <li><a href="category.php">Accessories</a>
                             </li>
                         </ul>
                          <hr />
                         <h5>Gift By Recipient</h5>
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Men</a>
+                            <li><a href="category.php">Men</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Women</a>
+                            <li><a href="category.php">Women</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Boy</a>
+                            <li><a href="category.php">Boy</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Girl</a>
+                            <li><a href="category.php">Girl</a>
                             </li>
                         </ul>
 
@@ -405,7 +405,7 @@
                             <strong>Great Britain</strong>
                         </p>
 
-                        <a href="<?php echo base_url(); ?>index.php/contact/">Go to contact page</a>
+                        <a href="contact.php">Go to contact page</a>
 
                         <hr class="hidden-md hidden-lg">
 
@@ -471,8 +471,9 @@
                     <p class="pull-left">© 2015 Your name goes here.</p>
 
                 </div>
-                 <div class="col-md-6">
-                    <p class="pull-right">Designed and Developed by <a href="http://etekchnoservices.com/">Etekchno Services</a> Pvt Ltd.
+                <div class="col-md-6">
+                    <p class="pull-right">Template by <a href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a> with support from <a href="https://kakusei.cz">Kakusei</a> 
+                        <!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
                     </p>
                 </div>
             </div>

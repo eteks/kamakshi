@@ -38,18 +38,24 @@
     <link href='<?php echo base_url(); ?>assets/admin/css/jquery.iphone.toggle.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/uploadify.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/animate.min.css' rel='stylesheet'>
+
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/jquery.min.js"></script>
+
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <!-- The fav icon -->
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/admin/img/favicon.ico">
+
 </head>
+
 <body>
     <!-- topbar starts -->
     <div class="navbar navbar-default" role="navigation">
+
         <div class="navbar-inner">
             <button type="button" class="navbar-toggle pull-left animated flip">
                 <span class="sr-only">Toggle navigation</span>
@@ -59,6 +65,7 @@
             </button>
             <a class="navbar-brand" href="index.php"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>assets/admin/img/logo20.png" class="hidden-xs"/>
                 <span>Charisma</span></a>
+
             <!-- user dropdown starts -->
             <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -72,6 +79,7 @@
                 </ul>
             </div>
             <!-- user dropdown ends -->
+
             <!-- theme selector starts -->
             <div class="btn-group pull-right theme-container animated tada">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -92,6 +100,7 @@
                 </ul>
             </div>
             <!-- theme selector ends -->
+
             <ul class="collapse navbar-collapse nav navbar-nav top-menu">
                 <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
                 <li class="dropdown">
@@ -119,12 +128,14 @@
     </div>
     <!-- topbar ends -->
 <div class="ch-container">
-    <div class="row"> 
+    <div class="row">
+        
         <!-- left menu starts -->
         <div class="col-sm-2 col-lg-2">
             <div class="sidebar-nav">
                 <div class="nav-canvas">
                     <div class="nav-sm nav nav-stacked">
+
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
@@ -207,6 +218,7 @@
         </div>
         <!--/span-->
         <!-- left menu ends -->
+
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -393,6 +405,7 @@
         </div>
     </div>
     <!--/span-->
+
     <div class="box col-md-4">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
@@ -449,10 +462,12 @@
         </div>
     </div>
     <!--/span-->
+
     <div class="box col-md-4">
         <div class="box-inner homepage-box">
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-list-alt"></i> Keep in touch</h2>
+
                 <div class="box-icon">
                     <a href="#" class="btn btn-minimize btn-round btn-default"><i
                             class="glyphicon glyphicon-chevron-up"></i></a>
@@ -468,6 +483,7 @@
                         <div>
                             <label>Please enter your email</label>
                             <input type="email" value="" name="EMAIL" class="email" placeholder="Email address" required>
+
                             <div class="power_field"><input type="text" name="b_444b176aa3c39f656c66381f6_eeb0c04e84" tabindex="-1" value=""></div>
                             <div class="clear"><input type="submit" value="Subscribe" name="subscribe" class="button"></div>
                         </div>

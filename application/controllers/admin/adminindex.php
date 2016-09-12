@@ -25,10 +25,6 @@ class Adminindex extends CI_Controller {
 	{	
 		$this->load->view('admin/category');
 	}
-	public function add_category()
-	{	
-		$this->load->view('admin/add_category');
-	}
 }
 
 /* End of file welcome.php */
