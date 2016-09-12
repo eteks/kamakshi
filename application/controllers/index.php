@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Index extends CI_Controller {
-
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('register');
 	
 	}
 
@@ -25,7 +25,12 @@ class Index extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index');
+		
+		// $this->load->library('session'); 	
+		// $this->load->view('register');
+		$data['giftstore_category'] = $this->register->get_register();
+		$this->load->view('index',$data);		
+		//print_r($data['giftstore_category']);
 	}
 	public function register()
 	{

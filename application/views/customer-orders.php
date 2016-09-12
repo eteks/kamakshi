@@ -73,9 +73,9 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.php" method="post">
+                        <form action="customer-orders.php" id="login" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                                <input type="text" class="form-control" id="email-modal" placeholder="">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password-modal" placeholder="password">
@@ -590,6 +590,7 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
+    <script src="js/custom.js"></script>
 
 
 
