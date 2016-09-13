@@ -32,6 +32,7 @@
                     <div class="modal-body">
                         <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
                             <div class="form-group">
+                                <p class="error_msg">Please fill all mandatory fields</p>
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
                             <div class="form-group">
