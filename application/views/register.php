@@ -306,14 +306,6 @@
 
                         <form action="customer-orders.php" id="login" method="post">
                             <div class="form-group">
-<<<<<<< HEAD
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email-modal">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password-modal">
-=======
                                 <p class="error_msg">Please fill all mandatory fields</p>
                                 <label for="email">Email *</label>
                                 <input type="text" class="form-control" id="email">
@@ -321,7 +313,6 @@
                             <div class="form-group">
                                 <label for="password">Password *</label>
                                 <input type="password" class="form-control" id="password">
->>>>>>> 17487969f66b3c1d92b92a2a23f3093f4b8c9502
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
