@@ -32,6 +32,7 @@
                     <div class="modal-body">
                         <form action="customer-orders.php" method="post">
                             <div class="form-group">
+                            <p class="error_msg">Please fill all mandatory fields</p>
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
                             <div class="form-group">
@@ -76,7 +77,7 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.php">
+                    <a class="btn btn-default navbar-toggle" href="<?php echo base_url(); ?>index.php/basket">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
                     </a>
                 </div>
@@ -211,7 +212,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.php" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                    <a href="<?php echo base_url(); ?>index.php/basket" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
@@ -274,15 +275,16 @@
 
                         <form action="customer-orders.php" id="signup" method="post">
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <p class="error_msg">Please fill all mandatory fields</p>
+                                <label for="name">Name *</label>
                                 <input type="text" class="form-control" id="name">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Email *</label>
                                 <input type="text" class="form-control" id="email">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">Password *</label>
                                 <input type="password" class="form-control" id="password">
                             </div>
                             <div class="text-center">
@@ -304,12 +306,22 @@
 
                         <form action="customer-orders.php" id="login" method="post">
                             <div class="form-group">
+<<<<<<< HEAD
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" id="email-modal">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password-modal">
+=======
+                                <p class="error_msg">Please fill all mandatory fields</p>
+                                <label for="email">Email *</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password *</label>
+                                <input type="password" class="form-control" id="password">
+>>>>>>> 17487969f66b3c1d92b92a2a23f3093f4b8c9502
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
@@ -468,7 +480,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2016 Kamakshi.</p>
 
                 </div>
                 <div class="col-md-6">

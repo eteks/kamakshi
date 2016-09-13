@@ -74,6 +74,7 @@
                     <div class="modal-body">
                         <form action="customer-orders.php" method="post">
                             <div class="form-group">
+                                <p class="error_msg">Please fill all mandatory fields</p>
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
                             <div class="form-group">
@@ -588,7 +589,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2016 Kamakshi.</p>
 
                 </div>
                 <div class="col-md-6">
