@@ -79,16 +79,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portfolio">
-                               
                                 <div class="portfoloi_content_area" >
-                                    <div class="portfolio_menu" id="filters">
-                                        <ul>
-                                            <li class="active_prot_menu"><a href="#porfolio_menu" data-filter="*">all</a></li>
-                                            <li><a href="#porfolio_menu" data-filter=".websites">men</a></li>
-                                            <li><a href="#porfolio_menu" data-filter=".webDesign" >women</a></li>
-                                            <li><a href="#porfolio_menu" data-filter=".appsDevelopment">boy</a></li>
-                                            <li><a href="#porfolio_menu" data-filter=".GraphicDesign">girl</a></li>
-                                            <!-- <li><a href="#porfolio_menu" data-filter=".responsive">responsive</a></li> -->
+                                    <div class="portfolio_menu">
+                                        <ul id="filters">
+                                            <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*">all</a></li>
+                                            <li><a href="#portfolio_menu" data-filter=".men">men</a></li>
+                                            <li><a href="#portfolio_menu" data-filter=".women">women</a></li>
+                                            <li><a href="#portfolio_menu" data-filter=".boy">boy</a></li>
+                                            <li><a href="#portfolio_menu" data-filter=".girl">girl</a></li>
                                         </ul>
                                     </div>
                                     
@@ -109,10 +107,9 @@
                 </div> -->
 
                 <div class="container">
-
-                    <div class="product-slider">
+                    <div id="container">
                     <?php foreach ($giftstore_category as $cat): ?>
-                        <div class="item">
+                        <div class="item-img women">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -158,13 +155,13 @@
                             <div class="portfolio">
                                
                                 <div class="portfoloi_content_area" >
-                                    <div class="portfolio_menu" id="filters">
+                                    <div class="portfolio_menu2" id="filters">
                                         <ul>
-                                            <!-- <li class="active_prot_menu"><a href="#porfolio_menu" data-filter="*">Popular</a></li> -->
-                                            <!-- <li><a href="#porfolio_menu" data-filter=".websites">Featured</a></li> -->
-                                            <li><a href="#porfolio_menu" data-filter=".webDesign" >Latest Product</a></li>
-                                            <!-- <li><a href="#porfolio_menu" data-filter=".appsDevelopment"></a></li> -->
-                                            <!-- <li><a href="#porfolio_menu" data-filter=".GraphicDesign">girl</a></li> -->
+                                            <!-- <li class="active_prot_menu2"><a href="#porfolio_menu" data-filter="*">Popular</a></li> -->
+                                            <!-- <li><a href="#porfolio_menu2" data-filter=".websites">Featured</a></li> -->
+                                            <li><a href="#porfolio_menu2" data-filter=".webDesign">Latest Product</a></li>
+                                            <!-- <li><a href="#porfolio_menu2" data-filter=".websites"></a></li> -->
+                                            <!-- <li><a href="#porfolio_menu2" data-filter=".webDesign">girl</a></li> -->
                                           </ul>
                                     </div>
                                     
@@ -322,18 +319,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product4.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product4_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/img/product4.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Computer & Mobile</a></h3>
@@ -406,7 +403,7 @@
                                     <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Chocolates & Cookies</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Beauty & Personal Care</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->

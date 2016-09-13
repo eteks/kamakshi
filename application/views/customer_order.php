@@ -77,7 +77,7 @@
                                                 <img src="<?php echo base_url(); ?>assets/img/detailsquare.jpg" alt="White Blouse Armani">
                                             </a>
                                         </td>
-                                        <td><a href="#">White Blouse Armani</a>
+                                        <td><a href="#">Flowers and Cakes</a>
                                         </td>
                                         <td>2</td>
                                         <td>$123.00</td>
@@ -90,7 +90,7 @@
                                                 <img src="<?php echo base_url(); ?>assets/img/basketsquare.jpg" alt="Black Blouse Armani">
                                             </a>
                                         </td>
-                                        <td><a href="#">Black Blouse Armani</a>
+                                        <td><a href="#">Fashion and Style</a>
                                         </td>
                                         <td>1</td>
                                         <td>$200.00</td>
@@ -124,21 +124,21 @@
                         <div class="row addresses">
                             <div class="col-md-6">
                                 <h2>Invoice address</h2>
-                                <p>John Brown
-                                    <br>13/25 New Avenue
-                                    <br>New Heaven
-                                    <br>45Y 73J
-                                    <br>England
-                                    <br>Great Britain</p>
+                                <p>Name
+                                    <br>00/00 Street
+                                    <br>City
+                                    <br>Street No
+                                    <br>State
+                                    <br>Country</p>
                             </div>
                             <div class="col-md-6">
                                 <h2>Shipping address</h2>
-                                <p>John Brown
-                                    <br>13/25 New Avenue
-                                    <br>New Heaven
-                                    <br>45Y 73J
-                                    <br>England
-                                    <br>Great Britain</p>
+                                <p>Name
+                                    <br>00/00 Street
+                                    <br>City
+                                    <br>Street No
+                                    <br>State
+                                    <br>Country</p>
                             </div>
                         </div>
 

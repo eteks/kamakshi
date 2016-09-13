@@ -69,13 +69,13 @@
 
                         <h4>Where to find us</h4>
 
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
+                        <p><strong>Name Ltd.</strong>
+                            <br>00/00 Street
+                            <br>City
+                            <br>Street no
+                            <br>State
                             <br>
-                            <strong>Great Britain</strong>
+                            <strong>Country</strong>
                         </p>
 
                         <a href="<?php echo base_url(); ?>index.php/contact/">Go to contact page</a>
@@ -173,11 +173,12 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.stellar.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/isotope.pkgd.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.isotope.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/addSlider.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/Obj.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/nouislider.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
 </body>
-
 </html>

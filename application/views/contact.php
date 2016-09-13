@@ -29,19 +29,19 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-map-marker"></i> Address</h3>
-                                <p>13/25 New Avenue
-                                    <br>New Heaven
-                                    <br>45Y 73J
-                                    <br>England
+                                <p>00/00 Street
+                                    <br>City
+                                    <br>Street No.
+                                    <br>State
                                     <br>
-                                    <strong>Great Britain</strong>
+                                    <strong>Country</strong>
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-phone"></i> Call center</h3>
-                                <p class="text-muted">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p>
-                                <p><strong>+33 555 444 333</strong>
+                                <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                                <p><strong>+00 000 000 000</strong>
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
@@ -49,7 +49,7 @@
                                 <h3><i class="fa fa-envelope"></i> Electronic support</h3>
                                 <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
                                 <ul>
-                                    <li><strong><a href="mailto:">info@fakeemail.com</a></strong>
+                                    <li><strong><a href="mailto:">name@kamakshi.com</a></strong>
                                     </li>
                                     <li><strong><a href="#">Ticketio</a></strong> - our ticketing support platform</li>
                                 </ul>
@@ -69,6 +69,9 @@
 
                         <form>
                             <div class="row">
+                                <div class="col-sm-12">
+                                      <p class="error_msg">Please fill all mandatory fields</p>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="firstname">Firstname</label>
