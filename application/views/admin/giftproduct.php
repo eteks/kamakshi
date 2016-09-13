@@ -72,7 +72,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -97,7 +97,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -122,7 +122,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -147,7 +147,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -172,7 +172,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -197,7 +197,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -222,7 +222,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -247,7 +247,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -272,7 +272,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -297,7 +297,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -322,7 +322,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -347,7 +347,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -372,7 +372,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -397,7 +397,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -422,7 +422,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -447,7 +447,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -472,7 +472,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -497,7 +497,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -522,7 +522,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -547,7 +547,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -572,7 +572,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -597,7 +597,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -622,7 +622,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -647,7 +647,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -672,7 +672,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -697,7 +697,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -722,7 +722,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -747,7 +747,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -772,7 +772,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -797,7 +797,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -822,7 +822,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -847,7 +847,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>

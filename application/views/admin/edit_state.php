@@ -1,4 +1,4 @@
-<?php include "templates/header.php" ?>
+ <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
 
@@ -19,7 +19,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Add Category</a>
+            <a href="#">Edit State</a>
         </li>
     </ul>
 </div>
@@ -28,7 +28,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Add Category</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i> Edit State</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -42,13 +42,9 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Category Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
+                        <label for="exampleInputEmail1">State Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter state Name">
                     </div>  
-                    <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
-                        <input type="file" id="exampleInputFile">
-                    </div>
                     <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
@@ -75,4 +71,3 @@
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 <?php include "templates/footer.php" ?>
-

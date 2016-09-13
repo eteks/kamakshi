@@ -68,14 +68,20 @@ $route['adminindex/add_subcategory'] = 'adminindex/add_subcategory';
 $route['adminindex/edit_subcategory'] = 'adminindex/edit_subcategory';
 $route['adminindex/recipient'] = 'adminindex/recipient';
 $route['adminindex/add_recipient'] = 'adminindex/add_recipient';
+$route['adminindex/edit_recipient'] = 'adminindex/edit_recipient';
 $route['adminindex/giftproduct'] = 'adminindex/giftproduct';
 $route['adminindex/add_giftproduct'] = 'adminindex/add_giftproduct';
+$route['adminindex/edit_giftproduct'] = 'adminindex/edit_giftproduct';
 $route['adminindex/area'] = 'adminindex/area';
 $route['adminindex/add_area'] = 'adminindex/add_area';
+$route['adminindex/edit_area'] = 'adminindex/edit_area';
 $route['adminindex/city'] = 'adminindex/city';
 $route['adminindex/add_city'] = 'adminindex/add_city';
+$route['adminindex/edit_city'] = 'adminindex/edit_city';
+
 $route['adminindex/state'] = 'adminindex/state';
 $route['adminindex/add_state'] = 'adminindex/add_state';
+$route['adminindex/edit_state'] = 'adminindex/edit_state';
 
 
 

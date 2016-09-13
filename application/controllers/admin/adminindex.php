@@ -53,6 +53,10 @@ class Adminindex extends CI_Controller {
 	{	
 		$this->load->view('admin/add_recipient');
 	}
+	public function edit_recipient()
+	{	
+		$this->load->view('admin/edit_recipient');
+	}
 		public function giftproduct()
 	{	
 		$this->load->view('admin/giftproduct');
@@ -60,6 +64,10 @@ class Adminindex extends CI_Controller {
 	public function add_giftproduct()
 	{	
 		$this->load->view('admin/add_giftproduct');
+	}
+	public function edit_giftproduct()
+	{	
+		$this->load->view('admin/edit_giftproduct');
 	}
 	public function area()
 	{	
@@ -69,6 +77,10 @@ class Adminindex extends CI_Controller {
 	{	
 		$this->load->view('admin/add_area');
 	}
+	public function edit_area()
+	{	
+		$this->load->view('admin/edit_area');
+	}
 	public function city()
 	{	
 		$this->load->view('admin/city');
@@ -77,6 +89,10 @@ class Adminindex extends CI_Controller {
 	{	
 		$this->load->view('admin/add_city');
 	}
+	public function edit_city()
+	{	
+		$this->load->view('admin/edit_city');
+	}
 	public function state()
 	{	
 		$this->load->view('admin/state');
@@ -84,6 +100,10 @@ class Adminindex extends CI_Controller {
 	public function add_state()
 	{	
 		$this->load->view('admin/add_state');
+	}
+	public function edit_state()
+	{	
+		$this->load->view('admin/edit_state');
 	}
 }
 

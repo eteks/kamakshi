@@ -190,7 +190,7 @@ select {
 }
 
 .box-content {
-    padding: 10px;
+    padding: 30px 0 50px 60px;
 }
 
 .btn-round {
@@ -725,3 +725,25 @@ ul.github-buttons li {
 .mc_embed_signup #mce-success-response {color:#529214; display:none;}
 .mc_embed_signup label.error {display:block; float:none; width:auto; margin-left:1.05em; text-align:left; padding:.5em 0;}
 
+.form-control {
+    width: 279px;
+}
+.control-group {
+    padding: 10px 0 0;
+}
+.group {
+   /* margin: 14px 29px 18px 0;*/
+     padding: 21px 0 0;
+} 
+.btn-primary {
+    background-color: #4fbfa8;
+    border-color: #41b39c;
+    color: #ffffff;
+}
+.btn.btn-success {
+    margin-right: 18px;
+}
+.dataTables_filter {
+    float: right;
+    margin: 0 11px 0 0;
+}

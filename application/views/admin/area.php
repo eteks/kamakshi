@@ -56,7 +56,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -73,7 +73,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -90,7 +90,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -108,7 +108,7 @@
         </td>
         <td class="center">
             
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -125,7 +125,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -142,7 +142,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -159,7 +159,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -176,7 +176,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -193,7 +193,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -210,7 +210,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -227,7 +227,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -244,7 +244,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -261,7 +261,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -278,7 +278,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -295,7 +295,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -312,7 +312,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -329,7 +329,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -346,7 +346,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -363,7 +363,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -380,7 +380,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -397,7 +397,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -414,7 +414,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -431,7 +431,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -448,7 +448,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -465,7 +465,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -482,7 +482,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -499,7 +499,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -516,7 +516,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -533,7 +533,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -550,7 +550,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -567,7 +567,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -584,7 +584,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="#">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
