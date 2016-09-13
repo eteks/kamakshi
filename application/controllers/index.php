@@ -5,6 +5,7 @@ class Index extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('register');
 	
 	}
 
@@ -25,7 +26,8 @@ class Index extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index');
+		$data['giftstore_category'] = $this->register->get_register();
+		$this->load->view('index',$data);
 	}
 	public function register()
 	{

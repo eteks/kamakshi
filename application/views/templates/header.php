@@ -76,7 +76,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
                             <div class="form-group">
                                 <p class="error_msg">Please fill all mandatory fields</p>
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">

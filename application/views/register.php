@@ -24,7 +24,7 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
                             <div class="form-group">
                                 <p class="error_msg">Please fill all(*) mandatory fields</p>
                                 <label for="name">Name *</label>
@@ -32,11 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="text" class="form-control" id="email">
+                                <input type="text" class="form-control" id="email-modal">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password *</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password-modal">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
@@ -55,15 +55,15 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
                             <div class="form-group">
                                 <p class="error_msg">Please fill all(*) mandatory fields</p>
                                 <label for="email">Email *</label>
-                                <input type="text" class="form-control" id="email">
+                                <input type="text" class="form-control" id="email-modal">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password *</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password-modal">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
