@@ -46,10 +46,10 @@
                                             <tr>
                                                 <td>
                                                     <a href="#">
-                                                        <img src="<?php echo base_url(); ?>assets/img/detailsquare.jpg" alt="White Blouse Armani">
+                                                        <img src="<?php echo base_url(); ?>assets/img/detailsquare.jpg" alt="Flowers and Cakes">
                                                     </a>
                                                 </td>
-                                                <td><a href="#">White Blouse Armani</a>
+                                                <td><a href="#">Flowers and Cakes</a>
                                                 </td>
                                                 <td>2</td>
                                                 <td>$123.00</td>
@@ -59,10 +59,10 @@
                                             <tr>
                                                 <td>
                                                     <a href="#">
-                                                        <img src="<?php echo base_url(); ?>assets/img/basketsquare.jpg" alt="Black Blouse Armani">
+                                                        <img src="<?php echo base_url(); ?>assets/img/basketsquare.jpg" alt="fashion and style">
                                                     </a>
                                                 </td>
-                                                <td><a href="#">Black Blouse Armani</a>
+                                                <td><a href="#">Fashion and Style</a>
                                                 </td>
                                                 <td>1</td>
                                                 <td>$200.00</td>

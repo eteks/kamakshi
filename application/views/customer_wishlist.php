@@ -83,7 +83,7 @@
                                     <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Fur coat with very but very very long name</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Baby</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -101,21 +101,21 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product6.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product6_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/img/product6.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">White Blouse Armani</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Watches</a></h3>
                                     <p class="price"><del>$280</del> $143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -151,21 +151,21 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product5_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Black Blouse Versace</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Fashion and Style</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -184,21 +184,21 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product9.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product9_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/img/product9.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Black Blouse Versace</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Flowers and Cakes</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -217,21 +217,21 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product10.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product10_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/img/product10.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">White Blouse Versace</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Gardens Gift</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -256,21 +256,21 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product11.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url(); ?>assets/img/product11_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url(); ?>assets/img/product11.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Fur coat</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Chocolates and Cookies</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -311,7 +311,7 @@
                                     <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">White Blouse Armani</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Beauty and Personal Care</a></h3>
                                     <p class="price"><del>$280</del> $143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
@@ -361,7 +361,7 @@
                                     <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Black Blouse Versace</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Accessories</a></h3>
                                     <p class="price">$143.00</p>
                                     <p class="buttons">
                                         <a href="<?php echo base_url(); ?>index.php/detail/" class="btn btn-default">View detail</a>
