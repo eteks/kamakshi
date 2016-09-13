@@ -19,7 +19,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Add Category</a>
+            <a href="#">Edit Category</a>
         </li>
     </ul>
 </div>
@@ -28,7 +28,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Add Category</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i> Edit Category</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -49,7 +49,7 @@
                         <label for="exampleInputFile">Category Image</label>
                         <input type="file" id="exampleInputFile">
                     </div>
-                    <div class="control-group">
+                   <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
@@ -74,5 +74,6 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
+
 <?php include "templates/footer.php" ?>
 

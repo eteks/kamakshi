@@ -143,17 +143,17 @@
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Catalog</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/category">Category </a></li>
-                                <li><a href="#">Subcategory </a></li>
-                                <li><a href="#">Recipient</a></li>
-                                <li><a href="#">Gift Product </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/subcategory">Subcategory </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/recipient">Recipient</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/giftproduct">Gift Product </a></li>
                             </ul>
                             </li>
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Location</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">State</a></li>
-                                <li><a href="#">City</a></li>
-                                <li><a href="#">Area </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/state">State</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/city">City</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/area">Area </a></li>
                             </ul>
                         </li>
                          <li class="accordion">

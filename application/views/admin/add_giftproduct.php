@@ -19,7 +19,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Add Category</a>
+            <a href="#">Add Gift Product</a>
         </li>
     </ul>
 </div>
@@ -28,7 +28,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Add Category</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i> Add Gift Product</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -42,14 +42,42 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Category Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
+                        <label for="exampleInputEmail1">Title Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter title Name">
                     </div>  
                     <div class="form-group">
                         <label for="exampleInputFile">Category Image</label>
                         <input type="file" id="exampleInputFile">
                     </div>
-                    <div class="control-group">
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <textarea type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter description"></textarea>
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Price</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter price ">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Total Iteams</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter total iteams">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Sold</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Sold">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Size</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Size">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Wight</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Wight">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Colorname</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Color Name">
+                    </div> 
+                     <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
@@ -74,5 +102,5 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-<?php include "templates/footer.php" ?>
 
+<?php include "templates/footer.php" ?>
