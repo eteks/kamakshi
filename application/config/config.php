@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/kamakshi/';
+$config['base_url'] = 'http://localhost/new_kamakshi/kamakshi_all/kamakshi/';
 
 // echo $config['base_url'];
 
@@ -234,7 +234,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'Oc3f1bt1HkD69EolYaVNlLJYpOLWAViQ';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
