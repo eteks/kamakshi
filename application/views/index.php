@@ -439,279 +439,35 @@
 
                 <div class="container">
                     <div class="product-slider">
+                      <?php foreach ($giftstore_category as $cat): ?>
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product9.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo $cat['category_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product9_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo $cat['category_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product9.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo $cat['category_image'] ?>"  alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Flowers & Cakes</a></h3>
-                                    <br />
+                                 <h3><?php echo $cat['category_name'] ?></h3>
+                                  <br />
                                 </div>
                                 <!-- /.text -->
                             </div>
                             <!-- /.product -->
                         </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product10.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product10_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product10.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Garden Gifts</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon sale">
-                                    <div class="theribbon">SALE</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product5_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Fashion and Style</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product11.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product11_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product11.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Chocolates and Cookies</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Computer & Mobile</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product1_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Accessories</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                            </div>
-                            <!-- /.product -->
-                        </div>
-                        <!-- /.col-md-4 -->
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Chocolates & Cookies</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-
-                                <div class="ribbon sale">
-                                    <div class="theribbon">SALE</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
-
-                        <div class="item">
-                            <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product3_2.jpg" alt="" class="img-responsive">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
-                                </a>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Business & Executive Gifts</a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-                        </div>
+                    <?php endforeach ?> 
 
                     </div>
                     <!-- /.product-slider -->
