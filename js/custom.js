@@ -1,12 +1,17 @@
 $(function(){
   
-  var $container = $('#feature'),
+  var $container = $('#container'),
       $filterLinks = $('#filters a');
   
   $container.isotope({
-    itemSelector: '.item',
-    filter: '.red'
+    itemSelector: '.item-img',
+    filter: '*'
   });
+
+  $('.portfolio_menu ul li').click(function(){
+  $('.portfolio_menu ul li').removeClass('active_prot_menu');
+  $(this).addClass('active_prot_menu');
+});
   
   $filterLinks.click(function(){
     var $this = $(this);

@@ -76,6 +76,7 @@
                     <div class="modal-body">
                         <form action="customer-orders.html" method="post">
                             <div class="form-group">
+                                <p class="error_msg">Please fill all mandatory fields</p>
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
                             <div class="form-group">
@@ -367,15 +368,15 @@
  _________________________________________________________ -->
             
         <div id="hot">
-            <!--  <section id="our-works" class="page bg-style1"> -->
-                <div id="velpandi" class="container">
+             <section id="our-works" class="page bg-style1">
+                <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portfolio">
                                 <div class="portfoloi_content_area" >
                                     <div class="portfolio_menu">
                                         <ul id="filters">
-                                            <li class="active_prot_menu selected"><a href="#porfolio_menu" data-filter="*">all</a></li>
+                                            <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*">all</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".men">men</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".women">women</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".boy">boy</a></li>
@@ -388,8 +389,8 @@
                             </div>
                         </div>
                     </div>
-               <!--  </div>
-            </section> -->
+                </div>
+            </section>
 
 
                 <!-- <div class="box">
@@ -400,10 +401,9 @@
                     </div>
                 </div> -->
 
-               <!--  <div class="container"> -->
-
-                <div class="product-slider">
-                        <div class="item men">
+                <div class="container">
+                    <div id="container">
+                         <div class="item-img women">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -431,7 +431,7 @@
                             <!-- /.product -->
                         </div>
 
-                        <div class="item">
+                        <div class="item-img girl women">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -477,7 +477,7 @@
                             <!-- /.product -->
                         </div>
 
-                        <div class="item men">
+                        <div class="item-img girl">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -506,7 +506,7 @@
                             <!-- /.product -->
                         </div>
 
-                        <div class="item">
+                        <div class="item-img girl women">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -534,7 +534,7 @@
                             <!-- /.product -->
                         </div>
 
-                        <div class="item">
+                        <div class="item-img women girl">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -568,7 +568,7 @@
                             <!-- /.product -->
                         </div>
 
-                        <div class="item">
+                        <div class="item-img men boy">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -604,7 +604,7 @@
                         </div>
                         <!-- /.col-md-4 -->
 
-                        <div class="item">
+                        <div class="item-img men boy">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -650,7 +650,7 @@
                             <!-- /.product -->
                         </div>
 
-                        <div class="item">
+                        <div class="item-img boy men girl">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -677,7 +677,7 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
+                
                     </div>
                     <!-- /.product-slider -->
                 </div>
@@ -697,14 +697,12 @@
                             <div class="portfolio">
                                
                                 <div class="portfoloi_content_area" >
-                                    <div class="portfolio_menu" id="filters">
+                                    <div class="portfolio_menu2" id="filters">
                                         <ul>
-                                            <li class="active_prot_menu"><a href="#porfolio_menu" data-filter="*">Popular</a></li>
-                                            <li><a href="#porfolio_menu" data-filter=".websites">Featured</a></li>
-                                            <li><a href="#porfolio_menu" data-filter=".webDesign" >Latest</a></li>
-                                            <!-- <li><a href="#porfolio_menu" data-filter=".appsDevelopment"></a></li> -->
-                                            <!-- <li><a href="#porfolio_menu" data-filter=".GraphicDesign">girl</a></li> -->
-                                          </ul>
+                                            <li class="active_prot_menu2"><a href="#porfolio_menu2" data-filter="*">Popular</a></li>
+                                            <li><a href="#porfolio_menu2" data-filter=".featured">Featured</a></li>
+                                            <li><a href="#porfolio_menu2" data-filter=".latest" >Latest</a></li>
+                                        </ul>
                                     </div>
                                     
                                 </div>
@@ -1080,13 +1078,13 @@
 
                         <h4>Where to find us</h4>
 
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
+                        <p><strong>Name Ltd.</strong>
+                            <br>00/00 Street
+                            <br>City
+                            <br>Street no
+                            <br>State
                             <br>
-                            <strong>Great Britain</strong>
+                            <strong>Country</strong>
                         </p>
 
                         <a href="contact.html">Go to contact page</a>
@@ -1187,6 +1185,7 @@
     <script src="js/jquery.stellar.min.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/custom.js"></script>
 </body>
