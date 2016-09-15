@@ -42,15 +42,15 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Category Name</label>
+                        <label for="category_name">Category Name</label>
                         <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name">
                     </div>  
                     <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
+                        <label for="category_image">Category Image</label>
                         <input type="file" id="category_image">
                     </div>
                    <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 
@@ -76,4 +76,3 @@
 </div><!--/fluid-row-->
 
 <?php include "templates/footer.php" ?>
-

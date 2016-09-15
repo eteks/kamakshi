@@ -52,7 +52,7 @@
                     <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                            <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
                                 <option>Inactive</option>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 

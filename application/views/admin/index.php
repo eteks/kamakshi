@@ -24,42 +24,42 @@
 </div>
 <div class=" row">
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="6 new members." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="000 New users.." class="well top-block" href="#">
             <i class="glyphicon glyphicon-user blue"></i>
 
-            <div>Total Members</div>
-            <div>507</div>
-            <span class="notification">6</span>
+            <div>Users</div>
+            <div>000</div>
+            <!-- <span class="notification">6</span> -->
         </a>
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="000 New site visits." class="well top-block" href="#">
             <i class="glyphicon glyphicon-star green"></i>
 
-            <div>Pro Members</div>
-            <div>228</div>
-            <span class="notification green">4</span>
+            <div>Site Visits</div>
+            <div>000</div>
+            <!-- <span class="notification green">4</span> -->
         </a>
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="$34 new sales." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="$000 New orders." class="well top-block" href="#">
             <i class="glyphicon glyphicon-shopping-cart yellow"></i>
 
-            <div>Sales</div>
-            <div>$13320</div>
-            <span class="notification yellow">$34</span>
+            <div>Orders</div>
+            <div>$0000</div>
+            <!-- <span class="notification yellow">$34</span> -->
         </a>
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="12 new messages." class="well top-block" href="#">
-            <i class="glyphicon glyphicon-envelope red"></i>
+        <a data-toggle="tooltip" title="000000 New revenues." class="well top-block" href="#">
+            <i class="glyphicon glyphicon glyphicon-gbp red"></i>
 
-            <div>Messages</div>
-            <div>25</div>
-            <span class="notification red">12</span>
+            <div>Revenue</div>
+            <div>000000</div>
+            <!-- <span class="notification red">12</span> -->
         </a>
     </div>
 </div>
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="box-content row">
-                <div class="col-lg-7 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <h1>Charisma <br>
                         <small>free, premium quality, responsive, multiple skin admin template.</small>
                     </h1>
@@ -99,7 +99,7 @@
                     </p>
                 </div>
                 <!-- Ads, you can remove these -->
-                <div class="col-lg-5 col-md-12 hidden-xs center-text">
+                <div class="col-lg-5 col-md-12 hidden-xs hidden-lg center-text">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- Charisma Demo 4 -->
                     <ins class="adsbygoogle"
@@ -111,7 +111,7 @@
                     </script>
                 </div>
 
-                <div class="col-lg-5 col-md-12 visible-xs center-text">
+                <div class="col-lg-5 col-md-12 hidden-xs hidden-lg center-text">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- Charisma Demo 5 -->
                     <ins class="adsbygoogle"
@@ -130,7 +130,7 @@
 </div>
 
 <div class="row">
-    <div class="box col-md-4">
+    <!-- <div class="box col-md-4">
         <div class="box-inner homepage-box">
             <div class="box-header well">
                 <h2><i class="glyphicon glyphicon-th"></i> Tabs</h2>
@@ -185,9 +185,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--/span-->
-    <div class="box col-md-4">
+    <!-- <div class="box col-md-4">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-user"></i> Member Activity</h2>
@@ -241,9 +241,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--/span-->
-    <div class="box col-md-4">
+    <!-- <div class="box col-md-4">
         <div class="box-inner homepage-box">
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-list-alt"></i> Keep in touch</h2>
@@ -256,7 +256,7 @@
             </div>
             <div class="box-content">
                 <h3>Stay updated with my projects and blog posts</h3>
-                <!-- Begin MailChimp Signup Form -->
+                -- Begin MailChimp Signup Form --
                 <div class="mc_embed_signup">
                     <form action="//halalit.us3.list-manage.com/subscribe/post?u=444b176aa3c39f656c66381f6&amp;id=eeb0c04e84" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                         <div>
@@ -268,7 +268,7 @@
                     </form>
                 </div>
 
-                <!--End mc_embed_signup-->
+                --End mc_embed_signup--
                 <br/>
 
                 <p>You may like my other open source work, check my profile on <a href="http://github.com/usmanhalalit"
@@ -276,11 +276,11 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
     <!--/span-->
 </div><!--/row-->
 
-<div class="row">
+<!-- <div class="row">
     <div class="box col-md-4">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
@@ -331,7 +331,7 @@
             </div>
         </div>
     </div>
-    <!--/span-->
+    --/span--
 
     <div class="box col-md-4">
         <div class="box-inner">
@@ -379,7 +379,7 @@
             </div>
         </div>
     </div>
-    <!--/span-->
+    --/span--
 
     <div class="box col-md-4">
         <div class="box-inner">
@@ -457,17 +457,17 @@
             </div>
         </div>
     </div>
-    <!--/span-->
-</div><!--/row-->
+    --/span
+</div>--><!--/row-->
     <!-- content ends -->
 </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 
     <!-- Ad, you can remove it -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-9 col-lg-9 col-xs-9 hidden-xs">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Charisma Demo 2 -->
+            -- Charisma Demo 2 --
             <ins class="adsbygoogle"
                  style="display:inline-block;width:728px;height:90px"
                  data-ad-client="ca-pub-5108790028230107"
@@ -489,10 +489,10 @@
                 </form>
             </div>
 
-            <!--End mc_embed_signup-->
+            --End mc_embed_signup--
         </div>
 
-    </div>
+    </div> -->
     <!-- Ad ends -->
 
     <hr>
@@ -518,13 +518,11 @@
     </div>
 
     <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Muhammad
-                Usman</a> 2012 - 2015</p>
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Kamakshi</a> 2016</p>
 
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
+                href="http://usman.it/free-responsive-admin-template">Etekchno Services</a></p>
     </footer>
 
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>
-

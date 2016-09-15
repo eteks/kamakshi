@@ -42,43 +42,43 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Title Name</label>
+                        <label for="titlename">Title Name</label>
                         <input type="email" class="form-control" id="titlename" placeholder="Enter title Name">
                     </div>  
                     <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
-                        <input type="file" id="category_mage">
+                        <label for="category_image">Category Image</label>
+                        <input type="file" id="category_image">
                     </div>
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Description</label>
+                        <label for="description">Description</label>
                         <textarea type="email" class="form-control" id="description" placeholder="Enter description"></textarea>
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Price</label>
+                        <label for="price">Price</label>
                         <input type="email" class="form-control" id="price" placeholder="Enter price ">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Total Iteams</label>
+                        <label for="total_iteams">Total Iteams</label>
                         <input type="email" class="form-control" id="total_iteams" placeholder="Enter total iteams">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Sold</label>
+                        <label for="sold">Sold</label>
                         <input type="email" class="form-control" id="sold" placeholder="Enter Sold">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Size</label>
+                        <label for="size">Size</label>
                         <input type="email" class="form-control" id="size" placeholder="Enter Size">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Wight</label>
-                        <input type="email" class="form-control" id="wight" placeholder="Enter Wight">
+                        <label for="wight">Wight</label>
+                        <input type="email" class="form-control" id="wigh" placeholder="Enter Wight">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Colorname</label>
+                        <label for="color_name">Colorname</label>
                         <input type="email" class="form-control" id="color_name" placeholder="Enter Color Name">
                     </div> 
                      <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 
@@ -104,3 +104,4 @@
 </div><!--/fluid-row-->
 
 <?php include "templates/footer.php" ?>
+>>>>>>> 44ebf0762c2ee6054b67e84ba737bae61af8d382
