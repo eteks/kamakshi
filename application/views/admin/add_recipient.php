@@ -19,7 +19,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Add Category</a>
+            <a href="#">Add Recipient</a>
         </li>
     </ul>
 </div>
@@ -28,7 +28,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Add Category</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i> Add Recipient</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -42,17 +42,13 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Category Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
+                        <label for="exampleInputEmail1">Recipient Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter recipient Name">
                     </div>  
-                    <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
-                        <input type="file" id="exampleInputFile">
-                    </div>
                     <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
+                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
                                 <option>Inactive</option>

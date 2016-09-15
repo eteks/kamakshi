@@ -395,28 +395,28 @@
 
             <!--Popular, Futured Products-->
              <div id="hot">
-            <section id="our-works" class="page bg-style1">
+           <!--  <section id="our-works" class="page bg-style1"> -->
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="portfolio">
+                            <!-- <div class="portfolio"> -->
                                
-                                <div class="portfoloi_content_area" >
+                                <!-- <div class="portfoloi_content_area" > -->
                                     <div class="portfolio_menu2" id="filters">
                                         <ul>
-                                            <li class="active_prot_menu2"><a href="#porfolio_menu2" data-filter="*">Popular</a></li>
-                                            <li><a href="#porfolio_menu2" data-filter=".websites">Featured</a></li>
-                                            <li><a href="#porfolio_menu2" data-filter=".webDesign" >Latest</a></li>
+                                            <li class="active_prot_menu2"><a href="#porfolio_menu2" data-filter="*">Latest Products</a></li>
+                                            <!-- <li><a href="#porfolio_menu2" data-filter=".websites">Featured</a></li>
+                                            <li><a href="#porfolio_menu2" data-filter=".webDesign" >Latest</a></li> -->
                                           </ul>
                                     </div>
                                     
-                                </div>
+                                <!-- </div> -->
                             
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>
-            </section>
+           <!--  </section> -->
 
                 <!-- <div class="box">
                     <div class="container">

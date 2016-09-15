@@ -16,7 +16,7 @@
                 <a href="#">Home</a>
             </li>
             <li>
-                <a href="#">Category </a>
+                <a href="#">Subcategory </a>
             </li>
         </ul>
     </div>
@@ -24,7 +24,7 @@
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><!-- <i class="glyphicon glyphicon-user"></i>  -->Category</h2>
+        <h2><!-- <i class="glyphicon glyphicon-user"></i> --> Subcategory</h2>
 
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
@@ -34,7 +34,7 @@
         </div>
     </div>
    <div class="box-content">
-        <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_category">
+        <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_subcategory">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
@@ -42,8 +42,8 @@
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
-        <th>Category Name</th>
-        <th>Category Image</th> 
+        <th>Subcategory Name</th>
+        <th>Subcategory Image</th> 
         <th>Status</th>
         <th>Created Date</th>
         <th>Actions</th>
@@ -58,8 +58,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
-
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -77,7 +76,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -95,7 +94,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -114,7 +113,7 @@
         </td>
         <td class="center">
             
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -132,11 +131,11 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
-            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-danger" href="#">
                 <i class="glyphicon glyphicon-trash icon-white"></i>
                 Delete
             </a>
@@ -150,11 +149,11 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
-            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-danger" href="#">
                 <i class="glyphicon glyphicon-trash icon-white"></i>
                 Delete
             </a>
@@ -168,7 +167,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -186,7 +185,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -204,7 +203,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -222,7 +221,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -240,7 +239,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -258,7 +257,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -276,7 +275,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -294,7 +293,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -312,7 +311,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -330,7 +329,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -348,7 +347,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -366,7 +365,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -384,7 +383,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -402,7 +401,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -420,7 +419,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -438,7 +437,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -456,7 +455,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -474,7 +473,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -492,7 +491,7 @@
             <span class="label-success label label-default">Active</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -510,7 +509,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -528,7 +527,7 @@
             <span class="label-default label label-danger">Banned</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -546,7 +545,7 @@
             <span class="label-default label">Inactive</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -564,7 +563,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -582,7 +581,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -600,7 +599,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -618,7 +617,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>

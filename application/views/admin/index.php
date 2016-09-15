@@ -1,224 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!--
-        ===
-        This comment should NOT be removed.
-
-        Charisma v2.0.0
-
-        Copyright 2012-2014 Muhammad Usman
-        Licensed under the Apache License v2.0
-        http://www.apache.org/licenses/LICENSE-2.0
-
-        http://usman.it
-        http://twitter.com/halalit_usman
-        ===
-    -->
-    <meta charset="utf-8">
-    <title>Free HTML5 Bootstrap Admin Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
-    <meta name="author" content="Muhammad Usman">
-
-    <!-- The styles -->
-    <!-- <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet"> -->
-    <link href="<?php echo base_url(); ?>assets/admin/css/bootstrap-cerulean.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/admin/css/charisma-app.css" rel="stylesheet">
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/jquery.noty.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/noty_theme_default.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/elfinder.min.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/elfinder.theme.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/uploadify.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/animate.min.css' rel='stylesheet'>
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/jquery.min.js"></script>
-
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- The fav icon -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/admin/img/favicon.ico">
-
-</head>
-
-<body>
-    <!-- topbar starts -->
-    <div class="navbar navbar-default" role="navigation">
-
-        <div class="navbar-inner">
-            <button type="button" class="navbar-toggle pull-left animated flip">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php"> <img alt="Charisma Logo" src="<?php echo base_url(); ?>assets/admin/img/logo20.png" class="hidden-xs"/>
-                <span>Charisma</span></a>
-
-            <!-- user dropdown starts -->
-            <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Profile</a></li>
-                    <li class="divider"></li>
-                    <li><a href="login.php">Logout</a></li>
-                </ul>
-            </div>
-            <!-- user dropdown ends -->
-
-            <!-- theme selector starts -->
-            <div class="btn-group pull-right theme-container animated tada">
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-tint"></i><span
-                        class="hidden-sm hidden-xs"> Change Theme / Skin</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" id="themes">
-                    <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
-                    <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
-                    <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
-                    <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
-                    <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
-                    <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
-                    <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
-                    <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
-                    <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
-                </ul>
-            </div>
-            <!-- theme selector ends -->
-
-            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
-                <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i> Dropdown <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <form class="navbar-search pull-left">
-                        <input placeholder="Search" class="search-query form-control col-md-10" name="query"
-                               type="text">
-                    </form>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-    <!-- topbar ends -->
+<?php include "templates/header.php" ?>
 <div class="ch-container">
-    <div class="row">
-        
-        <!-- left menu starts -->
-        <div class="col-sm-2 col-lg-2">
-            <div class="sidebar-nav">
-                <div class="nav-canvas">
-                    <div class="nav-sm nav nav-stacked">
-
-                    </div>
-                    <ul class="nav nav-pills nav-stacked main-menu">
-                        <li class="nav-header">Main</li>
-                        <!-- <li><a class="ajax-link" href="index.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
-                        </li> -->
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Users</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Admin Users</a></li>
-                                <li><a href="#">End users</a></li>
-                            </ul>
-                        </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Catelog</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="<?php echo 'adminindex/category' ?>">Category </a></li>
-                                <li><a href="#">Subcategory </a></li>
-                                <li><a href="#">Recipient</a></li>
-                                <li><a href="#">Gift Product </a></li>
-                            </ul>
-                            </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Location</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">State</a></li>
-                                <li><a href="#">City</a></li>
-                                <li><a href="#">Area </a></li>
-                            </ul>
-                        </li>
-                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Order</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Order</a></li>
-                                <li><a href="#">Order Item</a></li>
-                                <li><a href="#">Transaction</a></li>
-                            </ul>
-                        </li>
-                      <!--   <li><a class="ajax-link" href="ui.php"><i class="glyphicon glyphicon-eye-open"></i><span> UI Features</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="form.php"><i
-                                    class="glyphicon glyphicon-edit"></i><span> Forms</span></a></li>
-                        <li><a class="ajax-link" href="chart.php"><i class="glyphicon glyphicon-list-alt"></i><span> Charts</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="typography.php"><i class="glyphicon glyphicon-font"></i><span> Typography</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="gallery.php"><i class="glyphicon glyphicon-picture"></i><span> Gallery</span></a>
-                        </li>
-                        <li class="nav-header hidden-md">Sample Section</li>
-                        <li><a class="ajax-link" href="table.php"><i
-                                    class="glyphicon glyphicon-align-justify"></i><span> Tables</span></a></li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Accordion Menu</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Child Menu 1</a></li>
-                                <li><a href="#">Child Menu 2</a></li>
-                            </ul>
-                        </li>
-                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Menu</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Child Menu 1</a></li>
-                                <li><a href="#">Child Menu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="ajax-link" href="calendar.php"><i class="glyphicon glyphicon-calendar"></i><span> Calendar</span></a>
-                        </li>
-                        <li><a class="ajax-link" href="grid.php"><i
-                                    class="glyphicon glyphicon-th"></i><span> Grid</span></a></li>
-                        <li><a href="tour.php"><i class="glyphicon glyphicon-globe"></i><span> Tour</span></a></li>
-                        <li><a class="ajax-link" href="icon.php"><i
-                                    class="glyphicon glyphicon-star"></i><span> Icons</span></a></li>
-                        <li><a href="error.php"><i class="glyphicon glyphicon-ban-circle"></i><span> Error Page</span></a>
-                        </li>
-                        <li><a href="login.php"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
-                        </li>
-                    </ul>
-                    <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label> -->
-                </div>
-            </div>
-        </div>
-        <!--/span-->
-        <!-- left menu ends -->
-
+    <div class="row">     
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -242,42 +24,42 @@
 </div>
 <div class=" row">
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="6 new members." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="000 New users.." class="well top-block" href="#">
             <i class="glyphicon glyphicon-user blue"></i>
 
-            <div>Total Members</div>
-            <div>507</div>
-            <span class="notification">6</span>
+            <div>Users</div>
+            <div>000</div>
+            <!-- <span class="notification">6</span> -->
         </a>
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="000 New site visits." class="well top-block" href="#">
             <i class="glyphicon glyphicon-star green"></i>
 
-            <div>Pro Members</div>
-            <div>228</div>
-            <span class="notification green">4</span>
+            <div>Site Visits</div>
+            <div>000</div>
+            <!-- <span class="notification green">4</span> -->
         </a>
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="$34 new sales." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="$000 New orders." class="well top-block" href="#">
             <i class="glyphicon glyphicon-shopping-cart yellow"></i>
 
-            <div>Sales</div>
-            <div>$13320</div>
-            <span class="notification yellow">$34</span>
+            <div>Orders</div>
+            <div>$0000</div>
+            <!-- <span class="notification yellow">$34</span> -->
         </a>
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="12 new messages." class="well top-block" href="#">
-            <i class="glyphicon glyphicon-envelope red"></i>
+        <a data-toggle="tooltip" title="000000 New revenues." class="well top-block" href="#">
+            <i class="glyphicon glyphicon glyphicon-gbp red"></i>
 
-            <div>Messages</div>
-            <div>25</div>
-            <span class="notification red">12</span>
+            <div>Revenue</div>
+            <div>000000</div>
+            <!-- <span class="notification red">12</span> -->
         </a>
     </div>
 </div>
@@ -298,7 +80,7 @@
                 </div>
             </div>
             <div class="box-content row">
-                <div class="col-lg-7 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <h1>Charisma <br>
                         <small>free, premium quality, responsive, multiple skin admin template.</small>
                     </h1>
@@ -317,7 +99,7 @@
                     </p>
                 </div>
                 <!-- Ads, you can remove these -->
-                <div class="col-lg-5 col-md-12 hidden-xs center-text">
+                <div class="col-lg-5 col-md-12 hidden-xs hidden-lg center-text">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- Charisma Demo 4 -->
                     <ins class="adsbygoogle"
@@ -329,7 +111,7 @@
                     </script>
                 </div>
 
-                <div class="col-lg-5 col-md-12 visible-xs center-text">
+                <div class="col-lg-5 col-md-12 hidden-xs hidden-lg center-text">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- Charisma Demo 5 -->
                     <ins class="adsbygoogle"
@@ -348,7 +130,7 @@
 </div>
 
 <div class="row">
-    <div class="box col-md-4">
+    <!-- <div class="box col-md-4">
         <div class="box-inner homepage-box">
             <div class="box-header well">
                 <h2><i class="glyphicon glyphicon-th"></i> Tabs</h2>
@@ -403,10 +185,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--/span-->
-
-    <div class="box col-md-4">
+    <!-- <div class="box col-md-4">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-user"></i> Member Activity</h2>
@@ -460,14 +241,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--/span-->
-
-    <div class="box col-md-4">
+    <!-- <div class="box col-md-4">
         <div class="box-inner homepage-box">
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-list-alt"></i> Keep in touch</h2>
-
                 <div class="box-icon">
                     <a href="#" class="btn btn-minimize btn-round btn-default"><i
                             class="glyphicon glyphicon-chevron-up"></i></a>
@@ -477,20 +256,19 @@
             </div>
             <div class="box-content">
                 <h3>Stay updated with my projects and blog posts</h3>
-                <!-- Begin MailChimp Signup Form -->
+                -- Begin MailChimp Signup Form --
                 <div class="mc_embed_signup">
                     <form action="//halalit.us3.list-manage.com/subscribe/post?u=444b176aa3c39f656c66381f6&amp;id=eeb0c04e84" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                         <div>
                             <label>Please enter your email</label>
                             <input type="email" value="" name="EMAIL" class="email" placeholder="Email address" required>
-
                             <div class="power_field"><input type="text" name="b_444b176aa3c39f656c66381f6_eeb0c04e84" tabindex="-1" value=""></div>
                             <div class="clear"><input type="submit" value="Subscribe" name="subscribe" class="button"></div>
                         </div>
                     </form>
                 </div>
 
-                <!--End mc_embed_signup-->
+                --End mc_embed_signup--
                 <br/>
 
                 <p>You may like my other open source work, check my profile on <a href="http://github.com/usmanhalalit"
@@ -498,11 +276,11 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
     <!--/span-->
 </div><!--/row-->
 
-<div class="row">
+<!-- <div class="row">
     <div class="box col-md-4">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
@@ -553,7 +331,7 @@
             </div>
         </div>
     </div>
-    <!--/span-->
+    --/span--
 
     <div class="box col-md-4">
         <div class="box-inner">
@@ -601,7 +379,7 @@
             </div>
         </div>
     </div>
-    <!--/span-->
+    --/span--
 
     <div class="box col-md-4">
         <div class="box-inner">
@@ -679,17 +457,17 @@
             </div>
         </div>
     </div>
-    <!--/span-->
-</div><!--/row-->
+    --/span
+</div>--><!--/row-->
     <!-- content ends -->
-    </div><!--/#content.col-md-0-->
+</div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 
     <!-- Ad, you can remove it -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-9 col-lg-9 col-xs-9 hidden-xs">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Charisma Demo 2 -->
+            -- Charisma Demo 2 --
             <ins class="adsbygoogle"
                  style="display:inline-block;width:728px;height:90px"
                  data-ad-client="ca-pub-5108790028230107"
@@ -711,10 +489,10 @@
                 </form>
             </div>
 
-            <!--End mc_embed_signup-->
+            --End mc_embed_signup--
         </div>
 
-    </div>
+    </div> -->
     <!-- Ad ends -->
 
     <hr>
@@ -740,50 +518,12 @@
     </div>
 
     <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Muhammad
-                Usman</a> 2012 - 2015</p>
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Kamakshi</a> 2016</p>
 
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
+                href="http://usman.it/free-responsive-admin-template">Etekchno Services</a></p>
     </footer>
 
 </div><!--/.fluid-container-->
+<?php include "templates/footer.php" ?>
 
-<!-- external javascript -->
-
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<!-- library for cookie management -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.cookie.js"></script>
-<!-- calender plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/moment/min/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<!-- data table plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.dataTables.min.js"></script>
-
-<!-- select or dropdown enhancer -->
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/chosen/chosen.jquery.min.js"></script>
-<!-- plugin for gallery image view -->
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/colorbox/jquery.colorbox-min.js"></script>
-<!-- notification plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.noty.js"></script>
-<!-- library for making tables responsive -->
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.js"></script>
-<!-- tour plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-<!-- star rating plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.raty.min.js"></script>
-<!-- for iOS style toggle switch -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.iphone.toggle.js"></script>
-<!-- autogrowing textarea plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.autogrow-textarea.js"></script>
-<!-- multiple file upload plugin -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.uploadify-3.1.min.js"></script>
-<!-- history.js for cross-browser state change on ajax -->
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery.history.js"></script>
-<!-- application script for Charisma demo -->
-<script src="<?php echo base_url(); ?>assets/admin/js/charisma.js"></script>
-
-
-</body>
-</html>

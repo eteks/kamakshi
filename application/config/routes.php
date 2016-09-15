@@ -42,8 +42,8 @@ $route['default_controller'] = "index";
 $route['404_override'] = '';
 
 $route['view/(:any)'] = 'todos/view';
-$route['adminindex/category'] = 'adminindex/category';
 
+//Route url for end user
 $route['register'] = 'index/register';
 $route['detail'] = 'index/detail';
 $route['category'] = 'index/category';
@@ -57,6 +57,31 @@ $route['customer_account'] = 'index/customer_account';
 $route['customer_wishlist'] = 'index/customer_wishlist';
 $route['customer_orders'] = 'index/customer_orders';
 $route['customer_order'] = 'index/customer_order';
+
+//Route url for admin
+$route['adminindex/category'] = 'adminindex/category';
+$route['adminindex/add_category'] = 'adminindex/add_category';
+$route['adminindex/edit_category'] = 'adminindex/edit_category';
+
+$route['adminindex/subcategory'] = 'adminindex/subcategory';
+$route['adminindex/add_subcategory'] = 'adminindex/add_subcategory';
+$route['adminindex/edit_subcategory'] = 'adminindex/edit_subcategory';
+$route['adminindex/recipient'] = 'adminindex/recipient';
+$route['adminindex/add_recipient'] = 'adminindex/add_recipient';
+$route['adminindex/edit_recipient'] = 'adminindex/edit_recipient';
+$route['adminindex/giftproduct'] = 'adminindex/giftproduct';
+$route['adminindex/add_giftproduct'] = 'adminindex/add_giftproduct';
+$route['adminindex/edit_giftproduct'] = 'adminindex/edit_giftproduct';
+$route['adminindex/area'] = 'adminindex/area';
+$route['adminindex/add_area'] = 'adminindex/add_area';
+$route['adminindex/edit_area'] = 'adminindex/edit_area';
+$route['adminindex/city'] = 'adminindex/city';
+$route['adminindex/add_city'] = 'adminindex/add_city';
+$route['adminindex/edit_city'] = 'adminindex/edit_city';
+
+$route['adminindex/state'] = 'adminindex/state';
+$route['adminindex/add_state'] = 'adminindex/add_state';
+$route['adminindex/edit_state'] = 'adminindex/edit_state';
 
 
 
