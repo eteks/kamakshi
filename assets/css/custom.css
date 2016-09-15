@@ -1,9 +1,1 @@
 /** Your theme modifications here **/
-.error_input_field {
-   border:1px solid red !important;
-}
-.error_test {
-	color :red ;
-	font-size : 12px;	
-	display : none;
-}

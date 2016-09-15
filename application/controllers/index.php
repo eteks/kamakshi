@@ -6,7 +6,7 @@ class Index extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('register');
-	
+
 	}
 
 	/**
@@ -26,12 +26,53 @@ class Index extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['giftstore_category'] = $this->register->get_register();
-		$this->load->view('index',$data);
+	  $data['giftstore_category'] = $this->register->get_register();
+	  // $data['giftstore_subcategory'] = $this->register->get_register();
+	  $this->load->view('index',$data);
+
+	 
+
+	    // print_r($data1['giftstore_subcategory']);
+	  // $user_name = $this->input->post('name');
+	  // $user_email = $this->input->post('email');
+	  // $user_type = $this->input->post('user_type');
+	  // $user_data = result_array(
+	  // 'user_name' => $user_name,
+	  // 'user_email' => $user_email,
+	  // 'user_password' => $user_password,
+	  // 'user_type' => $user_type,
+	  // 'user_status' => $user_status
+	  // );
+	  //  $this->register->post_register($data);
+	
+		// $this->load->view('header',$data);
+		// print_r($giftstore_category);
 	}
+	// public function index()
+	// {
+ //    $query = $this->db->get('giftstore');
+ //    $return = array();
+
+ //    foreach ($query->result() as $giftstore_category)
+ //    {
+ //        $return[$giftstore_category->id] = $giftstore_category;
+ //        $return[$giftstore_subcategory->id]->subs = $this->get_giftstore_subcategory($subcategory_id->id); // Get the categories sub categories
+ //    }
+
+ //    return $return;
+	// }
+
+
+	// public function get_giftstore_subcategory($subcategory_id)
+	// {
+	//     $this->db->where('giftstore', $category_id);
+	//     $query = $this->db->get('giftstore_subcategory');
+	//     return $query->result();
+	// }
 	public function register()
-	{
+	{ 
 		$this->load->view('register');
+
 	}
 	public function detail()
 	{
@@ -39,8 +80,15 @@ class Index extends CI_Controller {
 	}
     public function category()
 	{
-		$this->load->view('category');
+		$data['giftstore_category'] = $this->register->get_register();
+		$data['giftstore_subcategory'] = $this->register->get_category();
+		$this->load->view('category',$data);
 	}
+	// public function category()
+	// {
+	// 	$data['giftstore_subcategory'] = $this->register->get_category();
+	// 	$this->load->view('category',$data);
+	// }
 	public function contact()
 	{
 		$this->load->view('contact');

@@ -16,17 +16,16 @@
                 <div class="col-md-3">
                     <!-- *** MENUS AND FILTERS ***
  _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
-
+                    <div class="panel panel-default sidebar-menu">                       
                         <div class="panel-heading">
                             <h3 class="panel-title">Categories</h3>
                         </div>
-
                         <div class="panel-body">
+                        <?php foreach ($giftstore_subcategory as $subcat):?>
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a>
-                                    <ul>
+                                    <a href="<?php echo base_url(); ?>/index.php/category/"><?php echo $subcat['subcategory_name'] ?><span class="badge pull-right">5</span></a>
+                                  <!--   <ul>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Bathing & Changing</a>
                                         </li>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Toys & Activity</a>
@@ -35,12 +34,12 @@
                                         </li>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Collectibles</a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
-                        
+                                               
 
                             </ul>
-
+                            <?php endforeach ?> 
                         </div>
                     </div>
                     <div class="panel panel-default sidebar-menu">
@@ -62,7 +61,7 @@
                             
                                  <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                   <!--  <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a> -->
+                                    <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a> 
                                     <ul>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Men</a>
                                         </li>
@@ -84,8 +83,8 @@
 
                 <div class="col-md-9">
                     <div class="box">
-                        <h1>Ladies</h1>
-                        <p>In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
+                        <h1>Watches</h1>
+                        <p>In our Watches department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
                     </div>
 
                     <div class="box info-bar">
@@ -119,25 +118,25 @@
                     </div>
 
                     <div class="row products">
-
+                        <?php foreach ($giftstore_subcategory as $subcat):?>
                         <div class="col-md-4 col-sm-6">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo $subcat['subcategory_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/product5_2.jpg" alt="" class="img-responsive">
+                                                <img src="<?php echo $subcat['subcategory_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
+                                    <img src="<?php echo $subcat['subcategory_image'] ?>" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Fashion and Style</a></h3>
@@ -151,6 +150,10 @@
                             </div>
                             <!-- /.product -->
                         </div>
+                        <?php endforeach ?>
+
+
+
 
                         <div class="col-md-4 col-sm-6">
                             <div class="product">

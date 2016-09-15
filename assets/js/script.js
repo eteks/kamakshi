@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
 
     required_login=["username","password"];

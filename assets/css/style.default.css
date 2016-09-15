@@ -1684,4 +1684,36 @@ address {
 .error_msg{
   color: #ff0000;
   font-size: 12px;
+  display: none;
+}
+.error_email{
+  color: #ff0000;
+  font-size: 12px;
+  display: none;
+}
+.error_msg_log{
+  color: #ff0000;
+  font-size: 12px;
+  display: none;
+}
+.error_log_email{
+  color: #ff0000;
+  font-size: 12px;
+  display: none;
+}
+.error_msg_reg{
+  color: #ff0000;
+  font-size: 12px;
+  display: none;
+}
+.error_reg_email{
+  color: #ff0000;
+  font-size: 12px;
+  display: none;
+}
+.error_input_field {
+   border:1px solid red !important;
+}
+.error_input_field_email {
+   border:1px solid red !important;
 }

@@ -24,19 +24,20 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="signup" method="post">
                             <div class="form-group">
-                                <p class="error_msg">Please fill all(*) mandatory fields</p>
+                                <p class="error_msg_reg">Please fill all(*) mandatory fields</p>
+                                <p class="error_reg_email">Please enter valid email</p>
                                 <label for="name">Name *</label>
-                                <input type="text" class="form-control" id="name">
+                                <input type="text" class="form-control" name="name" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="text" class="form-control" id="email-modal">
+                                <input type="text" class="form-control" name="email_reg" id="email-reg">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password *</label>
-                                <input type="password" class="form-control" id="password-modal">
+                                <input type="password" class="form-control" name="password_reg" id="password-reg">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
@@ -55,15 +56,16 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login_reg" method="post">
                             <div class="form-group">
-                                <p class="error_msg">Please fill all(*) mandatory fields</p>
+                                <p class="error_msg_log">Please fill all(*) mandatory fields</p>
+                                <p class="error_log_email">Please enter valid email</p>
                                 <label for="email">Email *</label>
-                                <input type="text" class="form-control" id="email-modal">
+                                <input type="text" class="form-control" name="email_log" id="email-log">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password *</label>
-                                <input type="password" class="form-control" id="password-modal">
+                                <input type="password" class="form-control" name="password_log" id="password-log">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
