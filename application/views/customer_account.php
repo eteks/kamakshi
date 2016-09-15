@@ -96,7 +96,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                       <p class="error_msg">Please fill all mandatory fields</p>
-                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="firstname">Firstname</label>

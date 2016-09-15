@@ -51,12 +51,12 @@
                             <select name="city_id" id="sel_c" class="form-control">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
-                                <option>Disable</option>
+                                <option>Inactive</option>
                             </select>
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 
@@ -71,4 +71,3 @@
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 <?php include "templates/footer.php" ?>
-

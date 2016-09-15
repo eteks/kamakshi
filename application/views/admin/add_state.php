@@ -1,4 +1,4 @@
- <?php include "templates/header.php" ?>
+<?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
 
@@ -51,12 +51,12 @@
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
-                                <option>Disable</option>
+                                <option>Inactive</option>
                             </select>
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 

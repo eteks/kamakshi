@@ -1,4 +1,3 @@
-
 <script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- library for cookie management -->
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.cookie.js"></script>

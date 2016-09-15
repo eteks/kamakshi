@@ -58,7 +58,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/admin/adminindex"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
+            <a class="navbar-brand" href="index.php"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
                 <span>Kamakshi Gifts</span></a>
 
             <!-- user dropdown starts -->
@@ -129,18 +129,18 @@
                     <div class="nav-sm nav nav-stacked">
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
-                        <li class="nav-header">Main</li>
+                        <li class="nav-header">My Dashboard</li>
                         <!-- <li><a class="ajax-link" href="index.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
                         </li> -->
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Users</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Admin Users</a></li>
                                 <li><a href="#">End users</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Catalog</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-inbox"></i><span> Catalog</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/category">Category </a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/subcategory">Subcategory </a></li>
@@ -149,7 +149,7 @@
                             </ul>
                             </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Location</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-map-marker"></i><span> Location</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/state">State</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/city">City</a></li>
@@ -157,7 +157,7 @@
                             </ul>
                         </li>
                          <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span>Order</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-sort-by-order"></i><span> Order</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Order</a></li>
                                 <li><a href="#">Order Item</a></li>
