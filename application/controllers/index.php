@@ -48,27 +48,6 @@ class Index extends CI_Controller {
 		// $this->load->view('header',$data);
 		// print_r($giftstore_category);
 	}
-	// public function index()
-	// {
- //    $query = $this->db->get('giftstore');
- //    $return = array();
-
- //    foreach ($query->result() as $giftstore_category)
- //    {
- //        $return[$giftstore_category->id] = $giftstore_category;
- //        $return[$giftstore_subcategory->id]->subs = $this->get_giftstore_subcategory($subcategory_id->id); // Get the categories sub categories
- //    }
-
- //    return $return;
-	// }
-
-
-	// public function get_giftstore_subcategory($subcategory_id)
-	// {
-	//     $this->db->where('giftstore', $category_id);
-	//     $query = $this->db->get('giftstore_subcategory');
-	//     return $query->result();
-	// }
 	public function register()
 	{ 
 		$this->load->view('register');
@@ -76,19 +55,16 @@ class Index extends CI_Controller {
 	}
 	public function detail()
 	{
-		$this->load->view('detail');
+		$categories['giftstore_category'] = $this->register->get_register();
+		$categories['giftstore_subcategory'] = $this->register->get_category();
+		$this->load->view('detail',$categories);
 	}
     public function category()
 	{
-		$data['giftstore_category'] = $this->register->get_register();
-		$data['giftstore_subcategory'] = $this->register->get_category();
-		$this->load->view('category',$data);
+		$categories['giftstore_category'] = $this->register->get_register();
+		$categories['giftstore_subcategory'] = $this->register->get_category();
+		$this->load->view('category',$categories);
 	}
-	// public function category()
-	// {
-	// 	$data['giftstore_subcategory'] = $this->register->get_category();
-	// 	$this->load->view('category',$data);
-	// }
 	public function contact()
 	{
 		$this->load->view('contact');

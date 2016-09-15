@@ -21,17 +21,16 @@
                 <div class="col-md-3">
                     <!-- *** MENUS AND FILTERS ***
  _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
-
+                         <div class="panel panel-default sidebar-menu">                       
                         <div class="panel-heading">
                             <h3 class="panel-title">Categories</h3>
                         </div>
-
                         <div class="panel-body">
+                        <?php foreach ($giftstore_subcategory as $subcat):?>
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a>
-                                    <ul>
+                                    <a href="<?php echo base_url(); ?>index.php/category/"><?php echo $subcat['subcategory_name'] ?><span class="badge pull-right">5</span></a>
+                                  <!--   <ul>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Bathing & Changing</a>
                                         </li>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Toys & Activity</a>
@@ -40,11 +39,10 @@
                                         </li>
                                         <li><a href="<?php echo base_url(); ?>/index.php/category/">Collectibles</a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
-
-                                </ul>
-
+                            </ul>
+                            <?php endforeach ?> 
                         </div>
                     </div>
                     <div class="panel panel-default sidebar-menu">
@@ -107,6 +105,8 @@
                             <!-- /.ribbon -->
 
                         </div>
+
+                        
                         <div class="col-sm-6">
                             <div class="box">
                                 <h1 class="text-center">Flowers and Cakes</h1>

@@ -1717,6 +1717,7 @@ address {
 .error_input_field_email {
    border:1px solid red !important;
 }
+
 #container{
   max-height: 100%;
   height: auto;
@@ -1728,33 +1729,85 @@ address {
     background: #4fbfa8 none repeat scroll 0 0 !important;
     color: #fff !important;
 }
+
 /**** Isotope Filtering ****/
 .item-img {
   width: 178px;
   float: left;
   margin-right: 50px;
+  position: relative;
 }
-.isotope-item {
-  z-index: 1;
+@media(max-width: 640px){
+.item-img {
+    float: left;
+    margin-right: 50px;
+    width: 280px;
+}
+#container {
+    display: inline-block !important;
+    height: 0 auto !important;
+    margin-left: 25px;
+    max-height: 100%;
+    width: 95%;
+}
+}
+/**** Isotope CSS3 transitions ****/
+ .isotope-item {
+  /* float: left !important;*/
+  height: 0 auto !important;
+  position: relative !important;
+  overflow: visible !important;
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) !important;
+   z-index: 1;
+}
+@media(max-width: 640px){
+  .isotope-item {
+  /*float: left !important;*/
+  height: 0 auto !important;
+  position: relative !important;
+  overflow: visible !important;
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) !important;
+   z-index: 1;
+}
 }
 .isotope-hidden.isotope-item {
   pointer-events: none;
   z-index: 2;
 }
-/**** Isotope CSS3 transitions ****/
+
 .isotope,
 .isotope .isotope-item {
   -webkit-transition-duration: 0.8s;
      -moz-transition-duration: 0.8s;
           transition-duration: 0.8s;
 }
+
 .isotope {
   -webkit-transition-property: height, width;
      -moz-transition-property: height, width;
           transition-property: height, width;
 }
+
 .isotope .isotope-item {
   -webkit-transition-property: -webkit-transform, opacity;
      -moz-transition-property:    -moz-transform, opacity;
           transition-property:         transform, opacity;
+}
+
+/*.isotope {
+    height: 376px;
+    overflow: visible !important;
+    position: relative !important;
+}*/
+.item-img.women.men.girl.boy.isotope-item{
+  position: relative !important;
+  height: 0 auto !important;
+ /* transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) !important;*/
+}
+@media(max-width: 640px){
+.item-img.men.isotope-item{
+  position: relative !important;
+  height: 0 auto !important;
+  /*transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) !important;*/
+}  
 }
