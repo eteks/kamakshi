@@ -127,3 +127,50 @@
 /* ===== End Portfolio===== */
 
 
+.active_prot_menu2 a, .portfolio_menu2 ul li a:hover {
+    background: #4fbfa8 none repeat scroll 0 0 !important;
+    color: #fff !important;
+}
+.portfolio_single_content div{
+  background: none repeat scroll 0 0 rgba( 154, 83, 65, 0.95);
+}
+
+/* ===== Begin Portfolio===== */
+.portfolio_area{}
+.portfolio{}
+.portfoloi_top{}
+.portfoloi_content_area{}
+.portfolio_menu{
+  text-align: center;
+  overflow: hidden;
+  margin-top:22px;
+  margin-bottom:48px;
+}
+.portfolio_menu2 ul{
+  list-style: none outside none;
+    text-align: center;
+}
+.portfolio_menu2 ul li{
+    display: inline-block;
+}
+.portfolio_menu2 ul li a{
+  color: #363940;
+  background: transparent;
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    outline: medium none !important;
+}
+.portfolio_content{}
+.portfolio_single_content{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin-bottom:30px;
+  overflow:hidden;
+  
+}

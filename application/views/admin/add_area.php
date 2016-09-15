@@ -42,15 +42,15 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Area Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter area Name">
+                        <label for="area_name">Area Name</label>
+                        <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Delivery charge</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter delivery charge">
+                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter delivery charge">
                     </div>  
                      <div class="control-group">
-                        <label for="exampleInputEmail1">State id</label>
+                        <label for="sel_a">State id</label>
                     <select name="city_id" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
@@ -58,7 +58,7 @@
                     </select>
                     </div>
                      <div class="control-group">
-                        <label for="exampleInputEmail1">City id</label>
+                        <label for="sel_b">City id</label>
                     <select name="city_id" id="sel_b" class="form-control">
                    <option value="">
                      Select City
@@ -66,17 +66,17 @@
                     </select>
                     </div>
                      <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
-                                <option>Disable</option>
+                                <option>Inactive</option>
                             </select>
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 
@@ -91,4 +91,3 @@
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 <?php include "templates/footer.php" ?>
-

@@ -24,7 +24,7 @@
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-user"></i>State</h2>
+        <h2><!-- <i class="glyphicon glyphicon-user"></i> -->State</h2>
 
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
@@ -38,7 +38,7 @@
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
-    <div class="alert alert-info col-md-10"></div>
+    <div class="alert alert_blue alert-info col-md-10"></div>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
@@ -573,11 +573,10 @@
     </div>
 
     <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Muhammad
-                Usman</a> 2012 - 2015</p>
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="#">Kamakshi</a> 2016</p>
 
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
+                href="http://etekchnoservices.com/" target="_blank">Etekchno Services</a></p>
     </footer>
 
 </div><!--/.fluid-container-->

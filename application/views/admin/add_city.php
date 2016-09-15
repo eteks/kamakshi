@@ -42,11 +42,11 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">City Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter City Name">
+                        <label for="city_name">City Name</label>
+                        <input type="email" class="form-control" id="city_name" placeholder="Enter City Name">
                     </div> 
                     <div class="control-group">
-                        <label for="exampleInputEmail1">State id</label>
+                        <label for="sel_a">State id</label>
                     <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
                    <option value="">
                      Select City
@@ -54,17 +54,17 @@
                     </select>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
-                                <option>Disable</option>
+                                <option>Inactive</option>
                             </select>
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
 

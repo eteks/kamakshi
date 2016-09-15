@@ -8,7 +8,7 @@ $(document).ready(function() {
     // email=jQuery("#email");
     errornotice = jQuery("#error");
 
-jQuery("#login").submit(function(){ 
+    jQuery("#login").submit(function(){ 
         for (i=0;i<required_login.length;i++) {
             var input = jQuery('#'+required_login[i]);
             if ((input.val() == "")) 
@@ -27,8 +27,6 @@ jQuery("#login").submit(function(){
             else{
                 login_email.removeClass("error_input_field_email");                
             }
-        
-    
             //if any inputs on the page have the class 'error_input_field' the form will not submit
             if (jQuery(":input").hasClass("error_input_field")  ) {
                 $('.error_msg').css('display','block');  
@@ -49,7 +47,7 @@ jQuery("#login").submit(function(){
             }
         }  
     });
-jQuery("#login_reg").submit(function(){ 
+    jQuery("#login_reg").submit(function(){ 
         for (i=0;i<required_login_reg.length;i++) {
             var input = jQuery('#'+required_login_reg[i]);
             if ((input.val() == "")) 
@@ -87,7 +85,7 @@ jQuery("#login_reg").submit(function(){
             }
         }
     });
-jQuery("#signup").submit(function(){ 
+    jQuery("#signup").submit(function(){ 
         for (i=0;i<required_signup.length;i++) {
             var input = jQuery('#'+required_signup[i]);
             if ((input.val() == "")) 
@@ -105,7 +103,6 @@ jQuery("#signup").submit(function(){
             else{
                 reg_email.removeClass("error_input_field_email");                
             }
-    
             //if any inputs on the page have the class 'error_input_field' the form will not submit
             if (jQuery(":input").hasClass("error_input_field")  ) {
                 $('.error_msg_reg').css('display','block');
@@ -125,6 +122,37 @@ jQuery("#signup").submit(function(){
                 $('.error_reg_email').css('display','none'); 
                 return true;
             }
-        } 
+        }   
+    });    
+    var $container = $('#container'),
+    $filterLinks = $('#filters a');
+  
+    $container.isotope({
+        itemSelector: '.item-img',
+        filter: '*'
+    });
+
+    $('.portfolio_menu ul li').click(function(){
+      $('.portfolio_menu ul li').removeClass('active_prot_menu');
+      $(this).addClass('active_prot_menu');
+    });
+  
+    $filterLinks.click(function(){
+        var $this = $(this);
+        
+        // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return;
+        }
+        
+        $filterLinks.filter('.selected').removeClass('selected');
+        $this.addClass('selected');
+        
+        // get selector from data-filter attribute
+        selector = $this.data('filter');
+        
+        $container.isotope({
+          filter: selector
+        });
     });
 });
