@@ -43,11 +43,11 @@
                 <form role="form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Area Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter area Name">
+                        <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Delivery charge</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter delivery charge">
+                        <input type="email" class="form-control" id="deliverycharge" placeholder="Enter delivery charge">
                     </div>  
                      <div class="control-group">
                         <label for="exampleInputEmail1">State id</label>
@@ -71,7 +71,7 @@
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
-                                <option>Disable</option>
+                                <option>Inactive</option>
                             </select>
                         </div>
                     </div>

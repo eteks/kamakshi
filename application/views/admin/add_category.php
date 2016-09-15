@@ -43,11 +43,11 @@
                 <form role="form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Category Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
+                        <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name">
                     </div>  
                     <div class="form-group">
                         <label for="exampleInputFile">Category Image</label>
-                        <input type="file" id="exampleInputFile">
+                        <input type="file" id="category_image">
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
@@ -55,7 +55,7 @@
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
-                                <option>Disable</option>
+                                <option>Inactive</option>
                             </select>
                         </div>
                     </div>
