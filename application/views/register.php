@@ -24,7 +24,7 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="signup" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/index/reg_form" id="signup" method="post">
                             <div class="form-group">
                                 <p class="error_msg_reg">Please fill all(*) mandatory fields</p>
                                 <p class="error_reg_email">Please enter valid email</p>

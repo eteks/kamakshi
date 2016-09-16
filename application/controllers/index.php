@@ -69,6 +69,12 @@ class Index extends CI_Controller {
 	{
 		$this->load->view('contact');
 	}
+	public function reg_form()
+	{
+		 $this->register->get_reg_form();
+
+		 $this->load->view('register');
+	}
 	public function basket()
 	{
 		$this->load->view('basket');
