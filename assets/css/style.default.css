@@ -1685,13 +1685,6 @@ address {
   color: #ff0000;
   font-size: 12px;
 }
-#container{
-  max-height: 100%;
-  height: auto;
-  width: 100%;
-  display: inline-block !important;
-  margin-left: 25px;
-}
 .active_prot_menu a, .portfolio_menu ul li a:hover {
     background: #4fbfa8 none repeat scroll 0 0 !important;
     color: #fff !important;
@@ -1703,6 +1696,13 @@ address {
   margin-right: 50px;
   position: relative;
 }
+#container {
+    display: inline-block !important;
+    height: auto !important;
+    margin-left: 25px;
+    max-height: 100% !important;
+    width: 95% !important;
+}
 @media(max-width: 640px){
 .item-img {
     float: left;
@@ -1711,10 +1711,10 @@ address {
 }
 #container {
     display: inline-block !important;
-    height: 0 auto !important;
+    height: auto !important;
     margin-left: 25px;
-    max-height: 100%;
-    width: 95%;
+    max-height: 100% !important;
+    width: 95% !important;
 }
 }
 /**** Isotope CSS3 transitions ****/
