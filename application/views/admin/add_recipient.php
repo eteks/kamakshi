@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+                <form role="form" id="add_recipient">
                     <div class="form-group">
                         <label for="recipient_name">Recipient Name</label>
                         <input type="email" class="form-control" id="recipient_name" placeholder="Enter recipient Name">

@@ -39,7 +39,7 @@
                             class="glyphicon glyphicon-remove"></i></a>
                 </div>
             </div>
-            <div class="box-content">
+            <div class="box-content" id="add_category">
                 <form role="form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Category Name</label>

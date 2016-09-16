@@ -42,5 +42,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="<?php echo base_url(); ?>assets/admin/js/charisma.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery.validate.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
 </body>
 </html>

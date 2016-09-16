@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+                <form role="form" id="add_city">
                     <div class="form-group">
                         <label for="city_name">City Name</label>
                         <input type="email" class="form-control" id="city_name" placeholder="Enter City Name">

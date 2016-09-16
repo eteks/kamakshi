@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+                <form role="form" id="add_state">
                     <div class="form-group">
                         <label for="state_name">State Name</label>
                         <input type="email" class="form-control" id="state_name" placeholder="Enter state Name">

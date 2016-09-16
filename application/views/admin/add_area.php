@@ -29,7 +29,6 @@
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-edit"></i> Add Area</h2>
-
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
                             class="glyphicon glyphicon-cog"></i></a>
@@ -40,7 +39,8 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+                <form role="form" id="add_area">
+                 <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">Area Name</label>
                         <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
@@ -55,6 +55,7 @@
                    <option value="">
                      Select State 
                     </option>
+                    <option>TAMILNADU</option>
                     </select>
                     </div>
                      <div class="control-group">
@@ -63,6 +64,7 @@
                    <option value="">
                      Select City
                     </option>
+                     <option>MADURAI</option>
                     </select>
                     </div>
                      <div class="control-group">
@@ -79,7 +81,6 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
