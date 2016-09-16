@@ -1,9 +1,6 @@
 <?php include "templates/header.php"; ?>
-
       <div id="all">
-
         <div id="content">
-
             <div class="container">
                 <div class="col-md-12">
                     <div id="main-slider">
@@ -23,23 +20,19 @@
                     <!-- /#main-slider -->
                 </div>
             </div>
-
             <!-- *** ADVANTAGES HOMEPAGE ***
  _________________________________________________________ -->
             <div id="advantages">
-
                 <div class="container">
                     <div class="same-height-row">
                         <div class="col-sm-4">
                             <div class="box same-height clickable">
                                 <div class="icon"><i class="fa fa-heart"></i>
                                 </div>
-
                                 <h3><a href="#">We love our customers</a></h3>
                                 <p>We are known to provide best possible service ever</p>
                             </div>
                         </div>
-
                         <div class="col-sm-4">
                             <div class="box same-height clickable">
                                 <div class="icon"><i class="fa fa-tags"></i>
@@ -49,30 +42,24 @@
                                 <p>You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
                             </div>
                         </div>
-
                         <div class="col-sm-4">
                             <div class="box same-height clickable">
                                 <div class="icon"><i class="fa fa-thumbs-up"></i>
                                 </div>
-
                                 <h3><a href="#">100% satisfaction guaranteed</a></h3>
                                 <p>Free returns on everything for 3 months.</p>
                             </div>
                         </div>
                     </div>
                     <!-- /.row -->
-
                 </div>
                 <!-- /.container -->
-
             </div>
             <!-- /#advantages -->
-
             <!-- *** ADVANTAGES END *** -->
-
             <!-- *** HOT PRODUCT SLIDESHOW ***
  _________________________________________________________ -->
-            
+        
         <div id="hot">
             <section id="our-works" class="page bg-style1">
                 <div class="container">
@@ -88,10 +75,10 @@
                                             <li><a href="#portfolio_menu" data-filter=".boy">boy</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".girl">girl</a></li>
                                         </ul>
-                                    </div>
-                                    
+                                   </div>
+         
                                 </div>
-                            
+                        
                             </div>
                         </div>
                     </div>
@@ -105,10 +92,9 @@
                         </div>
                     </div>
                 </div> -->
-
                 <div class="container">
-
                     <div id="container">
+                       <div class="product-slider">
                         <div class="item-img women">
                             <div class="product">
                                 <div class="flip-container">
@@ -136,7 +122,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item-img girl women">
                             <div class="product">
                                 <div class="flip-container">
@@ -161,19 +146,16 @@
                                    <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon sale">
                                     <div class="theribbon">SALE</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon new">
                                     <div class="theribbon">NEW</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon gift">
                                     <div class="theribbon">GIFT</div>
                                     <div class="ribbon-background"></div>
@@ -182,7 +164,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item-img girl">
                             <div class="product">
                                 <div class="flip-container">
@@ -211,7 +192,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item-img girl women">
                             <div class="product">
                                 <div class="flip-container">
@@ -239,7 +219,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item-img women girl">
                             <div class="product">
                                 <div class="flip-container">
@@ -264,7 +243,6 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon new">
                                     <div class="theribbon">NEW</div>
                                     <div class="ribbon-background"></div>
@@ -273,7 +251,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item-img men boy">
                             <div class="product">
                                 <div class="flip-container">
@@ -298,18 +275,15 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon gift">
                                     <div class="theribbon">GIFT</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                             </div>
                             <!-- /.product -->
                         </div>
                         <!-- /.col-md-4 -->
-
                         <div class="item-img men boy">
                             <div class="product">
                                 <div class="flip-container">
@@ -334,19 +308,16 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon sale">
                                     <div class="theribbon">SALE</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon new">
                                     <div class="theribbon">NEW</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon gift">
                                     <div class="theribbon">GIFT</div>
                                     <div class="ribbon-background"></div>
@@ -355,7 +326,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item-img men girl">
                             <div class="product">
                                 <div class="flip-container">
@@ -383,24 +353,21 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
-                    </div>
+                      </div>
                     <!-- /.product-slider -->
+                   </div>
                 </div>
                 <!-- /.container -->
             </div>
             <!-- /#hot -->
-
             <!-- *** HOT END *** -->
-
             <!--Popular, Futured Products-->
              <div id="hot">
            <!--  <section id="our-works" class="page bg-style1"> -->
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- <div class="portfolio"> -->
-                               
+                            <!-- <div class="portfolio"> -->   
                                 <!-- <div class="portfoloi_content_area" > -->
                                     <div class="portfolio_menu2" id="filters">
                                         <ul>
@@ -408,16 +375,13 @@
                                             <!-- <li><a href="#porfolio_menu2" data-filter=".websites">Featured</a></li>
                                             <li><a href="#porfolio_menu2" data-filter=".webDesign" >Latest</a></li> -->
                                           </ul>
-                                    </div>
-                                    
+                                    </div>   
                                 <!-- </div> -->
-                            
                             <!-- </div> -->
                         </div>
                     </div>
                 </div>
            <!--  </section> -->
-
                 <!-- <div class="box">
                     <div class="container">
                         <div class="col-md-12">
@@ -425,7 +389,6 @@
                         </div>
                     </div>
                 </div> -->
-
                 <div class="container">
                     <div class="product-slider">
                         <div class="item">
@@ -455,7 +418,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -480,19 +442,16 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon sale">
                                     <div class="theribbon">SALE</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon new">
                                     <div class="theribbon">NEW</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon gift">
                                     <div class="theribbon">GIFT</div>
                                     <div class="ribbon-background"></div>
@@ -501,7 +460,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -529,7 +487,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -557,7 +514,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -582,7 +538,6 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon new">
                                     <div class="theribbon">NEW</div>
                                     <div class="ribbon-background"></div>
@@ -591,7 +546,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -616,18 +570,15 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon gift">
                                     <div class="theribbon">GIFT</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                             </div>
                             <!-- /.product -->
                         </div>
                         <!-- /.col-md-4 -->
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -652,19 +603,16 @@
                                     <br />
                                 </div>
                                 <!-- /.text -->
-
                                 <div class="ribbon sale">
                                     <div class="theribbon">SALE</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon new">
                                     <div class="theribbon">NEW</div>
                                     <div class="ribbon-background"></div>
                                 </div>
                                 <!-- /.ribbon -->
-
                                 <div class="ribbon gift">
                                     <div class="theribbon">GIFT</div>
                                     <div class="ribbon-background"></div>
@@ -673,7 +621,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="item">
                             <div class="product">
                                 <div class="flip-container">
@@ -701,20 +648,13 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                     </div>
                     <!-- /.product-slider -->
                 </div>
                 <!-- /.container -->
-
             </div>
-
-
-
         </div>
         <!-- /#content -->
-
  </div><!--all-->
-
 <?php include "templates/footer.php"; ?>
  
