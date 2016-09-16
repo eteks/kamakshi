@@ -1718,11 +1718,11 @@ address {
    border:1px solid red !important;
 }
 #container{
-  max-height: 100%;
-  height: auto;
-  width: 100%;
+  max-height: 100% !important;
+  height: auto !important;
+  width: 100% !important;
   display: inline-block !important;
-  margin-left: 25px;
+  margin-left: 25px !important;
 }
 .active_prot_menu a, .portfolio_menu ul li a:hover {
     background: #4fbfa8 none repeat scroll 0 0 !important;
@@ -1744,9 +1744,9 @@ address {
 #container {
     display: inline-block !important;
     height: 0 auto !important;
-    margin-left: 25px;
-    max-height: 100%;
-    width: 95%;
+    margin-left: 25px !important;
+    max-height: 100% !important;
+    width: 95% !important;
 }
 }
 /**** Isotope CSS3 transitions ****/

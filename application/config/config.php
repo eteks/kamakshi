@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.2.17/kamakshi/';
+$config['base_url'] = 'http://localhost/kamakshi/';
 
 // echo $config['base_url'];
 
