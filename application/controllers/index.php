@@ -6,7 +6,7 @@ class Index extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('register');
-	
+
 	}
 
 	/**
@@ -26,24 +26,54 @@ class Index extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['giftstore_category'] = $this->register->get_register();
-		$this->load->view('index',$data);
+	  $data['giftstore_category'] = $this->register->get_register();
+	  // $data['giftstore_subcategory'] = $this->register->get_register();
+	  $this->load->view('index',$data);
+
+	 
+
+	    // print_r($data1['giftstore_subcategory']);
+	  // $user_name = $this->input->post('name');
+	  // $user_email = $this->input->post('email');
+	  // $user_type = $this->input->post('user_type');
+	  // $user_data = result_array(
+	  // 'user_name' => $user_name,
+	  // 'user_email' => $user_email,
+	  // 'user_password' => $user_password,
+	  // 'user_type' => $user_type,
+	  // 'user_status' => $user_status
+	  // );
+	  //  $this->register->post_register($data);
+	
+		// $this->load->view('header',$data);
+		// print_r($giftstore_category);
 	}
 	public function register()
-	{
+	{ 
 		$this->load->view('register');
+
 	}
 	public function detail()
 	{
-		$this->load->view('detail');
+		$categories['giftstore_category'] = $this->register->get_register();
+		$categories['giftstore_subcategory'] = $this->register->get_category();
+		$this->load->view('detail',$categories);
 	}
     public function category()
 	{
-		$this->load->view('category');
+		$categories['giftstore_category'] = $this->register->get_register();
+		$categories['giftstore_subcategory'] = $this->register->get_category();
+		$this->load->view('category',$categories);
 	}
 	public function contact()
 	{
 		$this->load->view('contact');
+	}
+	public function reg_form()
+	{
+		 $this->register->get_reg_form();
+
+		 $this->load->view('register');
 	}
 	public function basket()
 	{

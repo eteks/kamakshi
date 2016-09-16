@@ -104,4 +104,3 @@
 </div><!--/fluid-row-->
 
 <?php include "templates/footer.php" ?>
->>>>>>> 44ebf0762c2ee6054b67e84ba737bae61af8d382

@@ -39,28 +39,33 @@
                             class="glyphicon glyphicon-remove"></i></a>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="box-content" id="add_category">
                 <form role="form">
+=======
+            <div class="box-content">
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_category" enctype="multipart/form-data" name="category_form">
+>>>>>>> 9f5e23f57641e7b16a3e7e90a5691780e389e5d4
                     <div class="form-group">
                         <label for="exampleInputEmail1">Category Name</label>
-                        <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name">
+                        <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" name="category_name">
                     </div>  
                     <div class="form-group">
                         <label for="exampleInputFile">Category Image</label>
-                        <input type="file" id="category_image">
+                        <input type="file" id="category_image" name="category_image">
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                            <select name="category_status" id="sel_a" class="product-type-filter form-control city_act">
+                                <option selected hidden>Select</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default" name="category_submit">Submit</button>
                     </div>
                 </form>
 

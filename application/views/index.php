@@ -107,29 +107,30 @@
                 </div> -->
 
                 <div class="container">
-                    <div id="container">
+                    <div id="container"> 
+                    <div class="product-slider">
                     <?php foreach ($giftstore_category as $cat): ?>
                         <div class="item-img women">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo $cat['category_image'] ?>" alt="" class="img-responsive">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
+                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo $cat['category_image'] ?>" alt="" class="img-responsive">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
+                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo $cat['category_image'] ?>" alt="" class="img-responsive">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
+                                    <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/"><?php echo $cat['category_name'] ?></a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $cat['category_name'] ?></a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->
@@ -138,6 +139,7 @@
                         </div>
                         <?php endforeach ?>
                     </div>
+                 </div>
                     <!-- /.product-slider -->
                 </div>
                 <!-- /.container -->
@@ -186,22 +188,22 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product9.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product9_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product9.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Flowers & Cakes</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Flowers & Cakes</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->
@@ -214,18 +216,18 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product10.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product10_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product10.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
@@ -260,18 +262,18 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product5_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product5.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
@@ -288,22 +290,22 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product11.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product11_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product11.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Chocolates and Cookies</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Chocolates and Cookies</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->
@@ -316,22 +318,22 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product4.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product4_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product4.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Computer & Mobile</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Computer & Mobile</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->
@@ -350,22 +352,22 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product1_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product1.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Accessories</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Accessories</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->
@@ -386,22 +388,22 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product2_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product2.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Beauty & Personal Care</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Beauty & Personal Care</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->
@@ -432,22 +434,22 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
                                                 <img src="<?php echo base_url(); ?>assets/img/product3_2.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
                                     <img src="<?php echo base_url(); ?>assets/img/product3.jpg" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Business & Executive Gifts</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Business & Executive Gifts</a></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->

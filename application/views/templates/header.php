@@ -79,10 +79,11 @@
                         <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
                             <div class="form-group">
                                 <p class="error_msg">Please fill all mandatory fields</p>
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                                <p class="error_email">Please enter valid email</p>
+                                <input type="text" class="form-control" id="email-modal" name="email" placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password">
+                                <input type="password" class="form-control" id="password-modal" name="password" placeholder="password">
                             </div>
 
                             <p class="text-center">
@@ -131,7 +132,6 @@
             <!--/.navbar-header -->
 
             <div class="navbar-collapse collapse" id="navigation">
-
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="<?php echo base_url(); ?>index.php/">Home</a>
                     </li>
@@ -141,23 +141,17 @@
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5>Category</h5>
+                                    <h5>Category</h5>
+                                    <?php foreach ($giftstore_category as $cat):?>
+                                        <div class="col-sm-3">                                            
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Baby</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Beauty & Personal Care</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Business & Executive Gifts</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Chocolates & Cookies</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Computer & Mobile </a>
+                                                <li><a href="<?php echo base_url(); ?>index.php/category/"><?php echo $cat['category_name'] ?></a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-sm-3">
-                                           <!--  <h5>Shoes</h5> -->
+                                    <?php endforeach ?>
+                                     <!--    <div class="col-sm-3">
+                                           
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/">Accessories</a>
                                                 </li>
@@ -174,7 +168,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
-                                            <!-- <h5>Accessories</h5> -->
+                                           
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/">Gift Baskets & Hampers</a>
                                                 </li>
@@ -191,7 +185,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
-                                            <!-- <h5>Featured</h5> -->
+                                            
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/">Naughty Gifts</a>
                                                 </li>
@@ -200,7 +194,7 @@
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/">Perfumes</a>
                                                 </li>
                                             </ul>
-                                            <!-- <h5>Looks and trends</h5> -->
+                                            
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/">Personalised Gifts</a>
                                                 </li>
@@ -209,13 +203,14 @@
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/">Religious Gifts</a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                </div>
+                                </div>                                
                                 <!-- /.yamm-content -->
                             </li>
                         </ul>
                     </li>
+
 
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Recipient<b class="caret"></b></a>
