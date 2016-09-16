@@ -1,10 +1,7 @@
 <?php include "templates/header.php"; ?>
-
     <div id="all">
-
         <div id="content">
             <div class="container">
-
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
@@ -12,13 +9,9 @@
                         <li>Shopping cart</li>
                     </ul>
                 </div>
-
                 <div class="col-md-9" id="basket">
-
                     <div class="box">
-
                         <form method="post" action="<?php echo base_url(); ?>index.php/checkout1/">
-
                             <h1>Shopping cart</h1>
                             <p class="text-muted">You currently have 3 item(s) in your cart.</p>
                             <div class="table-responsive">
@@ -75,10 +68,8 @@
                                         </tr>
                                     </tfoot>
                                 </table>
-
                             </div>
                             <!-- /.table-responsive -->
-
                             <div class="box-footer">
                                 <div class="pull-left">
                                     <a href="<?php echo base_url(); ?>index.php/category/" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
@@ -88,21 +79,16 @@
                                     <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
-                            </div>
-
+                           </div>
                         </form>
-
                     </div>
                     <!-- /.box -->
-
-
                     <div class="row same-height-row">
                         <div class="col-md-3 col-sm-6">
                             <div class="box same-height">
                                 <h3>You may also like these products</h3>
                             </div>
                         </div>
-
                         <div class="col-md-3 col-sm-6">
                             <div class="product same-height">
                                 <div class="flip-container">
@@ -129,7 +115,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <div class="col-md-3 col-sm-6">
                             <div class="product same-height">
                                 <div class="flip-container">
@@ -156,8 +141,6 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
-
                         <div class="col-md-3 col-sm-6">
                             <div class="product same-height">
                                 <div class="flip-container">
@@ -180,25 +163,19 @@
                                 <div class="text">
                                     <h3>T-Shirt</h3>
                                     <p class="price">$143</p>
-
                                 </div>
                             </div>
                             <!-- /.product -->
                         </div>
-
                     </div>
-
-
-                </div>
+               </div>
                 <!-- /.col-md-9 -->
-
                 <div class="col-md-3">
                     <div class="box" id="order-summary">
                         <div class="box-header">
                             <h3>Order summary</h3>
                         </div>
                         <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
@@ -221,10 +198,7 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-
-
                     <div class="box">
                         <div class="box-header">
                             <h4>Coupon code</h4>
@@ -232,26 +206,19 @@
                         <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
                         <form>
                             <div class="input-group">
-
                                 <input type="text" class="form-control">
-
                                 <span class="input-group-btn">
-
-					<button class="btn btn-primary" type="button"><i class="fa fa-gift"></i></button>
-
-				    </span>
+					              <button class="btn btn-primary" type="button"><i class="fa fa-gift"></i></button>
+				                </span>
                             </div>
                             <!-- /input-group -->
                         </form>
-                    </div>
-
+                   </div>
                 </div>
                 <!-- /.col-md-3 -->
-
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
       </div>
 <?php include "templates/footer.php"; ?>
