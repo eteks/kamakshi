@@ -153,6 +153,15 @@ function carousels() {
 	}
     });
 
+    $('.product-slider').owlCarousel({
+	navigation: true, // Show next and prev buttons
+	slideSpeed: 300,
+	paginationSpeed: 400,
+	afterInit: function() {
+	    $('.product-slider .item-img').css('visibility', 'visible');
+	}
+    });
+
     $('#main-slider').owlCarousel({
 	navigation: true, // Show next and prev buttons
 	slideSpeed: 300,
