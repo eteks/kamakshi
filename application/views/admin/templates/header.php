@@ -25,6 +25,8 @@
     <!-- <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet"> -->
     <link href="<?php echo base_url(); ?>assets/admin/css/bootstrap-cerulean.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/admin/css/charisma-app.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/admin/css/slick.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/admin/css/slick-theme.css" rel="stylesheet">
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/chosen/chosen.min.css' rel='stylesheet'>
@@ -40,6 +42,7 @@
     <link href='<?php echo base_url(); ?>assets/admin/css/animate.min.css' rel='stylesheet'>
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/jquery.min.js"></script>
+    
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

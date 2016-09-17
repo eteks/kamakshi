@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+                <form role="form" id="giftproduct">
                     <div class="form-group">
                         <label for="titlename">Title Name</label>
                         <input type="email" class="form-control" id="titlename" placeholder="Enter title Name">

@@ -1727,19 +1727,17 @@ address {
 .error_input_field_email {
    border:1px solid red !important;
 }
-
 #container{
-  max-height: 100%;
-  height: auto;
-  width: 100%;
+  max-height: 100% !important;
+  height: auto !important;
+  width: 100% !important;
   display: inline-block !important;
-  margin-left: 25px;
+  margin-left: 25px !important;
 }
 .active_prot_menu a, .portfolio_menu ul li a:hover {
     background: #4fbfa8 none repeat scroll 0 0 !important;
     color: #fff !important;
 }
-
 /**** Isotope Filtering ****/
 .item-img {
   width: 178px;
@@ -1756,9 +1754,9 @@ address {
 #container {
     display: inline-block !important;
     height: 0 auto !important;
-    margin-left: 25px;
-    max-height: 100%;
-    width: 95%;
+    margin-left: 25px !important;
+    max-height: 100% !important;
+    width: 95% !important;
 }
 }
 /**** Isotope CSS3 transitions ****/
@@ -1784,26 +1782,22 @@ address {
   pointer-events: none;
   z-index: 2;
 }
-
 .isotope,
 .isotope .isotope-item {
   -webkit-transition-duration: 0.8s;
      -moz-transition-duration: 0.8s;
           transition-duration: 0.8s;
 }
-
 .isotope {
   -webkit-transition-property: height, width;
      -moz-transition-property: height, width;
           transition-property: height, width;
 }
-
 .isotope .isotope-item {
   -webkit-transition-property: -webkit-transform, opacity;
      -moz-transition-property:    -moz-transform, opacity;
           transition-property:         transform, opacity;
 }
-
 /*.isotope {
     height: 376px;
     overflow: visible !important;

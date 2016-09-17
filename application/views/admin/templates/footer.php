@@ -1,17 +1,12 @@
 <!-- <div class="container-fluid">
     <footer class="row">
         <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Kamakshi</a> 2016</p>
-
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
                 href="http://usman.it/free-responsive-admin-template">Etekchno Services</a></p>
     </footer>
-
 </div> --><!--/.fluid-container-->
-
 <!-- external javascript -->
-
 <script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- library for cookie management -->
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.cookie.js"></script>
 <!-- calender plugin -->
@@ -42,5 +37,8 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="<?php echo base_url(); ?>assets/admin/js/charisma.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery.validate.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/slick.min.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Add Recipient</a>
+            <a href="#">Add Category</a>
         </li>
     </ul>
 </div>
@@ -28,7 +28,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Add Recipient</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i> Add Category</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -39,16 +39,20 @@
                             class="glyphicon glyphicon-remove"></i></a>
                 </div>
             </div>
-            <div class="box-content">
-                <form role="form" id="add_recipient">
+            <div class="box-content" id="add_category">
+                <form role="form">
                     <div class="form-group">
-                        <label for="recipient_name">Recipient Name</label>
-                        <input type="email" class="form-control" id="recipient_name" placeholder="Enter recipient Name">
+                        <label for="exampleInputEmail1">Category Name</label>
+                        <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name">
                     </div>  
+                    <div class="form-group">
+                        <label for="exampleInputFile">Category Image</label>
+                        <input type="file" id="category_image">
+                    </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                            <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
                                 <option>Inactive</option>
@@ -71,3 +75,4 @@
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 <?php include "templates/footer.php" ?>
+
