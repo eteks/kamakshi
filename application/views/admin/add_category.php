@@ -40,6 +40,7 @@
                 </div>
             </div>
             <div class="box-content">
+            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_category" enctype="multipart/form-data" name="category_form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Category Name</label>
@@ -53,7 +54,7 @@
                         <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
                             <select name="category_status" id="sel_a" class="product-type-filter form-control city_act">
-                                <option selected hidden>Select</option>
+                                <option value="">Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
