@@ -1,0 +1,9 @@
+.image_icon{
+	height: 44px;
+    width: 43px;
+    cursor: pointer;
+}
+.error_msg_reg{
+  color: #ff0000;
+  font-size: 12px;
+}
