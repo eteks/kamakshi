@@ -62,7 +62,7 @@ $route['customer_order'] = 'index/customer_order';
 //Route url for admin
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
-$route['adminindex/edit_category'] = 'adminindex/edit_category';
+$route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
 
 $route['adminindex/subcategory'] = 'adminindex/subcategory';
 $route['adminindex/add_subcategory'] = 'adminindex/add_subcategory';

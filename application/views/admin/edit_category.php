@@ -43,7 +43,7 @@
                 <form role="form">
                     <div class="form-group">
                         <label for="category_name">Category Name</label>
-                        <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name">
+                        <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name" value="<?php if(!empty($category_data['category_name'])) echo $category_data['category_name']; ?>">
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Category Image</label>
@@ -53,9 +53,13 @@
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                                <option value="">Select</option>
+                                <option value="1" <?php if ($category_data['category_name'] == 1) echo "selected"; ?>>
+                                    <span>Active</span>
+                                </option>
+                                <option value="0" <?php if ($category_data['category_name'] == 0) echo "selected"; ?>>
+                                    <span>Inactive</span>
+                                </option>
                             </select>
                         </div>
                     </div>

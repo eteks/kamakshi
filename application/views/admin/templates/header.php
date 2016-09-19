@@ -40,6 +40,7 @@
     <link href='<?php echo base_url(); ?>assets/admin/css/jquery.iphone.toggle.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/uploadify.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/animate.min.css' rel='stylesheet'>
+    <link href='<?php echo base_url(); ?>assets/admin/css/style.css' rel='stylesheet'>
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/jquery.min.js"></script>
     
