@@ -1745,6 +1745,13 @@ address {
   margin-right: 50px;
   position: relative;
 }
+#container {
+    display: inline-block !important;
+    height: auto !important;
+    margin-left: 25px;
+    max-height: 100% !important;
+    width: 95% !important;
+}
 @media(max-width: 640px){
 .item-img {
     float: left;
@@ -1753,8 +1760,8 @@ address {
 }
 #container {
     display: inline-block !important;
-    height: 0 auto !important;
-    margin-left: 25px !important;
+    height: auto !important;
+    margin-left: 25px;
     max-height: 100% !important;
     width: 95% !important;
 }
