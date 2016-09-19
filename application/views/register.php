@@ -28,7 +28,8 @@
                             <div class="form-group">
                                 <p class="error_msg_reg">Please fill all(*) mandatory fields</p>
                                 <p class="error_reg_email">Please enter valid email</p>
-                                <label for="name">Name *</label>
+                                <p class="error_message_mandatory">Email already Exists</p>
+                                <label for="name">User Name *</label>
                                 <input type="text" class="form-control" name="name" id="name">
                             </div>
                             <div class="form-group">
