@@ -10,12 +10,35 @@ class Register extends CI_Model {
 		// $query = $this->db->get('giftstore_subcategory');
 		return $query->result_array();
 	}
+	public function get_recipient()
+	{	
+		if($this->uri->segment(2)) {
+			$this->db->select('*');
+            $this->db->from('giftstore_recipient_category rc'); 
+            $this->db->join('giftstore_recipient r', 'rc.recipient_mapping_id=r.recipient_id', 'inner');
+            $this->db->where(array('rc.category_mapping_id' => $this->uri->segment(2), 'r.recipient_status' => '1'));
+            $query = $this->db->get()->result_array();
 
-	public function get_category()
-	{
-	    $query = $this->db->get('giftstore_subcategory');
-	    return $query->result_array();
+        }
+        return $query;
 	}
+	public function get_category()
+	{	
+		if($this->uri->segment(2)){
+			$where = '(category_id="'.$this->uri->segment(2).'")';
+			$cat_query=$this->db->get_where('giftstore_category',$where);
+			$query['cat_name'] = $cat_query->row();
+        	$this->db->select('*');
+            $this->db->from('giftstore_subcategory_category cs'); 
+            $this->db->join('giftstore_subcategory s', 'cs.subcategory_mapping_id=s.subcategory_id', 'inner');
+            $this->db->where(array('cs.category_mapping_id' => $this->uri->segment(2), 's.subcategory_status' => '1'));
+            $query['gift_subcategory'] = $this->db->get()->result_array();
+            $query['sub_count'] = count($query['gift_subcategory']);
+   		}
+	    return $query;
+	}
+
+
 
 	public function get_reg_form()
 	{

@@ -33,26 +33,37 @@ class Index extends CI_Controller {
 	public function register()
 	{ 
 		$categories['giftstore_category'] = $this->register->get_register();
-		$categories['giftstore_subcategory'] = $this->register->get_category();
+		// $categories['giftstore_subcategory'] = $this->register->get_category();
 		$this->load->view('register',$categories);
 
 	}
 	public function detail()
 	{
 		$categories['giftstore_category'] = $this->register->get_register();
-		$categories['giftstore_subcategory'] = $this->register->get_category();
+		// $categories['giftstore_subcategory'] = $this->register->get_category();
 		$this->load->view('detail',$categories);
 	}
     public function category()
 	{
 		$categories['giftstore_category'] = $this->register->get_register();
-		$categories['giftstore_subcategory'] = $this->register->get_category();
-		$this->load->view('category',$categories);
+		$categories['gift_recipient'] = $this->register->get_recipient();
+		$category_values = $this->register->get_category();
+		$categories['cat_name'] = $category_values['cat_name'];
+		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
+		$categories['sub_count'] = $category_values['sub_count'];
+		
+		// print_r($category_values);
+		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['sub_count']!=null) {
+			$this->load->view('category',$categories);
+		}
+		else {
+			$this->load->view('no_products',$categories);
+		}
 	}
 	public function contact()
 	{
 		$categories['giftstore_category'] = $this->register->get_register();
-		$categories['giftstore_subcategory'] = $this->register->get_category();
+		// $categories['giftstore_subcategory'] = $this->register->get_category();
 		$this->load->view('contact',$categories);
 	}
 	public function reg_form()
