@@ -40,6 +40,22 @@ class Catalog extends CI_Model {
 			return false;
 		}
 	}	
+	public function update_category($data)
+	{	
+		$condition = "category_name =" . "'" . $data['category_name'] . "' AND category_id NOT IN (". $data['category_id'].")";
+		$this->db->select('*');
+		$this->db->from('giftstore_category');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return false;
+		}
+		else{
+			$this->db->where('category_id', $data['category_id']);
+			$this->db->update('giftstore_category', $data);
+			return true;
+		}	
+	}	
 	public function get_category_data($id)
 	{	
 		$query = $this->db->get_where('giftstore_category', array('category_id' => $id));

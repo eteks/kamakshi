@@ -134,6 +134,85 @@ class Adminindex extends CI_Controller {
 		{
 			show_404();
 		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = '';//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'edit_category_name',
+		             'label'   => 'Category',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),
+		       array(
+		             'field'   => 'edit_category_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),   
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            // echo "error".$error;
+		            if($error){
+		                if (strpos($error,"field is required.") !== false){
+		                    $errors = $error; 
+		                    break;
+		                }
+		                else
+		                    $errors[$field] = $error; 
+		            }
+	        	}
+		        if (strpos($errors,"field is required.") !== false){  
+		             $status = 'Please fill out all mandatory fields';
+		        }
+    		}
+    		else{
+    			// $old_path_name = $_POST["old_path_name"];
+				//Check whether user upload picture
+				if(!empty($_FILES['edit_category_image']['name'])){
+					// echo $_FILES['edit_category_image']['name'];
+					$category_image = $_FILES['edit_category_image']['name'];
+					// FCPATH is the codeigniter default variable to get our application location path and ADMIN_MEDIA_PATH is the constant variable which is defined in constants.php file
+					$config['upload_path'] = FCPATH.ADMIN_MEDIA_PATH; 
+					$config['allowed_types'] = FILETYPE_ALLOWED;//FILETYPE_ALLOWED which is defined constantly in constants file
+					$config['file_name'] = $_FILES['edit_category_image']['name'];
+					$this->upload->initialize($config);
+					if($this->upload->do_upload('edit_category_image')){
+					    $uploadData = $this->upload->data();
+					    $category_image = ADMIN_MEDIA_PATH.$uploadData['file_name'];
+					}else{
+						$errors = $this->upload->display_errors();
+					    $category_image = '';
+					}
+				}else{
+					// $errors = "Please Upload Category Image";
+					// $category_image = '';
+					$category_image = $_POST["hidden_category_image"];
+				}	
+				if (!empty($errors)) {
+					$status = strip_tags($errors);
+				}
+				else{
+					$data = array(
+					'category_id' => $id,
+					'category_name' => $this->input->post('edit_category_name'),
+					'category_image' => $category_image,
+					'category_status' => $this->input->post('edit_category_status'),
+					);
+					$result = $this->catalog->update_category($data);
+					if($result)
+						$status = "Category Updated Successfully!";
+					else
+						$status = "Category Already Exists!";
+				}		
+    		}
+    		$data['status'] = $status;
+		}
 		$data['category_data'] = $this->catalog->get_category_data($id);
 		// print_r($data);
 		$this->load->view('admin/edit_category',$data);

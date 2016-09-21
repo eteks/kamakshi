@@ -16,7 +16,7 @@
                 <a href="#">Home</a>
             </li>
             <li>
-                <a href="#">Subcategory </a>
+                <a href="#">Subcategory</a>
             </li>
         </ul>
     </div>
