@@ -1,43 +1,34 @@
 <?php include "templates/header.php"; ?>
 
     <div id="all">
-
         <div id="content">
             <div class="container">
-
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="#">Home</a>
                         </li>
-                        <li>Watches</li>
+                        <li><?php echo $cat_name->category_name; ?></li>
                     </ul>
                 </div>
-
                 <div class="col-md-3">
-                    <!-- *** MENUS AND FILTERS ***
- _________________________________________________________ -->
+                    <!-- *** MENUS AND FILTERS *** -->
                     <div class="panel panel-default sidebar-menu">                       
                         <div class="panel-heading">
                             <h3 class="panel-title">Categories</h3>
                         </div>
                         <div class="panel-body">
-                        <?php foreach ($giftstore_subcategory as $subcat):?>
                             <ul class="nav nav-pills nav-stacked category-menu">
                                 <li>
-                                    <a href="<?php echo base_url(); ?>index.php/category/"><?php echo $subcat['subcategory_name'] ?><span class="badge pull-right">5</span></a>
-                                  <!--   <ul>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Bathing & Changing</a>
+                                    <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat_name->category_id; ?>"><?php echo $cat_name->category_name; ?> <span class="badge pull-right"> <?php echo $sub_count; ?></span></a>
+                                    <ul>
+                                     <?php foreach ($gift_subcategory as $subcat):?>
+                                        <li>
+                                            <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat_name->category_id; ?>/<?php echo $subcat['subcategory_id'] ?>"><?php echo $subcat['subcategory_name'] ?><span class="badge pull-right">5</span></a>
                                         </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Toys & Activity</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Baby Gear</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Collectibles</a>
-                                        </li>
-                                    </ul> -->
+                                    <?php endforeach; ?> 
+                                    </ul>
                                 </li>
                             </ul>
-                            <?php endforeach ?> 
                         </div>
                     </div>
                     <div class="panel panel-default sidebar-menu">
@@ -56,23 +47,13 @@
                         </div>
 
                         <div class="panel-body">
-                            
-                                 <ul class="nav nav-pills nav-stacked category-menu">
-                                <li>
-                                    <a href="<?php echo base_url(); ?>/index.php/category/">Baby<span class="badge pull-right">42</span></a> 
-                                    <ul>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Men</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Women</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Boy</a>
-                                        </li>
-                                        <li><a href="<?php echo base_url(); ?>/index.php/category/">Girl</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                        </ul>
-
+                            <ul class="nav nav-pills nav-stacked category-menu">
+                                <?php foreach ($gift_recipient as $recipient) : ?>
+                                    <li>
+                                        <a href="<?php echo base_url(); ?>/index.php/category/<?php echo $recipient['recipient_id']; ?>"><?php echo $recipient['recipient_type']; ?></a> 
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
                     </div>
 
@@ -81,7 +62,7 @@
 
                 <div class="col-md-9">
                     <div class="box">
-                        <h1>Watches</h1>
+                        <h1><?php echo $cat_name->category_name; ?></h1>
                         <p>In our Watches department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
                     </div>
 
@@ -115,7 +96,7 @@
                         </div>
                     </div>
                     <div class="row products">
-                        <?php foreach ($giftstore_subcategory as $subcat):?>
+                        <!-- <?php foreach ($giftstore_subcategory as $subcat):?> -->
                         <div class="col-md-4 col-sm-6">
                             <div class="product">
                                 <div class="flip-container">
@@ -147,7 +128,7 @@
                             </div>
                             <!-- /.product -->
                         </div>
-                        <?php endforeach ?>
+                        <!-- <?php endforeach ?> -->
 
                         
                     </div>

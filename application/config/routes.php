@@ -41,12 +41,13 @@
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
-$route['view/(:any)'] = 'todos/view';
+// $route['view/(:any)'] = 'todos/view';
 
 //Route url for end user
 $route['register'] = 'index/register';
 $route['detail'] = 'index/detail';
-$route['category'] = 'index/category';
+// $route['category'] = 'index/category';
+$route['category/(:any)'] = 'index/category/$1';
 $route['contact'] = 'index/contact';
 $route['basket'] = 'index/basket';
 $route['checkout1'] = 'index/checkout1';
