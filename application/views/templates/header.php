@@ -124,9 +124,9 @@
                                     <div class="row">
                                     <h5>Category</h5>
                                     <?php foreach ($giftstore_category as $cat):?>
-                                        <div class="col-sm-3">                                            
+                                        <div class="col-sm-3">                                 
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/"><?php echo $cat['category_name'] ?></a>
+                                                <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id'] ?>"><?php echo $cat['category_name'] ?></a>
                                                 </li>
                                             </ul>
                                         </div>

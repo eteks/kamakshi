@@ -35,6 +35,9 @@ define('FOPEN_WRITE_CREATE',					'ab');
 define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
+//Custom constants
+define('ADMIN_MEDIA_PATH','assets/admin/img/uploads/');
+define('FILETYPE_ALLOWED','jpg|jpeg|png|gif');
 
 
 /* End of file constants.php */

@@ -46,7 +46,8 @@ $route['404_override'] = '';
 //Route url for end user
 $route['register'] = 'index/register';
 $route['detail'] = 'index/detail';
-$route['category'] = 'index/category';
+// $route['category'] = 'index/category';
+$route['category/(:any)'] = 'index/category/$1';
 $route['contact'] = 'index/contact';
 $route['basket'] = 'index/basket';
 $route['checkout1'] = 'index/checkout1';
@@ -61,7 +62,7 @@ $route['customer_order'] = 'index/customer_order';
 //Route url for admin
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
-$route['adminindex/edit_category'] = 'adminindex/edit_category';
+$route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
 
 $route['adminindex/subcategory'] = 'adminindex/subcategory';
 $route['adminindex/add_subcategory'] = 'adminindex/add_subcategory';
