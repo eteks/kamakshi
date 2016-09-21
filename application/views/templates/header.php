@@ -62,10 +62,15 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login" method="post">
-                            <div class="form-group">
-                                <p class="error_msg">Please fill all mandatory fields</p>
-                                <p class="error_email">Please enter valid email</p>
+                        <form action="<?php echo base_url(); ?>index.php/user_login_process" id="login" method="post">
+                        <?php
+                                echo "<div class='error_message'>";
+                                if (isset($error_message)) {
+                                echo $error_message;
+                                }
+                                echo "</div>";
+                                ?>
+                            <div class="form-group"> 
                                 <input type="text" class="form-control" id="email-modal" name="email" placeholder="email">
                             </div>
                             <div class="form-group">
@@ -126,60 +131,6 @@
                                             </ul>
                                         </div>
                                     <?php endforeach ?>
-                                     <!--    <div class="col-sm-3">
-                                           
-                                            <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Accessories</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Eco-Friendly</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Fashion & Style</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Flowers & Cakes</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Garden Gifts</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Gag & Quirky Gifts</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                           
-                                            <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Gift Baskets & Hampers</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Home & Living</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Jewellery</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Watches</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Kids</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Love & Romance</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            
-                                            <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Naughty Gifts</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Party Return Gifts & Favours</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Perfumes</a>
-                                                </li>
-                                            </ul>
-                                            
-                                            <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Personalised Gifts</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Pets</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Religious Gifts</a>
-                                                </li>
-                                            </ul>
-                                        </div> -->
                                     </div>
                                 </div>                                
                                 <!-- /.yamm-content -->

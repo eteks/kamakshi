@@ -24,13 +24,17 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/index/reg_form" id="signup" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/index/new_user_registration" id="signup" method="post">
+                             <?php
+                                echo "<div class='message_display'>";
+                                if (isset($message_display)) {
+                                echo $message_display;
+                                }
+                                echo "</div>";
+                                ?>
                             <div class="form-group">
-                                <p class="error_msg_reg">Please fill all(*) mandatory fields</p>
-                                <p class="error_reg_email">Please enter valid email</p>
-                                <p class="error_message_mandatory">Email already Exists</p>
                                 <label for="name">User Name *</label>
-                                <input type="text" class="form-control" name="name" id="name">
+                                <input type="text" class="form-control" name="username" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email *</label>
@@ -57,10 +61,17 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/customer_orders/" id="login_reg" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/index/new_user_registration" id="login_reg" method="post">
+                        <?php
+                                echo "<div class='message_display'>";
+                                if (isset($message_display)) {
+                                echo $message_display;
+                                }
+                                echo "</div>";
+                                ?> 
                             <div class="form-group">
-                                <p class="error_msg_log">Please fill all(*) mandatory fields</p>
-                                <p class="error_log_email">Please enter valid email</p>
+                              <!--   <p class="error_msg_log">Please fill all(*) mandatory fields</p>
+                                <p class="error_log_email">Please enter valid email</p> -->
                                 <label for="email">Email *</label>
                                 <input type="text" class="form-control" name="email_log" id="email-log">
                             </div>

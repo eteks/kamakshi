@@ -41,7 +41,7 @@
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
-$route['view/(:any)'] = 'todos/view';
+// $route['view/(:any)'] = 'todos/view';
 
 //Route url for end user
 $route['register'] = 'index/register';
