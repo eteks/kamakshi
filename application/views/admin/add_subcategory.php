@@ -46,6 +46,17 @@
                         <label for="subcategory_name">Subcategory Name</label>
                         <input type="text" class="form-control" id="subcategory_name" name="subcategory_name" placeholder="Enter subcategory Name">
                     </div>  
+                    <div class="control-group">
+                        <label class="control-label" for="sel_c">Choose Category</label>
+                        <div class="controls">
+                            <select id="sel_c" class="product-type-filter form-control city_act" name="select_category[]" multiple>
+                            <option value="">Select Category</option>
+                                <?php foreach ($category_list as $cat): ?>
+                                    <option value="<?php echo $cat["category_id"] ?>"><?php echo $cat["category_name"] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">

@@ -69,7 +69,7 @@ class Catalog extends CI_Model {
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
-	public function insert_subcategory($data)
+	public function insert_subcategory($data,$category_data)
 	{	
 		// Query to check whether category name already exist or not
 		$condition = "subcategory_name =" . "'" . $data['subcategory_name'] . "'";
@@ -81,6 +81,15 @@ class Catalog extends CI_Model {
 		if ($query->num_rows() == 0) {
 			// Query to insert data in database
 			$this->db->insert('giftstore_subcategory', $data);
+			//get inserted subcategory id to map in subcategory category relationship table
+			$subcategory_id = $this->db->insert_id();
+			foreach($category_data as $key => $value) {
+				$subcategory_category_map = array(
+	                					'subcategory_mapping_id' => $subcategory_id,
+	                					'category_mapping_id' => $value,
+	             						);
+				$this->db->insert('giftstore_subcategory_category', $subcategory_category_map);
+			}
 			if ($this->db->affected_rows() > 0) {
 				return true;
 			}
@@ -106,7 +115,16 @@ class Catalog extends CI_Model {
 	}	
 	public function get_subcategory_data($id)
 	{	
-		$query = $this->db->get_where('giftstore_subcategory', array('subcategory_id' => $id));
-		return $query->row_array();
+		$query['subcategory_data'] = $this->db->get_where('giftstore_subcategory', array('subcategory_id' => $id))->row_array();
+		// $query['subcategory_category'] = $this->db->get_where('giftstore_subcategory_category', array('subcategory_mapping_id' => $id))->result_array();
+		$this->db->select('category_mapping_id');
+		$this->db->from('giftstore_subcategory_category');
+		$this->db->where('subcategory_mapping_id',$id);
+		$get_data = $this->db->get()->result();
+		$query['subcategory_category'] = array();
+		foreach($get_data as $row){
+            array_push($query['subcategory_category'],$row->category_mapping_id);
+        }
+		return $query;
 	}
 }

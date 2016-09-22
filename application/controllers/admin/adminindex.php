@@ -236,10 +236,15 @@ class Adminindex extends CI_Controller {
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
 	       array(
+	             'field'   => 'select_category[]',
+	             'label'   => 'Select Category',
+	             'rules'   => 'required'
+	          ),  
+	       array(
 	             'field'   => 'subcategory_status',
 	             'label'   => 'Status',
 	             'rules'   => 'trim|required|xss_clean'
-	          ),   
+	          ),       
 	    );
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
@@ -273,10 +278,11 @@ class Adminindex extends CI_Controller {
 				}
 				else{
 					$data = array(
-					'subcategory_name' => $this->input->post('subcategory_name'),
-					'subcategory_status' => $this->input->post('subcategory_status'),
+						'subcategory_name' => $this->input->post('subcategory_name'),
+						'subcategory_status' => $this->input->post('subcategory_status'),
 					);
-					$result = $this->catalog->insert_subcategory($data);
+					$category_data = $this->input->post('select_category');
+					$result = $this->catalog->insert_subcategory($data,$category_data);
 					if($result)
 						$status = array(
 	                		'error_message' => "SubCategory Inserted Successfully!"
@@ -289,10 +295,12 @@ class Adminindex extends CI_Controller {
 			}
     	}
 		// print_r($status);	
+		$status['category_list'] = $this->catalog->get_categories();
 		$this->load->view('admin/add_subcategory',$status);
 	}
 	public function edit_subcategory()
 	{	
+		// print_r($_POST);
 		$id = $this->uri->segment(4);
 		// echo "id".$id;
 		if (empty($id))
@@ -309,6 +317,11 @@ class Adminindex extends CI_Controller {
 		             'label'   => 'Sub Category',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),
+		       array(
+	             'field'   => 'select_category[]',
+	             'label'   => 'Select Category',
+	             'rules'   => 'required'
+	           ),  
 		       array(
 		             'field'   => 'edit_subcategory_status',
 		             'label'   => 'Status',
@@ -355,7 +368,10 @@ class Adminindex extends CI_Controller {
     		}
     		$data['status'] = $status;
 		}
-		$data['subcategory_data'] = $this->catalog->get_subcategory_data($id);
+		$subcatgory_return = $this->catalog->get_subcategory_data($id);
+		$data['subcategory_data'] = $subcatgory_return['subcategory_data'];
+		$data['subcategory_category'] = $subcatgory_return['subcategory_category'];
+		$data['category_list'] = $this->catalog->get_categories();
 		// print_r($data);
 		$this->load->view('admin/edit_subcategory',$data);
 	}
