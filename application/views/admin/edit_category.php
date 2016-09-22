@@ -40,24 +40,35 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category/<?php echo $category_data['category_id']; ?>" enctype="multipart/form-data" name="edit_category_form">
                     <div class="form-group">
                         <label for="category_name">Category Name</label>
-                        <input type="email" class="form-control" id="category_name" placeholder="Enter Category Name" value="<?php if(!empty($category_data['category_name'])) echo $category_data['category_name']; ?>">
+                        <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" value="<?php if(!empty($category_data['category_name'])) echo $category_data['category_name']; ?>" name="edit_category_name">
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Category Image</label>
-                        <input type="file" id="category_image">
+                        <input type="file" id="category_image" name="edit_category_image">
+                        <?php
+                            $img_source = $category_data['category_image']; 
+                        ?>
+                            <a class='dispaly_hide_offer' href='<?php echo $img_source; ?>' target='_blank'> 
+                            <?php if($img_source != '') {?>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/> 
+                            <?php } ?>
+                            <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>">
+                            </a>
+                            <input type="hidden" value="<?php echo $img_source; ?>" name="old_path_name" />
                     </div>
                    <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                            <select name="edit_category_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
-                                <option value="1" <?php if ($category_data['category_name'] == 1) echo "selected"; ?>>
+                                <option value="1" <?php if ($category_data['category_status'] == 1) echo "selected"; ?>>
                                     <span>Active</span>
                                 </option>
-                                <option value="0" <?php if ($category_data['category_name'] == 0) echo "selected"; ?>>
+                                <option value="0" <?php if ($category_data['category_status'] == 0) echo "selected"; ?>>
                                     <span>Inactive</span>
                                 </option>
                             </select>
