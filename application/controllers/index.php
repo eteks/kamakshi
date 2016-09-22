@@ -33,7 +33,9 @@ class Index extends CI_Controller
 	public function index()
 	{
 	  $data['giftstore_category'] = $this->register->get_register();
+      $data['giftstore_product'] = $this->register->get_product();
 	  // $data['giftstore_subcategory'] = $this->register->get_register();
+      $this->load->model('register');
 	  $this->load->view('index',$data);
 	}
 	

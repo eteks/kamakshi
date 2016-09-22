@@ -13,7 +13,14 @@ class Register extends CI_Model {
 		// $query = $this->db->get('giftstore_subcategory');
 		return $query->result_array();
 	}
-
+    public function get_product()
+    {
+        $this->db->order_by('product_createddate', 'DESC');
+        $this->db->limit('10');
+        $query = $this->db->get('giftstore_product');
+        // $query = $this->db->get('giftstore_subcategory');
+        return $query->result_array();
+    }
 	public function get_recipient()
 	{	
 		if($this->uri->segment(2)) {
