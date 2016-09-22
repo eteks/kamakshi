@@ -1,45 +1,31 @@
 <?php
-class Register extends CI_Model
-{
-    public function __construct()
-    {
-        $this->load->database();
-    }
-    
-    public function get_register()
-    {
-        $query = $this->db->get('giftstore_category');
-        // $query = $this->db->get('giftstore_subcategory');
-        return $query->result_array();
-    }
-    
-    public function get_category()
-    {
-        $query = $this->db->get('giftstore_subcategory');
-        return $query->result_array();
-    }
-    
-    // public function get_reg_form()
-    // {
-    //  $name=$this->input->post('name');
-    //  $email=$this->input->post('email_reg');
-    //  $password=md5($this->input->post('password_reg'));
-    //  $data = array(
-    //  'user_status'=>'1',
-    //  'user_name'=>$name,
-    //  'user_email'=>$email,
-    //  'user_password'=>$password
-    //  );
-    //  $where = '(user_email="'.$email.'" or user_name = "'.$name.'")';
-    //  $query=$this->db->get_where('giftstore_users',$where);
-    //      if ($query->num_rows() > 0){
-    //              // echo "aleardy exists";
-    //  }
-    //  else {
-    //      $this->db->insert('giftstore_users',$data);
-    //      // echo "new";
-    //  }
-    // }
+
+class Register extends CI_Model {
+	
+	public function __construct()
+	{
+		 $this->load->database();
+	}
+ 
+	public function get_register()
+	{
+		$query = $this->db->get('giftstore_category');
+		// $query = $this->db->get('giftstore_subcategory');
+		return $query->result_array();
+	}
+
+	public function get_recipient()
+	{	
+		if($this->uri->segment(2)) {
+			$this->db->select('*');
+            $this->db->from('giftstore_recipient_category rc'); 
+            $this->db->join('giftstore_recipient r', 'rc.recipient_mapping_id=r.recipient_id', 'inner');
+            $this->db->where(array('rc.category_mapping_id' => $this->uri->segment(2), 'r.recipient_status' => '1'));
+            $query = $this->db->get()->result_array();
+
+        }
+        return $query;
+	}
 
     public function registration_insert($data)
     {
@@ -76,6 +62,9 @@ class Register extends CI_Model
             $query['product_category'] = $cat_product->get()->result_array();
             $query['cat_pro_count'] = count($query['product_category']);
    		}
+
+
+   		
 	    return $query;
 	}
 
@@ -141,25 +130,7 @@ class Register extends CI_Model
 	    return $query;
 	}
 
-// Read data using username and password
-    public function login($data)
-    {
-        
-        $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
-        $this->db->select('*');
-        $this->db->from('giftstore_users');
-        $this->db->where($condition);
-        $this->db->limit(1);
-        $query = $this->db->get();
-        
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    // Read data from database to show data in admin page
+	// Read data from database to show data in admin page
     public function read_user_information($username)
     {
         
@@ -176,4 +147,23 @@ class Register extends CI_Model
             return false;
         }
     }
+
+    // Read data using username and password
+    public function login($data)
+    {
+       $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
+        $this->db->select('*');
+        $this->db->from('giftstore_users');
+        $this->db->where($condition);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+
 }
