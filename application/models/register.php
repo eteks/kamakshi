@@ -13,7 +13,7 @@ class Register extends CI_Model {
 		// $query = $this->db->get('giftstore_subcategory');
 		return $query->result_array();
 	}
-    public function get_product()
+    public function get_latestproduct()
     {
         $this->db->order_by('product_createddate', 'DESC');
         $this->db->limit('10');
