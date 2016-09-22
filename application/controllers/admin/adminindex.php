@@ -219,15 +219,145 @@ class Adminindex extends CI_Controller {
 	}
 	public function subcategory()
 	{	
-		$this->load->view('admin/subcategory');
+		//get list of category from database and store it in array variable 'category' with key 'category_list'
+		$subcategory['subcategory_list'] = $this->catalog->get_subcategories();
+		
+		//call the category views i.e rendered page and pass the category data in the array variable 'category'
+		$this->load->view('admin/subcategory',$subcategory);
 	}
 	public function add_subcategory()
 	{	
-		$this->load->view('admin/add_subcategory');
+		$status = array();//array is initialized
+		$errors='';
+		$validation_rules = array(
+	       array(
+	             'field'   => 'subcategory_name',
+	             'label'   => 'Sub Category',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'subcategory_status',
+	             'label'   => 'Status',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),   
+	    );
+	    $this->form_validation->set_rules($validation_rules);
+	    if ($this->form_validation->run() == FALSE) {
+	    	foreach($validation_rules as $row){
+	            $field = $row['field'];          //getting field name
+	            $error = form_error($field);    //getting error for field name
+	                                            //form_error() is inbuilt function
+	            //if error is their for field then only add in $errors_array array
+	            // echo "error".$error;
+	            if($error){
+	                if (strpos($error,"field is required.") !== false){
+	                    $errors = $error; 
+	                    break;
+	                }
+	                else
+	                    $errors[$field] = $error; 
+	            }
+        	}
+	        if (strpos($errors,"field is required.") !== false){  
+	             $status = array(
+	                'error_message' => 'Please fill out all mandatory fields'
+	             );
+	        }
+    	}
+    	else{
+    		if(!empty($_POST)){
+				if (!empty($errors)) {
+					$status = array(
+	                	'error_message' => strip_tags($errors)
+	             	);
+				}
+				else{
+					$data = array(
+					'subcategory_name' => $this->input->post('subcategory_name'),
+					'subcategory_status' => $this->input->post('subcategory_status'),
+					);
+					$result = $this->catalog->insert_subcategory($data);
+					if($result)
+						$status = array(
+	                		'error_message' => "SubCategory Inserted Successfully!"
+	             		);
+					else
+						$status = array(
+	                		'error_message' => "SubCategory Already Exists!"
+	             		);
+				}		
+			}
+    	}
+		// print_r($status);	
+		$this->load->view('admin/add_subcategory',$status);
 	}
 	public function edit_subcategory()
 	{	
-		$this->load->view('admin/edit_subcategory');
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = '';//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'edit_subcategory_name',
+		             'label'   => 'Sub Category',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),
+		       array(
+		             'field'   => 'edit_subcategory_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),   
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            // echo "error".$error;
+		            if($error){
+		                if (strpos($error,"field is required.") !== false){
+		                    $errors = $error; 
+		                    break;
+		                }
+		                else
+		                    $errors[$field] = $error; 
+		            }
+	        	}
+		        if (strpos($errors,"field is required.") !== false){  
+		             $status = 'Please fill out all mandatory fields';
+		        }
+    		}
+    		else{
+				if (!empty($errors)) {
+					$status = strip_tags($errors);
+				}
+				else{
+					$data = array(
+					'subcategory_id' => $id,
+					'subcategory_name' => $this->input->post('edit_subcategory_name'),
+					'subcategory_status' => $this->input->post('edit_subcategory_status'),
+					);
+					$result = $this->catalog->update_subcategory($data);
+					if($result)
+						$status = "SubCategory Updated Successfully!";
+					else
+						$status = "SubCategory Already Exists!";
+				}		
+    		}
+    		$data['status'] = $status;
+		}
+		$data['subcategory_data'] = $this->catalog->get_subcategory_data($id);
+		// print_r($data);
+		$this->load->view('admin/edit_subcategory',$data);
 	}
 	public function recipient()
 	{	

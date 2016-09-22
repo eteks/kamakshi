@@ -40,22 +40,24 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory/<?php echo $subcategory_data['subcategory_id']; ?>" name="edit_subcategory_form">
                     <div class="form-group">
                         <label for="subcategory_name">Subcategory Name</label>
-                        <input type="email" class="form-control" id="subcategory_name" placeholder="Enter Category Name">
+                        <input type="text" class="form-control" id="subcategory_name" name="edit_subcategory_name" placeholder="Enter SubCategory Name"
+                        value="<?php if(!empty($subcategory_data['subcategory_name'])) echo $subcategory_data['subcategory_name']; ?>" >
                     </div>  
-                    <div class="form-group">
-                        <label for="subcategory_image">Subcategory Image</label>
-                        <input type="file" id="subcategory_image">
-                    </div>
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                            <select name="edit_subcategory_status" id="sel_c" class="product-type-filter form-control city_act">
+                                <option value="">Select</option>
+                                <option value="1" <?php if ($subcategory_data['subcategory_status'] == 1) echo "selected"; ?>>
+                                    <span>Active</span>
+                                </option>
+                                <option value="0" <?php if ($subcategory_data['subcategory_status'] == 0) echo "selected"; ?>>
+                                    <span>Inactive</span>
+                                </option>
                             </select>
                         </div>
                     </div>
