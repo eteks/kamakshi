@@ -45,7 +45,8 @@ $route['view/(:any)'] = 'todos/view';
 
 //Route url for end user
 $route['register'] = 'index/register';
-$route['detail'] = 'index/detail';
+// $route['detail'] = 'index/detail';
+$route['detail/(:any)'] = 'index/detail/$1';
 // $route['category'] = 'index/category';
 $route['category/(:any)'] = 'index/category/$1';
 $route['contact'] = 'index/contact';

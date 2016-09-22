@@ -37,12 +37,6 @@ class Index extends CI_Controller {
 		$this->load->view('register',$categories);
 
 	}
-	public function detail()
-	{
-		$categories['giftstore_category'] = $this->register->get_register();
-		// $categories['giftstore_subcategory'] = $this->register->get_category();
-		$this->load->view('detail',$categories);
-	}
     public function category()
 	{
 		$categories['giftstore_category'] = $this->register->get_register();
@@ -50,16 +44,30 @@ class Index extends CI_Controller {
 		$category_values = $this->register->get_category();
 		$categories['cat_name'] = $category_values['cat_name'];
 		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
-		$categories['sub_count'] = $category_values['sub_count'];
-		
-		// print_r($category_values);
-		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['sub_count']!=null) {
+		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
+		$categories['product_category'] = $category_values['product_category'];
+		// print_r($categories);
+		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null) {
 			$this->load->view('category',$categories);
 		}
 		else {
 			$this->load->view('no_products',$categories);
 		}
 	}
+	public function detail()
+	{
+		$categories['giftstore_category'] = $this->register->get_register();
+		$categories_values = $this->register->get_product_details();
+		$categories['product_image_details'] = $categories_values['product_image_details'];
+		$categories['product_details'] = $categories_values['product_details'];
+		$categories['recommanded_products'] = $categories_values['recommanded_products'];
+		$categories['product_default_image'] = $categories_values['product_default_image'];
+		// print_r($categories['product_details']);
+		$this->load->view('detail',$categories);
+	}
+
+
+
 	public function contact()
 	{
 		$categories['giftstore_category'] = $this->register->get_register();
