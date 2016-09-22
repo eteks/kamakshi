@@ -126,11 +126,11 @@
                                     <?php foreach ($giftstore_category as $cat):?>
                                         <div class="col-sm-3">                                            
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/"><?php echo $cat['category_name'] ?></a>
+                                                <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id'] ?>"><?php echo $cat['category_name'] ?></a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php endforeach; ?>
                                     </div>
                                 </div>                                
                                 <!-- /.yamm-content -->
@@ -175,7 +175,7 @@
             <!--/.nav-collapse -->
             <div class="navbar-buttons">
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"> <span id="add_to_cart">  </span> items in cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
                 <div class="navbar-collapse collapse right" id="search-not-mobile">

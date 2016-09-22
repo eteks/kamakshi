@@ -167,3 +167,8 @@
   margin-bottom:30px;
   overflow:hidden;
 }
+/* Added by siva*/
+
+.active span {
+  background-color: green !important;
+}

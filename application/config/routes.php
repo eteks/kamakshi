@@ -45,7 +45,8 @@ $route['404_override'] = '';
 
 //Route url for end user
 $route['register'] = 'index/register';
-$route['detail'] = 'index/detail';
+// $route['detail'] = 'index/detail';
+$route['detail/(:any)'] = 'index/detail/$1';
 // $route['category'] = 'index/category';
 $route['category/(:any)'] = 'index/category/$1';
 $route['contact'] = 'index/contact';
@@ -66,7 +67,7 @@ $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
 
 $route['adminindex/subcategory'] = 'adminindex/subcategory';
 $route['adminindex/add_subcategory'] = 'adminindex/add_subcategory';
-$route['adminindex/edit_subcategory'] = 'adminindex/edit_subcategory';
+$route['adminindex/edit_subcategory/(:any)'] = 'adminindex/edit_subcategory';
 $route['adminindex/recipient'] = 'adminindex/recipient';
 $route['adminindex/add_recipient'] = 'adminindex/add_recipient';
 $route['adminindex/edit_recipient'] = 'adminindex/edit_recipient';

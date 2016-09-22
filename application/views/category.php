@@ -10,56 +10,7 @@
                         <li><?php echo $cat_name->category_name; ?></li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <!-- *** MENUS AND FILTERS *** -->
-                    <div class="panel panel-default sidebar-menu">                       
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Categories</h3>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked category-menu">
-                                <li>
-                                    <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat_name->category_id; ?>"><?php echo $cat_name->category_name; ?> <span class="badge pull-right"> <?php echo $sub_count; ?></span></a>
-                                    <ul>
-                                     <?php foreach ($gift_subcategory as $subcat):?>
-                                        <li>
-                                            <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat_name->category_id; ?>/<?php echo $subcat['subcategory_id'] ?>"><?php echo $subcat['subcategory_name'] ?><span class="badge pull-right">5</span></a>
-                                        </li>
-                                    <?php endforeach; ?> 
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Price</h3>
-                        </div>
-                        <input data-addui='slider' data-min='0' data-max='1000' data-range='true' value='0,1000'/> 
-                        </div>
-
-
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Recipient</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked category-menu">
-                                <?php foreach ($gift_recipient as $recipient) : ?>
-                                    <li>
-                                        <a href="<?php echo base_url(); ?>/index.php/category/<?php echo $recipient['recipient_id']; ?>"><?php echo $recipient['recipient_type']; ?></a> 
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-
-                  
-                </div>
-
+                <?php include "sidebar_list.php"; ?>
                 <div class="col-md-9">
                     <div class="box">
                         <h1><?php echo $cat_name->category_name; ?></h1>
@@ -69,7 +20,7 @@
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-4 products-showing">
-                                Showing <strong>12</strong> of <strong>25</strong> products
+                                Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products
                             </div>
 
                             <div class="col-sm-12 col-md-8  products-number-sort">
@@ -95,41 +46,44 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row products">
-                        <!-- <?php foreach ($giftstore_subcategory as $subcat):?> -->
+                    <div id="all_products_section" class="row products">
+                        <?php 
+                        foreach ($product_category as $cat_pro):
+                        ?>
                         <div class="col-md-4 col-sm-6">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url().$subcat['subcategory_image'] ?>" alt="" class="img-responsive">
+                                            <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
+                                            <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/">
-                                                <img src="<?php echo base_url().$subcat['subcategory_image'] ?>" alt="" class="img-responsive">
+                                            <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
+                                                <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="<?php echo base_url(); ?>/index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url().$subcat['subcategory_image'] ?>" alt="" class="img-responsive">
+                                <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="invisible">
+                                    <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/">Fashion and Style</a></h3>
-                                    <p class="price">$143.00</p>
+                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>"> <?php echo $cat_pro['product_title']; ?> </a></h3>
+                                    <p class="price">  Rs.<?php echo $cat_pro['product_price']; ?> </p>
                                     <p class="buttons">
-                                        <a href="<?php echo base_url(); ?>/index.php/detail/" class="btn btn-default">View detail</a>
-                                        <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="btn btn-default">View detail</a>
+                                        <!-- <a data-id="<?php echo $cat_pro['product_id']; ?>" class="btn btn-primary add_to_cart_items"><i class="fa fa-shopping-cart"></i>Add to cart</a> -->
                                     </p>
                                 </div>
                                 <!-- /.text -->
                             </div>
                             <!-- /.product -->
                         </div>
-                        <!-- <?php endforeach ?> -->
-
+                        <?php 
+                        endforeach;
+                        ?> 
                         
                     </div>
                     <!-- /.products -->
@@ -167,5 +121,66 @@
         <!-- /#content -->
         </div><!--all-->
 
-
 <?php include "templates/footer.php"; ?>
+
+
+
+
+<script>
+// Ajax post
+$(document).ready(function() {
+    //  AJAX for subcategories products
+    $(".subcategories").click(function() {
+        var sub_id = $(this).data('id');
+        var cat_id = $('#category_id').val();
+        jQuery.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/ajax_subcategory_products",
+        data: {sub_id: sub_id , cat_id : cat_id},
+
+        success: function(res) {
+        if (res)
+        {
+            $('#all_products_section').html(res);
+        }
+        }
+        });
+    });
+    //  AJAX for recipients products
+    $(".recipients").click(function() {
+        var rec_id = $(this).data('id');
+        var cat_id = $('#category_id').val();
+        jQuery.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/ajax_recipient_products",
+        data: {rec_id : rec_id, cat_id : cat_id},
+
+        success: function(res) {
+        if (res)
+        {
+            $('#all_products_section').html(res);
+        }
+        }
+        });
+    });
+    
+    //  AJAX for recipients products
+    // $(".add_to_cart_items").click(function() {
+    //     var rec_id = $(this).data('id');
+    //     var cat_id = $('#category_id').val();
+    //     jQuery.ajax({
+    //     type: "POST",
+    //     url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/ajax_recipient_products",
+    //     data: {rec_id : rec_id, cat_id : cat_id},
+
+    //     success: function(res) {
+    //     if (res)
+    //     {
+    //         $('#all_products_section').html(res);
+    //     }
+    //     }
+    //     });
+    // });
+
+});
+</script>
