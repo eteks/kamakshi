@@ -11,9 +11,7 @@
                         </li>
                         <li>New account / Sign in</li>
                     </ul>
-
                 </div>
-
                 <div class="col-md-6">
                     <div class="box">
                         <h1>New account</h1>
@@ -61,14 +59,14 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/index/new_user_registration" id="login_reg" method="post">
-                        <?php
+                        <form action="<?php echo base_url(); ?>index.php/index/user_login_process" id="login_reg" method="post">
+                        <!-- <?php
                                 echo "<div class='message_display'>";
                                 if (isset($message_display)) {
                                 echo $message_display;
                                 }
                                 echo "</div>";
-                                ?> 
+                                ?>  -->
                             <div class="form-group">
                               <!--   <p class="error_msg_log">Please fill all(*) mandatory fields</p>
                                 <p class="error_log_email">Please enter valid email</p> -->
