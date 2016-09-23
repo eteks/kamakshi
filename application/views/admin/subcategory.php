@@ -43,6 +43,7 @@
     <thead>
     <tr>
         <th>Subcategory Name</th>
+        <th>Categories</th>
         <th>Status</th>
         <th>Created Date</th>
         <th>Actions</th>
