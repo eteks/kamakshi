@@ -3,46 +3,56 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 session_start(); 
 class Index extends CI_Controller
 {
-public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('register');
+	public function __construct()
+	{
+		parent::__construct();
+        $this->load->model('index_model');
+        // Load session library
+        $this->load->library('session');
         $this->load->helper('form');
         // Load form validation library
         $this->load->library('form_validation');
-        
-        // Load session library
-        $this->load->library('session');
-        
+        $this->session->set_userdata("login_status","1");
+        $this->session->set_userdata("login_id","3");
+
     }
 	public function index()
 	{
-	  $data['giftstore_category'] = $this->register->get_register();
-      $data['giftstore_product'] = $this->register->get_latestproduct();
-	  // $data['giftstore_subcategory'] = $this->register->get_register();
-      $this->load->model('register');
-	  $this->load->view('index',$data);
-	}
+
+	  $categories_values_reg = $this->index_model->get_register();
+      $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+      $categories['order_details'] = $categories_values_reg['order_details'];
+      $categories['order_count'] = $categories_values_reg['order_count'];
+      $categories['giftstore_product'] = $this->index_model->get_latestproduct();
+	  // $data['giftstore_subcategory'] = $this->index_model->get_register();
+	  $this->load->view('index',$categories);
+    }
 	
 	public function register()
 	{ 
-		$categories['giftstore_category'] = $this->register->get_register();
-		// $categories['giftstore_subcategory'] = $this->register->get_category();
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('register',$categories);
 
 	}
 
     public function category()
 	{
-		$categories['giftstore_category'] = $this->register->get_register();
-		$categories['gift_recipient'] = $this->register->get_recipient();
-		$category_values = $this->register->get_category();
+		$categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+		$categories['gift_recipient'] = $this->index_model->get_recipient();
+		$category_values = $this->index_model->get_category();
 		$categories['cat_name'] = $category_values['cat_name'];
 		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
 		$categories['product_category'] = $category_values['product_category'];
 		// print_r($categories);
-		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null) {
+		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
 			$this->load->view('category',$categories);
 		}
 		else {
@@ -52,8 +62,11 @@ public function __construct()
 
 	public function detail()
 	{
-		$categories['giftstore_category'] = $this->register->get_register();
-		$categories_values = $this->register->get_product_details();
+		$categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+		$categories_values = $this->index_model->get_product_details();
 		$categories['product_image_details'] = $categories_values['product_image_details'];
 		$categories['product_details'] = $categories_values['product_details'];
 		$categories['recommanded_products'] = $categories_values['recommanded_products'];
@@ -61,25 +74,35 @@ public function __construct()
 		// print_r($categories['product_details']);
 		$this->load->view('detail',$categories);
 	}
+
 	public function contact()
 	{
-		$categories['giftstore_category'] = $this->register->get_register();
-		// $categories['giftstore_subcategory'] = $this->register->get_category();
+		$categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('contact',$categories);
 	}
 
-	// public function reg_form()
- //    {
- //        $categories['giftstore_category']    = $this->register->get_register();
- //        $categories['giftstore_subcategory'] = $this->register->get_category();
- //        $this->register->get_reg_form();
-        
- //        $this->load->view('register', $categories);
- //    }
+	public function reg_form()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $this->index_model->get_reg_form();
+        $this->load->view('register', $categories);
+    }
 
 	public function basket()
 	{
-		$this->load->view('basket');
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+		$this->load->view('basket',$categories);
 	}
 	public function checkout1()
 	{
@@ -99,64 +122,37 @@ public function __construct()
     }
     public function customer_account()
     {
-        $categories['giftstore_category']    = $this->register->get_register();
-        $categories['giftstore_subcategory'] = $this->register->get_category();
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('customer_account', $categories);
     }
     public function customer_wishlist()
     {
-        $categories['giftstore_category']    = $this->register->get_register();
-        $categories['giftstore_subcategory'] = $this->register->get_category();
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('customer_wishlist', $categories);
     }
     public function customer_orders()
     {
-        $categories['giftstore_category']    = $this->register->get_register();
-        $categories['giftstore_subcategory'] = $this->register->get_category();
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('customer_orders', $categories);
     }
     public function customer_order()
     {
         $this->load->view('customer_order');
     }
-    public function new_user_registration()
-    {
-        $categories['giftstore_category']    = $this->register->get_register();
-        // $categories['giftstore_subcategory'] = $this->register->get_category();
-        $this->load->view('register', $categories);
-        // Check validation for user input in SignUp form
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('email_reg', 'Email', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('email_reg', 'Email', 'callback_rolekey_exists');
-        $this->form_validation->set_rules('password_reg', 'Password', 'trim|required|xss_clean');
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('register');
-        } else {
-            $data   = array(
-                'user_name' => $this->input->post('username'),
-                'user_email' => $this->input->post('email_reg'),
-                'user_password' => md5($this->input->post('password_reg')),
-                'user_status' => '1'
-            );
-            $result = $this->register->registration_insert($data);
-            // $message = registration_insert();
-            // $data['message_display'] = $message;
-            // // echo $result;
-            //  if($result == FALSE){
-            //     $message="Email already exists";
-            //     $this->load->view('register', $data);
-            // }
-            //     elseif(){
-            //     $message="User already exists";
-            // }
-            //     else{
-            //     $message="registered successfully";
-            //     $this->load->view('register', $data);
-            //     }
-            //     return $message;
-        }
-    }
-    Public function rolekey_exists($key) 
+
+    public function rolekey_exists($key) 
     {
         $this->register->mail_exists($key);
     }
@@ -232,6 +228,8 @@ public function __construct()
         $data['message_display'] = 'Successfully Logout';
         $this->load->view('templates/header', $data);
     }
+
+
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
