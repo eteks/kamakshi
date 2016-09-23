@@ -150,7 +150,7 @@
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/subcategory">Subcategory </a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/recipient">Recipient</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/product_attributes">Product Attributes </a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/giftproduct">Gift Product </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/giftproduct">Product </a></li>
                             </ul>
                             </li>
                         <li class="accordion">

@@ -535,11 +535,18 @@ class Adminindex extends CI_Controller {
 	}
 	public function giftproduct()
 	{	
-		$this->load->view('admin/giftproduct');
+		//get list of products from database and store it in array variable 'product' with key 'product_list'
+		$product_data = $this->catalog->get_products();
+		$product['product_list'] = $product_data['product_result'];
+		$product['product_image'] = $product_data['product_image'];	
+		//call the product views i.e rendered page and pass the product data in the array variable 'product'
+		$this->load->view('admin/giftproduct',$product);
 	}
 	public function add_giftproduct()
 	{	
-		$this->load->view('admin/add_giftproduct');
+		// print_r($_POST);
+		$status['category_list'] = $this->catalog->get_categories();
+		$this->load->view('admin/add_giftproduct',$status);
 	}
 	public function edit_giftproduct()
 	{	
@@ -733,6 +740,20 @@ class Adminindex extends CI_Controller {
 	public function edit_state()
 	{	
 		$this->load->view('admin/edit_state');
+	}
+	public function loadcategory_reference()
+	{	
+		$category_id=$_POST['category_id'];	
+		$category_name = $_POST['category_name'];	
+		$category_reference_data = $this->catalog->get_category_reference($category_id);
+		// print_r($category_reference_data['subcategory_category']);
+		// print_r($category_reference_data['recipient_category']);
+		// echo json_encode(
+		// 	array('subcategory' => $category_reference_data['subcategory_category'],
+		// 		'recipient' => $category_reference_data['recipient_category'],
+		// 	)
+		// );
+		echo json_encode($category_reference_data);
 	}
 }
 

@@ -195,12 +195,6 @@ class Catalog extends CI_Model {
 	}
 	public function get_product_attributes()
 	{	
-		// just for sample
-		// $query = $this->db->query("SELECT * FROM giftstore_category WHERE category_status = 1");
-		// $query = $this->db->get_where('giftstore_category', array('category_status' => 1));
-		// echo $query->num_rows();
-		// return $query->row_array();
-
 		//get list of categories from database using mysql query 
 		$query = $this->db->query("SELECT * FROM giftstore_product_attribute order 
 			by product_attribute_createddate desc");		
@@ -251,5 +245,55 @@ class Catalog extends CI_Model {
 	{	
 		$query = $this->db->get_where('giftstore_product_attribute', array('product_attribute_id' => $id));
 		return $query->row_array();
+	}
+	public function get_products()
+	{	
+		//get list of products from database using mysql query 
+		// $query = $this->db->query("SELECT * FROM giftstore_product order 
+		// 	by product_createddate desc");		
+		// echo "<pre>";
+		// print_r($query->result());
+		// echo "</pre>";
+		$this->db->select('pro.*,cat.category_name,subcat.subcategory_name,rec.recipient_type');
+		$this->db->from('giftstore_product AS pro');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = pro.product_category_id', 'Left');
+		$this->db->join('giftstore_subcategory AS subcat', 'subcat.subcategory_id = pro.product_subcategory_id', 'Left');
+		$this->db->join('giftstore_recipient AS rec', 'rec.recipient_id = pro.product_recipient_id', 'Left');
+		$this->db->order_by('product_createddate','desc');
+		$query['product_result'] = $this->db->get()->result_array();
+
+		$this->db->select('*');
+		$this->db->from('giftstore_product AS pro');
+		$this->db->join('giftstore_product_upload_image AS img', 'img.product_mapping_id = pro.product_id', 'inner');
+		$this->db->order_by('product_createddate','desc');
+		$query['product_image'] = $this->db->get()->result_array();
+
+		//return all records in array format to the controller
+		return $query;
+	}
+	public function get_category_reference($id)
+	{	
+		$condition = "subcat.category_mapping_id =".$id;
+		$this->db->select('sub.subcategory_id,sub.subcategory_name');
+		$this->db->from('giftstore_subcategory AS sub');
+		$this->db->join('giftstore_subcategory_category AS subcat', 'subcat.subcategory_mapping_id = sub.subcategory_id', 'left');
+		$this->db->where($condition);
+		$this->db->order_by('subcategory_name','asc');
+		$this->db->group_by('subcategory_name');
+		$query['subcategory_category'] = $this->db->get()->result_array();
+
+		// $query = $this->db->get()->result_array();
+
+		$condition = "reccat.recipient_mapping_id =".$id;
+		$this->db->select('rec.recipient_id,rec.recipient_type');
+		$this->db->from('giftstore_recipient AS rec');
+		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'left');
+		$this->db->where($condition);
+		$this->db->order_by('recipient_type','asc');
+		$this->db->group_by('recipient_type');
+		$query['recipient_category'] = $this->db->get()->result_array();
+
+		//return all records in array format to the controller
+		return $query;
 	}
 }

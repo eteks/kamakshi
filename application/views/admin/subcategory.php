@@ -53,6 +53,7 @@
     <?php foreach ($subcategory_list as $subcat): ?>
         <tr>
             <td><?php echo $subcat["subcategory_name"] ?></td>
+            <td></td>
             <td class="center"><span class="<?php if($subcat["subcategory_status"] ==1 ){ ?>label-success<?php } ?> label label-default">
             <?php if($subcat["subcategory_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td><?php echo date("d/m/Y", strtotime($subcat["subcategory_createddate"])); ?></td>
