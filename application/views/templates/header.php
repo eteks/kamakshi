@@ -32,7 +32,7 @@
 </head>
 <body>
   <!-- *** TOPBAR ***
- _________________________________________________________ -->
+ ________________________________________________________ -->
     <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
@@ -107,7 +107,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                     <a class="btn btn-default navbar-toggle" href="<?php echo base_url(); ?>index.php/basket/">
-                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">3 items in cart</span>
+                        <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs" > <span class="add_to_cart"> <?php echo $order_count; ?> </span> items in cart</span>
                     </a>
                 </div>
             </div>
@@ -175,7 +175,7 @@
             <!--/.nav-collapse -->
             <div class="navbar-buttons">
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"> <span id="add_to_cart">  </span> items in cart</span></a>
+                    <a href="<?php echo base_url(); ?>index.php/basket/" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"> <span class="add_to_cart"> <?php echo $order_count; ?> </span>  items in cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
                 <div class="navbar-collapse collapse right" id="search-not-mobile">

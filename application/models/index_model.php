@@ -1,6 +1,6 @@
 <?php
 
-class Register extends CI_Model {
+class Index_Model extends CI_Model {
 	
 	public function __construct()
 	{
@@ -9,9 +9,54 @@ class Register extends CI_Model {
  
 	public function get_register()
 	{
-		$query = $this->db->get('giftstore_category');
-		// $query = $this->db->get('giftstore_subcategory');
-		return $query->result_array();
+		$query1 = $this->db->get('giftstore_category');
+        $query['giftstore_category'] = $query1->result_array();
+        $login_status = $this->session->userdata("login_status");
+        $random = uniqid();
+
+
+        // General session not exists
+        if(!$this->session->userdata("general_session_id")) {
+            $this->session->set_userdata("general_session_id",$random);
+        }
+
+        // Session exists
+        if($this->session->userdata("user_session_id")) {
+            // echo $this->session->userdata("user_session_id");
+            $session_id = explode('_',$this->session->userdata("user_session_id"));  
+            if($login_status == 1) {
+                $user_id = $this->session->userdata("login_id");
+                if($user_id != $session_id[2]) {
+                    $this->session->unset_userdata('user_session_id');
+                }
+            }
+            else {
+                $user_id = 0;
+                if($user_id != $session_id[2]) {
+                   $this->session->unset_userdata('user_session_id');
+                } 
+            }
+        }
+
+        // Session not exists
+        if(!$this->session->userdata("user_session_id")) {
+            $general_session_id = $this->session->userdata("general_session_id");
+            if($login_status == 1) {
+                $user_id = $this->session->userdata("login_id");
+                $this->session->set_userdata("user_session_id","reg_user_".$user_id."_".$general_session_id);
+            }
+            else {
+                $user_id = 0;
+                $this->session->set_userdata("user_session_id","reg_user_".$user_id."_".$general_session_id);
+            }
+        }
+
+        $order_where = '(orderitem_session_id="'.$this->session->userdata('user_session_id').'" and orderitem_status=1)';
+        $order_query = $this->db->get_where('giftstore_orderitem',$order_where);
+        $query['order_details'] =  $order_query->result_array();
+        $query['order_count'] = count($query['order_details']);
+
+    	return $query;
 	}
 
 	public function get_recipient()
@@ -53,6 +98,8 @@ class Register extends CI_Model {
             $sub_cat = $this->db->join('giftstore_subcategory s', 'cs.subcategory_mapping_id=s.subcategory_id', 'inner');
             $sub_cat = $this->db->where(array('cs.category_mapping_id' => $this->uri->segment(2), 's.subcategory_status' => '1'));
             $query['gift_subcategory'] = $sub_cat->get()->result_array();
+
+
             $cat_product=$this->db->select('*');
             $cat_product=$this->db->from('giftstore_product cp');
             $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
@@ -61,10 +108,19 @@ class Register extends CI_Model {
             $cat_product=$this->db->group_by('cp.product_id');
             $query['product_category'] = $cat_product->get()->result_array();
             $query['cat_pro_count'] = count($query['product_category']);
+            if($this->uri->segment(3)){	
+            	$cat_product=$this->db->select('*');
+	            $cat_product=$this->db->from('giftstore_product cp');
+	            $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+	            $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and cp.product_subcategory_id="'.$this->uri->segment(3).'")';
+	            $cat_product=$this->db->where($where);
+	            $cat_product=$this->db->group_by('cp.product_id');
+	            $query['product_category'] = $cat_product->get()->result_array();
+            }
    		}
 
 
-   		
+
 	    return $query;
 	}
 
@@ -86,11 +142,13 @@ class Register extends CI_Model {
             $where = '(p.product_id="'.$this->uri->segment(2).'" and p.product_status=1)';
             $product_details=$this->db->where($where);
             $query['product_details'] = $product_details->get()->row();
+            $category_id = $query['product_details']->category_id;
             $subcategory_id = $query['product_details']->subcategory_id;
             $recipient_id = $query['product_details']->product_recipient_id;
             
+
             //  Recommanded products start
-            $recommanded_where_sub = '(rp.product_id!="'.$this->uri->segment(2).'" and rp.product_subcategory_id="'.$subcategory_id.'" and rp.product_status=1)';
+            $recommanded_where_sub = '(rp.product_id!="'.$this->uri->segment(2).'" and rp.product_subcategory_id="'.$subcategory_id.'" and rp.product_category_id="'.$category_id.'" and rp.product_status=1)';
             $recommanded_products_sub = $this->db->select('*');
             $recommanded_products_sub = $this->db->from('giftstore_product rp');
             $recommanded_products_sub = $this->db->join('giftstore_product_upload_image rpu','rp.product_id=rpu.product_mapping_id','inner');
@@ -101,7 +159,7 @@ class Register extends CI_Model {
         	$sub_pro_count = count($query['recommanded_products']);
         	if($sub_pro_count < $limit) {
         		$limit_rec = $limit - $sub_pro_count;
-        		$recommanded_where_rec = '(rrp.product_id!="'.$this->uri->segment(2).'" and rrp.product_subcategory_id!="'.$subcategory_id.'" and rrp.product_status=1 and rrp.product_recipient_id="'.$recipient_id.'")';
+        		$recommanded_where_rec = '(rrp.product_id!="'.$this->uri->segment(2).'" and rrp.product_subcategory_id!="'.$subcategory_id.'" and rrp.product_category_id="'.$category_id.'" and rrp.product_status=1 and rrp.product_recipient_id="'.$recipient_id.'")';
         		$recommanded_products_rec = $this->db->select('*');
         		$recommanded_products_rec = $this->db->from('giftstore_product rrp');
         		$recommanded_products_rec = $this->db->join('giftstore_product_upload_image rrpu','rrp.product_id=rrpu.product_mapping_id','inner');
@@ -114,7 +172,7 @@ class Register extends CI_Model {
 	        	if($rec_pro_count && $rec_pro_count < $limit) {
 		        	$limit_cat = $limit - $rec_pro_count;
 		        
-		        	$recommanded_where_cat = '(crp.product_id!="'.$this->uri->segment(2).'" and crp.product_subcategory_id!="'.$subcategory_id.'" and crp.product_recipient_id!="'.$recipient_id.'" and crp.product_status=1)';
+		        	$recommanded_where_cat = '(crp.product_id!="'.$this->uri->segment(2).'" and crp.product_subcategory_id!="'.$subcategory_id.'" and crp.product_category_id="'.$category_id.'" and crp.product_recipient_id!="'.$recipient_id.'" and crp.product_status=1)';
 		        	$recommanded_products_cat = $this->db->select('*');
 		        	$recommanded_products_cat = $this->db->from('giftstore_product crp');
 		        	$recommanded_products_cat = $this->db->join('giftstore_product_upload_image crpu','crp.product_id=crpu.product_mapping_id','inner');
