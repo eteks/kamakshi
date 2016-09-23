@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD:application/models/index_model.php
 
 class Index_Model extends CI_Model {
 	
@@ -59,47 +60,71 @@ class Index_Model extends CI_Model {
     	return $query;
 	}
 
-	public function get_recipient()
-	{	
-		if($this->uri->segment(2)) {
-			$this->db->select('*');
-            $this->db->from('giftstore_recipient_category rc'); 
-            $this->db->join('giftstore_recipient r', 'rc.recipient_mapping_id=r.recipient_id', 'inner');
-            $this->db->where(array('rc.category_mapping_id' => $this->uri->segment(2), 'r.recipient_status' => '1'));
-            $query = $this->db->get()->result_array();
+    public function get_latestproduct()
+    {
+        $this->db->order_by('product_createddate', 'DESC');
+        $this->db->limit('10');
+        $query = $this->db->get('giftstore_product');
+        // $query = $this->db->get('giftstore_subcategory');
+        return $query->result_array();
+    }
 
+    public function get_recipient()
+    {
+        if ($this->uri->segment(2)) {
+            $this->db->select('*');
+            $this->db->from('giftstore_recipient_category rc');
+            $this->db->join('giftstore_recipient r', 'rc.recipient_mapping_id=r.recipient_id', 'inner');
+            $this->db->where(array(
+                'rc.category_mapping_id' => $this->uri->segment(2),
+                'r.recipient_status' => '1'
+            ));
+            $query = $this->db->get()->result_array();
+            
         }
         return $query;
-	}
-
+    }
+    
     public function registration_insert($data)
     {
         
         // Query to check whether username already exist or not
-        $where = '(user_name="'.$data['user_name'].'" or user_email="'.$data['user_email'].'")';
+        $where = '(user_name="' . $data['user_name'] . '" or user_email="' . $data['user_email'] . '")';
         $this->db->select('*');
         $this->db->from('giftstore_users');
         $this->db->where($where);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
-            return false;            
+            return false;
         }
         return $query;
-	}
-
-	public function get_category()
-	{	
-		if($this->uri->segment(2)){
-			$where = '(category_id="'.$this->uri->segment(2).'")';
-			$cat_query=$this->db->get_where('giftstore_category',$where);
-			$query['cat_name'] = $cat_query->row();
-        	$sub_cat = $this->db->select('*');
-            $sub_cat = $this->db->from('giftstore_subcategory_category cs'); 
-            $sub_cat = $this->db->join('giftstore_subcategory s', 'cs.subcategory_mapping_id=s.subcategory_id', 'inner');
-            $sub_cat = $this->db->where(array('cs.category_mapping_id' => $this->uri->segment(2), 's.subcategory_status' => '1'));
+    }
+    public function mail_exists($key)
+    {
+        $this->db->where('user_email', $key);
+        $query = $this->db->get('giftstore_users');
+        if ($query->num_rows() > 0) {
+            // print_r("Email already exists");
+            return true;
+        } else {
+            // print_r("Email registered");
+            return false;
+        }
+    }
+    public function get_category()
+    {
+        if ($this->uri->segment(2)) {
+            $where                     = '(category_id="' . $this->uri->segment(2) . '")';
+            $cat_query                 = $this->db->get_where('giftstore_category', $where);
+            $query['cat_name']         = $cat_query->row();
+            $sub_cat                   = $this->db->select('*');
+            $sub_cat                   = $this->db->from('giftstore_subcategory_category cs');
+            $sub_cat                   = $this->db->join('giftstore_subcategory s', 'cs.subcategory_mapping_id=s.subcategory_id', 'inner');
+            $sub_cat                   = $this->db->where(array(
+                'cs.category_mapping_id' => $this->uri->segment(2),
+                's.subcategory_status' => '1'
+            ));
             $query['gift_subcategory'] = $sub_cat->get()->result_array();
-
-
             $cat_product=$this->db->select('*');
             $cat_product=$this->db->from('giftstore_product cp');
             $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
@@ -118,11 +143,15 @@ class Index_Model extends CI_Model {
 	            $query['product_category'] = $cat_product->get()->result_array();
             }
    		}
+	
+        return $query;
+    }
 
 
 
-	    return $query;
-	}
+
+
+
 
 	public function get_product_details()
 	{	
@@ -145,7 +174,6 @@ class Index_Model extends CI_Model {
             $category_id = $query['product_details']->category_id;
             $subcategory_id = $query['product_details']->subcategory_id;
             $recipient_id = $query['product_details']->product_recipient_id;
-            
 
             //  Recommanded products start
             $recommanded_where_sub = '(rp.product_id!="'.$this->uri->segment(2).'" and rp.product_subcategory_id="'.$subcategory_id.'" and rp.product_category_id="'.$category_id.'" and rp.product_status=1)';
@@ -184,11 +212,11 @@ class Index_Model extends CI_Model {
 	        	}
        		}
             //  Recommanded products end 
-   		}
-	    return $query;
-	}
-
-	// Read data from database to show data in admin page
+        }
+        return $query;
+    }
+    
+    // Read data from database to show data in admin page
     public function read_user_information($username)
     {
         
@@ -205,11 +233,11 @@ class Index_Model extends CI_Model {
             return false;
         }
     }
-
+    
     // Read data using username and password
     public function login($data)
     {
-       $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
+        $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
         $this->db->select('*');
         $this->db->from('giftstore_users');
         $this->db->where($condition);
@@ -221,7 +249,5 @@ class Index_Model extends CI_Model {
         } else {
             return false;
         }
-    }
-    
-
+    }   
 }

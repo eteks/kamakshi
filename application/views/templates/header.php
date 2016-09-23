@@ -62,11 +62,11 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/user_login_process" id="login" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/index/user_login_process" id="login" method="post">
                         <?php
-                                echo "<div class='error_message'>";
-                                if (isset($error_message)) {
-                                echo $error_message;
+                                echo "<div class='error'>";
+                                if (isset($error)) {
+                                echo $error;
                                 }
                                 echo "</div>";
                                 ?>
@@ -126,11 +126,11 @@
                                     <?php foreach ($giftstore_category as $cat):?>
                                         <div class="col-sm-3">                                            
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id'] ?>"><?php echo $cat['category_name'] ?></a>
+                                                <li><a href="<?php echo base_url(); ?>index.php/category/"><?php echo $cat['category_name'] ?></a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    <?php endforeach; ?>
+                                    <?php endforeach ?>
                                     </div>
                                 </div>                                
                                 <!-- /.yamm-content -->

@@ -48,6 +48,17 @@
                         value="<?php if(!empty($subcategory_data['subcategory_name'])) echo $subcategory_data['subcategory_name']; ?>" >
                     </div>  
                     <div class="control-group">
+                        <label class="control-label" for="sel_c">Choose Category</label>
+                        <div class="controls">
+                            <select id="sel_c" class="product-type-filter form-control city_act" name="edit_select_category[]" multiple>
+                            <option value="">Select Category</option>
+                            <?php foreach ($category_list as $cat): ?>
+                                <option value="<?php echo $cat["category_id"] ?>" <?php if (in_array($cat["category_id"], $subcategory_category)) echo "selected"; ?>><?php echo $cat["category_name"] ?></option>
+                            <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="edit_subcategory_status" id="sel_c" class="product-type-filter form-control city_act">

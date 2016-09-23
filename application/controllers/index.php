@@ -7,10 +7,8 @@ class Index extends CI_Controller
 	{
 		parent::__construct();
         $this->load->model('index_model');
-
         // Load session library
         $this->load->library('session');
-
         $this->load->helper('form');
         // Load form validation library
         $this->load->library('form_validation');
@@ -18,31 +16,17 @@ class Index extends CI_Controller
         $this->session->set_userdata("login_id","3");
 
     }
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
+
 	  $categories_values_reg = $this->index_model->get_register();
       $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
       $categories['order_details'] = $categories_values_reg['order_details'];
       $categories['order_count'] = $categories_values_reg['order_count'];
+      $categories['giftstore_product'] = $this->register->get_latestproduct();
 	  // $data['giftstore_subcategory'] = $this->index_model->get_register();
 	  $this->load->view('index',$categories);
-
-	}
+    }
 	
 	public function register()
 	{ 
@@ -136,7 +120,6 @@ class Index extends CI_Controller
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->index_model->get_reg_form();
-        
         $this->load->view('register', $categories);
     }
 
@@ -156,13 +139,80 @@ class Index extends CI_Controller
 	{
 		$this->load->view('checkout2');
 	}
-
+    public function checkout3()
+    {
+        $this->load->view('checkout3');
+    }
+    public function checkout4()
+    {
+        $this->load->view('checkout4');
+    }
+    public function customer_account()
+    {
+        $categories['giftstore_category']    = $this->register->get_register();
+        $categories['giftstore_subcategory'] = $this->register->get_category();
+        $this->load->view('customer_account', $categories);
+    }
+    public function customer_wishlist()
+    {
+        $categories['giftstore_category']    = $this->register->get_register();
+        $categories['giftstore_subcategory'] = $this->register->get_category();
+        $this->load->view('customer_wishlist', $categories);
+    }
+    public function customer_orders()
+    {
+        $categories['giftstore_category']    = $this->register->get_register();
+        $categories['giftstore_subcategory'] = $this->register->get_category();
+        $this->load->view('customer_orders', $categories);
+    }
+    public function customer_order()
+    {
+        $this->load->view('customer_order');
+    }
+    public function new_user_registration()
+    {
+        $categories['giftstore_category']    = $this->register->get_register();
+        // $categories['giftstore_subcategory'] = $this->register->get_category();
+        $this->load->view('register', $categories);
+        // Check validation for user input in SignUp form
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('email_reg', 'Email', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('email_reg', 'Email', 'callback_rolekey_exists');
+        $this->form_validation->set_rules('password_reg', 'Password', 'trim|required|xss_clean');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('register');
+        } else {
+            $data   = array(
+                'user_name' => $this->input->post('username'),
+                'user_email' => $this->input->post('email_reg'),
+                'user_password' => md5($this->input->post('password_reg')),
+                'user_status' => '1'
+            );
+            $result = $this->register->registration_insert($data);
+            // $message = registration_insert();
+            // $data['message_display'] = $message;
+            // // echo $result;
+            //  if($result == FALSE){
+            //     $message="Email already exists";
+            //     $this->load->view('register', $data);
+            // }
+            //     elseif(){
+            //     $message="User already exists";
+            // }
+            //     else{
+            //     $message="registered successfully";
+            //     $this->load->view('register', $data);
+            //     }
+            //     return $message;
+        }
+    }
+    Public function rolekey_exists($key) 
+    {
+        $this->register->mail_exists($key);
+    }
     // Check for user login process
     public function user_login_process()
     {
-        // echo "user_login_process";
-        // $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        // $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
         $validation_rules = array(
             array(
                 'field' => 'email',
@@ -186,7 +236,7 @@ class Index extends CI_Controller
                 $error = form_error($field); //getting error for field name
                 //form_error() is inbuilt function
                 //if error is their for field then only add in $errors_array array
-                // echo "error".$error;
+                 echo "error".$error;
                 if ($error) {
                     if (strpos($error, "field is required.") !== false) {
                         $empty_errors = $error;
@@ -200,20 +250,20 @@ class Index extends CI_Controller
                     'error_message' => 'Please fill out all mandatory fields'
                 );
             }
-            else if (array_key_exists("email_log",$errors_array) && strpos($errors_array['email_log'],"The Username field must contain a valid email address.") !== false){
+            else if (array_key_exists("email",$errors_array) && strpos($errors_array['email'],"The username field must contain a valid email address.") !== false){
                 $data = array(
                 'error_message' => 'Please enter valid email address'
                 );
             } 
-             echo print_r($errors_array);
-            if (isset($this->session->userdata['logged_in'])) {
-                $this->load->view('index');
-            } else {
-                if (empty($errors_array) && $empty_errors == '')
-                    $this->load->view('header');
-                else
-                    $this->load->view('header', $data);
-            }
+             // echo print_r($errors_array);
+            // if (isset($this->session->userdata['logged_in'])) {
+            //     $this->load->view('register');
+            // } else {
+            //     if (empty($errors_array) && $empty_errors == '')
+            //         $this->load->view('index');
+            //     else
+            //         $this->load->view('index', $data);
+            // }
         } else {
             $data   = array(
                 'user_name' => $this->input->post('username'),
