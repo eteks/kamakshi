@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD:application/models/index_model.php
 
 class Index_Model extends CI_Model {
 	
@@ -147,12 +146,7 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
-
-
-
-
-
-
+    //  Get product details
 	public function get_product_details()
 	{	
 		if($this->uri->segment(2)){
