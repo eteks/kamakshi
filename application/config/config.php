@@ -24,6 +24,8 @@
 */
 $config['base_url'] = 'http://localhost/kamakshi/';
 
+$config['admin_base_url'] = '/kamakshi/index.php/admin';
+
 // echo $config['base_url'];
 
 /*

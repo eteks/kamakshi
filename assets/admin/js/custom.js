@@ -5,6 +5,13 @@ $(document).ready(function() {
         }
     });
 
+    jQuery(".attribute_status").on('change',function () {
+    	if($(this).is(":checked"))
+    		$('.attribute_group').show();
+    	else
+    		$('.attribute_group').hide();
+    });
+
     jQuery(".category_act").on('change',function () {
         selected_category = $.trim($('option:selected',this).text());
         selected_category_id = $('option:selected',this).val();

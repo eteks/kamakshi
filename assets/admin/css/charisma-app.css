@@ -358,6 +358,9 @@ ul.ajax-loaders {
     padding-top: 30px;
     height: 120px;
 }
+.login-header h2{
+    color: #4fbfa8;
+}
 .pull-left {
     float: left !important;
 }
@@ -635,7 +638,7 @@ ul.github-buttons li {
      padding: 21px 0 0;
 } */
 .btn-primary {
-    background-color: #4fbfa8;
+    background-color: #4fbfa8 !important;
     /*border-color: #41b39c;*/
     color: #ffffff;
 }

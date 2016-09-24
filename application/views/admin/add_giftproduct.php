@@ -42,7 +42,7 @@
             <div class="box-content">
              <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
              <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form">
-                <form role="form" id="giftproduct">
+             <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
                         <label for="titlename">Product Title</label>
                         <input type="text" class="form-control" id="titlename" placeholder="Enter title Name" name="product_title">
@@ -104,6 +104,37 @@
                                 <option value="0">Inactive</option>
                             </select>
                         </div>
+                    </div>
+            <p class="product_tab"><input type="checkbox" class="attribute_status"> Want to Add Product Attributes?</p>
+                    <div class="attribute_group">
+                        <div class="form-group attribute_block">
+                            <label for="total_iteams" class="fl">Attribute Option</label>
+                            <div class="clone_attribute">
+                                <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
+                                        <option value="">Select Attribute</option>
+                                        <option value="1">Size</option>
+                                        <option value="0">Weight</option>
+                                </select>
+                                <input type="text" class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
+                            </div>
+                            <!-- <div class="clone_attribute">
+                                <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
+                                        <option value="">Select Attribute</option>
+                                        <option value="1">Size</option>
+                                        <option value="0">Weight</option>
+                                </select>
+                                <input type="text" class="form-control" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
+                            </div>     -->
+                            <input type="button" value="Add" class="btn submit-btn btn-default attibute_add">
+                        </div> 
+                        <div class="form-group attribute_block">
+                            <label for="price" class="fl">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Enter price" name="product_price">
+                        </div> 
+                         <div class="form-group attribute_block">
+                            <label for="total_iteams" class="fl">Total Items</label>
+                            <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_totalitems">
+                        </div> 
                     </div>
                     <div class="group">    
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
