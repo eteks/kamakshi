@@ -545,6 +545,140 @@ class Adminindex extends CI_Controller {
 	public function add_giftproduct()
 	{	
 		// print_r($_POST);
+		// print_r($_FILES['product_image']['name']);
+		$status = array();//array is initialized
+		$errors='';
+		$product_image = array();
+		$validation_rules = array(
+	       array(
+	             'field'   => 'product_title',
+	             'label'   => 'Product Title',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'product_description',
+	             'label'   => 'Product Description',
+	             'rules'   => 'trim|required|xss_clean'
+	          ), 
+	       array(
+	             'field'   => 'select_category[]',
+	             'label'   => 'Category',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),   
+	       array(
+	             'field'   => 'select_subcategory[]',
+	             'label'   => 'SubCategory',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),   
+	       array(
+	             'field'   => 'select_recipient[]',
+	             'label'   => 'Recipient',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),   
+	        array(
+	             'field'   => 'product_price',
+	             'label'   => 'Product Price',
+	             'rules'   => 'trim|required|xss_clean'
+	        ),
+	        array(
+	             'field'   => 'product_totalitems',
+	             'label'   => 'Totalitems',
+	             'rules'   => 'trim|required|xss_clean'
+	        ),   
+	        array(
+	             'field'   => 'product_status',
+	             'label'   => 'Status',
+	             'rules'   => 'trim|required|xss_clean'
+	        ),   
+	    );
+	    $this->form_validation->set_rules($validation_rules);
+	    if ($this->form_validation->run() == FALSE) {
+	    	foreach($validation_rules as $row){
+	            $field = $row['field'];          //getting field name
+	            $error = form_error($field);    //getting error for field name
+	                                            //form_error() is inbuilt function
+	            //if error is their for field then only add in $errors_array array
+	            // echo "error".$error;
+	            if($error){
+	                if (strpos($error,"field is required.") !== false){
+	                    $errors = $error; 
+	                    break;
+	                }
+	                else
+	                    $errors[$field] = $error; 
+	            }
+        	}
+	        if (strpos($errors,"field is required.") !== false){  
+	             $status = array(
+	                'error_message' => 'Please fill out all mandatory fields'
+	             );
+	        }
+    	}
+    	else{
+    		if(!empty($_POST)){
+				//Check whether user upload picture
+				if(!empty($_FILES['product_image']['name'])){
+					$filesCount = count($_FILES['product_image']['name']);
+					for($i = 0; $i < $filesCount; $i++){
+						// array_push($product_image,$_FILES['userFiles']['name'][$i]);
+						$_FILES['userFile']['name'] = $_FILES['product_image']['name'][$i];
+		                $_FILES['userFile']['type'] = $_FILES['product_image']['type'][$i];
+		                $_FILES['userFile']['tmp_name'] = $_FILES['product_image']['tmp_name'][$i];
+		                $_FILES['userFile']['error'] = $_FILES['product_image']['error'][$i];
+		                $_FILES['userFile']['size'] = $_FILES['product_image']['size'][$i];
+
+						$config['upload_path'] = FCPATH.ADMIN_MEDIA_PATH; 
+						$config['allowed_types'] = FILETYPE_ALLOWED;//FILETYPE_ALLOWED which is defined constantly in constants file
+						$config['file_name'] = $_FILES['product_image']['name'][$i];
+
+						$this->upload->initialize($config);
+						if($this->upload->do_upload('userFile')){
+						    $uploadData = $this->upload->data();
+						    array_push($product_image,ADMIN_MEDIA_PATH.$uploadData['file_name']);
+							$product_image[$i] = ADMIN_MEDIA_PATH.$uploadData['file_name'];
+						}else{
+							$errors = $this->upload->display_errors();
+						    // array_push($product_image,'');
+						    $product_image[$i] = '';
+						}
+					}
+				}else{
+					// echo "else";
+					$errors = "Please Upload Product Image";
+					$category_image = '';
+				}	
+				if (!empty($errors)) {
+					$status = array(
+	                	'error_message' => strip_tags($errors)
+	             	);
+				}
+				else{
+					$data = array(
+					'product_title' => $this->input->post('product_title'),
+					'product_description' => $this->input->post('product_description'),
+					'product_category_id' => $this->input->post('select_category'),
+					'product_subcategory_id' => $this->input->post('select_subcategory'),
+					'product_recipient_id' => $this->input->post('select_recipient'),
+					'product_price' => $this->input->post('product_price'),
+					'product_totalitems' => $this->input->post('product_totalitems'),
+					'product_status' => $this->input->post('product_status'),
+					);
+					$product_image_data = array(
+						'product_image' => $product_image,
+					);
+					$result = $this->catalog->insert_product($data,$product_image_data);
+					if($result)
+						$status = array(
+	                		'error_message' => "Product Inserted Successfully!"
+	             		);
+					else
+						$status = array(
+	                		'error_message' => "Product Already Exists!"
+	             		);
+				}		
+			}
+    	}
+		// print_r($status);	
 		$status['category_list'] = $this->catalog->get_categories();
 		$this->load->view('admin/add_giftproduct',$status);
 	}
@@ -746,13 +880,6 @@ class Adminindex extends CI_Controller {
 		$category_id=$_POST['category_id'];	
 		$category_name = $_POST['category_name'];	
 		$category_reference_data = $this->catalog->get_category_reference($category_id);
-		// print_r($category_reference_data['subcategory_category']);
-		// print_r($category_reference_data['recipient_category']);
-		// echo json_encode(
-		// 	array('subcategory' => $category_reference_data['subcategory_category'],
-		// 		'recipient' => $category_reference_data['recipient_category'],
-		// 	)
-		// );
 		echo json_encode($category_reference_data);
 	}
 }

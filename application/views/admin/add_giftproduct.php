@@ -49,7 +49,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Product Image</label>
-                        <input type="file" id="category_image" name="product_image[]" multiple>
+                        <input type="file" id="category_image" name="product_image[]" multiple="multiple">
                     </div>
                      <div class="form-group">
                         <label for="description">Description</label>

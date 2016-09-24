@@ -284,7 +284,7 @@ class Catalog extends CI_Model {
 
 		// $query = $this->db->get()->result_array();
 
-		$condition = "reccat.recipient_mapping_id =".$id;
+		$condition = "reccat.category_mapping_id =".$id;
 		$this->db->select('rec.recipient_id,rec.recipient_type');
 		$this->db->from('giftstore_recipient AS rec');
 		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'left');
@@ -296,4 +296,32 @@ class Catalog extends CI_Model {
 		//return all records in array format to the controller
 		return $query;
 	}
+	public function insert_product($data,$product_image_data)
+	{	
+		// Query to check whether category name already exist or not
+		$condition = "product_title =" . "'" . $data['product_title'] . "'";
+		$this->db->select('*');
+		$this->db->from('giftstore_product');
+		$this->db->where($condition);
+		// $this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() == 0) {
+			// Query to insert data in database
+			$this->db->insert('giftstore_product', $data);
+			//get inserted subcategory id to map in subcategory category relationship table
+			$product_id = $this->db->insert_id();
+			foreach($product_image_data['product_image'] as $key => $value) {
+				$product_image_map = array(
+	                					'product_mapping_id' => $product_id,
+	                					'product_upload_image' => $value,
+	             						);
+				$this->db->insert('giftstore_product_upload_image', $product_image_map);
+			}
+			if ($this->db->affected_rows() > 0) {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}	
 }
