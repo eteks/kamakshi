@@ -14,17 +14,20 @@
             <!-- <div class="alert alert-info">
                 Please login with your Username and Password.
             </div> -->
-            <form class="form-horizontal" action="index.php" method="post">
+            <?php if (isset($error_message)){ 
+                echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+            }?>
+            <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin" name="login_form" id="login_form">
                 <fieldset>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control" placeholder="Username" name="username">
                     </div>
                     <div class="clearfix"></div><br>
 
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
                     </div>
                     <div class="clearfix"></div>
 
