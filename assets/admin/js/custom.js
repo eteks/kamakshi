@@ -7,9 +7,9 @@ $(document).ready(function() {
 
     jQuery(".attribute_status").on('change',function () {
     	if($(this).is(":checked"))
-    		$('.attribute_group').show();
+    		$('.attribute_main_block').show();
     	else
-    		$('.attribute_group').hide();
+    		$('.attribute_main_block').hide();
     });
 
     jQuery(".category_act").on('change',function () {

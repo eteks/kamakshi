@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+session_start(); //we need to start session in order to access it through CI
 class Login extends CI_Controller {
 	public function __construct()
 	{
@@ -9,10 +9,11 @@ class Login extends CI_Controller {
 		$this->load->helper('form');
 		// Load form validation library
 		$this->load->library('form_validation');
-		$this->load->library('session');
 	}
 	public function index_login()
 	{	
+		if($this->session->userdata('logged_in'))
+			redirect('admin/dashboard');
 		$status = array();//array is initialized
 		$errors='';
 		$validation_rules = array(
@@ -73,6 +74,8 @@ class Login extends CI_Controller {
 					// 'error_message' => 'Successfully logged'
 					// );
 					// $this->render('admin');
+					// $this->load->view('admin/index');
+					redirect('admin/dashboard');
 					}
 				} else {
 					$status = array(
@@ -83,5 +86,18 @@ class Login extends CI_Controller {
 				}
 			}
     	}
+	}
+	// Logout from admin page
+	public function logout() {
+		// Removing session data
+		$sess_array = array(
+		'username' => '',
+		'email' => ''
+		);
+		// $this->session->unset_userdata('logged_in', $sess_array);
+		$this->session->sess_destroy();
+		// $status['error_message'] = 'Successfully Logged out';
+		// $this->load->view('admin/login',$status);
+		$this->load->view('admin/login');
 	}
 }
