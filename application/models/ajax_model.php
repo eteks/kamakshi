@@ -116,5 +116,18 @@ class Ajax_Model extends CI_Model {
 
         return $data;
     }
+
+    //  Remove products in basket
+    public function get_remove_product() {
+        if($this->input->post('bas_pro_id')) {
+            $order_session_id = $this->session->userdata('user_session_id');
+            $basket_remove_where='(orderitem_product_id="'.$this->input->post('bas_pro_id').'" and orderitem_session_id= "'.$order_session_id.'")';
+
+            $this->db->where($basket_remove_where);
+            $this->db->delete('giftstore_orderitem');
+            $query_status="success";
+        }
+        return $query_status;
+    }
  
 }

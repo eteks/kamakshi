@@ -210,6 +210,28 @@ class Index_Model extends CI_Model {
         return $query;
     }
     
+    //  Get cart details
+    public function get_cart_details() {
+
+        $basket_where =  '(bo.orderitem_session_id="'.$this->session->userdata('user_session_id').'" and bo.orderitem_status=1)';
+        $basket_query = $this->db->select('*');
+        $basket_query = $this->db->from('giftstore_orderitem bo');
+        $basket_query = $this->db->join('giftstore_product bp','bo.orderitem_product_id=bp.product_id','inner');
+        $basket_query = $this->db->join('giftstore_product_upload_image bpu','bp.product_id=bpu.product_mapping_id','inner');
+        $basket_query = $this->db->where($basket_where);
+        $basket_query = $this->db->group_by('bo.orderitem_id');
+
+
+
+        $query['basket_details'] = $basket_query->get()->result_array();
+        $query['basket_count'] = count($query['basket_details']);
+        
+        return $query;
+    }
+
+
+
+
     // Read data from database to show data in admin page
     public function read_user_information($username)
     {

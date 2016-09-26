@@ -1,4 +1,35 @@
 $(document).ready(function() {
+
+
+    if($('#total_amount').val() == 0 ) {
+        $('.basket_section_button').css('pointer-events','none');
+        $('.basket_section_button').attr('disabled',true);
+    }
+    else {
+        $('.basket_section_button').css('pointer-events','auto');
+        $('.basket_section_button').attr('disabled',false);
+    }   
+
+    //if the letter is not digit then display error and don't type anything
+    $('.product_quantity').on('keypress',function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
+
+    $('.product_quantity').on('keyup',function() {
+        
+        var this_parent = $(this).parents('.amount_structure');
+        alert(JSON.stringify(this_parent));
+
+
+
+
+
+    });
+
+
+
     required_login=["email-modal","password-modal"];
     required_login_reg=["email-log","password-log"];
     required_signup=["name","password-reg","email-reg"];

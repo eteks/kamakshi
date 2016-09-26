@@ -18,8 +18,7 @@ class Index extends CI_Controller
     }
 	public function index()
 	{
-
-	  $categories_values_reg = $this->index_model->get_register();
+      $categories_values_reg = $this->index_model->get_register();
       $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
       $categories['order_details'] = $categories_values_reg['order_details'];
       $categories['order_count'] = $categories_values_reg['order_count'];
@@ -102,8 +101,15 @@ class Index extends CI_Controller
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories_values_basket = $this->index_model->get_cart_details();
+        $categories['basket_details'] = $categories_values_basket['basket_details'];
+        $categories['basket_count'] = $categories_values_basket['basket_count'];
+        // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
+
+
+
 	public function checkout1()
 	{
 		$this->load->view('checkout1');

@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
+                        <li><a href="<?php echo base_url(); ?>index.php">Home</a>
                         </li>
                         <li>Shopping cart</li>
                     </ul>
@@ -13,7 +13,7 @@
                     <div class="box">
                         <form method="post" action="<?php echo base_url(); ?>index.php/checkout1/">
                             <h1>Shopping cart</h1>
-                            <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+                            <p class="text-muted">You currently have <?php echo $basket_count; ?> item(s) in your cart.</p>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -26,45 +26,47 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                    <?php 
+                                        $total = 0;
+                                        foreach ($basket_details as $basket_det): 
+                                    ?>
+                                        <tr class="amount_structure">
                                             <td>
-                                                <a href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/img/detailsquare.jpg" alt="White Blouse Armani">
+                                               <img src="<?php echo base_url().$basket_det['product_upload_image']; ?>" alt="White Blouse Armani">
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $basket_det['product_id'] ?>" data="grp_id">    
+                                                    <?php echo $basket_det['product_title']; ?>
                                                 </a>
                                             </td>
-                                            <td><a href="#">Flowers and Cakes</a>
+                                            <td>
+                                                <input type="text" value="<?php echo $basket_det['orderitem_quantity']; ?>" class="form-control product_quantity" maxlength="3" />
+                                            </td>
+                                            <td> 
+                                                &#8377; <?php echo $basket_det['orderitem_price']; ?>
                                             </td>
                                             <td>
-                                                <input type="number" value="2" class="form-control">
+                                                &#8377; 0.00
                                             </td>
-                                            <td>$123.00</td>
-                                            <td>$0.00</td>
-                                            <td>$246.00</td>
-                                            <td><a href="#"><i class="fa fa-trash-o"></i></a>
+                                            <td>
+                                                &#8377; <span class="product_total"> <?php echo $basket_det['orderitem_quantity']*$basket_det['orderitem_price']; ?>  </span>
                                             </td>
+                                            <td>
+                                                <a class="basket_product_items" data-id="<?php echo $basket_det['product_id']; ?>"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                            <?php 
+                                                $total +=  $basket_det['orderitem_quantity']*$basket_det['orderitem_price']; 
+                                            ?> 
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                </a>
-                                            </td>
-                                            <td><a href="#">Fashion and Style</a>
-                                            </td>
-                                            <td>
-                                                <input type="number" value="1" class="form-control">
-                                            </td>
-                                            <td>$200.00</td>
-                                            <td>$0.00</td>
-                                            <td>$200.00</td>
-                                            <td><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                    <?php endforeach; ?> 
+
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th colspan="2">$446.00</th>
+                                            <th colspan="2">&#8377; 
+                                                <span class="product_overall_total">  <?php echo $total; ?> </span>
+                                            </th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -72,11 +74,11 @@
                             <!-- /.table-responsive -->
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="<?php echo base_url(); ?>index.php/category/" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+                                    <a href="<?php echo base_url(); ?>index.php/" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-default"><i class="fa fa-refresh"></i> Update basket</button>
-                                    <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                                    <button class="btn btn-default basket_section_button" id="updation_button"><i class="fa fa-refresh"></i> Update basket</button>
+                                    <button type="submit" class="btn btn-primary basket_section_button" id="checkout_button">Proceed to checkout <i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                            </div>
@@ -177,23 +179,38 @@
                         </div>
                         <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="basket_table">
                                 <tbody>
                                     <tr>
                                         <td>Order subtotal</td>
-                                        <th>$446.00</th>
+                                        <th>&#8377; <span class="product_subtotal"> <?php echo $total; ?></th> </span>
                                     </tr>
                                     <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
+                                        <td>
+                                            Shipping and handling
+                                        </td>
+                                        <th>
+                                            &#8377; <?php 
+                                                $shipping_amount = 10.00 ;
+                                                echo $shipping_amount; 
+                                            ?>
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <td>Tax</td>
-                                        <th>$0.00</th>
+                                        <td>
+                                            Tax
+                                        </td>
+                                        <th>
+                                            &#8377; 0.00
+                                        </th>
                                     </tr>
                                     <tr class="total">
-                                        <td>Total</td>
-                                        <th>$456.00</th>
+                                        <td>
+                                            Total
+                                        </td>
+                                        <th>
+                                            &#8377; <span class="product_total_ship"> <?php echo $shipping_amount+$total; ?> </span>
+                                        </th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -221,4 +238,30 @@
         </div>
         <!-- /#content -->
       </div>
+      <input type="hidden" id="total_amount" value="<?php echo $total; ?>">
 <?php include "templates/footer.php"; ?>
+
+
+
+
+<script>
+// Ajax post
+$(document).ready(function() {
+    // AJAX for removing items in basket
+    $(".basket_product_items").click(function() {
+        var bas_pro_id = $(this).data('id');
+        jQuery.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/remove_baseket_product",
+        data: {bas_pro_id: bas_pro_id},
+
+        success: function(res) {
+        if (res)
+        {
+            location.reload();
+        }
+        }
+        });
+    });
+});
+</script>

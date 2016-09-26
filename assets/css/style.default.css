@@ -697,9 +697,10 @@ h1 {
 }
 #content #order-summary table tr.total td,
 #content #order-summary table tr.total th {
-  font-size: 18px;
   color: #555555;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: bolder;
+  padding: 6px;
 }
 #content #checkout .table tbody tr td,
 #content #basket .table tbody tr td,
