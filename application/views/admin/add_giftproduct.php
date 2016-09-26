@@ -118,6 +118,15 @@
                                     </select>
                                     <input type="text" class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
                                 </div>
+                                <label for="total_iteams" class="fl add-values2"></label>
+                                <div class="clone_attribute add-values2">
+                                    <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl add-values2">
+                                            <option value="">Select Attribute</option>
+                                            <option value="1">Size</option>
+                                            <option value="0">Weight</option>
+                                    </select>
+                                    <input type="text" class="form-control fl add-values2" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
+                                </div>
                                 <!-- <div class="clone_attribute">
                                     <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
                                             <option value="">Select Attribute</option>
@@ -126,7 +135,8 @@
                                     </select>
                                     <input type="text" class="form-control" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
                                 </div>     -->
-                                <input type="button" value="Add" class="btn submit-btn btn-default attibute_add">
+                                <input type="button" value="Add" class="btn submit-btn btn-default attibute_add_btn">
+                                <input type="button" value="Remove" class="btn submit-btn btn-default attibute_add_btn">
                             </div> 
                             <div class="form-group attribute_block">
                                 <label for="price" class="fl">Price</label>
@@ -136,14 +146,13 @@
                                 <label for="total_iteams" class="fl">Total Items</label>
                                 <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_totalitems">
                             </div> 
-                        </div>  
-                        <div class="attribute_main_add">  
-                             <input type="button" value="Add" class="btn submit-btn btn-default attibute_add">
-                        </div> <!-- attribute_main_add -->
+                        </div>   
                     </div>
-                    <div class="group">    
+                    <div class="group">
+                        <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
+                        <input type="button" value="Remove" class="btn submit-btn btn-default attibute_add product-btns">      
+                    </div>
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
-                    </div>
                 </form>
 
             </div>

@@ -44,8 +44,8 @@
     width: 981px;
 }
 .attribute_block label{
-	width: 125px;
-    margin-top: 10px;
+	width: 125px !important;
+    margin-top: 10px ;
 }
 .attribute_block select{
     margin: 0 7px 0 0;
@@ -53,6 +53,13 @@
 }
 .attibute_add{
 	margin-left: 20px;
+    margin-top: 50px;
+}
+.attibute_add_btn{
+    margin-left: 10px;
+    margin-top: 60px;
+    font-size: 12px;
+    padding: 5px;
 }
 /*.clone_attribute{
 	display: block;
@@ -62,11 +69,10 @@
 }
 .attribute_group{
 	border: 1px solid #cccccc;
-    height: 170px;
+    height: auto;
     padding: 10px;
-    width: 795px;
+    width: 835px;
     margin-bottom:10px;
-    display: none;
 }
 .edit-catpro-image {
     padding: 10px;
@@ -90,4 +96,16 @@
     padding: 2px;
     position: relative;
     top: -25px;
+}
+.attribute-clone{
+    margin-bottom: 10px;
+}
+.add-values2{
+    margin-bottom: 15px !important;
+    margin-top: 15px !important;
+}
+.product-btns{
+    display: inline-block !important;
+    margin-top: 210px !important;
+    margin-bottom: 30px !important;
 }
