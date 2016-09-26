@@ -52,5 +52,9 @@ $(document).ready(function() {
 	        });
 	    }     
     });
-
+    var cloneCount = 1;
+    jQuery(".attibute_add").on('click',function () {
+    	cloneCount = cloneCount +1;
+    	$('.clone_attribute:last').clone().attr('id', 'clone_attribute'+cloneCount).appendTo('.clone_attribute_group');
+    });
 });
