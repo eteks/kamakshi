@@ -40,52 +40,101 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" id="giftproduct">
+             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
+             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form">
+             <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
-                        <label for="titlename">Title Name</label>
-                        <input type="email" class="form-control" id="titlename" placeholder="Enter title Name">
+                        <label for="titlename">Product Title</label>
+                        <input type="text" class="form-control" id="titlename" placeholder="Enter title Name" name="product_title">
                     </div>  
                     <div class="form-group">
-                        <label for="category_image">Category Image</label>
-                        <input type="file" id="category_image">
+                        <label for="category_image">Product Image</label>
+                        <input type="file" id="category_image" name="product_image[]" multiple="multiple">
                     </div>
                      <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea type="email" class="form-control" id="description" placeholder="Enter description"></textarea>
+                        <textarea type="text" class="form-control" id="description" placeholder="Enter description" name="product_description"></textarea>
                     </div> 
-                     <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="email" class="form-control" id="price" placeholder="Enter price ">
-                    </div> 
-                     <div class="form-group">
-                        <label for="total_iteams">Total Iteams</label>
-                        <input type="email" class="form-control" id="total_iteams" placeholder="Enter total iteams">
-                    </div> 
-                     <div class="form-group">
-                        <label for="sold">Sold</label>
-                        <input type="email" class="form-control" id="sold" placeholder="Enter Sold">
-                    </div> 
-                     <div class="form-group">
-                        <label for="size">Size</label>
-                        <input type="email" class="form-control" id="size" placeholder="Enter Size">
-                    </div> 
-                     <div class="form-group">
-                        <label for="wight">Wight</label>
-                        <input type="email" class="form-control" id="wigh" placeholder="Enter Wight">
-                    </div> 
-                     <div class="form-group">
-                        <label for="color_name">Colorname</label>
-                        <input type="email" class="form-control" id="color_name" placeholder="Enter Color Name">
-                    </div> 
-                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                    <div class="control-group">
+                        <label class="control-label" for="sel_c">Choose Category</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                            <select id="sel_c" class="product-type-filter form-control category_act" name="select_category">
+                            <option value="">Select Category</option>
+                                <?php foreach ($category_list as $cat): ?>
+                                    <option value="<?php echo $cat["category_id"] ?>"><?php echo $cat["category_name"] ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="sel_c">Choose SubCategory</label>
+                        <div class="controls">
+                            <select id="sel_c" class="product-type-filter form-control subcategory_act" name="select_subcategory">
+                            <option value="">Select Subcategory</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="sel_c">Choose Recipient</label>
+                        <div class="controls">
+                            <select id="sel_c" class="product-type-filter form-control recipient_act" name="select_recipient">
+                            <option value="">Select Recipient</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" class="form-control" id="price" placeholder="Enter price" name="product_price">
+                    </div> 
+                     <div class="form-group">
+                        <label for="total_iteams">Total Items</label>
+                        <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_totalitems">
+                    </div> 
+                    <!-- <div class="form-group">
+                        <label for="sold">Sold</label>
+                        <input type="text" class="form-control" id="sold" placeholder="Enter Sold" disabled="">
+                        <input type="hidden" name="product_sold">
+                    </div>  -->
+                    <div class="control-group">
+                        <label class="control-label" for="sel_c">Status</label>
+                        <div class="controls">
+                            <select name="product_status" id="sel_c" class="product-type-filter form-control city_act">
+                                <option value="">Select</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+            <p class="product_tab"><input type="checkbox" class="attribute_status"> Want to Add Product Attributes?</p>
+                    <div class="attribute_group">
+                        <div class="form-group attribute_block">
+                            <label for="total_iteams" class="fl">Attribute Option</label>
+                            <div class="clone_attribute">
+                                <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
+                                        <option value="">Select Attribute</option>
+                                        <option value="1">Size</option>
+                                        <option value="0">Weight</option>
+                                </select>
+                                <input type="text" class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
+                            </div>
+                            <!-- <div class="clone_attribute">
+                                <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
+                                        <option value="">Select Attribute</option>
+                                        <option value="1">Size</option>
+                                        <option value="0">Weight</option>
+                                </select>
+                                <input type="text" class="form-control" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
+                            </div>     -->
+                            <input type="button" value="Add" class="btn submit-btn btn-default attibute_add">
+                        </div> 
+                        <div class="form-group attribute_block">
+                            <label for="price" class="fl">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Enter price" name="product_price">
+                        </div> 
+                         <div class="form-group attribute_block">
+                            <label for="total_iteams" class="fl">Total Items</label>
+                            <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_totalitems">
+                        </div> 
                     </div>
                     <div class="group">    
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>

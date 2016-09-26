@@ -123,11 +123,6 @@
             </div>
         </div>
     </div>
-    <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="#">Kamakshi</a> 2016</p>
-        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://etkchnoservices.com/"  target="_blank">Etekchno Services</a></p>
-    </footer>
 </div><!--/.fluid-container-->
 <script type="text/javascript">
     $(document).on('ready', function() {

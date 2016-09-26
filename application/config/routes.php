@@ -61,6 +61,7 @@ $route['customer_orders'] = 'index/customer_orders';
 $route['customer_order'] = 'index/customer_order';
 
 //Route url for admin
+$route['admin'] = 'admin/login/index_login';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
@@ -77,6 +78,10 @@ $route['adminindex/edit_giftproduct'] = 'adminindex/edit_giftproduct';
 $route['adminindex/product_attributes'] = 'adminindex/product_attributes';
 $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes';
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
+$route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
+
+
+
 
 
 $route['adminindex/area'] = 'adminindex/area';
@@ -89,6 +94,7 @@ $route['adminindex/edit_city'] = 'adminindex/edit_city';
 $route['adminindex/state'] = 'adminindex/state';
 $route['adminindex/add_state'] = 'adminindex/add_state';
 $route['adminindex/edit_state'] = 'adminindex/edit_state';
+
 
 
 

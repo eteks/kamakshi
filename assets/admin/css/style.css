@@ -1,3 +1,6 @@
+.fl{
+	float:left;
+}
 .image_icon{
 	height: 44px;
     width: 43px;
@@ -11,4 +14,33 @@
 .error_msg_reg{
   color: #ff0000;
   font-size: 12px;
+}
+.product_tab{
+	background-color: #4fbfa8;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+    width: 981px;
+}
+.attribute_block label{
+	width: 125px;
+    margin-top: 10px;
+}
+.attribute_block select{
+    margin: 0 7px 0 0;
+    padding-left: 4px;
+}
+.attibute_add{
+	margin-left: 20px;
+}
+/*.clone_attribute{
+	display: block;
+}*/
+.attribute_group{
+	border: 1px solid #cccccc;
+    height: 170px;
+    padding: 10px;
+    width: 977px;
+    margin-bottom:10px;
+    display: none;
 }
