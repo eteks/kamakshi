@@ -27,9 +27,12 @@ class Adminindex extends CI_Controller {
 		// Load form validation library
 		$this->load->library('form_validation');
 	}
-	public function index()
+	public function dashboard()
 	{	
-		$this->load->view('admin/index');
+		if($this->session->userdata('logged_in'))
+			$this->load->view('admin/index');
+		else
+			redirect('admin');
 	}
 	public function category()
 	{	

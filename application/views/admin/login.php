@@ -31,9 +31,9 @@
                     </div>
                     <div class="clearfix"></div>
 
-                    <div class="input-prepend">
+                    <!-- <div class="input-prepend">
                         <label class="remember" for="remember"><input type="checkbox" id="remember"> Remember me</label>
-                    </div>
+                    </div> -->
                     <div class="clearfix"></div>
 
                     <p class="center col-md-5">

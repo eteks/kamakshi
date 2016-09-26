@@ -64,17 +64,20 @@
             </button>
             <a class="navbar-brand" href="index.php"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
             <span>Kamakshi Gifts</span></a>
-            <?php if ($_SERVER['REQUEST_URI'] !== $this->config->item('admin_base_url')){?>
+            <?php if (!empty($this->session->userdata('logged_in'))){?>
                 <!-- user dropdown starts -->
                 <div class="btn-group pull-right">
                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                        <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> 
+                        <?php 
+                        $session_data = $this->session->userdata('logged_in');
+                        echo $session_data['username']; ?></span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="#">Profile</a></li>
                         <li class="divider"></li>
-                        <li><a href="login.php">Logout</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/admin/logout">Logout</a></li>
                     </ul>
                 </div>
                 <!-- user dropdown ends -->
@@ -130,7 +133,7 @@
     //echo $_SERVER['REQUEST_URI']."<br>";
     //echo $this->config->item('admin_base_url')."<br>"; 
     ?>
-    <?php if ($_SERVER['REQUEST_URI'] !== $this->config->item('admin_base_url')){?> 
+    <?php if (!empty($this->session->userdata('logged_in'))){?> 
     <!-- left menu starts -->
         <div class="col-sm-2 col-lg-2">
             <div class="sidebar-nav">
