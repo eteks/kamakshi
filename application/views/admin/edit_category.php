@@ -52,12 +52,54 @@
                         <?php
                             $img_source = $category_data['category_image']; 
                         ?>
-                            <a class='dispaly_hide_offer' href='<?php echo $img_source; ?>' target='_blank'> 
-                            <?php if($img_source != '') {?>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/> 
-                            <?php } ?>
-                            <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>">
-                            </a>
+                            <!-- <div class="edit-catpro-image"> -->
+                            <!-- <a class='dispaly_hide_offer' href='<?php echo $img_source; ?>' target='_blank'> --> 
+                            <!-- <?php if($img_source != '') {?>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/><br />
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/><?php } ?>
+                            <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>"> -->
+                        <div class="edit-catpro-image">
+                           <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div><br />
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                           <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                        </div>
+                            <!-- </a> -->
+                           <!--  </div> -->
                             <input type="hidden" value="<?php echo $img_source; ?>" name="old_path_name" />
                     </div>
                    <div class="control-group">

@@ -48,6 +48,40 @@
                     <div class="form-group">
                         <label for="exampleInputFile">Category Image</label>
                         <input type="file" id="category_image">
+                        <div class="edit-catpro-image">
+                           <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div><br />
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                           <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#">X</a></span>
+                           </div>
+                        </div>
                     </div>
                      <div class="form-group">
                         <label for="exampleInputEmail1">Description</label>

@@ -264,7 +264,7 @@ div.uploader {
     -moz-border-radius: 14px;
 }
 footer {
-    clear: both;
+    width: 100%;
 }
 div.center, p.center, img.center {
     margin-left: auto !important;
@@ -747,3 +747,4 @@ a{
     text-align: center;
     left: -15px;
 }
+
