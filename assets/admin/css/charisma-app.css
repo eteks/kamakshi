@@ -265,6 +265,8 @@ div.uploader {
 }
 footer {
     width: 100%;
+    margin-left: 0px !important;
+    margin-top: 40px !important;
 }
 div.center, p.center, img.center {
     margin-left: auto !important;
