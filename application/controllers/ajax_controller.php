@@ -38,5 +38,12 @@ class Ajax_Controller extends CI_Controller {
 		$remove_status = $this->ajax_model->get_remove_product();
 		echo $remove_status;		
 	}
+	// Update products in basket
+	public function update_baseket_product()
+	{	
+		$remove_status = $this->ajax_model->get_update_product();
+		// echo $remove_status;	
+		echo $remove_status;	
+	}
 
 } // end of the class 
