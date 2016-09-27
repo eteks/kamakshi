@@ -1,12 +1,10 @@
 <?php
-class Register extends CI_Model
+class Index_Model extends CI_Model
 {
-    
     public function __construct()
     {
         $this->load->database();
-    }
-    
+    }    
     public function get_register()
     {
         $query = $this->db->get('giftstore_category');
@@ -36,30 +34,44 @@ class Register extends CI_Model
         }
         return $query;
     }
-    
-    public function registration_insert($data)
-    {
-        
-        // Query to check whether username already exist or not
-        $where = '(user_name="' . $data['user_name'] . '" or user_email="' . $data['user_email'] . '")';
+    //REGISTRATION FORM//
+    //SIGNUP MODEL//
+    public function insert_user_registration($data)
+    {   
+        // Query to check whether user name/email already exist or not
+        $condition = "user_name =" . "'" . $data['user_name'] . "'";
         $this->db->select('*');
         $this->db->from('giftstore_users');
-        $this->db->where($where);
+        $this->db->where($condition);
+        // $this->db->limit(1);
         $query = $this->db->get();
-        if ($query->num_rows() > 0) {
+        if ($query->num_rows() == 0) {
+            // Query to insert data in database
+            $this->db->insert('giftstore_users', $data);
+            if ($this->db->affected_rows() > 0) {
+                return true;
+            }
+        } else {
             return false;
         }
-        return $query;
     }
-    public function mail_exists($key)
-    {
-        $this->db->where('user_email', $key);
-        $query = $this->db->get('giftstore_users');
-        if ($query->num_rows() > 0) {
-            // print_r("Email already exists");
-            return true;
+    //LOGIN MODEL//
+    public function insert_user_login($data)
+    {   
+        // Query to check whether login name already exist or not
+        $condition = "user_email =" . "'" . $data['user_email'] . "'";
+        $this->db->select('*');
+        $this->db->from('giftstore_users');
+        $this->db->where($condition);
+        // $this->db->limit(1);
+        $query = $this->db->get();
+        if ($query->num_rows() == 0) {
+            // Query to insert data in database
+            $this->db->insert('giftstore_users', $data);
+            if ($this->db->affected_rows() > 0) {
+                return true;
+            }
         } else {
-            // print_r("Email registered");
             return false;
         }
     }
@@ -86,10 +98,7 @@ class Register extends CI_Model
             $query['product_category'] = $cat_product->get()->result_array();
             $query['cat_pro_count']    = count($query['product_category']);
         }
-        
-        
-        
-        return $query;
+        // return $query;
     }
     
     public function get_product_details()
@@ -154,38 +163,5 @@ class Register extends CI_Model
         return $query;
     }
     
-    // Read data from database to show data in admin page
-    public function read_user_information($username)
-    {
-        
-        $condition = "user_name =" . "'" . $username . "'";
-        $this->db->select('*');
-        $this->db->from('giftstore_users');
-        $this->db->where($condition);
-        $this->db->limit(1);
-        $query = $this->db->get();
-        
-        if ($query->num_rows() == 1) {
-            return $query->result();
-        } else {
-            return false;
-        }
-    }
-    
-    // Read data using username and password
-    public function login($data)
-    {
-        $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
-        $this->db->select('*');
-        $this->db->from('giftstore_users');
-        $this->db->where($condition);
-        $this->db->limit(1);
-        $query = $this->db->get();
-        
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }   
+       
 }
