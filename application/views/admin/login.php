@@ -20,13 +20,13 @@
             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin" name="login_form" id="login_form">
                 <fieldset>
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user users-icons"></i></span>
                         <input type="text" class="form-control" placeholder="Username" name="username">
                     </div>
                     <div class="clearfix"></div><br>
 
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock users-icons"></i></span>
                         <input type="password" class="form-control" placeholder="Password" name="password">
                     </div>
                     <div class="clearfix"></div>

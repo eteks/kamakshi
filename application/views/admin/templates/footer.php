@@ -1,9 +1,13 @@
-<footer class="row">
+<section id="footer">
+  <div class="container">
+    <div class="row">
     <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="#">Kamakshi</a> 2016</p>
 
     <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
             href="http://etekchnoservices.com/" target="_blank">Etekchno Services</a></p>
-</footer>
+</div>
+</div>
+</section>
 <!-- external javascript -->
 <script src="<?php echo base_url(); ?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- library for cookie management -->
