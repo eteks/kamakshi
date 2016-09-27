@@ -40,16 +40,23 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <input type="text" value="<?php echo $basket_det['orderitem_quantity']; ?>" class="form-control product_quantity" maxlength="3" />
+                                                <input type="text" value="<?php echo $basket_det['orderitem_quantity']; ?>" class="form-control product_quantity" maxlength="3" required />
+                                                <input type="hidden" data-productid="<?php echo $basket_det['product_id']; ?>" data-quantity="<?php echo $basket_det['orderitem_quantity']; ?>" class="update_basket_details" />
                                             </td>
                                             <td> 
-                                                &#8377; <?php echo $basket_det['orderitem_price']; ?>
+                                                &#8377; <span class="orderitem_price"> <?php echo $basket_det['orderitem_price']; ?>
+                                                <input type="hidden" value="<?php echo $basket_det['orderitem_price']; ?>" class="ordinary_orderitem_price" />
                                             </td>
                                             <td>
                                                 &#8377; 0.00
                                             </td>
                                             <td>
-                                                &#8377; <span class="product_total"> <?php echo $basket_det['orderitem_quantity']*$basket_det['orderitem_price']; ?>  </span>
+                                                <?php 
+                                                    $product_total = number_format($basket_det['orderitem_quantity']*$basket_det['orderitem_price'],2); 
+                                                ?>
+                                                &#8377; <span class="product_total"> <?php echo $product_total; ?>  </span>
+                                                <input type="hidden" class="ordinary_product_total" value="<?php echo $product_total; ?>" />
+                                                <input type="hidden" class="updated_product_total" value="<?php echo $product_total; ?>" />
                                             </td>
                                             <td>
                                                 <a class="basket_product_items" data-id="<?php echo $basket_det['product_id']; ?>"><i class="fa fa-trash-o"></i></a>
@@ -65,7 +72,8 @@
                                         <tr>
                                             <th colspan="5">Total</th>
                                             <th colspan="2">&#8377; 
-                                                <span class="product_overall_total">  <?php echo $total; ?> </span>
+                                                <span class="product_overall_total" data-value="<?php echo $total; ?>">  <?php echo number_format($total,2); ?> </span>
+                                                <input type="hidden" value="<?php echo number_format($total,2); ?>" class="overall_total_product_amount">
                                             </th>
                                         </tr>
                                     </tfoot>
@@ -77,7 +85,7 @@
                                     <a href="<?php echo base_url(); ?>index.php/" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-default basket_section_button" id="updation_button"><i class="fa fa-refresh"></i> Update basket</button>
+                                    <a class="btn btn-default basket_section_button" id="updation_button"><i class="fa fa-refresh"></i> Update basket</a>
                                     <button type="submit" class="btn btn-primary basket_section_button" id="checkout_button">Proceed to checkout <i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
@@ -183,7 +191,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Order subtotal</td>
-                                        <th>&#8377; <span class="product_subtotal"> <?php echo $total; ?></th> </span>
+                                        <th>&#8377; <span class="product_subtotal product_overall_total"> <?php echo number_format($total,2); ?></th> </span>
                                     </tr>
                                     <tr>
                                         <td>
@@ -191,9 +199,10 @@
                                         </td>
                                         <th>
                                             &#8377; <?php 
-                                                $shipping_amount = 10.00 ;
-                                                echo $shipping_amount; 
+                                                $shipping_amount = 10 ;
+                                                echo number_format($shipping_amount,2); 
                                             ?>
+                                            <input type="hidden" value="<?php echo number_format($shipping_amount,2); ?>" class="ordinary_shipping_amount" />
                                         </th>
                                     </tr>
                                     <tr>
@@ -209,7 +218,8 @@
                                             Total
                                         </td>
                                         <th>
-                                            &#8377; <span class="product_total_ship"> <?php echo $shipping_amount+$total; ?> </span>
+                                            &#8377; <span class="product_final_amount"> <?php echo number_format($shipping_amount+$total,2); ?> </span>
+                                            <input type="hidden" value="<?php echo number_format($shipping_amount+$total,2); ?>" class="ordinary_final_amount" />
                                         </th>
                                     </tr>
                                 </tbody>
@@ -252,6 +262,7 @@ $(document).ready(function() {
         var bas_pro_id = $(this).data('id');
         jQuery.ajax({
         type: "POST",
+        dataType : 'json',
         url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/remove_baseket_product",
         data: {bas_pro_id: bas_pro_id},
 
@@ -263,5 +274,39 @@ $(document).ready(function() {
         }
         });
     });
+
+
+
+// // AJAX for updating items in basket
+//     $("#updation_button").on('click',function() {
+//         var updation={};
+
+//         $('.amount_structure').each(function() {
+//             var product_id = $(this).find('.basket_product_items').data('id');
+//             var product_quantity = $(this).find('.product_quantity').val();
+//             updation[product_id] = product_quantity;
+//         });
+
+//         jQuery.ajax({
+//         type: "POST",
+//         url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/update_baseket_product",
+//         data: {updation_det : updation},
+
+//         success: function(res) {
+//         if (res)
+//         {
+//            if(res=="success") {
+//             alert("test");
+//            }
+//         }
+//         }
+//         });
+
+//     });
+
+
+
+    
 });
+
 </script>

@@ -107,18 +107,21 @@
                     </div>
             <p class="product_tab"><input type="checkbox" class="attribute_status"> Want to Add Product Attributes?</p>
                     <div class="attribute_main_block">
-                        <div class="attribute_group fl">
+                        <div class="attribute_group fl" id="attribute_group1">
                             <div class="form-group attribute_block">
                                 <label for="total_iteams" class="fl">Attribute Option</label>
-                                <div class="clone_attribute">
-                                    <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
-                                            <option value="">Select Attribute</option>
-                                            <option value="1">Size</option>
-                                            <option value="0">Weight</option>
-                                    </select>
-                                    <input type="text" class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
-                                </div>
-                                <label for="total_iteams" class="fl add-values2"></label>
+                                <div class="clone_attribute_group">
+                                    <div class="clone_attribute" id="clone_attribute1">
+                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl">
+                                                <option value="">Select Attribute</option>
+                                                <?php foreach ($attribute_list as $att): ?>
+                                                    <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
+                                                <?php endforeach ?>
+                                        </select>
+                                        <input type="text" class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]">
+                                    </div> <!--  clone_attribute -->
+                                </div> <!-- clone_attribute_group -->
+                                <!-- <label for="total_iteams" class="fl add-values2"></label>
                                 <div class="clone_attribute add-values2">
                                     <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl add-values2">
                                             <option value="">Select Attribute</option>
@@ -126,7 +129,7 @@
                                             <option value="0">Weight</option>
                                     </select>
                                     <input type="text" class="form-control fl add-values2" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value">
-                                </div>
+                                </div> -->
                                 <!-- <div class="clone_attribute">
                                     <select name="select_attribute" id="sel_c" class="product-type-filter form-control fl">
                                             <option value="">Select Attribute</option>
@@ -140,11 +143,11 @@
                             </div> 
                             <div class="form-group attribute_block">
                                 <label for="price" class="fl">Price</label>
-                                <input type="text" class="form-control" id="price" placeholder="Enter price" name="product_price">
+                                <input type="text" class="form-control" id="price" placeholder="Enter price" name="product_attribute_price[]">
                             </div> 
                              <div class="form-group attribute_block">
                                 <label for="total_iteams" class="fl">Total Items</label>
-                                <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_totalitems">
+                                <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_attribute_totalitems[]">
                             </div> 
                         </div>   
                     </div>
@@ -152,6 +155,9 @@
                         <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
                         <input type="button" value="Remove" class="btn submit-btn btn-default attibute_add product-btns">      
                     </div>
+                    <div class="group_values_block">
+                        <input type="hidden" class="group_values" name="group_values1" value="1" data-value="attribute_group1">
+                    </div> <!-- group_values_block -->
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                 </form>
 

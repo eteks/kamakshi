@@ -52,5 +52,27 @@ $(document).ready(function() {
 	        });
 	    }     
     });
-
+    var cloneCount = 1;
+    $(document).delegate('.attibute_add_btn','click',function () {
+    	cloneCount = cloneCount +1;
+    	$(this).siblings('.clone_attribute_group').find('.clone_attribute:last').clone().attr('id', 'clone_attribute'+cloneCount).appendTo($(this).siblings('.clone_attribute_group'));
+    	//Functionality used to increment the value of attribute group by attribute value add when add button click
+    	attribute_group_id = $(this).parents('.attribute_group').attr('id');
+    	group_value_element = $('.group_values').filter("[data-value="+attribute_group_id+"]");
+    	increment_val = parseInt(group_value_element.val()) + 1;
+   		group_value_element.val(increment_val);
+    });
+    var cloneCount_att = 1;
+    $(document).delegate('.attibute_add','click',function () {
+    	cloneCount_att = cloneCount_att +1;
+    	$(this).parents('.group').siblings('.attribute_main_block').find('.attribute_group:last').clone().attr('id', 'attribute_group'+cloneCount_att).appendTo('.attribute_main_block');
+    	id= $(this).parents('.group').siblings('.attribute_main_block').find('.attribute_group:last').attr('id');
+    	//Functionality used to create new attribute group elements status whether it is added or not
+    	if($('.group_values').filter("[data-value~="+id+"]").length ==0){
+    		newelement = "<input type='hidden' class='group_values' name='group_values"+cloneCount_att+"' value='1' data-value='"+id+"'>";
+    		$('.group_values_block').append(newelement);
+    	}
+    		
+    });
+    
 });

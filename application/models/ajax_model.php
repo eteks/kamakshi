@@ -129,5 +129,66 @@ class Ajax_Model extends CI_Model {
         }
         return $query_status;
     }
+
+    //  Update quantity in basket
+    public function get_update_product() {
+        if($this->input->post('updation_det')) {
+            $order_session_id = $this->session->userdata('user_session_id');
+            $updation_det = $this->input->post('updation_det');
+            foreach ($updation_det as $key => $value) {
+                $update_quantity_where = '(product_id="'.$key.'")';
+                $update_quantity_query = $this->db->get_where('giftstore_product',$update_quantity_where);
+                $update_quantity_array =  $update_quantity_query->row_array();
+                if($update_quantity_array['product_totalitems'] >= $value) {
+                  
+
+                    $basket_update_data = array( 
+                        'orderitem_quantity' => $value,
+                    ); 
+                    
+                    $basket_update_where = '(orderitem_product_id="'.$key.'" and orderitem_session_id="'.$order_session_id.'")'; 
+                    $this->db->set($basket_update_data); 
+                    $this->db->where($basket_update_where); 
+                    $this->db->update("giftstore_orderitem", $basket_update_data);
+                    $query_status="success";
+                }
+                else {
+                    $query_status="".$update_quantity_array['product_title']." is not available. Available only ".$update_quantity_array['product_totalitems']; 
+                    return $query_status;
+                }
+            }
+
+
+
+
+
+            // $basket_update_where='(orderitem_product_id="'.$this->input->post('bas_pro_id').'" and orderitem_session_id= "'.$order_session_id.'")';
+
+            // $this->db->where($basket_update_where);
+            // $this->db->delete('giftstore_orderitem');
+            // $query_status="success";
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+        return $query_status;
+    }
+
+
+
+
  
 }
+
+
+

@@ -547,7 +547,13 @@ class Adminindex extends CI_Controller {
 	}
 	public function add_giftproduct()
 	{	
+		// echo "<pre>";
 		// print_r($_POST);
+		// echo "</pre>";
+		// echo "<pre>";
+		// print_r(array_map(null,$_POST['select_attribute'],$_POST['attribute_value']));
+		// echo "</pre>";
+		// echo count($_POST['select_attribute']);
 		// print_r($_FILES['product_image']['name']);
 		$status = array();//array is initialized
 		$errors='';
@@ -683,6 +689,7 @@ class Adminindex extends CI_Controller {
     	}
 		// print_r($status);	
 		$status['category_list'] = $this->catalog->get_categories();
+		$status['attribute_list'] = $this->catalog->get_product_attributes();
 		$this->load->view('admin/add_giftproduct',$status);
 	}
 	public function edit_giftproduct()
