@@ -144,8 +144,8 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Admin Users</a></li>
-                                <li><a href="#">End users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
@@ -169,7 +169,7 @@
                          <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-sort-by-order"></i><span> Order</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Order</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/order">Order </a></li>
                                 <li><a href="#">Order Item</a></li>
                                 <li><a href="#">Transaction</a></li>
                             </ul>

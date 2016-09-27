@@ -839,6 +839,26 @@ class Adminindex extends CI_Controller {
 		$data['attribute_data'] = $this->catalog->get_product_attribute_data($id);
 		$this->load->view('admin/edit_product_attributes',$data);
 	}
+	public function adminusers()
+	{	
+		$this->load->view('admin/adminusers');
+	}
+	public function add_adminusers()
+	{	
+		$this->load->view('admin/add_adminusers');
+	}
+	public function edit_adminusers()
+	{	
+		$this->load->view('admin/edit_adminusers');
+	}
+	public function endusers()
+	{	
+		$this->load->view('admin/endusers');
+	}
+	public function edit_endusers()
+	{	
+		$this->load->view('admin/edit_endusers');
+	}
 	public function area()
 	{	
 		$this->load->view('admin/area');
@@ -881,6 +901,10 @@ class Adminindex extends CI_Controller {
 		$category_name = $_POST['category_name'];	
 		$category_reference_data = $this->catalog->get_category_reference($category_id);
 		echo json_encode($category_reference_data);
+	}
+	public function order()
+	{	
+		$this->load->view('admin/order');
 	}
 }
 

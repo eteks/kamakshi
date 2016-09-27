@@ -62,6 +62,11 @@ $route['customer_order'] = 'index/customer_order';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
+$route['adminindex/adminusers'] = 'adminindex/adminusers';
+$route['adminindex/add_adminusers'] = 'adminindex/add_adminusers';
+$route['adminindex/edit_adminusers'] = 'adminindex/edit_adminusers';
+$route['adminindex/endusers'] = 'adminindex/endusers';
+$route['adminindex/edit_endusers'] = 'adminindex/edit_endusers';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
@@ -95,6 +100,7 @@ $route['adminindex/state'] = 'adminindex/state';
 $route['adminindex/add_state'] = 'adminindex/add_state';
 $route['adminindex/edit_state'] = 'adminindex/edit_state';
 
+$route['adminindex/order'] = 'adminindex/order';
 
 
 

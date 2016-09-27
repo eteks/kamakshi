@@ -39,22 +39,23 @@
                             class="glyphicon glyphicon-remove"></i></a>
                 </div>
             </div>
-            <div class="box-content">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">City Name</label>
-                        <input type="email" class="form-control" id="city_name" placeholder="Enter City Name">
-                    </div> 
-                    <div class="control-group">
-                        <label for="exampleInputEmail1">State id</label>
+          <div class="box-content">
+                <form role="form" id="add_city">
+                	 <div class="control-group">
+                        <label for="sel_a">State</label>
                     <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
                    <option value="">
                      Select City
                     </option>
+                    <option>Tamilnadu</option>
                     </select>
                     </div>
+                    <div class="form-group">
+                        <label for="city_name">City Name</label>
+                        <input type="email" class="form-control" id="city_name" placeholder="Enter City Name">
+                    </div> 
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="sel_c">City Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
