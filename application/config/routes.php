@@ -62,6 +62,8 @@ $route['customer_order'] = 'index/customer_order';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
+$route['admin/logout'] = 'admin/login/logout';
+$route['admin/dashboard'] = 'admin/adminindex/dashboard';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
