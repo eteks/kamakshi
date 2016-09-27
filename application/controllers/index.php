@@ -8,8 +8,6 @@ class Index extends CI_Controller
     {
         parent::__construct();
         $this->load->model('index_model');
-        // Load session library
-        $this->load->library('session');
         // Load form validation library
         $this->load->library(array('form_validation','session'));
         $this->load->helper(array('url','html','form'));
@@ -17,7 +15,7 @@ class Index extends CI_Controller
         $this->session->set_userdata("login_id","3");
 
     }	
-	public function index()HEAD
+	public function index()
 	{
       $categories_values_reg = $this->index_model->get_register();
       $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
@@ -105,9 +103,6 @@ class Index extends CI_Controller
         // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
-
-
-
 	public function checkout1()
 	{
 		$this->load->view('checkout1');
