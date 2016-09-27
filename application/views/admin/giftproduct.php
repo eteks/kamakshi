@@ -68,14 +68,14 @@
                     }
                 endforeach ?>
             </td>
-            <td class="center"><?php echo $product['product_description'] ?></td>
-            <td class="center"><?php echo $product['category_name'] ?></td> 
-            <td class="center"><?php echo $product['subcategory_name'] ?></td>
-            <td class="center"><?php echo $product['recipient_type'] ?></td>
-            <td class="center"><?php echo $product['product_price'] ?></td>
-            <td class="center"><?php echo $product['product_totalitems'] ?></td> 
-            <td class="center"><?php echo $product['product_sold'] ?></td>    
-            <td class="center"><span class="<?php if($product["product_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($product["product_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+            <td class="center" style="width:100% !important"><?php echo $product['product_description'] ?></td>
+            <td class="center" style="width:100% !important"><?php echo $product['category_name'] ?></td> 
+            <td class="center" style="width:100% !important"><?php echo $product['subcategory_name'] ?></td>
+            <td class="center" style="width:100% !important"><?php echo $product['recipient_type'] ?></td>
+            <td class="center" style="width:100% !important"><?php echo $product['product_price'] ?></td>
+            <td class="center" style="width:100% !important"><?php echo $product['product_totalitems'] ?></td> 
+            <td class="center" style="width:100% !important"><?php echo $product['product_sold'] ?></td>    
+            <td class="center" style="width:100% !important"><span class="<?php if($product["product_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($product["product_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td><?php echo date("d/m/Y", strtotime($product["product_createddate"])); ?></td>
             <td class="center">
                 <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct">
@@ -99,8 +99,5 @@
     </div><!--/row-->
         </div>
     </div>
-
-    
-
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>

@@ -74,7 +74,11 @@
                 <div class="col-lg-12 col-md-12">
                    <div class="user-admin">
                        <i class="glyphicon glyphicon-user"></i>
-                       <p class="title"><strong>Welcome</strong> to Kamakshi <br> You have logged in admin User</p>
+                       <?php 
+                        // print_r($this->session->userdata('logged_in'));
+                        $session_data = $this->session->userdata('logged_in');
+                        ?>
+                       <p class="title"><strong>Welcome</strong> <?php echo $session_data['username']."!" ?> <br> You have logged in administrator</p>
                    </div>
                 </div>
                 <div class="col-md-12">
