@@ -112,19 +112,13 @@
                                 <div class="clone_attribute_group">
                                     <div class="clone_attribute" id="clone_attribute1">
                                     	<label for="total_iteams" class="fl">Attribute Option</label>
-                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl">
-                                                <option value="">Select Attribute</option>
-                                                <option value="1">size</option>
+                                       <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl">
+                                            <option value="">Select Attribute</option>
+                                            <?php foreach ($attribute_list as $att): ?>
+                                                <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
+                                            <?php endforeach ?>
                                         </select>
                                         <input class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
-                                    </div> <!--  clone_attribute -->
-                                    <div class="clone_attribute" id="clone_attribute1">
-                                    	<label for="total_iteams" class="fl cloned-class"></label>
-                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl cloned-class">
-                                              <option value="">Select Attribute</option>
-                                              <option value="1">size</option>
-                                        </select>
-                                       <input class="form-control fl cloned-class" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
                                     </div> <!--  clone_attribute -->
                                     <div class="add-rmv-btn">
 			                                <input value="Add" class="btn submit-btn btn-default attibute_add_btn" type="button">

@@ -133,6 +133,7 @@
     //echo $_SERVER['REQUEST_URI']."<br>";
     //echo $this->config->item('admin_base_url')."<br>"; 
     ?>
+    <div class="row">
     <?php if (!empty($this->session->userdata('logged_in'))){?> 
     <!-- left menu starts -->
         <div class="col-sm-2 col-lg-2">
