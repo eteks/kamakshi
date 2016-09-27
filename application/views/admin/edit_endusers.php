@@ -19,7 +19,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Add Area</a>
+            <a href="#">Edit End Users</a>
         </li>
     </ul>
 </div>
@@ -28,7 +28,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Add Area</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i>Edit Endusers</h2>
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
                             class="glyphicon glyphicon-cog"></i></a>
@@ -41,8 +41,16 @@
             <div class="box-content">
                 <form role="form" id="add_area">
                  <div class="form-errors"></div>
-                  <div class="control-group">
-                        <label for="sel_a">Select State</label>
+                    <div class="form-group">
+                        <label for="area_name">Social_id</label>
+                        <input type="email" class="form-control" id="area_name" placeholder="Enter Social_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">User Name</label>
+                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter User Name">
+                    </div>  
+                     <div class="control-group">
+                        <label for="sel_a">User Type</label>
                     <select name="city_id" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
@@ -50,8 +58,16 @@
                     <option>TAMILNADU</option>
                     </select>
                     </div>
-                    <div class="control-group">
-                        <label for="sel_b">Select City</label>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Date of Birth</label>
+                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter Date of Birth">
+                    </div>
+                     <div class="control-group">
+                        <label for="sel_b">City id</label>
                     <select name="city_id" id="sel_b" class="form-control">
                    <option value="">
                      Select City
@@ -59,16 +75,8 @@
                      <option>MADURAI</option>
                     </select>
                     </div>
-                    <div class="form-group">
-                        <label for="area_name">Area Name</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Delivery charge</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter delivery charge">
-                    </div>  
                      <div class="control-group">
-                        <label class="control-label" for="sel_c">Area status</label>
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>

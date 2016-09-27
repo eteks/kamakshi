@@ -25,7 +25,7 @@
                 <p class="price">  Rs.<?php echo $subcat_pro['product_price']; ?> </p>
                 <p class="buttons">
             	    <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $subcat_pro['product_id']; ?>" class="btn btn-default">View detail</a>
-                	<a href="<?php echo base_url(); ?>/index.php/basket/<?php echo $subcat_pro['product_id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                	<!-- <a href="<?php echo base_url(); ?>/index.php/basket/<?php echo $subcat_pro['product_id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a> -->
                 </p>
             </div>
         </div>

@@ -39,14 +39,14 @@
                             class="glyphicon glyphicon-remove"></i></a>
                 </div>
             </div>
-            <div class="box-content">
-                <form role="form">
+           <div class="box-content">
+                <form role="form" id="add_state">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">State Name</label>
+                        <label for="state_name">State Name</label>
                         <input type="email" class="form-control" id="state_name" placeholder="Enter state Name">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>

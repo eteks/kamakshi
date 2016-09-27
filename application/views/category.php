@@ -1,11 +1,10 @@
 <?php include "templates/header.php"; ?>
-
     <div id="all">
         <div id="content">
             <div class="container">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
+                        <li><a href="<?php echo base_url(); ?>">Home</a>
                         </li>
                         <li><?php echo $cat_name->category_name; ?></li>
                     </ul>

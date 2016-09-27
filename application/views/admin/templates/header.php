@@ -63,22 +63,25 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="index.php"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
-                <span>Kamakshi Gifts</span></a>
-
-            <!-- user dropdown starts -->
-            <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Profile</a></li>
-                    <li class="divider"></li>
-                    <li><a href="login.php">Logout</a></li>
-                </ul>
-            </div>
-            <!-- user dropdown ends -->
-
+            <span>Kamakshi Gifts</span></a>
+            <?php if (!empty($this->session->userdata('logged_in'))){?>
+                <!-- user dropdown starts -->
+                <div class="btn-group pull-right">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> 
+                        <?php 
+                        $session_data = $this->session->userdata('logged_in');
+                        echo $session_data['username']; ?></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/admin/logout">Logout</a></li>
+                    </ul>
+                </div>
+                <!-- user dropdown ends -->
+            <?php } ?>
             <!-- theme selector starts -->
             <div class="btn-group pull-right theme-container animated tada">
                 <!-- <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -126,6 +129,11 @@
         </div>
     </div>
     <!-- topbar ends -->
+    <?php 
+    //echo $_SERVER['REQUEST_URI']."<br>";
+    //echo $this->config->item('admin_base_url')."<br>"; 
+    ?>
+    <?php if (!empty($this->session->userdata('logged_in'))){?> 
     <!-- left menu starts -->
         <div class="col-sm-2 col-lg-2">
             <div class="sidebar-nav">
@@ -139,8 +147,8 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Admin Users</a></li>
-                                <li><a href="#">End users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
@@ -149,7 +157,8 @@
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/category">Category </a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/subcategory">Subcategory </a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/recipient">Recipient</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/giftproduct">Gift Product </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/product_attributes">Product Attributes </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/giftproduct">Product </a></li>
                             </ul>
                             </li>
                         <li class="accordion">
@@ -163,7 +172,7 @@
                          <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-sort-by-order"></i><span> Order</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Order</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/order">Order </a></li>
                                 <li><a href="#">Order Item</a></li>
                                 <li><a href="#">Transaction</a></li>
                             </ul>
@@ -213,3 +222,4 @@
         </div>
         <!--/span-->
 <!-- left menu ends -->
+<?php } ?>

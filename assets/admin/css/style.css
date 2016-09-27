@@ -1,14 +1,115 @@
+.fl{
+	float:left;
+}
 .image_icon{
 	height: 44px;
     width: 43px;
     cursor: pointer;
 }
 .edit_category_image{
-	height: 44px;
-    width: 43px;
-    cursor: pointer;
+	cursor: pointer;
+    height: 50px;
+    margin-left: 11px;
+    margin-top: 5px;
+    width: 50px;
+    position: relative;
 }
 .error_msg_reg{
   color: #ff0000;
   font-size: 12px;
+}
+@media(max-width: 640px){
+    .edit_category_image{
+    cursor: pointer;
+    height: 50px;
+   /* margin-left: 11px;*/
+    margin-top: 5px;
+    width: 50px;
+    position: relative;
+}
+.edit-catpro-image {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    width: -moz-max-content;
+    margin-top: 10px;
+}
+}
+.product_tab{
+	background-color: #4fbfa8;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+    width: 981px;
+}
+.attribute_block label{
+	width: 125px !important;
+    margin-top: 10px ;
+}
+.attribute_block select{
+    margin: 0 7px 0 0;
+    padding-left: 4px;
+}
+.attibute_add{
+	margin-left: 20px;
+    margin-top: 50px;
+}
+.attibute_add_btn{
+    margin-left: 10px;
+    margin-top: 60px;
+    font-size: 12px;
+    padding: 5px;
+}
+/*.clone_attribute{
+	display: block;
+}*/
+.attribute_main_block{
+    /*display: none;*/
+}
+.attribute_group{
+	border: 1px solid #cccccc;
+    height: auto;
+    padding: 10px;
+    width: 835px;
+    margin-bottom:10px;
+    display: none;
+}
+#delete_btn{
+	text-align: center;
+}
+.edit-catpro-image {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    width: -moz-max-content;
+    margin-top: 10px;
+}
+.product-cat-images{
+    position: relative;
+    display: inline-block;
+      padding-top: 10px;
+}
+.close-icon a{
+     background-color: #ccc;
+    border-radius: 25px;
+    color: #000;
+    font-size: 10px;
+    left: -10px;
+    padding: 2px;
+    position: relative;
+    top: -25px;
+}
+.attribute-clone{
+    margin-bottom: 10px;
+}
+.add-values2{
+    margin-bottom: 15px !important;
+    margin-top: 15px !important;
+}
+.product-btns{
+    display: inline-block !important;
+    margin-top: 210px !important;
+    margin-bottom: 30px !important;
 }

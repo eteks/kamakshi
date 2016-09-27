@@ -74,7 +74,11 @@
                 <div class="col-lg-12 col-md-12">
                    <div class="user-admin">
                        <i class="glyphicon glyphicon-user"></i>
-                       <p class="title"><strong>Welcome</strong> to Kamakshi <br> You have logged in admin User</p>
+                       <?php 
+                        // print_r($this->session->userdata('logged_in'));
+                        $session_data = $this->session->userdata('logged_in');
+                        ?>
+                       <p class="title"><strong>Welcome</strong> <?php echo $session_data['username']."!" ?> <br> You have logged in administrator</p>
                    </div>
                 </div>
                 <div class="col-md-12">
@@ -123,11 +127,6 @@
             </div>
         </div>
     </div>
-    <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="#">Kamakshi</a> 2016</p>
-        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://etkchnoservices.com/"  target="_blank">Etekchno Services</a></p>
-    </footer>
 </div><!--/.fluid-container-->
 <script type="text/javascript">
     $(document).on('ready', function() {

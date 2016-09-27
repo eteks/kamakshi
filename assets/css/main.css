@@ -172,3 +172,14 @@
 .active span {
   background-color: green !important;
 }
+.owl-buttons {
+  display: none;
+}
+.add_to_cart_section {
+  display: none;
+  color: #4f8a10;
+  font-size: 16px;
+  margin: 5px 0 2px;
+  text-align: center;
+}
+

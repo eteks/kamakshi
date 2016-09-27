@@ -264,7 +264,9 @@ div.uploader {
     -moz-border-radius: 14px;
 }
 footer {
-    clear: both;
+    width: 100%;
+    margin-left: 0px !important;
+    margin-top: 40px !important;
 }
 div.center, p.center, img.center {
     margin-left: auto !important;
@@ -357,6 +359,9 @@ ul.ajax-loaders {
 .login-header {
     padding-top: 30px;
     height: 120px;
+}
+.login-header h2{
+    color: #4fbfa8;
 }
 .pull-left {
     float: left !important;
@@ -635,7 +640,7 @@ ul.github-buttons li {
      padding: 21px 0 0;
 } */
 .btn-primary {
-    background-color: #4fbfa8;
+    background-color: #4fbfa8 !important;
     /*border-color: #41b39c;*/
     color: #ffffff;
 }
@@ -744,3 +749,4 @@ a{
     text-align: center;
     left: -15px;
 }
+

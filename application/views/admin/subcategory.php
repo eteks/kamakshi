@@ -43,6 +43,7 @@
     <thead>
     <tr>
         <th>Subcategory Name</th>
+        <th>Categories</th>
         <th>Status</th>
         <th>Created Date</th>
         <th>Actions</th>
@@ -52,6 +53,7 @@
     <?php foreach ($subcategory_list as $subcat): ?>
         <tr>
             <td><?php echo $subcat["subcategory_name"] ?></td>
+            <td></td>
             <td class="center"><span class="<?php if($subcat["subcategory_status"] ==1 ){ ?>label-success<?php } ?> label label-default">
             <?php if($subcat["subcategory_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td><?php echo date("d/m/Y", strtotime($subcat["subcategory_createddate"])); ?></td>
@@ -78,12 +80,7 @@
         </div>
     </div>
 
-    <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="#">Kamakshi</a> 2016</p>
-
-        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
-                href="http://etekchnoservices.com/" target="_blank">Etekchno Services</a></p>
-    </footer>
+    
 
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>
