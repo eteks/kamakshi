@@ -21,6 +21,7 @@ class Adminindex extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('admin/catalog');
+		$this->load->model('admin/location');
 		$this->load->library('upload');
 		// Load form helper library
 		$this->load->helper('form');
@@ -547,14 +548,6 @@ class Adminindex extends CI_Controller {
 	}
 	public function add_giftproduct()
 	{	
-		// echo "<pre>";
-		// print_r($_POST);
-		// echo "</pre>";
-		// echo "<pre>";
-		// print_r(array_map(null,$_POST['select_attribute'],$_POST['attribute_value']));
-		// echo "</pre>";
-		// echo count($_POST['select_attribute']);
-		// print_r($_FILES['product_image']['name']);
 		$status = array();//array is initialized
 		$errors='';
 		$product_image = array();
@@ -625,6 +618,15 @@ class Adminindex extends CI_Controller {
     	}
     	else{
     		if(!empty($_POST)){
+				$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
+
+				$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
+
+
+				$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
+
+				// echo count($_POST['select_attribute']);
+				// print_r($_FILES['product_image']['name']);
 				//Check whether user upload picture
 				if(!empty($_FILES['product_image']['name'])){
 					$filesCount = count($_FILES['product_image']['name']);
@@ -662,20 +664,19 @@ class Adminindex extends CI_Controller {
 	             	);
 				}
 				else{
-					$data = array(
-					'product_title' => $this->input->post('product_title'),
-					'product_description' => $this->input->post('product_description'),
-					'product_category_id' => $this->input->post('select_category'),
-					'product_subcategory_id' => $this->input->post('select_subcategory'),
-					'product_recipient_id' => $this->input->post('select_recipient'),
-					'product_price' => $this->input->post('product_price'),
-					'product_totalitems' => $this->input->post('product_totalitems'),
-					'product_status' => $this->input->post('product_status'),
+					$data['product_basic'] = array(
+						'product_title' => $this->input->post('product_title'),
+						'product_description' => $this->input->post('product_description'),
+						'product_category_id' => $this->input->post('select_category'),
+						'product_subcategory_id' => $this->input->post('select_subcategory'),
+						'product_recipient_id' => $this->input->post('select_recipient'),
+						'product_price' => $this->input->post('product_price'),
+						'product_totalitems' => $this->input->post('product_totalitems'),
+						'product_status' => $this->input->post('product_status'),
 					);
-					$product_image_data = array(
-						'product_image' => $product_image,
-					);
-					$result = $this->catalog->insert_product($data,$product_image_data);
+					$data['product_files'] = $product_image;
+					$data['product_attributes'] = $attribute_group;
+					$result = $this->catalog->insert_product($data);
 					if($result)
 						$status = array(
 	                		'error_message' => "Product Inserted Successfully!"
@@ -895,11 +896,74 @@ class Adminindex extends CI_Controller {
 	}
 	public function state()
 	{	
-		$this->load->view('admin/state');
+		$state['state_list'] = $this->location->get_state();
+		$this->load->view('admin/state',$state);
 	}
-	public function add_state()
+		public function add_state()
 	{	
-		$this->load->view('admin/add_state');
+		$status = array();//array is initialized
+		$errors='';
+		$validation_rules = array(
+	       array(
+	             'field'   => 'state_name',
+	             'label'   => 'State',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'state_status',
+	             'label'   => 'Status',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),       
+	    );
+	    $this->form_validation->set_rules($validation_rules);
+	    if ($this->form_validation->run() == FALSE) {
+	    	foreach($validation_rules as $row){
+	            $field = $row['field'];          //getting field name
+	            $error = form_error($field);    //getting error for field name
+	                                            //form_error() is inbuilt function
+	            //if error is their for field then only add in $errors_array array
+	            // echo "error".$error;
+	            if($error){
+	                if (strpos($error,"field is required.") !== false){
+	                    $errors = $error; 
+	                    break;
+	                }
+	                else
+	                    $errors[$field] = $error; 
+	            }
+        	}
+	        if (strpos($errors,"field is required.") !== false){  
+	             $status = array(
+	                'error_message' => 'Please fill out all mandatory fields'
+	             );
+	        }
+    	}
+    	else{
+    		if(!empty($_POST)){
+				if (!empty($errors)) {
+					$status = array(
+	                	'error_message' => strip_tags($errors)
+	             	);
+				}
+				else{
+					$data = array(
+						'state_name' => $this->input->post('state_name'),
+						'state_status' => $this->input->post('state_status'),
+					);
+					if($result)
+						$status = array(
+	                		'error_message' => "State Inserted Successfully!"
+	             		);
+					else
+						$status = array(
+	                		'error_message' => "State Already Exists!"
+	             		);
+				}		
+			}
+    	}
+		// print_r($status);	
+		$status['state_list'] = $this->location->get_state();
+		$this->load->view('admin/add_state',$status);
 	}
 	public function edit_state()
 	{	

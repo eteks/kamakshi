@@ -182,4 +182,26 @@
   margin: 5px 0 2px;
   text-align: center;
 }
-
+/* Added by siva*/
+.active span {
+  background-color: green !important;
+}
+.owl-buttons {
+  display: none;
+}
+.updations_status {
+  color: #4f8a10;
+  display: none;
+  font-size: 20px;
+  margin: 0 0 10px;
+  text-align: center;
+}
+.filtering_sections span{
+  background: grey none repeat scroll 0 0;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+.filtering_sections a{
+  cursor: pointer;
+}
+/* Ended by siva*/

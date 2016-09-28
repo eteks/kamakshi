@@ -1,6 +1,6 @@
-$(document).ready(function() {
 
-    // Added by siva - calculation process in basket page start
+$(document).ready(function() {
+// Added by siva - calculation process in basket page start
     if($('#total_amount').val() == 0 ) {
         $('.basket_section_button').css('pointer-events','none');
         $('.basket_section_button').attr('disabled',true);
@@ -26,61 +26,63 @@ $(document).ready(function() {
 
 
 
-    $('.product_quantity').on('keyup',function() {
-        var this_value = $(this).val();
-        var this_parent = $(this).parents('.amount_structure');
-        if(this_value > 0) {
+//     $('.product_quantity').on('keyup',function() {
+//         var this_value = $(this).val();
+//         var this_parent = $(this).parents('.amount_structure');
+//         if(this_value > 0) {
 
-            var orderitem_price = this_parent.find('.ordinary_orderitem_price').val();
-            var product_overall_total = $('.ordinary_product_total').val();
-            var overall_total_product_amount = $('.overall_total_product_amount').val();
-            var ordinary_shipping_amount = $('.ordinary_shipping_amount').val();
-            var overall_updated_total = 0;
+//             var orderitem_price = this_parent.find('.ordinary_orderitem_price').val();
+//             var product_overall_total = $('.ordinary_product_total').val();
 
 
-            this_parent.find('.product_total').html(parseFloat(Math.ceil(this_value*orderitem_price)).toFixed(2));
-            this_parent.find('.updated_product_total').val(parseFloat(Math.ceil(this_value*orderitem_price)).toFixed(2));
+
+
+//             var price1 = parseInt(product_overall_total.replace(',',''));
+
+
+// alert(price1);
+
+// //             var overall_total_product_amount = $('.overall_total_product_amount').val();
+// //             var ordinary_shipping_amount = $('.ordinary_shipping_amount').val();
+// //             var overall_updated_total = 0;
+
+
+// //             this_parent.find('.product_total').html(parseFloat(Math.ceil(this_value*orderitem_price)).toFixed(2));
+// //             this_parent.find('.updated_product_total').val(parseFloat(Math.ceil(this_value*orderitem_price)).toFixed(2));
             
 
 
 
 
-            $('.updated_product_total').each(function(){
-                var this_amount = $(this).val().replace(',', '');;
-                overall_updated_total += parseInt(this_amount);
-                // alert($(this).val());
-            });
+// //             $('.updated_product_total').each(function(){
+// //                 var this_amount = $(this).val().replace(',', '');;
+// //                 overall_updated_total += parseInt(this_amount);
+// //                 // alert($(this).val());
+// //             });
 
 
 
-var test = parseFloat(Math.ceil(overall_updated_total));
+// // var test = parseFloat(Math.ceil(overall_updated_total));
 
-var test1 = test.toLocaleString();
-var test2 = test1.toFixed(2);
-            alert(test1);
-            // alert().toLocaleString();
+// // var test1 = test.toLocaleString();
+// // var test2 = test1.toFixed(2);
+// //             alert(test1);
+// //             // alert().toLocaleString();
 
-            $('.product_overall_total').html(parseFloat(Math.ceil(overall_updated_total)).toFixed(2));
-            var final_amount = overall_updated_total + parseInt(ordinary_shipping_amount);
-            $('.product_final_amount').html(parseFloat(Math.ceil(final_amount)).toFixed(2));    
-        }
+// //             $('.product_overall_total').html(parseFloat(Math.ceil(overall_updated_total)).toFixed(2));
+// //             var final_amount = overall_updated_total + parseInt(ordinary_shipping_amount);
+// //             $('.product_final_amount').html(parseFloat(Math.ceil(final_amount)).toFixed(2));    
+// //         }
 
-        else {
-            alert("Enter product quantity correctly");
-            $(this).val('1');
-        }
-        this_parent.find('.update_basket_details').attr('data-quantity',this_value);
+// //         else {
+// //             alert("Enter product quantity correctly");
+// //             $(this).val('1');
+// //         }
+// //         this_parent.find('.update_basket_details').attr('data-quantity',this_value);
+// }
+//     });
 
-    });
-    // Ended by siva - calculation process in basket page end
-
-
-
-
-
-
-
-
+   // Ended by siva - calculation process in basket page end
 
 
     required_login=["email-modal","password-modal"];
@@ -208,28 +210,29 @@ var test2 = test1.toFixed(2);
     //         }
     //     }   
     // });    
-      var $container = $('#container'),
-      $filterLinks = $('#filters a');
+    var $container = $('#container'),
+    $filterLinks = $('#filters a');
     $container.isotope({
     itemSelector: '.item-img',
     filter: '*'
-  });
-  $('.portfolio_menu ul li').click(function(){
-  $('.portfolio_menu ul li').removeClass('active_prot_menu');
-  $(this).addClass('active_prot_menu');
-});
-  $filterLinks.click(function(){
-    var $this = $(this);
-      // don't proceed if already selected
-    if ( $this.hasClass('selected') ) {
-      return;
-    }
-     $filterLinks.filter('.selected').removeClass('selected');
-    $this.addClass('selected');
-    // get selector from data-filter attribute
-    selector = $this.data('filter');
-      $container.isotope({
-      filter: selector
     });
+    $('.portfolio_menu ul li').click(function(){
+      $('.portfolio_menu ul li').removeClass('active_prot_menu');
+      $(this).addClass('active_prot_menu');
+    });
+    $filterLinks.click(function(){
+        var $this = $(this);
+          // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return;
+        }
+         $filterLinks.filter('.selected').removeClass('selected');
+        $this.addClass('selected');
+        // get selector from data-filter attribute
+        selector = $this.data('filter');
+          $container.isotope({
+          filter: selector
+        });
   });
+
 });
