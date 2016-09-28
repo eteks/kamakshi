@@ -21,6 +21,7 @@ class Adminindex extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('admin/catalog');
+		$this->load->model('admin/location');
 		$this->load->library('upload');
 		// Load form helper library
 		$this->load->helper('form');
@@ -849,6 +850,77 @@ class Adminindex extends CI_Controller {
 		$data['attribute_data'] = $this->catalog->get_product_attribute_data($id);
 		$this->load->view('admin/edit_product_attributes',$data);
 	}
+	public function state()
+	{	
+		$state['state_list'] = $this->location->get_state();
+		$this->load->view('admin/state',$state);
+	}
+		public function add_state()
+	{	
+		$status = array();//array is initialized
+		$errors='';
+		$validation_rules = array(
+	       array(
+	             'field'   => 'state_name',
+	             'label'   => 'State',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'state_status',
+	             'label'   => 'Status',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),       
+	    );
+	    $this->form_validation->set_rules($validation_rules);
+	    if ($this->form_validation->run() == FALSE) {
+	    	foreach($validation_rules as $row){
+	            $field = $row['field'];          //getting field name
+	            $error = form_error($field);    //getting error for field name
+	                                            //form_error() is inbuilt function
+	            //if error is their for field then only add in $errors_array array
+	            // echo "error".$error;
+	            if($error){
+	                if (strpos($error,"field is required.") !== false){
+	                    $errors = $error; 
+	                    break;
+	                }
+	                else
+	                    $errors[$field] = $error; 
+	            }
+        	}
+	        if (strpos($errors,"field is required.") !== false){  
+	             $status = array(
+	                'error_message' => 'Please fill out all mandatory fields'
+	             );
+	        }
+    	}
+    	else{
+    		if(!empty($_POST)){
+				if (!empty($errors)) {
+					$status = array(
+	                	'error_message' => strip_tags($errors)
+	             	);
+				}
+				else{
+					$data = array(
+						'state_name' => $this->input->post('state_name'),
+						'state_status' => $this->input->post('state_status'),
+					);
+					if($result)
+						$status = array(
+	                		'error_message' => "State Inserted Successfully!"
+	             		);
+					else
+						$status = array(
+	                		'error_message' => "State Already Exists!"
+	             		);
+				}		
+			}
+    	}
+		// print_r($status);	
+		$status['state_list'] = $this->location->get_state();
+		$this->load->view('admin/add_state',$status);
+	}
 	public function adminusers()
 	{	
 		$this->load->view('admin/adminusers');
@@ -892,14 +964,6 @@ class Adminindex extends CI_Controller {
 	public function edit_city()
 	{	
 		$this->load->view('admin/edit_city');
-	}
-	public function state()
-	{	
-		$this->load->view('admin/state');
-	}
-	public function add_state()
-	{	
-		$this->load->view('admin/add_state');
 	}
 	public function edit_state()
 	{	
