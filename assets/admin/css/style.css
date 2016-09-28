@@ -9,7 +9,7 @@
 .edit_category_image{
 	cursor: pointer;
     height: 50px;
-    margin-left: 11px;
+    /*margin-left: 11px;*/
     margin-top: 5px;
     width: 50px;
     position: relative;
@@ -52,7 +52,7 @@
     padding-left: 4px;
 }
 .attibute_add{
-	margin-left: 20px;
+	margin-left: 10px;
     margin-top: 50px;
 }
 .attibute_add_btn{
@@ -71,14 +71,14 @@
 	border: 1px solid #cccccc;
     height: auto;
     padding: 10px;
-    width: 835px;
+    width: 760px;
     margin-bottom:10px;
 }
 #delete_btn{
 	text-align: center;
 }
 .edit-catpro-image {
-    padding: 10px;
+     padding: 0 0 10px;
     border: 1px solid #cccccc;
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
@@ -91,14 +91,15 @@
       padding-top: 10px;
 }
 .close-icon a{
-     background-color: #ccc;
+    background-color: #333333;
     border-radius: 25px;
-    color: #000;
+    color: #fff;
     font-size: 10px;
-    left: -10px;
-    padding: 2px;
+    left: -15px;
+    opacity: 0.7;
+    padding: 3px;
     position: relative;
-    top: -25px;
+    top: -18px;
 }
 .attribute-clone{
     margin-bottom: 10px;
@@ -111,6 +112,8 @@
     display: inline-block !important;
     margin-top: 190px !important;
     margin-bottom: 30px !important;
+    font-size: 12px;
+    padding: 5px;
 }
 .add-rmv-btn {
     float: left;
@@ -147,6 +150,25 @@
 	background-image:none !important;
 	border: none !important;
 }
+.btn-info {
+    background-image: none !important;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #022241;
+    filter: none;
+    font-size: 12px;
+    padding: 5px 5px;
+}
+.btn-danger {
+    background-image: none !important;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #9a161a;
+    filter: none;
+    font-size: 12px;
+    padding: 5px 5px;
+}
+.label-boxes{
+	width:232px !important;
+}
 .dataTables_wrapper{
 	overflow-x: auto !important;
     width: 1000px; !important;
@@ -166,3 +188,4 @@
 .col-md-6 {
     width: 45% !important;
 }
+

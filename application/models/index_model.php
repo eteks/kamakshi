@@ -14,13 +14,12 @@ class Index_Model extends CI_Model {
         $login_status = $this->session->userdata("login_status");
         $random = uniqid();
 
-
         // General session not exists
         if(!$this->session->userdata("general_session_id")) {
             $this->session->set_userdata("general_session_id",$random);
         }
 
-        // Session exists
+        // Order session exists
         if($this->session->userdata("user_session_id")) {
             // echo $this->session->userdata("user_session_id");
             $session_id = explode('_',$this->session->userdata("user_session_id"));  
@@ -38,7 +37,7 @@ class Index_Model extends CI_Model {
             }
         }
 
-        // Session not exists
+        // Order session not exists
         if(!$this->session->userdata("user_session_id")) {
             $general_session_id = $this->session->userdata("general_session_id");
             if($login_status == 1) {
@@ -114,6 +113,7 @@ class Index_Model extends CI_Model {
             ));
             $query['gift_subcategory'] = $sub_cat->get()->result_array();
 
+
             $cat_product=$this->db->select('*');
             $cat_product=$this->db->from('giftstore_product cp');
             $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
@@ -122,10 +122,16 @@ class Index_Model extends CI_Model {
             $cat_product=$this->db->limit($limit, '0');
             $cat_product=$this->db->group_by('cp.product_id');
             $query['product_category'] = $cat_product->get()->result_array();
-            // $query['cat_pro_count'] = count($query['product_category']);
-            $query['cat_pro_count'] = 14;
-            
-
+          
+            //  count
+            $cat_product1=$this->db->select('*');
+            $cat_product1=$this->db->from('giftstore_product cp');
+            $cat_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+            $where1 = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0)';
+            $cat_product1=$this->db->where($where1);
+            $cat_product1=$this->db->group_by('cp.product_id');
+            $query1 = $cat_product1->get()->result_array();
+            $query['cat_pro_count'] = count($query1);
 
             // if($this->uri->segment(3)){	
             // 	$cat_product=$this->db->select('*');
@@ -137,7 +143,6 @@ class Index_Model extends CI_Model {
 	           //  $query['product_category'] = $cat_product->get()->result_array();
             // }
    		}
-	
         return $query;
     }
 

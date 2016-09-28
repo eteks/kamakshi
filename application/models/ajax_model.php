@@ -7,7 +7,9 @@ class Ajax_Model extends CI_Model {
 
 
     //  To get products after filtering (filtering)
-    public function get_filtering_product() {
+    public function get_filtering_product($data) {
+        $start = $data['offset'];
+        $limit = $data['limit'];
         if($this->input->post('cat_id')) {
             if($this->input->post('sub_id') && $this->input->post('rec_id')) {
                 $where = '(cp.product_category_id="'.$this->input->post('cat_id').'" and cp.product_subcategory_id="'.$this->input->post('sub_id').'" and cp.product_recipient_id="'.$this->input->post('rec_id').'" and cp.product_status=1 and cp.product_totalitems!=0)';
@@ -25,9 +27,23 @@ class Ajax_Model extends CI_Model {
             $sub_product=$this->db->from('giftstore_product cp');
             $sub_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
             $sub_product=$this->db->where($where);
+            $sub_product=$this->db->limit( $limit, $start);
             $sub_product=$this->db->group_by('cp.product_id');
-            $query = $sub_product->get()->result_array();
+            $query['product_category'] = $sub_product->get()->result_array();
+                
+            $sub_product1=$this->db->select('*');
+            $sub_product1=$this->db->from('giftstore_product cp');
+            $sub_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+            $sub_product1=$this->db->where($where);
+            $sub_product1=$this->db->group_by('cp.product_id');
+            $query1 = $sub_product1->get()->result_array();
+            $query['product_count'] = count($query1);
+
         }
+
+
+         
+
         return $query;
     }
 
