@@ -61,5 +61,81 @@ class Location extends CI_Model {
 		$query = $this->db->get_where('giftstore_state', array('state_id' => $id));
 		return $query->row_array();
 	}
-	
+	public function get_city()
+	{	
+		// just for sample
+		// $query = $this->db->query("SELECT * FROM giftstore_category WHERE category_status = 1");
+		// $query = $this->db->get_where('giftstore_category', array('category_status' => 1));
+		// echo $query->num_rows();
+		// return $query->row_array();
+
+		//get list of categories from database using mysql query 
+		$query = $this->db->query("SELECT * FROM giftstore_city order 
+			by city_createddate desc");		
+		// echo "<pre>";
+		// print_r($query->result());
+		// echo "</pre>";
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
+	public function insert_city($data)
+	{	
+		// Query to check whether state name already exist or not
+		$condition = "city_name =" . "'" . $data['city_name'] . "'";
+		$this->db->select('*');
+		$this->db->from('giftstore_city');
+		// $this->db->join('giftstore_state', 'state_name = city_state_id');
+		$this->db->where($condition);
+		// $this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() == 0) {
+			// Query to insert data in database
+			$this->db->insert('giftstore_city', $data);
+			if ($this->db->affected_rows() > 0) {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+	// public function insert_city($data)
+	// {	
+
+	// 	$condition = '(city_name="'.$data['city_name'].'" and city_state_id="'.$data['city_state_id'].'")';
+
+	// 	$query = $this->db->get_where('giftstore_city',$condition);
+
+	// 	if ($query->num_rows() == 0) {
+	// 		// Query to insert data in database
+	// 		$this->db->insert('giftstore_city', $data);
+	// 		// if ($this->db->affected_rows() > 0) {
+	// 		// 	return true;
+	// 		// }
+	// 		return true;
+	// 	}
+	// 	else {
+	// 		return false;
+	// 	}
+	// }
+	public function update_city($data)
+	{	
+		$condition = "city_name =" . "'" . $data['city_name'] . "' AND city_id NOT IN (". $data['city_id'].")";
+		$this->db->select('*');
+		$this->db->from('giftstore_city');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return false;
+		}
+		else{
+			$this->db->where('city_id', $data['city_id']);
+			$this->db->update('giftstore_city', $data);
+			return true;
+		}	
+	}	
+	public function get_city_data($id)
+	{	
+		$query = $this->db->get_where('giftstore_city', array('city_id' => $id));
+		return $query->row_array();
+	}
 }
