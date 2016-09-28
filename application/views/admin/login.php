@@ -37,7 +37,7 @@
                     <div class="clearfix"></div>
 
                     <p class="center col-md-5">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary login-btn">Login</button>
                     </p>
                 </fieldset>
             </form>

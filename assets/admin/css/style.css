@@ -122,13 +122,25 @@
 }
 #footer {
 	width:100%;
-    position:relative;
+    position:fixed;
     /*height:50px;*/
     bottom:0px;
     left:0px;
     right:0px;
-    margin-bottom:0px;
+    /*margin-top: 50px !important;*/
 }
 .users-icons{
 	color:#4FBFA8;
+}
+.row{
+	margin-right:0px !important;
+}
+.login-btn{
+	background-color:#4FBFA8 !important;
+	border-color:none !important;
+	color: #fff !important;
+}
+.btn-primary{
+	background-image:none !important;
+	border: none !important;
 }

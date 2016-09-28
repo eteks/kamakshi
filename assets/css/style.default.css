@@ -1823,3 +1823,13 @@ address {
   /*transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) !important;*/
 }  
 }
+.images-list {
+    display: inline-flex !important;
+    width: -moz-max-content !important;
+}
+#mainImage{
+	width: -moz-max-content !important;
+}
+/*.main-image-position{
+	width: 350px !important;
+}*/
