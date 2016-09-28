@@ -296,10 +296,13 @@ class Catalog extends CI_Model {
 		//return all records in array format to the controller
 		return $query;
 	}
-	public function insert_product($data,$product_image_data)
+	public function insert_product($data)
 	{	
+		$data_product_basic = $data['product_basic'];
+		$data_product_files = $data['product_files'];
+		$data_product_attributes = $data['product_attributes'];
 		// Query to check whether category name already exist or not
-		$condition = "product_title =" . "'" . $data['product_title'] . "'";
+		$condition = "product_title =" . "'" . $data_product_basic['product_title'] . "'";
 		$this->db->select('*');
 		$this->db->from('giftstore_product');
 		$this->db->where($condition);
@@ -307,15 +310,39 @@ class Catalog extends CI_Model {
 		$query = $this->db->get();
 		if ($query->num_rows() == 0) {
 			// Query to insert data in database
-			$this->db->insert('giftstore_product', $data);
+			$this->db->insert('giftstore_product', $data_product_basic);
 			//get inserted subcategory id to map in subcategory category relationship table
 			$product_id = $this->db->insert_id();
-			foreach($product_image_data['product_image'] as $key => $value) {
+			foreach($data_product_files as $key => $value) {
 				$product_image_map = array(
 	                					'product_mapping_id' => $product_id,
 	                					'product_upload_image' => $value,
 	             						);
 				$this->db->insert('giftstore_product_upload_image', $product_image_map);
+			}
+			// echo sizeof($data_product_attributes);
+			foreach($data_product_attributes as $key=>$value){
+				$attributes = $data_product_attributes[$key][0];
+				$price = $data_product_attributes[$key][1];
+				$items = $data_product_attributes[$key][2];
+				$product_attribute_inserted_id = array();
+				foreach ($attributes as $key => $value) {
+					$product_attribute_id = $attributes[$key][0];
+					$product_attribute_value = $attributes[$key][1];
+					$product_attributes_data = array(
+						'product_attribute_id' => $product_attribute_id ,
+						'product_attribute_value' => $product_attribute_value 
+					);
+					$this->db->insert('giftstore_product_attribute_value', $product_attributes_data);
+					array_push($product_attribute_inserted_id,$this->db->insert_id());
+				}
+				$product_attributes_group = array(
+						'product_mapping_id' => $product_attribute_id ,
+						'product_attribute_group_price' => $price ,
+						'product_attribute_group_totalitems' => $items,
+						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
+				);
+				$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
 			}
 			if ($this->db->affected_rows() > 0) {
 				return true;

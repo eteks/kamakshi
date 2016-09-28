@@ -5,7 +5,6 @@ select {
 }
 body{
     font-family: "Helvetica",Arial,sans-serif;
-    margin-bottom:50px;
 }
 .ch-container {
     padding: 0 15px;
@@ -264,14 +263,12 @@ div.uploader {
     -webkit-border-radius: 14px;
     -moz-border-radius: 14px;
 }
-#footer {
-	width:100%;
-    position:fixed;
-    /*height:50px;*/
-    bottom:0px;
-    left:0px;
-    right:0px;
-    margin-bottom:0px;
+footer {
+    width: 100%;
+    margin-left: 0px !important;
+    margin-top: 40px !important;
+    /*position:fixed;
+    margin-top:150px !important;*/
 }
 div.center, p.center, img.center {
     margin-left: auto !important;

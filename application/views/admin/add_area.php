@@ -41,6 +41,24 @@
             <div class="box-content">
                 <form role="form" id="add_area">
                  <div class="form-errors"></div>
+                  <div class="control-group">
+                        <label for="sel_a">Select State</label>
+                    <select name="city_id" id="sel_a" class="form-control">
+                   <option value="">
+                     Select State 
+                    </option>
+                    <option>TAMILNADU</option>
+                    </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="sel_b">Select City</label>
+                    <select name="city_id" id="sel_b" class="form-control">
+                   <option value="">
+                     Select City
+                    </option>
+                     <option>MADURAI</option>
+                    </select>
+                    </div>
                     <div class="form-group">
                         <label for="area_name">Area Name</label>
                         <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
@@ -50,25 +68,7 @@
                         <input type="email" class="form-control" id="delivery_charge" placeholder="Enter delivery charge">
                     </div>  
                      <div class="control-group">
-                        <label for="sel_a">State id</label>
-                    <select name="city_id" id="sel_a" class="form-control">
-                   <option value="">
-                     Select State 
-                    </option>
-                    <option>TAMILNADU</option>
-                    </select>
-                    </div>
-                     <div class="control-group">
-                        <label for="sel_b">City id</label>
-                    <select name="city_id" id="sel_b" class="form-control">
-                   <option value="">
-                     Select City
-                    </option>
-                     <option>MADURAI</option>
-                    </select>
-                    </div>
-                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Area status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>

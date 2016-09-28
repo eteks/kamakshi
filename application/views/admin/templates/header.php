@@ -133,9 +133,9 @@
     //echo $_SERVER['REQUEST_URI']."<br>";
     //echo $this->config->item('admin_base_url')."<br>"; 
     ?>
-    <div class="row">
     <?php if (!empty($this->session->userdata('logged_in'))){?> 
     <!-- left menu starts -->
+    <div class="row">
         <div class="col-sm-2 col-lg-2">
             <div class="sidebar-nav">
                 <div class="nav-canvas">
@@ -148,8 +148,8 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Admin Users</a></li>
-                                <li><a href="#">End users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
@@ -173,7 +173,7 @@
                          <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-sort-by-order"></i><span> Order</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Order</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/order">Order </a></li>
                                 <li><a href="#">Order Item</a></li>
                                 <li><a href="#">Transaction</a></li>
                             </ul>
