@@ -34,591 +34,65 @@
         </div>
     </div>
    <div class="box-content">
-    <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+        <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_adminusers">
+        <i class="glyphicon glyphicon-edit icon-white"></i>
+        Add
+        </a>
+        <div class="row">
+        <div class="col-md-6">
+        <div id="DataTables_Table_0_length" class="dataTables_length">
+        <label>
+        <select size="1" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0">
+        <option value="10" selected="selected">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        </select> records per page</label>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="dataTables_filter" id="DataTables_Table_0_filter">
+        	<label>Search: <input aria-controls="DataTables_Table_0" type="text"></label>
+        	</div>
+        	</div>
+        	</div>
+    <!-- <div class="alert alert_blue alert-info col-md-10"></div> -->
+    <div class="dataTables_wrapper">
+    <table class="table table-striped table-bordered bootstrap-datatable responsive">
     <thead>
-    <tr>
-        <th>User Id</th>
+    <th>User Id</th>
         <th>Total Items</th> 
         <th>User Type</th>
         <th>Customer Name</th>
         <th>Customer Email</th>
-        <th>shipping line1</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
-        <th>shipping line2</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Area</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Staus</th>
+        <th>Delivery date</th>
+        <th>Delivery time</th>
+        <th>Total amount</th>
+        <th>Staus</th>
         <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <!-- <td>David R</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/01</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Chris Jack</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/01</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Jack Chris</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/01</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Muhammad Usman</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/01</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Sheikh Heera</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/02/01</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Helen Garner</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/02/01</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Saruar Ahmed</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Ahemd Saruar</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Habib Rizwan</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/21</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Rizwan Habib</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/21</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Amrin Sana</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/08/23</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Sana Amrin</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/08/23</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Ifrah Jannat</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/06/01</td>
-        <td class="center">
-            <span class="label-default label">Inactive</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Jannat Ifrah</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/06/01</td>
-        <td class="center">
-            <span class="label-default label">Inactive</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Robert</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Dave Robert</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Brown Robert</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Usman Muhammad</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/01</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Abdullah</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/02/01</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Dow John</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/02/01</td>
-        <td class="center">
-            <span class="label-default label">Inactive</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>John R</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/02/01</td>
-        <td class="center">
-            <span class="label-default label">Inactive</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Paul Wilson</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Wilson Paul</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Heera Sheikh</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/21</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Sheikh Heera</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/01/21</td>
-        <td class="center">
-            <span class="label-success label label-default">Active</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Christopher</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/08/23</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Andro Christopher</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/08/23</td>
-        <td class="center">
-            <span class="label-default label label-danger">Banned</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Jhon Doe</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/06/01</td>
-        <td class="center">
-            <span class="label-default label">Inactive</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Lorem Ipsum</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers"> 
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Abraham</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Brown Blue</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
-    <tr> -->
         <td>Worth Name</td>
         <td class="center">xyz@gmail.com</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
         <td class="center">2012/03/01</td>
         <td class="center">
             <span class="label-warning label label-default">Pending</span>
@@ -636,6 +110,7 @@
     </tr>
     </tbody>
     </table>
+    <div class="col-md-12 center-block"><div class="dataTables_paginate paging_bootstrap pagination"><ul class="pagination"><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div>
     </div>
     </div>
     </div>
