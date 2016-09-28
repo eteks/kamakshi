@@ -14,6 +14,7 @@
                         <form method="post" action="<?php echo base_url(); ?>index.php/checkout1/">
                             <h1>Shopping cart</h1>
                             <p class="text-muted">You currently have <?php echo $basket_count; ?> item(s) in your cart.</p>
+                            <p class="updations_status"> </p>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -275,38 +276,35 @@ $(document).ready(function() {
         });
     });
 
+    // AJAX for updating items in basket
+    $("#updation_button").on('click',function() {
+        var updation={};
+        $('.amount_structure').each(function() {
+            var product_id = $(this).find('.basket_product_items').data('id');
+            var product_quantity = $(this).find('.product_quantity').val();
+            updation[product_id] = product_quantity;
+        });
+        jQuery.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/update_baseket_product",
+        data: {updation_det : updation},
 
+        success: function(res) {
+            if (res)
+            {   
+                if(res=="success") {
+                    $('#checkout_button').attr('disabled',false);
+                    $('#checkout_button').prop('title',"Proceed to checkout");
+                }             
+               $('.updations_status').html(res);
+               $('.updations_status').slideDown(350);
 
-// // AJAX for updating items in basket
-//     $("#updation_button").on('click',function() {
-//         var updation={};
+            }
+        }
+        });
 
-//         $('.amount_structure').each(function() {
-//             var product_id = $(this).find('.basket_product_items').data('id');
-//             var product_quantity = $(this).find('.product_quantity').val();
-//             updation[product_id] = product_quantity;
-//         });
+    });
 
-//         jQuery.ajax({
-//         type: "POST",
-//         url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/update_baseket_product",
-//         data: {updation_det : updation},
-
-//         success: function(res) {
-//         if (res)
-//         {
-//            if(res=="success") {
-//             alert("test");
-//            }
-//         }
-//         }
-//         });
-
-//     });
-
-
-
-    
 });
 
 </script>

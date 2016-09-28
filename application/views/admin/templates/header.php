@@ -135,6 +135,7 @@
     ?>
     <?php if (!empty($this->session->userdata('logged_in'))){?> 
     <!-- left menu starts -->
+    <div class="row">
         <div class="col-sm-2 col-lg-2">
             <div class="sidebar-nav">
                 <div class="nav-canvas">
