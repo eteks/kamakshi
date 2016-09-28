@@ -547,14 +547,6 @@ class Adminindex extends CI_Controller {
 	}
 	public function add_giftproduct()
 	{	
-		// echo "<pre>";
-		// print_r($_POST);
-		// echo "</pre>";
-		// echo "<pre>";
-		// print_r(array_map(null,$_POST['select_attribute'],$_POST['attribute_value']));
-		// echo "</pre>";
-		// echo count($_POST['select_attribute']);
-		// print_r($_FILES['product_image']['name']);
 		$status = array();//array is initialized
 		$errors='';
 		$product_image = array();
@@ -625,6 +617,15 @@ class Adminindex extends CI_Controller {
     	}
     	else{
     		if(!empty($_POST)){
+				$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
+
+				$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
+
+
+				$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
+
+				// echo count($_POST['select_attribute']);
+				// print_r($_FILES['product_image']['name']);
 				//Check whether user upload picture
 				if(!empty($_FILES['product_image']['name'])){
 					$filesCount = count($_FILES['product_image']['name']);
@@ -662,20 +663,19 @@ class Adminindex extends CI_Controller {
 	             	);
 				}
 				else{
-					$data = array(
-					'product_title' => $this->input->post('product_title'),
-					'product_description' => $this->input->post('product_description'),
-					'product_category_id' => $this->input->post('select_category'),
-					'product_subcategory_id' => $this->input->post('select_subcategory'),
-					'product_recipient_id' => $this->input->post('select_recipient'),
-					'product_price' => $this->input->post('product_price'),
-					'product_totalitems' => $this->input->post('product_totalitems'),
-					'product_status' => $this->input->post('product_status'),
+					$data['product_basic'] = array(
+						'product_title' => $this->input->post('product_title'),
+						'product_description' => $this->input->post('product_description'),
+						'product_category_id' => $this->input->post('select_category'),
+						'product_subcategory_id' => $this->input->post('select_subcategory'),
+						'product_recipient_id' => $this->input->post('select_recipient'),
+						'product_price' => $this->input->post('product_price'),
+						'product_totalitems' => $this->input->post('product_totalitems'),
+						'product_status' => $this->input->post('product_status'),
 					);
-					$product_image_data = array(
-						'product_image' => $product_image,
-					);
-					$result = $this->catalog->insert_product($data,$product_image_data);
+					$data['product_files'] = $product_image;
+					$data['product_attributes'] = $attribute_group;
+					$result = $this->catalog->insert_product($data);
 					if($result)
 						$status = array(
 	                		'error_message' => "Product Inserted Successfully!"
@@ -849,6 +849,26 @@ class Adminindex extends CI_Controller {
 		$data['attribute_data'] = $this->catalog->get_product_attribute_data($id);
 		$this->load->view('admin/edit_product_attributes',$data);
 	}
+	public function adminusers()
+	{	
+		$this->load->view('admin/adminusers');
+	}
+	public function add_adminusers()
+	{	
+		$this->load->view('admin/add_adminusers');
+	}
+	public function edit_adminusers()
+	{	
+		$this->load->view('admin/edit_adminusers');
+	}
+	public function endusers()
+	{	
+		$this->load->view('admin/endusers');
+	}
+	public function edit_endusers()
+	{	
+		$this->load->view('admin/edit_endusers');
+	}
 	public function area()
 	{	
 		$this->load->view('admin/area');
@@ -891,6 +911,10 @@ class Adminindex extends CI_Controller {
 		$category_name = $_POST['category_name'];	
 		$category_reference_data = $this->catalog->get_category_reference($category_id);
 		echo json_encode($category_reference_data);
+	}
+	public function order()
+	{	
+		$this->load->view('admin/order');
 	}
 }
 

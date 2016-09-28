@@ -112,11 +112,11 @@
                                 <div class="clone_attribute_group">
                                     <div class="clone_attribute" id="clone_attribute1">
                                     	<label for="total_iteams" class="fl">Attribute Option</label>
-                                       <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl">
-                                            <option value="">Select Attribute</option>
-                                            <?php foreach ($attribute_list as $att): ?>
-                                                <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
-                                            <?php endforeach ?>
+                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl">
+                                                <option value="">Select Attribute</option>
+                                                <?php foreach ($attribute_list as $att): ?>
+                                                    <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
+                                                <?php endforeach ?>
                                         </select>
                                         <input class="form-control fl" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
                                     </div> <!--  clone_attribute -->
@@ -142,7 +142,7 @@
                         <input type="button" value="Remove" class="btn submit-btn btn-default attibute_add product-btns">      
                     </div>
                     <div class="group_values_block">
-                        <input type="hidden" class="group_values" name="group_values1" value="1" data-value="attribute_group1">   
+                        <input type="hidden" class="group_values" name="group_values" value="1"> 
                     </div> <!-- group_values_block -->
                     <button type="submit" class="btn submit-btn btn-default submiit">Submit</button>
                 </form>
