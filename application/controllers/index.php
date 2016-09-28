@@ -15,10 +15,10 @@ class Index extends CI_Controller
         $this->session->set_userdata("login_id","3");
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 3;
-
+        $this->perPage = 6;
     }
 
+    // Index page
     public function index()
 	{
       $categories_values_reg = $this->index_model->get_register();
@@ -38,22 +38,9 @@ class Index extends CI_Controller
         $categories['order_count'] = $categories_values_reg['order_count'];
 		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('register',$categories);
-
 	}
 
-
-
-
-
-
-       
-    
-
-
-
-
-
-
+    // Listing page with pagination
     public function category()
 	{
 		$categories_values_reg = $this->index_model->get_register();
@@ -70,7 +57,7 @@ class Index extends CI_Controller
 		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
     	    //pagination configuration
             $config['target']      = '#all_products_section';
-            $config['base_url']    = base_url().'index/ajaxPaginationData';
+            $config['base_url']    = base_url().'index.php/ajax_controller/filtering_product';
             $config['total_rows']  = $categories['cat_pro_count'];
             $config['per_page']    = $this->perPage;
             $this->ajax_pagination->initialize($config);
@@ -81,45 +68,7 @@ class Index extends CI_Controller
 		}
 	}
 
-
-
-
-
- function ajaxPaginationData(){
-
-
-    echo "test";
-        // $page = $this->input->post('page');
-        // if(!$page){
-        //     $offset = 0;
-        // }else{
-        //     $offset = $page;
-        // }
-        
-        // //total rows count
-        // $totalRec = count($this->post->getRows());
-        
-        // //pagination configuration
-        // $config['target']      = '#postList';
-        // $config['base_url']    = base_url().'posts/ajaxPaginationData';
-        // $config['total_rows']  = $totalRec;
-        // $config['per_page']    = $this->perPage;
-        // $this->ajax_pagination->initialize($config);
-        
-        // //get the posts data
-        // $data['posts'] = $this->post->getRows(array('start'=>$offset,'limit'=>$this->perPage));
-        
-        // //load the view
-        // $this->load->view('posts/ajax-pagination-data', $data, false);
-    }
-
-
-
-
-
-
-
-
+    //  Product details page with attribute
 	public function detail()
 	{
 		$categories_values_reg = $this->index_model->get_register();
