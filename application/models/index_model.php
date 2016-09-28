@@ -98,18 +98,7 @@ class Index_Model extends CI_Model {
         }
         return $query;
     }
-    public function mail_exists($key)
-    {
-        $this->db->where('user_email', $key);
-        $query = $this->db->get('giftstore_users');
-        if ($query->num_rows() > 0) {
-            // print_r("Email already exists");
-            return true;
-        } else {
-            // print_r("Email registered");
-            return false;
-        }
-    }
+
     public function get_category($limit)
     {
         if ($this->uri->segment(2)) {
@@ -235,9 +224,6 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
-
-
-
     // Read data from database to show data in admin page
     public function read_user_information($username)
     {
@@ -255,7 +241,7 @@ class Index_Model extends CI_Model {
             return false;
         }
     }
-    
+
     // Read data using username and password
     public function login($data)
     {
@@ -271,5 +257,5 @@ class Index_Model extends CI_Model {
         } else {
             return false;
         }
-    }   
+    }
 }

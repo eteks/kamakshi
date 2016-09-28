@@ -39,4 +39,3 @@
             <img src="<?php echo base_url().'assets/img/product6.jpg'; ?>"/>
         </div>
     </div>
-                        

@@ -1,6 +1,6 @@
-$(document).ready(function() {
 
-    // Added by siva - calculation process in basket page start
+$(document).ready(function() {
+// Added by siva - calculation process in basket page start
     if($('#total_amount').val() == 0 ) {
         $('.basket_section_button').css('pointer-events','none');
         $('.basket_section_button').attr('disabled',true);
@@ -82,22 +82,7 @@ $(document).ready(function() {
 // }
 //     });
 
-
-
-
-
-
-
-
-    // Ended by siva - calculation process in basket page end
-
-
-
-
-
-
-
-
+   // Ended by siva - calculation process in basket page end
 
 
     required_login=["email-modal","password-modal"];
@@ -225,28 +210,29 @@ $(document).ready(function() {
     //         }
     //     }   
     // });    
-      var $container = $('#container'),
-      $filterLinks = $('#filters a');
+    var $container = $('#container'),
+    $filterLinks = $('#filters a');
     $container.isotope({
     itemSelector: '.item-img',
     filter: '*'
-  });
-  $('.portfolio_menu ul li').click(function(){
-  $('.portfolio_menu ul li').removeClass('active_prot_menu');
-  $(this).addClass('active_prot_menu');
-});
-  $filterLinks.click(function(){
-    var $this = $(this);
-      // don't proceed if already selected
-    if ( $this.hasClass('selected') ) {
-      return;
-    }
-     $filterLinks.filter('.selected').removeClass('selected');
-    $this.addClass('selected');
-    // get selector from data-filter attribute
-    selector = $this.data('filter');
-      $container.isotope({
-      filter: selector
     });
+    $('.portfolio_menu ul li').click(function(){
+      $('.portfolio_menu ul li').removeClass('active_prot_menu');
+      $(this).addClass('active_prot_menu');
+    });
+    $filterLinks.click(function(){
+        var $this = $(this);
+          // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return;
+        }
+         $filterLinks.filter('.selected').removeClass('selected');
+        $this.addClass('selected');
+        // get selector from data-filter attribute
+        selector = $this.data('filter');
+          $container.isotope({
+          filter: selector
+        });
   });
+
 });

@@ -162,37 +162,14 @@ class Ajax_Model extends CI_Model {
                 }
             }
 
-
-
-
-
-            // $basket_update_where='(orderitem_product_id="'.$this->input->post('bas_pro_id').'" and orderitem_session_id= "'.$order_session_id.'")';
+           // $basket_update_where='(orderitem_product_id="'.$this->input->post('bas_pro_id').'" and orderitem_session_id= "'.$order_session_id.'")';
 
             // $this->db->where($basket_update_where);
             // $this->db->delete('giftstore_orderitem');
             // $query_status="success";
 
-
-
-
-
-
-
-
-
-
-
-
-
         }
         return $query_status;
     }
-
-
-
-
  
 }
-
-
-

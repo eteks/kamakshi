@@ -63,13 +63,6 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?php echo base_url(); ?>index.php/index/user_login_process" id="login" method="post">
-                        <?php
-                                echo "<div class='error'>";
-                                if (isset($error)) {
-                                echo $error;
-                                }
-                                echo "</div>";
-                                ?>
                             <div class="form-group"> 
                                 <input type="text" class="form-control" id="email-modal" name="email" placeholder="email">
                             </div>

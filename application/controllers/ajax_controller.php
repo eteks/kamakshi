@@ -15,21 +15,6 @@ class Ajax_Controller extends CI_Controller {
         $this->perPage = 3;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
     // function ajaxPaginationData(){
     //     $page = $this->input->post('page');
     //     if(!$page){
@@ -54,9 +39,6 @@ class Ajax_Controller extends CI_Controller {
     //     //load the view
     //     $this->load->view('posts/ajax-pagination-data', $data, false);
     // }
-
-
-
 
 
 
@@ -91,24 +73,6 @@ class Ajax_Controller extends CI_Controller {
 		echo $products_subcategory_list;		
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	// Add to cart- add items in cart
 	public function add_to_cart_details()
 	{	
@@ -130,5 +94,4 @@ class Ajax_Controller extends CI_Controller {
 		// echo $remove_status;	
 		echo $remove_status;	
 	}
-
 } // end of the class 

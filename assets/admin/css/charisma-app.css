@@ -5,6 +5,7 @@ select {
 }
 body{
     font-family: "Helvetica",Arial,sans-serif;
+    margin-bottom:50px;
 }
 .ch-container {
     padding: 0 15px;
@@ -176,7 +177,7 @@ body{
     top: -1px;
 }
 .box-content {
-     padding: 15px 0 35px 50px;
+     padding: 15px 0 60px 50px;
 }
 @media(max-width: 480px){
  .box-content {
@@ -263,8 +264,14 @@ div.uploader {
     -webkit-border-radius: 14px;
     -moz-border-radius: 14px;
 }
-footer {
-    width: 100%;
+#footer {
+	width:100%;
+    position:fixed;
+    /*height:50px;*/
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin-bottom:0px;
 }
 div.center, p.center, img.center {
     margin-left: auto !important;
@@ -387,7 +394,7 @@ ul.ajax-loaders {
 }
 .login-box .btn {
     margin-top: 15px;
-    width: 100%
+    /*width: 100%*/
 }
 .box-content.buttons {
     min-height: 297px;
@@ -747,4 +754,3 @@ a{
     text-align: center;
     left: -15px;
 }
-

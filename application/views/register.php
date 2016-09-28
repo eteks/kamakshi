@@ -19,28 +19,26 @@
                         <p class="lead">Not our registered customer yet?</p>
                         <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
                         <p class="text-muted">If you have any questions, please feel free to <a href="<?php echo base_url(); ?>index.php/contact/">contact us</a>, our customer service center is working for you 24/7.</p>
-
                         <hr>
-
-                        <form action="<?php echo base_url(); ?>index.php/index/new_user_registration" id="signup" method="post">
-                             <?php
-                                echo "<div class='message_display'>";
-                                if (isset($message_display)) {
-                                echo $message_display;
+                        <form role="form" action="<?php echo base_url(); ?>index.php/index/new_user_registration" id="signup" method="post">
+                        <?php
+                                echo "<div class='error_message'>";
+                                if (isset($error_message)) {
+                                echo $error_message;
                                 }
                                 echo "</div>";
                                 ?>
                             <div class="form-group">
                                 <label for="name">User Name *</label>
-                                <input type="text" class="form-control" name="username" id="name">
+                                <input type="text" class="form-control" name="user_name" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="text" class="form-control" name="email_reg" id="email-reg">
+                                <input type="text" class="form-control" name="user_email" id="email-reg">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password *</label>
-                                <input type="password" class="form-control" name="password_reg" id="password-reg">
+                                <input type="password" class="form-control" name="user_password" id="password-reg">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
@@ -59,17 +57,15 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url(); ?>index.php/index/user_login_process" id="login_reg" method="post">
-                        <!-- <?php
-                                echo "<div class='message_display'>";
-                                if (isset($message_display)) {
-                                echo $message_display;
+                        <form role="form" action="<?php echo base_url(); ?>index.php/index/user_login_process" id="login_reg" method="post">
+                         <?php
+                                echo "<div class='error_message_login'>";
+                                if (isset($error_message_login)) {
+                                echo $error_message_login;
                                 }
                                 echo "</div>";
-                                ?>  -->
+                                ?>
                             <div class="form-group">
-                              <!--   <p class="error_msg_log">Please fill all(*) mandatory fields</p>
-                                <p class="error_log_email">Please enter valid email</p> -->
                                 <label for="email">Email *</label>
                                 <input type="text" class="form-control" name="email_log" id="email-log">
                             </div>
