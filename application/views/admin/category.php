@@ -79,8 +79,5 @@
     </div><!--/row-->
         </div>
     </div>
-
-    
-
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>

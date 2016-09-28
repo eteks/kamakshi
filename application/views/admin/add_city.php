@@ -79,5 +79,4 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-
 <?php include "templates/footer.php" ?>

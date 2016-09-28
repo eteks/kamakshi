@@ -78,6 +78,5 @@ $(document).ready(function() {
         //Functionality used to increment the value of attribute group by attribute value add when add button click      
         increment_val = parseInt($('.group_values').val()) + 1;
         $('.group_values').val(increment_val);
-    });
-    
+    });    
 });

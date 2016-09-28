@@ -1,4 +1,6 @@
 <?php include "templates/header.php" ?>
+        <!--/span-->
+        <!-- left menu ends -->
 <div class="ch-container">
     <div class="row"> 
         <noscript>
@@ -51,8 +53,8 @@
     </thead>
     <tbody>
     <tr>
-        <!-- <td>David R</td>
-        <td class="center">xyz@gmail.com</td>
+        <td>David R</td>
+        <td class="center">In WordPress</td>
         <td class="center">2012/01/01</td>
         <td class="center">
             <span class="label-success label label-default">Active</span>
@@ -609,7 +611,7 @@
             </a>
         </td>
     </tr>
-    <tr> -->
+    <tr>
         <td>Worth Name</td>
         <td class="center">xyz@gmail.com</td>
         <td class="center">2012/03/01</td>
