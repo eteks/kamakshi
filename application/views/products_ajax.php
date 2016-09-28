@@ -1,5 +1,5 @@
 <?php 
-    if(!empty($product_category)): foreach ($products_subcategory as $subcat_pro):
+    if(!empty($product_category)): foreach ($product_category as $subcat_pro):
 ?>
     <div class="col-md-4 col-sm-6">
         <div class="product">
@@ -33,9 +33,10 @@
  <?php endforeach; else: ?>
     <p>Product(s) not available.</p>
     <?php endif; ?>
+    <div class="cb"> </div>
     <?php echo $this->ajax_pagination->create_links(); ?>
     <div class="loading" style="display: none;">
         <div class="content">
-            <img src="<?php echo base_url().'assets/img/product6.jpg'; ?>"/>
+            <img src="<?php echo base_url().'assets/img/ajax-loader.gif'; ?>"/>
         </div>
     </div>
