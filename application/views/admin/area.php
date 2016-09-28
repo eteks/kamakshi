@@ -39,7 +39,7 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive fid">
     <thead>
     <tr>
         <th>Area Name</th>

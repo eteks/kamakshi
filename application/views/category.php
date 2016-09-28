@@ -84,16 +84,17 @@
                         <?php endforeach; else: ?>
                         <p>Product(s) not available.</p>
                         <?php endif; ?>
+                        <div class="cb"> </div>
                         <?php echo $this->ajax_pagination->create_links(); ?>
                         <div class="loading" style="display: none;">
                             <div class="content">
-                                <img src="<?php echo base_url().'assets/img/product6.jpg'; ?>"/>
+                                <img src="<?php echo base_url().'assets/img/ajax-loader.gif'; ?>"/>
                             </div>
                         </div>
                     </div>
                     <!-- /.products -->
 
-                    <div class="pages">
+                    <!-- <div class="pages">
 
                         <p class="loadMore">
                             <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a>
@@ -115,7 +116,7 @@
                             <li><a href="#">&raquo;</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
 
 
                 </div>
@@ -235,24 +236,6 @@ $(document).ready(function() {
         }
         });
     });
-
-    //  AJAX for recipients products
-    // $(".add_to_cart_items").click(function() {
-    //     var rec_id = $(this).data('id');
-    //     var cat_id = $('#category_id').val();
-    //     jQuery.ajax({
-    //     type: "POST",
-    //     url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/ajax_recipient_products",
-    //     data: {rec_id : rec_id, cat_id : cat_id},
-
-    //     success: function(res) {
-    //     if (res)
-    //     {
-    //         $('#all_products_section').html(res);
-    //     }
-    //     }
-    //     });
-    // });
 
 });
 </script>

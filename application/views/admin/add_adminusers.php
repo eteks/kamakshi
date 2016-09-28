@@ -41,11 +41,11 @@
                 <form role="form" id="add_area">
                  <div class="form-errors"></div>
                     <div class="form-group">
-                        <label for="area_name">Adminusers Name</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter adminusers name">
+                        <label for="area_name">User Name</label>
+                        <input type="email" class="form-control" id="area_name" placeholder="Enter User Name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> password</label>
+                        <label for="exampleInputEmail1"> Password</label>
                         <input type="email" class="form-control" id="delivery_charge" placeholder="Enter password">
                     </div>  
                     <div class="form-group">

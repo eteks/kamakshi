@@ -1,4 +1,6 @@
 <?php include "templates/header.php" ?>
+        <!--/span-->
+        <!-- left menu ends -->
 <div class="ch-container">
     <div class="row"> 
         <noscript>
@@ -39,7 +41,7 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive fid">
     <thead>
     <tr>
         <th>User Name</th>
@@ -51,7 +53,7 @@
     </thead>
     <tbody>
     <tr>
-        <!-- <td>David R</td>
+        <td>David R</td>
         <td class="center">xyz@gmail.com</td>
         <td class="center">2012/01/01</td>
         <td class="center">
@@ -609,7 +611,7 @@
             </a>
         </td>
     </tr>
-    <tr> -->
+    <tr>
         <td>Worth Name</td>
         <td class="center">xyz@gmail.com</td>
         <td class="center">2012/03/01</td>

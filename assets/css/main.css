@@ -204,4 +204,24 @@
 .filtering_sections a{
   cursor: pointer;
 }
+.pagination a {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  color: #4fbfa8;
+  line-height: 1.42857;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+.cb {
+  clear : both;
+}
+.pagination span {
+  background-color: #4fbfa8;
+  color: #ffffff;
+  border: 1px solid #dddddd;
+  line-height: 1.42857;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
 /* Ended by siva*/

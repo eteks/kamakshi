@@ -12,65 +12,32 @@ class Ajax_Controller extends CI_Controller {
 
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 3;
+        $this->perPage = 6;
 	}
 
-    // function ajaxPaginationData(){
-    //     $page = $this->input->post('page');
-    //     if(!$page){
-    //         $offset = 0;
-    //     }else{
-    //         $offset = $page;
-    //     }
-        
-    //     //total rows count
-    //     $totalRec = count($this->post->getRows());
-        
-    //     //pagination configuration
-    //     $config['target']      = '#postList';
-    //     $config['base_url']    = base_url().'posts/ajaxPaginationData';
-    //     $config['total_rows']  = $totalRec;
-    //     $config['per_page']    = $this->perPage;
-    //     $this->ajax_pagination->initialize($config);
-        
-    //     //get the posts data
-    //     $data['posts'] = $this->post->getRows(array('start'=>$offset,'limit'=>$this->perPage));
-        
-    //     //load the view
-    //     $this->load->view('posts/ajax-pagination-data', $data, false);
-    // }
-
-
-
-    // public function index(){
-    //     $data = array();
-        
-    //     //total rows count
-    //     $totalRec = count($this->post->getRows());
-        
-    //     //pagination configuration
-    //     $config['target']      = '#postList';
-    //     $config['base_url']    = base_url().'posts/ajaxPaginationData';
-    //     $config['total_rows']  = $totalRec;
-    //     $config['per_page']    = $this->perPage;
-    //     $this->ajax_pagination->initialize($config);
-        
-    //     //get the posts data
-    //     $data['posts'] = $this->post->getRows(array('limit'=>$this->perPage));
-        
-    //     //load the view
-    //     $this->load->view('posts/index', $data);
-    // }
-    
-
-
-	
 	// Filtering for products
 	public function filtering_product()
 	{	
-		$data['products_subcategory'] = $this->ajax_model->get_filtering_product();
-		$products_subcategory_list = $this->load->view('products_ajax',$data);
-		echo $products_subcategory_list;		
+        $page = $this->input->post('page');
+        if(!$page){
+            $offset = 0;
+        }else{
+            $offset = $page;
+        }
+        $input['offset'] = $offset;
+        $input['limit'] = $this->perPage;
+        //get the posts data
+        $data_values = $this->ajax_model->get_filtering_product($input);
+        $data['product_category'] =  $data_values['product_category'];
+        $data['product_count'] =  $data_values['product_count'];
+        //pagination configuration
+        $config['target']      = '#all_products_section';
+        $config['base_url']    = base_url().'index.php/ajax_controller/filtering_product';
+        $config['total_rows']  = $data['product_count'];
+        $config['per_page']    = $this->perPage;
+        $this->ajax_pagination->initialize($config);
+        $this->load->view('products_ajax',$data,false);
+    	// echo $products_subcategory_list;		
 	}
 
 	// Add to cart- add items in cart
@@ -81,12 +48,14 @@ class Ajax_Controller extends CI_Controller {
 		$data['order_count'] = $data_values['order_count'];
 		echo json_encode($data);		
 	}
+
 	// Remove products in basket
 	public function remove_baseket_product()
 	{	
 		$remove_status = $this->ajax_model->get_remove_product();
 		echo $remove_status;		
 	}
+
 	// Update products in basket
 	public function update_baseket_product()
 	{	

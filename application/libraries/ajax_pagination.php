@@ -28,8 +28,8 @@ class Ajax_pagination{
     var $first_tag_close = '&nbsp;';
     var $last_tag_open   = '&nbsp;';
     var $last_tag_close  = '';
-    var $cur_tag_open    = '&nbsp;<b>';
-    var $cur_tag_close   = '</b>';
+    var $cur_tag_open    = '&nbsp;<span class="pagination_active">';
+    var $cur_tag_close   = '</span>';
     var $next_tag_open   = '&nbsp;';
     var $next_tag_close  = '&nbsp;';
     var $prev_tag_open   = '&nbsp;';
@@ -90,10 +90,10 @@ class Ajax_pagination{
         $num_pages = ceil($this->total_rows / $this->per_page);
 
         // Is there only one page? Hm... nothing more to do here then.
-        if ($num_pages == 1){
-            $info = 'Showing : ' . $this->total_rows;
-            return $info;
-        }
+        // if ($num_pages == 1){
+        //     $info = 'Showing : ' . $this->total_rows;
+        //     return $info;
+        // }
 
         // Determine the current page number.        
         $CI =& get_instance();    
@@ -199,11 +199,30 @@ class Ajax_pagination{
         ?>
         <script>
         function getData(page){  
-            alert("test");
+            var cat_id = $('#category_id').val();
+            var sub_categories_filter_length = $('.sub_categories_filter').length;
+            var recipients_filter_length = $('.recipients_filter').length;
+            
+            if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
+                var sub_id = $('.sub_categories_filter').find('a').data('id');
+                var rec_id = $('.recipients_filter').find('a').data('id');
+                var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id,page: page};
+            }
+            else if(sub_categories_filter_length > 0) {
+                var sub_id = $('.sub_categories_filter').find('a').data('id');
+                var datavalues = {sub_id: sub_id , cat_id : cat_id,page: page};
+            }
+            else if(recipients_filter_length > 0) {
+                var rec_id = $('.recipients_filter').find('a').data('id');
+                var datavalues = {cat_id: cat_id , rec_id : rec_id,page: page};
+            }
+            else {
+                var datavalues = { cat_id : cat_id,page: page};
+            }   
             $.ajax({
                 method: "POST",
                 url: "<?php echo $this->base_url; ?>"+page,
-                data: { page: page },
+                data: datavalues,
                 beforeSend: function(){
                     $('<?php echo $this->loading; ?>').show();
                 },
