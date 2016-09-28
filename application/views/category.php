@@ -11,11 +11,12 @@
                 </div>
                 <?php include "sidebar_list.php"; ?>
                 <div class="col-md-9">
+                    <div class="filtering_sections">
+                    </div>
                     <div class="box">
                         <h1><?php echo $cat_name->category_name; ?></h1>
                         <p>In our Watches department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
                     </div>
-
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-4 products-showing">
@@ -47,7 +48,7 @@
                     </div>
                     <div id="all_products_section" class="row products">
                         <?php 
-                        foreach ($product_category as $cat_pro):
+                        if(!empty($product_category)): foreach ($product_category as $cat_pro):
                         ?>
                         <div class="col-md-4 col-sm-6">
                             <div class="product">
@@ -80,10 +81,15 @@
                             </div>
                             <!-- /.product -->
                         </div>
-                        <?php 
-                        endforeach;
-                        ?> 
-                        
+                        <?php endforeach; else: ?>
+                        <p>Product(s) not available.</p>
+                        <?php endif; ?>
+                        <?php echo $this->ajax_pagination->create_links(); ?>
+                        <div class="loading" style="display: none;">
+                            <div class="content">
+                                <img src="<?php echo base_url().'assets/img/product6.jpg'; ?>"/>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.products -->
 
@@ -130,12 +136,29 @@
 $(document).ready(function() {
     //  AJAX for subcategories products
     $(".subcategories").click(function() {
+        var this_text = $(this).text();
         var sub_id = $(this).data('id');
         var cat_id = $('#category_id').val();
+        var sub_categories_filter_length = $('.sub_categories_filter').length;
+        var recipients_filter_length = $('.recipients_filter').length;
+        if(sub_categories_filter_length > 0) {
+            $('.sub_categories_filter').html(this_text+'<a data-id='+sub_id+' class="filtering_link" data-key="sub_cat"><i class="fa fa-times" aria-hidden="true"></i></a>');
+        }
+        else {
+            $('.filtering_sections').append('<span class="sub_categories_filter">'+this_text+'<a data-id='+sub_id+' class="filtering_link" data-key="sub_cat"><i class="fa fa-times" aria-hidden="true"></i></a></span>');
+        }
+        if(recipients_filter_length > 0) {
+            var rec_id = $('.recipients_filter').find('a').data('id');
+            datavalues = {sub_id: sub_id , cat_id : cat_id,rec_id : rec_id};
+        }
+        else {
+            datavalues = {sub_id: sub_id , cat_id : cat_id};
+        }
+  
         jQuery.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/ajax_subcategory_products",
-        data: {sub_id: sub_id , cat_id : cat_id},
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+        data: datavalues,
 
         success: function(res) {
         if (res)
@@ -145,14 +168,32 @@ $(document).ready(function() {
         }
         });
     });
+
     //  AJAX for recipients products
     $(".recipients").click(function() {
         var rec_id = $(this).data('id');
         var cat_id = $('#category_id').val();
+        var this_text = $(this).text();    
+        var sub_categories_filter_length = $('.sub_categories_filter').length;
+        var recipients_filter_length = $('.recipients_filter').length;
+        if(recipients_filter_length > 0) {
+            $('.recipients_filter').html(this_text+'<a data-id='+rec_id+' class="filtering_link" data-key="rec"><i class="fa fa-times" aria-hidden="true"></i></a>');
+        }
+        else {
+            $('.filtering_sections').append('<span class="recipients_filter">'+this_text+'<a data-id='+rec_id+' class="filtering_link" data-key="rec"><i class="fa fa-times" aria-hidden="true"></i></a></span>');
+        }
+        if(sub_categories_filter_length > 0) {
+            var sub_id = $('.sub_categories_filter').find('a').data('id');
+            datavalues = {sub_id: sub_id , cat_id : cat_id,rec_id : rec_id}
+        }
+        else {
+            datavalues = {rec_id : rec_id, cat_id : cat_id};
+        }
+
         jQuery.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/ajax_recipient_products",
-        data: {rec_id : rec_id, cat_id : cat_id},
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+        data: datavalues,
 
         success: function(res) {
         if (res)
@@ -163,6 +204,38 @@ $(document).ready(function() {
         });
     });
     
+    //  AJAX for removing filter options
+    $(document).on('click','.filtering_link',function() {
+        $(this).closest('span').remove();
+        var cat_id = $('#category_id').val();
+        var sub_categories_filter_length = $('.sub_categories_filter').length;
+        var recipients_filter_length = $('.recipients_filter').length;
+        if(sub_categories_filter_length > 0) {
+           var sub_id = $('.sub_categories_filter').find('a').data('id');
+           var datavalues = {sub_id: sub_id , cat_id : cat_id};
+        }
+        else if(recipients_filter_length > 0) {
+           var rec_id = $('.recipients_filter').find('a').data('id');
+           var datavalues = {cat_id: cat_id , rec_id : rec_id};
+        }
+        else {
+            var datavalues = { cat_id : cat_id};
+        }
+
+        jQuery.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+        data: datavalues,
+
+        success: function(res) {
+        if (res)
+        {
+            $('#all_products_section').html(res);
+        }
+        }
+        });
+    });
+
     //  AJAX for recipients products
     // $(".add_to_cart_items").click(function() {
     //     var rec_id = $(this).data('id');

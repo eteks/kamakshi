@@ -175,10 +175,20 @@
 .owl-buttons {
   display: none;
 }
-.add_to_cart_section {
-  display: none;
+.updations_status {
   color: #4f8a10;
-  font-size: 16px;
-  margin: 5px 0 2px;
+  display: none;
+  font-size: 20px;
+  margin: 0 0 10px;
   text-align: center;
 }
+.filtering_sections span{
+  background: grey none repeat scroll 0 0;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+.filtering_sections a{
+  cursor: pointer;
+}
+
+/* Ended by siva*/

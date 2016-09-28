@@ -14,6 +14,9 @@ class Index extends CI_Controller
         $this->load->library('form_validation');
         $this->session->set_userdata("login_status","1");
         $this->session->set_userdata("login_id","3");
+        // Load pagination library
+        $this->load->library('ajax_pagination');
+        $this->perPage = 3;
 
     }
 	public function index()
@@ -38,6 +41,19 @@ class Index extends CI_Controller
 
 	}
 
+
+
+
+
+
+       
+    
+
+
+
+
+
+
     public function category()
 	{
 		$categories_values_reg = $this->index_model->get_register();
@@ -45,19 +61,64 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
 		$categories['gift_recipient'] = $this->index_model->get_recipient();
-		$category_values = $this->index_model->get_category();
+    	$category_values = $this->index_model->get_category($this->perPage);
 		$categories['cat_name'] = $category_values['cat_name'];
 		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
 		$categories['product_category'] = $category_values['product_category'];
 		// print_r($categories);
 		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
-			$this->load->view('category',$categories);
+    	    //pagination configuration
+            $config['target']      = '#all_products_section';
+            $config['base_url']    = base_url().'index/ajaxPaginationData';
+            $config['total_rows']  = $categories['cat_pro_count'];
+            $config['per_page']    = $this->perPage;
+            $this->ajax_pagination->initialize($config);
+            $this->load->view('category',$categories);
 		}
 		else {
 			$this->load->view('no_products',$categories);
 		}
 	}
+
+
+
+
+
+ function ajaxPaginationData(){
+
+
+    echo "test";
+        // $page = $this->input->post('page');
+        // if(!$page){
+        //     $offset = 0;
+        // }else{
+        //     $offset = $page;
+        // }
+        
+        // //total rows count
+        // $totalRec = count($this->post->getRows());
+        
+        // //pagination configuration
+        // $config['target']      = '#postList';
+        // $config['base_url']    = base_url().'posts/ajaxPaginationData';
+        // $config['total_rows']  = $totalRec;
+        // $config['per_page']    = $this->perPage;
+        // $this->ajax_pagination->initialize($config);
+        
+        // //get the posts data
+        // $data['posts'] = $this->post->getRows(array('start'=>$offset,'limit'=>$this->perPage));
+        
+        // //load the view
+        // $this->load->view('posts/ajax-pagination-data', $data, false);
+    }
+
+
+
+
+
+
+
 
 	public function detail()
 	{

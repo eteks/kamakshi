@@ -8,7 +8,9 @@
                         </li>
                         <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $product_details->category_id; ?>"><?php echo $product_details->category_name;  ?></a>
                         </li>
-                         <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $product_details->category_id; ?>/<?php echo $product_details->subcategory_id; ?>"><?php echo $product_details->subcategory_name;  ?></a>
+                         <li>
+                            <!-- <a href="<?php echo base_url(); ?>index.php/category/<?php echo $product_details->category_id; ?>/<?php echo $product_details->subcategory_id; ?>"><?php echo $product_details->subcategory_name;  ?></a> -->
+                            <a href="#"><?php echo $product_details->subcategory_name;  ?></a>
                         </li>
                         <li><?php echo $product_details->product_title;  ?></li>
                         <input type="hidden" value="<?php echo $product_details->product_id; ?>" id="product_id" />
