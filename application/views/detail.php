@@ -60,17 +60,6 @@
                                 <p class="add_to_cart_section"> </p>
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                        <div id="thumbs" class="row">
-                                <?php foreach($product_image_details as $pro_det): ?>
-                                <div class="col-xs-4 images-list">
-                                    <a href="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" class="thumb">
-                                        <img src="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <?php endforeach; ?>
-                        </div>
-                       </div>
                     </div>
                     <div id="details" class="box">
                         <p></p>

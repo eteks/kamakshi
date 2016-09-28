@@ -1868,9 +1868,9 @@ address {
 	margin-left: 0px !important;
     margin-right: 0px !important;
 }
-.owl-item{
+/*.owl-item{
 	width:233px !important;
-}
+}*/
 .thumb {
     margin-top:7px;
     max-width: 65px;
@@ -1885,7 +1885,7 @@ address {
 .main-image-position{
 	width: 305px !important;
 }
-.owl-item{
+/*.owl-item{
 	width:300px !important;
-}
+}*/
 }
