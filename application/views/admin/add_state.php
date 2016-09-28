@@ -40,15 +40,16 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" id="add_state">
+            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_state" enctype="multipart/form-data" name="state_form">
                     <div class="form-group">
                         <label for="state_name">State Name</label>
-                        <input type="email" class="form-control" id="state_name" placeholder="Enter state Name">
+                        <input type="text" class="form-control" id="state_name" placeholder="Enter state Name" name="state_name">
                     </div>  
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                            <select name="state_status" id="state_status" class="product-type-filter form-control state_act">
                                  <option selected hidden>Select</option>
                                 <option>Active</option>
                                 <option>Inactive</option>

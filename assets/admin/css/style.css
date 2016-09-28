@@ -73,6 +73,10 @@
     padding: 10px;
     width: 760px;
     margin-bottom:10px;
+    display: none;
+}
+#delete_btn{
+	text-align: center;
 }
 .edit-catpro-image {
      padding: 0 0 10px;
@@ -166,3 +170,23 @@
 .label-boxes{
 	width:232px !important;
 }
+.dataTables_wrapper{
+	overflow-x: auto !important;
+    width: 1000px; !important;
+}
+/*.dataTables_filter {
+    float: right;
+    position: fixed;
+    right: 185px;
+    top: 213px;
+}
+.dataTables_length {
+    left: 306px;
+    position: fixed;
+    top: 216px;
+}*/
+
+.col-md-6 {
+    width: 45% !important;
+}
+
