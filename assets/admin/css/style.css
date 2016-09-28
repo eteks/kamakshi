@@ -148,10 +148,17 @@
 	background-image:none !important;
 	border: none !important;
 }
-.dataTables_wrapper{
+.scroll{
+	display:block;
 	overflow-x: auto !important;
-    width: 1000px; !important;
+    width: 1000px !important;
 }
+/*#category{
+	display:block;
+	overflow-x: auto !important;
+    width: 1000px !important;
+}*/
+
 /*.dataTables_filter {
     float: right;
     position: fixed;
@@ -166,4 +173,20 @@
 
 .col-md-6 {
     width: 45% !important;
+}
+#add {
+	float:right;
+	
+}
+.dataTables{
+	width:1000px;
+}
+.table-bordered {
+    width: 1017px;
+}
+.fid{
+	width: 1002px;
+}
+.dataTables_filter {
+    margin: 0 -99px 0 0 !important;
 }

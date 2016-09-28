@@ -38,27 +38,8 @@
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
-        <div class="row">
-        <div class="col-md-6">
-        <div id="DataTables_Table_0_length" class="dataTables_length">
-        <label>
-        <select size="1" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0">
-        <option value="10" selected="selected">10</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        </select> records per page</label>
-        </div>
-        </div>
-        <div class="col-md-6">
-        <div class="dataTables_filter" id="DataTables_Table_0_filter">
-        	<label>Search: <input aria-controls="DataTables_Table_0" type="text"></label>
-        	</div>
-        	</div>
-        	</div>
-    <!-- <div class="alert alert_blue alert-info col-md-10"></div> -->
-    <div class="dataTables_wrapper">
-    <table class="table table-striped table-bordered bootstrap-datatable responsive">
+    <div class="alert alert_blue alert-info col-md-10"></div>
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll" >
     <thead>
     <th>User Id</th>
         <th>Total Items</th> 
@@ -110,7 +91,7 @@
     </tr>
     </tbody>
     </table>
-    <div class="col-md-12 center-block"><div class="dataTables_paginate paging_bootstrap pagination"><ul class="pagination"><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div>
+    </div>
     </div>
     </div>
     </div>
