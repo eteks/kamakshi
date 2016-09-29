@@ -55,7 +55,7 @@
 	margin-left: 10px;
     margin-top: 50px;
 }*/
-.attibute_add_btn{
+.attribute_action_btn{
     margin-left: 10px;
     /*margin-top: 60px;*/
     font-size: 12px;
@@ -65,7 +65,7 @@
 	display: block;
 }*/
 .attribute_main_block{
-    display: none;
+    /*display: none;*/
 }
 .attribute_group{
 	border: 1px solid #cccccc;
@@ -191,8 +191,19 @@
 .dataTables_filter {
     margin: 0 -99px 0 0 !important;
 }
-.group{
+.group_action{
     position: relative;
     right: -150px;
     text-align: right;
+}
+/*.attibute_remove_btn{
+    display: none;
+}*/
+.attribute_btn_disabled{
+    cursor: default;
+    pointer-events: none;
+    background-color: #ffffff;
+}
+.attribute_error{
+    border : 1px solid red;
 }
