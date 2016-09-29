@@ -41,7 +41,7 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive fid">
     <thead>
     <tr>
         <th>User Name</th>
@@ -54,7 +54,7 @@
     <tbody>
     <tr>
         <td>David R</td>
-        <td class="center">In WordPress</td>
+        <td class="center">xyz@gmail.com</td>
         <td class="center">2012/01/01</td>
         <td class="center">
             <span class="label-success label label-default">Active</span>

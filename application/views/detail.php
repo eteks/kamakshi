@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-12">
                     <div id="productMain" class="row">
-                        <div class="col-sm-7">
+                        <div class="col-sm-5">
                             <div id="mainImage">
                                 <img src="<?php echo base_url(); ?><?php echo $product_default_image; ?>" alt="" class="img-responsive main-image-position">
                             </div>
@@ -35,8 +35,6 @@
                             </div>
                             <!-- /.ribbon -->
                         </div>
-
-
                         <?php if(!empty($attribute_array)): foreach($attribute_array as $attribute): ?>
                             <label> <?php echo $attribute['product_attribute']; ?> </label>
                             <select>
@@ -44,9 +42,19 @@
                             </select>
                         <?php endforeach; ?>
                         <?php endif; ?>   
-
+                        <div class="col-sm-2">
+                        <div id="thumbs" class="row">
+                                <?php foreach($product_image_details as $pro_det): ?>
+                                <div class="col-xs-12 images-list">
+                                    <a href="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" class="thumb">
+                                        <img src="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <?php endforeach; ?>
+                        </div>
+                       </div>
                         <div class="col-sm-5">
-                            <div class="box">
+                            <div class="box1">
                                 <h1 class="text-center"><?php echo $product_details->product_title;  ?></h1>
                                 <p class="goToDescription"><a class="scroll-to" href="#details">Scroll to product details, material &amp; care and sizing</a>
                                 </p>
@@ -59,17 +67,6 @@
                                 <p class="add_to_cart_section"> </p>
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                        <div id="thumbs" class="row">
-                                <?php foreach($product_image_details as $pro_det): ?>
-                                <div class="col-xs-4 images-list">
-                                    <a href="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" class="thumb">
-                                        <img src="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <?php endforeach; ?>
-                        </div>
-                       </div>
                     </div>
                     <div id="details" class="box">
                         <p></p>
@@ -102,7 +99,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row same-height-row">
+                    <div class="row same-height-row common-cls-alignment">
                         <h3>You may also like these products</h3>
                         <div class="product-slider">
                             <?php foreach($recommanded_products as $rec_pro): ?>
