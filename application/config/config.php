@@ -22,9 +22,9 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/kamakshi/';
+$config['base_url'] = 'http://localhost/kamakshi1/';
 
-$config['admin_base_url'] = '/kamakshi/index.php/admin';
+$config['admin_base_url'] = '/kamakshi1/index.php/admin';
 
 // echo $config['base_url'];
 
