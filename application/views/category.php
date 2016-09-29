@@ -11,11 +11,12 @@
                 </div>
                 <?php include "sidebar_list.php"; ?>
                 <div class="col-md-9">
-                    <div class="filtering_sections">
-                    </div>
-                    <div class="box">
+                  <div class="filtering_title">
+                  	<span class="filtering_titles filtering_name">Filtering :</span>
+                    <div class="filtering_sections filtering_titles"></div>
+                  </div>
+                    <div class="box product_name">
                         <h1><?php echo $cat_name->category_name; ?></h1>
-                        <p>In our Watches department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
                     </div>
                     <div class="box info-bar">
                         <div class="row">
@@ -56,18 +57,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
-                                            <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive">
+                                            <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive category_images">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
-                                                <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive category_images">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="invisible">
-                                    <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive category_images">
                                 </a>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>"> <?php echo $cat_pro['product_title']; ?> </a></h3>

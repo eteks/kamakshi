@@ -51,35 +51,35 @@
                         <div class="edit-catpro-image">
                            <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
-                           </div><br />
-                            <div class="product-cat-images">
-                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                            <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#">X</a></span>
+                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                         </div>
                     </div>

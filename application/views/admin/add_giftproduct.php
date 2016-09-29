@@ -125,24 +125,7 @@
 			                                <input value="Remove" class="btn submit-btn btn-default attibute_add_btn" type="button">
 	                                </div>
                                </div> <!-- clone_attribute_group -->
-                               <div class="clone_attribute_group">
-                                    <div class="clone_attribute" id="clone_attribute1">
-                                    	<label for="total_iteams" class="fl"></label>
-                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes">
-                                                <option value="">Select Attribute</option>
-                                                <?php foreach ($attribute_list as $att): ?>
-                                                    <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
-                                                <?php endforeach ?>
-                                        </select>
-                                        <input class="form-control fl label-boxes" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
-                                    </div> <!--  clone_attribute -->
-                                   <div class="add-rmv-btn">
-			                                <input value="Add" class="btn submit-btn btn-default attibute_add_btn" type="button">
-			                                <input value="Remove" class="btn submit-btn btn-default attibute_add_btn" type="button">
-	                                </div>
-                               </div> <!-- clone_attribute_group -->
-                               
-                                   <div class="clr-screen"></div>
+                                <div class="clr-screen"></div>
                             </div>
                             <div class="form-group attribute_block">
                                 <label for="price" class="fl">Price</label>

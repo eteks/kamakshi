@@ -25,7 +25,6 @@
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
         <h2><!-- <i class="glyphicon glyphicon-user"></i> -->Giftproduct</h2>
-
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
@@ -39,21 +38,21 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive table-content">
     <thead>
     <tr>
-        <th>Product Title</th>
-        <th>Product Image</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Subcategory</th>
-        <th>Recipient</th>
-        <th>Price</th>
-        <th>Available Items</th>
-        <th>No. Of Items Sold</th>
-        <th>Status</th>
-        <th>Created Date</th>
-        <th>Actions</th>
+        <th class="product-details-title">Product Title</th>
+        <th class="product-details">Product Image</th>
+        <th class="product-details">Description</th>
+        <th class="product-details-title">Category</th>
+        <th class="product-details-title">Subcategory</th>
+        <th class="product-details-title">Recipient</th>
+        <th class="product-details-title">Price</th>
+        <th class="product-details-title">Available Items</th>
+        <th class="product-details-title">No. Of Items Sold</th>
+        <th class="product-details-title">Status</th>
+        <th class="product-details-title">Created Date</th>
+        <th class="product-details-title">Actions</th>
     </tr>
     </thead>
     <tbody>
