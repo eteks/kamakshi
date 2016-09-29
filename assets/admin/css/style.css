@@ -53,11 +53,11 @@
     margin: 0 7px 0 0;
     padding-left: 4px;
 }
-.attibute_add{
+/*.attibute_add{
 	margin-left: 10px;
     margin-top: 50px;
-}
-.attibute_add_btn{
+}*/
+.attribute_action_btn{
     margin-left: 10px;
     /*margin-top: 60px;*/
     font-size: 12px;
@@ -112,11 +112,7 @@
     margin-top: 15px !important;
 }
 .product-btns{
-    display: inline-block !important;
-    margin-top: 190px !important;
-    margin-bottom: 30px !important;
     font-size: 12px;
-    padding: 5px;
 }
 .add-rmv-btn {
     float: left;
@@ -152,6 +148,9 @@
 .btn-primary{
 	background-image:none !important;
 	border: none !important;
+}
+.scroll{
+	display:block;
 }
 .btn-info {
     background-image: none !important;
@@ -191,4 +190,43 @@
 }
 .select-category-images{
 	width:230px;
+}
+.dataTables_wrapper{
+	overflow-x: auto !important;
+    width: 1000px !important;
+}
+.col-md-6 {
+    width: 45% !important;
+}
+#add {
+	float:right;
+	
+}
+.dataTables{
+	width:1000px;
+}
+.table-bordered {
+    width: 1017px;
+}
+.fid{
+	width: 1002px;
+}
+.dataTables_filter {
+    margin: 0 -99px 0 0 !important;
+}
+.group_action{
+    position: relative;
+    right: -150px;
+    text-align: right;
+}
+/*.attibute_remove_btn{
+    display: none;
+}*/
+.attribute_btn_disabled{
+    cursor: default;
+    pointer-events: none;
+    background-color: #ffffff;
+}
+.attribute_error{
+    border : 1px solid red;
 }

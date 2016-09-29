@@ -36,10 +36,10 @@
    <div class="box-content">
         <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_category">
         <i class="glyphicon glyphicon-edit icon-white"></i>
-        Add
+        Add 
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive fid" id="category">
     <thead>
     <tr>
         <th>Category Name</th>

@@ -69,11 +69,18 @@
                                 <div class="portfoloi_content_area" >
                                     <div class="portfolio_menu">
                                         <ul id="filters">
+
+
+
                                             <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*">all</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".men">men</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".women">women</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".boy">boy</a></li>
                                             <li><a href="#portfolio_menu" data-filter=".girl">girl</a></li>
+
+
+
+                                            
                                         </ul>
                                    </div>
          
@@ -122,7 +129,7 @@
                             </div>
                             <!-- /.product -->
                         </div>
-                        <?php endforeach ?>
+                        <?php endforeach; ?>
                  </div>
                     <!-- /.product-slider -->
                    </div>

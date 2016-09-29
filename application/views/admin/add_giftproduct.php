@@ -107,11 +107,11 @@
                     </div>
             <p class="product_tab"><input type="checkbox" class="attribute_status"> Want to Add Product Attributes?</p>
                     <div class="attribute_main_block">
-                        <div class="attribute_group fl" id="attribute_group1">
+                        <div class="attribute_group" id="attribute_group1">
                             <div class="form-group attribute_block">
                                 <div class="clone_attribute_group">
                                     <div class="clone_attribute" id="clone_attribute1">
-                                    	<label for="total_iteams" class="fl">Attribute Option</label>
+                                        <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
                                         <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes">
                                                 <option value="">Select Attribute</option>
                                                 <?php foreach ($attribute_list as $att): ?>
@@ -119,13 +119,13 @@
                                                 <?php endforeach ?>
                                         </select>
                                         <input class="form-control fl label-boxes" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
+                                        <div class="add-rmv-btn">
+                                            <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
+                                            <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
+                                        </div>
                                     </div> <!--  clone_attribute -->
-                                   <div class="add-rmv-btn">
-			                                <input value="Add" class="btn submit-btn btn-default attibute_add_btn" type="button">
-			                                <input value="Remove" class="btn submit-btn btn-default attibute_add_btn" type="button">
-	                                </div>
                                </div> <!-- clone_attribute_group -->
-                                <div class="clr-screen"></div>
+                                 <div class="clr-screen"></div>
                             </div>
                             <div class="form-group attribute_block">
                                 <label for="price" class="fl">Price</label>
@@ -135,16 +135,15 @@
                                 <label for="total_iteams" class="fl">Total Items</label>
                                 <input type="text" class="form-control label-boxes" id="total_iteams" placeholder="Enter total items" name="product_attribute_totalitems[]">
                             </div> 
+                            <div class="group group_action">
+                                <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
+                                <input type="button" value="Remove" class="btn submit-btn btn-default attibute_remove product-btns attribute_btn_disabled">      
+                            </div>  
                         </div> 
-                        <div class="group">
-                        <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
-                        <input type="button" value="Remove" class="btn submit-btn btn-default attibute_add product-btns">      
-                    </div>  
-                    </div>
-                    
-                    <!-- <div class="group_values_block">
+                    </div>                  
+                    <div class="group_values_block">
                         <input type="hidden" class="group_values" name="group_values" value="1"> 
-                    </div> --> <!-- group_values_block -->
+                    </div> <!-- group_values_block -->
                     <button type="submit" class="btn submit-btn btn-default submiit">Submit</button>
                 </form>
                    

@@ -41,26 +41,35 @@
             </div>
           <div class="box-content">
                 <form role="form" id="add_city">
-                	 <div class="control-group">
+                     <div class="control-group">
                         <label for="sel_a">State</label>
-                    <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
+                    <select name="state_id" id="sel_c" class="product-type-filter form-control city_act">
                    <option value="">
-                     Select City
+                     Select State
                     </option>
-                    <option>Tamilnadu</option>
+                   <?php foreach ($city_data as $city): ?>
+                     <option value="<?php echo $city["state_name"] ?>">
+                        ppppp
+                                        
+                     </option>
+                    <?php endforeach ?>
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="city_name">City Name</label>
-                        <input type="email" class="form-control" id="city_name" placeholder="Enter City Name">
-                    </div> 
-                    <div class="control-group">
-                        <label class="control-label" for="sel_c">City Status</label>
+                        <label for="state_name">City Name</label>
+                        <input type="text" class="form-control" id="city_name" placeholder="Enter City Name" value="<?php if(!empty($city_data['city_name'])) echo $city_data['city_name']; ?>" name="edit_city_name">
+                    </div>  
+                   <div class="control-group">
+                        <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                            <select name="edit_city_status" id="sel_c" class="product-type-filter form-control city_act">
+                                <option value="">Select</option>
+                                <option value="1" <?php if ($city_data['city_status'] == 1) echo "selected"; ?>>
+                                    <span>Active</span>
+                                </option>
+                                <option value="0" <?php if ($city_data['city_status'] == 0) echo "selected"; ?>>
+                                    <span>Inactive</span>
+                                </option>
                             </select>
                         </div>
                     </div>

@@ -39,33 +39,43 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" id="add_area">
-                 <div class="form-errors"></div>
-                  <div class="control-group">
+            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_area" enctype="multipart/form-data" name="city_form">
+            <div class="control-group">
                         <label for="sel_a">Select State</label>
-                    <select name="city_id" id="sel_a" class="form-control">
+                    <select name="state_name" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
                     </option>
-                    <option>TAMILNADU</option>
+                    <?php
+                    $query = mysql_query("select * from giftstore_state  where state_status='1' order by state_name asc");
+                    while ($row = mysql_fetch_array($query)) {
+                        ?>
+                    <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
+                <?php } ?>
                     </select>
                     </div>
                     <div class="control-group">
-                        <label for="sel_b">Select City</label>
-                    <select name="city_id" id="sel_b" class="form-control">
+                        <label for="sel_a">Select City</label>
+                    <select name="state_name" id="sel_a" class="form-control">
                    <option value="">
-                     Select City
+                     Select City 
                     </option>
-                     <option>MADURAI</option>
+                    <?php
+                    $query = mysql_query("select * from giftstore_city  where city_status='1' order by city_name asc");
+                    while ($row = mysql_fetch_array($query)) {
+                        ?>
+                    <option value="<?php echo $row['city_id']; ?>"><span><?php echo $row['city_name']; ?></span></option>
+                <?php } ?>
                     </select>
                     </div>
                     <div class="form-group">
                         <label for="area_name">Area Name</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
+                        <input type="text" class="form-control" id="area_name" placeholder="Enter area Name" name="area_name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Delivery charge</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter delivery charge">
+                        <input type="text" class="form-control" id="delivery_charge" placeholder="Enter delivery charge" name="delivery_charge">
                     </div>  
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Area status</label>
