@@ -145,13 +145,13 @@
                         <li class="nav-header">My Dashboard</li>
                         <!-- <li><a class="ajax-link" href="index.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
                         </li> -->
-                        <!--<li class="accordion">
+                        <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="<?php //echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
-                                <li><a href="<?php //echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
                             </ul>
-                        </li> -->
+                        </li> 
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-inbox"></i><span> Catalog</span></a>
                             <ul class="nav nav-pills nav-stacked">

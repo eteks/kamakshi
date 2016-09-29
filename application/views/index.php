@@ -171,18 +171,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$pro['product_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$pro['product_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url().$pro['product_image'] ?>" alt="" class="img-responsive">
+                                    <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $pro['product_title'] ?></a>

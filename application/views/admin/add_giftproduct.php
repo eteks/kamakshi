@@ -112,13 +112,13 @@
                                 <div class="clone_attribute_group">
                                     <div class="clone_attribute" id="clone_attribute1">
                                         <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
-                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes">
+                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes field_validate">
                                                 <option value="">Select Attribute</option>
                                                 <?php foreach ($attribute_list as $att): ?>
                                                     <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
                                                 <?php endforeach ?>
                                         </select>
-                                        <input class="form-control fl label-boxes" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
+                                        <input class="form-control fl label-boxes field_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
                                         <div class="add-rmv-btn">
                                             <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
                                             <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
