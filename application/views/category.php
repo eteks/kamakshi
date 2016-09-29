@@ -34,10 +34,11 @@
                                         <div class="col-md-6 col-sm-6">
                                             <div class="products-sort-by">
                                                 <strong>Sort by</strong>
-                                                <select name="sort-by" class="form-control">
-                                                    <option>Price</option>
-                                                    <option>Name</option>
-                                                    <option>Sales first</option>
+                                                <select class="sort_products" id="sort_products" name="sort-by" class="form-control">
+                                                    <option value="pricel">Price - Low to High</option>
+                                                    <option value="priceh">Price - High to Low</option>
+                                                    <option value="name">Name </option>
+                                                    <option value="newest">Newest first</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -133,15 +134,101 @@
 
 
 <script>
-// Ajax post
+// Ajax Call
 $(document).ready(function() {
-    //  AJAX for subcategories products
+
+    // Price filtering
+    $('.addui-slider-handle').mouseup(function() {
+   
+        var price_range =  $('.addui-slider-input').val().split(',');
+        var start_value = parseFloat(price_range[0]).toFixed(2);
+        var end_value = parseFloat(price_range[1]).toFixed(2);
+        var cat_id = $('#category_id').val();
+        var sort_val = $('.sort_products').val();
+        var sub_categories_filter_length = $('.sub_categories_filter').length;
+        var recipients_filter_length = $('.recipients_filter').length;
+        if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
+            var sub_id = $('.sub_categories_filter').find('a').data('id');
+            var rec_id = $('.recipients_filter').find('a').data('id');
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
+        }
+        else if(sub_categories_filter_length > 0) {
+            var sub_id = $('.sub_categories_filter').find('a').data('id');
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
+        }
+        else if(recipients_filter_length > 0) {
+            var rec_id = $('.recipients_filter').find('a').data('id');
+            var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort : sort_val};
+        }
+        else {
+            var datavalues = { cat_id: cat_id , s_val : start_value, e_val : end_value, sort : sort_val};
+        }   
+
+        jQuery.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+            data: datavalues,
+            success: function(res) {
+                if (res)
+                {
+                    $('#all_products_section').html(res);
+                }
+            }
+        });
+    });
+
+    // Sort filtering
+    $('.sort_products').on('change',function() {
+   
+        var price_range =  $('.addui-slider-input').val().split(',');
+        var start_value = parseFloat(price_range[0]).toFixed(2);
+        var end_value = parseFloat(price_range[1]).toFixed(2);
+        var cat_id = $('#category_id').val();
+        var sort_val = $(this).val();
+        var sub_categories_filter_length = $('.sub_categories_filter').length;
+        var recipients_filter_length = $('.recipients_filter').length;
+        if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
+            var sub_id = $('.sub_categories_filter').find('a').data('id');
+            var rec_id = $('.recipients_filter').find('a').data('id');
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
+        }
+        else if(sub_categories_filter_length > 0) {
+            var sub_id = $('.sub_categories_filter').find('a').data('id');
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
+        }
+        else if(recipients_filter_length > 0) {
+            var rec_id = $('.recipients_filter').find('a').data('id');
+            var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort : sort_val};
+        }
+        else {
+            var datavalues = { cat_id: cat_id , s_val : start_value, e_val : end_value, sort : sort_val};
+        }   
+        jQuery.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+            data: datavalues,
+            success: function(res) {
+                if (res)
+                {
+                    $('#all_products_section').html(res);
+                }
+            }
+        });
+    });
+
+    //  Subcategories filtering
     $(".subcategories").click(function() {
+
+        var price_range =  $('.addui-slider-input').val().split(',');  
+        var start_value = parseFloat(price_range[0]).toFixed(2);
+        var end_value = parseFloat(price_range[1]).toFixed(2);
+        var sort_val = $('.sort_products').val();
         var this_text = $(this).text();
         var sub_id = $(this).data('id');
         var cat_id = $('#category_id').val();
         var sub_categories_filter_length = $('.sub_categories_filter').length;
         var recipients_filter_length = $('.recipients_filter').length;
+
         if(sub_categories_filter_length > 0) {
             $('.sub_categories_filter').html(this_text+'<a data-id='+sub_id+' class="filtering_link" data-key="sub_cat"><i class="fa fa-times" aria-hidden="true"></i></a>');
         }
@@ -150,28 +237,31 @@ $(document).ready(function() {
         }
         if(recipients_filter_length > 0) {
             var rec_id = $('.recipients_filter').find('a').data('id');
-            datavalues = {sub_id: sub_id , cat_id : cat_id,rec_id : rec_id};
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};    
         }
         else {
-            datavalues = {sub_id: sub_id , cat_id : cat_id};
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
         }
-  
         jQuery.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-        data: datavalues,
-
-        success: function(res) {
-        if (res)
-        {
-            $('#all_products_section').html(res);
-        }
-        }
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+            data: datavalues,
+            success: function(res) {
+                if (res)
+                {
+                    $('#all_products_section').html(res);
+                }
+            }
         });
     });
 
-    //  AJAX for recipients products
+    //  Reipients fitering
     $(".recipients").click(function() {
+    
+        var price_range =  $('.addui-slider-input').val().split(',');  
+        var start_value = parseFloat(price_range[0]).toFixed(2);
+        var end_value = parseFloat(price_range[1]).toFixed(2);
+        var sort_val = $('.sort_products').val();
         var rec_id = $(this).data('id');
         var cat_id = $('#category_id').val();
         var this_text = $(this).text();    
@@ -185,57 +275,62 @@ $(document).ready(function() {
         }
         if(sub_categories_filter_length > 0) {
             var sub_id = $('.sub_categories_filter').find('a').data('id');
-            datavalues = {sub_id: sub_id , cat_id : cat_id,rec_id : rec_id}
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
         }
         else {
-            datavalues = {rec_id : rec_id, cat_id : cat_id};
+            var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
         }
-
         jQuery.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-        data: datavalues,
-
-        success: function(res) {
-        if (res)
-        {
-            $('#all_products_section').html(res);
-        }
-        }
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
+            data: datavalues,
+            success: function(res) {
+                if (res)
+                {
+                    $('#all_products_section').html(res);
+                }
+            }
         });
     });
     
-    //  AJAX for removing filter options
+    //  Remove option filtering
     $(document).on('click','.filtering_link',function() {
+        
         $(this).closest('span').remove();
+        var price_range =  $('.addui-slider-input').val().split(',');  
+        var start_value = parseFloat(price_range[0]).toFixed(2);
+        var end_value = parseFloat(price_range[1]).toFixed(2);
+        var sort_val = $('.sort_products').val();
         var cat_id = $('#category_id').val();
         var sub_categories_filter_length = $('.sub_categories_filter').length;
         var recipients_filter_length = $('.recipients_filter').length;
+
+
         if(sub_categories_filter_length > 0) {
-           var sub_id = $('.sub_categories_filter').find('a').data('id');
-           var datavalues = {sub_id: sub_id , cat_id : cat_id};
-        }
-        else if(recipients_filter_length > 0) {
-           var rec_id = $('.recipients_filter').find('a').data('id');
-           var datavalues = {cat_id: cat_id , rec_id : rec_id};
-        }
-        else {
-            var datavalues = { cat_id : cat_id};
+            var sub_id = $('.sub_categories_filter').find('a').data('id');
+            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
         }
 
+
+        else if(recipients_filter_length > 0) {
+           var rec_id = $('.recipients_filter').find('a').data('id');
+           var datavalues = {rec_id : rec_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
+        }
+        else {
+            var datavalues = {cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
+        }
         jQuery.ajax({
         type: "POST",
         url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
         data: datavalues,
-
-        success: function(res) {
-        if (res)
-        {
-            $('#all_products_section').html(res);
-        }
-        }
+            success: function(res) {
+                if (res)
+                {
+                    $('#all_products_section').html(res);
+                }
+            }
         });
     });
 
-});
+}); // end document
 </script>

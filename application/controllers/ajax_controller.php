@@ -12,7 +12,7 @@ class Ajax_Controller extends CI_Controller {
 
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 6;
+        $this->perPage = 3;
 	}
 
 	// Filtering for products

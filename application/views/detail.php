@@ -35,6 +35,13 @@
                             </div>
                             <!-- /.ribbon -->
                         </div>
+                        <?php if(!empty($attribute_array)): foreach($attribute_array as $attribute): ?>
+                            <label> <?php echo $attribute['product_attribute']; ?> </label>
+                            <select>
+                                <option value="<?php echo $attribute['product_attribute_value_id']; ?>"> <?php echo $attribute['product_attribute_value']; ?> </option> 
+                            </select>
+                        <?php endforeach; ?>
+                        <?php endif; ?>   
                         <div class="col-sm-2">
                         <div id="thumbs" class="row">
                                 <?php foreach($product_image_details as $pro_det): ?>
