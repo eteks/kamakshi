@@ -12,7 +12,7 @@
         Kamakshi -Giftshop
     </title>
     <meta name="keywords" content="">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'> -->
     <!-- styles -->
     <link href="<?php echo base_url(); ?>assets/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
  ________________________________________________________ -->
     <!-- Ajax loader added by siva -->
     <div class="loading" style="display: none;">
-        <div class="content">
+        <div class="ajax_loader">
             <img src="<?php echo base_url().'assets/img/ajax-loader.gif'; ?>"/>
         </div>
     </div> 

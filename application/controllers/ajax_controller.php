@@ -63,4 +63,12 @@ class Ajax_Controller extends CI_Controller {
 		// echo $remove_status;	
 		echo $remove_status;	
 	}
+
+	// Update products in basket
+	public function get_city()
+	{	
+		$data['city_data'] = $this->ajax_model->get_city_data();
+		echo json_encode($data);
+	}
+
 } // end of the class 
