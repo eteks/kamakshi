@@ -25,7 +25,6 @@
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
         <h2><!-- <i class="glyphicon glyphicon-user"></i> -->Giftproduct</h2>
-
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
@@ -39,21 +38,21 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive table-content">
     <thead>
     <tr>
-        <th>Product Title</th>
-        <th>Product Image</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Subcategory</th>
-        <th>Recipient</th>
-        <th>Price</th>
-        <th>Available Items</th>
-        <th>No. Of Items Sold</th>
-        <th>Status</th>
-        <th>Created Date</th>
-        <th>Actions</th>
+        <th class="product-details-title">Product Title</th>
+        <th class="product-details">Product Image</th>
+        <th class="product-details">Description</th>
+        <th class="product-details-title">Category</th>
+        <th class="product-details-title">Subcategory</th>
+        <th class="product-details-title">Recipient</th>
+        <th class="product-details-title">Price</th>
+        <th class="product-details-title">Available Items</th>
+        <th class="product-details-title">No. Of Items Sold</th>
+        <th class="product-details-title">Status</th>
+        <th class="product-details-title">Created Date</th>
+        <th class="product-details-title">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -82,7 +81,7 @@
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
-                <a class="btn btn-danger" href="#">
+                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
                     <i class="glyphicon glyphicon-trash icon-white"></i>
                     Delete
                 </a>
@@ -95,7 +94,29 @@
     </div>
     </div>
     <!--/span-->
-
+  <script type="text/javascript" >
+		$(document).on("click", ".delete", function () {
+		var myId = $(this).data('id');
+		$(".modal-body #vId").val( myId );
+		$("#del_link").prop("href", "users.php?delete="+myId);
+		});
+	</script>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body delete_message_style">
+				<input type="hidden" name="delete" id="vId" value=""/>
+				<button type="button" class="close " data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<center class="popup_tx">
+					<h5>Are you sure you want to delete this item? </h5>
+				</center>
+			</div>
+			<div id="delete_btn" class="modal-footer footer_model_button" >
+				<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
+				<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
+			</div>
     </div><!--/row-->
         </div>
     </div>

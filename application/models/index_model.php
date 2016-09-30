@@ -1,15 +1,17 @@
+
+<!-- kalai idea -->
 <?php
 
 class Index_Model extends CI_Model {
-	
-	public function __construct()
-	{
-		 $this->load->database();
-	}
+    
+    public function __construct()
+    {
+         $this->load->database();
+    }
  
-	public function get_register()
-	{
-		$query1 = $this->db->get('giftstore_category');
+    public function get_register()
+    {
+        $query1 = $this->db->get('giftstore_category');
         $query['giftstore_category'] = $query1->result_array();
         $login_status = $this->session->userdata("login_status");
         $random = uniqid();
@@ -55,8 +57,8 @@ class Index_Model extends CI_Model {
         $query['order_details'] =  $order_query->result_array();
         $query['order_count'] = count($query['order_details']);
 
-    	return $query;
-	}
+        return $query;
+    }
 
     public function get_latestproduct()
     {
@@ -102,6 +104,8 @@ class Index_Model extends CI_Model {
 
     public function get_category($limit)
     {
+        $start_price = 0.00;
+        $end_price = 1000.00;
         if ($this->uri->segment(2)) {
             $where                     = '(category_id="' . $this->uri->segment(2) . '")';
             $cat_query                 = $this->db->get_where('giftstore_category', $where);
@@ -119,40 +123,104 @@ class Index_Model extends CI_Model {
             $cat_product=$this->db->select('*');
             $cat_product=$this->db->from('giftstore_product cp');
             $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
-            $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0)';
+            $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and (cp.product_price BETWEEN "'.$start_price.'" and "'.$end_price.'"))';
             $cat_product=$this->db->where($where);
             $cat_product=$this->db->limit($limit, '0');
+            $cat_product=$this->db->order_by('product_price', 'asc');
             $cat_product=$this->db->group_by('cp.product_id');
+            $cat_product=$this->db->order_by('product_price', 'asc');
             $query['product_category'] = $cat_product->get()->result_array();
-          
+    
             //  count
             $cat_product1=$this->db->select('*');
             $cat_product1=$this->db->from('giftstore_product cp');
             $cat_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
-            $where1 = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0)';
+            $where1 = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and (cp.product_price BETWEEN "'.$start_price.'" and "'.$end_price.'"))';
             $cat_product1=$this->db->where($where1);
             $cat_product1=$this->db->group_by('cp.product_id');
+            $cat_product1=$this->db->order_by('product_price', 'asc');
             $query1 = $cat_product1->get()->result_array();
             $query['cat_pro_count'] = count($query1);
 
-            // if($this->uri->segment(3)){	
-            // 	$cat_product=$this->db->select('*');
-	           //  $cat_product=$this->db->from('giftstore_product cp');
-	           //  $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
-	           //  $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and cp.product_subcategory_id="'.$this->uri->segment(3).'")';
-	           //  $cat_product=$this->db->where($where);
-	           //  $cat_product=$this->db->group_by('cp.product_id');
-	           //  $query['product_category'] = $cat_product->get()->result_array();
+            // if($this->uri->segment(3)){  
+            //  $cat_product=$this->db->select('*');
+               //  $cat_product=$this->db->from('giftstore_product cp');
+               //  $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+               //  $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and cp.product_subcategory_id="'.$this->uri->segment(3).'")';
+               //  $cat_product=$this->db->where($where);
+               //  $cat_product=$this->db->group_by('cp.product_id');
+               //  $query['product_category'] = $cat_product->get()->result_array();
             // }
-   		}
+        }
         return $query;
     }
 
     //  Get product details
-	public function get_product_details()
-	{	
-		if($this->uri->segment(2)){
-			$limit = 15;
+    public function get_product_details()
+    {   
+        if($this->uri->segment(2)){
+            $limit = 15;
+            $query['attribute_array'] = 0;
+
+
+            // Check the product has attribute
+            $product_count_in_group_where = '(product_mapping_id="'.$this->uri->segment(2).'")'; 
+            $product_count_in_group = $this->db->get_where('giftstore_product_attribute_group',$product_count_in_group_where)->result_array();
+            // echo "<pre>";
+            // print_r($product_count_in_group);
+            // echo "</pre>";
+            $data =array();
+            $array_column =array();
+            foreach ($product_count_in_group as $value) {
+                # code...
+                $data[] = $value['product_attribute_value_combination_id'];
+            }
+            $data_array = array();
+            foreach ($data as $value) {
+
+                $data_array[]= explode(',',$value);
+                $data_arra= explode(',',$value);
+                count($data_arra);
+
+                $array_column = array_column($data_array,0);
+            }
+
+
+
+          echo "<pre>";
+            print_r($data_array);
+            echo "</pre>";
+            // $array_column = array_column($data_array, 0);
+                
+            echo "<pre>";
+            print_r($array_column);
+            echo "</pre>";
+            
+
+
+//             if(count($product_count_in_group) > 0) {
+
+//                 foreach ($product_count_in_group as $value) {
+//                    $combination_array[]=explode(',',$value['product_attribute_value_combination_id']);    
+//                 }
+
+//                 $aw=array_map(null,$combination_array);
+
+// print_r($combination_array); 
+
+
+
+
+            // }
+
+          
+
+
+
+
+
+
+
             $product_image=$this->db->select('*');
             $product_image=$this->db->from('giftstore_product p');
             $product_image=$this->db->join('giftstore_product_upload_image pui','p.product_id=pui.product_mapping_id','inner');
@@ -171,6 +239,12 @@ class Index_Model extends CI_Model {
             $subcategory_id = $query['product_details']->subcategory_id;
             $recipient_id = $query['product_details']->product_recipient_id;
 
+           
+
+
+
+
+
             //  Recommanded products start
             $recommanded_where_sub = '(rp.product_id!="'.$this->uri->segment(2).'" and rp.product_subcategory_id="'.$subcategory_id.'" and rp.product_category_id="'.$category_id.'" and rp.product_status=1)';
             $recommanded_products_sub = $this->db->select('*');
@@ -179,34 +253,34 @@ class Index_Model extends CI_Model {
             $recommanded_products_sub = $this->db->where($recommanded_where_sub);
             $recommanded_products_sub = $this->db->limit($limit, '0');
             $recommanded_products_sub = $this->db->group_by('rp.product_id');
-        	$query['recommanded_products'] = $recommanded_products_sub->get()->result_array();
-        	$sub_pro_count = count($query['recommanded_products']);
-        	if($sub_pro_count < $limit) {
-        		$limit_rec = $limit - $sub_pro_count;
-        		$recommanded_where_rec = '(rrp.product_id!="'.$this->uri->segment(2).'" and rrp.product_subcategory_id!="'.$subcategory_id.'" and rrp.product_category_id="'.$category_id.'" and rrp.product_status=1 and rrp.product_recipient_id="'.$recipient_id.'")';
-        		$recommanded_products_rec = $this->db->select('*');
-        		$recommanded_products_rec = $this->db->from('giftstore_product rrp');
-        		$recommanded_products_rec = $this->db->join('giftstore_product_upload_image rrpu','rrp.product_id=rrpu.product_mapping_id','inner');
-        		$recommanded_products_rec = $this->db->where($recommanded_where_rec);
-        		$recommanded_products_rec = $this->db->limit($limit_rec, '0');
-        		$recommanded_products_rec = $this->db->group_by('rrp.product_id');
-        		$query['recommanded_products_rec'] = $recommanded_products_rec->get()->result_array();
-        		$rec_pro_count = count($query['recommanded_products_rec']) + $sub_pro_count;
-        		$query['recommanded_products'] = array_merge($query['recommanded_products'],$query['recommanded_products_rec']);
-	        	if($rec_pro_count && $rec_pro_count < $limit) {
-		        	$limit_cat = $limit - $rec_pro_count;
-		        
-		        	$recommanded_where_cat = '(crp.product_id!="'.$this->uri->segment(2).'" and crp.product_subcategory_id!="'.$subcategory_id.'" and crp.product_category_id="'.$category_id.'" and crp.product_recipient_id!="'.$recipient_id.'" and crp.product_status=1)';
-		        	$recommanded_products_cat = $this->db->select('*');
-		        	$recommanded_products_cat = $this->db->from('giftstore_product crp');
-		        	$recommanded_products_cat = $this->db->join('giftstore_product_upload_image crpu','crp.product_id=crpu.product_mapping_id','inner');
-		         	$recommanded_products_cat = $this->db->where($recommanded_where_cat);
-		         	$recommanded_products_cat = $this->db->limit($limit_cat, '0');
-		         	$recommanded_products_cat = $this->db->group_by('crp.product_id');
-		         	$query['recommanded_products_cat'] = $recommanded_products_cat->get()->result_array();
-		        	$query['recommanded_products'] = array_merge($query['recommanded_products'],$query['recommanded_products_cat']);
-	        	}
-       		}
+            $query['recommanded_products'] = $recommanded_products_sub->get()->result_array();
+            $sub_pro_count = count($query['recommanded_products']);
+            if($sub_pro_count < $limit) {
+                $limit_rec = $limit - $sub_pro_count;
+                $recommanded_where_rec = '(rrp.product_id!="'.$this->uri->segment(2).'" and rrp.product_subcategory_id!="'.$subcategory_id.'" and rrp.product_category_id="'.$category_id.'" and rrp.product_status=1 and rrp.product_recipient_id="'.$recipient_id.'")';
+                $recommanded_products_rec = $this->db->select('*');
+                $recommanded_products_rec = $this->db->from('giftstore_product rrp');
+                $recommanded_products_rec = $this->db->join('giftstore_product_upload_image rrpu','rrp.product_id=rrpu.product_mapping_id','inner');
+                $recommanded_products_rec = $this->db->where($recommanded_where_rec);
+                $recommanded_products_rec = $this->db->limit($limit_rec, '0');
+                $recommanded_products_rec = $this->db->group_by('rrp.product_id');
+                $query['recommanded_products_rec'] = $recommanded_products_rec->get()->result_array();
+                $rec_pro_count = count($query['recommanded_products_rec']) + $sub_pro_count;
+                $query['recommanded_products'] = array_merge($query['recommanded_products'],$query['recommanded_products_rec']);
+                if($rec_pro_count && $rec_pro_count < $limit) {
+                    $limit_cat = $limit - $rec_pro_count;
+                
+                    $recommanded_where_cat = '(crp.product_id!="'.$this->uri->segment(2).'" and crp.product_subcategory_id!="'.$subcategory_id.'" and crp.product_category_id="'.$category_id.'" and crp.product_recipient_id!="'.$recipient_id.'" and crp.product_status=1)';
+                    $recommanded_products_cat = $this->db->select('*');
+                    $recommanded_products_cat = $this->db->from('giftstore_product crp');
+                    $recommanded_products_cat = $this->db->join('giftstore_product_upload_image crpu','crp.product_id=crpu.product_mapping_id','inner');
+                    $recommanded_products_cat = $this->db->where($recommanded_where_cat);
+                    $recommanded_products_cat = $this->db->limit($limit_cat, '0');
+                    $recommanded_products_cat = $this->db->group_by('crp.product_id');
+                    $query['recommanded_products_cat'] = $recommanded_products_cat->get()->result_array();
+                    $query['recommanded_products'] = array_merge($query['recommanded_products'],$query['recommanded_products_cat']);
+                }
+            }
             //  Recommanded products end 
         }
         return $query;

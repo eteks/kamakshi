@@ -143,15 +143,15 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">My Dashboard</li>
-                        <!-- <li><a class="ajax-link" href="index.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
-                        </li> -->
-                        <li class="accordion">
+                        <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/admin/dashboard"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+                        </li> 
+                       <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
+                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
                             </ul>
-                        </li> 
+                        </li>
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-inbox"></i><span> Catalog</span></a>
                             <ul class="nav nav-pills nav-stacked">
@@ -174,8 +174,8 @@
                             <a href="#"><i class="glyphicon glyphicon-sort-by-order"></i><span> Order</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/order">Order </a></li>
-                                <li><a href="#">Order Item</a></li>
-                                <li><a href="#">Transaction</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/orderitem">Order Item</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/transaction">Transaction</a></li>
                             </ul>
                         </li>
                       <!--   <li><a class="ajax-link" href="ui.php"><i class="glyphicon glyphicon-eye-open"></i><span> UI Features</span></a>

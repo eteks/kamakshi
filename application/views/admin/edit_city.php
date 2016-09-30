@@ -41,22 +41,18 @@
             </div>
           <div class="box-content">
                 <form role="form" id="add_city">
-                	 <div class="control-group">
+                     <div class="control-group">
                         <label for="sel_a">State</label>
-                    <select name="city_id" id="sel_a" class="product-type-filter form-control city_act">
+                    <select name="state_id" id="sel_c" class="product-type-filter form-control city_act">
                    <option value="">
-                     Select City
+                     Select State
                     </option>
-                    <?php
-                                        $query = mysql_query("select * from giftstore_state where state_status='1' order by state_name asc");
-                                        while ($staterow = mysql_fetch_array($query)) {
+                   <?php foreach ($city_data as $city): ?>
+                     <option value="<?php echo $city["state_name"] ?>">
+                        ppppp
                                         
-                                        if($row['city_state_id'] == $staterow['state_id'])   
-                                            echo "<option selected value='".$staterow['state_id']."'>".$staterow['state_name']."</option>";
-                                        else
-                                            echo "<option value='".$staterow['state_id']."'>".$staterow['state_name']."</option>";
-                                        }
-                                        ?>
+                     </option>
+                    <?php endforeach ?>
                     </select>
                     </div>
                     <div class="form-group">

@@ -42,22 +42,24 @@
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
-        <th>State Name</th>
-        <th>Status</th>
-        <th>Actions</th>
-    </tr>
+		<th class="product">State Name</th>
+		<th class="product_small">Status</th>
+		<th class="product_small">Created Date</th>
+		<th class="product_small">Actions</th>
+	</tr>
     </thead>
     <tbody>
     <?php foreach ($state_list as $state): ?>
     <tr>
         <td><?php echo $state["state_name"] ?></td>
         <td class="center"><span class="<?php if($state["state_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($state["state_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+              <td class="center">2012/01/01</td>
         <td class="center">
             <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_state/<?php echo $state["state_id"] ?>">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
-            <a class="btn btn-danger" href="#">
+            <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
                 <i class="glyphicon glyphicon-trash icon-white"></i>
                 Delete
             </a>
@@ -70,12 +72,31 @@
     </div>
     </div>
     <!--/span-->
-
+    <script type="text/javascript" >
+		$(document).on("click", ".delete", function () {
+		var myId = $(this).data('id');
+		$(".modal-body #vId").val( myId );
+		$("#del_link").prop("href", "users.php?delete="+myId);
+		});
+	</script>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-body delete_message_style">
+			<input type="hidden" name="delete" id="vId" value=""/>
+			<button type="button" class="close " data-dismiss="modal" aria-hidden="true">
+				&times;
+			</button>
+			<center class="popup_tx">
+				<h5>Are you sure you want to delete this item? </h5>
+			</center>
+		</div>
+		<div id="delete_btn" class="modal-footer footer_model_button" >
+			<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
+			<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
+		</div>
     </div><!--/row-->
         </div>
     </div>
-
-    
-
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>

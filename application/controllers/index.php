@@ -15,7 +15,7 @@ class Index extends CI_Controller
         $this->session->set_userdata("login_id","3");
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 6;
+        $this->perPage = 14;
     }
 
     // Index page
@@ -74,12 +74,14 @@ class Index extends CI_Controller
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
+
 		$categories_values = $this->index_model->get_product_details();
 		$categories['product_image_details'] = $categories_values['product_image_details'];
 		$categories['product_details'] = $categories_values['product_details'];
 		$categories['recommanded_products'] = $categories_values['recommanded_products'];
 		$categories['product_default_image'] = $categories_values['product_default_image'];
-		// print_r($categories['product_details']);
+        $categories['attribute_array'] = $categories_values['attribute_array'];
+		// print_r($categories['attribute_array']);
 		$this->load->view('detail',$categories);
 	}
 
