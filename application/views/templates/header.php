@@ -33,6 +33,13 @@
 <body>
   <!-- *** TOPBAR ***
  ________________________________________________________ -->
+    <!-- Ajax loader added by siva -->
+    <div class="loading" style="display: none;">
+        <div class="content">
+            <img src="<?php echo base_url().'assets/img/ajax-loader.gif'; ?>"/>
+        </div>
+    </div> 
+    <!-- Ajax loader ended by siva -->
     <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
