@@ -39,35 +39,41 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
-        <th class="product">Area Name</th>
-        <th class="product">City</th>
-        <th class="product">State </th>
-        <th class="product_small">Delivery charge</th> 
-        <th class="product_small">Status</th>
-       <th class="product_small">Created Date</th>
-       <th class="product_small">Actions</th>
+        <th>Area Name</th>
+        <th>City</th>
+        <th>State </th>
+        <th>Delivery charge</th> 
+        <th>Status</th>
+       <th>Created Date</th>
+       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($area as $area): ?>
+    <tbody>
+    <?php foreach ($area_list as $area): ?>
     <tr>
-            <td><?php echo $area["area_name"] ?></td>
-            <td class="center"><span class="<?php if($area["area_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($area["area_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
-            <td class="center">
-                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area/<?php echo $area["area_id"] ?>">
-                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
-                </a>
-                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
-                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                    Delete
-                </a>
-            </td>
-        </tr>
+        <td><?php echo $area["area_name"] ?></td>
+        <td><?php echo $area["area_city_id"] ?></td>
+        <td><?php echo $area["area_state_id"] ?></td> 
+        <td><?php echo $area['area_delivery_charge'] ?></td>
+        <td class="center"><span class="<?php if($area["area_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($area["area_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+        <td><?php echo date("d/m/Y", strtotime($area["area_createddate"])); ?></td>
+        <td class="center">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area/<?php echo $area["area_id"] ?>">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
     <?php endforeach ?>
+    </tbody>
     </tbody>
     </table>
     </div>
