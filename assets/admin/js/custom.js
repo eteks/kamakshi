@@ -6,10 +6,14 @@ $(document).ready(function() {
     });
 
     jQuery(".attribute_status").on('change',function () {
-    	if($(this).is(":checked"))
+    	if($(this).is(":checked")){
     		$('.attribute_main_block').show();
-    	else
+            $('.price_group,.items_group').hide();
+        }
+    	else{
     		$('.attribute_main_block').hide();
+            $('.price_group,.items_group').show();
+        }
     });
 
     jQuery(".category_act").on('change',function () {
@@ -52,31 +56,128 @@ $(document).ready(function() {
 	        });
 	    }     
     });
+    // Functionality code for product attribute group in add product form
+    // ********* Start *********
     var cloneCount = 1;
-    $(document).delegate('.attibute_add_btn','click',function () {
-    	cloneCount = cloneCount +1;
-    	$(this).parents('.clone_attribute_group').find('.clone_attribute:last').clone().attr('id', 'clone_attribute'+cloneCount).appendTo($(this).parents('.clone_attribute_group'));
-    	
-     //    //Functionality used to increment the value of attribute group by attribute value add when add button click
-    	// attribute_group_id = $(this).parents('.attribute_group').attr('id');
-    	// group_value_element = $('.group_values').filter("[data-value="+attribute_group_id+"]");
-    	// increment_val = parseInt(group_value_element.val()) + 1;
-   		// group_value_element.val(increment_val);
+    $(document).delegate('.attibute_add_btn','click',function (e) {
+        $error = false;
+        $(this).parents('.clone_attribute_group').find('.attribute_option_validate').each(function(){
+            if($(this).val() == '')
+            {        
+                $error = true;    
+                $(this).addClass('attribute_error');           
+            }
+            else{
+                $(this).removeClass('attribute_error');
+            }
+        });
+        if(!$error){
+            cloneCount = cloneCount +1;
+            cloneelement = $(this).parents('.clone_attribute_group').find('.clone_attribute:last').clone();
+            //After clone the element, assign one unique id and append to particular parent class
+            cloneelement.attr('id', 'clone_attribute'+cloneCount).appendTo($(this).parents('.clone_attribute_group'));
+            //To clear the label of attribute after cloned
+            cloneelement.find('.attribute_label').text('');
+            // cloneelement.find('.attibute_remove_btn').removeClass('attribute_btn_disabled');
+            //To remove add button from previous clone attribute
+            cloneelement.siblings('#clone_attribute'+(cloneCount-1)).find('.attibute_add_btn').remove();
+            cloneelement.siblings('#clone_attribute'+(cloneCount-1)).find('.attibute_remove_btn').removeClass('attribute_btn_disabled');
+        }
     });
     var cloneCount_att = 1;
     $(document).delegate('.attibute_add','click',function () {
-    	cloneCount_att = cloneCount_att +1;
-    	$(this).parents('.attribute_main_block').find('.attribute_group:last').clone().attr('id', 'attribute_group'+cloneCount_att).appendTo('.attribute_main_block');
-    	id= $(this).parents('.attribute_main_block').find('.attribute_group:last').attr('id');
-    	
-        //Functionality used to create new attribute group elements status whether it is added or not
-    	// if($('.group_values').filter("[data-value~="+id+"]").length ==0){
-    	// 	newelement = "<input type='hidden' class='group_values' name='group_values"+cloneCount_att+"' value='1' data-value='"+id+"'>";
-    	// 	$('.group_values_block').append(newelement);
-    	// }
+    	$error = false;
+        $(this).parents('.attribute_group').find('.attribute_validate').each(function(){
+            if($(this).val() == '')
+            {        
+                $error = true;    
+                $(this).addClass('attribute_error');
+                // e.preventDefault();             
+            }
+            else{
+                $(this).removeClass('attribute_error');
+            }
+        });
+        if(!$error){
+            var equal_check_array = [];
+            $(this).parents('.attribute_group').find('.att_equal').each(function(){
+                if($('option:selected',this).val() != ''){
+                    equal_check_array.push($('option:selected',this).val());
+                }
+            });
+            var hasDups = !equal_check_array.every(function(v,i) {
+              return equal_check_array.indexOf(v) == i;
+            });
+            if (hasDups){
+                $("html, body").animate({ scrollTop: 800 }, "slow");
+                $('.attribute_group_message').hide();
+                $('.attribute_duplicate_message').show();
+            }
+            else{
+                $('.attribute_duplicate_message').hide();
+                cloneCount_att = cloneCount_att +1;
+                attclone = $(this).parents('.attribute_main_block').find('.attribute_group:last').clone();
+                attclone.attr('id', 'attribute_group'+cloneCount_att).appendTo('.attribute_main_block');
+                
+                attclone.siblings('#attribute_group'+(cloneCount_att-1)).find('.attibute_add').remove();
+                attclone.siblings('#attribute_group'+(cloneCount_att-1)).find('.attibute_remove').removeClass('attribute_btn_disabled');
 
-        //Functionality used to increment the value of attribute group by attribute value add when add button click      
-        increment_val = parseInt($('.group_values').val()) + 1;
-        $('.group_values').val(increment_val);
+                //Functionality used to increment the value of attribute group by attribute value add when add button click      
+                increment_val = parseInt($('.group_values').val()) + 1;
+                $('.group_values').val(increment_val);
+            }
+        }       
     });    
+    $(document).delegate('.attibute_remove_btn','click',function () {
+        if($(this).parents('.clone_attribute').index() == 0){
+            $(this).parents('.clone_attribute').next().find('.attribute_label').text('Attribute Option');
+        }
+        $(this).parents('.clone_attribute').remove();
+    });
+    $(document).delegate('.attibute_remove','click',function () {
+        $(this).parents('.attribute_group').remove();
+    });
+    $("#add_giftproduct").submit(function(){ 
+        attribute_length = [];
+        if($('.attribute_group').length > 1){
+            $('.clone_attribute_group').each(function(){
+                attribute_length.push($(this).find('.clone_attribute').length);
+            });
+            var hasDups = !attribute_length.every(function(v,i) {
+              return attribute_length.indexOf(v) == i;
+            });
+            if (hasDups){
+                $('.attribute_group_message').hide();
+                return true;
+            }
+            else{
+                $("html, body").animate({ scrollTop: 800 }, "slow");
+                $('.attribute_duplicate_message').hide();
+                $('.attribute_group_message').show();
+                return false;
+            }
+        }  
+        var sum = 0;
+        if($('.attribute_status').is(":checked")){  
+            $("#product_price_hidden").val($('#attribute_group1').find('#price').val());
+            $("[name='product_attribute_totalitems[]']").each(function(){
+                sum += parseFloat(this.value);
+            });
+            $("#product_totalitems_hidden").val(sum);
+            return false;
+        }   
+        return false;   
+    });
+    $(document).delegate("[name='select_attribute[]']",'change',function(){
+        var new_selection = $(this).find('option:selected');
+        $('option',this).not(new_selection).removeAttr('selected');
+        new_selection.attr("selected",true);
+    });
+    $(document).delegate("#product_price",'change',function(){
+        $('#product_price_hidden').val($(this).val());
+    });
+    $(document).delegate("#product_totalitems",'change',function(){
+        $('#product_totalitems_hidden').val($(this).val());
+    });
+    // ********* End *********
 });

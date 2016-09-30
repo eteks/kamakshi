@@ -197,9 +197,11 @@
   text-align: center;
 }
 .filtering_sections span{
-  background: grey none repeat scroll 0 0;
+  background: #f0f0f0 none repeat scroll 0 0;
   padding: 5px 10px;
   margin-left: 5px;
+  text-transform: capitalize;
+  font-weight: 500;
 }
 .filtering_sections a{
   cursor: pointer;

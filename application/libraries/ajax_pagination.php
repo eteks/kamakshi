@@ -199,6 +199,11 @@ class Ajax_pagination{
         ?>
         <script>
         function getData(page){  
+
+            var price_range =  $('.addui-slider-input').val().split(',');  
+            var start_value = parseFloat(price_range[0]).toFixed(2);
+            var end_value = parseFloat(price_range[1]).toFixed(2);
+            var sort_val = $('.sort_products').val();
             var cat_id = $('#category_id').val();
             var sub_categories_filter_length = $('.sub_categories_filter').length;
             var recipients_filter_length = $('.recipients_filter').length;
@@ -206,18 +211,18 @@ class Ajax_pagination{
             if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
                 var sub_id = $('.sub_categories_filter').find('a').data('id');
                 var rec_id = $('.recipients_filter').find('a').data('id');
-                var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id,page: page};
+                var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id,page: page, s_val : start_value, e_val : end_value, sort:sort_val};
             }
             else if(sub_categories_filter_length > 0) {
                 var sub_id = $('.sub_categories_filter').find('a').data('id');
-                var datavalues = {sub_id: sub_id , cat_id : cat_id,page: page};
+                var datavalues = {sub_id: sub_id , cat_id : cat_id,page: page, s_val : start_value, e_val : end_value, sort:sort_val};
             }
             else if(recipients_filter_length > 0) {
                 var rec_id = $('.recipients_filter').find('a').data('id');
-                var datavalues = {cat_id: cat_id , rec_id : rec_id,page: page};
+                var datavalues = {cat_id: cat_id , rec_id : rec_id,page: page, s_val : start_value, e_val : end_value, sort:sort_val};
             }
             else {
-                var datavalues = { cat_id : cat_id,page: page};
+                var datavalues = { cat_id : cat_id,page: page, s_val : start_value, e_val : end_value, sort:sort_val};
             }   
             $.ajax({
                 method: "POST",
