@@ -43,7 +43,7 @@
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">User Name</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter Social_id">
+                        <input type="email" class="form-control" id="area_name" placeholder="Enter User Name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Password</label>
@@ -68,7 +68,7 @@
                     </div>
                      <div class="form-group">
                         <label for="area_name">Mobile</label>
-                        <input type="text" class="form-control" id="area_name" placeholder="Enter Mobile">
+                        <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile">
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>

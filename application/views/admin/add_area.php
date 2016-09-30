@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Delivery charge</label>
-                        <input type="text" class="form-control" id="delivery_charge" placeholder="Enter delivery charge" name="delivery_charge">
+                        <input type="text" class="form-control" id="deliverycharge" placeholder="Enter delivery charge" name="delivery_charge">
                     </div>  
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Area status</label>
