@@ -39,14 +39,14 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive fid">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
-        <th>Subcategory Name</th>
-        <th>Categories</th>
-        <th>Status</th>
-        <th>Created Date</th>
-        <th>Actions</th>
+		<th class="product">Subcategory Name</th>
+		<th class="product">Categories</th>
+		<th class="product_small">Status</th>
+		<th class="product_small">Created Date</th>
+		<th class="product_small">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -62,7 +62,7 @@
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
-                <a class="btn btn-danger" href="#">
+                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
                     <i class="glyphicon glyphicon-trash icon-white"></i>
                     Delete
                 </a>
@@ -75,12 +75,31 @@
     </div>
     </div>
     <!--/span-->
-
+    <script type="text/javascript" >
+		$(document).on("click", ".delete", function () {
+		var myId = $(this).data('id');
+		$(".modal-body #vId").val( myId );
+		$("#del_link").prop("href", "users.php?delete="+myId);
+		});
+	</script>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body delete_message_style">
+				<input type="hidden" name="delete" id="vId" value=""/>
+				<button type="button" class="close popup_tx" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<center class="popup_tx">
+					<h5>Are you sure you want to delete this item? </h5>
+				</center>
+			</div>
+			<div id="delete_btn" class="modal-footer footer_model_button" >
+				<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
+				<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
+			</div>
     </div><!--/row-->
         </div>
     </div>
-
-    
-
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>
