@@ -19,15 +19,17 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="#">Edit_Adminusers</a>
+            <a href="#">Edit Order </a>
         </li>
     </ul>
 </div>
+
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-edit"></i> Edit Adminusers</h2>
+                <h2><i class="glyphicon glyphicon-edit"></i> Edit Order</h2>
+
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
                             class="glyphicon glyphicon-cog"></i></a>
@@ -38,26 +40,29 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" id="add_area">
-                 <div class="form-errors"></div>
+                <form role="form">
                     <div class="form-group">
-                        <label for="area_name">User Name</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter User Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1"> password</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter password">
+                        <label for="exampleInputEmail1">Order Id</label>
+                        <input type="email" class="form-control" id="title_name" placeholder="Enter Order Id">
                     </div>  
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Product Id</label>
+                        <input type="email" class="form-control" id="title_name" placeholder="Enter Product id">
+                    </div> 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter email id">
+                        <label for="exampleInputEmail1">Group</label>
+                        <input type="email" class="form-control" id="price" placeholder="Enter Group ">
                     </div>
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Quantity</label>
+                        <input type="email" class="form-control" id="price" placeholder="Enter price ">
+                    </div> 
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> Mobile</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter mobile number,">
-                    </div>
+                        <label for="exampleInputEmail1">Price</label>
+                        <input type="email" class="form-control" id="price" placeholder="Enter price ">
+                    </div> 
                      <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="selectError">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -70,12 +75,16 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
     <!--/span-->
+
 </div><!--/row-->
+
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
+
 <?php include "templates/footer.php" ?>

@@ -899,6 +899,23 @@ class Adminindex extends CI_Controller {
 		$state['state_list'] = $this->location->get_state();
 		$this->load->view('admin/state',$state);
 	}
+	public function edit_order()
+	{	
+		$this->load->view('admin/edit_order');
+	}
+	public function orderitem()
+	{	
+		$this->load->view('admin/orderitem');
+	}
+	public function edit_orderitem()
+	{	
+		$this->load->view('admin/edit_orderitem');
+	}
+	public function transaction()
+	{	
+		$this->load->view('admin/transaction');
+	}
+	
 		public function add_state()
 	{	
 		$status = array();//array is initialized

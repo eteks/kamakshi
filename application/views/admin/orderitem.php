@@ -16,7 +16,7 @@
                 <a href="#">Home</a>
             </li>
             <li>
-                <a href="#">Admin Users </a>
+                <a href="#">Order Item</a>
             </li>
         </ul>
     </div>
@@ -24,7 +24,8 @@
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><!-- <i class="glyphicon glyphicon-user"></i> -->Admin Users</h2>
+        <h2><!-- <i class="glyphicon glyphicon-user"></i> -->Order Item</h2>
+
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
@@ -33,30 +34,18 @@
         </div>
     </div>
    <div class="box-content">
-        <!-- <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_order">
-        <i class="glyphicon glyphicon-edit icon-white"></i>
-        Add
-        </a> -->
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll" >
-    <thead>
-	<th class="product_small">User Id</th>
-	<th class="product_small">Total Items</th>
-	<th class="product_small">User Type</th>
-	<th class="product">User Name</th>
-	<th class="product">Email</th>
-	<th class="product">State</th>
-	<th class="product">City</th>
-	<th class="product">Area</th>
-	<th class="product">Email</th>
-	<th class="product_small">Mobile</th>
-	<th class="product_small">Delivery date</th>
-	<th class="product_small">Delivery time</th>
-	<th class="product_small">Total amount</th>
-	<th class="product_small">Staus</th>
-	<th class="product">Created Date</th>
-	<th class="product_small">Actions</th>
-	</tr>
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll " >
+    <thead> 
+		<th class="product_small">Order Id</th>
+		<th class="product_small">product Id</th>
+		<th class="product_small">Group</th>
+		<th class="product_small">Quantity</th>
+		<th class="product_small">Price</th>
+		<th class="product_small">Staus</th>
+		<th class="product_small">Created Date</th>
+		<th class="product_small">Actions</th>
+		</tr>
     </thead>
     <tbody>
     <tr>
@@ -65,20 +54,12 @@
         <td class="center">2012/03/01</td>
         <td class="center">2012/03/01</td>
         <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
         <td class="center">
             <span class="label-warning label label-default">Pending</span>
         </td>
-         <td class="center">2012/03/01</td>
+        <td class="center">2012/03/01</td>
         <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_order">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_orderitem">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>
@@ -95,7 +76,7 @@
     </div>
     </div>
     <!--/span-->
- <script type="text/javascript" >
+     <script type="text/javascript" >
 		$(document).on("click", ".delete", function () {
 		var myId = $(this).data('id');
 		$(".modal-body #vId").val( myId );
@@ -103,21 +84,21 @@
 		});
 	</script>
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-body delete_message_style">
-			<input type="hidden" name="delete" id="vId" value=""/>
-			<button type="button" class="close " data-dismiss="modal" aria-hidden="true">
-				&times;
-			</button>
-			<center class="popup_tx">
-				<h5>Are you sure you want to delete this item? </h5>
-			</center>
-		</div>
-		<div id="delete_btn" class="modal-footer footer_model_button" >
-			<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
-			<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
-		</div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body delete_message_style">
+				<input type="hidden" name="delete" id="vId" value=""/>
+				<button type="button" class="close " data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<center class="popup_tx">
+					<h5>Are you sure you want to delete this item? </h5>
+				</center>
+			</div>
+			<div id="delete_btn" class="modal-footer footer_model_button" >
+				<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
+				<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
+			</div>
     </div><!--/row-->
         </div>
     </div>
