@@ -872,6 +872,7 @@ class Adminindex extends CI_Controller {
 	}
 	public function area()
 	{
+		$city['area'] = $this->location->get_areas();
 		$area['area_list'] = $this->location->get_area();	
 		$this->load->view('admin/area',$area);
 	}

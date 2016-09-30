@@ -52,8 +52,6 @@
     <?php foreach ($area as $area): ?>
     <tr>
             <td><?php echo $area["area_name"] ?></td>
-            <td><?php echo $area["city_name"] ?></td>
-            <td><?php echo $area["state_name"] ?></td>
             <td class="center"><span class="<?php if($area["area_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($area["area_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td class="center">
                 <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area/<?php echo $area["area_id"] ?>">

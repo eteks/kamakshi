@@ -134,7 +134,6 @@ class Location extends CI_Model {
 	}
 	public function get_city_data($id)
 	{	
-		print_r($id);
 		$this->db->select('*');
 		$this->db->from('giftstore_city city');
 		$this->db->join('giftstore_state state', 'state.state_id = city.city_state_id', 'inner');
@@ -187,5 +186,39 @@ class Location extends CI_Model {
 		} else {
 			return false;
 		}
+	}
+	public function update_area($data)
+	{	
+		$condition = "area_name =" . "'" . $data['area_name'] . "' AND area_id NOT IN (". $data['area_id'].")";
+		$this->db->select('*');
+		$this->db->from('giftstore_area');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return false;
+		}
+		else{
+			$this->db->where('area_id', $data['area_id']);
+			$this->db->update('giftstore_area', $data);
+			return true;
+		}	
+	}
+	public function get_area_data($id)
+	{	
+		$this->db->select('*');
+		$this->db->from('giftstore_city city');
+		$this->db->join('giftstore_state state', 'state.state_id = city.city_state_id', 'inner');
+		$this->db->order_by('state.state_name','desc');
+		// $this->db->where(array());
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+	public function get_areas()
+	{
+		$this->db->select('*');
+		$this->db->from('giftstore_city city');
+		$this->db->join('giftstore_state state', 'state.state_id = city.city_state_id', 'inner');
+		$this->db->order_by('state.state_name','desc');
+		return $this->db->get()->result_array();
 	}
 }
