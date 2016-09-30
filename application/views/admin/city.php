@@ -54,6 +54,7 @@
 	    <tr>
 	            <td><?php echo $city["city_name"] ?></td>
 	            <td><?php echo $city["state_name"] ?></td>
+	            <td><?php echo $city["state_name"] ?></td>
 	            <td class="center"><span class="<?php if($city["city_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($city["city_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
 	            <td class="center">
 	                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city["city_id"] ?>">

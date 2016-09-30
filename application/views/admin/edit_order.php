@@ -39,15 +39,15 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" id="add_area">
+               <form role="form" id="edit_order">
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">User Id</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter User Id">
+                        <input type="email" class="form-control" id="user_id" placeholder="Enter User Id">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Items</label>
-                        <input type="text" class="form-control" id="delivery_charge" placeholder="Enter Total Items">
+                        <input type="text" class="form-control" id="total_item" placeholder="Enter Total Items">
                     </div>
                      <div class="control-group">
                         <label for="sel_a">User Type</label>
@@ -55,7 +55,7 @@
                    <option value="">
                      Select State 
                     </option>
-                    <option>TAMILNADU</option>
+                    <option>super user</option>
                     </select>
                     </div>
                     <div class="form-group">
@@ -72,7 +72,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Shipping_line2</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter Shipping_line2>
+                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter Shipping_line2">
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="sel_a">State</label>
@@ -102,7 +102,11 @@
                         </div>
                      <div class="form-group">
                         <label for="area_name">Mobile</label>
-                        <input type="text" class="form-control" id="area_name" placeholder="Enter Mobile">
+                        <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Total Amount</label>
+                        <input type="text" class="form-control" id="deliverycharge" placeholder="Enter Total Amount">
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
