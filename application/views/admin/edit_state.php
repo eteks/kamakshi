@@ -39,19 +39,24 @@
                             class="glyphicon glyphicon-remove"></i></a>
                 </div>
             </div>
-           <div class="box-content">
-                <form role="form" id="add_state">
+            <div class="box-content">
+            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_state/<?php echo $state_data['state_id']; ?>" enctype="multipart/form-data" name="edit_state_form">
                     <div class="form-group">
                         <label for="state_name">State Name</label>
-                        <input type="email" class="form-control" id="state_name" placeholder="Enter state Name">
+                        <input type="text" class="form-control" id="state_name" placeholder="Enter State Name" value="<?php if(!empty($state_data['state_name'])) echo $state_data['state_name']; ?>" name="edit_state_name">
                     </div>  
-                    <div class="control-group">
+                   <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                            <select name="edit_state_status" id="sel_c" class="product-type-filter form-control city_act">
+                                <option value="">Select</option>
+                                <option value="1" <?php if ($state_data['state_status'] == 1) echo "selected"; ?>>
+                                    <span>Active</span>
+                                </option>
+                                <option value="0" <?php if ($state_data['state_status'] == 0) echo "selected"; ?>>
+                                    <span>Inactive</span>
+                                </option>
                             </select>
                         </div>
                     </div>

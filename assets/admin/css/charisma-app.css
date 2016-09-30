@@ -264,15 +264,15 @@ div.uploader {
     -webkit-border-radius: 14px;
     -moz-border-radius: 14px;
 }
-#footer {
+/*#footer {
 	width:100%;
     position:fixed;
-    /*height:50px;*/
+    height:50px;
     bottom:0px;
     left:0px;
     right:0px;
     margin-bottom:0px;
-}
+}*/
 div.center, p.center, img.center {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -417,6 +417,11 @@ ul.ajax-loaders {
 }
 .navbar {
     border-radius: 0;
+    background-image:none !important;
+    border-bottom:none !important;
+}
+.navbar-default{
+	background-color:none !important;
 }
 ul.main-menu li:hover {
     margin-left: 8px;

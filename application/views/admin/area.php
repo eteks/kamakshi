@@ -52,26 +52,24 @@
     </tr>
     </thead>
     <tbody>
+    <?php foreach ($area as $area): ?>
     <tr>
-        <td>Worth Name</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-          <td class="center">2012/01/01</td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
+            <td><?php echo $area["area_name"] ?></td>
+            <td><?php echo $area["city_name"] ?></td>
+            <td><?php echo $area["state_name"] ?></td>
+            <td class="center"><span class="<?php if($area["area_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($area["area_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+            <td class="center">
+                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area/<?php echo $area["area_id"] ?>">
+                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+    <?php endforeach ?>
     </tbody>
     </table>
     </div>

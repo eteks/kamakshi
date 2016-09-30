@@ -50,9 +50,9 @@
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="state_status" id="state_status" class="product-type-filter form-control state_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                                 <option value="">Select</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
                     </div>
