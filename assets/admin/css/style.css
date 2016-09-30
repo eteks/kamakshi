@@ -195,24 +195,17 @@
 }
 .dataTables_wrapper{
 	overflow-x: auto !important;
-    width: 1000px !important;
-}
-.col-md-6 {
-    width: 45% !important;
+    width: 100% !important;
 }
 #add {
 	float:right;
-	margin: 0 13px 0 0;	
+   margin: 0 18px 0 0;
 }
 .table-bordered {
-    width: 99%;
-}
-.fid{
-	width: 1002px;
+    width: 98.5%;
 }
 .dataTables_filter {
     float: right;
-     margin: 0 -4px 0 0 !important;
 }
 .product{
 	width: 100%;

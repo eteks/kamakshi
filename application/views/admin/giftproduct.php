@@ -38,7 +38,7 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive table-content">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
     <tr>
         <th class="product-details-title">Product Title</th>

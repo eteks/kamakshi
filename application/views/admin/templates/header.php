@@ -143,7 +143,7 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">My Dashboard</li>
-                        <li><a class="ajax-link" href="index.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+                        <li><a class="ajax-link" href="<?php echo base_url(); ?>index.php/admin/dashboard"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
                         </li> 
                        <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>

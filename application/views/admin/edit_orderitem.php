@@ -43,19 +43,31 @@
                 <form role="form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Order Id</label>
-                        <input type="email" class="form-control" id="title_name" placeholder="Enter Order Id">
-                    </div>  
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">Product Id</label>
-                        <input type="email" class="form-control" id="title_name" placeholder="Enter Product id">
-                    </div> 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Group</label>
-                        <input type="email" class="form-control" id="price" placeholder="Enter Group ">
+                        <input type="email" class="form-control" id="orderid" placeholder="Enter Order Id">
+                    </div>   
+                    <div class="control-group">
+                        <label class="control-label" for="selectError">Product Id</label>
+                        <div class="controls">
+                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                                 <option selected hidden>Select</option>
+                                <option>Product Id1</option>
+                                <option>Product Id2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="selectError">Group</label>
+                        <div class="controls">
+                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                                 <option selected hidden>Select</option>
+                                <option>Group1</option>
+                                <option>Group2</option>
+                            </select>
+                        </div>
                     </div>
                      <div class="form-group">
                         <label for="exampleInputEmail1">Quantity</label>
-                        <input type="email" class="form-control" id="price" placeholder="Enter price ">
+                        <input type="email" class="form-control" id="quantity" placeholder="Enter price ">
                     </div> 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Price</label>
@@ -75,7 +87,6 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
