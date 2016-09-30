@@ -117,11 +117,12 @@ class Location extends CI_Model {
 	// 		return false;
 	// 	}
 	// }
-		public function update_city($data)
+	public function update_city($data)
 	{	
-		// print_r($data);
-	 	$condition = '(city_name="'.$data['city_name'].'" and city_state_id="'.$data['city_state_id'].'")';
-		$query = $this->db->get_where('giftstore_city',$condition);
+		$condition = "city_name =" . "'" . $data['city_name'] . "' AND city_id NOT IN (". $data['city_id'].")";
+		$this->db->select('*');
+		$this->db->from('giftstore_city');
+		$this->db->where($condition);
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			return false;
@@ -131,17 +132,23 @@ class Location extends CI_Model {
 			$this->db->update('giftstore_city', $data);
 			return true;
 		}	
-	}
+	}	
 	public function get_city_data($id)
 	{	
-		$this->db->select('*');
-		$this->db->from('giftstore_city city');
-		$this->db->join('giftstore_state state', 'state.state_id = city.city_state_id', 'inner');
-		$this->db->order_by('state.state_name','desc');
-		$this->db->where(array());
-		$query = $this->db->get();
-		return $query->result_array();
+		// echo $id;
+		$where = '(city_id="'.$id.'")';
+		$query['state_city'] = $this->db->get_where('giftstore_city', $where)->row_array();
+
+		$where1 = '(state_status=1)';
+		$query['states'] = $this->db->get_where(' `giftstore_state', $where1)->result_array();
+
+		return $query;
 	}
+	// public function get_city_data($id)
+	// {	
+	// 	$query = $this->db->get_where('giftstore_city', array('city_id' => $id));
+	// 	return $query->row_array();
+	// }
 	public function get_cities()
 	{
 		$this->db->select('*');
@@ -173,7 +180,7 @@ class Location extends CI_Model {
 		$condition = "area_name =" . "'" . $data['area_name'] . "'";
 		$this->db->select('*');
 		$this->db->from('giftstore_area');
-		// $this->db->join('giftstore_state', 'giftstore_state.state_id = giftstore_city.city_state_id','inner');
+		 $this->db->join('giftstore_state', 'giftstore_state.state_id = giftstore_city.city_state_id','inner');
 		$this->db->where($condition);
 		// $this->db->limit(1);
 		$query = $this->db->get();
@@ -205,13 +212,12 @@ class Location extends CI_Model {
 	}
 	public function get_area_data($id)
 	{	
-		$this->db->select('*');
-		$this->db->from('giftstore_city city');
-		$this->db->join('giftstore_state state', 'state.state_id = city.city_state_id', 'inner');
-		$this->db->order_by('state.state_name','desc');
-		// $this->db->where(array());
-		$query = $this->db->get();
-		return $query->result_array();
+		$where = '(city_id="'.$id.'")';
+		$query['state_city'] = $this->db->get_where('giftstore_city', $where)->row_array();
+
+		$where1 = '(state_status=1)';
+		$query['states'] = $this->db->get_where(' `giftstore_state', $where1)->result_array();
+		return $query;
 	}
 	public function get_areas()
 	{
