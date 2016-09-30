@@ -151,6 +151,8 @@
 }
 .scroll{
 	display:block;
+	overflow-x:auto;
+	width: 100%;
 }
 .btn-info {
     background-image: none !important;
@@ -193,26 +195,33 @@
 }
 .dataTables_wrapper{
 	overflow-x: auto !important;
-    width: 1000px !important;
-}
-.col-md-6 {
-    width: 45% !important;
+    width: 100% !important;
 }
 #add {
 	float:right;
-	
-}
-.dataTables{
-	width:1000px;
+   margin: 0 18px 0 0;
 }
 .table-bordered {
-    width: 1017px;
-}
-.fid{
-	width: 1002px;
+    width: 98.5%;
 }
 .dataTables_filter {
-    margin: 0 -99px 0 0 !important;
+    float: right;
+}
+.product{
+	width: 100%;
+	max-width:300px !important;
+	min-width: 250px !important;
+}
+.popup_btn{
+	width:50px;
+}
+.popup_tx h5{
+	font-size: 18px;
+}
+.product_small{
+	width: 100%;
+	max-width:150px !important;
+	min-width: 140px !important;
 }
 .group_action{
     position: relative;

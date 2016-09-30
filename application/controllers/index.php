@@ -26,7 +26,6 @@ class Index extends CI_Controller
       $categories['order_details'] = $categories_values_reg['order_details'];
       $categories['order_count'] = $categories_values_reg['order_count'];
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();
-	  // $data['giftstore_subcategory'] = $this->index_model->get_register();
 	  $this->load->view('index',$categories);
     }
 	

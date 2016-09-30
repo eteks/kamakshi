@@ -105,7 +105,10 @@ $route['adminindex/add_state'] = 'adminindex/add_state';
 $route['adminindex/edit_state'] = 'adminindex/edit_state';
 
 $route['adminindex/order'] = 'adminindex/order';
-
+$route['adminindex/edit_order'] = 'adminindex/edit_order';
+$route['adminindex/orderitem'] = 'adminindex/orderitem';
+$route['adminindex/edit_orderitem'] = 'adminindex/edit_orderitem';
+$route['adminindex/edit_transaction'] = 'adminindex/edit_transaction';
 
 
 

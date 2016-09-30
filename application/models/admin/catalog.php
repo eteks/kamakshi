@@ -64,8 +64,20 @@ class Catalog extends CI_Model {
 	public function get_subcategories()
 	{	
 		//get list of subcategories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_subcategory order 
-			by subcategory_createddate desc");		
+		// $query = $this->db->query("SELECT * FROM giftstore_subcategory order 
+		// 	by subcategory_createddate desc");	
+
+		$this->db->select('*');
+		$this->db->from('giftstore_subcategory AS sub');
+		$this->db->join('giftstore_subcategory_category AS subcat', 'subcat.subcategory_mapping_id = sub.subcategory_id', 'inner');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = subcat.category_mapping_id', 'inner');
+		// $this->db->group_by('subcategory_id');
+		$this->db->order_by('subcategory_createddate','desc');
+		
+		$query = $this->db->get();
+		// echo "<pre>";
+		// print_r(array_merge_recursive($query->result_array()));
+		// echo "</pre>";
 		//return all records in array format to the controller
 		return $query->result_array();
 	}

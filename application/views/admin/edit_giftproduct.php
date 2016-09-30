@@ -93,7 +93,7 @@
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Total Iteams</label>
-                        <input type="email" class="form-control" id="total_iteams" placeholder="Enter total iteams">
+                        <input type="email" class="form-control" id="totaliteam" placeholder="Enter total iteams">
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Sold</label>

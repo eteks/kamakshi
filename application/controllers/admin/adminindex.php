@@ -872,6 +872,7 @@ class Adminindex extends CI_Controller {
 	}
 	public function area()
 	{
+		$city['area'] = $this->location->get_areas();
 		$area['area_list'] = $this->location->get_area();	
 		$this->load->view('admin/area',$area);
 	}
@@ -940,9 +941,9 @@ class Adminindex extends CI_Controller {
 					$data = array(
 						'area_name' => $this->input->post('area_name'),
 						'area_delivery_charge' => $this->input->post('area_delivery_charge'),
-						'city_id' => $this->input->post('city_name'),
+						'area_city_id' => $this->input->post('city_name'),
 						'city_state_id' => $this->input->post('state_name'),
-						'city_status' => $this->input->post('city_status'),
+						'area_status' => $this->input->post('area_status'),
 					);
 					$result = $this->location->insert_city($data);
 					if($result)
@@ -957,7 +958,8 @@ class Adminindex extends CI_Controller {
 			}
     	}
 		// print_r($status);	
-		$status['area_list'] = $this->location->get_area();
+		
+		$status['area_list'] = $this->location->get_areas();
 		$this->load->view('admin/add_area',$status);
 	}
 	public function edit_area()
@@ -1057,17 +1059,17 @@ class Adminindex extends CI_Controller {
 			$errors = '';
 			$validation_rules = array(
 				array(
-		             'field'   => 'state_id',
+		             'field'   => 'state_name',
 		             'label'   => 'State',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),
 		       array(
-		             'field'   => 'edit_city_name',
+		             'field'   => 'city_name',
 		             'label'   => 'City',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),
 		       array(
-		             'field'   => 'edit_city_status',
+		             'field'   => 'city_status',
 		             'label'   => 'Status',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),   
@@ -1100,11 +1102,11 @@ class Adminindex extends CI_Controller {
 				else{
 					$data = array(
 					'city_id' => $id,
-					'city_name' => $this->input->post('edit_city_name'),
-					'state_name' => $this->input->post('city_state_id'),
-					'city_status' => $this->input->post('edit_city_status'),
+					'city_name' => $this->input->post('city_name'),
+					'state_name' => $this->input->post('state_name'),
+					'city_status' => $this->input->post('city_status'),
 					);
-					$result = $this->catalog->update_product_attribute($data);
+					$result = $this->location->update_city($data);
 					if($result)
 						$status = "City Updated Successfully!";
 					else
@@ -1113,13 +1115,31 @@ class Adminindex extends CI_Controller {
     		}
     		$data['status'] = $status;
 		}
-		$data['city_data'] = $this->location->get_city_data($id);
+		$data_values = $this->location->get_city_data($id);
+		$data['city_edit']	= $data_values['state_city'];
+		$data['states']	= $data_values['states'];
 		$this->load->view('admin/edit_city',$data);
 	}
 	public function state()
 	{	
 		$state['state_list'] = $this->location->get_state();
 		$this->load->view('admin/state',$state);
+	}
+	public function edit_order()
+	{	
+		$this->load->view('admin/edit_order');
+	}
+	public function orderitem()
+	{	
+		$this->load->view('admin/orderitem');
+	}
+	public function edit_orderitem()
+	{	
+		$this->load->view('admin/edit_orderitem');
+	}
+	public function transaction()
+	{	
+		$this->load->view('admin/transaction');
 	}
 	public function add_state()
 	{	
