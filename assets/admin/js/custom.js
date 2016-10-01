@@ -196,6 +196,28 @@ $(document).ready(function() {
                return false;
     }
         });
+    $(".description").text(function(index, currentText) {
+        alert(currentText.length);
+        if (currentText.length>60) {
+    return currentText.substr(0, 60)+'.....';
+    }
+});
+    // var passVal = $('.password').val();
+    // if(passVal!='') {
+    //     var pass_restriction = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!)=%*#(? &])[A-Za-z\\d$@)$!%(*#= ?&]{3,}$");
+    //     if(!pass_restriction.test(passVal)) {
+    //         $('#password').addClass("error_input_field");
+    //         $('#error_pass_rest').slideDown();
+    //     }
+    //     else if(passVal != $('#repassword').val()) 
+    //         {
+    //             $('#error_pass_rest').slideUp();
+    //             $('#password').removeClass("error_input_field");
+    //             $('#repassword').addClass("error_input_field");
+    //         }else {$('#error_pass_rest').slideUp();
+    //         $('#password').removeClass("error_input_field");
+    //         $('#repassword').removeClass("error_input_field");
+    //     }}
     //************End *****************
 
     //************ Start ***********

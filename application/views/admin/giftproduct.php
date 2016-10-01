@@ -67,10 +67,10 @@
                     }
                 endforeach ?>
             </td>
-            <td class="center" style="width:100% !important"><?php echo $product['product_description'] ?></td>
+            <td class="center description" style="width:100% !important"><?php echo $product['product_description'] ?></td>
             <td class="center" style="width:100% !important"><?php echo $product['category_name'] ?></td> 
             <td class="center" style="width:100% !important"><?php echo $product['subcategory_name'] ?></td>
-            <td class="center" style="width:100% !important"><?php echo $product['recipient_type'] ?></td>
+             <td class="center" style="width:100% !important"><?php echo $product['recipient_type'] ?></td>
             <td class="center" style="width:100% !important"><?php echo $product['product_price'] ?></td>
             <td class="center" style="width:100% !important"><?php echo $product['product_totalitems'] ?></td> 
             <td class="center" style="width:100% !important"><?php echo $product['product_sold'] ?></td>    
