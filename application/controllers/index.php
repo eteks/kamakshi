@@ -26,7 +26,6 @@ class Index extends CI_Controller
       $categories['order_details'] = $categories_values_reg['order_details'];
       $categories['order_count'] = $categories_values_reg['order_count'];
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();
-	  // $data['giftstore_subcategory'] = $this->index_model->get_register();
 	  $this->load->view('index',$categories);
     }
 	
@@ -86,6 +85,22 @@ class Index extends CI_Controller
 		$this->load->view('detail',$categories);
 	}
 
+    //  Checkout page
+    public function checkout()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories_values_basket = $this->index_model->get_cart_details();
+        $categories['basket_details'] = $categories_values_basket['basket_details'];
+        $categories['basket_count'] = $categories_values_basket['basket_count'];
+        // print_r($categories['basket_details']);
+        $categories['state'] = $this->index_model->get_state();
+        $this->load->view('checkout',$categories);
+
+    }
+
 	public function contact()
 	{
 		$categories_values_reg = $this->index_model->get_register();
@@ -119,7 +134,7 @@ class Index extends CI_Controller
         // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
-
+  
 
 
 	public function checkout1()

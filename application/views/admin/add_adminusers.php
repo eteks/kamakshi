@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Mobile</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter mobile number,">
+                        <input type="email" class="form-control" id="mobile" placeholder="Enter mobile number,">
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>

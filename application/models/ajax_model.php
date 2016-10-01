@@ -11,11 +11,6 @@ class Ajax_Model extends CI_Model {
 
         $start_price= $this->input->post('s_val');
         $end_price= $this->input->post('e_val');
-
-
-
-
-
         $start = $data['offset'];
         $limit = $data['limit'];
         if($this->input->post('cat_id')) {
@@ -51,10 +46,6 @@ class Ajax_Model extends CI_Model {
                 $query['product_category'] = $sub_product->order_by('cp.product_title','asc')->get()->result_array();
             }
 
-
-
-
-
             // count1 
             $sub_product1=$this->db->select('*');
             $sub_product1=$this->db->from('giftstore_product cp');
@@ -65,10 +56,6 @@ class Ajax_Model extends CI_Model {
             $query['product_count'] = count($query1);
 
         }
-
-
-         
-
         return $query;
     }
 
@@ -212,5 +199,15 @@ class Ajax_Model extends CI_Model {
         }
         return $query_status;
     }
+
+    //  Get city data
+    public function get_city_data() {
+        if($this->input->post('state_id')) {
+            $city_where='(city_state_id="'.$this->input->post('state_id').'" and city_status= 1)';
+            $query = $this->db->get_where('giftstore_city',$city_where)->result_array();
+        }
+        return $query;
+    }
+
  
 }

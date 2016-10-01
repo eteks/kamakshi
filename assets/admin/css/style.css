@@ -67,7 +67,7 @@
 	display: block;
 }*/
 .attribute_main_block{
-    /*display: none;*/
+    display: none;
 }
 .attribute_group{
 	border: 1px solid #cccccc;
@@ -153,6 +153,11 @@
 	background-image:none !important;
 	border: none !important;
 }
+.scroll{
+	display:block;
+	overflow-x:auto;
+	width: 100%;
+}
 .btn-info {
     background-image: none !important;
     background-repeat: no-repeat;
@@ -195,19 +200,36 @@
 /*End by Velpandi*/
 .dataTables_wrapper{
 	overflow-x: auto !important;
-    width: 1000px !important;
-}
-#add {
-	float:right;
+    width: 100% !important;
 }
 .dataTables{
 	width:1000px;
+}
+#add {
+   float:right;
+   margin: 0 18px 0 0;
 }
 .table-bordered {
     width: 98.5%;
 }
 .dataTables_filter {
-    float:right;
+    float: right;
+}
+.product{
+	width: 100%;
+	max-width:300px !important;
+	min-width: 250px !important;
+}
+.popup_btn{
+	width:50px;
+}
+.popup_tx h5{
+	font-size: 18px;
+}
+.product_small{
+	width: 100%;
+	max-width:150px !important;
+	min-width: 140px !important;
 }
 .group_action{
     position: relative;
@@ -229,4 +251,9 @@
 .footer_content {
     height: 100% !important;
     min-height: 535px !important;
+}
+.attribute_duplicate_message,.attribute_group_message{
+  display: none;
+  color: #ff0000;
+  font-size: 12px;
 }

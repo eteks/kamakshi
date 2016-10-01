@@ -44,16 +44,15 @@
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_area" enctype="multipart/form-data" name="city_form">
             <div class="control-group">
                         <label for="sel_a">Select State</label>
-                    <select name="state_name" id="sel_a" class="form-control">
-                   <option value="">
-                     Select State 
-                    </option>
-                    <?php
-                    $query = mysql_query("select * from giftstore_state  where state_status='1' order by state_name asc");
-                    while ($row = mysql_fetch_array($query)) {
+                    <select name="state_name" id="sel_a" class="product-type-filter form-control city_act">
+                   <option value="" >Select State</option>
+                    <?php foreach ($states as $state_row): ?>
+                         <?php   
+                            if($city_edit['city_state_id'] == $state_row['state_id'])  echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                            else
+                                echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
                         ?>
-                    <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
-                <?php } ?>
+                    <?php endforeach; ?>
                     </select>
                     </div>
                     <div class="control-group">
@@ -76,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Delivery charge</label>
-                        <input type="text" class="form-control" id="delivery_charge" placeholder="Enter delivery charge" name="delivery_charge">
+                        <input type="text" class="form-control" id="deliverycharge" placeholder="Enter delivery charge" name="delivery_charge">
                     </div>  
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Area status</label>

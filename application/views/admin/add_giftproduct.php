@@ -42,7 +42,7 @@
             </div>
             <div class="box-content">
              <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
-             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form">
+             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form" id="add_giftproduct">
              <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
                         <label for="titlename">Product Title</label>
@@ -83,14 +83,16 @@
                             </select>
                         </div>
                     </div>
-                     <div class="form-group">
+                     <div class="form-group price_group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" id="price" placeholder="Enter price" name="product_price">
+                        <input type="text" class="form-control" id="price" placeholder="Enter price">
                     </div> 
-                     <div class="form-group">
+                    <input type="hidden" name="product_price" id="product_price_hidden">
+                     <div class="form-group items_group">
                         <label for="total_iteams">Total Items</label>
-                        <input type="text" class="form-control" id="total_iteams" placeholder="Enter total items" name="product_totalitems">
+                        <input type="text" class="form-control" id="totalitem" placeholder="Enter total items">
                     </div> 
+                    <input type="hidden" name="product_totalitems" id="product_totalitems_hidden">
                     <!-- <div class="form-group">
                         <label for="sold">Sold</label>
                         <input type="text" class="form-control" id="sold" placeholder="Enter Sold" disabled="">
@@ -106,20 +108,22 @@
                             </select>
                         </div>
                     </div>
-            <p class="product_tab"><input type="checkbox" class="attribute_status"> Want to Add Product Attributes?</p>
+                    <p class="product_tab"><input type="checkbox" class="attribute_status"> Want to Add Product Attributes?</p>
+                    <p class="attribute_duplicate_message">Duplicate attribute option not allowed</p>
+                    <p class="attribute_group_message">Every attribute group must have equal no. of attribute set</p>
                     <div class="attribute_main_block">
                         <div class="attribute_group" id="attribute_group1">
                             <div class="form-group attribute_block">
                                 <div class="clone_attribute_group">
                                     <div class="clone_attribute" id="clone_attribute1">
                                         <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
-                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes">
+                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes field_validate attribute_option_validate attribute_validate att_equal">
                                                 <option value="">Select Attribute</option>
                                                 <?php foreach ($attribute_list as $att): ?>
                                                     <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
                                                 <?php endforeach ?>
                                         </select>
-                                        <input class="form-control fl label-boxes" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
+                                        <input class="form-control fl label-boxes field_validate attribute_option_validate attribute_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
                                         <div class="add-rmv-btn">
                                             <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
                                             <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
@@ -130,11 +134,11 @@
                             </div>
                             <div class="form-group attribute_block">
                                 <label for="price" class="fl">Price</label>
-                                <input type="text" class="form-control label-boxes" id="price" placeholder="Enter price" name="product_attribute_price[]">
+                                <input type="text" class="form-control label-boxes attribute_validate" id="price" placeholder="Enter price" name="product_attribute_price[]">
                             </div> 
                              <div class="form-group attribute_block">
                                 <label for="total_iteams" class="fl">Total Items</label>
-                                <input type="text" class="form-control label-boxes" id="total_iteams" placeholder="Enter total items" name="product_attribute_totalitems[]">
+                                <input type="text" class="form-control label-boxes attribute_validate" id="product_attribute_totalitems" placeholder="Enter total items" name="product_attribute_totalitems[]">
                             </div> 
                             <div class="group group_action">
                                 <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">

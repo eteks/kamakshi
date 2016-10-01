@@ -225,5 +225,46 @@
   padding: 6px 12px;
   text-decoration: none;
 }
+.loading {
+  background: #fff none repeat scroll 0 0;
+  height: 100%;
+  opacity: 0.4;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 9999;
+}
+.ajax_loader {
+  display: inline-block;
+  position: absolute;
+  top: 49%;
+}
+/*.checkout_button {
+  background-color: #4fbfa8;
+  border-color: #41b39c;
+  color: #ffffff;
+}
+.checkout_button:hover {
+  background-color: #3da892;
+  border-color: #318675;
+  color: #ffffff;
+}
+*/
+#checkout_order {
+  display: none;
+}
+.error_field {
+  border: 1px solid #c24641;
+}
+.error_field, .error_mail_field, .error_mobile_field, .error_zip_field{
+  border: 1px solid #c24641;
+}
+.error_msg {
+  font-size: 14px;
+  text-align: center;
+  color : #c24641;
+  display: none;
+}
+
 
 /* Ended by siva*/

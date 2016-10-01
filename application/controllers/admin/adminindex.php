@@ -221,11 +221,42 @@ class Adminindex extends CI_Controller {
 		// print_r($data);
 		$this->load->view('admin/edit_category',$data);
 	}
+	public function get_arrayvalues_bykeyvalue($array, $key, $key2, $v2)
+	{
+	    $ret = array();
+	    foreach($array as $arr)
+	    {
+	        foreach($arr as $k => $v)
+	        {
+	            if($arr[$key2] == $v2)
+	            {
+	                if($k == $key)
+	                    $ret[] = $v;   
+	            }
+	        }
+	    }
+	    $u = array_unique($ret);
+	    return (sizeof($u) == 1) ? $u[0] : $u;
+	}
+
 	public function subcategory()
 	{	
 		//get list of category from database and store it in array variable 'category' with key 'category_list'
-		$subcategory['subcategory_list'] = $this->catalog->get_subcategories();
+		// $subcategory['subcategory_list'] = $this->catalog->get_subcategories();
+		$subcategory = $this->catalog->get_subcategories();
 		
+		$res = array();
+		foreach($subcategory as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'category_name')
+		            $res[$arr['subcategory_id']][$k] = $this->get_arrayvalues_bykeyvalue($subcategory, $k, 'subcategory_id', $arr['subcategory_id']);
+		        else
+		            $res[$arr['subcategory_id']][$k] = $v;
+		    }
+		}
+		$subcategory['subcategory_list'] = $res;
 		//call the category views i.e rendered page and pass the category data in the array variable 'category'
 		$this->load->view('admin/subcategory',$subcategory);
 	}
@@ -382,7 +413,20 @@ class Adminindex extends CI_Controller {
 	public function recipient()
 	{	
 		//get list of recipient from database and store it in array variable 'recipient' with key 'recipient_list'
-		$recipient['recipient_list'] = $this->catalog->get_recipient();
+		$recipient = $this->catalog->get_recipient();
+
+		$res = array();
+		foreach($recipient as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'category_name')
+		            $res[$arr['recipient_id']][$k] = $this->get_arrayvalues_bykeyvalue($recipient, $k, 'recipient_id', $arr['recipient_id']);
+		        else
+		            $res[$arr['recipient_id']][$k] = $v;
+		    }
+		}
+		$recipient['recipient_list'] = $res;
 		
 		//call the recipeint views i.e rendered page and pass the recipient data in the array variable 'recipient'
 		$this->load->view('admin/recipient',$recipient);
@@ -850,28 +894,9 @@ class Adminindex extends CI_Controller {
 		$data['attribute_data'] = $this->catalog->get_product_attribute_data($id);
 		$this->load->view('admin/edit_product_attributes',$data);
 	}
-	public function adminusers()
-	{	
-		$this->load->view('admin/adminusers');
-	}
-	public function add_adminusers()
-	{	
-		$this->load->view('admin/add_adminusers');
-	}
-	public function edit_adminusers()
-	{	
-		$this->load->view('admin/edit_adminusers');
-	}
-	public function endusers()
-	{	
-		$this->load->view('admin/endusers');
-	}
-	public function edit_endusers()
-	{	
-		$this->load->view('admin/edit_endusers');
-	}
 	public function area()
 	{
+		$city['area'] = $this->location->get_areas();
 		$area['area_list'] = $this->location->get_area();	
 		$this->load->view('admin/area',$area);
 	}
@@ -940,9 +965,9 @@ class Adminindex extends CI_Controller {
 					$data = array(
 						'area_name' => $this->input->post('area_name'),
 						'area_delivery_charge' => $this->input->post('area_delivery_charge'),
-						'city_id' => $this->input->post('city_name'),
+						'area_city_id' => $this->input->post('city_name'),
 						'city_state_id' => $this->input->post('state_name'),
-						'city_status' => $this->input->post('city_status'),
+						'area_status' => $this->input->post('area_status'),
 					);
 					$result = $this->location->insert_city($data);
 					if($result)
@@ -957,7 +982,8 @@ class Adminindex extends CI_Controller {
 			}
     	}
 		// print_r($status);	
-		$status['area_list'] = $this->location->get_area();
+		
+		$status['area_list'] = $this->location->get_areas();
 		$this->load->view('admin/add_area',$status);
 	}
 	public function edit_area()
@@ -1057,17 +1083,17 @@ class Adminindex extends CI_Controller {
 			$errors = '';
 			$validation_rules = array(
 				array(
-		             'field'   => 'state_id',
+		             'field'   => 'state_name',
 		             'label'   => 'State',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),
 		       array(
-		             'field'   => 'edit_city_name',
+		             'field'   => 'city_name',
 		             'label'   => 'City',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),
 		       array(
-		             'field'   => 'edit_city_status',
+		             'field'   => 'city_status',
 		             'label'   => 'Status',
 		             'rules'   => 'trim|required|xss_clean'
 		          ),   
@@ -1100,11 +1126,11 @@ class Adminindex extends CI_Controller {
 				else{
 					$data = array(
 					'city_id' => $id,
-					'city_name' => $this->input->post('edit_city_name'),
-					'state_name' => $this->input->post('city_state_id'),
-					'city_status' => $this->input->post('edit_city_status'),
+					'city_name' => $this->input->post('city_name'),
+					'state_name' => $this->input->post('state_name'),
+					'city_status' => $this->input->post('city_status'),
 					);
-					$result = $this->catalog->update_product_attribute($data);
+					$result = $this->location->update_city($data);
 					if($result)
 						$status = "City Updated Successfully!";
 					else
@@ -1113,13 +1139,31 @@ class Adminindex extends CI_Controller {
     		}
     		$data['status'] = $status;
 		}
-		$data['city_data'] = $this->location->get_city_data($id);
+		$data_values = $this->location->get_city_data($id);
+		$data['city_edit']	= $data_values['state_city'];
+		$data['states']	= $data_values['states'];
 		$this->load->view('admin/edit_city',$data);
 	}
 	public function state()
 	{	
 		$state['state_list'] = $this->location->get_state();
 		$this->load->view('admin/state',$state);
+	}
+	public function edit_order()
+	{	
+		$this->load->view('admin/edit_order');
+	}
+	public function orderitem()
+	{	
+		$this->load->view('admin/orderitem');
+	}
+	public function edit_orderitem()
+	{	
+		$this->load->view('admin/edit_orderitem');
+	}
+	public function transaction()
+	{	
+		$this->load->view('admin/transaction');
 	}
 	public function add_state()
 	{	

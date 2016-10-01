@@ -44,6 +44,7 @@
     <tr>
         <th>State Name</th>
         <th>Status</th>
+        <th>Created Date</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -52,6 +53,7 @@
     <tr>
         <td><?php echo $state["state_name"] ?></td>
         <td class="center"><span class="<?php if($state["state_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($state["state_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+        <td><?php echo date("d/m/Y", strtotime($state["state_createddate"])); ?></td>
         <td class="center">
             <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_state/<?php echo $state["state_id"] ?>">
                 <i class="glyphicon glyphicon-edit icon-white"></i>

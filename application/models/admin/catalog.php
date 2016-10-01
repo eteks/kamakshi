@@ -13,11 +13,11 @@ class Catalog extends CI_Model {
 		// return $query->row_array();
 
 		//get list of categories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_category order 
-			by category_createddate desc");		
-		// echo "<pre>";
-		// print_r($query->result());
-		// echo "</pre>";
+		$this->db->select('*');
+		$this->db->from('giftstore_category');
+		$this->db->order_by('category_createddate','desc');	
+		$query = $this->db->get();
+		
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
@@ -64,8 +64,20 @@ class Catalog extends CI_Model {
 	public function get_subcategories()
 	{	
 		//get list of subcategories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_subcategory order 
-			by subcategory_createddate desc");		
+		// $query = $this->db->query("SELECT * FROM giftstore_subcategory order 
+		// 	by subcategory_createddate desc");	
+
+		$this->db->select('sub.*,cat.category_name');
+		$this->db->from('giftstore_subcategory AS sub');
+		$this->db->join('giftstore_subcategory_category AS subcat', 'subcat.subcategory_mapping_id = sub.subcategory_id', 'inner');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = subcat.category_mapping_id', 'inner');
+		// $this->db->group_by('subcategory_id');
+		$this->db->order_by('subcategory_createddate','desc');
+		
+		$query = $this->db->get();
+		// echo "<pre>";
+		// print_r(array_merge_recursive($query->result_array()));
+		// echo "</pre>";
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
@@ -129,9 +141,16 @@ class Catalog extends CI_Model {
 	}
 	public function get_recipient()
 	{	
-		//get list of subcategories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_recipient order 
-			by recipient_createddate desc");		
+		//get list of subcategories from database using mysql query 	
+		$this->db->select('rec.*,cat.category_name');
+		$this->db->from('giftstore_recipient AS rec');
+		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'inner');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = reccat.category_mapping_id', 'inner');
+		// $this->db->group_by('subcategory_id');
+		$this->db->order_by('recipient_createddate','desc');
+		
+		$query = $this->db->get();
+
 		//return all records in array format to the controller
 		return $query->result_array();
 	}

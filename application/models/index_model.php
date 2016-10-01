@@ -62,12 +62,23 @@ class Index_Model extends CI_Model {
 
     public function get_latestproduct()
     {
-        $this->db->order_by('product_createddate', 'DESC');
-        $this->db->limit('10');
-        $query = $this->db->get('giftstore_product');
-        // $query = $this->db->get('giftstore_subcategory');
+
+        $this->db->select('*');
+        $this->db->from('giftstore_product pro');
+        $this->db->join('giftstore_product_upload_image img', 'img.product_mapping_id=pro.product_id', 'inner');
+        $this->db->group_by('img.product_mapping_id');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+
+    //  State for checkout
+    public function get_state()
+    {
+        $where = '(state_status=1)';
+        $query = $this->db->get_where('giftstore_state',$where);
         return $query->result_array();
     }
+
 
     public function get_recipient()
     {
@@ -185,14 +196,14 @@ class Index_Model extends CI_Model {
 
 
 
-          echo "<pre>";
-            print_r($data_array);
-            echo "</pre>";
-            // $array_column = array_column($data_array, 0);
+          // echo "<pre>";
+          //   print_r($data_array);
+          //   echo "</pre>";
+          //   // $array_column = array_column($data_array, 0);
                 
-            echo "<pre>";
-            print_r($array_column);
-            echo "</pre>";
+          //   echo "<pre>";
+          //   print_r($array_column);
+          //   echo "</pre>";
             
 
 

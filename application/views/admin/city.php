@@ -41,32 +41,34 @@
     <div class="alert alert_blue alert-info col-md-10"></div>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
-    <tr>
-        <th>City Name</th>
-         <th>State Name</th>
-        <th>Status</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($city as $city): ?>
-    <tr>
-            <td><?php echo $city["city_name"] ?></td>
-            <td><?php echo $city["state_name"] ?></td>
-            <td class="center"><span class="<?php if($city["city_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($city["city_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
-            <td class="center">
-                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city["city_id"] ?>">
-                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
-                </a>
-                <a class="btn btn-danger" href="#">
-                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                    Delete
-                </a>
-            </td>
+        <tr>
+            <th class="product">City Name</th>
+            <th class="product">State </th>
+            <th class="product_small">Status</th>
+            <th class="product_small">Created Date</th>
+            <th class="product_small">Actions</th>
         </tr>
-    <?php endforeach ?>
-    </tbody>
+        </thead>
+        <tbody>
+        <?php foreach ($city as $city): ?>
+        <tr>
+                <td><?php echo $city["city_name"] ?></td>
+                <td><?php echo $city["state_name"] ?></td>
+                <td><?php echo $city["state_name"] ?></td>
+                <td class="center"><span class="<?php if($city["city_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($city["city_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+                <td class="center">
+                    <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city["city_id"] ?>">
+                        <i class="glyphicon glyphicon-edit icon-white"></i>
+                        Edit
+                    </a>
+                   <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach ?>
+        </tbody>
     </table>
     </div>
     </div>
