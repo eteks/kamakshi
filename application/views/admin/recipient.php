@@ -53,7 +53,16 @@
     <?php foreach ($recipient_list as $recipient): ?>
         <tr>
             <td><?php echo $recipient['recipient_type'] ?></td>
-            <td class="center">2012/01/01</td>
+            <td>
+                <?php 
+                if(sizeof($recipient["category_name"]) > 1){
+                    foreach($recipient["category_name"] as $cat) 
+                        echo "- ".$cat."<br>";
+                }
+                else
+                    echo "- ".$recipient["category_name"];
+                ?>
+            </td>
             <td class="center"><span class="<?php if($recipient["recipient_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($recipient["recipient_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td><?php echo date("d/m/Y", strtotime($recipient["recipient_createddate"])); ?></td>
               
