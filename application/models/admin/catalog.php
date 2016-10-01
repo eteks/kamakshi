@@ -13,11 +13,11 @@ class Catalog extends CI_Model {
 		// return $query->row_array();
 
 		//get list of categories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_category order 
-			by category_createddate desc");		
-		// echo "<pre>";
-		// print_r($query->result());
-		// echo "</pre>";
+		$this->db->select('*');
+		$this->db->from('giftstore_category');
+		$this->db->order_by('category_createddate','desc');	
+		$query = $this->db->get();
+		
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
@@ -67,7 +67,7 @@ class Catalog extends CI_Model {
 		// $query = $this->db->query("SELECT * FROM giftstore_subcategory order 
 		// 	by subcategory_createddate desc");	
 
-		$this->db->select('*');
+		$this->db->select('sub.*,cat.category_name');
 		$this->db->from('giftstore_subcategory AS sub');
 		$this->db->join('giftstore_subcategory_category AS subcat', 'subcat.subcategory_mapping_id = sub.subcategory_id', 'inner');
 		$this->db->join('giftstore_category AS cat', 'cat.category_id = subcat.category_mapping_id', 'inner');
@@ -141,9 +141,16 @@ class Catalog extends CI_Model {
 	}
 	public function get_recipient()
 	{	
-		//get list of subcategories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_recipient order 
-			by recipient_createddate desc");		
+		//get list of subcategories from database using mysql query 	
+		$this->db->select('rec.*,cat.category_name');
+		$this->db->from('giftstore_recipient AS rec');
+		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'inner');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = reccat.category_mapping_id', 'inner');
+		// $this->db->group_by('subcategory_id');
+		$this->db->order_by('recipient_createddate','desc');
+		
+		$query = $this->db->get();
+
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
@@ -349,7 +356,7 @@ class Catalog extends CI_Model {
 					array_push($product_attribute_inserted_id,$this->db->insert_id());
 				}
 				$product_attributes_group = array(
-						'product_mapping_id' => $product_attribute_id ,
+						'product_mapping_id' => $product_id ,
 						'product_attribute_group_price' => $price ,
 						'product_attribute_group_totalitems' => $items,
 						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)

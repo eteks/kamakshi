@@ -166,7 +166,7 @@ $(document).ready(function() {
             $("#product_totalitems_hidden").val(sum);
             return false;
         }   
-        return false;   
+        // return false;   
     });
     $(document).delegate("[name='select_attribute[]']",'change',function(){
         var new_selection = $(this).find('option:selected');
@@ -182,14 +182,14 @@ $(document).ready(function() {
     // ********* End *********
 
     //**********add to muthukrishnan ***********
-    $('#mobile,#userid,#totalitem,#orderid,#quantity,#size').keypress(function (e) {
+    $('#mobile,#userid,.totalitem,#orderid,#quantity,#size').keypress(function (e) {
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which != 45 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
         return false;
     }
    });
-    $("#deliverycharge,#totalamount,#price,#wight").keypress(function (e) {
+    $("#deliverycharge,#totalamount,.price,#wight").keypress(function (e) {
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which !=46 &&  e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
@@ -197,4 +197,22 @@ $(document).ready(function() {
     }
         });
     //************End *****************
+
+    //************ Start ***********
+    $(document).delegate('#edit_adminuser_form','submit',function(e){
+        form_data = $(this).serializeArray();
+        // alert(JSON.stringify(form_data));
+        $.ajax({
+           type: "POST",
+           url: $(this).attr('action'),
+           data: form_data,
+           // dataType: 'json',  
+           cache: false,
+           success: function(data) {  
+            $('.box-content').html(data);
+           }
+        });
+        return false;
+    });
+    //************ End *************
 });

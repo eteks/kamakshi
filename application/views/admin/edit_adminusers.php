@@ -1,7 +1,9 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -38,25 +40,28 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" id="add_area">
+<?php } ?>
+                <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+                <?php //print_r($adminuser_data); ?>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $adminuser_data['adminuser_id']; ?>" name="edit_adminuser_form" id="edit_adminuser_form">
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">User Name</label>
-                        <input type="email" class="form-control" id="area_name" placeholder="Enter User Name">
+                        <input type="text" class="form-control" id="adminuser_name" placeholder="Enter User Name" name="adminuser_username" value="<?php if(!empty($adminuser_data['adminuser_username'])) echo $adminuser_data['adminuser_username']; ?>">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1"> password</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter password">
+                        <label for="exampleInputEmail1"> Password</label>
+                        <input type="password" class="form-control" id="adminuser_password" placeholder="Enter password" name="adminuser_password" value="<?php if(!empty($adminuser_data['adminuser_password'])) echo $adminuser_data['adminuser_password']; ?>">
                     </div>  
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter email id">
+                        <input type="text" class="form-control" id="adminuser_email" placeholder="Enter email id" name="adminuser_email" value="<?php if(!empty($adminuser_data['adminuser_email'])) echo $adminuser_data['adminuser_email']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Mobile</label>
-                        <input type="email" class="form-control" id="mobile" placeholder="Enter mobile number,">
+                        <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number" name="adminuser_mobile" value="<?php if(!empty($adminuser_data['adminuser_mobile'])) echo $adminuser_data['adminuser_mobile']; ?>">
                     </div>
-                     <div class="control-group">
+                     <!-- <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
@@ -65,17 +70,20 @@
                                 <option>Inactive</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="group">    
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
     <!--/span-->
 </div><!--/row-->
-    <!-- content ends -->
-    </div><!--/#content.col-md-0-->
+<!-- content ends -->
+</div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
+</div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

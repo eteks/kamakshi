@@ -79,6 +79,10 @@
 #delete_btn{
 	text-align: center;
 }
+.scroll{
+	display:block;
+}
+/*Added by Velpandi*/
 .edit-catpro-image {
      padding: 0 0 10px;
     border: 1px solid #cccccc;
@@ -193,12 +197,16 @@
 .select-category-images{
 	width:230px;
 }
+/*End by Velpandi*/
 .dataTables_wrapper{
 	overflow-x: auto !important;
     width: 100% !important;
 }
+.dataTables{
+	width:1000px;
+}
 #add {
-	float:right;
+   float:right;
    margin: 0 18px 0 0;
 }
 .table-bordered {
@@ -238,6 +246,11 @@
 }
 .attribute_error{
     border : 1px solid red;
+}
+/*Added by velpandi*/
+.footer_content {
+    height: 100% !important;
+    min-height: 535px !important;
 }
 .attribute_duplicate_message,.attribute_group_message{
   display: none;

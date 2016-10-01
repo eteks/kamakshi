@@ -221,11 +221,42 @@ class Adminindex extends CI_Controller {
 		// print_r($data);
 		$this->load->view('admin/edit_category',$data);
 	}
+	public function get_arrayvalues_bykeyvalue($array, $key, $key2, $v2)
+	{
+	    $ret = array();
+	    foreach($array as $arr)
+	    {
+	        foreach($arr as $k => $v)
+	        {
+	            if($arr[$key2] == $v2)
+	            {
+	                if($k == $key)
+	                    $ret[] = $v;   
+	            }
+	        }
+	    }
+	    $u = array_unique($ret);
+	    return (sizeof($u) == 1) ? $u[0] : $u;
+	}
+
 	public function subcategory()
 	{	
 		//get list of category from database and store it in array variable 'category' with key 'category_list'
-		$subcategory['subcategory_list'] = $this->catalog->get_subcategories();
+		// $subcategory['subcategory_list'] = $this->catalog->get_subcategories();
+		$subcategory = $this->catalog->get_subcategories();
 		
+		$res = array();
+		foreach($subcategory as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'category_name')
+		            $res[$arr['subcategory_id']][$k] = $this->get_arrayvalues_bykeyvalue($subcategory, $k, 'subcategory_id', $arr['subcategory_id']);
+		        else
+		            $res[$arr['subcategory_id']][$k] = $v;
+		    }
+		}
+		$subcategory['subcategory_list'] = $res;
 		//call the category views i.e rendered page and pass the category data in the array variable 'category'
 		$this->load->view('admin/subcategory',$subcategory);
 	}
@@ -382,7 +413,20 @@ class Adminindex extends CI_Controller {
 	public function recipient()
 	{	
 		//get list of recipient from database and store it in array variable 'recipient' with key 'recipient_list'
-		$recipient['recipient_list'] = $this->catalog->get_recipient();
+		$recipient = $this->catalog->get_recipient();
+
+		$res = array();
+		foreach($recipient as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'category_name')
+		            $res[$arr['recipient_id']][$k] = $this->get_arrayvalues_bykeyvalue($recipient, $k, 'recipient_id', $arr['recipient_id']);
+		        else
+		            $res[$arr['recipient_id']][$k] = $v;
+		    }
+		}
+		$recipient['recipient_list'] = $res;
 		
 		//call the recipeint views i.e rendered page and pass the recipient data in the array variable 'recipient'
 		$this->load->view('admin/recipient',$recipient);
@@ -604,6 +648,7 @@ class Adminindex extends CI_Controller {
 	            if($error){
 	                if (strpos($error,"field is required.") !== false){
 	                    $errors = $error; 
+	                    echo $error; 
 	                    break;
 	                }
 	                else
@@ -849,26 +894,6 @@ class Adminindex extends CI_Controller {
 		}
 		$data['attribute_data'] = $this->catalog->get_product_attribute_data($id);
 		$this->load->view('admin/edit_product_attributes',$data);
-	}
-	public function adminusers()
-	{	
-		$this->load->view('admin/adminusers');
-	}
-	public function add_adminusers()
-	{	
-		$this->load->view('admin/add_adminusers');
-	}
-	public function edit_adminusers()
-	{	
-		$this->load->view('admin/edit_adminusers');
-	}
-	public function endusers()
-	{	
-		$this->load->view('admin/endusers');
-	}
-	public function edit_endusers()
-	{	
-		$this->load->view('admin/edit_endusers');
 	}
 	public function area()
 	{
