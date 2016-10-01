@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -38,9 +39,10 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+<?php } ?>
+                <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
                 <?php //print_r($adminuser_data); ?>
-                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $adminuser_data['adminuser_id']; ?>" name="edit_adminuser_form">
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $adminuser_data['adminuser_id']; ?>" name="edit_adminuser_form" id="edit_adminuser_form">
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">User Name</label>
@@ -72,12 +74,14 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
     <!--/span-->
 </div><!--/row-->
-    <!-- content ends -->
-    </div><!--/#content.col-md-0-->
+<!-- content ends -->
+</div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 <?php include "templates/footer.php" ?>
+<?php } ?>
