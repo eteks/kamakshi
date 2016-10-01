@@ -79,6 +79,10 @@
 #delete_btn{
 	text-align: center;
 }
+.scroll{
+	display:block;
+}
+/*Added by Velpandi*/
 .edit-catpro-image {
      padding: 0 0 10px;
     border: 1px solid #cccccc;
@@ -149,9 +153,6 @@
 	background-image:none !important;
 	border: none !important;
 }
-.scroll{
-	display:block;
-}
 .btn-info {
     background-image: none !important;
     background-repeat: no-repeat;
@@ -191,28 +192,22 @@
 .select-category-images{
 	width:230px;
 }
+/*End by Velpandi*/
 .dataTables_wrapper{
 	overflow-x: auto !important;
     width: 1000px !important;
 }
-.col-md-6 {
-    width: 45% !important;
-}
 #add {
 	float:right;
-	
 }
 .dataTables{
 	width:1000px;
 }
 .table-bordered {
-    width: 1017px;
-}
-.fid{
-	width: 1002px;
+    width: 98.5%;
 }
 .dataTables_filter {
-    margin: 0 -99px 0 0 !important;
+    float:right;
 }
 .group_action{
     position: relative;
@@ -229,4 +224,9 @@
 }
 .attribute_error{
     border : 1px solid red;
+}
+/*Added by velpandi*/
+.footer_content {
+    height: 100% !important;
+    min-height: 535px !important;
 }

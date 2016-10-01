@@ -1,7 +1,8 @@
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -87,5 +88,5 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-
+</div>
 <?php include "templates/footer.php" ?>

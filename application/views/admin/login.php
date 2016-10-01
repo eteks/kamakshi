@@ -1,14 +1,12 @@
 <?php include "templates/header.php" ?>
 <div class="ch-container">
-    <div class="row">
-        
-    <div class="row">
-        <div class="col-md-12 center login-header">
-            <h2>Welcome to Admin</h2>
-        </div>
-        <!--/span-->
-    </div><!--/row-->
-
+    <div class="row footer_content">
+	     <div class="row">
+	        <div class="col-md-12 center login-header">
+	            <h2>Welcome to Admin</h2>
+	        </div>
+	        <!--/span-->
+	    </div><!--/row-->
     <div class="row">
         <div class="well col-md-5 center login-box">
             <!-- <div class="alert alert-info">

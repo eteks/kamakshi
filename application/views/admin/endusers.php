@@ -1,6 +1,6 @@
 <?php include "templates/header.php" ?>
 <div class="ch-container">
-    <div class="row"> 
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
