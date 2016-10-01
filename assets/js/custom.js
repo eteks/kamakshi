@@ -82,10 +82,14 @@ $(document).ready(function() {
 // }
 //     });
 
+//  Get checkout details from session
+// var temp = sessionStorage.getItem('checkout_details');
+// var viewName = $.parseJSON(temp);
+// var div = viewName.fname;
+// alert(div);
+// alert(JSON.stringify(viewName));
 
-
-
-
+//  Store user details of checkout form in json data
 (function ($) {
     $.fn.serializeFormJSON = function () {
 
@@ -105,17 +109,18 @@ $(document).ready(function() {
     };
 })(jQuery);
 
-// $(document).on('click','#checkout_address',function (e) {
-//     e.preventDefault();
-//     var data = $(this).serializeFormJSON();
-//     console.log(data);
+$('#checkout_form').submit(function (e) {
+    e.preventDefault();
+    var data = $(this).serializeFormJSON();
+    alert(JSON.stringify(data));
+    sessionStorage.setItem('checkout_details', JSON.stringify(data));
+    /* Object
+        email: "value"
+        name: "value"
+        password: "value"
+     */
+});
 
-//     /* Object
-//         email: "value"
-//         name: "value"
-//         password: "value"
-//      */
-// });
 
 
 //  Moibile number validation

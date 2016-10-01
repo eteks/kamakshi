@@ -79,6 +79,14 @@ class Index_Model extends CI_Model {
         return $query->result_array();
     }
 
+    //  Get recipient list
+    public function get_recipient_list()
+    {
+        $where = '(recipient_status=1)';
+        $query = $this->db->get_where('giftstore_recipient',$where)->result_array();
+        return $query;
+    }
+
 
     public function get_recipient()
     {
@@ -348,4 +356,28 @@ class Index_Model extends CI_Model {
             return false;
         }
     }
+
+    // Get Category and its recipients based on category
+    public function get_category_recipient()
+    {
+        $where = '(c.category_status=1)';
+        $this->db->select('*');
+        $this->db->from('giftstore_category c');
+        $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'left');
+        // $this->db->join('giftstore_category c', 'rc.category_mapping_id=c.category_id', 'left');
+        
+        $query = $this->db->where($where)->get()->result_array();
+
+        // echo "<pre>";
+        // print_r($query);
+        // echo "</pre>";
+
+
+        return $query;
+
+
+    }
+
+
+
 }
