@@ -14,19 +14,7 @@
     <!-- Main corousal css for theme -->
     <link href="<?php echo base_url(); ?>assets/admin/css/slick.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/admin/css/slick-theme.css" rel="stylesheet">
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/bower_components/chosen/chosen.min.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'> -->
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/jquery.noty.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/noty_theme_default.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/elfinder.min.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/elfinder.theme.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/jquery.iphone.toggle.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/uploadify.css' rel='stylesheet'> -->
-    <!-- <link href='<?php echo base_url(); ?>assets/admin/css/animate.min.css' rel='stylesheet'> -->
     <link href='<?php echo base_url(); ?>assets/admin/css/style.css' rel='stylesheet'>
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/admin/js/jquery.min.js"></script>

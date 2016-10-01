@@ -197,7 +197,6 @@ $(document).ready(function() {
     }
         });
     $(".description").text(function(index, currentText) {
-        alert(currentText.length);
         if (currentText.length>60) {
     return currentText.substr(0, 60)+'.....';
     }
