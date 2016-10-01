@@ -165,6 +165,7 @@ $(document).ready(function() {
                 if (res)
                 {
                     $('#all_products_section').html(res);
+                    centerContent();
                 }
             }
         });
@@ -204,6 +205,7 @@ $(document).ready(function() {
                 if (res)
                 {
                     $('#all_products_section').html(res);
+                    centerContent();
                 }
             }
         });
@@ -243,6 +245,7 @@ $(document).ready(function() {
                 if (res)
                 {
                     $('#all_products_section').html(res);
+                    centerContent();
                 }
             }
         });
@@ -281,6 +284,7 @@ $(document).ready(function() {
                 if (res)
                 {
                     $('#all_products_section').html(res);
+                    centerContent();
                 }
             }
         });
@@ -320,6 +324,7 @@ $(document).ready(function() {
                 if (res)
                 {
                     $('#all_products_section').html(res);
+                    centerContent();
                 }
             }
         });

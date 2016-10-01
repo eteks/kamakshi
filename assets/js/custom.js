@@ -374,7 +374,6 @@ $(window).load(function()
 });
 $(window).resize(function()
 {
-	alert('test');
 	centerContent();
 });
 function centerContent()
