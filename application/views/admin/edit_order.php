@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Items</label>
-                        <input type="text" class="form-control" id="totalitem" placeholder="Enter Total Items">
+                        <input type="text" class="form-control totalitem" id="" placeholder="Enter Total Items">
                     </div>
                      <div class="control-group">
                         <label for="sel_a">User Type</label>

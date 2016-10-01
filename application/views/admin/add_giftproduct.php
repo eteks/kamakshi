@@ -85,12 +85,12 @@
                     </div>
                      <div class="form-group price_group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" id="price" placeholder="Enter price">
+                        <input type="text" class="form-control price" id="product_price" placeholder="Enter price">
                     </div> 
                     <input type="hidden" name="product_price" id="product_price_hidden">
                      <div class="form-group items_group">
                         <label for="total_iteams">Total Items</label>
-                        <input type="text" class="form-control" id="totalitem" placeholder="Enter total items">
+                        <input type="text" class="form-control totalitem" id="product_totalitems" placeholder="Enter total items">
                     </div> 
                     <input type="hidden" name="product_totalitems" id="product_totalitems_hidden">
                     <!-- <div class="form-group">
@@ -134,7 +134,7 @@
                             </div>
                             <div class="form-group attribute_block">
                                 <label for="price" class="fl">Price</label>
-                                <input type="text" class="form-control label-boxes attribute_validate" id="price" placeholder="Enter price" name="product_attribute_price[]">
+                                <input type="text" class="form-control label-boxes attribute_validate price" id="product_attribute_price" placeholder="Enter price" name="product_attribute_price[]">
                             </div> 
                              <div class="form-group attribute_block">
                                 <label for="total_iteams" class="fl">Total Items</label>

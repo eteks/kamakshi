@@ -648,6 +648,7 @@ class Adminindex extends CI_Controller {
 	            if($error){
 	                if (strpos($error,"field is required.") !== false){
 	                    $errors = $error; 
+	                    echo $error; 
 	                    break;
 	                }
 	                else

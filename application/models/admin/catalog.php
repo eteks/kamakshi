@@ -356,7 +356,7 @@ class Catalog extends CI_Model {
 					array_push($product_attribute_inserted_id,$this->db->insert_id());
 				}
 				$product_attributes_group = array(
-						'product_mapping_id' => $product_attribute_id ,
+						'product_mapping_id' => $product_id ,
 						'product_attribute_group_price' => $price ,
 						'product_attribute_group_totalitems' => $items,
 						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)

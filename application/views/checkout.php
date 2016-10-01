@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-md-9" id="checkout">
                     <div class="box">
-                        <form method="post" action="<?php echo base_url(); ?>/payment_gateway">
+                        <form method="post" id="checkout_form" action="<?php echo base_url(); ?>/payment_gateway">
                             <h1>Checkout</h1>
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active address_label"><a><i class="fa fa-map-marker"></i><br>Address</a>
@@ -116,6 +116,7 @@
                                 </div>
                                 <div id="checkout_order">
                                     <div class="content">
+                                        <p class="oreder_status"> <span class="oreder_status_error"> </span> . Back to <a href="<?php echo base_url(); ?>index.php/basket/"> Basket </a> </p>
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <thead>
@@ -140,6 +141,8 @@
                                                             <?php echo $basket_det['product_title']; ?>
                                                         </td>
                                                         <td>
+                                                            <input type="hidden" value="<?php echo $basket_det['orderitem_quantity']; ?>" class="product_quantity" />
+
                                                             <?php echo $basket_det['orderitem_quantity']; ?>
                                                         </td>
                                                         <td> 
@@ -153,6 +156,7 @@
                                                                 $product_total = number_format($basket_det['orderitem_quantity']*$basket_det['orderitem_price'],2); 
                                                             ?>
                                                             &#8377; <span class="product_total"> <?php echo $product_total; ?>  </span>
+                                                            <input type="hidden" class="basket_product_items" value="<?php echo $basket_det['product_id']; ?>" />
                                                         </td>
                                                         <?php 
                                                             $total +=  $basket_det['orderitem_quantity']*$basket_det['orderitem_price']; 
@@ -205,14 +209,17 @@
                                     <tr>
                                         <td>Order subtotal</td>
                                         <th>&#8377; <?php echo number_format($total,2); ?></th>
+                                        <input type="hidden" value="<?php echo number_format($total,2); ?>" class="ordinary_total_amount" />
                                     </tr>
                                     <tr>
                                         <td>Shipping and handling</td>
                                         <th> &#8377; 
-                                            <?php 
-                                                $shipping_amount = 10 ;
-                                                echo number_format($shipping_amount,2); 
-                                            ?>
+                                            <span class="ordinary_shipping_amount">
+                                                <?php 
+                                                    $shipping_amount = 10 ;
+                                                    echo number_format($shipping_amount,2); 
+                                                ?>
+                                            </span>
                                         </th>
                                     </tr>
                                     <tr>
@@ -247,35 +254,119 @@
 <script>
 // Ajax post
 $(document).ready(function() {
-    // AJAX for removing items in basket
+    // Load city based on state
     $("#che_state").on('change',function() {
         var state_id = $(this).val();
+        var state_name = $('option:selected',$(this)).text();
         if(state_id!='') {    
             jQuery.ajax({
             type: "POST",
             url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/get_city",
             data: {state_id: state_id},
-            dataType : 'json',
                 success: function(res) {
                     if (res)
                     {
-
-                        // var json_obj = $.parseJSON(res.city_data);//parse JSON
-             // var JSONArray = $.parseJSON( res.city_data );
-             var obj = jQuery.parseJSON( res.city_data );
-// alert( obj.city_name );
-
-
-                       // alert(JSON.stringify(json_obj));
-                        // $('#che_city').html(res); 
+                        var obj = JSON.parse(res);
+                        var options = '<option value="">Please select city</option>';   
+                        if(obj.length!=0){               
+                            $.each(obj, function(i){
+                                options += '<option value="'+obj[i].city_id+'">'+obj[i].city_name+'</option>';
+                          });  
+                        }   
+                        else{
+                            alert('No City added for '+state_name);    
+                        }  
+                        $('#che_city').html(options); 
                     }
                 }
             });
         }
-        else {
-            alert("please choose state");
+    });
+
+    // Load area based on city
+    $("#che_city").on('change',function() {
+        var city_id = $(this).val();
+        var city_name = $('option:selected',$(this)).text();
+        var state_id = $("#che_state").val();
+        if(city_id!='' && state_id!='') {    
+            jQuery.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/get_area",
+            data: {city_id: city_id , state_id: state_id},
+                success: function(res) {
+                    if (res)
+                    {
+                        var obj = JSON.parse(res);
+                        var options = '<option value="">Please select area</option>';   
+                        if(obj.length!=0){               
+                            $.each(obj, function(i){
+                                options += '<option value="'+obj[i].area_id+'">'+obj[i].area_name+'</option>';
+                          });  
+                        }   
+                        else{
+                            alert('No Area added for '+city_name);    
+                        }  
+                        $('#che_area').html(options); 
+                    }
+                }
+            });
         }
     });
+
+    // Load shipping amount based on area
+    $("#che_area").on('change',function() {
+        var area_id = $(this).val();
+        var sub_total = $('.ordinary_total_amount').val();
+        if(area_id!='') {    
+            jQuery.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/get_area_shipping",
+            data: {area_id: area_id},
+                success: function(res) {
+                    if (res)
+                    {
+                       var total_amount = sub_total + res;
+                       $('.ordinary_shipping_amount').html(res);
+                       $('.product_final_amount').html(total_amount);
+                      
+                    }
+                }
+            });
+        }
+    });
+
+
+
+    // Order status verification
+    $('#checkout_form').on('submit',function(e) {
+        e.preventDefault();
+        var order_status={};
+        $('.amount_structure').each(function() {
+            var product_id = $(this).find('.basket_product_items').val();
+            var product_quantity = $(this).find('.product_quantity').val();
+            order_status[product_id] = product_quantity;
+        });
+
+        jQuery.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/update_baseket_product",
+            data: {updation_det : order_status},
+            success: function(res) {
+                if (res)
+                {                      
+                    if(res=="success") {
+                        $('#checkout_form').unbind();    
+                        $('#checkout_form').submit();
+                    }  
+                    else {
+                        $('.oreder_status_error').html(res);
+                        $('.oreder_status').slideDown();
+                    }           
+                }
+            }
+        });
+    });
+ 
 
 
 });

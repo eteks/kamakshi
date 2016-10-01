@@ -234,6 +234,8 @@ class Ajax_pagination{
                 success: function(data){
                     $('<?php echo $this->loading; ?>').hide();
                     $('<?php echo $this->target; ?>').html(data);
+                    centerContent();
+                    
                 }
             });
         }
