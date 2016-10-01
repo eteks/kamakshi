@@ -39,16 +39,16 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
-    <tr>
-        <th>Area Name</th>
-        <th>City</th>
-        <th>State </th>
-        <th>Delivery charge</th> 
-        <th>Status</th>
-       <th>Created Date</th>
-       <th>Actions</th>
+       <tr>
+        <th class="product">Area Name</th>
+        <th class="product">City</th>
+        <th class="product">State </th>
+        <th class="product_small">Delivery charge</th> 
+        <th class="product_small">Status</th>
+       <th class="product_small">Created Date</th>
+       <th class="product_small">Actions</th>
     </tr>
     </thead>
     <tbody>
