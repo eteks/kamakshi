@@ -90,7 +90,7 @@
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Price</label>
-                        <input type="email" class="form-control" id="price" placeholder="Enter price ">
+                        <input type="email" class="form-control price" id="" placeholder="Enter price ">
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Total Iteams</label>

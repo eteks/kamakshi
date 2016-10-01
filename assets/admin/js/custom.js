@@ -166,7 +166,7 @@ $(document).ready(function() {
             $("#product_totalitems_hidden").val(sum);
             return false;
         }   
-        return false;   
+        // return false;   
     });
     $(document).delegate("[name='select_attribute[]']",'change',function(){
         var new_selection = $(this).find('option:selected');
@@ -182,14 +182,14 @@ $(document).ready(function() {
     // ********* End *********
 
     //**********add to muthukrishnan ***********
-    $('#mobile,#userid,#totalitem,#orderid,#quantity,#size').keypress(function (e) {
+    $('#mobile,#userid,.totalitem,#orderid,#quantity,#size').keypress(function (e) {
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which != 45 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
         return false;
     }
    });
-    $("#deliverycharge,#totalamount,#price,#wight").keypress(function (e) {
+    $("#deliverycharge,#totalamount,.price,#wight").keypress(function (e) {
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which !=46 &&  e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
