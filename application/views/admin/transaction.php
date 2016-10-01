@@ -73,7 +73,7 @@
             <span class="label-warning label label-default">Pending</span>
         </td>
         <!-- <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_adminusers">
+            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
             </a>

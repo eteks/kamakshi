@@ -65,6 +65,7 @@ class Login extends CI_Controller {
 					$result = $this->loginmodel->read_user_information($username);
 					if ($result != false) {
 					$session_data = array(
+					'userid' => $result[0]->adminuser_id,
 					'username' => $result[0]->adminuser_username,
 					'email' => $result[0]->adminuser_email,
 					);

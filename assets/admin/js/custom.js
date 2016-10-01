@@ -197,4 +197,22 @@ $(document).ready(function() {
     }
         });
     //************End *****************
+
+    //************ Start ***********
+    $(document).delegate('#edit_adminuser_form','submit',function(e){
+        form_data = $(this).serializeArray();
+        // alert(JSON.stringify(form_data));
+        $.ajax({
+           type: "POST",
+           url: $(this).attr('action'),
+           data: form_data,
+           // dataType: 'json',  
+           cache: false,
+           success: function(data) {  
+            $('.box-content').html(data);
+           }
+        });
+        return false;
+    });
+    //************ End *************
 });

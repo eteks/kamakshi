@@ -51,6 +51,8 @@ $route['detail/(:any)'] = 'index/detail/$1';
 $route['category/(:any)'] = 'index/category/$1';
 $route['contact'] = 'index/contact';
 $route['basket'] = 'index/basket';
+$route['checkout'] = 'index/checkout';
+$route['checkout_order_review'] = 'index/checkout_order_review';
 $route['checkout1'] = 'index/checkout1';
 $route['checkout2'] = 'index/checkout2';
 $route['checkout3'] = 'index/checkout3';
@@ -62,9 +64,9 @@ $route['customer_order'] = 'index/customer_order';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
-$route['adminindex/adminusers'] = 'adminindex/adminusers';
-$route['adminindex/add_adminusers'] = 'adminindex/add_adminusers';
-$route['adminindex/edit_adminusers'] = 'adminindex/edit_adminusers';
+$route['users/adminusers'] = 'users/adminusers';
+$route['users/add_adminusers'] = 'users/add_adminusers';
+$route['users/edit_adminusers'] = 'users/edit_adminusers';
 $route['adminindex/endusers'] = 'adminindex/endusers';
 $route['adminindex/edit_endusers'] = 'adminindex/edit_endusers';
 $route['admin/logout'] = 'admin/login/logout';

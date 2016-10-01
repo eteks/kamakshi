@@ -71,6 +71,15 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
+    //  State for checkout
+    public function get_state()
+    {
+        $where = '(state_status=1)';
+        $query = $this->db->get_where('giftstore_state',$where);
+        return $query->result_array();
+    }
+
+
     public function get_recipient()
     {
         if ($this->uri->segment(2)) {
@@ -187,14 +196,14 @@ class Index_Model extends CI_Model {
 
 
 
-          echo "<pre>";
-            print_r($data_array);
-            echo "</pre>";
-            // $array_column = array_column($data_array, 0);
+          // echo "<pre>";
+          //   print_r($data_array);
+          //   echo "</pre>";
+          //   // $array_column = array_column($data_array, 0);
                 
-            echo "<pre>";
-            print_r($array_column);
-            echo "</pre>";
+          //   echo "<pre>";
+          //   print_r($array_column);
+          //   echo "</pre>";
             
 
 
