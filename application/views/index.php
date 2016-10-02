@@ -20,8 +20,7 @@
                     <!-- /#main-slider -->
                 </div>
             </div>
-            <!-- *** ADVANTAGES HOMEPAGE ***
- _________________________________________________________ -->
+            <!-- *** ADVANTAGES HOMEPAGE *** -->
             <div id="advantages">
                 <div class="container">
                     <div class="same-height-row">
@@ -57,8 +56,7 @@
             </div>
             <!-- /#advantages -->
             <!-- *** ADVANTAGES END *** -->
-            <!-- *** HOT PRODUCT SLIDESHOW ***
- _________________________________________________________ -->
+            <!-- *** HOT PRODUCT SLIDESHOW *** -->
         
         <div id="hot">
             <section id="our-works" class="page bg-style1">
@@ -69,18 +67,21 @@
                                 <div class="portfoloi_content_area" >
                                     <div class="portfolio_menu">
                                         <ul id="filters">
-
-
-
-                                            <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*">all</a></li>
-                                            <li><a href="#portfolio_menu" data-filter=".men">men</a></li>
-                                            <li><a href="#portfolio_menu" data-filter=".women">women</a></li>
-                                            <li><a href="#portfolio_menu" data-filter=".boy">boy</a></li>
-                                            <li><a href="#portfolio_menu" data-filter=".girl">girl</a></li>
-
-
-
-                                            
+                                        <?php 
+                                            if(!empty($recipient_list)): 
+                                            foreach($recipient_list as $res_list): 
+                                            if($res_list['recipient_type']=="All"):
+                                        ?>
+                                            <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*"><?php echo $res_list['recipient_type']; ?></a></li>
+                                        <?php
+                                            else :
+                                        ?>
+                                            <li class=""><a href="#portfolio_menu" data-filter=".item<?php echo $res_list['recipient_id']; ?>"><?php echo $res_list['recipient_type']; ?></a></li>
+                                        <?php
+                                            endif;
+                                            endforeach;
+                                            endif;
+                                        ?>                                            
                                         </ul>
                                    </div>
          
@@ -101,8 +102,8 @@
                 <div class="container">
                     <div id="container"> 
                     <div class="product-slider">
-                    <?php foreach ($giftstore_category as $cat): ?>
-                        <div class="item-img women">
+                    <?php foreach ($category_recipient_list as $cat): ?>
+                        <div class="item-img item<?php echo $cat['recipient_mapping_id']; ?>">
                             <div class="product">
                              <div class="home_category_image">
                                 <div class="flip-container home_product_images">

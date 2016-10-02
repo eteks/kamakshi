@@ -189,7 +189,7 @@
 .owl-buttons {
   display: none;
 }
-.updations_status {
+.updations_status, .oreder_status {
   color: #4f8a10;
   display: none;
   font-size: 20px;

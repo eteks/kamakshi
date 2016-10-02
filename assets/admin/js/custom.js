@@ -166,7 +166,7 @@ $(document).ready(function() {
             $("#product_totalitems_hidden").val(sum);
             return false;
         }   
-        return false;   
+        // return false;   
     });
     $(document).delegate("[name='select_attribute[]']",'change',function(){
         var new_selection = $(this).find('option:selected');
@@ -182,20 +182,41 @@ $(document).ready(function() {
     // ********* End *********
 
     //**********add to muthukrishnan ***********
-    $('#mobile,#userid,#totalitem,#orderid,#quantity,#size').keypress(function (e) {
+    $('#mobile,#userid,.totalitem,#orderid,#quantity,#size').keypress(function (e) {
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which != 45 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
         return false;
     }
    });
-    $("#deliverycharge,#totalamount,#price,#wight").keypress(function (e) {
+    $("#deliverycharge,#totalamount,.price,#wight").keypress(function (e) {
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which !=46 &&  e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
                return false;
     }
         });
+    $(".description").text(function(index, currentText) {
+        if (currentText.length>60) {
+    return currentText.substr(0, 60)+'.....';
+    }
+});
+    // var passVal = $('.password').val();
+    // if(passVal!='') {
+    //     var pass_restriction = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!)=%*#(? &])[A-Za-z\\d$@)$!%(*#= ?&]{3,}$");
+    //     if(!pass_restriction.test(passVal)) {
+    //         $('#password').addClass("error_input_field");
+    //         $('#error_pass_rest').slideDown();
+    //     }
+    //     else if(passVal != $('#repassword').val()) 
+    //         {
+    //             $('#error_pass_rest').slideUp();
+    //             $('#password').removeClass("error_input_field");
+    //             $('#repassword').addClass("error_input_field");
+    //         }else {$('#error_pass_rest').slideUp();
+    //         $('#password').removeClass("error_input_field");
+    //         $('#repassword').removeClass("error_input_field");
+    //     }}
     //************End *****************
 
     //************ Start ***********

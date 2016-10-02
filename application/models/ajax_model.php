@@ -172,7 +172,6 @@ class Ajax_Model extends CI_Model {
                 $update_quantity_query = $this->db->get_where('giftstore_product',$update_quantity_where);
                 $update_quantity_array =  $update_quantity_query->row_array();
                 if($update_quantity_array['product_totalitems'] >= $value) {
-                  
 
                     $basket_update_data = array( 
                         'orderitem_quantity' => $value,
@@ -200,13 +199,31 @@ class Ajax_Model extends CI_Model {
         return $query_status;
     }
 
-    //  Get city data
+    //  Get city data based on state
     public function get_city_data() {
         if($this->input->post('state_id')) {
             $city_where='(city_state_id="'.$this->input->post('state_id').'" and city_status= 1)';
             $query = $this->db->get_where('giftstore_city',$city_where)->result_array();
         }
         return $query;
+    }
+
+    //  Get area data based on city
+    public function get_area_data() {
+        if($this->input->post('city_id') && $this->input->post('state_id')) {
+            $area_where='(area_state_id="'.$this->input->post('state_id').'" and area_city_id="'.$this->input->post('city_id').'" and area_status= 1)';
+            $query = $this->db->get_where('giftstore_area',$area_where)->result_array();
+        }
+        return $query;
+    }
+
+    //  Get shipiing amount data based on area
+    public function get_area_shipping_amount() {
+        if($this->input->post('area_id')) {
+            $area_where='(area_id="'.$this->input->post('area_id').'")';
+            $query = $this->db->get_where('giftstore_area',$area_where)->row_array();
+        }
+        return $query['area_delivery_charge'];
     }
 
  
