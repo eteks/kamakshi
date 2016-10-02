@@ -369,12 +369,11 @@ $(window).load(function()
 });
 $(window).resize(function()
 {
-	alert('test');
 	centerContent();
 });
 function centerContent()
 {
-	$('.images_alignment').each(function(){
+	$('.images_alignment,.position_images,.product_position').each(function(){
 		$(this).css("margin-left", -($(this).width())/2);
 		$(this).css("margin-top", -($(this).height())/2);
 	});

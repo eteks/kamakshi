@@ -12,28 +12,28 @@
                 <?php include "sidebar_list.php"; ?>
                 <div class="col-md-9">
                   <div class="filtering_title">
-                  	<span class="filtering_titles filtering_name">Filtering </span>
+                  	<span class="filtering_titles filtering_name">Filtering  |</span>
                     <div class="filtering_sections filtering_titles"></div>
                   </div>
-                    <div class="box product_name">
+                    <!-- <div class="box product_name">
                         <h1><?php echo $cat_name->category_name; ?></h1>
-                    </div>
+                    </div> -->
                     <div class="box info-bar">
                         <div class="row">
-                            <div class="col-sm-12 col-md-4 products-showing">
+                            <div class="col-sm-12 col-md-6 products-showing">
                                 Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products
                             </div>
 
-                            <div class="col-sm-12 col-md-8  products-number-sort">
+                            <div class="col-sm-12 col-md-6  products-number-sort">
                                 <div class="row">
                                     <form class="form-inline">
                                         <div class="col-md-6 col-sm-6">
-                                            <div class="products-number">
+                                            <!-- <div class="products-number">
                                                 <strong>Show</strong>  <a href="#" class="btn btn-default btn-sm btn-primary">12</a>  <a href="#" class="btn btn-default btn-sm">24</a>  <a href="#" class="btn btn-default btn-sm">All</a> products
-                                            </div>
+                                            </div> -->
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="products-sort-by">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="products-sort-by product_sorting">
                                                 <strong>Sort by</strong>
                                                 <select class="sort_products" id="sort_products" name="sort-by" class="form-control">
                                                     <option value="pricel">Price - Low to High</option>
