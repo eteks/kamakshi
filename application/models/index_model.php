@@ -62,11 +62,11 @@ class Index_Model extends CI_Model {
 
     public function get_latestproduct()
     {
-
         $this->db->select('*');
         $this->db->from('giftstore_product pro');
         $this->db->join('giftstore_product_upload_image img', 'img.product_mapping_id=pro.product_id', 'inner');
         $this->db->group_by('img.product_mapping_id');
+        $this->db->order_by('pro.product_createddate','desc');
         $query = $this->db->get()->result_array();
         return $query;
     }

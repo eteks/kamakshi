@@ -113,4 +113,6 @@
     </div>
     </div><!--/.fluid-container-->
     </div>
+    </div>
+    </div>
 <?php include "templates/footer.php" ?>

@@ -16,7 +16,7 @@
                 <a href="#">Home</a>
             </li>
             <li>
-                <a href="#">Edit End Users </a>
+                <a href="#">Product Attributes </a>
             </li>
         </ul>
     </div>
@@ -24,7 +24,7 @@
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><!-- <i class="glyphicon glyphicon-user"></i> -->Edit End Users</h2>
+        <h2><!-- <i class="glyphicon glyphicon-user"></i>  -->Product Attributes</h2>
 
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
@@ -34,34 +34,30 @@
         </div>
     </div>
    <div class="box-content">
-        <!-- <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_area">
+        <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
-        </a> -->
+        </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll ">
     <thead>
     <tr>
-	<th class="product">User Name</th>
-	<th class="product">Email</th>
-	<th class="product_small">Date of birth</th>
-	<th class="product_small">mobile</th>
-	<th class="product_small">Status</th>
-	<th class="product_small">Created Date</th>
-	<th class="product_small">Actions</th>
-</tr>
-   </thead>
-<tbody>
-    <?php foreach ($endusers_list as $endusr): ?>
+		<th class="product">Product Title</th>
+		<th class="product">Attribute Sets</th>
+		<th class="product_small">Price</th>
+        <th class="product_small">Total Items</th>
+		<th class="product">Actions</th>
+	</tr>
+    </thead>
+    <tbody>
+    <?php foreach ($attribute_sets_list as $att): ?>
         <tr>
-            <td><?php echo $endusr["user_name"] ?></td>
-            <td class="center"><?php echo $endusr["user_email"] ?></td>
-            <td class="center"><?php echo $endusr["user_dob"] ?></td>
-            <td class="center"><?php echo $endusr["user_mobile"] ?></td>
-            <td class="center"><span class="<?php if($endusr["user_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($endusr["user_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
-            <td class="center"><?php echo date("d/m/Y", strtotime($endusr["user_createddate"])); ?></td>
+            <td><?php echo $att["product_title"] ?></td>
+            <td><?php echo $att["product_attribute_inputtags"] ?></td>
+            <td class="center"><span class="<?php if($att["product_attribute_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($att["product_attribute_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+            <td><?php echo date("d/m/Y", strtotime($att["product_attribute_createddate"])); ?></td>
             <td class="center">
-                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/users/edit_endusers/<?php echo $endusr["user_id"] ?>">
+                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_product_attributes/<?php echo $att["product_attribute_id"] ?>">
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
@@ -78,7 +74,7 @@
     </div>
     </div>
     <!--/span-->
-      <script type="text/javascript" >
+    <script type="text/javascript" >
 		$(document).on("click", ".delete", function () {
 		var myId = $(this).data('id');
 		$(".modal-body #vId").val( myId );
@@ -86,26 +82,23 @@
 		});
 	</script>
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-body delete_message_style">
-			<input type="hidden" name="delete" id="vId" value=""/>
-			<button type="button" class="close popup_tx" data-dismiss="modal" aria-hidden="true">
-				&times;
-			</button>
-			<center class="popup_tx">
-				<h5>Are you sure you want to delete this item? </h5>
-			</center>
-		</div>
-		<div id="delete_btn" class="modal-footer footer_model_button" >
-			<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
-			<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
-		</div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body delete_message_style">
+				<input type="hidden" name="delete" id="vId" value=""/>
+				<button type="button" class="close popup_tx" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<center class="popup_tx">
+					<h5>Are you sure you want to delete this item? </h5>
+				</center>
+			</div>
+			<div id="delete_btn" class="modal-footer footer_model_button" >
+				<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
+				<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
+			</div>
     </div><!--/row-->
         </div>
     </div>
 </div><!--/.fluid-container-->
-</div>
-</div>
-</div>
 <?php include "templates/footer.php" ?>

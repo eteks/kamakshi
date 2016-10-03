@@ -62,25 +62,15 @@ class Adminindex extends CI_Controller {
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
 	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
+		            }
+	        	}
     	}
     	else{
     		if(!empty($_POST)){
@@ -121,9 +111,7 @@ class Adminindex extends CI_Controller {
 	                		'error_message' => "Category Inserted Successfully!"
 	             		);
 					else
-						$status = array(
-	                		'error_message' => "Category Already Exists!"
-	             		);
+						$status['error_message'] = "Something went Wrong!";
 				}		
 			}
     	}
@@ -232,12 +220,12 @@ class Adminindex extends CI_Controller {
 	public function add_subcategory()
 	{	
 		$status = array();//array is initialized
-		$errors='';
+		$errors=''; // variable is initialized
 		$validation_rules = array(
 	       array(
 	             'field'   => 'subcategory_name',
 	             'label'   => 'Sub Category',
-	             'rules'   => 'trim|required|xss_clean'
+	             'rules'   => 'trim|required|xss_clean|is_unique[giftstore_subcategory.subcategory_name]'
 	          ),
 	       array(
 	             'field'   => 'select_category[]',
@@ -253,32 +241,20 @@ class Adminindex extends CI_Controller {
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
 	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
-    	}
+		            }
+	        	}
+        }
     	else{
     		if(!empty($_POST)){
 				if (!empty($errors)) {
-					$status = array(
-	                	'error_message' => strip_tags($errors)
-	             	);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data = array(
@@ -288,13 +264,9 @@ class Adminindex extends CI_Controller {
 					$category_data = $this->input->post('select_category');
 					$result = $this->catalog->insert_subcategory($data,$category_data);
 					if($result)
-						$status = array(
-	                		'error_message' => "SubCategory Inserted Successfully!"
-	             		);
+						$status['error_message'] = "SubCategory Inserted Successfully!";
 					else
-						$status = array(
-	                		'error_message' => "SubCategory Already Exists!"
-	             		);
+						$status['error_message'] = "Something went Wrong!";
 				}		
 			}
     	}
@@ -313,13 +285,13 @@ class Adminindex extends CI_Controller {
 		}
 		if(!empty($_POST)){
 			// print_r($_POST);
-			$status = '';//array is initialized
+			$status = array(); //array is initialized
 			$errors = '';
 			$validation_rules = array(
 		       array(
 		             'field'   => 'edit_subcategory_name',
 		             'label'   => 'Sub Category',
-		             'rules'   => 'trim|required|xss_clean'
+		             'rules'   => 'trim|required|xss_clean|callback_edit_unique[giftstore_subcategory.subcategory_id.subcategory_name.'.$id.']'
 		          ),
 		       array(
 	             'field'   => 'select_category[]',
@@ -339,23 +311,15 @@ class Adminindex extends CI_Controller {
 		            $error = form_error($field);    //getting error for field name
 		                                            //form_error() is inbuilt function
 		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
     		else{
 				if (!empty($errors)) {
-					$status = strip_tags($errors);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data = array(
@@ -365,19 +329,18 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->catalog->update_subcategory($data);
 					if($result)
-						$status = "SubCategory Updated Successfully!";
+						$status['error_message'] = "SubCategory Updated Successfully!";
 					else
-						$status = "SubCategory Already Exists!";
+						$status['error_message'] = "Something went Wrong!";
 				}		
     		}
-    		$data['status'] = $status;
 		}
 		$subcatgory_return = $this->catalog->get_subcategory_data($id);
-		$data['subcategory_data'] = $subcatgory_return['subcategory_data'];
-		$data['subcategory_category'] = $subcatgory_return['subcategory_category'];
-		$data['category_list'] = $this->catalog->get_categories();
+		$status['subcategory_data'] = $subcatgory_return['subcategory_data'];
+		$status['subcategory_category'] = $subcatgory_return['subcategory_category'];
+		$status['category_list'] = $this->catalog->get_categories();
 		// print_r($data);
-		$this->load->view('admin/edit_subcategory',$data);
+		$this->load->view('admin/edit_subcategory',$status);
 	}
 	public function recipient()
 	{	
@@ -395,7 +358,7 @@ class Adminindex extends CI_Controller {
 	       array(
 	             'field'   => 'recipient_name',
 	             'label'   => 'Recipient Name',
-	             'rules'   => 'trim|required|xss_clean'
+	             'rules'   => 'trim|required|xss_clean|is_unique[giftstore_recipient.recipient_type]'
 	          ),
 	       array(
 	             'field'   => 'select_category[]',
@@ -411,48 +374,32 @@ class Adminindex extends CI_Controller {
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
 	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
+		            }
 	        }
     	}
     	else{
     		if(!empty($_POST)){
 				if (!empty($errors)) {
-					$status = array(
-	                	'error_message' => strip_tags($errors)
-	             	);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data = array(
-					'recipient_type' => $this->input->post('recipient_name'),
-					'recipient_status' => $this->input->post('recipient_status'),
+						'recipient_type' => $this->input->post('recipient_name'),
+						'recipient_status' => $this->input->post('recipient_status'),
 					);
 					$category_data = $this->input->post('select_category');
 					$result = $this->catalog->insert_recipient($data,$category_data);
 					if($result)
-						$status = array(
-	                		'error_message' => "Recipient Inserted Successfully!"
-	             		);
+						$status['error_message'] = "Recipient Inserted Successfully!";
 					else
-						$status = array(
-	                		'error_message' => "Recipient Already Exists!"
-	             		);
+						$status['error_message'] = "Something went Wrong!";
 				}		
 			}
     	}
@@ -477,18 +424,18 @@ class Adminindex extends CI_Controller {
 		       array(
 		             'field'   => 'edit_recipient_name',
 		             'label'   => 'Recipient name',
-		             'rules'   => 'trim|required|xss_clean'
-		          ),
-		       // array(
-	        //      'field'   => 'select_category[]',
-	        //      'label'   => 'Select Category',
-	        //      'rules'   => 'required'
-	        //    ),  
+		             'rules'   => 'trim|required|xss_clean|callback_edit_unique[giftstore_recipient.recipient_id.recipient_type.'.$id.']'
+		       ),
+		       array(
+	             'field'   => 'select_category[]',
+	             'label'   => 'Select Category',
+	             'rules'   => 'required'
+	           ),  
 		       array(
 		             'field'   => 'edit_recipient_status',
 		             'label'   => 'Status',
 		             'rules'   => 'trim|required|xss_clean'
-		          ),   
+		       ),   
 		    );
 		    $this->form_validation->set_rules($validation_rules);
 		    if ($this->form_validation->run() == FALSE) {
@@ -497,45 +444,41 @@ class Adminindex extends CI_Controller {
 		            $error = form_error($field);    //getting error for field name
 		                                            //form_error() is inbuilt function
 		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
     		else{
 				if (!empty($errors)) {
-					$status = strip_tags($errors);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
-					$data = array(
+					$data =array();
+					$data['post_recipient'] = array(
 					'recipient_id' => $id,
 					'recipient_type' => $this->input->post('edit_recipient_name'),
 					'recipient_status' => $this->input->post('edit_recipient_status'),
 					);
+					$data['post_category'] = array(
+					'category_data' => $this->input->post('select_category'),
+					'removed_category_data' => $this->input->post('removed_category')
+					);
 					$result = $this->catalog->update_recipient($data);
 					if($result)
-						$status = "Recipient Updated Successfully!";
+						$status['error_message'] = "Recipient Updated Successfully!";
 					else
-						$status = "Recipient Already Exists!";
+						$status['error_message'] = "Something went Wrong!";
 				}		
     		}
-    		$data['status'] = $status;
 		}
 		$recipient_return = $this->catalog->get_recipient_data($id);
-		$data['recipient_data'] = $recipient_return['recipient_data'];
-		$data['recipient_category'] = $recipient_return['recipient_category'];
-		$data['category_list'] = $this->catalog->get_categories();
+		$status['recipient_data'] = $recipient_return['recipient_data'];
+		$status['recipient_category'] = $recipient_return['recipient_category'];
+		$status['category_list'] = $this->catalog->get_categories();
 		// print_r($data);
-		$this->load->view('admin/edit_recipient',$data);
+		$this->load->view('admin/edit_recipient',$status);
 	}
 	public function giftproduct()
 	{	
@@ -1372,6 +1315,14 @@ class Adminindex extends CI_Controller {
 	public function order()
 	{	
 		$this->load->view('admin/order');
+	}
+	public function product_attribute_sets()
+	{	
+		//get list of product attribute from database and store it in array variable 'attribute' with key 'attribute_list'
+		$attribute_sets['attribute_sets_list'] = $this->catalog->get_product_attribute_sets();
+		
+		//call the product attribute views i.e rendered page and pass the product attribute data in the array variable 'attribute'
+		$this->load->view('admin/product_attribute_sets',$attribute_sets);
 	}
 }
 

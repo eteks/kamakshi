@@ -1,4 +1,5 @@
-<?php include "templates/header.php"; ?>
+<?php if(!$this->input->is_ajax_request()){ ?>
+    <?php include "templates/header.php"; ?>
     <div id="all">
         <div id="content">
             <div class="container">
@@ -23,7 +24,6 @@
                             <div class="col-sm-12 col-md-6 products-showing">
                                 Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products
                             </div>
-
                             <div class="col-sm-12 col-md-6  products-number-sort">
                                 <div class="row">
                                     <form class="form-inline">
@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                     <div id="all_products_section" class="row products">
                         <?php 
                         if(!empty($product_category)): foreach ($product_category as $cat_pro):
@@ -89,246 +90,17 @@
                         <p>Product(s) not available.</p>
                         <?php endif; ?>
                         <div class="cb"> </div>
-                        <?php echo $this->ajax_pagination->create_links(); ?>
-                        
+                        <div class="bottom_pagination">
+                            <?php echo $this->ajax_pagination->create_links(); ?> 
+                        </div>
                     </div>
-                    <!-- /.products -->
-
-                    <!-- <div class="pages">
-
-                        <p class="loadMore">
-                            <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a>
-                        </p>
-
-                        <ul class="pagination">
-                            <li><a href="#">&laquo;</a>
-                            </li>
-                            <li class="active"><a href="#">1</a>
-                            </li>
-                            <li><a href="#">2</a>
-                            </li>
-                            <li><a href="#">3</a>
-                            </li>
-                            <li><a href="#">4</a>
-                            </li>
-                            <li><a href="#">5</a>
-                            </li>
-                            <li><a href="#">&raquo;</a>
-                            </li>
-                        </ul>
-                    </div> -->
+<?php if(!$this->input->is_ajax_request()){ ?>
                 </div>
                 <!-- /.col-md-9 -->
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
-        </div><!--all-->
-
-<?php include "templates/footer.php"; ?>
-<script>
-// Ajax Call
-$(document).ready(function() {
-
-    // Price filtering
-    $('.addui-slider-handle').mouseup(function() {
-   
-        var price_range =  $('.addui-slider-input').val().split(',');
-        var start_value = parseFloat(price_range[0]).toFixed(2);
-        var end_value = parseFloat(price_range[1]).toFixed(2);
-        var cat_id = $('#category_id').val();
-        var sort_val = $('.sort_products').val();
-        var sub_categories_filter_length = $('.sub_categories_filter').length;
-        var recipients_filter_length = $('.recipients_filter').length;
-        if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
-            var sub_id = $('.sub_categories_filter').find('a').data('id');
-            var rec_id = $('.recipients_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        else if(sub_categories_filter_length > 0) {
-            var sub_id = $('.sub_categories_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        else if(recipients_filter_length > 0) {
-            var rec_id = $('.recipients_filter').find('a').data('id');
-            var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort : sort_val};
-        }
-        else {
-            var datavalues = { cat_id: cat_id , s_val : start_value, e_val : end_value, sort : sort_val};
-        }   
-
-        jQuery.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-            data: datavalues,
-            success: function(res) {
-                if (res)
-                {
-                    $('#all_products_section').html(res);
-                    centerContent();
-                }
-            }
-        });
-    });
-
-    // Sort filtering
-    $('.sort_products').on('change',function() {
-   
-        var price_range =  $('.addui-slider-input').val().split(',');
-        var start_value = parseFloat(price_range[0]).toFixed(2);
-        var end_value = parseFloat(price_range[1]).toFixed(2);
-        var cat_id = $('#category_id').val();
-        var sort_val = $(this).val();
-        var sub_categories_filter_length = $('.sub_categories_filter').length;
-        var recipients_filter_length = $('.recipients_filter').length;
-        if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
-            var sub_id = $('.sub_categories_filter').find('a').data('id');
-            var rec_id = $('.recipients_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        else if(sub_categories_filter_length > 0) {
-            var sub_id = $('.sub_categories_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        else if(recipients_filter_length > 0) {
-            var rec_id = $('.recipients_filter').find('a').data('id');
-            var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort : sort_val};
-        }
-        else {
-            var datavalues = { cat_id: cat_id , s_val : start_value, e_val : end_value, sort : sort_val};
-        }   
-        jQuery.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-            data: datavalues,
-            success: function(res) {
-                if (res)
-                {
-                    $('#all_products_section').html(res);
-                    centerContent();
-                }
-            }
-        });
-    });
-
-    //  Subcategories filtering
-    $(".subcategories").click(function() {
-
-        var price_range =  $('.addui-slider-input').val().split(',');  
-        var start_value = parseFloat(price_range[0]).toFixed(2);
-        var end_value = parseFloat(price_range[1]).toFixed(2);
-        var sort_val = $('.sort_products').val();
-        var this_text = $(this).text();
-        var sub_id = $(this).data('id');
-        var cat_id = $('#category_id').val();
-        var sub_categories_filter_length = $('.sub_categories_filter').length;
-        var recipients_filter_length = $('.recipients_filter').length;
-
-        if(sub_categories_filter_length > 0) {
-            $('.sub_categories_filter').html(this_text+'<a data-id='+sub_id+' class="filtering_link" data-key="sub_cat"><i class="fa fa-times" aria-hidden="true"></i></a>');
-        }
-        else {
-            $('.filtering_sections').append('<span class="sub_categories_filter">'+this_text+'<a data-id='+sub_id+' class="filtering_link" data-key="sub_cat"><i class="fa fa-times" aria-hidden="true"></i></a></span>');
-        }
-        if(recipients_filter_length > 0) {
-            var rec_id = $('.recipients_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};    
-        }
-        else {
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        jQuery.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-            data: datavalues,
-            success: function(res) {
-                if (res)
-                {
-                    $('#all_products_section').html(res);
-                    centerContent();
-                }
-            }
-        });
-    });
-
-    //  Reipients fitering
-    $(".recipients").click(function() {
-    
-        var price_range =  $('.addui-slider-input').val().split(',');  
-        var start_value = parseFloat(price_range[0]).toFixed(2);
-        var end_value = parseFloat(price_range[1]).toFixed(2);
-        var sort_val = $('.sort_products').val();
-        var rec_id = $(this).data('id');
-        var cat_id = $('#category_id').val();
-        var this_text = $(this).text();    
-        var sub_categories_filter_length = $('.sub_categories_filter').length;
-        var recipients_filter_length = $('.recipients_filter').length;
-        if(recipients_filter_length > 0) {
-            $('.recipients_filter').html(this_text+'<a data-id='+rec_id+' class="filtering_link" data-key="rec"><i class="fa fa-times" aria-hidden="true"></i></a>');
-        }
-        else {
-            $('.filtering_sections').append('<span class="recipients_filter">'+this_text+'<a data-id='+rec_id+' class="filtering_link" data-key="rec"><i class="fa fa-times" aria-hidden="true"></i></a></span>');
-        }
-        if(sub_categories_filter_length > 0) {
-            var sub_id = $('.sub_categories_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        else {
-            var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        jQuery.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-            data: datavalues,
-            success: function(res) {
-                if (res)
-                {
-                    $('#all_products_section').html(res);
-                    centerContent();
-                }
-            }
-        });
-    });
-    
-    //  Remove option filtering
-    $(document).on('click','.filtering_link',function() {
-        
-        $(this).closest('span').remove();
-        var price_range =  $('.addui-slider-input').val().split(',');  
-        var start_value = parseFloat(price_range[0]).toFixed(2);
-        var end_value = parseFloat(price_range[1]).toFixed(2);
-        var sort_val = $('.sort_products').val();
-        var cat_id = $('#category_id').val();
-        var sub_categories_filter_length = $('.sub_categories_filter').length;
-        var recipients_filter_length = $('.recipients_filter').length;
-
-
-        if(sub_categories_filter_length > 0) {
-            var sub_id = $('.sub_categories_filter').find('a').data('id');
-            var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-
-
-        else if(recipients_filter_length > 0) {
-           var rec_id = $('.recipients_filter').find('a').data('id');
-           var datavalues = {rec_id : rec_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        else {
-            var datavalues = {cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
-        }
-        jQuery.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/filtering_product",
-        data: datavalues,
-            success: function(res) {
-                if (res)
-                {
-                    $('#all_products_section').html(res);
-                    centerContent();
-                }
-            }
-        });
-    });
-
-}); // end document
-</script>
+    </div><!--all-->
+    <?php include "templates/footer.php"; ?>
+<?php } ?>

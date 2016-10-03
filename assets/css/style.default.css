@@ -1873,8 +1873,9 @@ address {
     margin-right: 0px !important;
 }
 .thumb {
-    margin-top:7px;
-    max-width: 39px;
+    margin-top:0px;
+    width:100% !important;
+    height:100% !important;
 }
 @media (max-width: 767px) {
  .col-xs-12.images-list {
@@ -1907,7 +1908,7 @@ address {
 	display:inline-block !important;
 }
 .filtering_title{
-	background-color: #4fbfa8;
+	background-color: #555;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     color: #fff;
 	padding:10px;
@@ -1969,7 +1970,7 @@ address {
     color: #fff !important;
 }
 .product_sorting{
-	float:right;
+	text-align:right;
 }
 .home_category_image{
 	width: 175px !important;
@@ -2057,3 +2058,12 @@ address {
     width: 250px;
 }
 }
+.thumb_carosel{
+	margin-top:50px;
+	margin-left:80px;
+}
+.product_thumb_images{
+	width:50px !important;
+	height:50px !important;
+}
+

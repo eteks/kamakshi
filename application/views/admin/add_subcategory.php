@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,11 +42,14 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
-            <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_subcategory" name="subcategory_form" id="add_subcategory">
+<?php } ?>
+            <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+            }?>
+            <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_subcategory" name="subcategory_form" id="add_subcategory" class="form_submit">
                     <div class="form-group">
                         <label for="subcategory_name">Subcategory Name</label>
-                        <input type="text" class="form-control" id="subcategory_name" name="subcategory_name" placeholder="Enter subcategory Name">
+                        <input type="text" class="form-control" id="subcategory_name" name="subcategory_name" placeholder="Enter subcategory Name" value="<?php echo set_value('subcategory_name');?>">
                     </div>  
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Category</label>
@@ -67,7 +71,7 @@
                             <div class="mutliSelect">
                                 <ul>
                                 <?php foreach ($category_list as $cat):
-                                    echo "<li><input type='checkbox' name='select_category[]' id='subcategory_name' value='".$cat["category_id"]."'/><span class='multiple_checkbox multple_checkbox_inactive'>".$cat["category_name"]."</span></li>";
+                                    echo "<li><input type='checkbox' name='select_category[]' id='subcategory_name' value='".$cat["category_id"]."'".set_checkbox('select_category[]', $cat["category_id"], false)."/><span class='multiple_checkbox multple_checkbox_inactive'>".$cat["category_name"]."</span></li>";
                                 endforeach ?>
                                 </ul>
                             </div>
@@ -78,8 +82,8 @@
                         <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control city_act" name="subcategory_status">
                                 <option value="">Select</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1"  <?php echo set_select('subcategory_status', '1', false); ?>>Active</option>
+                                <option value="0" <?php echo set_select('subcategory_status', '0', false); ?>>Inactive</option>
                             </select>
                         </div>
                     </div>
@@ -87,7 +91,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -100,3 +104,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>
