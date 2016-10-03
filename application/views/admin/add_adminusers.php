@@ -1,7 +1,8 @@
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -54,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Mobile</label>
-                        <input type="email" class="form-control" id="delivery_charge" placeholder="Enter mobile number,">
+                        <input type="email" class="form-control" id="mobile" placeholder="Enter mobile number,">
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>
@@ -78,4 +79,5 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
+</div>
 <?php include "templates/footer.php" ?>

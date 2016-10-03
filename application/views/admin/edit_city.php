@@ -1,6 +1,8 @@
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
+<div class="ch-container">
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -52,7 +54,7 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="state_name">City Name</label>
+                        <label for="city_name">City Name</label>
                         <input type="text" class="form-control" id="city_name" placeholder="Enter City Name" value="<?php if(!empty($city_edit['city_name'])) echo $city_edit['city_name']; ?>" name="city_name">
                     </div>  
                    <div class="control-group">
@@ -83,5 +85,5 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-
+</div>
 <?php include "templates/footer.php" ?>

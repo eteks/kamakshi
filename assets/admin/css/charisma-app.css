@@ -329,7 +329,7 @@ div.center, p.center, img.center {
     background-color: #4fbfa8;
 }
 .navbar-inner .btn-group {
-    margin: 7px 5px 0 5px;
+    margin: 7px 35px;
 }
 ul.ajax-loaders li {
     display: inline-block;
@@ -755,4 +755,3 @@ a{
     text-align: center;
     left: -15px;
 }
-

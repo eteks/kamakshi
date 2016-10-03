@@ -43,11 +43,11 @@
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">User Id</label>
-                        <input type="email" class="form-control" id="user_id" placeholder="Enter User Id">
+                        <input type="email" class="form-control" id="userid" placeholder="Enter User Id">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Items</label>
-                        <input type="text" class="form-control" id="total_item" placeholder="Enter Total Items">
+                        <input type="text" class="form-control totalitem" id="" placeholder="Enter Total Items">
                     </div>
                      <div class="control-group">
                         <label for="sel_a">User Type</label>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Amount</label>
-                        <input type="text" class="form-control" id="deliverycharge" placeholder="Enter Total Amount">
+                        <input type="text" class="form-control" id="totalamount" placeholder="Enter Total Amount">
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status</label>

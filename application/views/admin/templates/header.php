@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--
-        ===
-        This comment should NOT be removed.
-
-        Charisma v2.0.0
-
-        Copyright 2012-2014 Muhammad Usman
-        Licensed under the Apache License v2.0
-        http://www.apache.org/licenses/LICENSE-2.0
-
-        http://usman.it
-        http://twitter.com/halalit_usman
-        ===
-    -->
     <meta charset="utf-8">
     <title>Kamakshi Gifts Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,33 +8,16 @@
     <meta name="author" content="Muhammad Usman">
 
     <!-- The styles -->
-    <!-- <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet"> -->
+    <!-- Main css for theme -->
     <link href="<?php echo base_url(); ?>assets/admin/css/bootstrap-cerulean.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/admin/css/charisma-app.css" rel="stylesheet">
+    <!-- Main corousal css for theme -->
     <link href="<?php echo base_url(); ?>assets/admin/css/slick.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/admin/css/slick-theme.css" rel="stylesheet">
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/jquery.noty.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/noty_theme_default.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/elfinder.min.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/elfinder.theme.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/uploadify.css' rel='stylesheet'>
-    <link href='<?php echo base_url(); ?>assets/admin/css/animate.min.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/style.css' rel='stylesheet'>
     <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>assets/admin/bower_components/jquery/jquery.min.js"></script>
-    
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!-- The fav icon -->
+    <script src="<?php echo base_url(); ?>assets/admin/js/jquery.min.js"></script>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/admin/img/favicon.ico">
 </head>
 <body>
@@ -75,7 +44,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="<?php echo base_url()."index.php/admin/users/edit_adminusers/".$session_data['userid'] ?>">Profile</a></li>
                         <li class="divider"></li>
                         <li><a href="<?php echo base_url(); ?>index.php/admin/logout">Logout</a></li>
                     </ul>
@@ -125,7 +94,6 @@
                     </form>
                 </li>
             </ul>
-
         </div>
     </div>
     <!-- topbar ends -->
@@ -148,8 +116,8 @@
                        <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/adminusers">Admin Users</a></li>
-                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/endusers">End users</a></li>
+                                 <li><a href="<?php echo base_url(); ?>index.php/admin/users/adminusers">Admin Users</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/users/endusers">End users</a></li>
                             </ul>
                         </li>
                         <li class="accordion">

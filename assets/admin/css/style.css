@@ -79,6 +79,10 @@
 #delete_btn{
 	text-align: center;
 }
+.scroll{
+	display:block;
+}
+/*Added by Velpandi*/
 .edit-catpro-image {
      padding: 0 0 10px;
     border: 1px solid #cccccc;
@@ -193,12 +197,16 @@
 .select-category-images{
 	width:230px;
 }
+/*End by Velpandi*/
 .dataTables_wrapper{
 	overflow-x: auto !important;
     width: 100% !important;
 }
+.dataTables{
+	width:1000px;
+}
 #add {
-	float:right;
+   float:right;
    margin: 0 18px 0 0;
 }
 .table-bordered {
@@ -223,11 +231,6 @@
 	max-width:150px !important;
 	min-width: 140px !important;
 }
-/*.product_medium{
-	width: 100%;
-	max-width:250px !important;
-	min-width: 140px !important;
-}*/
 .group_action{
     position: relative;
     right: -150px;
@@ -244,8 +247,73 @@
 .attribute_error{
     border : 1px solid red;
 }
+/*Added by velpandi*/
+.footer_content {
+    height: 100% !important;
+    min-height: 535px !important;
+}
 .attribute_duplicate_message,.attribute_group_message{
   display: none;
   color: #ff0000;
   font-size: 12px;
 }
+.upload_limit {
+    color: gray;
+    font-size: 10px;
+    margin-left: 5px;
+}
+/* Style for multi select dropdown in subcategory and recipient page */
+.mutliSelect {
+  position: relative;
+}
+.select_multiple_option i {
+   float: right;
+}
+.mutliSelect span {
+   padding-left: 12px;
+   color: #555;
+}
+.select_multiple_option a {
+   background-color: #fff;
+   border: 1px solid #ccc;
+   cursor: pointer;
+   display: block;
+   line-height: 18px;
+   max-width: 280px;
+   min-height: 25px;
+   overflow: auto;
+   padding: 8px 20px 5px 10px;
+   text-decoration: none;
+}
+.select_multiple_option span{
+    color:#555 !important;
+}
+.mutliSelect ul {
+  background-color: #fff;
+  /*border: 0;*/
+  color: #fff;
+  /*display: none;*/
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  top: 2px;
+  max-width: 280px;
+  list-style: none;
+  height: 136px;
+  overflow: auto;
+  width: 100%;
+  border-top: 0; 
+  border-right: 1px solid #ccc;  
+  border-bottom: 1px solid #ccc; 
+  border-left: 1px solid #ccc;
+}
+.mutliSelect ul li{
+   margin-bottom: 5px;
+}
+.mutliSelect input,.mutliSelect span {
+   cursor: pointer;
+}
+.error_admin_check{
+   border: 1px solid red !important;
+   margin-right: 439px;
+}
+

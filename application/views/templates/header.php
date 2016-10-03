@@ -12,7 +12,7 @@
         Kamakshi -Giftshop
     </title>
     <meta name="keywords" content="">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'> -->
     <!-- styles -->
     <link href="<?php echo base_url(); ?>assets/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +33,13 @@
 <body>
   <!-- *** TOPBAR ***
  ________________________________________________________ -->
+    <!-- Ajax loader added by siva -->
+    <div class="loading" style="display: none;">
+        <div class="ajax_loader">
+            <img src="<?php echo base_url().'assets/img/ajax-loader.gif'; ?>"/>
+        </div>
+    </div> 
+    <!-- Ajax loader ended by siva -->
     <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
@@ -44,12 +51,12 @@
                     </li>
                     <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/customer_orders/">Profile</a>
-                    </li>
+                    <!-- <li><a href="<?php //echo base_url(); ?>index.php/customer_orders/">Profile</a>
+                    </li> -->
                     <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
                     </li>
-                    <li><a href="#">Recently viewed</a>
-                    </li>
+                    <!-- <li><a href="#">Recently viewed</a>
+                    </li> -->
                 </ul>
             </div>
         </div>

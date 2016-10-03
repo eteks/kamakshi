@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-md-9" id="basket">
                     <div class="box">
-                        <form method="post" action="<?php echo base_url(); ?>index.php/checkout1/">
+                        <form method="post" action="<?php echo base_url(); ?>index.php/checkout/">
                             <h1>Shopping cart</h1>
                             <p class="text-muted">You currently have <?php echo $basket_count; ?> item(s) in your cart.</p>
                             <p class="updations_status"> </p>

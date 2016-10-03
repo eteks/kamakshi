@@ -877,7 +877,7 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/area',$area);
 	}
 	public function ajax_area()
-	{	
+	{
 		$data = $this->location->get_ajax_area_data();
 		echo json_encode($data);
 	}
@@ -891,8 +891,18 @@ class Adminindex extends CI_Controller {
 	             'label'   => 'State',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
-	        array(
+	       array(
+	             'field'   => 'city_name',
+	             'label'   => 'City',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
 	             'field'   => 'area_name',
+	             'label'   => 'Area',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'area_delivery_charge',
 	             'label'   => 'Area',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
@@ -936,6 +946,8 @@ class Adminindex extends CI_Controller {
 					$data = array(
 						'area_name' => $this->input->post('area_name'),
 						'area_state_id' => $this->input->post('state_name'),
+						'area_city_id' => $this->input->post('city_name'),
+						'area_delivery_charge' => $this->input->post('area_delivery_charge'),
 						'area_status' => $this->input->post('area_status'),
 					);
 					$result = $this->location->insert_area($data);
@@ -951,15 +963,99 @@ class Adminindex extends CI_Controller {
 			}
     	}
 		// print_r($status);
-		$data_values = $this->location->get_area_data($id);
-		$data['area_add']	= $data_values['state_city'];
-		$data['states']	= $data_values['states'];	
+		// $data_values = $this->location->get_area_data($id);
+		// $data['area_add']	= $data_values['state_city'];
+		// $data['states']	= $data_values['states'];	
 		$status['area_list'] = $this->location->get_area();
 		$this->load->view('admin/add_area',$status);
 	}
 	public function edit_area()
-	{	
-		$this->load->view('admin/edit_area');
+	{
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = '';//array is initialized
+			$errors = '';
+			$validation_rules = array(
+			  array(
+		             'field'   => 'state_name',
+		             'label'   => 'State',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),
+		      array(
+		             'field'   => 'city_name',
+		             'label'   => 'City',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),
+		      array(
+		             'field'   => 'area_name',
+		             'label'   => 'City',
+		             'rules'   => 'trim|required|xss_clean'
+		          ),
+		      array(
+	                 'field'   => 'area_delivery_charge',
+	                 'label'   => 'Area',
+	                 'rules'   => 'trim|required|xss_clean'
+	          	  ),
+	          array(
+	                 'field'   => 'area_status',
+	                 'label'   => 'Status',
+	                 'rules'   => 'trim|required|xss_clean'
+	              ),    
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            // echo "error".$error;
+		            if($error){
+		                if (strpos($error,"field is required.") !== false){
+		                    $errors = $error; 
+		                    break;
+		                }
+		                else
+		                    $errors[$field] = $error; 
+		            }
+	        	}
+		        if (strpos($errors,"field is required.") !== false){  
+		             $status = 'Please fill out all mandatory fields';
+		        }
+    		}
+    		else{
+				if (!empty($errors)) {
+					$status = strip_tags($errors);
+				}
+				else{
+					$data = array(
+					'area_id' => $id,
+					'area_name' => $this->input->post('area_name'),
+					'area_delivery_charge' => $this->input->post('area_delivery_charge'),
+					'area_state_id' => $this->input->post('state_name'),
+					'area_city_id' => $this->input->post('city_name'),
+					'area_status' => $this->input->post('area_status'),
+					);
+					$result = $this->location->update_area($data);
+					if($result)
+						$status = "Area Updated Successfully!";
+					else
+						$status = "Area Already Exists!";
+				}		
+    		}
+    		$data['status'] = $status;
+		}
+		$data_values = $this->location->get_area_data($id);
+		$data['area_edit']	= $data_values['state_city'];
+		$data['states']	= $data_values['states'];
+		$data['cities']	= $data_values['cities'];
+		$this->load->view('admin/edit_area',$data);	
 	}
 	public function city()
 	{	

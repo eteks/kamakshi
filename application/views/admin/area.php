@@ -1,6 +1,6 @@
 <?php include "templates/header.php" ?>
 <div class="ch-container">
-    <div class="row"> 
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -39,7 +39,7 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
         <tr>
             <th class="product">Area Name</th>
@@ -55,8 +55,8 @@
         <?php foreach ($area as $area): ?>
         <tr>
                 <td><?php echo $area["area_name"] ?></td>
-                <td><?php echo $area["area_city_id"] ?></td>
-                <td><?php echo $area["area_state_id"] ?></td> 
+                <td><?php echo $area["city_name"] ?></td>
+                <td><?php echo $area["state_name"] ?></td> 
                 <td><?php echo $area['area_delivery_charge'] ?></td>
                 <td class="center"><span class="<?php if($area["area_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($area["area_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
                 <td><?php echo date("d/m/Y", strtotime($area["area_createddate"])); ?></td>

@@ -1,7 +1,8 @@
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -89,11 +90,11 @@
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Price</label>
-                        <input type="email" class="form-control" id="price" placeholder="Enter price ">
+                        <input type="email" class="form-control price" id="" placeholder="Enter price ">
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Total Iteams</label>
-                        <input type="email" class="form-control" id="total_iteams" placeholder="Enter total iteams">
+                        <input type="email" class="form-control" id="totaliteam" placeholder="Enter total iteams">
                     </div> 
                      <div class="form-group">
                         <label for="exampleInputEmail1">Sold</label>
@@ -136,5 +137,5 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-
+</div>
 <?php include "templates/footer.php" ?>

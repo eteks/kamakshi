@@ -63,4 +63,26 @@ class Ajax_Controller extends CI_Controller {
 		// echo $remove_status;	
 		echo $remove_status;	
 	}
+
+	// Get city based on state
+	public function get_city()
+	{	
+		$data = $this->ajax_model->get_city_data();
+		echo json_encode($data);
+	}
+
+	// Get area based on city
+	public function get_area()
+	{	
+		$data = $this->ajax_model->get_area_data();
+		echo json_encode($data);
+	}
+
+	// Get shipping amount based on area
+	public function get_area_shipping()
+	{	
+		$data = $this->ajax_model->get_area_shipping_amount();
+		echo $data;
+	}
+
 } // end of the class 

@@ -1,7 +1,9 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -40,39 +42,30 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
-                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category/<?php echo $category_data['category_id']; ?>" enctype="multipart/form-data" name="edit_category_form">
+<?php } ?>
+            <?php if (isset($error_message)){ 
+                 echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+            }?>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category/<?php echo $category_data['category_id']; ?>" enctype="multipart/form-data" name="edit_category_form" class="form_submit">
                     <div class="form-group">
                         <label for="category_name">Category Name</label>
                         <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" value="<?php if(!empty($category_data['category_name'])) echo $category_data['category_name']; ?>" name="edit_category_name">
                     </div>  
                     <div class="form-group">
-                        <label for="category_image">Category Image</label>
+                        <label for="category_image">Category Image</label><span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                      <div class="category-product-image">
                         <input type="file" id="category_image" class="select-category-images" name="edit_category_image">
                         <?php
                             $img_source = $category_data['category_image']; 
                         ?>
-                         <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                         <!-- <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/> -->
+                            <?php if($img_source != '') {?>
+                             <a class='dispaly_hide_offer' href='<?php echo $img_source; ?>' target='_blank'>
+                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
+                             </a>
+                            <?php } ?>
                             <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
-                            <!-- <div class="edit-catpro-image"> -->
-                            <!-- <a class='dispaly_hide_offer' href='<?php echo $img_source; ?>' target='_blank'> --> 
-                            <!-- <?php if($img_source != '') {?>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/><br />
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
-                             <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/><?php } ?>
-                            <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>"> -->
-                        <!-- <div class="edit-catpro-image">
-                           <div class="product-cat-images">
-                         </div>
-                        </div> -->
-                            <!-- </a> -->
-                           <!--  </div> -->
+                            <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>">
                             <input type="hidden" value="<?php echo $img_source; ?>" name="old_path_name" />
                        </div>
                     </div>
@@ -94,7 +87,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -105,5 +98,6 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-
+</div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

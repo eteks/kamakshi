@@ -71,6 +71,23 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
+    //  State for checkout
+    public function get_state()
+    {
+        $where = '(state_status=1)';
+        $query = $this->db->get_where('giftstore_state',$where);
+        return $query->result_array();
+    }
+
+    //  Get recipient list
+    public function get_recipient_list()
+    {
+        $where = '(recipient_status=1)';
+        $query = $this->db->get_where('giftstore_recipient',$where)->result_array();
+        return $query;
+    }
+
+
     public function get_recipient()
     {
         if ($this->uri->segment(2)) {
@@ -187,14 +204,14 @@ class Index_Model extends CI_Model {
 
 
 
-          echo "<pre>";
-            print_r($data_array);
-            echo "</pre>";
-            // $array_column = array_column($data_array, 0);
+          // echo "<pre>";
+          //   print_r($data_array);
+          //   echo "</pre>";
+          //   // $array_column = array_column($data_array, 0);
                 
-            echo "<pre>";
-            print_r($array_column);
-            echo "</pre>";
+          //   echo "<pre>";
+          //   print_r($array_column);
+          //   echo "</pre>";
             
 
 
@@ -339,4 +356,28 @@ class Index_Model extends CI_Model {
             return false;
         }
     }
+
+    // Get Category and its recipients based on category
+    public function get_category_recipient()
+    {
+        $where = '(c.category_status=1)';
+        $this->db->select('*');
+        $this->db->from('giftstore_category c');
+        $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'left');
+        // $this->db->join('giftstore_category c', 'rc.category_mapping_id=c.category_id', 'left');
+        
+        $query = $this->db->where($where)->get()->result_array();
+
+        // echo "<pre>";
+        // print_r($query);
+        // echo "</pre>";
+
+
+        return $query;
+
+
+    }
+
+
+
 }

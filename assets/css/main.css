@@ -189,7 +189,7 @@
 .owl-buttons {
   display: none;
 }
-.updations_status {
+.updations_status, .oreder_status {
   color: #4f8a10;
   display: none;
   font-size: 20px;
@@ -197,9 +197,10 @@
   text-align: center;
 }
 .filtering_sections span{
-  background: #f0f0f0 none repeat scroll 0 0;
-  padding: 5px 10px;
-  margin-left: 5px;
+  background: #fff none repeat scroll 0 0;
+  color: #5e5e5e;
+  margin-left: 10px;
+  padding: 0 5px;
   text-transform: capitalize;
   font-weight: 500;
 }
@@ -225,5 +226,44 @@
   padding: 6px 12px;
   text-decoration: none;
 }
-
+.loading {
+  background: #fff none repeat scroll 0 0;
+  height: 100%;
+  opacity: 0.4;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 9999;
+}
+.ajax_loader {
+  display: inline-block;
+  position: absolute;
+  top: 49%;
+}
+/*.checkout_button {
+  background-color: #4fbfa8;
+  border-color: #41b39c;
+  color: #ffffff;
+}
+.checkout_button:hover {
+  background-color: #3da892;
+  border-color: #318675;
+  color: #ffffff;
+}
+*/
+#checkout_order {
+  display: none;
+}
+.error_field {
+  border: 1px solid #c24641;
+}
+.error_field, .error_mail_field, .error_mobile_field, .error_zip_field{
+  border: 1px solid #c24641;
+}
+.error_msg {
+  font-size: 14px;
+  text-align: center;
+  color : #c24641;
+  display: none;
+}
 /* Ended by siva*/

@@ -20,9 +20,9 @@
 |
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
-|
+| 
 */
-$config['base_url'] = 'http://localhost/kamakshi/';
+$config['base_url'] = 'http://localhost/kamakshi';
 
 $config['admin_base_url'] = '/kamakshi/index.php/admin';
 

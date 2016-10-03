@@ -82,7 +82,140 @@ $(document).ready(function() {
 // }
 //     });
 
-   // Ended by siva - calculation process in basket page end
+//  Get checkout details from session
+// var temp = sessionStorage.getItem('checkout_details');
+// var viewName = $.parseJSON(temp);
+// var div = viewName.fname;
+// alert(div);
+// alert(JSON.stringify(viewName));
+
+//  Store user details of checkout form in json data
+(function ($) {
+    $.fn.serializeFormJSON = function () {
+
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+})(jQuery);
+
+$('#checkout_form').submit(function (e) {
+    e.preventDefault();
+    var data = $(this).serializeFormJSON();
+    alert(JSON.stringify(data));
+    sessionStorage.setItem('checkout_details', JSON.stringify(data));
+    /* Object
+        email: "value"
+        name: "value"
+        password: "value"
+     */
+});
+
+
+
+//  Moibile number validation
+$("#phone,#zip").keypress(function (e) {
+    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        return false;
+    }
+});
+
+// Checkout address button
+$('#checkout_address_submit').on('click',function() {
+
+    var text_field = ["firstname","lastname","company","street","email","phone","zip","che_state","che_city","che_area"];
+    var email_val = $('#email');
+    var phone_val = $('#phone');
+    var zip_val = $('#zip');
+
+    // Empty validation
+    for(var i=0;i<text_field.length;i++) {
+        var current_field = $('#'+text_field[i]);
+        if(current_field.val() != '') {
+           current_field.removeClass('error_field');
+        }
+        else {
+            current_field.addClass('error_field');
+        }
+    }
+
+    // Email validation
+    if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email_val.val())) {
+        email_val.addClass("error_mail_field");
+    }
+    else {
+        email_val.removeClass("error_mail_field");
+    }
+
+    //  Number validation
+    if(phone_val.val().length < 10) {
+        phone_val.addClass("error_mobile_field");
+    }
+    else {
+        phone_val.removeClass("error_mobile_field"); 
+    }
+
+    //  Zip validation
+    if(zip_val.val().length < 4) {
+        zip_val.addClass("error_zip_field");
+    }
+    else {
+        zip_val.removeClass("error_zip_field"); 
+    }
+
+    //  Display error message
+    if($('input').hasClass('error_field') || $('select').hasClass('error_field')) {
+        $('.error_msg').html("Please fill out all fields");   
+        $('.error_msg').slideDown();
+    }
+    else if($('input').hasClass('error_zip_field')){
+        $('.error_msg').html("Please enter valid postal code");
+        $('.error_msg').slideDown();
+    }
+    else if($('input').hasClass('error_mobile_field')){
+        $('.error_msg').html("Please enter valid mobile number");
+        $('.error_msg').slideDown();
+    }
+    else if($('input').hasClass('error_mail_field')){
+        $('.error_msg').html("Please enter valid email address");
+        $('.error_msg').slideDown();
+    }
+    else {
+        $('.error_msg').slideUp();
+        $('#checkout_address').hide();
+        $('#checkout_order').slideDown(800);
+        $('.address_label').removeClass('active');
+        $('.address_label').addClass('disabled');
+        $('.order_label').removeClass('disabled');
+        $('.order_label').addClass('active');
+    }
+    return false;
+});
+
+// Checkout address button
+$('#checkout_order_submit').on('click',function() {
+    $('#checkout_order').hide();
+    $('#checkout_address').slideDown(800);
+    $('.order_label').removeClass('active');
+    $('.order_label').addClass('disabled');
+    $('.address_label').removeClass('disabled');
+    $('.address_label').addClass('active');
+});
+
+
+
+
+// Ended by siva - calculation process in basket page end
 
 
     required_login=["email-modal","password-modal"];
@@ -234,5 +367,19 @@ $(document).ready(function() {
           filter: selector
         });
   });
-
 });
+$(window).load(function()
+{
+	centerContent();
+});
+$(window).resize(function()
+{
+	centerContent();
+});
+function centerContent()
+{
+	$('.images_alignment,.position_images,.product_position').each(function(){
+		$(this).css("margin-left", -($(this).width())/2);
+		$(this).css("margin-top", -($(this).height())/2);
+	});
+}

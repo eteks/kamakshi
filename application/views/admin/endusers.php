@@ -1,6 +1,6 @@
 <?php include "templates/header.php" ?>
 <div class="ch-container">
-    <div class="row"> 
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -52,15 +52,26 @@
 </tr>
    </thead>
 <tbody>
-	<tr>
-		<td>Worth Name</td>
-		<td class="center">2012/03/01</td>
-		<td class="center">2012/03/01</td>
-		<td class="center">2012/03/01</td>
-		<td class="center"><span class="label-warning label label-default">Pending</span></td>
-		<td class="center">2012/03/01</td>
-		<td class="center"><a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_endusers"> <i class="glyphicon glyphicon-edit icon-white"></i> Edit </a><a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete"> <i class="glyphicon glyphicon-trash icon-white"></i> Delete </a></td>
-    </tr>
+    <?php foreach ($endusers_list as $endusr): ?>
+        <tr>
+            <td><?php echo $endusr["user_name"] ?></td>
+            <td class="center"><?php echo $endusr["user_email"] ?></td>
+            <td class="center"><?php echo $endusr["user_dob"] ?></td>
+            <td class="center"><?php echo $endusr["user_mobile"] ?></td>
+            <td class="center"><span class="<?php if($endusr["user_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($endusr["user_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+            <td class="center"><?php echo date("d/m/Y", strtotime($endusr["user_createddate"])); ?></td>
+            <td class="center">
+                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/users/edit_endusers/<?php echo $endusr["user_id"] ?>">
+                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+    <?php endforeach ?>
     </tbody>
     </table>
     </div>

@@ -13,48 +13,32 @@ class Catalog extends CI_Model {
 		// return $query->row_array();
 
 		//get list of categories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_category order 
-			by category_createddate desc");		
-		// echo "<pre>";
-		// print_r($query->result());
-		// echo "</pre>";
+		$this->db->select('*');
+		$this->db->from('giftstore_category');
+		$this->db->order_by('category_createddate','desc');	
+		$query = $this->db->get();
+		
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
 	public function insert_category($data)
 	{	
-		// Query to check whether category name already exist or not
-		$condition = "category_name =" . "'" . $data['category_name'] . "'";
-		$this->db->select('*');
-		$this->db->from('giftstore_category');
-		$this->db->where($condition);
-		// $this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 0) {
-			// Query to insert data in database
-			$this->db->insert('giftstore_category', $data);
-			if ($this->db->affected_rows() > 0) {
-				return true;
-			}
-		} else {
-			return false;
+		// Query to insert data in database
+		$this->db->insert('giftstore_category', $data);
+		if ($this->db->affected_rows() > 0) {
+			return true;
 		}
+		return false;
 	}	
 	public function update_category($data)
 	{	
-		$condition = "category_name =" . "'" . $data['category_name'] . "' AND category_id NOT IN (". $data['category_id'].")";
-		$this->db->select('*');
-		$this->db->from('giftstore_category');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
+		$this->db->where('category_id', $data['category_id']);
+		$this->db->update('giftstore_category', $data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
 			return false;
 		}
-		else{
-			$this->db->where('category_id', $data['category_id']);
-			$this->db->update('giftstore_category', $data);
-			return true;
-		}	
+		return true;	
 	}	
 	public function get_category_data($id)
 	{	
@@ -67,7 +51,7 @@ class Catalog extends CI_Model {
 		// $query = $this->db->query("SELECT * FROM giftstore_subcategory order 
 		// 	by subcategory_createddate desc");	
 
-		$this->db->select('*');
+		$this->db->select('sub.*,cat.category_name');
 		$this->db->from('giftstore_subcategory AS sub');
 		$this->db->join('giftstore_subcategory_category AS subcat', 'subcat.subcategory_mapping_id = sub.subcategory_id', 'inner');
 		$this->db->join('giftstore_category AS cat', 'cat.category_id = subcat.category_mapping_id', 'inner');
@@ -111,7 +95,9 @@ class Catalog extends CI_Model {
 	}	
 	public function update_subcategory($data)
 	{	
-		$condition = "subcategory_name =" . "'" . $data['subcategory_name'] . "' AND subcategory_id NOT IN (". $data['subcategory_id'].")";
+		$category = $data['post_category'];
+		$subcategory_data = $data['post_subcategory'];
+		$condition = "subcategory_name =" . "'" . $subcategory_data['subcategory_name'] . "' AND subcategory_id NOT IN (". $subcategory_data['subcategory_id'].")";
 		$this->db->select('*');
 		$this->db->from('giftstore_subcategory');
 		$this->db->where($condition);
@@ -120,8 +106,26 @@ class Catalog extends CI_Model {
 			return false;
 		}
 		else{
-			$this->db->where('subcategory_id', $data['subcategory_id']);
-			$this->db->update('giftstore_subcategory', $data);
+			if(!empty($category['removed_category_data'])){
+				$condition = "subcategory_mapping_id =". $subcategory_data['subcategory_id'] ." AND category_mapping_id IN(".$category['removed_category_data'].")";
+				$this->db->from('giftstore_subcategory_category');
+				$this->db->where($condition);
+				$this->db->delete();
+			}
+			foreach($category['category_data'] as $value) {
+				$subcategory_category_map_data = array(
+					'subcategory_mapping_id' => $subcategory_data['subcategory_id'],
+					'category_mapping_id' => $value,
+				);
+				$this->db->select('*');
+				$this->db->from('giftstore_subcategory_category');
+				$this->db->where($subcategory_category_map_data);
+				$query = $this->db->get();
+				if($query->num_rows() == 0)
+					$this->db->insert('giftstore_subcategory_category', $subcategory_category_map_data);
+			}
+			$this->db->where('subcategory_id', $subcategory_data['subcategory_id']);
+			$this->db->update('giftstore_subcategory', $subcategory_data);
 			return true;
 		}	
 	}	
@@ -141,9 +145,16 @@ class Catalog extends CI_Model {
 	}
 	public function get_recipient()
 	{	
-		//get list of subcategories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_recipient order 
-			by recipient_createddate desc");		
+		//get list of subcategories from database using mysql query 	
+		$this->db->select('rec.*,cat.category_name');
+		$this->db->from('giftstore_recipient AS rec');
+		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'inner');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = reccat.category_mapping_id', 'inner');
+		// $this->db->group_by('subcategory_id');
+		$this->db->order_by('recipient_createddate','desc');
+		
+		$query = $this->db->get();
+
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
@@ -349,7 +360,7 @@ class Catalog extends CI_Model {
 					array_push($product_attribute_inserted_id,$this->db->insert_id());
 				}
 				$product_attributes_group = array(
-						'product_mapping_id' => $product_attribute_id ,
+						'product_mapping_id' => $product_id ,
 						'product_attribute_group_price' => $price ,
 						'product_attribute_group_totalitems' => $items,
 						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
