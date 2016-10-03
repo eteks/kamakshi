@@ -14,7 +14,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.cookie.js"></script>
 <!-- library for table grid management -->
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/responsive-tables.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.js"></script>
 <!-- application script for Charisma demo -->
 <script src="<?php echo base_url(); ?>assets/admin/js/charisma.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.validate.min.js"></script>

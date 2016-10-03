@@ -248,7 +248,7 @@ $(document).ready(function() {
 
     // Bind checkbox and span for multiselect dropdown
     //************ Start ***********
-    $('.multiple_checkbox').bind('click',function(){
+    $(document).delegate('.multiple_checkbox','click',function(){
         if($(this).hasClass('multiple_checkbox_inactive')) {
           $(this).removeClass('multiple_checkbox_inactive').addClass('multiple_checkbox_active')
           if($(this).siblings('input[type=checkbox]').is(':checked') == false) {
@@ -267,7 +267,7 @@ $(document).ready(function() {
     //Code to store removed checkbox data in array for multiple checkbox only on edit
     //************ Start ***********
     checkbox_array = [];
-    $('.edit_multiple_checkbox').on('click',function(){
+    $(document).delegate('.edit_multiple_checkbox','click',function(){
         if($(this). prop("checked") == false && $.inArray($(this).val(), checkbox_array) == -1)
             checkbox_array.push($(this).val());
         else if($(this). prop("checked") == true && $.inArray($(this).val(), checkbox_array) !== -1)
