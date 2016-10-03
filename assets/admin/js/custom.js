@@ -245,4 +245,34 @@ $(document).ready(function() {
         // return false;
     });
     //************ End *************
+
+    // Bind checkbox and span for multiselect dropdown
+    //************ Start ***********
+    $('.multiple_checkbox').bind('click',function(){
+        if($(this).hasClass('multiple_checkbox_inactive')) {
+          $(this).removeClass('multiple_checkbox_inactive').addClass('multiple_checkbox_active')
+          if($(this).siblings('input[type=checkbox]').is(':checked') == false) {
+            $(this).siblings('input[type=checkbox]').trigger('click');
+          }
+ 
+        } else {
+          $(this).removeClass('multiple_checkbox_active').addClass('multiple_checkbox_inactive');
+          if($(this).siblings('input[type=checkbox]').is(':checked') == true) {
+            $(this).siblings('input[type=checkbox]').trigger('click');
+          }
+        }
+    });
+    //************ End ***********
+
+    //Code to store removed checkbox data in array for multiple checkbox only on edit
+    //************ Start ***********
+    checkbox_array = [];
+    $('.edit_multiple_checkbox').on('click',function(){
+        if($(this). prop("checked") == false && $.inArray($(this).val(), checkbox_array) == -1)
+            checkbox_array.push($(this).val());
+        else if($(this). prop("checked") == true && $.inArray($(this).val(), checkbox_array) !== -1)
+            checkbox_array.splice( $.inArray($(this).val(), checkbox_array), 1 );
+        $('.checkbox_array_hidden').val(checkbox_array);
+    });
+    //************ End ***********
 });

@@ -95,7 +95,9 @@ class Catalog extends CI_Model {
 	}	
 	public function update_subcategory($data)
 	{	
-		$condition = "subcategory_name =" . "'" . $data['subcategory_name'] . "' AND subcategory_id NOT IN (". $data['subcategory_id'].")";
+		$category = $data['post_category'];
+		$subcategory_data = $data['post_subcategory'];
+		$condition = "subcategory_name =" . "'" . $subcategory_data['subcategory_name'] . "' AND subcategory_id NOT IN (". $subcategory_data['subcategory_id'].")";
 		$this->db->select('*');
 		$this->db->from('giftstore_subcategory');
 		$this->db->where($condition);
@@ -104,8 +106,26 @@ class Catalog extends CI_Model {
 			return false;
 		}
 		else{
-			$this->db->where('subcategory_id', $data['subcategory_id']);
-			$this->db->update('giftstore_subcategory', $data);
+			if(!empty($category['removed_category_data'])){
+				$condition = "subcategory_mapping_id =". $subcategory_data['subcategory_id'] ." AND category_mapping_id IN(".$category['removed_category_data'].")";
+				$this->db->from('giftstore_subcategory_category');
+				$this->db->where($condition);
+				$this->db->delete();
+			}
+			foreach($category['category_data'] as $value) {
+				$subcategory_category_map_data = array(
+					'subcategory_mapping_id' => $subcategory_data['subcategory_id'],
+					'category_mapping_id' => $value,
+				);
+				$this->db->select('*');
+				$this->db->from('giftstore_subcategory_category');
+				$this->db->where($subcategory_category_map_data);
+				$query = $this->db->get();
+				if($query->num_rows() == 0)
+					$this->db->insert('giftstore_subcategory_category', $subcategory_category_map_data);
+			}
+			$this->db->where('subcategory_id', $subcategory_data['subcategory_id']);
+			$this->db->update('giftstore_subcategory', $subcategory_data);
 			return true;
 		}	
 	}	

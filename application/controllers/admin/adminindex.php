@@ -393,10 +393,15 @@ class Adminindex extends CI_Controller {
 					$status = strip_tags($errors);
 				}
 				else{
-					$data = array(
+					$data =array();
+					$data['post_subcategory'] = array(
 					'subcategory_id' => $id,
 					'subcategory_name' => $this->input->post('edit_subcategory_name'),
 					'subcategory_status' => $this->input->post('edit_subcategory_status'),
+					);
+					$data['post_category'] = array(
+					'category_data' => $this->input->post('select_category'),
+					'removed_category_data' => $this->input->post('removed_category')
 					);
 					$result = $this->catalog->update_subcategory($data);
 					if($result)
