@@ -74,27 +74,27 @@ $(document).ready(function () {
             $(this).parent().addClass('active');
     });
 
-    //establish history variables
-    var
-        History = window.History, // Note: We are using a capital H instead of a lower h
-        State = History.getState(),
-        $log = $('#log');
+    // //establish history variables
+    // var
+    //     History = window.History, // Note: We are using a capital H instead of a lower h
+    //     State = History.getState(),
+    //     $log = $('#log');
 
-    //bind to State Change
-    History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
-        var State = History.getState(); // Note: We are using History.getState() instead of event.state
-        $.ajax({
-            url: State.url,
-            success: function (msg) {
-                $('#content').html($(msg).find('#content').html());
-                $('#loading').remove();
-                $('#content').fadeIn();
-                var newTitle = $(msg).filter('title').text();
-                $('title').text(newTitle);
-                docReady();
-            }
-        });
-    });
+    // //bind to State Change
+    // History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
+    //     var State = History.getState(); // Note: We are using History.getState() instead of event.state
+    //     $.ajax({
+    //         url: State.url,
+    //         success: function (msg) {
+    //             $('#content').html($(msg).find('#content').html());
+    //             $('#loading').remove();
+    //             $('#content').fadeIn();
+    //             var newTitle = $(msg).filter('title').text();
+    //             $('title').text(newTitle);
+    //             docReady();
+    //         }
+    //     });
+    // });
 
     //ajaxify menus
     $('a.ajax-link').click(function (e) {
@@ -142,7 +142,7 @@ function docReady() {
     });
 
     //chosen - improves select
-    $('[data-rel="chosen"],[rel="chosen"]').chosen();
+    // $('[data-rel="chosen"],[rel="chosen"]').chosen();
 
     //tabs
     $('#myTab a:first').tab('show');
@@ -156,25 +156,25 @@ function docReady() {
     $('[data-toggle="tooltip"]').tooltip();
 
     //auto grow textarea
-    $('textarea.autogrow').autogrow();
+    // $('textarea.autogrow').autogrow();
 
     //popover
     $('[data-toggle="popover"]').popover();
 
     //iOS / iPhone style toggle switch
-    $('.iphone-toggle').iphoneStyle();
+    // $('.iphone-toggle').iphoneStyle();
 
     //star rating
-    $('.raty').raty({
-        score: 4 //default stars
-    });
+    // $('.raty').raty({
+    //     score: 4 //default stars
+    // });
 
     //uploadify - multiple uploads
-    $('#file_upload').uploadify({
-        'swf': 'misc/uploadify.swf',
-        'uploader': 'misc/uploadify.php'
-        // Put your options here
-    });
+    // $('#file_upload').uploadify({
+    //     'swf': 'misc/uploadify.swf',
+    //     'uploader': 'misc/uploadify.php'
+    //     // Put your options here
+    // });
 
     //gallery controls container animation
     $('ul.gallery li').hover(function () {
@@ -208,13 +208,13 @@ function docReady() {
     });
 
     //gallery colorbox
-    $('.thumbnail a').colorbox({
-        rel: 'thumbnail a',
-        transition: "elastic",
-        maxWidth: "95%",
-        maxHeight: "95%",
-        slideshow: true
-    });
+    // $('.thumbnail a').colorbox({
+    //     rel: 'thumbnail a',
+    //     transition: "elastic",
+    //     maxWidth: "95%",
+    //     maxHeight: "95%",
+    //     slideshow: true
+    // });
 
     //gallery fullscreen
     $('#toggle-fullscreen').button().click(function () {
@@ -296,53 +296,53 @@ function docReady() {
     });
 
 
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        },
-        defaultDate: '2014-06-12',
-        events: [
-            {
-                title: 'All Day Event',
-                start: '2014-06-01'
-            },
-            {
-                title: 'Long Event',
-                start: '2014-06-07',
-                end: '2014-06-10'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2014-06-09T16:00:00'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2014-06-16T16:00:00'
-            },
-            {
-                title: 'Meeting',
-                start: '2014-06-12T10:30:00',
-                end: '2014-06-12T12:30:00'
-            },
-            {
-                title: 'Lunch',
-                start: '2014-06-12T12:00:00'
-            },
-            {
-                title: 'Birthday Party',
-                start: '2014-06-13T07:00:00'
-            },
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2014-06-28'
-            }
-        ]
-    });
+    // $('#calendar').fullCalendar({
+    //     header: {
+    //         left: 'prev,next today',
+    //         center: 'title',
+    //         right: 'month,agendaWeek,agendaDay'
+    //     },
+    //     defaultDate: '2014-06-12',
+    //     events: [
+    //         {
+    //             title: 'All Day Event',
+    //             start: '2014-06-01'
+    //         },
+    //         {
+    //             title: 'Long Event',
+    //             start: '2014-06-07',
+    //             end: '2014-06-10'
+    //         },
+    //         {
+    //             id: 999,
+    //             title: 'Repeating Event',
+    //             start: '2014-06-09T16:00:00'
+    //         },
+    //         {
+    //             id: 999,
+    //             title: 'Repeating Event',
+    //             start: '2014-06-16T16:00:00'
+    //         },
+    //         {
+    //             title: 'Meeting',
+    //             start: '2014-06-12T10:30:00',
+    //             end: '2014-06-12T12:30:00'
+    //         },
+    //         {
+    //             title: 'Lunch',
+    //             start: '2014-06-12T12:00:00'
+    //         },
+    //         {
+    //             title: 'Birthday Party',
+    //             start: '2014-06-13T07:00:00'
+    //         },
+    //         {
+    //             title: 'Click for Google',
+    //             url: 'http://google.com/',
+    //             start: '2014-06-28'
+    //         }
+    //     ]
+    // });
 
 }
 

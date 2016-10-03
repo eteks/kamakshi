@@ -197,9 +197,10 @@
   text-align: center;
 }
 .filtering_sections span{
-  background: #f0f0f0 none repeat scroll 0 0;
-  padding: 5px 10px;
-  margin-left: 5px;
+  background: #fff none repeat scroll 0 0;
+  color: #5e5e5e;
+  margin-left: 10px;
+  padding: 0 5px;
   text-transform: capitalize;
   font-weight: 500;
 }
@@ -265,6 +266,7 @@
   color : #c24641;
   display: none;
 }
+<<<<<<< HEAD
 .registeration_status {
   color: #c24641;
   display: none;
@@ -272,4 +274,6 @@
   text-align: center;
 }
 
+=======
+>>>>>>> f3f8d9ab83202ca3e576c6b02faf16d987923a37
 /* Ended by siva*/

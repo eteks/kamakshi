@@ -51,12 +51,12 @@
                     </li>
                     <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
                     </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/customer_orders/">Profile</a>
-                    </li>
+                    <!-- <li><a href="<?php //echo base_url(); ?>index.php/customer_orders/">Profile</a>
+                    </li> -->
                     <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
                     </li>
-                    <li><a href="#">Recently viewed</a>
-                    </li>
+                    <!-- <li><a href="#">Recently viewed</a>
+                    </li> -->
                 </ul>
             </div>
         </div>

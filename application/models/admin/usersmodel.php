@@ -22,20 +22,32 @@ class Usersmodel extends CI_Model {
 		//Here row_array() represents to pass only one row of data for their particular user
 		return $query->row_array();
 	}
+	// public function update_adminusers($data)
+	// {	
+	// 	$condition = "adminuser_username =" . "'" . $data['adminuser_username'] . "' AND adminuser_id NOT IN (". $data['adminuser_id'].")";
+	// 	$this->db->select('*');
+	// 	$this->db->from('giftstore_adminusers');
+	// 	$this->db->where($condition);
+	// 	$query = $this->db->get();
+	// 	if ($query->num_rows() > 0) {
+	// 		return false;
+	// 	}
+	// 	else{
+	// 		$this->db->where('adminuser_id', $data['adminuser_id']);
+	// 		$this->db->update('giftstore_adminusers', $data);
+	// 		return true;
+	// 	}	
+	// }
+	
+	// Customize the above code like below because of used some validation function in controller itself
 	public function update_adminusers($data)
 	{	
-		$condition = "adminuser_username =" . "'" . $data['adminuser_username'] . "' AND adminuser_id NOT IN (". $data['adminuser_id'].")";
-		$this->db->select('*');
-		$this->db->from('giftstore_adminusers');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
+		$this->db->where('adminuser_id', $data['adminuser_id']);
+		$this->db->update('giftstore_adminusers', $data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
 			return false;
 		}
-		else{
-			$this->db->where('adminuser_id', $data['adminuser_id']);
-			$this->db->update('giftstore_adminusers', $data);
-			return true;
-		}	
+		return true;	
 	}	
 }

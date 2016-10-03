@@ -49,13 +49,28 @@
                     </div>  
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Category</label>
-                        <div class="controls">
+                        <!-- <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control city_act" name="select_category[]" multiple>
                             <option value="">Select Category</option>
-                                <?php foreach ($category_list as $cat): ?>
-                                    <option value="<?php echo $cat["category_id"] ?>"><?php echo $cat["category_name"] ?></option>
-                                <?php endforeach ?>
+                                <?php //foreach ($category_list as $cat): ?>
+                                    <option value="<?php //echo $cat["category_id"] ?>"><?php //echo $cat["category_name"] ?></option>
+                                <?php //endforeach ?>
                             </select>
+                        </div> -->
+                        <div class="multiple_dropdown"> 
+                            <div class="select_multiple_option">
+                                <a id="admin_check">
+                                    <span class="hida">Select</span>  <i class="fa fa-caret-down"  aria-hidden="true"></i>  
+                                    <p class="multiSel"></p>  
+                                </a>
+                            </div>
+                            <div class="mutliSelect">
+                                <ul>
+                                <?php foreach ($category_list as $cat):
+                                    echo "<li><input type='checkbox' name='select_category[]' id='subcategory_name' value='".$cat["category_id"]."'/><span class='multiple_checkbox multple_checkbox_inactive'>".$cat["category_name"]."</span></li>";
+                                endforeach ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                      <div class="control-group">

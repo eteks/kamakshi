@@ -105,23 +105,25 @@
                             <?php foreach($recommanded_products as $rec_pro): ?>
                              <div class="item-img">
                                 <div class="product">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front">
+                                  <div class="home_latest_product">
+                                    <div class="flip-container latest_product_images">
+                                        <div class="flipper latest_product_images">
+                                            <div class="front latest_product_images">
                                                 <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $rec_pro['product_id']; ?>">
-                                                    <img src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="" class="img-responsive">
+                                                    <img src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="" class="img-responsive product_position">
                                                 </a>
                                             </div>
-                                            <div class="back">
+                                            <div class="back latest_product_images">
                                                 <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $rec_pro['product_id']; ?>">
-                                                    <img src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="" class="img-responsive">
+                                                    <img src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="" class="img-responsive product_position">
                                                 </a>
                                             </div>
                                         </div>
+                                        <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $rec_pro['product_id']; ?>" class="invisible">
+                                        <img src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="" class="img-responsive product_position">
+                                        </a>
                                     </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $rec_pro['product_id']; ?>" class="invisible">
-                                        <img src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="" class="img-responsive">
-                                    </a>
+                                   </div>
                                     <div class="text">
                                         <h3><a href="<?php echo base_url(); ?>index.php/detail/<?php echo $rec_pro['product_id']; ?>"><?php echo $rec_pro['product_title'] ?></a></h3>
                                         <h3> Rs <?php echo $rec_pro['product_price'] ?></h3>

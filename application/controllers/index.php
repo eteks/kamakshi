@@ -136,14 +136,7 @@ class Index extends CI_Controller
         // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
-
-
-
-
-  
-
-
-	public function checkout1()
+    public function checkout1()
 	{
 		$this->load->view('checkout1');
 	}
@@ -195,6 +188,15 @@ class Index extends CI_Controller
     public function rolekey_exists($key) 
     {
         $this->index_model->mail_exists($key);
+    }
+    
+    public function recipient_category()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $this->load->view('recipient_category',$categories);
     }
   
 }
