@@ -263,9 +263,9 @@ class Ajax_Model extends CI_Model {
 
     //  Get registration status
     public function get_register_login_status() {
-        $this->form_validation->set_rules('user_name', 'First Name', 'required');
-        $this->form_validation->set_rules('user_password', 'Password', 'required');    
-        $this->form_validation->set_rules('email_log', 'Email', 'required|valid_email');               
+        $this->form_validation->set_rules('email_log', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password_log', 'Password', 'required');    
+                      
         if ($this->form_validation->run() == FALSE) {   
             $status = "Please fill out all mandatory fields";
         }
@@ -296,6 +296,6 @@ class Ajax_Model extends CI_Model {
         echo $status;
     }
 
-    
+
  
 }
