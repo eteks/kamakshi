@@ -23,38 +23,22 @@ class Catalog extends CI_Model {
 	}
 	public function insert_category($data)
 	{	
-		// Query to check whether category name already exist or not
-		$condition = "category_name =" . "'" . $data['category_name'] . "'";
-		$this->db->select('*');
-		$this->db->from('giftstore_category');
-		$this->db->where($condition);
-		// $this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 0) {
-			// Query to insert data in database
-			$this->db->insert('giftstore_category', $data);
-			if ($this->db->affected_rows() > 0) {
-				return true;
-			}
-		} else {
-			return false;
+		// Query to insert data in database
+		$this->db->insert('giftstore_category', $data);
+		if ($this->db->affected_rows() > 0) {
+			return true;
 		}
+		return false;
 	}	
 	public function update_category($data)
 	{	
-		$condition = "category_name =" . "'" . $data['category_name'] . "' AND category_id NOT IN (". $data['category_id'].")";
-		$this->db->select('*');
-		$this->db->from('giftstore_category');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
+		$this->db->where('category_id', $data['category_id']);
+		$this->db->update('giftstore_category', $data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
 			return false;
 		}
-		else{
-			$this->db->where('category_id', $data['category_id']);
-			$this->db->update('giftstore_category', $data);
-			return true;
-		}	
+		return true;	
 	}	
 	public function get_category_data($id)
 	{	

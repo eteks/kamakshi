@@ -41,9 +41,11 @@
             </div>
             <div class="box-content">
 <?php } ?>
-                <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+                <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
                 <?php //print_r($adminuser_data); ?>
-                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $adminuser_data['adminuser_id']; ?>" name="edit_adminuser_form" id="edit_adminuser_form">
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $adminuser_data['adminuser_id']; ?>" class="form_submit" name="edit_adminuser_form" id="edit_adminuser_form">
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="area_name">User Name</label>

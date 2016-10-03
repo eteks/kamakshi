@@ -257,3 +257,8 @@
   color: #ff0000;
   font-size: 12px;
 }
+.upload_limit {
+    color: gray;
+    font-size: 10px;
+    margin-left: 5px;
+}

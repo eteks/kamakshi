@@ -6,7 +6,7 @@ class Users extends CI_Controller {
 		parent::__construct();
 		$this->load->model('admin/usersmodel');
 		// Load form helper library
-		$this->load->helper('form');
+		$this->load->helper(array('form','custom'));
 		// Load form validation library
 		$this->load->library('form_validation');
 	}
@@ -22,8 +22,25 @@ class Users extends CI_Controller {
 	{	
 		$this->load->view('admin/add_adminusers');
 	}
+	function edit_unique($value, $params) 
+	{
+		//get main CodeIgniter object
+	    $CI =& get_instance();
+	    //load database library
+	    $CI->load->database();    
+	    $CI->form_validation->set_message('edit_unique', "Sorry, that %s is already being used.");
+	    list($table, $id, $field, $current_id) = explode(".", $params);    
+	    $query = $CI->db->select()->from($table)->where($field, $value)->limit(1)->get();    
+	    if ($query->row() && $query->row()->$id != $current_id)
+	    {
+	        return FALSE;
+	    }
+	}
 	public function edit_adminusers()
 	{	
+		// $user_details = edit_unique();
+		// echo $user_details;
+
 		$id = $this->uri->segment(4);
 		// echo "id".$id;
 		if (empty($id))
@@ -32,13 +49,13 @@ class Users extends CI_Controller {
 		}
 		if(!empty($_POST)){
 			// print_r($_POST);
-			$status = '';//array is initialized
+			$status = array();//array is initialized
 			$errors = '';
 			$validation_rules = array(
 		       array(
 		             'field'   => 'adminuser_username',
 		             'label'   => 'Username',
-		             'rules'   => 'trim|required|xss_clean'
+		             'rules'   => 'trim|required|xss_clean|min_length[5]|max_length[12]|callback_edit_unique[giftstore_adminusers.adminuser_id.adminuser_username.'.$id.']'
 		          ),
 		       array(
 		             'field'   => 'adminuser_password',
@@ -48,12 +65,12 @@ class Users extends CI_Controller {
 		       array(
 		             'field'   => 'adminuser_email',
 		             'label'   => 'Email',
-		             'rules'   => 'trim|required|xss_clean'
+		             'rules'   => 'trim|required|xss_clean|valid_email|callback_edit_unique[giftstore_adminusers.adminuser_id.adminuser_email.'.$id.']'
 		          ),
 		       array(
 		             'field'   => 'adminuser_mobile',
 		             'label'   => 'Mobile',
-		             'rules'   => 'trim|required|xss_clean'
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
 		          ),   
 		    );
 		    $this->form_validation->set_rules($validation_rules);
@@ -63,44 +80,29 @@ class Users extends CI_Controller {
 		            $error = form_error($field);    //getting error for field name
 		                                            //form_error() is inbuilt function
 		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
     		else{
-				if (!empty($errors)) {
-					$status = strip_tags($errors);
-				}
-				else{
-					$data = array(
-					'adminuser_id' => $id,
-					'adminuser_username' => $this->input->post('adminuser_username'),
-					'adminuser_password' => $this->input->post('adminuser_password'),
-					'adminuser_email' => $this->input->post('adminuser_email'),
-					'adminuser_mobile' => $this->input->post('adminuser_mobile'),
-					);
-					$result = $this->usersmodel->update_adminusers($data);
-					if($result)
-						$status = "User Updated Successfully!";
-					else
-						$status = "User Already Exists!";
-				}		
+				$data = array(
+				'adminuser_id' => $id,
+				'adminuser_username' => $this->input->post('adminuser_username'),
+				'adminuser_password' => $this->input->post('adminuser_password'),
+				'adminuser_email' => $this->input->post('adminuser_email'),
+				'adminuser_mobile' => $this->input->post('adminuser_mobile'),
+				);
+				$result = $this->usersmodel->update_adminusers($data);
+				if($result)
+					$status['error_message'] = "User Updated Successfully!";
+				else
+					$status['error_message'] = "Something Went Wrong!";	
     		}
-    		$data['status'] = $status;
 		}
-		$data['adminuser_data'] = $this->usersmodel->get_adminusers_data($id);
-		// print_r($data);
-		$this->load->view('admin/edit_adminusers',$data);
+		$status['adminuser_data'] = $this->usersmodel->get_adminusers_data($id);
+		$this->load->view('admin/edit_adminusers',$status);
 	}
 	public function endusers()
 	{	

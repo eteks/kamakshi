@@ -182,25 +182,25 @@ $(document).ready(function() {
     // ********* End *********
 
     //**********add to muthukrishnan ***********
-    $('#mobile,#userid,.totalitem,#orderid,#quantity,#size').keypress(function (e) {
+    $(document).delegate('#mobile,#userid,.totalitem,#orderid,#quantity,#size','keypress',function(e){
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which != 45 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
         return false;
-    }
-   });
-    $("#deliverycharge,#totalamount,.price,#wight").keypress(function (e) {
+     }
+    });
+    $(document).delegate("#deliverycharge,#totalamount,.price,#wight",'keypress',function(e){
      //if the letter is not digit then display error 
      if (e.which != 8 && e.which !=46 &&  e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
                return false;
-    }
-        });
+     }
+    });
     $(".description").text(function(index, currentText) {
         if (currentText.length>60) {
-    return currentText.substr(0, 60)+'.....';
-    }
-});
+            return currentText.substr(0, 60)+'.....';
+        }
+    });
     // var passVal = $('.password').val();
     // if(passVal!='') {
     //     var pass_restriction = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!)=%*#(? &])[A-Za-z\\d$@)$!%(*#= ?&]{3,}$");
@@ -220,20 +220,29 @@ $(document).ready(function() {
     //************End *****************
 
     //************ Start ***********
-    $(document).delegate('#edit_adminuser_form','submit',function(e){
-        form_data = $(this).serializeArray();
+    $(document).delegate('.form_submit','submit',function(e){
+        // test code
+        // form_data = $(this).serializeArray();
         // alert(JSON.stringify(form_data));
+
+        //disable the default form submission
+        e.preventDefault();
+        //grab all form data  
+        var form_data = new FormData($(this)[0]);
         $.ajax({
            type: "POST",
            url: $(this).attr('action'),
            data: form_data,
+           async: false,
+           // cache: false,
+           contentType: false,
+           processData: false,
            // dataType: 'json',  
-           cache: false,
            success: function(data) {  
             $('.box-content').html(data);
            }
         });
-        return false;
+        // return false;
     });
     //************ End *************
 });
