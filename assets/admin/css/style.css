@@ -131,7 +131,7 @@
 }
 /*#footer {
 	width:100%;
-    position:fixed;
+    position:relative !important;
     height:50px;
     bottom:0px;
     left:0px;
