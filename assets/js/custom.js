@@ -1,6 +1,11 @@
 
 $(document).ready(function() {
-// Added by siva - calculation process in basket page start
+    // Added by siva - calculation process in basket page start
+
+    $('body').bind("cut copy paste",function(e) {
+          e.preventDefault();
+    });
+
     if($('#total_amount').val() == 0 ) {
         $('.basket_section_button').css('pointer-events','none');
         $('.basket_section_button').attr('disabled',true);
@@ -23,64 +28,43 @@ $(document).ready(function() {
  
     });
 
+    $('.product_quantity').on('keyup',function() {
+        var this_value = $(this).val();
+        var this_parent = $(this).parents('.amount_structure');
+        var overall_updated_total = 0;
+
+        if(this_value <= 0) {
+            alert("Enter product quantity correctly");
+            $(this).val('1');
+            this_value = 1;
+        }
+        var orderitem_price = this_parent.find('.ordinary_orderitem_price').val();
+        var product_overall_total = $('.ordinary_product_total').val();
+        var unit_price = parseFloat(orderitem_price.replace(',',''));
+        var quantity_total = parseFloat(this_value);
+        var single_product_total = unit_price * quantity_total;
+        var shipping_amount = parseFloat($('.ordinary_shipping_amount').val().replace(',',''));
+
+        this_parent.find('.product_total').html(single_product_total.toLocaleString('en-US', {minimumFractionDigits: 2}));
+        this_parent.find('.updated_product_total').val(single_product_total.toLocaleString('en-US', {minimumFractionDigits: 2}));
+   
+        $('.updated_product_total').each(function(){
+            var this_amount = parseFloat($(this).val().replace(',', ''));
+            overall_updated_total += this_amount;
+        });
+
+        $('.product_overall_total').html(Math.ceil(overall_updated_total).toLocaleString('en-US', {minimumFractionDigits: 2}));
+        $('.overall_total_product_amount').val(overall_updated_total.toLocaleString('en-US', {minimumFractionDigits: 2}));
+
+        var total_final_amount = overall_updated_total + shipping_amount;
+
+        $('.product_final_amount').html(Math.ceil(overall_updated_total).toLocaleString('en-US', {minimumFractionDigits: 2}));
+        $('.ordinary_final_amount').val(Math.ceil(overall_updated_total).toLocaleString('en-US', {minimumFractionDigits: 2}));
+       
+        this_parent.find('.update_basket_details').attr('data-quantity',this_value);
+    });
 
 
-
-//     $('.product_quantity').on('keyup',function() {
-//         var this_value = $(this).val();
-//         var this_parent = $(this).parents('.amount_structure');
-//         if(this_value > 0) {
-
-//             var orderitem_price = this_parent.find('.ordinary_orderitem_price').val();
-//             var product_overall_total = $('.ordinary_product_total').val();
-
-
-
-
-//             var price1 = parseInt(product_overall_total.replace(',',''));
-
-
-// alert(price1);
-
-// //             var overall_total_product_amount = $('.overall_total_product_amount').val();
-// //             var ordinary_shipping_amount = $('.ordinary_shipping_amount').val();
-// //             var overall_updated_total = 0;
-
-
-// //             this_parent.find('.product_total').html(parseFloat(Math.ceil(this_value*orderitem_price)).toFixed(2));
-// //             this_parent.find('.updated_product_total').val(parseFloat(Math.ceil(this_value*orderitem_price)).toFixed(2));
-            
-
-
-
-
-// //             $('.updated_product_total').each(function(){
-// //                 var this_amount = $(this).val().replace(',', '');;
-// //                 overall_updated_total += parseInt(this_amount);
-// //                 // alert($(this).val());
-// //             });
-
-
-
-// // var test = parseFloat(Math.ceil(overall_updated_total));
-
-// // var test1 = test.toLocaleString();
-// // var test2 = test1.toFixed(2);
-// //             alert(test1);
-// //             // alert().toLocaleString();
-
-// //             $('.product_overall_total').html(parseFloat(Math.ceil(overall_updated_total)).toFixed(2));
-// //             var final_amount = overall_updated_total + parseInt(ordinary_shipping_amount);
-// //             $('.product_final_amount').html(parseFloat(Math.ceil(final_amount)).toFixed(2));    
-// //         }
-
-// //         else {
-// //             alert("Enter product quantity correctly");
-// //             $(this).val('1');
-// //         }
-// //         this_parent.find('.update_basket_details').attr('data-quantity',this_value);
-// }
-//     });
 
 //  Get checkout details from session
 // var temp = sessionStorage.getItem('checkout_details');
@@ -392,5 +376,6 @@ function centerContent()
 	$('.images_alignment,.position_images,.product_position').each(function(){
 		$(this).css("margin-left", -($(this).width())/2);
 		$(this).css("margin-top", -($(this).height())/2);
+        $(this).fadeIn(100);
 	});
 }

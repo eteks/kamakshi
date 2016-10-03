@@ -50,13 +50,6 @@
                         <form role="form" class="front-end_form" action="register_login" id="login_reg" method="post">
                             <div class="registeration_status">
                             </div>
-                         <?php
-                                echo "<div class='error_message_login'>";
-                                if (isset($error_message_login)) {
-                                echo $error_message_login;
-                                }
-                                echo "</div>";
-                                ?>
                             <div class="form-group">
                                 <label for="email">Email *</label>
                                 <input type="text" class="form-control" name="email_log" id="email-log">

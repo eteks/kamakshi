@@ -154,7 +154,6 @@ class Ajax_Model extends CI_Model {
         if($this->input->post('bas_pro_id')) {
             $order_session_id = $this->session->userdata('user_session_id');
             $basket_remove_where='(orderitem_product_id="'.$this->input->post('bas_pro_id').'" and orderitem_session_id= "'.$order_session_id.'")';
-
             $this->db->where($basket_remove_where);
             $this->db->delete('giftstore_orderitem');
             $query_status="success";
@@ -232,6 +231,16 @@ class Ajax_Model extends CI_Model {
         $this->form_validation->set_rules('user_password', 'Password', 'required');    
         $this->form_validation->set_rules('user_email', 'Email', 'required|valid_email');               
         if ($this->form_validation->run() == FALSE) {   
+                 $this->load->model('Book_category');
+
+            /* Get Categories */
+            $status = $this->Book_category->get_all_categories();
+        }
+
+
+
+
+
             $status = "Please fill out all mandatory fields";
         }
         else {
@@ -247,55 +256,71 @@ class Ajax_Model extends CI_Model {
                     $status = "Email already exists";
                 }
                 else {
-                   $reg_data = array(
+                    $reg_data = array(
                     'user_name' => $this->input->post('user_name'),
                     'user_password' => $this->input->post('user_password'),
                     'user_email' => $this->input->post('user_email'),
                     'user_status' => '1'
                     );
                     $this->db->insert('giftstore_users', $reg_data);
-                    $status = "Registration successfully";
+                    $check_login_where = '(user_email="'.$this->input->post('user_email').'" and  user_status=1 and user_password="'.$this->input->post('user_password').'")';
+                    $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
+                    $this->session->set_userdata("login_status","1");   
+                    $user_session_details = $check_login_data->row_array();
+                    $this->session->set_userdata("login_session",$user_session_details);
+                    $status = "success";
                 }
             }
         }
         echo $status;
     }
 
-    //  Get registration status
+    //  Get registration login status
     public function get_register_login_status() {
         $this->form_validation->set_rules('email_log', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password_log', 'Password', 'required');    
-                      
+
         if ($this->form_validation->run() == FALSE) {   
             $status = "Please fill out all mandatory fields";
         }
         else {
-            $check_username_where = '(user_name="'.$this->input->post('user_name').'" and    user_status=1)';
-            $check_username_data = $this->db->get_where('giftstore_users',$check_username_where);
-            if($check_username_data->num_rows() > 0) {
-                $status = "Username already exists";
+            $check_login_where = '(user_email="'.$this->input->post('email_log').'" and    user_status=1 and user_password="'.$this->input->post('password_log').'")';
+            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
+            if($check_login_data->num_rows() > 0) {
+                $this->session->set_userdata("login_status","1");   
+                $user_session_details = $check_login_data->row_array();
+                $this->session->set_userdata("login_session",$user_session_details);
+                $status = "success";
             }
             else {
-                $check_email_where = '( user_email="'.$this->input->post('user_email').'" and user_status=1)';
-                $check_email_data = $this->db->get_where('giftstore_users',$check_email_where);  
-                if($check_email_data->num_rows() > 0) {
-                    $status = "Email already exists";
-                }
-                else {
-                   $reg_data = array(
-                    'user_name' => $this->input->post('user_name'),
-                    'user_password' => $this->input->post('user_password'),
-                    'user_email' => $this->input->post('user_email'),
-                    'user_status' => '1'
-                    );
-                    $this->db->insert('giftstore_users', $reg_data);
-                    $status = "Registration successfully";
-                }
+                $status = "Please enter valid details";  
             }
         }
         echo $status;
     }
 
+    //  Get popup login status
+    public function get_popup_login_status() {
+        $this->form_validation->set_rules('popup_email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('popup_password', 'Password', 'required');    
 
+        if ($this->form_validation->run() == FALSE) {   
+            $status = "Please fill out all mandatory fields";
+        }
+        else {
+            $check_login_where = '(user_email="'.$this->input->post('popup_email').'" and    user_status=1 and user_password="'.$this->input->post('popup_password').'")';
+            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
+            if($check_login_data->num_rows() > 0) {
+                $this->session->set_userdata("login_status","1");   
+                $user_session_details = $check_login_data->row_array();
+                $this->session->set_userdata("login_session",$user_session_details);
+                $status = "success";
+            }
+            else {
+                $status = "Please enter valid details";  
+            }
+        }
+        echo $status;
+    }
  
 }
