@@ -197,8 +197,8 @@
   text-align: center;
 }
 .filtering_sections span{
-  background: #fff none repeat scroll 0 0;
-  color: #5e5e5e;
+  /*background: #fff none repeat scroll 0 0;*/
+  color: #fff;
   margin-left: 10px;
   padding: 0 5px;
   text-transform: capitalize;

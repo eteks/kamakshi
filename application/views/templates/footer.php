@@ -133,6 +133,7 @@
     <script src="<?php echo base_url(); ?>assets/js/addSlider.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/Obj.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/nouislider.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/thumbnail-slider.js"></script>
     <!-- <script src="<?php echo base_url(); ?>assets/js/custom.js"></script> -->
 </body>
 </html>

@@ -266,7 +266,7 @@ div.uploader {
 }
 /*#footer {
 	width:100%;
-    position:fixed;
+    position:relative;
     height:50px;
     bottom:0px;
     left:0px;

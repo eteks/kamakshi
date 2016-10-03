@@ -27,6 +27,8 @@
     <link href="<?php echo base_url(); ?>assets/css/addSlider.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/nouislider.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/thumbs2.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/thumbnail-slider.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
     <link rel="shortcut icon" href="favicon.png">
 </head>

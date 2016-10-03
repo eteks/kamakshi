@@ -89,7 +89,7 @@ $route['adminindex/product_attributes'] = 'adminindex/product_attributes';
 $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes';
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
 $route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
-
+$route['adminindex/product_attribute_sets'] = 'adminindex/product_attribute_sets';
 
 
 
