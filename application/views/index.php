@@ -105,23 +105,25 @@
                     <?php foreach ($category_recipient_list as $cat): ?>
                         <div class="item-img item<?php echo $cat['recipient_mapping_id']; ?>">
                             <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
+                             <div class="home_category_image">
+                                <div class="flip-container home_product_images">
+                                    <div class="flipper home_product_images">
+                                        <div class="front home_product_images">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive position_images">
                                             </a>
                                         </div>
-                                        <div class="back">
+                                        <div class="back home_product_images">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive position_images">
                                             </a>
                                         </div>
                                     </div>
+                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
+                                    <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive position_images">
+                                    </a>
                                 </div>
-                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
-                                </a>
+                                </div>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $cat['category_name'] ?></a></h3>
                                     <br />
@@ -149,7 +151,7 @@
                                 <div class="portfoloi_content_area" >
                                     <div class="portfolio_menu">
                                         <ul id="filters">
-                                            <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*">Latest Products</a></li>
+                                            <li class="active_prot_menu latest_products"><a href="#portfolio_menu" data-filter="*">Latest Products</a></li>
                                         </ul>
                                    </div>
          
@@ -174,23 +176,25 @@
                     <?php foreach ($giftstore_product as $pro): ?>
                         <div class="item-img women">
                             <div class="product">
-                                <div class="flip-container">
-                                    <div class="flipper">
-                                        <div class="front">
+                              <div class="home_latest_product">
+                                <div class="flip-container latest_product_images">
+                                    <div class="flipper latest_product_images">
+                                        <div class="front latest_product_images">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive product_position">
                                             </a>
                                         </div>
-                                        <div class="back">
+                                        <div class="back latest_product_images">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive">
+                                                <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive product_position">
                                             </a>
                                         </div>
                                     </div>
+                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
+                                    <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive product_position">
+                                    </a>
                                 </div>
-                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive">
-                                </a>
+                               </div>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $pro['product_title'] ?></a>
                                     <p><?php echo $pro['product_price'] ?></p>
