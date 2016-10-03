@@ -57,7 +57,6 @@
             <!-- /#advantages -->
             <!-- *** ADVANTAGES END *** -->
             <!-- *** HOT PRODUCT SLIDESHOW *** -->
-        
         <div id="hot">
             <section id="our-works" class="page bg-style1">
                 <div class="container">
@@ -72,11 +71,11 @@
                                             foreach($recipient_list as $res_list): 
                                             if($res_list['recipient_type']=="All"):
                                         ?>
-                                            <li class="active_prot_menu"><a href="#portfolio_menu" data-filter="*"><?php echo $res_list['recipient_type']; ?></a></li>
+                                            <li class="active_prot_menu recipient_all_section"><a href="#portfolio_menu" data-filter="*"><?php echo $res_list['recipient_type']; ?></a></li>
                                         <?php
                                             else :
                                         ?>
-                                            <li class=""><a href="#portfolio_menu" data-filter=".item<?php echo $res_list['recipient_id']; ?>"><?php echo $res_list['recipient_type']; ?></a></li>
+                                            <li class="recipient_list_section"><a href="#portfolio_menu" data-filter=".item<?php echo $res_list['recipient_id']; ?>"><?php echo $res_list['recipient_type']; ?></a></li>
                                         <?php
                                             endif;
                                             endforeach;
@@ -84,7 +83,6 @@
                                         ?>                                            
                                         </ul>
                                    </div>
-         
                                 </div>
                         
                             </div>
@@ -102,8 +100,13 @@
                 <div class="container">
                     <div id="container"> 
                     <div class="product-slider">
-                    <?php foreach ($category_recipient_list as $cat): ?>
-                        <div class="item-img item<?php echo $cat['recipient_mapping_id']; ?>">
+                    <?php 
+                        $array_temp = array();
+                        foreach ($category_recipient_list as $cat): 
+                        if (!in_array($cat['category_id'], $array_temp)):
+                                $array_temp[] = $cat['category_id'];
+                        ?>
+                        <div class="item-img recipient_home item<?php echo $cat['recipient_mapping_id']; ?>">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
@@ -130,8 +133,40 @@
                             </div>
                             <!-- /.product -->
                         </div>
-                        <?php endforeach; ?>
-                 </div>
+                        <?php 
+                        else:
+                        ?>
+                        <div class="item-img secondary_list recipient_home item<?php echo $cat['recipient_mapping_id']; ?>" style="display:none;">
+                            <div class="product">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
+                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/">
+                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
+                                    <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive">
+                                </a>
+                                <div class="text">
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $cat['category_name'] ?></a></h3>
+                                    <br />
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.product -->
+                        </div>
+                        <?php
+                        endif;
+                        endforeach; ?>
+                    </div>
                     <!-- /.product-slider -->
                    </div>
                 </div>

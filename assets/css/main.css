@@ -265,6 +265,11 @@
   color : #c24641;
   display: none;
 }
-
+.registeration_status {
+  color: #c24641;
+  display: none;
+  margin: 10px 0;
+  text-align: center;
+}
 
 /* Ended by siva*/

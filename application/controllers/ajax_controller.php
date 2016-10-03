@@ -9,6 +9,8 @@ class Ajax_Controller extends CI_Controller {
 
 		// Load session library
         $this->load->library('session');
+        $this->load->library(array('form_validation','session'));
+        $this->load->helper(array('url','html','form'));
 
         // Load pagination library
         $this->load->library('ajax_pagination');
@@ -36,7 +38,8 @@ class Ajax_Controller extends CI_Controller {
         $config['total_rows']  = $data['product_count'];
         $config['per_page']    = $this->perPage;
         $this->ajax_pagination->initialize($config);
-        $this->load->view('products_ajax',$data,false);
+        $this->load->view('category',$data,false);
+        // $this->load->view('products_ajax',$data,false);
     	// echo $products_subcategory_list;		
 	}
 
@@ -85,4 +88,18 @@ class Ajax_Controller extends CI_Controller {
 		echo $data;
 	}
 
-} // end of the class 
+	// Registration
+	public function registeration()
+	{	
+		$data = $this->ajax_model->get_registeration_status();
+		echo $data;
+	}
+
+	// Login - registration
+	public function register_login()
+	{	
+		$data = $this->ajax_model->get_register_login_status();
+		echo $data;
+	}
+
+} // end of the class

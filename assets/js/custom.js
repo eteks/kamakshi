@@ -212,6 +212,17 @@ $('#checkout_order_submit').on('click',function() {
     $('.address_label').addClass('active');
 });
 
+//  Recipient list home
+$('.recipient_list_section').on('click',function() {
+    var this_val = $("a",$(this)).data('filter');
+    $('.recipient_home').hide();
+    $(this_val).fadeIn();
+});
+
+$('.recipient_all_section').on('click',function() {
+    $('.recipient_home').fadeIn();
+    $('.secondary_list').hide();
+});
 
 
 
@@ -359,7 +370,7 @@ $('#checkout_order_submit').on('click',function() {
         if ( $this.hasClass('selected') ) {
           return;
         }
-         $filterLinks.filter('.selected').removeClass('selected');
+        $filterLinks.filter('.selected').removeClass('selected');
         $this.addClass('selected');
         // get selector from data-filter attribute
         selector = $this.data('filter');
