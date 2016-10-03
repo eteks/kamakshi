@@ -871,10 +871,15 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/edit_endusers');
 	}
 	public function area()
-	{
-		$city['area'] = $this->location->get_areas();
-		$area['area_list'] = $this->location->get_area();	
+	{	
+		$area['area'] = $this->location->get_areas();
+		$city['area_list'] = $this->location->get_area();
 		$this->load->view('admin/area',$area);
+	}
+	public function ajax_area()
+	{	
+		$data = $this->location->get_ajax_area_data();
+		echo json_encode($data);
 	}
 	public function add_area()
 	{	
@@ -887,22 +892,12 @@ class Adminindex extends CI_Controller {
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
 	        array(
-	             'field'   => 'city_name',
-	             'label'   => 'City',
-	             'rules'   => 'trim|required|xss_clean'
-	          ),
-	        array(
 	             'field'   => 'area_name',
 	             'label'   => 'Area',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
-	        array(
-	             'field'   => 'area_delivery_charge',
-	             'label'   => 'Area',
-	             'rules'   => 'trim|required|xss_clean'
-	          ),
 	       array(
-	             'field'   => 'city_status',
+	             'field'   => 'area_status',
 	             'label'   => 'Status',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),      
@@ -940,12 +935,10 @@ class Adminindex extends CI_Controller {
 				else{
 					$data = array(
 						'area_name' => $this->input->post('area_name'),
-						'area_delivery_charge' => $this->input->post('area_delivery_charge'),
-						'area_city_id' => $this->input->post('city_name'),
-						'city_state_id' => $this->input->post('state_name'),
+						'area_state_id' => $this->input->post('state_name'),
 						'area_status' => $this->input->post('area_status'),
 					);
-					$result = $this->location->insert_city($data);
+					$result = $this->location->insert_area($data);
 					if($result)
 						$status = array(
 	                		'error_message' => "Area Inserted Successfully!"
@@ -957,9 +950,11 @@ class Adminindex extends CI_Controller {
 				}		
 			}
     	}
-		// print_r($status);	
-		
-		$status['area_list'] = $this->location->get_areas();
+		// print_r($status);
+		$data_values = $this->location->get_area_data($id);
+		$data['area_add']	= $data_values['state_city'];
+		$data['states']	= $data_values['states'];	
+		$status['area_list'] = $this->location->get_area();
 		$this->load->view('admin/add_area',$status);
 	}
 	public function edit_area()
@@ -1103,7 +1098,7 @@ class Adminindex extends CI_Controller {
 					$data = array(
 					'city_id' => $id,
 					'city_name' => $this->input->post('city_name'),
-					'state_name' => $this->input->post('state_name'),
+					'city_state_id' => $this->input->post('state_name'),
 					'city_status' => $this->input->post('city_status'),
 					);
 					$result = $this->location->update_city($data);
