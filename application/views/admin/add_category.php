@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,14 +42,17 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
-                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_category" enctype="multipart/form-data" name="category_form">
+<?php } ?>
+                <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_category" enctype="multipart/form-data" class="form_submit" name="category_form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Category Name</label>
-                        <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" name="category_name">
+                        <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" name="category_name" value="<?php echo set_value('category_name');?>">
                     </div>  
                     <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
+                        <label for="exampleInputFile">Category Image</label><span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                         <input type="file" id="category_image" name="category_image">
                     </div>
                     <div class="control-group">
@@ -56,16 +60,16 @@
                         <div class="controls">
                             <select name="category_status" id="sel_a" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1" <?php echo set_select('category_status', 1); ?>>Active</option>
+                                <option value="0" <?php echo set_select('category_status', 0); ?>>Inactive</option>
                             </select>
                         </div>
                     </div>
                     <div class="group">    
-                    <button type="submit" class="btn submit-btn btn-default" name="category_submit">Submit</button>
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -78,4 +82,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
-
+<?php } ?>
