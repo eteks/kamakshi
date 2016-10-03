@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-12">
                     <div id="productMain" class="row">
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <div id="mainImage">
                                 <img src="<?php echo base_url(); ?><?php echo $product_default_image; ?>" alt="" class="img-responsive main-image-position">
                             </div>
@@ -42,8 +42,8 @@
                             </select>
                         <?php endforeach; ?>
                         <?php endif; ?>   
-                        <div class="col-sm-2">
-                        <div id="thumbs" class="row">
+                        <div class="col-sm-3">
+                        <!-- <div id="thumbs" class="row">
                                 <?php foreach($product_image_details as $pro_det): ?>
                                 <div class="col-xs-12 images-list">
                                     <a href="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" class="thumb">
@@ -51,7 +51,33 @@
                                     </a>
                                 </div>
                                 <?php endforeach; ?>
-                        </div>
+                        </div> -->
+                        <div class="thumb_carosel">
+							        <div>
+							            <div id="thumbs2">
+							                <div class="inner">
+							                    <ul>
+							                        <!-- <li>
+							                            <a href="/">
+							                                <span class="thumb" style="background-image:url(img/1.jpg)">
+							                                    This slide demonstrates how to link the thumbnail image to another web page.
+							                                </span>
+							                            </a>
+							                        </li> -->
+							                        <li class="product_thumb_images">
+							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_1.jpg"></a>
+							                        </li>
+							                        <li class="product_thumb_images">
+							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg"></a>
+							                        </li>
+							                        <li class="product_thumb_images">
+							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_3.jpg"></a>
+							                        </li>
+							                     </ul>
+							                </div>
+							            </div>
+							        </div>
+                       </div>
                        </div>
                         <div class="col-sm-5">
                             <div class="box1">
