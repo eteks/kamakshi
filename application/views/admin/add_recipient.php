@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,21 +42,39 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
-                <form role="form" method="POST" id="add_recipient" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_recipient" name="recipient_form">
+<?php } ?>
+            <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+            }?>
+                <form role="form" method="POST" id="add_recipient" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_recipient" name="recipient_form" class="form_submit">
                     <div class="form-group">
                         <label for="recipient_name">Recipient Name<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control" id="recipient_name" name="recipient_name" placeholder="Enter recipient Name">
+                        <input type="text" class="form-control" id="recipient_name" name="recipient_name" placeholder="Enter recipient Name" value="<?php echo set_value('recipient_name');?>">
                     </div>  
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
-                        <div class="controls">
+                        <!-- <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control city_act" name="select_category[]" multiple>
                             <option value="">Select Category</option>
-                                <?php foreach ($category_list as $cat): ?>
-                                    <option value="<?php echo $cat["category_id"] ?>"><?php echo $cat["category_name"] ?></option>
-                                <?php endforeach ?>
+                                <?php //foreach ($category_list as $cat): ?>
+                                    <option value="<?php //echo $cat["category_id"] ?>"><?php //echo $cat["category_name"] ?></option>
+                                <?php //endforeach ?>
                             </select>
+                        </div> -->
+                        <div class="multiple_dropdown"> 
+                            <div class="select_multiple_option">
+                                <a id="admin_check">
+                                    <span class="hida">Select</span>  <i class="fa fa-caret-down"  aria-hidden="true"></i>  
+                                    <p class="multiSel"></p>  
+                                </a>
+                            </div>
+                            <div class="mutliSelect">
+                                <ul>
+                                <?php foreach ($category_list as $cat):
+                                    echo "<li><input type='checkbox' name='select_category[]' id='subcategory_name' value='".$cat["category_id"]."'".set_checkbox('select_category[]', $cat["category_id"], false)."/><span class='multiple_checkbox multple_checkbox_inactive'>".$cat["category_name"]."</span></li>";
+                                endforeach ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="control-group">
@@ -63,8 +82,8 @@
                         <div class="controls">
                             <select name="recipient_status" id="sel_c" class="product-type-filter form-control">
                                 <option value="">Select</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1" <?php echo set_select('recipient_status', '1', false); ?>>Active</option>
+                                <option value="0" <?php echo set_select('recipient_status', '0', false); ?>>Inactive</option>
                             </select>
                         </div>
                     </div>
@@ -72,7 +91,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -85,3 +104,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

@@ -67,67 +67,55 @@ class Catalog extends CI_Model {
 	}
 	public function insert_subcategory($data,$category_data)
 	{	
-		// Query to check whether category name already exist or not
-		$condition = "subcategory_name =" . "'" . $data['subcategory_name'] . "'";
-		$this->db->select('*');
-		$this->db->from('giftstore_subcategory');
-		$this->db->where($condition);
-		// $this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 0) {
-			// Query to insert data in database
-			$this->db->insert('giftstore_subcategory', $data);
-			//get inserted subcategory id to map in subcategory category relationship table
-			$subcategory_id = $this->db->insert_id();
-			foreach($category_data as $key => $value) {
-				$subcategory_category_map = array(
-	                					'subcategory_mapping_id' => $subcategory_id,
-	                					'category_mapping_id' => $value,
-	             						);
-				$this->db->insert('giftstore_subcategory_category', $subcategory_category_map);
-			}
-			if ($this->db->affected_rows() > 0) {
-				return true;
-			}
-		} else {
-			return false;
+		// Query to insert data in database
+		$this->db->insert('giftstore_subcategory', $data);
+		//get inserted subcategory id to map in subcategory category relationship table
+		$subcategory_id = $this->db->insert_id();
+		foreach($category_data as $key => $value) {
+			$subcategory_category_map = array(
+                					'subcategory_mapping_id' => $subcategory_id,
+                					'category_mapping_id' => $value,
+             						);
+			$this->db->insert('giftstore_subcategory_category', $subcategory_category_map);
 		}
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}
+		return false;
 	}	
 	public function update_subcategory($data)
 	{	
 		$category = $data['post_category'];
 		$subcategory_data = $data['post_subcategory'];
-		$condition = "subcategory_name =" . "'" . $subcategory_data['subcategory_name'] . "' AND subcategory_id NOT IN (". $subcategory_data['subcategory_id'].")";
-		$this->db->select('*');
-		$this->db->from('giftstore_subcategory');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
+		if(!empty($category['removed_category_data'])){
+			$condition = "subcategory_mapping_id =". $subcategory_data['subcategory_id'] ." AND category_mapping_id IN(".$category['removed_category_data'].")";
+			$this->db->from('giftstore_subcategory_category');
+			$this->db->where($condition);
+			$this->db->delete();
+			// trans_complete() function is used to check whether updated query successfully run or not
+			if ($this->db->trans_complete() == false) {
+				return false;
+			}
+		}
+		foreach($category['category_data'] as $value) {
+			$subcategory_category_map_data = array(
+				'subcategory_mapping_id' => $subcategory_data['subcategory_id'],
+				'category_mapping_id' => $value,
+			);
+			$this->db->select('*');
+			$this->db->from('giftstore_subcategory_category');
+			$this->db->where($subcategory_category_map_data);
+			$query = $this->db->get();
+			if($query->num_rows() == 0)
+				$this->db->insert('giftstore_subcategory_category', $subcategory_category_map_data);
+		}
+		$this->db->where('subcategory_id', $subcategory_data['subcategory_id']);
+		$this->db->update('giftstore_subcategory', $subcategory_data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
 			return false;
 		}
-		else{
-			if(!empty($category['removed_category_data'])){
-				$condition = "subcategory_mapping_id =". $subcategory_data['subcategory_id'] ." AND category_mapping_id IN(".$category['removed_category_data'].")";
-				$this->db->from('giftstore_subcategory_category');
-				$this->db->where($condition);
-				$this->db->delete();
-			}
-			foreach($category['category_data'] as $value) {
-				$subcategory_category_map_data = array(
-					'subcategory_mapping_id' => $subcategory_data['subcategory_id'],
-					'category_mapping_id' => $value,
-				);
-				$this->db->select('*');
-				$this->db->from('giftstore_subcategory_category');
-				$this->db->where($subcategory_category_map_data);
-				$query = $this->db->get();
-				if($query->num_rows() == 0)
-					$this->db->insert('giftstore_subcategory_category', $subcategory_category_map_data);
-			}
-			$this->db->where('subcategory_id', $subcategory_data['subcategory_id']);
-			$this->db->update('giftstore_subcategory', $subcategory_data);
-			return true;
-		}	
+		return true;	
 	}	
 	public function get_subcategory_data($id)
 	{	
@@ -160,31 +148,21 @@ class Catalog extends CI_Model {
 	}
 	public function insert_recipient($data,$category_data)
 	{	
-		// Query to check whether category name already exist or not
-		$condition = "recipient_type =" . "'" . $data['recipient_type'] . "'";
-		$this->db->select('*');
-		$this->db->from('giftstore_recipient');
-		$this->db->where($condition);
-		// $this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 0) {
-			// Query to insert data in database
-			$this->db->insert('giftstore_recipient', $data);
-			//get inserted recipient id to map in recipient category relationship table
-			$recipient_id = $this->db->insert_id();
-			foreach($category_data as $key => $value) {
-				$recipient_category_map = array(
-	                					'recipient_mapping_id' => $recipient_id,
-	                					'category_mapping_id' => $value,
-	             						);
-				$this->db->insert('giftstore_recipient_category', $recipient_category_map);
-			}
-			if ($this->db->affected_rows() > 0) {
-				return true;
-			}
-		} else {
-			return false;
+		// Query to insert data in database
+		$this->db->insert('giftstore_recipient', $data);
+		//get inserted recipient id to map in recipient category relationship table
+		$recipient_id = $this->db->insert_id();
+		foreach($category_data as $key => $value) {
+			$recipient_category_map = array(
+                					'recipient_mapping_id' => $recipient_id,
+                					'category_mapping_id' => $value,
+             						);
+			$this->db->insert('giftstore_recipient_category', $recipient_category_map);
 		}
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}
+		return false;
 	}
 	public function get_recipient_data($id)
 	{	
@@ -202,19 +180,37 @@ class Catalog extends CI_Model {
 	}	
 	public function update_recipient($data)
 	{	
-		$condition = "recipient_type =" . "'" . $data['recipient_type'] . "' AND recipient_id NOT IN (". $data['recipient_id'].")";
-		$this->db->select('*');
-		$this->db->from('giftstore_recipient');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
+		$category = $data['post_category'];
+		$recipient_data = $data['post_recipient'];
+		if(!empty($category['removed_category_data'])){
+			$condition = "recipient_mapping_id =". $recipient_data['recipient_id'] ." AND category_mapping_id IN(".$category['removed_category_data'].")";
+			$this->db->from('giftstore_recipient_category');
+			$this->db->where($condition);
+			$this->db->delete();
+			// trans_complete() function is used to check whether updated query successfully run or not
+			if ($this->db->trans_complete() == false) {
+				return false;
+			}
+		}
+		foreach($category['category_data'] as $value) {
+			$recipient_category_map_data = array(
+				'recipient_mapping_id' => $recipient_data['recipient_id'],
+				'category_mapping_id' => $value,
+			);
+			$this->db->select('*');
+			$this->db->from('giftstore_recipient_category');
+			$this->db->where($recipient_category_map_data);
+			$query = $this->db->get();
+			if($query->num_rows() == 0)
+				$this->db->insert('giftstore_recipient_category', $recipient_category_map_data);
+		}
+		$this->db->where('recipient_id', $recipient_data['recipient_id']);
+		$this->db->update('giftstore_recipient', $recipient_data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
 			return false;
 		}
-		else{
-			$this->db->where('recipient_id', $data['recipient_id']);
-			$this->db->update('giftstore_recipient', $data);
-			return true;
-		}	
+		return true;	
 	}
 	public function get_product_attributes()
 	{	
@@ -374,4 +370,23 @@ class Catalog extends CI_Model {
 			return false;
 		}
 	}	
+	public function get_product_attribute_sets(){
+		//get list of product attribute sets from database using mysql query 
+		$this->db->select('att.*,pro.product_title');
+		$this->db->from('giftstore_product_attribute_group AS att');
+		$this->db->join('giftstore_product AS pro', 'pro.product_id = att.product_mapping_id', 'inner');
+		// $this->db->join('giftstore_product_attribute_value AS val', 'val.product_attribute_value_id = att.product_attribute_value_combination_id', 'inner');
+		$this->db->order_by('product_attribute_group_id','desc');	
+		$query = $this->db->get();
+		foreach ($query->result_array() as $key => $value) {
+			$combine_data = array(explode(",",$value['product_attribute_value_combination_id']));
+			$query->result_array()['product_attribute_value_combination_id'] = $combine_data;
+			array_push($query->result_array(),$combine_data);
+		}
+		// echo "<pre>";
+		// print_r($query->result_array());
+		// echo "</pre>";
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
 }

@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,8 +42,11 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
-                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory/<?php echo $subcategory_data['subcategory_id']; ?>" name="edit_subcategory_form">
+<?php } ?>
+            <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+            }?>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory/<?php echo $subcategory_data['subcategory_id']; ?>" name="edit_subcategory_form" class="form_submit">
                     <div class="form-group">
                         <label for="subcategory_name">Subcategory Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="subcategory_name" name="edit_subcategory_name" placeholder="Enter SubCategory Name"
@@ -87,16 +91,15 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
     <!--/span-->
-
 </div><!--/row-->
-
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

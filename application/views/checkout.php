@@ -146,7 +146,7 @@
                                                             <?php echo $basket_det['orderitem_quantity']; ?>
                                                         </td>
                                                         <td> 
-                                                            &#8377; <span class="orderitem_price"> <?php echo $basket_det['orderitem_price']; ?>
+                                                            &#8377; <span class="orderitem_price"> <?php echo number_format($basket_det['orderitem_price'],2); ?>
                                                         </td>
                                                         <td>
                                                             &#8377; 0.00
@@ -168,7 +168,8 @@
                                                     <tr>
                                                         <th colspan="5">Total</th>
                                                         <th colspan="2">&#8377; 
-                                                            <span class="product_overall_total" data-value="<?php echo $total; ?>">  <?php echo number_format($total,2); ?> </span>
+                                                            <span class="product_overall_total" data-value="<?php echo $total; ?>">  <?php echo number_format(ceil($total),2); ?> </span>
+                                                            <input type="hidden" value="<?php echo number_format($total,2); ?>" class="overall_total_product_amount">
                                                         </th>
                                                     </tr>
                                                 </tfoot>
@@ -197,18 +198,18 @@
                             <h3>Order summary</h3>
                         </div>
                         <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-                        <?php 
+                        <!-- <?php 
                             $total = 0;
                             foreach ($basket_details as $basket_det): 
                                 $total +=  $basket_det['orderitem_quantity']*$basket_det['orderitem_price'];
                             endforeach;
-                        ?>
+                        ?> -->
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td>Order subtotal</td>
-                                        <th>&#8377; <?php echo number_format($total,2); ?></th>
+                                        <th>&#8377; <?php echo number_format(ceil($total),2); ?></th>
                                         <input type="hidden" value="<?php echo number_format($total,2); ?>" class="ordinary_total_amount" />
                                     </tr>
                                     <tr>
@@ -216,7 +217,7 @@
                                         <th> &#8377; 
                                             <span class="ordinary_shipping_amount">
                                                 <?php 
-                                                    $shipping_amount = 10 ;
+                                                    $shipping_amount = 0.00 ;
                                                     echo number_format($shipping_amount,2); 
                                                 ?>
                                             </span>
@@ -230,7 +231,7 @@
                                         <td>Total</td>
                                         <th>&#8377; 
                                             <span class="product_final_amount"> 
-                                                <?php echo number_format($shipping_amount+$total,2); ?> 
+                                                <?php echo number_format(ceil($shipping_amount+$total),2); ?> 
                                             </span>
                                         </th>
                                     </tr>

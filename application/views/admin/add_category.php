@@ -61,8 +61,8 @@
                         <div class="controls">
                             <select name="category_status" id="sel_a" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
-                                <option value="1" <?php echo set_select('category_status', 1); ?>>Active</option>
-                                <option value="0" <?php echo set_select('category_status', 0); ?>>Inactive</option>
+                                <option value="1" <?php echo set_select('category_status', '1',false); ?>>Active</option>
+                                <option value="0" <?php echo set_select('category_status', '0',false); ?>>Inactive</option>
                             </select>
                         </div>
                     </div>

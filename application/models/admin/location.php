@@ -174,13 +174,26 @@ class Location extends CI_Model {
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
+//Get area data based on state
+	public function get_ajax_area_data($data)
+	 {
+	 	// print_r($data);
+		if($this->input->post('city_id') && $this->input->post('state_id')){
+	 	 	$area_where='(area_state_id="'.$this->input->post('state_id').'" and area_city_id="'.$this->input->post('city_id').'" and area_status= 1)';
+	 	 	} 
+	 	$query = $this->db->get_where('giftstore_area',$area_where)->result_array();
+	 	
+	 	 	// return $query;
+	 }
 	public function insert_area($data)
-	{	
-		// Query to check whether state name already exist or not
+	{
+		print_r($data);	
+		// Query to check whether area name already exist or not
 		$condition = "area_name =" . "'" . $data['area_name'] . "'";
 		$this->db->select('*');
 		$this->db->from('giftstore_area');
-		 $this->db->join('giftstore_state', 'giftstore_state.state_id = giftstore_city.city_state_id','inner');
+		$this->db->join('giftstore_state', 'giftstore_state.state_id = giftstore_area.area_state_id','inner');
+		$this->db->join('giftstore_city', 'giftstore_city.city_id = giftstore_area.area_city_id','inner');
 		$this->db->where($condition);
 		// $this->db->limit(1);
 		$query = $this->db->get();
@@ -211,20 +224,28 @@ class Location extends CI_Model {
 		}	
 	}
 	public function get_area_data($id)
-	{	
-		$where = '(city_id="'.$id.'")';
-		$query['state_city'] = $this->db->get_where('giftstore_city', $where)->row_array();
+	{
+		// print_r($id);	
+		$where = '(area_state_id="'.$id.'")';
+		$where = '(area_city_id="'.$id.'")';
+		$query['state_city'] = $this->db->get_where('giftstore_area', $where)->row_array();
 
-		$where1 = '(state_status=1)';
-		$query['states'] = $this->db->get_where(' `giftstore_state', $where1)->result_array();
+		$where1 = '(area_status=1)';
+		$query['states'] = $this->db->get_where(' `giftstore_area', $where1)->result_array();
+		$query['cities'] = $this->db->get_where(' `giftstore_area', $where1)->result_array();
+
 		return $query;
+		// $query = $this->db->get_where('giftstore_area', array('area_id' => $id));
+		// return $query->row_array();
 	}
 	public function get_areas()
 	{
 		$this->db->select('*');
-		$this->db->from('giftstore_city city');
-		$this->db->join('giftstore_state state', 'state.state_id = city.city_state_id', 'inner');
+		$this->db->from('giftstore_area area');
+		$this->db->join('giftstore_state state', 'state.state_id = area.area_state_id', 'inner');
+		$this->db->join('giftstore_city city', 'city.city_id = area.area_city_id', 'inner');
 		$this->db->order_by('state.state_name','desc');
+		$this->db->order_by('city.city_name','desc');
 		return $this->db->get()->result_array();
 	}
 }

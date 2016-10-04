@@ -45,7 +45,7 @@
                                                 <input type="hidden" data-productid="<?php echo $basket_det['product_id']; ?>" data-quantity="<?php echo $basket_det['orderitem_quantity']; ?>" class="update_basket_details" />
                                             </td>
                                             <td> 
-                                                &#8377; <span class="orderitem_price"> <?php echo $basket_det['orderitem_price']; ?>
+                                                &#8377; <span class="orderitem_price"> <?php echo number_format($basket_det['orderitem_price'],2); ?>
                                                 <input type="hidden" value="<?php echo $basket_det['orderitem_price']; ?>" class="ordinary_orderitem_price" />
                                             </td>
                                             <td>
@@ -60,7 +60,7 @@
                                                 <input type="hidden" class="updated_product_total" value="<?php echo $product_total; ?>" />
                                             </td>
                                             <td>
-                                                <a class="basket_product_items" data-id="<?php echo $basket_det['product_id']; ?>"><i class="fa fa-trash-o"></i></a>
+                                                <a class="basket_product_items" data-id="<?php echo $basket_det['product_id']; ?>" title="Remove products"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                             <?php 
                                                 $total +=  $basket_det['orderitem_quantity']*$basket_det['orderitem_price']; 
@@ -73,7 +73,7 @@
                                         <tr>
                                             <th colspan="5">Total</th>
                                             <th colspan="2">&#8377; 
-                                                <span class="product_overall_total" data-value="<?php echo $total; ?>">  <?php echo number_format($total,2); ?> </span>
+                                                <span class="product_overall_total" data-value="<?php echo $total; ?>">  <?php echo number_format(ceil($total),2); ?> </span>
                                                 <input type="hidden" value="<?php echo number_format($total,2); ?>" class="overall_total_product_amount">
                                             </th>
                                         </tr>
@@ -192,7 +192,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Order subtotal</td>
-                                        <th>&#8377; <span class="product_subtotal product_overall_total"> <?php echo number_format($total,2); ?></th> </span>
+                                        <th>&#8377; <span class="product_subtotal product_overall_total"> <?php echo number_format(ceil($total),2); ?></th> </span>
                                     </tr>
                                     <tr>
                                         <td>
@@ -200,7 +200,7 @@
                                         </td>
                                         <th>
                                             &#8377; <?php 
-                                                $shipping_amount = 10 ;
+                                                $shipping_amount = 0.00 ;
                                                 echo number_format($shipping_amount,2); 
                                             ?>
                                             <input type="hidden" value="<?php echo number_format($shipping_amount,2); ?>" class="ordinary_shipping_amount" />
@@ -219,7 +219,7 @@
                                             Total
                                         </td>
                                         <th>
-                                            &#8377; <span class="product_final_amount"> <?php echo number_format($shipping_amount+$total,2); ?> </span>
+                                            &#8377; <span class="product_final_amount"> <?php echo number_format(ceil(($shipping_amount+$total)),2); ?> </span>
                                             <input type="hidden" value="<?php echo number_format($shipping_amount+$total,2); ?>" class="ordinary_final_amount" />
                                         </th>
                                     </tr>
@@ -251,60 +251,3 @@
       </div>
       <input type="hidden" id="total_amount" value="<?php echo $total; ?>">
 <?php include "templates/footer.php"; ?>
-
-
-
-
-<script>
-// Ajax post
-$(document).ready(function() {
-    // AJAX for removing items in basket
-    $(".basket_product_items").click(function() {
-        var bas_pro_id = $(this).data('id');
-        jQuery.ajax({
-        type: "POST",
-        dataType : 'json',
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/remove_baseket_product",
-        data: {bas_pro_id: bas_pro_id},
-
-        success: function(res) {
-        if (res)
-        {
-            location.reload();
-        }
-        }
-        });
-    });
-
-    // AJAX for updating items in basket
-    $("#updation_button").on('click',function() {
-        var updation={};
-        $('.amount_structure').each(function() {
-            var product_id = $(this).find('.basket_product_items').data('id');
-            var product_quantity = $(this).find('.product_quantity').val();
-            updation[product_id] = product_quantity;
-        });
-        jQuery.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/update_baseket_product",
-        data: {updation_det : updation},
-
-        success: function(res) {
-            if (res)
-            {   
-                if(res=="success") {
-                    $('#checkout_button').attr('disabled',false);
-                    $('#checkout_button').prop('title',"Proceed to checkout");
-                }             
-               $('.updations_status').html(res);
-               $('.updations_status').slideDown(350);
-
-            }
-        }
-        });
-
-    });
-
-});
-
-</script>

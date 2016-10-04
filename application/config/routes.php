@@ -61,7 +61,7 @@ $route['customer_account'] = 'index/customer_account';
 $route['customer_wishlist'] = 'index/customer_wishlist';
 $route['customer_orders'] = 'index/customer_orders';
 $route['customer_order'] = 'index/customer_order';
-$route['recipient_category'] = 'index/recipient_category';
+$route['recipient_category/(:any)'] = 'index/recipient_category/$1';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
@@ -89,7 +89,7 @@ $route['adminindex/product_attributes'] = 'adminindex/product_attributes';
 $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes';
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
 $route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
-
+$route['adminindex/product_attribute_sets'] = 'adminindex/product_attribute_sets';
 
 
 

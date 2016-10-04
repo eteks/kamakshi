@@ -105,11 +105,82 @@ class Users extends CI_Controller {
 		$this->load->view('admin/edit_adminusers',$status);
 	}
 	public function endusers()
-	{	
-		$this->load->view('admin/endusers');
+	{
+		//get list of end users from database and store it in array variable 'adminusers' with key 'adminusers_list'
+		$endusers['endusers_list'] = $this->usersmodel->get_endusers();
+		
+		//call the endusers views i.e rendered page and pass the adminusers data in the array variable 'adminusers'
+		$this->load->view('admin/endusers',$endusers);	
 	}
 	public function edit_endusers()
-	{	
-		$this->load->view('admin/edit_endusers');
+	{
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = array();//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'user_name',
+		             'label'   => 'Username',
+		             'rules'   => 'trim|required|xss_clean|min_length[5]|max_length[12]|callback_edit_unique[giftstore_users.user_id.user_name.'.$id.']'
+		          ),
+		       array(
+		             'field'   => 'user_password',
+		             'label'   => 'Password',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'user_email',
+		             'label'   => 'Email',
+		             'rules'   => 'trim|required|xss_clean|valid_email|callback_edit_unique[giftstore_users.user_id.user_email.'.$id.']'
+		          ),
+	          array(
+		             'field'   => 'user_dob',
+		             'label'   => 'Date Of Birth',
+		             'rules'   => 'trim|required|xss_clean|date_valid'
+		          ),
+		       array(
+		             'field'   => 'user_mobile',
+		             'label'   => 'Mobile',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),   
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+    		}
+    		else{
+				$data = array(
+				'user_id' => $id,
+				'user_name' => $this->input->post('user_name'),
+				'user_password' => $this->input->post('user_password'),
+				'user_email' => $this->input->post('user_email'),
+				'user_dob' => $this->input->post('user_dob'),
+				'user_mobile' => $this->input->post('user_mobile'),
+				);
+				$result = $this->usersmodel->update_endusers($data);
+				if($result)
+					$status['error_message'] = "Enduser Updated Successfully!";
+				else
+					$status['error_message'] = "Something Went Wrong!";	
+    		}
+		}
+		$status['enduser_data'] = $this->usersmodel->get_endusers_data($id);
+		$this->load->view('admin/edit_endusers',$status);	
 	}
 }
