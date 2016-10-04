@@ -375,17 +375,35 @@ class Catalog extends CI_Model {
 		$this->db->select('att.*,pro.product_title');
 		$this->db->from('giftstore_product_attribute_group AS att');
 		$this->db->join('giftstore_product AS pro', 'pro.product_id = att.product_mapping_id', 'inner');
-		// $this->db->join('giftstore_product_attribute_value AS val', 'val.product_attribute_value_id = att.product_attribute_value_combination_id', 'inner');
 		$this->db->order_by('product_attribute_group_id','desc');	
 		$query = $this->db->get();
-		foreach ($query->result_array() as $key => $value) {
-			$combine_data = array(explode(",",$value['product_attribute_value_combination_id']));
-			$query->result_array()['product_attribute_value_combination_id'] = $combine_data;
-			array_push($query->result_array(),$combine_data);
+		echo "<pre>";
+		print_r($query->result_array());
+		echo "</pre>";
+		foreach ($query->result_array() as $key=>$value)
+		{
+			$array_data = explode(",", $value['product_attribute_value_combination_id']);
+			echo $value['product_attribute_value_combination_id'];
+			$condition = "product_attribute_value_combination_id IN(".$value['product_attribute_value_combination_id'].")";
+			$this->db->select('group.*,val.*');
+			$this->db->from('giftstore_product_attribute_group AS group');
+			$this->db->join('giftstore_product_attribute_val AS val','inner');
+			$this->db->order_by('product_attribute_group_id','desc');	
+			$query1 = $this->db->get();
+			echo "<pre>";
+			print_r($query1->result_array());
+			echo "</pre>";
+			// print_r(explode(",", $value['product_attribute_value_combination_id']));	
 		}
-		// echo "<pre>";
-		// print_r($query->result_array());
-		// echo "</pre>";
+
+		$this->db->select('val.*');
+		$this->db->from('giftstore_product_attribute_value AS val');
+		// foreach ($query->result_array() as $key => $value) {
+		// 	$combine_data = array(explode(",",$value['product_attribute_value_combination_id']));
+		// 	$query->result_array()['product_attribute_value_combination_id'] = $combine_data;
+		// 	array_push($query->result_array(),$combine_data);
+		// }
+		
 		//return all records in array format to the controller
 		return $query->result_array();
 	}

@@ -56,10 +56,10 @@
                 <?php 
                 if(sizeof($recipient["category_name"]) > 1){
                     foreach($recipient["category_name"] as $cat) 
-                        echo "- ".$cat."<br>";
+                        echo $cat."<br>";
                 }
                 else
-                    echo "- ".$recipient["category_name"];
+                    echo $recipient["category_name"];
                 ?>
             </td>
             <td class="center"><span class="<?php if($recipient["recipient_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($recipient["recipient_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
