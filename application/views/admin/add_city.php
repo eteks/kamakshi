@@ -54,7 +54,7 @@
                     while ($row = mysql_fetch_array($query)) {
                         ?>
                     <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
-                <?php } ?>
+                    <?php } ?>
                     </select>
                     </div>
                     <div class="form-group">

@@ -50,4 +50,32 @@ class Usersmodel extends CI_Model {
 		}
 		return true;	
 	}	
+	public function get_endusers()
+	{	
+		//get list of adminusers from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_users');
+		$this->db->order_by('user_createddate','desc');	
+		$query = $this->db->get();
+
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
+	public function get_endusers_data($id)
+	{	
+		//get full data of specific admin users by their passing id
+		$query = $this->db->get_where('giftstore_users', array('user_id' => $id));
+		//Here row_array() represents to pass only one row of data for their particular user
+		return $query->row_array();
+	}
+	public function update_endusers($data)
+	{	
+		$this->db->where('user_id', $data['user_id']);
+		$this->db->update('giftstore_users', $data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
+			return false;
+		}
+		return true;	
+	}	
 }

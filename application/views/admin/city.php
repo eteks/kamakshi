@@ -39,7 +39,7 @@
         Add
         </a>
     <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
         <tr>
             <th class="product">City Name</th>
@@ -54,7 +54,7 @@
         <tr>
                 <td><?php echo $city["city_name"] ?></td>
                 <td><?php echo $city["state_name"] ?></td>
-                <td><?php echo $city["state_name"] ?></td>
+                <td><?php echo date("d/m/Y", strtotime($city["city_createddate"])); ?></td>
                 <td class="center"><span class="<?php if($city["city_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($city["city_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
                 <td class="center">
                     <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city["city_id"] ?>">

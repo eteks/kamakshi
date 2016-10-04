@@ -38,7 +38,8 @@
                 </div>
             </div>
           <div class="box-content">
-                <form role="form" id="edit_city">
+               <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city_edit['city_id']; ?>" enctype="multipart/form-data" name="edit_city_form">
                      <div class="control-group">
                         <label for="sel_a">State</label>
                     <select name="state_name" id="sel_a" class="product-type-filter form-control city_act">
@@ -53,7 +54,7 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="state_name">City Name</label>
+                        <label for="city_name">City Name</label>
                         <input type="text" class="form-control" id="city_name" placeholder="Enter City Name" value="<?php if(!empty($city_edit['city_name'])) echo $city_edit['city_name']; ?>" name="city_name">
                     </div>  
                    <div class="control-group">
