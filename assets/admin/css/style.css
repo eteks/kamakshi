@@ -202,6 +202,7 @@
 .dataTables_wrapper{
 	overflow-x: auto !important;
     width: 100% !important;
+     margin-top: 50px !important;
 }
 .dataTables{
 	width:1000px;
@@ -325,7 +326,7 @@
 }
 .alert-info{
 	/*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);*/
-	background-color:#ffccba !important;
+	background-color:#f2f8f8 !important;
 	width:95% !important;
 	/*border: 1px solid #ff0000;*/
 	border-color:none !important;
@@ -335,11 +336,6 @@
 }
 .fill_symbol{
 	color:#ff0000;
-}
-.no-alert-info {
-    border: none;
-    background-color:none;
-    box-shadow: none;
 }
 .close-icon2 a{
     background-color: #333333;
