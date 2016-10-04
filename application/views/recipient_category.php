@@ -1,5 +1,5 @@
 <?php include "templates/header.php"; ?>
-      <div id="all">
+    <div id="all">
         <div id="content">
             <div class="container">
                 <div class="col-md-12">
@@ -20,64 +20,54 @@
                     <!-- /#main-slider -->
                 </div>
             </div>
-           <!-- *** HOT PRODUCT SLIDESHOW ***
- _________________________________________________________ -->
-        
-        <div id="hot">
-                <!-- <div class="box">
-                    <div class="container">
-                        <div class="col-md-12">
-                            <h2>Hot this week</h2>
-                        </div>
-                    </div>
-                </div> -->
+            <!-- *** HOT PRODUCT SLIDESHOW *** -->
+            <div id="hot">
                 <div class="category_product">
-                	<h4 class="category_product_name">Products</h4>
+                	<h4 class="category_product_name"><?php echo $recipient_name['recipient_type']; ?></h4>
                 </div>
                 <div class="container">
                     <div id="container"> 
-                    <!-- <div class="recipient_category"> -->
-                    <?php foreach ($giftstore_category as $cat): ?>
-                        <!-- <div class="item-img women"> -->
-                            <div class="product recipient_category">
-                             <div class="home_category_image">
+                    <?php
+                        if(!empty($recipients_category_list)):
+                        foreach ($recipients_category_list as $rec_list): 
+                    ?>
+                        <div class="product recipient_category">
+                            <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
                                         <div class="front home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive position_images">
+                                            <a href="<?php echo base_url(); ?>index.php/category/<?php echo $rec_list['category_id']; ?>">
+                                                <img src="<?php echo base_url().$rec_list['category_image'] ?>" alt="" class="img-responsive position_images">
                                             </a>
                                         </div>
                                         <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive position_images">
+                                            <a href="<?php echo base_url(); ?>index.php/category/<?php echo $rec_list['category_id']; ?>">
+                                                <img src="<?php echo base_url().$rec_list['category_image'] ?>" alt="" class="img-responsive position_images">
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url().$cat['category_image'] ?>" alt="" class="img-responsive position_images">
+                                    <a href="<?php echo base_url(); ?>index.php/category/<?php echo $rec_list['category_id']; ?>" class="invisible">
+                                    <img src="<?php echo base_url().$rec_list['category_image'] ?>" alt="" class="img-responsive position_images">
                                     </a>
                                 </div>
-                                </div>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $cat['category_name'] ?></a></h3>
-                                    <br />
-                                </div>
-                                <!-- /.text -->
                             </div>
-                            <!-- /.product -->
-                        <!-- </div> -->
-                        <?php endforeach; ?>
-                 <!-- </div> -->
-                    <!-- /.product-slider -->
-                   <!-- </div> -->
+                            <div class="text">
+                                <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $rec_list['category_id']; ?>"><?php echo $rec_list['category_name'] ?></a></h3>
+                                <br />
+                            </div>
+                        </div>
+                    <?php
+                        endforeach;
+                        endif;
+                    ?>
+                    </div> 
+                    <!-- /.container -->
                 </div>
-                <!-- /.container -->
+                <!-- /#hot -->
             </div>
-            <!-- /#hot -->
             <!-- *** HOT END *** -->
         </div>
         <!-- /#content -->
- </div><!--all-->
+    </div><!--all-->
 <?php include "templates/footer.php"; ?>
  

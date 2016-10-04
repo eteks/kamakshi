@@ -44,11 +44,11 @@
             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_state" enctype="multipart/form-data" name="state_form">
                     <div class="form-group">
-                        <label for="state_name">State Name</label>
+                        <label for="state_name">State Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="state_name" placeholder="Enter state Name" name="state_name">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="state_status" id="state_status" class="product-type-filter form-control state_act">
                                  <option value="">Select</option>

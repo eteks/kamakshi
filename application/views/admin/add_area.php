@@ -43,7 +43,7 @@
             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_area/" enctype="multipart/form-data" name="add_area_form">
             <div class="control-group">
-                        <label for="sel_a">Select State</label>
+                        <label for="sel_a">Select State<span class="fill_symbol"> *</span></label>
                     <select name="state_name" id="sel_state" class="form-control state_act">
                    <option value="">
                      Select State 
@@ -58,7 +58,7 @@
                     </select>
                     </div>
                     <div class="control-group">
-                        <label for="sel_a">Select City</label>
+                        <label for="sel_a">Select City<span class="fill_symbol"> *</span></label>
                     <select name="city_name" id="sel_city" class="form-control city_act">
                    <option value="">
                      Select City 
@@ -73,15 +73,15 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="area_name">Area Name</label>
+                        <label for="area_name">Area Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control area_act" id="sel_area" placeholder="Enter area Name" name="area_name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Delivery charge</label>
+                        <label for="exampleInputEmail1">Delivery charge<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="deliverycharge" placeholder="Enter delivery charge" name="area_delivery_charge">
                     </div>  
                      <div class="control-group">
-                        <label class="control-label" for="sel_c">Area status</label>
+                        <label class="control-label" for="sel_c">Area status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="area_status" id="sel_a" class="product-type-filter form-control city_act">
                                  <option value="">Select</option>

@@ -33,8 +33,7 @@
     <link rel="shortcut icon" href="favicon.png">
 </head>
 <body>
-  <!-- *** TOPBAR ***
- ________________________________________________________ -->
+  <!-- *** TOPBAR *** -->
     <!-- Ajax loader added by siva -->
     <div class="loading" style="display: none;">
         <div class="ajax_loader">
@@ -49,10 +48,21 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </li>
-                    <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
-                    </li>
+                    <?php if(!empty($this->session->userdata("login_status"))): 
+                        $session_data = $this->session->userdata("login_session");
+                    ?>
+                        <li class="login_menu"> Welcome <?php echo $session_data['user_name']; ?>
+                        </li>
+                        <li class="login_menu"> <a href="<?php echo base_url(); ?>index.php/index/profile"> Profile </a>
+                        </li>
+                        <li> <a href="<?php echo base_url(); ?>index.php/index/logout"> Logout </a>
+                        </li>
+                    <?php else : ?>
+                        <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                        </li>
+                        <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
+                        </li>
+                    <?php endif; ?>
                     <!-- <li><a href="<?php //echo base_url(); ?>index.php/customer_orders/">Profile</a>
                     </li> -->
                     <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
@@ -64,19 +74,20 @@
         </div>
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog modal-sm">
-
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/index/user_login_process" id="login" method="post">
+                        <form action="popup_login" id="login" class="front-end_form" method="post">
+                            <div class="registeration_status">
+                            </div>
                             <div class="form-group"> 
-                                <input type="text" class="form-control" id="email-modal" name="email" placeholder="email">
+                                <input type="text" class="form-control" id="email-modal" name="popup_email" placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" name="password" placeholder="password">
+                                <input type="password" class="form-control" id="password-modal" name="popup_password" placeholder="password">
                             </div>
                             <p class="text-center">
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
@@ -90,14 +101,13 @@
         </div>
     </div>
     <!-- *** TOP BAR END *** -->
-    <!-- *** NAVBAR ***
- _________________________________________________________ -->
+    <!-- *** NAVBAR *** -->
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="<?php echo base_url(); ?>index.php/" data-animate-hover="bounce">
-                    <img src="" alt="Kamakshi" class="hidden-xs">
-                    <img src="" alt="Kamakshi" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                    <img src="" alt="" class="hidden-xs"><span class="brand_name">Kamakshi <br />Gifts</span>
+                    <img src="" alt="" class="visible-xs">
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -126,7 +136,7 @@
                                     <div class="row">
                                     <h5>Category</h5>
                                     <?php foreach ($giftstore_category as $cat):?>
-                                        <div class="col-sm-3">                                            
+                                        <div class="col-sm-3">                                
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></a>
                                                 </li>
@@ -148,14 +158,17 @@
                                         <div class="col-sm-3">
                                             <h5>Recipient</h5>
                                             <ul>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Men</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Women</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Boy</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/category/">Girl</a>
-                                                </li>
+                                                <?php 
+                                                    if(!empty($recipient_list)): 
+                                                    foreach ($recipient_list as $rec): 
+                                                ?>
+                                                    <li>
+                                                        <a href="<?php echo base_url(); ?>index.php/recipient_category/<?php echo $rec['recipient_id']; ?>"> <?php echo $rec['recipient_type']; ?></a>
+                                                    </li>
+                                                <?php
+                                                    endforeach;
+                                                    endif;
+                                                ?>
                                             </ul>
                                         </div>
                                         

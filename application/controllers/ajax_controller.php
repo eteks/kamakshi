@@ -63,7 +63,6 @@ class Ajax_Controller extends CI_Controller {
 	public function update_baseket_product()
 	{	
 		$remove_status = $this->ajax_model->get_update_product();
-		// echo $remove_status;	
 		echo $remove_status;	
 	}
 
@@ -99,6 +98,13 @@ class Ajax_Controller extends CI_Controller {
 	public function register_login()
 	{	
 		$data = $this->ajax_model->get_register_login_status();
+		echo $data;
+	}
+
+	// Login - popup
+	public function popup_login()
+	{	
+		$data = $this->ajax_model->get_popup_login_status();
 		echo $data;
 	}
 

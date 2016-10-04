@@ -48,11 +48,11 @@
             }?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_category/<?php echo $category_data['category_id']; ?>" enctype="multipart/form-data" name="edit_category_form" class="form_submit">
                     <div class="form-group">
-                        <label for="category_name">Category Name</label>
+                        <label for="category_name">Category Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" value="<?php if(!empty($category_data['category_name'])) echo $category_data['category_name']; ?>" name="edit_category_name">
                     </div>  
                     <div class="form-group">
-                        <label for="category_image">Category Image</label><span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
+                        <label for="category_image">Category Image<span class="fill_symbol"> *</span></label><span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                      <div class="category-product-image">
                         <input type="file" id="category_image" class="select-category-images" name="edit_category_image">
                         <?php
@@ -70,7 +70,7 @@
                        </div>
                     </div>
                    <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="edit_category_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>

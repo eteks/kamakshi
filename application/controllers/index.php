@@ -11,11 +11,9 @@ class Index extends CI_Controller
         $this->load->library('session');
         $this->load->library(array('form_validation','session'));
         $this->load->helper(array('url','html','form'));
-        $this->session->set_userdata("login_status","1");
-        $this->session->set_userdata("login_id","3");
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 3;
+        $this->perPage = 14;
     }
 
     // Index page
@@ -37,6 +35,7 @@ class Index extends CI_Controller
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
 		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('register',$categories);
 	}
@@ -54,6 +53,7 @@ class Index extends CI_Controller
 		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
 		$categories['product_category'] = $category_values['product_category'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
 		// print_r($categories);
 		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
     	    //pagination configuration
@@ -76,6 +76,7 @@ class Index extends CI_Controller
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
 
 		$categories_values = $this->index_model->get_product_details();
 		$categories['product_image_details'] = $categories_values['product_image_details'];
@@ -94,6 +95,7 @@ class Index extends CI_Controller
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $categories_values_basket = $this->index_model->get_cart_details();
         $categories['basket_details'] = $categories_values_basket['basket_details'];
         $categories['basket_count'] = $categories_values_basket['basket_count'];
@@ -109,9 +111,22 @@ class Index extends CI_Controller
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
 		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('contact',$categories);
 	}
+
+    // Profile for registered users
+    public function profile()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        // $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $this->load->view('profile',$categories);
+    }
 
 	public function reg_form()
     {
@@ -120,6 +135,7 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $this->index_model->get_reg_form();
         $this->load->view('register', $categories);
     }
@@ -133,6 +149,7 @@ class Index extends CI_Controller
         $categories_values_basket = $this->index_model->get_cart_details();
         $categories['basket_details'] = $categories_values_basket['basket_details'];
         $categories['basket_count'] = $categories_values_basket['basket_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
         // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
@@ -159,6 +176,7 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $this->load->view('customer_account', $categories);
     }
     public function customer_wishlist()
@@ -168,6 +186,7 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $this->load->view('customer_wishlist', $categories);
     }
     public function customer_orders()
@@ -177,6 +196,7 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $this->load->view('customer_orders', $categories);
     }
 
@@ -189,15 +209,31 @@ class Index extends CI_Controller
     {
         $this->index_model->mail_exists($key);
     }
-    
+
     public function recipient_category()
     {
         $categories_values_reg = $this->index_model->get_register();
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
-        $this->load->view('recipient_category',$categories);
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories_val_details = $this->index_model->get_recipients_category();
+        $categories['recipients_category_list'] = $categories_val_details['recipients_category_list'];
+        $categories['recipient_name'] = $categories_val_details['recipient_name'];
+        if($categories['recipients_category_list']!=null && $categories['recipient_name']!=null)
+        {
+            $this->load->view('recipient_category',$categories);
+        }
+        else {
+            $this->load->view('no_products',$categories);
+        }
     }
-  
+    public function logout()
+    {
+        $this->session->unset_userdata('login_status');
+        $this->session->unset_userdata('login_session');
+        redirect(base_url()); 
+    }
+ 
 }
 /* End of file welcome.php */

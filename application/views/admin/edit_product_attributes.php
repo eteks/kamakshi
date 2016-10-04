@@ -44,11 +44,11 @@
             <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_product_attributes/<?php echo $attribute_data['product_attribute_id']; ?>" name="edit_attribute_form">
                     <div class="form-group">
-                        <label for="category_name">Product Attributes</label>
+                        <label for="category_name">Product Attributes<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="category_name" placeholder="Enter Product attribute Name" value="<?php if(!empty($attribute_data['product_attribute'])) echo $attribute_data['product_attribute']; ?>" name="edit_product_attribute">
                     </div> 
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Input tags</label>
+                        <label class="control-label" for="sel_c">Input tags<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="edit_product_attribute_inputtags" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
@@ -61,7 +61,7 @@
                         </div>
                     </div> 
                    <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="edit_product_attribute_status" id="sel_c" class="product-type-filter form-control">
                                 <option value="">Select</option>

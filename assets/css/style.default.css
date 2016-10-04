@@ -735,6 +735,7 @@ h1 {
   font-size: 16px;
   font-weight: bolder;
   padding: 6px;
+  width: 35% !important
 }
 #content #checkout .table tbody tr td,
 #content #basket .table tbody tr td,
@@ -2039,7 +2040,7 @@ address {
 }
 .category_product {
     font-weight: 100;
-    margin-left: 555px;
+    margin:0 auto;
     text-transform: uppercase;
     width: 250px;
     margin-bottom:30px;
@@ -2053,7 +2054,7 @@ address {
 }
 .category_product {
     font-weight: 100;
-    margin-left: 55px !important;
+    margin:0 auto !important;
     text-transform: uppercase;
     width: 250px;
 }
@@ -2065,5 +2066,11 @@ address {
 .product_thumb_images{
 	width:50px !important;
 	height:50px !important;
+}
+.brand_name {
+    float: left;
+    letter-spacing: 1px;
+    line-height: 27px;
+    text-align: center;
 }
 

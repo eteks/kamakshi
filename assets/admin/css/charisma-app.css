@@ -1,4 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Shojumaru);
+@font-face {
+  font-family: 'Shojumaru';
+  src:  url('asserts/css/fonts/Shojumaru-Regular.ttf') format('ttf'),
+}
 select {
     background-color: #fff;
      padding: 0 5px;
@@ -329,7 +332,7 @@ div.center, p.center, img.center {
     background-color: #4fbfa8;
 }
 .navbar-inner .btn-group {
-    margin: 7px 35px;
+    margin: 7px 45px;
 }
 ul.ajax-loaders li {
     display: inline-block;

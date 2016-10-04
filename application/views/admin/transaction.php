@@ -1,6 +1,6 @@
 <?php include "templates/header.php" ?>
 <div class="ch-container">
-    <div class="row"> 
+    <div class="row footer_content"> 
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -34,7 +34,7 @@
         </div>
     </div>
    <div class="box-content">
-    <div class="alert alert_blue alert-info col-md-10"></div>
+    <div class="alert alert_blue alert-info col-md-10 no-alert-info"></div>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll" >
     <thead>
    <th class="product_small">Order Id</th>
@@ -113,6 +113,5 @@
 				</div> -->
     </div><!--/row-->
         </div>
-    </div>
     </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>

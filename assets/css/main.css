@@ -272,5 +272,14 @@
   margin: 10px 0;
   text-align: center;
 }
+.login_menu {
+  color: #fff;
+}
+.basket_product_items {
+  cursor: pointer;
+}
+.images_alignment,.position_images,.product_position {
+  display: none;
+}
 
 /* Ended by siva*/
