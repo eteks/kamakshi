@@ -96,8 +96,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="<?php echo base_url(); ?>index.php/" data-animate-hover="bounce">
-                    <img src="" alt="Kamakshi" class="hidden-xs">
-                    <img src="" alt="Kamakshi" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                    <img src="" alt="" class="hidden-xs"><span class="brand_name">Kamakshi <br />Gifts</span>
+                    <img src="" alt="" class="visible-xs">
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">

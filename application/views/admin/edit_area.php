@@ -44,7 +44,7 @@
                 <form role="form" id="add_area">
                  <div class="form-errors"></div>
                   <div class="control-group">
-                        <label for="sel_a">State</label>
+                        <label for="sel_a">State<span class="fill_symbol"> *</span></label>
                     <select name="city_id" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
@@ -62,15 +62,15 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="area_name">Area Name</label>
+                        <label for="area_name">Area Name<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="area_name" placeholder="Enter area Name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Delivery charge</label>
+                        <label for="exampleInputEmail1">Delivery charge<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="deliverycharge" placeholder="Enter delivery charge">
                     </div>  
                      <div class="control-group">
-                        <label class="control-label" for="sel_c">Area status</label>
+                        <label class="control-label" for="sel_c">Area status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>

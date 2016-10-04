@@ -44,11 +44,11 @@
             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_subcategory" name="subcategory_form" id="add_subcategory">
                     <div class="form-group">
-                        <label for="subcategory_name">Subcategory Name</label>
+                        <label for="subcategory_name">Subcategory Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="subcategory_name" name="subcategory_name" placeholder="Enter subcategory Name">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Category</label>
+                        <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
                         <!-- <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control city_act" name="select_category[]" multiple>
                             <option value="">Select Category</option>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                      <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control city_act" name="subcategory_status">
                                 <option value="">Select</option>

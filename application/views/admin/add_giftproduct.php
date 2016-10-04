@@ -45,19 +45,20 @@
              <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form" id="add_giftproduct">
              <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
-                        <label for="titlename">Product Title</label>
+                        <label for="titlename">Product Title<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="titlename" placeholder="Enter title Name" name="product_title">
                     </div>  
                     <div class="form-group">
-                        <label for="category_image">Product Image</label>
+                        <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
                         <input type="file" id="category_image" name="product_image[]" multiple="multiple">
+                        <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                     </div>
                      <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description">Description<span class="fill_symbol"> *</span></label>
                         <textarea type="text" class="form-control" id="description" placeholder="Enter description" name="product_description"></textarea>
                     </div> 
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Category</label>
+                        <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control category_act" name="select_category">
                             <option value="">Select Category</option>
@@ -68,7 +69,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose SubCategory</label>
+                        <label class="control-label" for="sel_c">Choose SubCategory<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control subcategory_act" name="select_subcategory">
                             <option value="">Select Subcategory</option>
@@ -76,7 +77,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Recipient</label>
+                        <label class="control-label" for="sel_c">Choose Recipient<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control recipient_act" name="select_recipient">
                             <option value="">Select Recipient</option>
@@ -84,12 +85,12 @@
                         </div>
                     </div>
                      <div class="form-group price_group">
-                        <label for="price">Price</label>
+                        <label for="price">Price<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control price" id="product_price" placeholder="Enter price">
                     </div> 
                     <input type="hidden" name="product_price" id="product_price_hidden">
                      <div class="form-group items_group">
-                        <label for="total_iteams">Total Items</label>
+                        <label for="total_iteams">Total Items<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control totalitem" id="product_totalitems" placeholder="Enter total items">
                     </div> 
                     <input type="hidden" name="product_totalitems" id="product_totalitems_hidden">
@@ -99,7 +100,7 @@
                         <input type="hidden" name="product_sold">
                     </div>  -->
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="product_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>

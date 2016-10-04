@@ -44,11 +44,11 @@
             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes" enctype="multipart/form-data" name="category_form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Product Attribute</label>
+                        <label for="exampleInputEmail1">Product Attribute<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="product_attribute" placeholder="Enter Product Attribute Name" name="product_attribute">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Input Type Tags</label>
+                        <label class="control-label" for="selectError">Input Type Tags<span class="fill_symbol"> *</span></label>
                         <div class="controls">                         
                             <select name="product_attribute_inputtags" id="sel_a" class="product-type-filter form-control">
                                 <option value="">Select</option>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="selectError">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="product_attribute_status" id="sel_a" class="product-type-filter form-control">
                                 <option value="">Select</option>

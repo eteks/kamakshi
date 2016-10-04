@@ -43,77 +43,77 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Title Name</label>
+                        <label for="exampleInputEmail1">Title Name<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="title_name" placeholder="Enter title Name">
                     </div>  
                     <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
+                        <label for="exampleInputFile">Category Image<span class="fill_symbol"> *</span></label>
                         <input type="file" id="category_image">
                         <div class="edit-catpro-image">
                            <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                             <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                            <div class="product-cat-images">
                             <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                         </div>
                     </div>
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Description</label>
+                        <label for="exampleInputEmail1">Description<span class="fill_symbol"> *</span></label>
                         <textarea type="email" class="form-control" id="description" placeholder="Enter description"></textarea>
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Price</label>
+                        <label for="exampleInputEmail1">Price<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control price" id="" placeholder="Enter price ">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Total Iteams</label>
+                        <label for="exampleInputEmail1">Total Iteams<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="totaliteam" placeholder="Enter total iteams">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Sold</label>
+                        <label for="exampleInputEmail1">Sold<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="sold" placeholder="Enter Sold">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Size</label>
+                        <label for="exampleInputEmail1">Size<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="size" placeholder="Enter Size">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Wight</label>
+                        <label for="exampleInputEmail1">Wight<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="wight" placeholder="Enter Wight">
                     </div> 
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Colorname</label>
+                        <label for="exampleInputEmail1">Colorname<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="color_name" placeholder="Enter Color Name">
                     </div> 
                      <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="selectError">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>

@@ -38,7 +38,7 @@
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
-    <div class="alert alert_blue alert-info col-md-10"></div>
+    <div class="alert alert_blue alert-info col-md-10 no-alert-info"></div>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
@@ -53,7 +53,7 @@
     <?php foreach ($subcategory_list as $subcat): ?>
         <tr>
             <td><?php echo $subcat["subcategory_name"] ?></td>
-            <td>
+            <td class="product_categories_name">
                 <?php 
                 if(sizeof($subcat["category_name"]) > 1){
                     foreach($subcat["category_name"] as $cat) 
@@ -111,4 +111,7 @@
         </div>
     </div>
 </div><!--/.fluid-container-->
+</div>
+</div>
+</div>
 <?php include "templates/footer.php" ?>

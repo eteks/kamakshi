@@ -38,7 +38,7 @@
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
-    <div class="alert alert_blue alert-info col-md-10"></div>
+    <div class="alert alert_blue alert-info col-md-10 no-alert-info"></div>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
        <tr>
@@ -105,8 +105,8 @@
     </div><!--/row-->
         </div>
     </div>
-
-    
-
 </div><!--/.fluid-container-->
+</div>
+</div>
+</div>
 <?php include "templates/footer.php" ?>

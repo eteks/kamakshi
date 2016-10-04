@@ -44,7 +44,7 @@
             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_city" enctype="multipart/form-data" name="city_form">
                 <div class="control-group">
-                        <label for="sel_a">Select State</label>
+                        <label for="sel_a">Select State<span class="fill_symbol"> *</span></label>
                     <select name="state_name" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
@@ -58,11 +58,11 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="city_name">City Name</label>
+                        <label for="city_name">City Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="city_name" placeholder="Enter City Name" name="city_name">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_status" id="city_status" class="product-type-filter form-control city_act">
                                  <option value="">Select</option>
