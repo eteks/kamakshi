@@ -82,11 +82,11 @@
                     </div>
                     <div class="control-group">
                         <label for="sel_a">State</label>
-                    <select name="state_name" id="sel_city" class="product-type-filter form-control city_act">
+                    <select name="state_name" id="sel_city" class="product-type-filter form-control state_act">
                    <option value="" >Select State</option>
                     <?php foreach ($state_list as $state_row): ?>
                          <?php   
-                            if($user_edit['user_state_id'] == $state_row['state_id'])  echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                            if($enduser_data['user_state_id'] == $state_row['state_id'])  echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
                             else
                                 echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
                         ?>
@@ -99,7 +99,7 @@
                    <option value="" >Select City</option>
                     <?php foreach ($city_list as $city_row): ?>
                          <?php   
-                            if($user_edit['user_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                            if($enduser_data['user_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
                             else
                                 echo "<option value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
                         ?>
@@ -108,15 +108,15 @@
                     </div>
                      <div class="control-group">
                         <label for="sel_a">Area</label>
-                    <select name="state_name" id="sel_a" class="form-control">
+                    <select name="area_name" id="sel_a" class="form-control">
                    <option value="">
-                     Select City 
+                     Select Area 
                     </option>
-                   <?php foreach ($cities as $city_row): ?>
+                   <?php foreach ($area_list as $area_row): ?>
                          <?php   
-                            if($area_add['area_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                            if($enduser_data['user_area_id'] == $area_row['area_id'])  echo "<option selected value='".$area_row['area_id']."'>".$area_row['area_name']."</option>";
                             else
-                                echo "<option value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                                echo "<option value='".$area_row['area_id']."'>".$area_row['area_name']."</option>";
                         ?>
                     <?php endforeach; ?>
                     </select>
@@ -144,71 +144,6 @@
         </div>
     </div>
     <!--/span-->
-<script>
-// Load area based on city
-jQuery(".state_act").on('change',function () {
-		 alert('success');
-        selected_state = $.trim($('option:selected',this).text());
-        selected_state_id = $('option:selected',this).val();
-        form_data = {'states_name':selected_state,'states_id':selected_state_id};
-        alert(form_data);
-        // alert(JSON.stringify(form_data));
-        if(selected_state != 'Select State'){
-        	$.ajax({
-               type: "POST",
-               url: "<?php echo base_url(); ?>" + "index.php/admin/users/ajax_user",
-               data: form_data,
-               cache: false,
-               success: function(data) { 
-               	alert(data);             
-                var obj = JSON.parse(data);
-                var options = '<option value="">Select City</option>';   
-                if(obj.length!=0){               
-                  $.each(obj, function(i){
-                    options += '<option value="'+obj[i].area_city_id+'">'+obj[i].city_name+'</option>';
-                  });  
-                }   
-                else{
-                    alert('No City added for '+selected_state);    
-                }  
-                $('.city_act').html(options); 
-                // $('.area_act').html('<option value="">Select Area</option>');                 
-               }
-           });
-       }        
-    });
-
-	jQuery(".city_act").on('change',function () {
-		alert('success');
-        selected_city = $.trim($('option:selected',this).text());
-        selected_city_id = $('option:selected',this).val();
-        form_data = {'city_name':selected_city,'user_city_id':selected_city_id};
-        alert(form_data);
-        // alert(JSON.stringify(form_data));
-        if(selected_state != 'Select City'){
-	         $.ajax({
-	               type: "POST",
-	               url: "<?php echo base_url(); ?>" + "index.php/admin/users/ajax_user",
-	               data: form_data,
-	               cache: false,
-	               success: function(data) { 
-	               	// alert(data);             
-	                var obj = JSON.parse(data);
-	                var options = '<option value="">Select Area</option>';   
-	                if(obj.length!=0){               
-	                  $.each(obj, function(i){
-	                    options += '<option value="'+obj[i].area_id+'">'+obj[i].area_name+'</option>';
-	                  });  
-	                }   
-	                else{
-	                    alert('No Area added for '+selected_city);    
-	                }  
-	                $('.area_act').html(options);                  
-	               }
-	           });
-	    }
-       });
-     </script>
 </div><!--/row-->
 
     <!-- content ends -->
