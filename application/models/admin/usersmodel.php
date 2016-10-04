@@ -49,7 +49,18 @@ class Usersmodel extends CI_Model {
 			return false;
 		}
 		return true;	
-	}	
+	}
+	//Get area data based on state
+	public function get_ajax_user_data($data)
+	 {
+	 	print_r($data);
+		if($this->input->post('city_id') && $this->input->post('state_id')){
+	 	 	$user_where='(user_state_id="'.$this->input->post('state_id').'" and user_city_id="'.$this->input->post('city_id').'" and area_status= 1)';
+	 	 	} 
+	 	$query = $this->db->get_where('giftstore_user',$user_where)->result_array();
+	 	
+	 	 	// return $query;
+	 }	
 	public function get_endusers()
 	{	
 		//get list of adminusers from database using mysql query 

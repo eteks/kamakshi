@@ -816,11 +816,14 @@ class Adminindex extends CI_Controller {
 	public function area()
 	{	
 		$area['area'] = $this->location->get_areas();
-		$city['area_list'] = $this->location->get_area();
+		$city['state_list'] = $this->location->get_state();
+		$city['city_list'] = $this->location->get_state();
 		$this->load->view('admin/area',$area);
 	}
 	public function ajax_area()
 	{
+		// $city['state_list'] = $this->location->get_state();
+		// $city['city_list'] = $this->location->get_state();
 		$data = $this->location->get_ajax_area_data();
 		echo json_encode($data);
 	}
@@ -909,7 +912,8 @@ class Adminindex extends CI_Controller {
 		// $data_values = $this->location->get_area_data($id);
 		// $data['area_add']	= $data_values['state_city'];
 		// $data['states']	= $data_values['states'];	
-		$status['area_list'] = $this->location->get_area();
+		$status['state_list'] = $this->location->get_state();
+		$status['state_list'] = $this->location->get_state();
 		$this->load->view('admin/add_area',$status);
 	}
 	public function edit_area()
@@ -922,35 +926,35 @@ class Adminindex extends CI_Controller {
 		}
 		if(!empty($_POST)){
 			// print_r($_POST);
-			$status = '';//array is initialized
-			$errors = '';
-			$validation_rules = array(
-			  array(
-		             'field'   => 'state_name',
-		             'label'   => 'State',
-		             'rules'   => 'trim|required|xss_clean'
-		          ),
-		      array(
-		             'field'   => 'city_name',
-		             'label'   => 'City',
-		             'rules'   => 'trim|required|xss_clean'
-		          ),
-		      array(
-		             'field'   => 'area_name',
-		             'label'   => 'City',
-		             'rules'   => 'trim|required|xss_clean'
-		          ),
-		      array(
-	                 'field'   => 'area_delivery_charge',
-	                 'label'   => 'Area',
-	                 'rules'   => 'trim|required|xss_clean'
-	          	  ),
-	          array(
-	                 'field'   => 'area_status',
-	                 'label'   => 'Status',
-	                 'rules'   => 'trim|required|xss_clean'
-	              ),    
-		    );
+			$status = array();//array is initialized
+		$errors='';
+		$validation_rules = array(
+	       array(
+	             'field'   => 'state_name',
+	             'label'   => 'State',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'city_name',
+	             'label'   => 'City',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'area_name',
+	             'label'   => 'Area',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'area_delivery_charge',
+	             'label'   => 'Area',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	       array(
+	             'field'   => 'area_status',
+	             'label'   => 'Status',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),      
+	    );
 		    $this->form_validation->set_rules($validation_rules);
 		    if ($this->form_validation->run() == FALSE) {
 		    	foreach($validation_rules as $row){
@@ -958,23 +962,15 @@ class Adminindex extends CI_Controller {
 		            $error = form_error($field);    //getting error for field name
 		                                            //form_error() is inbuilt function
 		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
     		else{
 				if (!empty($errors)) {
-					$status = strip_tags($errors);
+					$status['error_message'] = strip_tags($error);
 				}
 				else{
 					$data = array(
@@ -987,23 +983,23 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->update_area($data);
 					if($result)
-						$status = "Area Updated Successfully!";
+						$status['error_message'] = "Area Updated Successfully!";
 					else
-						$status = "Area Already Exists!";
+						$status['error_message'] = "Area Already Exists!";
 				}		
     		}
-    		$data['status'] = $status;
 		}
 		$data_values = $this->location->get_area_data($id);
-		$data['area_edit']	= $data_values['state_city'];
-		$data['states']	= $data_values['states'];
-		$data['cities']	= $data_values['cities'];
-		$this->load->view('admin/edit_area',$data);	
+		$status['area_edit']	= $data_values['state_city'];
+		$status['state_list'] = $this->location->get_state();
+		$status['cities']	= $data_values['cities'];
+		$status['city_list'] = $this->location->get_city();
+		$this->load->view('admin/edit_area',$status);	
 	}
 	public function city()
 	{	
 		$city['city'] = $this->location->get_cities();
-		$city['city_list'] = $this->location->get_city();
+		$city['state_list'] = $this->location->get_state();
 		$this->load->view('admin/city',$city);
 	}
 	public function add_city()
@@ -1077,6 +1073,7 @@ class Adminindex extends CI_Controller {
     	}
 		// print_r($status);	
 		$status['city_list'] = $this->location->get_city();
+		$status['state_list'] = $this->location->get_state();
 		$this->load->view('admin/add_city',$status);
 	}
 	public function edit_city()

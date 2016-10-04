@@ -49,12 +49,13 @@
                    <option value="">
                      Select State 
                     </option>
-                    <?php
-                    $query = mysql_query("select * from giftstore_state  where state_status='1' order by state_name asc");
-                    while ($row = mysql_fetch_array($query)) {
-                        ?>
-                    <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
-                    <?php } ?>
+                    <?php 
+                    foreach ($state_list as $state_row):      
+                        if($area_edit['area_state_id'] == $state_row['state_id'])  
+                        	echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                        else
+                            echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";                       
+                    endforeach; ?>
                     </select>
                     </div>
                     <div class="form-group">
