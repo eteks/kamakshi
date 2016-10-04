@@ -5,6 +5,7 @@ class Users extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('admin/usersmodel');
+		$this->load->model('admin/location');
 		// Load form helper library
 		$this->load->helper(array('form','custom'));
 		// Load form validation library
@@ -113,8 +114,8 @@ class Users extends CI_Controller {
 	{
 		//get list of end users from database and store it in array variable 'adminusers' with key 'adminusers_list'
 		$endusers['endusers_list'] = $this->usersmodel->get_endusers();
-		$endusers['state_list'] = $this->usersmodel->get_state();
-		$endusers['city_list'] = $this->usersmodel->get_state();
+		// $endusers['state_list'] = $this->usersmodel->get_state();
+		// $endusers['city_list'] = $this->usersmodel->get_state();
 		
 		//call the endusers views i.e rendered page and pass the adminusers data in the array variable 'adminusers'
 		$this->load->view('admin/endusers',$endusers);	
@@ -152,11 +153,26 @@ class Users extends CI_Controller {
 		             'label'   => 'Date Of Birth',
 		             'rules'   => 'trim|required|xss_clean|date_valid'
 		          ),
-		       array(
+		      array(
 		             'field'   => 'user_mobile',
 		             'label'   => 'Mobile',
 		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
-		          ),   
+		          ),  
+		      array(
+	             'field'   => 'state_name',
+	             'label'   => 'State',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'city_name',
+	             'label'   => 'City',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'area_name',
+	             'label'   => 'Area',
+	             'rules'   => 'trim|required|xss_clean'
+	          ), 
 		    );
 		    $this->form_validation->set_rules($validation_rules);
 		    if ($this->form_validation->run() == FALSE) {
@@ -179,6 +195,9 @@ class Users extends CI_Controller {
 				'user_email' => $this->input->post('user_email'),
 				'user_dob' => $this->input->post('user_dob'),
 				'user_mobile' => $this->input->post('user_mobile'),
+				'user_state_id' => $this->input->post('state_name'),
+				'user_city_id' => $this->input->post('city_name'),
+				'user_area_id' => $this->input->post('area_name'),
 				);
 				$result = $this->usersmodel->update_endusers($data);
 				if($result)
@@ -187,9 +206,12 @@ class Users extends CI_Controller {
 					$status['error_message'] = "Something Went Wrong!";	
     		}
 		}
-		$status['state_list'] = $this->usersmodel->get_state();
-		$status['city_list'] = $this->usersmodel->get_state();
-		$status['enduser_data'] = $this->usersmodel->get_endusers_data($id);
+		$data_values = $this->usersmodel->get_endusers_data($id);
+		$status['enduser_data']	= $data_values['state_city'];
+		$status['state_list'] = $this->location->get_state();
+		$status['cities']	= $data_values['cities'];
+		$status['city_list'] = $this->location->get_city();
+		$status['area_list'] = $this->location->get_area();
 		$this->load->view('admin/edit_endusers',$status);	
 	}
 }

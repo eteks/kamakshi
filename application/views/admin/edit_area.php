@@ -60,7 +60,7 @@
                     </select>
                     </div>
                     <div class="control-group">
-                        <label for="sel_a">City</label>
+                        <label for="sel_a">City<span class="fill_symbol"> *</span></label>
                     <select name="city_name" id="sel_city" class="product-type-filter form-control city_act">
                    <option value="" >Select City</option>
                     <?php foreach ($city_list as $city_row): ?>
@@ -74,10 +74,10 @@
                     </div>
                     <div class="form-group">
                         <label for="area_name">Area Name<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control" id="area_name" placeholder="Enter Ara Name" value="<?php if(!empty($area_edit['area_name'])) echo $area_edit['area_name']; ?>" name="area_name">
+                        <input type="text" class="form-control" id="area_name" placeholder="Enter Area Name" value="<?php if(!empty($area_edit['area_name'])) echo $area_edit['area_name']; ?>" name="area_name">
                     </div>
                     <div class="form-group">
-                        <label for="area_name">Delivery charge</label>
+                        <label for="area_name">Delivery charge<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="deliverycharge" placeholder="Enter delivery charge" value="<?php if(!empty($area_edit['area_delivery_charge'])) echo $area_edit['area_delivery_charge']; ?>" name="area_delivery_charge">
                     </div>  
                         <div class="control-group">

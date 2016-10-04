@@ -82,11 +82,11 @@
                     </div>
                     <div class="control-group">
                         <label for="sel_a">State</label>
-                    <select name="state_name" id="sel_city" class="product-type-filter form-control city_act">
+                    <select name="state_name" id="sel_city" class="product-type-filter form-control state_act">
                    <option value="" >Select State</option>
                     <?php foreach ($state_list as $state_row): ?>
                          <?php   
-                            if($user_edit['user_state_id'] == $state_row['state_id'])  echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                            if($enduser_data['user_state_id'] == $state_row['state_id'])  echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
                             else
                                 echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
                         ?>
@@ -99,7 +99,7 @@
                    <option value="" >Select City</option>
                     <?php foreach ($city_list as $city_row): ?>
                          <?php   
-                            if($user_edit['user_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                            if($enduser_data['user_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
                             else
                                 echo "<option value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
                         ?>
@@ -108,15 +108,15 @@
                     </div>
                      <div class="control-group">
                         <label for="sel_a">Area</label>
-                    <select name="state_name" id="sel_a" class="form-control">
+                    <select name="area_name" id="sel_a" class="form-control">
                    <option value="">
-                     Select City 
+                     Select Area 
                     </option>
-                   <?php foreach ($cities as $city_row): ?>
+                   <?php foreach ($area_list as $area_row): ?>
                          <?php   
-                            if($area_add['area_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                            if($enduser_data['user_area_id'] == $area_row['area_id'])  echo "<option selected value='".$area_row['area_id']."'>".$area_row['area_name']."</option>";
                             else
-                                echo "<option value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                                echo "<option value='".$area_row['area_id']."'>".$area_row['area_name']."</option>";
                         ?>
                     <?php endforeach; ?>
                     </select>
@@ -144,7 +144,6 @@
         </div>
     </div>
     <!--/span-->
-
 </div><!--/row-->
 
     <!-- content ends -->
