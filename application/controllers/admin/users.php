@@ -113,8 +113,8 @@ class Users extends CI_Controller {
 	{
 		//get list of end users from database and store it in array variable 'adminusers' with key 'adminusers_list'
 		$endusers['endusers_list'] = $this->usersmodel->get_endusers();
-		$endusers['state_list'] = $this->usersmodel->get_state();
-		$endusers['city_list'] = $this->usersmodel->get_state();
+		// $endusers['state_list'] = $this->usersmodel->get_state();
+		// $endusers['city_list'] = $this->usersmodel->get_state();
 		
 		//call the endusers views i.e rendered page and pass the adminusers data in the array variable 'adminusers'
 		$this->load->view('admin/endusers',$endusers);	
@@ -187,8 +187,8 @@ class Users extends CI_Controller {
 					$status['error_message'] = "Something Went Wrong!";	
     		}
 		}
-		$status['state_list'] = $this->usersmodel->get_state();
-		$status['city_list'] = $this->usersmodel->get_state();
+		// $status['state_list'] = $this->usersmodel->get_state();
+		// $status['city_list'] = $this->usersmodel->get_state();
 		$status['enduser_data'] = $this->usersmodel->get_endusers_data($id);
 		$this->load->view('admin/edit_endusers',$status);	
 	}

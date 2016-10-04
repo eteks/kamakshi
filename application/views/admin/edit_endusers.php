@@ -144,7 +144,71 @@
         </div>
     </div>
     <!--/span-->
+<script>
+// Load area based on city
+jQuery(".state_act").on('change',function () {
+		 alert('success');
+        selected_state = $.trim($('option:selected',this).text());
+        selected_state_id = $('option:selected',this).val();
+        form_data = {'states_name':selected_state,'states_id':selected_state_id};
+        alert(form_data);
+        // alert(JSON.stringify(form_data));
+        if(selected_state != 'Select State'){
+        	$.ajax({
+               type: "POST",
+               url: "<?php echo base_url(); ?>" + "index.php/admin/users/ajax_user",
+               data: form_data,
+               cache: false,
+               success: function(data) { 
+               	alert(data);             
+                var obj = JSON.parse(data);
+                var options = '<option value="">Select City</option>';   
+                if(obj.length!=0){               
+                  $.each(obj, function(i){
+                    options += '<option value="'+obj[i].area_city_id+'">'+obj[i].city_name+'</option>';
+                  });  
+                }   
+                else{
+                    alert('No City added for '+selected_state);    
+                }  
+                $('.city_act').html(options); 
+                // $('.area_act').html('<option value="">Select Area</option>');                 
+               }
+           });
+       }        
+    });
 
+	jQuery(".city_act").on('change',function () {
+		alert('success');
+        selected_city = $.trim($('option:selected',this).text());
+        selected_city_id = $('option:selected',this).val();
+        form_data = {'city_name':selected_city,'user_city_id':selected_city_id};
+        alert(form_data);
+        // alert(JSON.stringify(form_data));
+        if(selected_state != 'Select City'){
+	         $.ajax({
+	               type: "POST",
+	               url: "<?php echo base_url(); ?>" + "index.php/admin/users/ajax_user",
+	               data: form_data,
+	               cache: false,
+	               success: function(data) { 
+	               	// alert(data);             
+	                var obj = JSON.parse(data);
+	                var options = '<option value="">Select Area</option>';   
+	                if(obj.length!=0){               
+	                  $.each(obj, function(i){
+	                    options += '<option value="'+obj[i].area_id+'">'+obj[i].area_name+'</option>';
+	                  });  
+	                }   
+	                else{
+	                    alert('No Area added for '+selected_city);    
+	                }  
+	                $('.area_act').html(options);                  
+	               }
+	           });
+	    }
+       });
+     </script>
 </div><!--/row-->
 
     <!-- content ends -->
