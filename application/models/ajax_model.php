@@ -227,61 +227,81 @@ class Ajax_Model extends CI_Model {
 
     //  Get registration status
     public function get_registeration_status() {
-        $this->form_validation->set_rules('user_name', 'First Name', 'required');
-        $this->form_validation->set_rules('user_password', 'Password', 'required');    
-        $this->form_validation->set_rules('user_email', 'Email', 'required|valid_email');               
+
+        $validation_rules = array(
+            array(
+                 'field'   => 'user_name',
+                 'label'   => 'User Name',
+                 'rules'   => 'trim|required|xss_clean|is_unique[giftstore_users.user_name]'
+              ),
+            array(
+                 'field'   => 'user_email',
+                 'label'   => 'Email',
+                 'rules'   => 'trim|required|valid_email|xss_clean|is_unique[giftstore_users.user_email]'
+              ),
+            array(
+                 'field'   => 'user_password',
+                 'label'   => 'Password',
+                 'rules'   => 'trim|required|xss_clean'
+              ),   
+        );
+        $this->form_validation->set_rules($validation_rules);
+
         if ($this->form_validation->run() == FALSE) {   
-                 $this->load->model('Book_category');
-
-            /* Get Categories */
-            $status = $this->Book_category->get_all_categories();
-        }
-
-
-
-
-
-            $status = "Please fill out all mandatory fields";
+            foreach($validation_rules as $row){
+                $field = $row['field'];         //getting field name
+                $error = form_error($field);    //getting error for field name
+                //form_error() is inbuilt function
+                //if error is their for field then only add in $errors_array array
+                if($error){
+                    $status = strip_tags($error);
+                    break;
+                }
+            }
         }
         else {
-            $check_username_where = '(user_name="'.$this->input->post('user_name').'" and    user_status=1)';
-            $check_username_data = $this->db->get_where('giftstore_users',$check_username_where);
-            if($check_username_data->num_rows() > 0) {
-                $status = "Username already exists";
-            }
-            else {
-                $check_email_where = '( user_email="'.$this->input->post('user_email').'" and user_status=1)';
-                $check_email_data = $this->db->get_where('giftstore_users',$check_email_where);  
-                if($check_email_data->num_rows() > 0) {
-                    $status = "Email already exists";
-                }
-                else {
-                    $reg_data = array(
-                    'user_name' => $this->input->post('user_name'),
-                    'user_password' => $this->input->post('user_password'),
-                    'user_email' => $this->input->post('user_email'),
-                    'user_status' => '1'
-                    );
-                    $this->db->insert('giftstore_users', $reg_data);
-                    $check_login_where = '(user_email="'.$this->input->post('user_email').'" and  user_status=1 and user_password="'.$this->input->post('user_password').'")';
-                    $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
-                    $this->session->set_userdata("login_status","1");   
-                    $user_session_details = $check_login_data->row_array();
-                    $this->session->set_userdata("login_session",$user_session_details);
-                    $status = "success";
-                }
-            }
+            $reg_data = array(
+                'user_name' => $this->input->post('user_name'),
+                'user_password' => $this->input->post('user_password'),
+                'user_email' => $this->input->post('user_email'),
+                'user_status' => '1'
+                );
+            $this->db->insert('giftstore_users', $reg_data);
+            $check_login_where = '(user_email="'.$this->input->post('user_email').'" and  user_status=1 and user_password="'.$this->input->post('user_password').'")';
+            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
+            $this->session->set_userdata("login_status","1");   
+            $user_session_details = $check_login_data->row_array();
+            $this->session->set_userdata("login_session",$user_session_details);
+            $status = "success";
         }
         echo $status;
     }
 
     //  Get registration login status
     public function get_register_login_status() {
-        $this->form_validation->set_rules('email_log', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('password_log', 'Password', 'required');    
+        $validation_rules = array(
+            array(
+                 'field'   => 'email_log',
+                 'label'   => 'Email',
+                 'rules'   => 'trim|required|valid_email|xss_clean'
+              ),
+            array(
+                 'field'   => 'password_log',
+                 'label'   => 'Password',
+                 'rules'   => 'trim|required|xss_clean'
+              ),   
+        );
+        $this->form_validation->set_rules($validation_rules);
 
         if ($this->form_validation->run() == FALSE) {   
-            $status = "Please fill out all mandatory fields";
+            foreach($validation_rules as $row){
+                $field = $row['field'];         
+                $error = form_error($field);  
+                if($error){
+                    $status = strip_tags($error);
+                    break;
+                }
+            }
         }
         else {
             $check_login_where = '(user_email="'.$this->input->post('email_log').'" and    user_status=1 and user_password="'.$this->input->post('password_log').'")';
@@ -301,11 +321,29 @@ class Ajax_Model extends CI_Model {
 
     //  Get popup login status
     public function get_popup_login_status() {
-        $this->form_validation->set_rules('popup_email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('popup_password', 'Password', 'required');    
+        $validation_rules = array(
+            array(
+                 'field'   => 'popup_email',
+                 'label'   => 'Email',
+                 'rules'   => 'trim|required|valid_email|xss_clean'
+              ),
+            array(
+                 'field'   => 'popup_password',
+                 'label'   => 'Password',
+                 'rules'   => 'trim|required|xss_clean'
+              ),   
+        );
+        $this->form_validation->set_rules($validation_rules);
 
         if ($this->form_validation->run() == FALSE) {   
-            $status = "Please fill out all mandatory fields";
+            foreach($validation_rules as $row){
+                $field = $row['field'];         
+                $error = form_error($field);  
+                if($error){
+                    $status = strip_tags($error);
+                    break;
+                }
+            }
         }
         else {
             $check_login_where = '(user_email="'.$this->input->post('popup_email').'" and    user_status=1 and user_password="'.$this->input->post('popup_password').'")';
