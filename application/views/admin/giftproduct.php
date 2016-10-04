@@ -37,8 +37,7 @@
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
-    <div class="alert alert_blue alert-info col-md-10 no-alert-info"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
+        <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
     <tr>
         <th class="product-details-title">Product Title</th>

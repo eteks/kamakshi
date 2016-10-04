@@ -2034,7 +2034,7 @@ address {
 }
 .category_product_name{
 	text-align:center;
-	background-color:#4fbfa8;
+	background-color:#555;
 	color:#fff;
 	padding:10px 10px;
 }
@@ -2048,7 +2048,7 @@ address {
 @media(max-width:767px){
 	.category_product_name{
 	text-align:center;
-	background-color:#4fbfa8;
+	background-color:#555;
 	color:#fff;
 	padding:10px 10px;
 }
