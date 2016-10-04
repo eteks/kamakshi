@@ -48,12 +48,13 @@
                    <option value="">
                      Select State 
                     </option>
-                    <?php
-                    $query = mysql_query("select * from giftstore_state  where state_status='1' order by state_name asc");
-                    while ($row = mysql_fetch_array($query)) {
-                        ?>
-                    <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
-                    <?php } ?>
+                    <?php 
+                    foreach ($state_list as $state_row):      
+                        if($area_edit['area_state_id'] == $state_row['state_id'])  
+                        	echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                        else
+                            echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";                       
+                    endforeach; ?>
                     </select>
                     </div>
                     <div class="control-group">
@@ -62,12 +63,13 @@
                    <option value="">
                      Select City 
                     </option>
-                    <?php
-                    $query = mysql_query("select * from giftstore_city  where city_status='1' order by city_name asc");
-                    while ($row = mysql_fetch_array($query)) {
-                        ?>
-                    <option value="<?php echo $row['city_id']; ?>"><span><?php echo $row['city_name']; ?></span></option>
-                    <?php } ?>
+                    <?php 
+                    foreach ($city_list as $city_row):      
+                        if($area_edit['area_city_id'] == $city_row['city_id'])  
+                        	echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                        else
+                            echo "<option value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";                       
+                    endforeach; ?>
                     </select>
                     </div>
                     <div class="form-group">
@@ -104,11 +106,11 @@ jQuery(".state_act").on('change',function () {
         selected_state_id = $('option:selected',this).val();
         form_data = {'states_name':selected_state,'states_id':selected_state_id};
         alert(form_data);
-        alert(JSON.stringify(form_data));
+        // alert(JSON.stringify(form_data));
         if(selected_state != 'Select State'){
         	$.ajax({
                type: "POST",
-               url: "kamakshi/index.php/admin/adminindex/ajax_area",
+               url: "<?php echo base_url(); ?>" + "index.php/admin/adminindex/ajax_area",
                data: form_data,
                cache: false,
                success: function(data) { 
@@ -117,7 +119,7 @@ jQuery(".state_act").on('change',function () {
                 var options = '<option value="">Select City</option>';   
                 if(obj.length!=0){               
                   $.each(obj, function(i){
-                    options += '<option value="'+obj[i].city_id+'">'+obj[i].city_name+'</option>';
+                    options += '<option value="'+obj[i].area_city_id+'">'+obj[i].city_name+'</option>';
                   });  
                 }   
                 else{
@@ -134,13 +136,13 @@ jQuery(".state_act").on('change',function () {
 		alert('success');
         selected_city = $.trim($('option:selected',this).text());
         selected_city_id = $('option:selected',this).val();
-        form_data = {'city_name':selected_city,'city_id':selected_city_id};
+        form_data = {'city_name':selected_city,'user_city_id':selected_city_id};
         alert(form_data);
-        alert(JSON.stringify(form_data));
+        // alert(JSON.stringify(form_data));
         if(selected_state != 'Select City'){
 	         $.ajax({
 	               type: "POST",
-	               url: "kamakshi/index.php/admin/adminindex/ajax_area",
+	               url: "<?php echo base_url(); ?>" + "index.php/admin/adminindex/ajax_area",
 	               data: form_data,
 	               cache: false,
 	               success: function(data) { 

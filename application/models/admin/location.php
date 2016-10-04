@@ -177,12 +177,15 @@ class Location extends CI_Model {
 //Get area data based on state
 	public function get_ajax_area_data($data)
 	 {
-	 	// print_r($data);
+	 	// print_r(get_ajax_area_data($data));
 		if($this->input->post('city_id') && $this->input->post('state_id')){
 	 	 	$area_where='(area_state_id="'.$this->input->post('state_id').'" and area_city_id="'.$this->input->post('city_id').'" and area_status= 1)';
 	 	 	} 
-	 	$query = $this->db->get_where('giftstore_area',$area_where)->result_array();
-	 	
+		$query = $this->db->get_where('giftstore_area',$area_where)->result_array();
+		// $query = $this->db->query("SELECT * FROM giftstore_area order 
+			// by area_createddate desc");	
+// 	 	
+// 	 	
 	 	 	// return $query;
 	 }
 	public function insert_area($data)
@@ -208,7 +211,7 @@ class Location extends CI_Model {
 		}
 	}
 	public function update_area($data)
-	{	
+	{
 		$condition = "area_name =" . "'" . $data['area_name'] . "' AND area_id NOT IN (". $data['area_id'].")";
 		$this->db->select('*');
 		$this->db->from('giftstore_area');
@@ -224,19 +227,15 @@ class Location extends CI_Model {
 		}	
 	}
 	public function get_area_data($id)
-	{
-		// print_r($id);	
-		$where = '(area_state_id="'.$id.'")';
-		$where = '(area_city_id="'.$id.'")';
+	{	
+		// echo $id;
+		$where = '(area_id="'.$id.'")';
 		$query['state_city'] = $this->db->get_where('giftstore_area', $where)->row_array();
-
 		$where1 = '(area_status=1)';
 		$query['states'] = $this->db->get_where(' `giftstore_area', $where1)->result_array();
 		$query['cities'] = $this->db->get_where(' `giftstore_area', $where1)->result_array();
 
 		return $query;
-		// $query = $this->db->get_where('giftstore_area', array('area_id' => $id));
-		// return $query->row_array();
 	}
 	public function get_areas()
 	{

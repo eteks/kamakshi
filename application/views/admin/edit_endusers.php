@@ -82,27 +82,24 @@
                     </div>
                     <div class="control-group">
                         <label for="sel_a">State</label>
-                    <select name="state_name" id="sel_a" class="form-control">
-                   <option value="">
-                     Select State 
-                    </option>
-                    <?php
-                    $query = mysql_query("select * from giftstore_state  where state_status='1' order by state_name asc");
-                    while ($row = mysql_fetch_array($query)) {
+                    <select name="state_name" id="sel_city" class="product-type-filter form-control city_act">
+                   <option value="" >Select State</option>
+                    <?php foreach ($state_list as $state_row): ?>
+                         <?php   
+                            if($user_edit['user_state_id'] == $state_row['state_id'])  echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                            else
+                                echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
                         ?>
-                    <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
-                    <?php } ?>
+                    <?php endforeach; ?>
                     </select>
                     </div>
-                     <div class="control-group">
+                    <div class="control-group">
                         <label for="sel_a">City</label>
-                    <select name="state_name" id="sel_a" class="form-control">
-                   <option value="">
-                     Select City 
-                    </option>
-                   <?php foreach ($cities as $city_row): ?>
+                    <select name="city_name" id="sel_city" class="product-type-filter form-control city_act">
+                   <option value="" >Select City</option>
+                    <?php foreach ($city_list as $city_row): ?>
                          <?php   
-                            if($area_add['area_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
+                            if($user_edit['user_city_id'] == $city_row['city_id'])  echo "<option selected value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
                             else
                                 echo "<option value='".$city_row['city_id']."'>".$city_row['city_name']."</option>";
                         ?>
