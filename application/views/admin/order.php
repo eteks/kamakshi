@@ -39,54 +39,52 @@
         </a> -->
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll" >
     <thead>
+    <th class="product_small">Order No</th>
 	<th class="product_small">User Id</th>
-	<th class="product_small">Total Items</th>
 	<th class="product_small">User Type</th>
 	<th class="product">User Name</th>
+	<th class="product_small">Total Items</th>
+	<th class="product_small">Total amount</th>
 	<th class="product">Email</th>
+	<th class="product_small">Mobile</th>
+	<th class="product">Address</th>
 	<th class="product">State</th>
 	<th class="product">City</th>
 	<th class="product">Area</th>
-	<th class="product">Email</th>
-	<th class="product_small">Mobile</th>
-	<th class="product_small">Delivery date</th>
-	<th class="product_small">Delivery time</th>
-	<th class="product_small">Total amount</th>
-	<th class="product_small">Staus</th>
 	<th class="product">Created Date</th>
+	<th class="product_small">Staus</th>
 	<th class="product_small">Actions</th>
 	</tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Worth Name</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-         <td class="center">2012/03/01</td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_order">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
+    <?php foreach ($order_list as $order): ?>
+        <tr>
+        	<td><?php echo $order["order_id"] ?></td>
+            <td><?php echo $order["order_user_id"] ?></td>
+            <td><?php echo $order["order_user_type"] ?></td>
+            <td><?php echo $order["order_customer_name"] ?></td>
+            <td><?php echo $order["order_total_items"] ?></td>
+            <td class="center"><?php echo $order["order_total_amount"] ?></td>
+            <td class="center"><?php echo $order["order_customer_email"] ?></td>
+            <td class="center"><?php echo $order["order_shipping_mobile"] ?></td>
+            <td class="center"><?php echo $order["order_shipping_line1"] ?></td>
+            <td class="center"><?php echo $order["order_shipping_state_id"] ?></td>
+            <td class="center"><?php echo $order["order_shipping_city_id"] ?></td>
+            <td class="center"><?php echo $order["order_shipping_area_id"] ?></td>
+            <td class="center"><?php echo date("d/m/Y", strtotime($order["order_createddate"])); ?></td>
+            <td class="center"><span class="<?php if($order["order_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($order["order_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+            <td class="center">
+                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_order/<?php echo $order["order_user_id"] ?>">
+                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+    <?php endforeach ?>
     </tbody>
     </table>
     </div>

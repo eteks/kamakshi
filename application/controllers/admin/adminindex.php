@@ -852,8 +852,8 @@ class Adminindex extends CI_Controller {
 	public function area()
 	{	
 		$area['area'] = $this->location->get_areas();
-		$city['state_list'] = $this->location->get_state();
-		$city['city_list'] = $this->location->get_state();
+		$area['state_list'] = $this->location->get_state();
+		$area['city_list'] = $this->location->get_state();
 		$this->load->view('admin/area',$area);
 	}
 	public function ajax_area()
@@ -1187,8 +1187,109 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/state',$state);
 	}
 	public function edit_order()
-	{	
-		$this->load->view('admin/edit_order');
+	{
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = array();//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'order_customer_name',
+		             'label'   => 'Customer Name',
+		             'rules'   => 'trim|required|xss_clean|min_length[5]|max_length[12]|callback_edit_unique[giftstore_users.user_id.user_name.'.$id.']'
+		          ),
+		       array(
+		             'field'   => 'order_shipping_line1',
+		             'label'   => 'Address',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'order_shipping_line2',
+		             'label'   => 'Address',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'order_shipping_email',
+		             'label'   => 'Email',
+		             'rules'   => 'trim|required|xss_clean|valid_email|callback_edit_unique[giftstore_users.user_id.user_email.'.$id.']'
+		          ),
+	          array(
+		             'field'   => 'order_total_items',
+		             'label'   => 'Date Of Birth',
+		             'rules'   => 'trim|required|xss_clean|date_valid'
+		          ),
+		      array(
+		             'field'   => 'order_shipping_mobile',
+		             'label'   => 'Mobile',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),  
+		      array(
+	             'field'   => 'order_shipping_state_id',
+	             'label'   => 'State',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'order_shipping_city_id',
+	             'label'   => 'City',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'order_shipping_area_id',
+	             'label'   => 'Area',
+	             'rules'   => 'trim|required|xss_clean'
+	          ), 
+	          array(
+		             'field'   => 'order_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),  
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+    		}
+    		else{
+				$data = array(
+				'order_id' => $id,
+				'order_customer_name' => $this->input->post('customer_name'),
+				'order_shipping_line1' => $this->input->post('order_shipping_line1'),
+				'order_shipping_line2' => $this->input->post('order_shipping_line2'),
+				'order_shipping_email' => $this->input->post('order_shipping_email'),
+				'order_total_items' => $this->input->post('order_total_items'),
+				'order_shipping_mobile' => $this->input->post('order_shipping_mobile'),
+				'order_shipping_state_id' => $this->input->post('state_name'),
+				'order_shipping_city_id' => $this->input->post('city_name'),
+				'order_shipping_area_id' => $this->input->post('area_name'),
+				);
+				$result = $this->usersmodel->update_endusers($data);
+				if($result)
+					$status['error_message'] = "Order Updated Successfully!";
+				else
+					$status['error_message'] = "Something Went Wrong!";	
+    		}
+		}
+		$data_values = $this->location->get_order_data($id);
+		$status['order_data']	= $data_values['state_city'];
+		$status['state_list'] = $this->location->get_state();
+		$status['cities']	= $data_values['cities'];
+		$status['city_list'] = $this->location->get_city();
+		$status['area_list'] = $this->location->get_area();
+		$this->load->view('admin/edit_order',$status);	
 	}
 	public function orderitem()
 	{	
@@ -1199,8 +1300,9 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/edit_orderitem');
 	}
 	public function transaction()
-	{	
-		$this->load->view('admin/transaction');
+	{
+		$transaction['transaction_list'] = $this->location->get_transaction();	
+		$this->load->view('admin/transaction',$transaction);
 	}
 	public function add_state()
 	{	
@@ -1340,8 +1442,11 @@ class Adminindex extends CI_Controller {
 		echo json_encode($category_reference_data);
 	}
 	public function order()
-	{	
-		$this->load->view('admin/order');
+	{
+		$order['order_list'] = $this->location->get_order();
+		$order['state'] = $this->location->get_areas();
+		$order['city'] = $this->location->get_areas();	
+		$this->load->view('admin/order',$order);
 	}
 	public function product_attribute_sets()
 	{	
