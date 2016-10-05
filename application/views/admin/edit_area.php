@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,9 +42,11 @@
                 </div>
             </div>
              <div class="box-content">
-             	<?php if (isset($error_message)){ 
+			<?php } ?>
+                <?php if (isset($error_message)){ 
                     echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
                 }?>
+                <?php ?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area/<?php echo $area_edit['area_id']; ?>" enctype="multipart/form-data" name="edit_area_form">
                  <div class="form-errors"></div>
                   <div class="control-group">
@@ -98,6 +101,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
+                <?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -108,3 +112,5 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>
+

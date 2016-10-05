@@ -177,20 +177,13 @@ class Location extends CI_Model {
 //Get area data based on state
 	public function get_ajax_area_data()
 	 {
-// just for sample
-		// $query = $this->db->query("SELECT * FROM giftstore_category WHERE category_status = 1");
-		// $query = $this->db->get_where('giftstore_category', array('category_status' => 1));
-		// echo $query->num_rows();
-		// return $query->row_array();
-
-		//get list of categories from database using mysql query 
-		$query = $this->db->query("SELECT * FROM giftstore_city order 
-			by city_createddate desc");		
-		// echo "<pre>";
-		// print_r($query->result());
-		// echo "</pre>";
-		//return all records in array format to the controller
-		return $query->result_array();
+		//  Get area data based on citypublic 
+		if($this->input->post('states_id')) 
+		{
+		$area_where='(city_state_id="'.$this->input->post('states_id').'" and city_status= 1)';
+		$query = $this->db->get_where('giftstore_city',$area_where)->result_array();
+		}
+		return $query;
 	 }
 	public function insert_area($data)
 	{

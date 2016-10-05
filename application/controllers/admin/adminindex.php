@@ -814,24 +814,18 @@ class Adminindex extends CI_Controller {
 		    $this->form_validation->set_rules($validation_rules);
 		    if ($this->form_validation->run() == FALSE) {
 		    	foreach($validation_rules as $row){
-		            $field = $row['field'];          //getting field name
-		            $error = form_error($field);    //getting error for field name
-		                                            //form_error() is inbuilt function
-		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
-		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
-		            }
-	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
+	            $field = $row['field'];          //getting field name
+	            $error = form_error($field);    //getting error for field name
+	                                            //form_error() is inbuilt function
+	            //if error is their for field then only add in $errors_array array
+	            // echo "error".$error;
+	            if (strpos($errors,"field is required.") !== false){  
+	             $status = array(
+	                'error_message' => 'Please fill out all mandatory fields'
+	             );
+        		}
     		}
+		}
     		else{
 				if (!empty($errors)) {
 					$status = strip_tags($errors);
@@ -1156,21 +1150,14 @@ class Adminindex extends CI_Controller {
 		            //if error is their for field then only add in $errors_array array
 		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
     		else{
 				if (!empty($errors)) {
-					$status = strip_tags($errors);
+					$status['error_message'] = strip_tags($error);
 				}
 				else{
 					$data = array(

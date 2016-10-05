@@ -45,7 +45,7 @@
                 <?php if (isset($error_message)){ 
                     echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
                 }?>
-                <?php //print_r($enduser_data); ?>
+                <?php ?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/users/edit_endusers/<?php echo $enduser_data['user_id']; ?>" class="form_submit" name="edit_enduser_form" id="edit_enduser_form">
                  <div class="form-errors"></div>
                     <div class="form-group">
