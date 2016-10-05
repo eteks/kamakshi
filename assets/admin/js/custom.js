@@ -139,6 +139,40 @@ $(document).ready(function() {
     $(document).delegate('.attibute_remove','click',function () {
         $(this).parents('.attribute_group').remove();
     });
+    // Commented for future use
+    // $("#add_giftproduct").submit(function(){ 
+    //     attribute_length = [];
+    //     alert($('.attribute_group').length);
+    //     if($('.attribute_group').length > 1){
+    //         $('.clone_attribute_group').each(function(){
+    //             attribute_length.push($(this).find('.clone_attribute').length);
+    //         });
+    //         var hasDups = !attribute_length.every(function(v,i) {
+    //           return attribute_length.indexOf(v) == i;
+    //         });
+    //         if (hasDups){
+    //             $('.attribute_group_message').hide();
+    //             return true;
+    //         }
+    //         else{
+    //             $("html, body").animate({ scrollTop: 800 }, "slow");
+    //             $('.attribute_duplicate_message').hide();
+    //             $('.attribute_group_message').show();
+    //             return false;
+    //         }
+    //     }  
+    //     var sum = 0;
+    //     if($('.attribute_status').is(":checked")){  
+    //         $("#product_price_hidden").val($('#attribute_group1').find('#price').val());
+    //         $("[name='product_attribute_totalitems[]']").each(function(){
+    //             sum += parseFloat(this.value);
+    //         });
+    //         $("#product_totalitems_hidden").val(sum);
+    //         return false;
+    //     }   
+    //     // return false;   
+    // });
+
     $('body').delegate("#add_giftproduct",'submit',function(e){ 
     // $("#add_giftproduct").submit(function(){ 
         // e.preventDefault();
