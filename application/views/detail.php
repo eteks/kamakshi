@@ -43,37 +43,6 @@
                         <?php endforeach; ?>
                         <?php endif; ?>   
                         <div class="col-sm-3">
-<<<<<<< HEAD
-                        <!-- <div id="thumbs" class="row">
-                                <?php foreach($product_image_details as $pro_det): ?>
-                                <div class="col-xs-12 images-list">
-                                    <a href="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" class="thumb">
-                                        <img src="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <?php endforeach; ?>
-                        </div> -->
-                        <div class="thumb_carosel">
-							        <div>
-							            <div id="thumbs2">
-							                <div class="inner">
-							                    <ul>
-							                       <li class="product_thumb_images">
-							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_1.jpg"></a>
-							                        </li>
-							                        <li class="product_thumb_images">
-							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg"></a>
-							                        </li>
-							                        <li class="product_thumb_images">
-							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_3.jpg"></a>
-							                        </li>
-							                     </ul>
-							                </div>
-							            </div>
-							        </div>
-                       </div>
-                       </div>
-=======
                             <div class="thumb_carosel">
 							    <div>
 							        <div id="thumbs2">
@@ -96,7 +65,6 @@
 						        </div>
                             </div>
                         </div>
->>>>>>> c89c437dca37381577ba79a41e655a02f7514047
                         <div class="col-sm-5">
                             <div class="box1">
                                 <h1 class="text-center"><?php echo $product_details->product_title;  ?></h1>
