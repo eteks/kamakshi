@@ -179,100 +179,16 @@ class Index_Model extends CI_Model {
     {   
         if($this->uri->segment(2)){
             $limit = 15;
+            $query['product_attributes'] = array();
+            $product_value = $this->uri->segment(2);
+            $attribute_query = $this->db->query("SELECT * FROM giftstore_product_attribute_value AS c INNER JOIN ( SELECT product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value FROM giftstore_product_attribute_group t CROSS JOIN numbers n WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '')))   AND t.product_mapping_id=$product_value) AS a ON a.value = c.product_attribute_value_id INNER JOIN giftstore_product_attribute AS pa ON c.product_attribute_id=pa.product_attribute_id");
 
-
-            // Check the product has attribute
-            $product_count_in_group_where = '(product_mapping_id="'.$this->uri->segment(2).'")'; 
-            $product_count_in_group = $this->db->get_where('giftstore_product_attribute_group',$product_count_in_group_where)->result_array();
-            // echo "<pre>";
-            // print_r($product_count_in_group);
-            // echo "</pre>";
-            $data =array();
-            $array_column =array();
-            foreach ($product_count_in_group as $value) {
-                $data[] = $value['product_attribute_value_combination_id'];
+            if($attribute_query->num_rows() > 0) {
+               $query['product_attributes'] = $attribute_query->result_array();  
             }
 
-            $data_array = array();
-            foreach ($data as $value) {
-                $data_array[]= explode(',',$value);
-                // $data_arra= explode(',',$value);
-                // count($data_arra);
-                // $array_column = array_column($data_array,0);
-            }
 
-            $count = max(array_map('count', $data_array));
-
-            echo $count;
-            for($i=0;$i<$count;$i++) {
-                $array_column[] = array_column($data_array,$i);
-            }   
-
-            
-
-
-            echo "<pre>";
-            print_r($array_column);
-            echo "</pre>";
-
-
-            // print_r(array_map('count', $data_array));
-            // foreach ($variable as $key => $value) {
-            //     # code...
-            // }
-            
-            // $result = array();
-            // $column_keys = array_flip(2);
-            // foreach($input as $key => $el) {
-            //     $result[$key] = array_intersect_key($el, $n_keys);
-            // }
-
-    // echo "<pre>";
-    //         print_r($data_array);
-    //         echo "</pre>";
-
-
-
-            // $array_column = array_column($data_array,0);
-
-
-
-             
-
-
-          // echo "<pre>";
-          //   print_r($data_array);
-          //   echo "</pre>";
-          //   // $array_column = array_column($data_array, 0);
-                
-          //   echo "<pre>";
-          //   print_r($array_column);
-          //   echo "</pre>";
-            
-
-
-//             if(count($product_count_in_group) > 0) {
-
-//                 foreach ($product_count_in_group as $value) {
-//                    $combination_array[]=explode(',',$value['product_attribute_value_combination_id']);    
-//                 }
-
-//                 $aw=array_map(null,$combination_array);
-
-// print_r($combination_array); 
-
-
-
-
-            // }
-
-          
-
-
-
-
-
-
+            // Default group 
 
             $product_image=$this->db->select('*');
             $product_image=$this->db->from('giftstore_product p');
@@ -291,13 +207,7 @@ class Index_Model extends CI_Model {
             $category_id = $query['product_details']->category_id;
             $subcategory_id = $query['product_details']->subcategory_id;
             $recipient_id = $query['product_details']->product_recipient_id;
-
-           
-
-
-
-
-
+    
             //  Recommanded products start
             $recommanded_where_sub = '(rp.product_id!="'.$this->uri->segment(2).'" and rp.product_subcategory_id="'.$subcategory_id.'" and rp.product_category_id="'.$category_id.'" and rp.product_status=1 and rp.product_totalitems!=0)';
             $recommanded_products_sub = $this->db->select('*');

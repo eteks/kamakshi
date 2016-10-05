@@ -1,6 +1,7 @@
 
-$(document).ready(function() {
-    // Added by siva - calculation process in basket page start
+$(document).ready(function() {  
+
+    /* ----- Added by siva - calculation process in basket page start -- */
 
     $('body').bind("cut copy paste",function(e) {
           e.preventDefault();
@@ -208,6 +209,11 @@ $('.recipient_all_section').on('click',function() {
     $('.secondary_list').hide();
 });
 
+//  Remove dummy dropdown in detail page
+var dummy_dropdown_length = $('.dummy_dropdown').length;
+if(dummy_dropdown_length > 0) {
+    $('.dummy_dropdown').remove();
+}
 
 
 // Ended by siva - calculation process in basket page end
@@ -376,6 +382,6 @@ function centerContent()
 	$('.images_alignment,.position_images,.product_position').each(function(){
 		$(this).css("margin-left", -($(this).width())/2);
 		$(this).css("margin-top", -($(this).height())/2);
-        $(this).fadeIn(100);
+        $(this).fadeIn(200);
 	});
 }
