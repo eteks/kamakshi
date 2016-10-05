@@ -51,7 +51,7 @@
                  <div class="form-errors"></div>
                   <div class="control-group">
                         <label for="sel_a">State<span class="fill_symbol"> *</span></label>
-                    <select name="state_name" id="sel_state" class="product-type-filter form-control state_act">
+                    <select name="state_name" id="sel_state" class="product-type-filter form-control state_act" disabled="true">
                    <option value="" >Select State</option>
                     <?php foreach ($state_list as $state_row): ?>
                          <?php   
@@ -64,7 +64,7 @@
                     </div>
                     <div class="control-group">
                         <label for="sel_a">City<span class="fill_symbol"> *</span></label>
-                    <select name="city_name" id="sel_city" class="product-type-filter form-control city_act">
+                    <select name="city_name" id="sel_city" class="product-type-filter form-control city_act" disabled="true">
                    <option value="" >Select City</option>
                     <?php foreach ($city_list as $city_row): ?>
                          <?php   

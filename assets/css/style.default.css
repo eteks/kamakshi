@@ -1868,6 +1868,7 @@ address {
 }
 .main-image-position{
 	width: 350px !important;
+	 min-height: 420px !important;
 }
 .row.same-height-row.common-cls-alignment{
 	margin-left: 0px !important;
@@ -1969,6 +1970,7 @@ address {
 .latest_products{
 	background-color: #4fbfa8 !important;
     color: #fff !important;
+    cursor: default;
 }
 .product_sorting{
 	text-align:right;

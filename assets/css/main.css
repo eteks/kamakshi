@@ -291,3 +291,135 @@
   display: none;
 }
 /* Ended by siva*/
+#owl-demo .owl-item > div img {
+    display: block;
+    width: 235px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom:4px;
+}
+#owl-demo .owl-item > div {
+    padding: 0px 2px;
+    margin-left: 23px !important;
+}
+@media(max-width:767px){
+#owl-demo .owl-item > div {
+    margin-left: 80px !important;
+}
+}
+.selected {
+    background-color: #4fbfa8 !important;
+    color: #fff !important;
+}
+.hide {
+    display: none;
+}
+.product_category_name {
+    margin-bottom: 50px !important;
+    margin-top: 20px !important;
+    text-align: center !important;
+}
+.product_category_name a {
+    outline: none;
+    padding: 10px;
+    text-decoration: none;
+    color: #555;
+    text-transform:uppercase;
+}
+.home_product_images {
+	position: relative;
+}
+.home_product_images::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(79,191,168,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.home_product_images:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+.latest_product_images {
+	position: relative;
+}
+.latest_product_images::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(79,191,168,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.latest_product_images:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 150%;
+		height: 150%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 150%;
+		height: 150%;
+		opacity: 0;
+	}
+}

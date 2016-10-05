@@ -48,7 +48,7 @@
                 	<div class="form-errors"></div>
                      <div class="control-group">
                         <label for="sel_a">State<span class="fill_symbol"> *</span></label>
-                    <select name="state_name" id="sel_a" class="product-type-filter form-control city_act">
+                    <select name="state_name" id="sel_a" class="product-type-filter form-control city_act" disabled="true">
                    <option value="" >Select State</option>
                     <?php foreach ($states as $state_row): ?>
                          <?php   

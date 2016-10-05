@@ -322,7 +322,7 @@
 	color:#fff !important;
 }
 .dropdown-menu{
-	min-width:90px !important;
+	min-width:95px !important;
 }
 .alert-info{
 	/*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);*/
@@ -355,3 +355,27 @@
     min-height: 85px !important;
     overflow-y: auto;
 }
+.product_details{
+	border:1px solid #dddddd !important;
+	display: block;
+    max-height: 85px !important;
+    min-height: 85px !important;
+    overflow-y: scroll;
+    width: 235px;
+}
+.product_details td{
+	padding: 5px 10px;
+}
+.product_attr_set{
+	min-width: 300px !important;
+	max-width:500px !important;
+}
+.product_attr_price{
+	min-width: 227px !important;
+	max-width: 227px !important;
+}
+.product_attr_count{
+	min-width: 227px !important;
+	max-width: 227px !important;
+}
+

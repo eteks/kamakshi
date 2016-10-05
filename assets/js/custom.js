@@ -385,3 +385,36 @@ function centerContent()
         $(this).fadeIn(200);
 	});
 }
+$(document).ready(function () {
+    var options = {
+        navigation: true,
+        pagination: true
+    };
+    $("#owl-demo").owlCarousel(options);
+    function showProjectsbyCat(cat) {
+        var owl = $("#owl-demo").data('owlCarousel');
+        owl.addItem('<div/>', 0);
+        var nb = owl.itemsAmount;
+        for (var i = 0; i < (nb - 1); i++) {
+            owl.removeItem(1);
+        }
+         if (cat == 'all') {
+            $('#projects-copy .project').each(function () {
+                owl.addItem($(this).clone());
+            });
+        } else {
+            $('#projects-copy .project.' + cat).each(function () {
+                owl.addItem($(this).clone());
+            });
+        }
+        owl.removeItem(0);
+    }
+    $('#owl-demo .project').clone().appendTo($('#projects-copy'));
+    $('#product-terms a').click(function (e) {
+        e.preventDefault();
+        $('#product-terms a').removeClass('selected');
+        cat = $(this).attr('ID');
+        $(this).addClass('selected');
+        showProjectsbyCat(cat);
+    });
+});

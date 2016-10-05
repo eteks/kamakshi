@@ -424,7 +424,7 @@ class Catalog extends CI_Model {
 				FROM `giftstore_product_attribute_value` AS c
 				INNER JOIN 
 				(
-				    SELECT product_mapping_id,product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
+				    SELECT product_mapping_id,product_attribute_group_id,product_attribute_group_price,	product_attribute_group_totalitems,product_attribute_group_sold, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
 					FROM giftstore_product_attribute_group t
 					CROSS JOIN numbers n
 					WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '' ) ) )
@@ -448,36 +448,36 @@ class Catalog extends CI_Model {
 		// echo "<pre>";
 		// print_r($query->result_array());
 		// echo "</pre>";
-		$res_array =array();
-		foreach ($query->result_array() as $key => $value) {
-			// $tmp =array();
-			// echo $key."<br>";
-			// echo $value['product_attribute_value']."<br>";
-			// echo $value['product_attribute']."<br>";
-			$key_new = $value['product_attribute'];
-			// echo $key_new;
-			// print_r($res_array);
+		// $res_array =array();
+		// foreach ($query->result_array() as $key => $value) {
+		// 	// $tmp =array();
+		// 	// echo $key."<br>";
+		// 	// echo $value['product_attribute_value']."<br>";
+		// 	// echo $value['product_attribute']."<br>";
+		// 	$key_new = $value['product_attribute'];
+		// 	// echo $key_new;
+		// 	// print_r($res_array);
 
-			// if (array_key_exists($key_new,$res_array)){
-			// 	echo "key exists";
-			// 	$tmp[$key_new][] = $value['product_attribute_value'];
-			// }
-			// else
-				// echo "check".array_key_exists($key_new,$res_array)."<br>";
-				if(array_key_exists($key_new,$res_array)){
-					print_r($res_array);
-					$res_array[$key_new] = $value['product_attribute_value'];
-				}
-				else
-					$res_array[$key_new] = $value['product_attribute_value'];
-				// echo $tmp;
-			// $res_array[$value['product_attribute']] = $value['product_attribute_value'];		
-			// echo $res_array[$value['product_attribute']]."<br>";
-			array_push($res_array,$res_array[$key_new]);
-		}
-		echo "<pre>";
-		print_r($res_array);
-		echo "</pre>";
+		// 	// if (array_key_exists($key_new,$res_array)){
+		// 	// 	echo "key exists";
+		// 	// 	$tmp[$key_new][] = $value['product_attribute_value'];
+		// 	// }
+		// 	// else
+		// 		// echo "check".array_key_exists($key_new,$res_array)."<br>";
+		// 		if(array_key_exists($key_new,$res_array)){
+		// 			print_r($res_array);
+		// 			$res_array[$key_new] = $value['product_attribute_value'];
+		// 		}
+		// 		else
+		// 			$res_array[$key_new] = $value['product_attribute_value'];
+		// 		// echo $tmp;
+		// 	// $res_array[$value['product_attribute']] = $value['product_attribute_value'];		
+		// 	// echo $res_array[$value['product_attribute']]."<br>";
+		// 	array_push($res_array,$res_array[$key_new]);
+		// }
+		// echo "<pre>";
+		// print_r($res_array);
+		// echo "</pre>";
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
