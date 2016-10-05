@@ -5,18 +5,20 @@ $(document).ready(function() {
         }
     });
 
-    jQuery(".attribute_status").on('change',function () {
+    $(document).delegate(".attribute_status",'change',function () {
     	if($(this).is(":checked")){
     		$('.attribute_main_block').show();
             $('.price_group,.items_group').hide();
+            $('.attribute_check_status').val('1');
         }
     	else{
     		$('.attribute_main_block').hide();
             $('.price_group,.items_group').show();
+            $('.attribute_check_status').val('0');
         }
     });
 
-    jQuery(".category_act").on('change',function () {
+    $(document).delegate(".category_act",'change',function () {
         selected_category = $.trim($('option:selected',this).text());
         selected_category_id = $('option:selected',this).val();
         form_data = {'category_name':selected_category,'category_id':selected_category_id};
@@ -137,34 +139,91 @@ $(document).ready(function() {
     $(document).delegate('.attibute_remove','click',function () {
         $(this).parents('.attribute_group').remove();
     });
-    $("#add_giftproduct").submit(function(){ 
-        attribute_length = [];
-        if($('.attribute_group').length > 1){
-            $('.clone_attribute_group').each(function(){
-                attribute_length.push($(this).find('.clone_attribute').length);
+    // Commented for future use
+    // $("#add_giftproduct").submit(function(){ 
+    //     attribute_length = [];
+    //     alert($('.attribute_group').length);
+    //     if($('.attribute_group').length > 1){
+    //         $('.clone_attribute_group').each(function(){
+    //             attribute_length.push($(this).find('.clone_attribute').length);
+    //         });
+    //         var hasDups = !attribute_length.every(function(v,i) {
+    //           return attribute_length.indexOf(v) == i;
+    //         });
+    //         if (hasDups){
+    //             $('.attribute_group_message').hide();
+    //             return true;
+    //         }
+    //         else{
+    //             $("html, body").animate({ scrollTop: 800 }, "slow");
+    //             $('.attribute_duplicate_message').hide();
+    //             $('.attribute_group_message').show();
+    //             return false;
+    //         }
+    //     }  
+    //     var sum = 0;
+    //     if($('.attribute_status').is(":checked")){  
+    //         $("#product_price_hidden").val($('#attribute_group1').find('#price').val());
+    //         $("[name='product_attribute_totalitems[]']").each(function(){
+    //             sum += parseFloat(this.value);
+    //         });
+    //         $("#product_totalitems_hidden").val(sum);
+    //         return false;
+    //     }   
+    //     // return false;   
+    // });
+
+    $('body').delegate("#add_giftproduct",'submit',function(e){ 
+    // $("#add_giftproduct").submit(function(){ 
+        // e.preventDefault();
+        var attribute_length = [];
+        var sum = 0;
+        var $error = false;
+        // alert($('.attribute_group').length);
+        if($('.attribute_status').is(":checked")){
+            //To Check any empty values passing in attributes block
+            $(this).find('.attribute_group').find('.attribute_validate').each(function(){
+                if($(this).val() == '')
+                {        
+                    $error = true;    
+                    $(this).addClass('attribute_error');
+                    // e.preventDefault();             
+                }
+                else{
+                    $(this).removeClass('attribute_error');
+                }
             });
-            var hasDups = !attribute_length.every(function(v,i) {
-              return attribute_length.indexOf(v) == i;
-            });
-            if (hasDups){
-                $('.attribute_group_message').hide();
+            if(!$error){
+                $("#product_price_hidden").val($('#attribute_group1').find('#price').val());
+                $("[name='product_attribute_totalitems[]']").each(function(){
+                    sum += parseFloat(this.value);
+                });
+                $("#product_totalitems_hidden").val(sum);
                 return true;
             }
+            else if($('.attribute_group').length > 1){
+                $('.clone_attribute_group').each(function(){
+                    attribute_length.push($(this).find('.clone_attribute').length);
+                });
+                var hasDups = !attribute_length.every(function(v,i) {
+                  return attribute_length.indexOf(v) == i;
+                });
+                if (hasDups){
+                    $('.attribute_group_message').hide();
+                    return true;
+                }
+                else{
+                    $("html, body").animate({ scrollTop: 800 }, "slow");
+                    $('.attribute_duplicate_message').hide();
+                    $('.attribute_group_message').show();
+                    return false;
+                }
+            }  
             else{
-                $("html, body").animate({ scrollTop: 800 }, "slow");
-                $('.attribute_duplicate_message').hide();
-                $('.attribute_group_message').show();
                 return false;
             }
-        }  
-        var sum = 0;
-        if($('.attribute_status').is(":checked")){  
-            $("#product_price_hidden").val($('#attribute_group1').find('#price').val());
-            $("[name='product_attribute_totalitems[]']").each(function(){
-                sum += parseFloat(this.value);
-            });
-            $("#product_totalitems_hidden").val(sum);
-            return false;
+            
+            // return false;
         }   
         // return false;   
     });
@@ -240,6 +299,11 @@ $(document).ready(function() {
            // dataType: 'json',  
            success: function(data) {  
             $('.box-content').html(data);
+            if($('.attribute_check_status').val() == '1'){
+                $('.attribute_main_block').show();
+                $('.price_group,.items_group').hide();
+                $('.attribute_status').attr("checked",true);
+            }
            }
         });
         // return false;

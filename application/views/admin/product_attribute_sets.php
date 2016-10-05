@@ -42,29 +42,33 @@
     <thead>
     <tr>
 		<th class="product">Product Title</th>
-		<th class="product">Attribute Sets</th>
-		<th class="product_small">Price</th>
-        <th class="product_small">Total Items</th>
-		<th class="product">Actions</th>
+		<th class="product product_attr_set">Attribute Sets</th>
+		<th class="product_small product_attr_price">Price</th>
+        <th class="product_small product_attr_count">Total Items</th>
+		<!-- <th class="product">Actions</th> -->
 	</tr>
     </thead>
     <tbody>
     <?php foreach ($attribute_sets_list as $att): ?>
         <tr>
             <td><?php echo $att["product_title"] ?></td>
-            <td><?php echo $att["product_attribute_inputtags"] ?></td>
-            <td class="center"><span class="<?php if($att["product_attribute_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($att["product_attribute_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
-            <td><?php echo date("d/m/Y", strtotime($att["product_attribute_createddate"])); ?></td>
-            <td class="center">
-                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_product_attributes/<?php echo $att["product_attribute_id"] ?>">
-                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
-                </a>
-                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
-                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                    Delete
-                </a>
+            <td>
+            	<table class="product_details">
+		            <tr><td>Size</td><td>: Large</td></tr>
+		            <tr><td>Color</td><td>: Red</td></tr>
+		            <tr><td>Size</td><td>: Large</td></tr>
+		            <tr><td>Color</td><td>: Red</td></tr>
+		        </table>
+                <!-- <?php
+                    $att_res = array_map(null,$att['product_attribute'],$att['product_attribute_value']);
+                    foreach ($att_res as $value) {
+                       echo $value[0]."  --  ".$value[1]; 
+                       echo "<br>";
+                    }
+                ?> -->
             </td>
+            <td><?php echo $att["product_attribute_group_price"] ?></td>
+            <td><?php echo $att["product_attribute_group_totalitems"] ?></td> 
         </tr>
     <?php endforeach ?>
     </tbody>
@@ -100,4 +104,7 @@
         </div>
     </div>
 </div><!--/.fluid-container-->
+</div>
+</div>
+</div>
 <?php include "templates/footer.php" ?>
