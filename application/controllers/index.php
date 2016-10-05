@@ -83,7 +83,6 @@ class Index extends CI_Controller
 		$categories['product_details'] = $categories_values['product_details'];
 		$categories['recommanded_products'] = $categories_values['recommanded_products'];
 		$categories['product_default_image'] = $categories_values['product_default_image'];
-        $categories['attribute_array'] = $categories_values['attribute_array'];
 		// print_r($categories['attribute_array']);
 		$this->load->view('detail',$categories);
 	}
