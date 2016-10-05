@@ -108,4 +108,11 @@ class Ajax_Controller extends CI_Controller {
 		echo $data;
 	}
 
+	// Product attributes combination
+	public function attribute_price()
+	{	
+		$data = $this->ajax_model->get_attribute_price();
+		echo json_encode($data);
+	}
+
 } // end of the class
