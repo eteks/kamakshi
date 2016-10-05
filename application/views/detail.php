@@ -57,14 +57,7 @@
 							            <div id="thumbs2">
 							                <div class="inner">
 							                    <ul>
-							                        <!-- <li>
-							                            <a href="/">
-							                                <span class="thumb" style="background-image:url(img/1.jpg)">
-							                                    This slide demonstrates how to link the thumbnail image to another web page.
-							                                </span>
-							                            </a>
-							                        </li> -->
-							                        <li class="product_thumb_images">
+							                       <li class="product_thumb_images">
 							                            <a class="thumb" href="<?php echo base_url(); ?>assets/img/detail/watch1_1.jpg"></a>
 							                        </li>
 							                        <li class="product_thumb_images">
