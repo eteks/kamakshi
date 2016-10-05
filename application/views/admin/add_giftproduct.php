@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,12 +42,16 @@
                 </div>
             </div>
             <div class="box-content">
-             <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
-             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form" id="add_giftproduct">
+<?php } ?>
+             <p class="error_msg_reg test_product"><?php if (isset($error_message)) echo $error_message; ?></p>
+             <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form" id="add_giftproduct" class="form_submit">
+             <input type="hidden" value="0">
+             <input type="hidden" class="attribute_check_status" name="attribute_check_status" value="<?php if(isset($attribute_check_status)) 
+                echo $attribute_check_status; ?>">
              <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
                         <label for="titlename">Product Title<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control" id="titlename" placeholder="Enter title Name" name="product_title">
+                        <input type="text" class="form-control" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php echo set_value('product_title');?>">
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
@@ -55,7 +60,7 @@
                     </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>
-                        <textarea type="text" class="form-control" id="description" placeholder="Enter description" name="product_description"></textarea>
+                        <textarea type="text" class="form-control" id="description" placeholder="Enter description" name="product_description"><?php echo set_value('product_description');?></textarea>
                     </div> 
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
@@ -86,12 +91,12 @@
                     </div>
                      <div class="form-group price_group">
                         <label for="price">Price<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control price" id="product_price" placeholder="Enter price">
+                        <input type="text" class="form-control price" id="product_price" placeholder="Enter price" value="<?php echo set_value('product_price');?>">
                     </div> 
                     <input type="hidden" name="product_price" id="product_price_hidden">
                      <div class="form-group items_group">
                         <label for="total_iteams">Total Items<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control totalitem" id="product_totalitems" placeholder="Enter total items">
+                        <input type="text" class="form-control totalitem" id="product_totalitems" placeholder="Enter total items" value="<?php echo set_value('product_totalitems');?>">
                     </div> 
                     <input type="hidden" name="product_totalitems" id="product_totalitems_hidden">
                     <!-- <div class="form-group">
@@ -104,8 +109,8 @@
                         <div class="controls">
                             <select name="product_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1" <?php echo set_select('product_status', '1',false); ?>>Active</option>
+                                <option value="0" <?php echo set_select('product_status', '0',false); ?>>Inactive</option>
                             </select>
                         </div>
                     </div>
@@ -152,7 +157,7 @@
                     </div> <!-- group_values_block -->
                     <button type="submit" class="btn submit-btn btn-default submiit">Submit</button>
                 </form>
-                   
+<?php if(!$this->input->is_ajax_request()){ ?>                   
             </div>
         </div>
     </div>
@@ -165,3 +170,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>
