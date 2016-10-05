@@ -179,7 +179,6 @@ class Index_Model extends CI_Model {
     {   
         if($this->uri->segment(2)){
             $limit = 15;
-            $query['attribute_array'] = 0;
 
 
             // Check the product has attribute
@@ -191,19 +190,54 @@ class Index_Model extends CI_Model {
             $data =array();
             $array_column =array();
             foreach ($product_count_in_group as $value) {
-                # code...
                 $data[] = $value['product_attribute_value_combination_id'];
             }
+
             $data_array = array();
             foreach ($data as $value) {
-
                 $data_array[]= explode(',',$value);
-                $data_arra= explode(',',$value);
-                count($data_arra);
-
-                $array_column = array_column($data_array,0);
+                // $data_arra= explode(',',$value);
+                // count($data_arra);
+                // $array_column = array_column($data_array,0);
             }
 
+            $count = max(array_map('count', $data_array));
+
+            echo $count;
+            for($i=0;$i<$count;$i++) {
+                $array_column[] = array_column($data_array,$i);
+            }   
+
+            
+
+
+            echo "<pre>";
+            print_r($array_column);
+            echo "</pre>";
+
+
+            // print_r(array_map('count', $data_array));
+            // foreach ($variable as $key => $value) {
+            //     # code...
+            // }
+            
+            // $result = array();
+            // $column_keys = array_flip(2);
+            // foreach($input as $key => $el) {
+            //     $result[$key] = array_intersect_key($el, $n_keys);
+            // }
+
+    // echo "<pre>";
+    //         print_r($data_array);
+    //         echo "</pre>";
+
+
+
+            // $array_column = array_column($data_array,0);
+
+
+
+             
 
 
           // echo "<pre>";
