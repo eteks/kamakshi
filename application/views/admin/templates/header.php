@@ -16,8 +16,11 @@
     <link href="<?php echo base_url(); ?>assets/admin/css/slick-theme.css" rel="stylesheet">
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/style.css' rel='stylesheet'>
+    <link href="<?php echo base_url();?>assets/admin/css/datepicker.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/admin/js/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.js"></script>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/admin/img/favicon.ico">
 </head>
 <body>

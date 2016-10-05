@@ -967,6 +967,7 @@ class Adminindex extends CI_Controller {
 		$validation_rules = array(
 	       array(
 	             'field'   => 'state_name',
+	             'disabled' => 'disabled',
 	             'label'   => 'State',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
