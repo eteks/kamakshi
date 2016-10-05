@@ -48,13 +48,13 @@
             }?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_subcategory/<?php echo $subcategory_data['subcategory_id']; ?>" name="edit_subcategory_form" class="form_submit">
                     <div class="form-group">
-                        <label for="subcategory_name">Subcategory Name</label>
+                        <label for="subcategory_name">Subcategory Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="subcategory_name" name="edit_subcategory_name" placeholder="Enter SubCategory Name"
                         value="<?php if(!empty($subcategory_data['subcategory_name'])) echo $subcategory_data['subcategory_name']; ?>" >
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Category</label>
-                        <div class="multiple_dropdown"> 
+                        <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
+                          <div class="multiple_dropdown"> 
                             <div class="select_multiple_option">
                                 <a id="admin_check">
                                     <span class="hida">Select</span>  <i class="fa fa-caret-down"  aria-hidden="true"></i>  
@@ -74,7 +74,7 @@
                         <input type="hidden" class="checkbox_array_hidden" name="removed_category">
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="edit_subcategory_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>

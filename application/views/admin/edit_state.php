@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
  <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,14 +42,19 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+			<?php } ?>
+                <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
+                <?php ?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_state/<?php echo $state_data['state_id']; ?>" enctype="multipart/form-data" name="edit_state_form">
-                    <div class="form-group">
-                        <label for="state_name">State Name</label>
+                	<div class="form-errors"></div>
+                    <div class="control-group">
+                        <label for="state_name">State Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="state_name" placeholder="Enter State Name" value="<?php if(!empty($state_data['state_name'])) echo $state_data['state_name']; ?>" name="edit_state_name">
                     </div>  
                    <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="edit_state_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
@@ -65,7 +71,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -78,3 +84,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

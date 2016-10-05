@@ -38,8 +38,7 @@
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
         </a>
-    <div class="alert alert_blue alert-info col-md-10"></div>
-    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
+        <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll">
     <thead>
     <tr>
        <th class="product">Recipient Type</th>
@@ -53,14 +52,14 @@
     <?php foreach ($recipient_list as $recipient): ?>
         <tr>
             <td><?php echo $recipient['recipient_type'] ?></td>
-            <td>
+            <td class="product_categories_name">
                 <?php 
                 if(sizeof($recipient["category_name"]) > 1){
                     foreach($recipient["category_name"] as $cat) 
-                        echo "- ".$cat."<br>";
+                        echo $cat."<br>";
                 }
                 else
-                    echo "- ".$recipient["category_name"];
+                    echo $recipient["category_name"];
                 ?>
             </td>
             <td class="center"><span class="<?php if($recipient["recipient_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($recipient["recipient_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
@@ -111,4 +110,7 @@
         </div>
     </div>
 </div><!--/.fluid-container-->
+</div>
+</div>
+</div>
 <?php include "templates/footer.php" ?>

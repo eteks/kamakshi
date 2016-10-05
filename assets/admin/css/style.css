@@ -43,7 +43,8 @@
     border-radius: 4px;
     margin-bottom: 20px;
     padding: 8px 15px;
-    width: 981px;
+    /*width: 981px;*/
+   width:95%;
 }
 .attribute_block label{
 	width: 125px !important;
@@ -201,6 +202,7 @@
 .dataTables_wrapper{
 	overflow-x: auto !important;
     width: 100% !important;
+     margin-top: 50px !important;
 }
 .dataTables{
 	width:1000px;
@@ -260,7 +262,6 @@
 .upload_limit {
     color: gray;
     font-size: 10px;
-    margin-left: 5px;
 }
 /* Style for multi select dropdown in subcategory and recipient page */
 .mutliSelect {
@@ -316,4 +317,41 @@
    border: 1px solid red !important;
    margin-right: 439px;
 }
-
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+	background-color: #4fbfa8 !important;
+	color:#fff !important;
+}
+.dropdown-menu{
+	min-width:90px !important;
+}
+.alert-info{
+	/*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);*/
+	background-color:#f2f8f8 !important;
+	width:95% !important;
+	/*border: 1px solid #ff0000;*/
+	border-color:none !important;
+}
+.breadcrumb{
+	width:99% !important;
+}
+.fill_symbol{
+	color:#ff0000;
+}
+.close-icon2 a{
+    background-color: #333333;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 10px;
+    left: -18px;
+    opacity: 0.7;
+    padding: 3px;
+    position: relative;
+    top: -17px;
+}
+.product_categories_name{
+	display: block;
+    /*height: 100%;*/
+    max-height: 85px;
+    min-height: 85px !important;
+    overflow-y: auto;
+}

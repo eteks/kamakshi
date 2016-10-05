@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -38,10 +39,15 @@
                 </div>
             </div>
           <div class="box-content">
-               <p class="error_msg_reg"><?php if (isset($status)) echo $status; ?></p>
+			<?php } ?>
+                <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
+                <?php ?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city_edit['city_id']; ?>" enctype="multipart/form-data" name="edit_city_form">
+                	<div class="form-errors"></div>
                      <div class="control-group">
-                        <label for="sel_a">State</label>
+                        <label for="sel_a">State<span class="fill_symbol"> *</span></label>
                     <select name="state_name" id="sel_a" class="product-type-filter form-control city_act">
                    <option value="" >Select State</option>
                     <?php foreach ($states as $state_row): ?>
@@ -54,11 +60,11 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="city_name">City Name</label>
+                        <label for="state_name">City Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="city_name" placeholder="Enter City Name" value="<?php if(!empty($city_edit['city_name'])) echo $city_edit['city_name']; ?>" name="city_name">
                     </div>  
                    <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_status" id="sel_c" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>
@@ -75,6 +81,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
+                <?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -87,3 +94,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

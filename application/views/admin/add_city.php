@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,28 +42,33 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
+<?php } ?>
+                <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
+                <?php ?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_city" enctype="multipart/form-data" name="city_form">
                 <div class="control-group">
-                        <label for="sel_a">Select State</label>
+                        <label for="sel_a">Select State<span class="fill_symbol"> *</span></label>
                     <select name="state_name" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
                     </option>
-                    <?php
-                    $query = mysql_query("select * from giftstore_state  where state_status='1' order by state_name asc");
-                    while ($row = mysql_fetch_array($query)) {
-                        ?>
-                    <option value="<?php echo $row['state_id']; ?>"><span><?php echo $row['state_name']; ?></span></option>
-                    <?php } ?>
+                    <?php 
+                    foreach ($state_list as $state_row):      
+                        if($area_edit['area_state_id'] == $state_row['state_id'])  
+                        	echo "<option selected value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";
+                        else
+                            echo "<option value='".$state_row['state_id']."'>".$state_row['state_name']."</option>";                       
+                    endforeach; ?>
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="city_name">City Name</label>
+                        <label for="city_name">City Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="city_name" placeholder="Enter City Name" name="city_name">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_status" id="city_status" class="product-type-filter form-control city_act">
                                  <option value="">Select</option>
@@ -75,7 +81,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -88,3 +94,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

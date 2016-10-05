@@ -1,7 +1,8 @@
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content">
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -42,15 +43,15 @@
                <form role="form" id="edit_order">
                  <div class="form-errors"></div>
                     <div class="form-group">
-                        <label for="area_name">User Id</label>
+                        <label for="area_name">User Id<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="userid" placeholder="Enter User Id">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Total Items</label>
+                        <label for="exampleInputEmail1">Total Items<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control totalitem" id="" placeholder="Enter Total Items">
                     </div>
                      <div class="control-group">
-                        <label for="sel_a">User Type</label>
+                        <label for="sel_a">User Type<span class="fill_symbol"> *</span></label>
                     <select name="city_id" id="sel_a" class="form-control">
                    <option value="">
                      Select State 
@@ -59,23 +60,23 @@
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="area_name">Customer Name</label>
+                        <label for="area_name">Customer Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="area_name" placeholder="Enter Customer Name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
+                        <label for="exampleInputEmail1">Email<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="delivery_charge" placeholder="Enter email address">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Shipping_line1</label>
+                        <label for="exampleInputEmail1">Shipping_line1<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="delivery_charge" placeholder="Enter Shipping_line1">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Shipping_line2</label>
+                        <label for="exampleInputEmail1">Shipping_line2<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="delivery_charge" placeholder="Enter Shipping_line2">
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_a">State</label>
+                        <label class="control-label" for="sel_a">State<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -84,7 +85,7 @@
                             </select>
                         </div>
                         <div class="control-group">
-                        <label class="control-label" for="sel_b">City</label>
+                        <label class="control-label" for="sel_b">City<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -92,7 +93,7 @@
                                 <option>Aruppukottai</option>
                             </select>
                         </div>
-                        <label class="control-label" for="sel_c">Area</label>
+                        <label class="control-label" for="sel_c">Area<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -101,15 +102,15 @@
                             </select>
                         </div>
                      <div class="form-group">
-                        <label for="area_name">Mobile</label>
+                        <label for="area_name">Mobile<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Total Amount</label>
+                        <label for="exampleInputEmail1">Total Amount<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="totalamount" placeholder="Enter Total Amount">
                     </div>
                      <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -131,4 +132,7 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
+</div>
+</div>
+</div>
 <?php include "templates/footer.php" ?>

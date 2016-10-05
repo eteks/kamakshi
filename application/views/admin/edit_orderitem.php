@@ -1,7 +1,8 @@
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
-
+<div class="ch-container">
+    <div class="row footer_content">
         <noscript>
             <div class="alert alert-block col-md-12">
                 <h4 class="alert-heading">Warning!</h4>
@@ -42,11 +43,11 @@
             <div class="box-content">
                 <form role="form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Order Id</label>
+                        <label for="exampleInputEmail1">Order Id<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="orderid" placeholder="Enter Order Id">
                     </div>   
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Product Id</label>
+                        <label class="control-label" for="selectError">Product Id<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -56,7 +57,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Group</label>
+                        <label class="control-label" for="selectError">Group<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -66,15 +67,15 @@
                         </div>
                     </div>
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Quantity</label>
+                        <label for="exampleInputEmail1">Quantity<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control" id="quantity" placeholder="Enter price ">
                     </div> 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Price</label>
+                        <label for="exampleInputEmail1">Price<span class="fill_symbol"> *</span></label>
                         <input type="email" class="form-control price" id="" placeholder="Enter price ">
                     </div> 
                      <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="selectError">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
                                  <option selected hidden>Select</option>
@@ -97,5 +98,5 @@
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
-
+</div>
 <?php include "templates/footer.php" ?>

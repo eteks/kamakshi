@@ -48,15 +48,16 @@
                 }?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_category" enctype="multipart/form-data" class="form_submit" name="category_form">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Category Name</label>
+                        <label for="exampleInputEmail1">Category Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" name="category_name" value="<?php echo set_value('category_name');?>">
                     </div>  
                     <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label><span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
+                        <label for="exampleInputFile">Category Image<span class="fill_symbol"> *</span></label>
                         <input type="file" id="category_image" name="category_image">
+                        <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="selectError">Status</label>
+                        <label class="control-label" for="selectError">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="category_status" id="sel_a" class="product-type-filter form-control city_act">
                                 <option value="">Select</option>

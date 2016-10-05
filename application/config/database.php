@@ -47,11 +47,17 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-
+//local settings
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
 $db['default']['database'] = 'giftstore';
+//server settings
+// $db['default']['hostname'] = 'mysql1110.ixwebhosting.com';
+// $db['default']['username'] = 'BBBmcmf_gift123';
+// $db['default']['password'] = 'Gift_123';
+// $db['default']['database'] = 'BBBmcmf_giftstore';
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

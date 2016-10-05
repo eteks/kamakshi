@@ -128,7 +128,7 @@
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/recipient">Recipient</a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/product_attributes">Product Attributes </a></li>
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/giftproduct">Product </a></li>
-                                <!-- <li><a href="<?php //echo base_url(); ?>index.php/admin/adminindex/product_attribute_sets">Product Attributes Sets </a></li> -->
+                                <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/product_attribute_sets">Product Attributes Sets </a></li>
                             </ul>
                             </li>
                         <li class="accordion">

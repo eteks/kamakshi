@@ -48,12 +48,12 @@
             }?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_recipient/<?php echo $recipient_data['recipient_id']; ?>" name="edit_subcategory_form" class="form_submit">
                     <div class="form-group">
-                        <label for="recipient_name">Recipient Name</label>
+                        <label for="recipient_name">Recipient Name<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="recipient_name" placeholder="Enter recipient Name" name="edit_recipient_name"
                         value="<?php if(!empty($recipient_data['recipient_type'])) echo $recipient_data['recipient_type']; ?>">
                     </div>  
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Category</label>
+                        <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
                         <!-- <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control city_act" name="edit_select_category[]" multiple>
                             <option value="">Select Category</option>
@@ -82,7 +82,7 @@
                         <input type="hidden" class="checkbox_array_hidden" name="removed_category">
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Status</label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
                             <select name="edit_recipient_status" id="sel_c" class="form-control">
                                 <option value="">Select</option>

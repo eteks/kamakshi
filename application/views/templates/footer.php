@@ -101,7 +101,7 @@
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2016 Kamakshi.</p>
+                    <p class="pull-left">© 2016 Kamakshi Gifts.</p>
                 </div>
                  <div class="col-md-6">
                     <p class="pull-right">Designed and Developed by<a href="http://etekchnoservices.com/"> Etekchno Services</a> Pvt Ltd.

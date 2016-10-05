@@ -49,7 +49,25 @@ class Usersmodel extends CI_Model {
 			return false;
 		}
 		return true;	
-	}	
+	}
+	//Get area data based on state
+	public function get_ajax_user_data()
+	 {
+// just for sample
+		// $query = $this->db->query("SELECT * FROM giftstore_category WHERE category_status = 1");
+		// $query = $this->db->get_where('giftstore_category', array('category_status' => 1));
+		// echo $query->num_rows();
+		// return $query->row_array();
+
+		//get list of categories from database using mysql query 
+		$query = $this->db->query("SELECT * FROM giftstore_area order 
+			by area_createddate desc");		
+		// echo "<pre>";
+		// print_r($query->result());
+		// echo "</pre>";
+		//return all records in array format to the controller
+		return $query->result_array();
+	 }
 	public function get_endusers()
 	{	
 		//get list of adminusers from database using mysql query 
@@ -63,10 +81,13 @@ class Usersmodel extends CI_Model {
 	}
 	public function get_endusers_data($id)
 	{	
-		//get full data of specific admin users by their passing id
-		$query = $this->db->get_where('giftstore_users', array('user_id' => $id));
-		//Here row_array() represents to pass only one row of data for their particular user
-		return $query->row_array();
+		$where = '(user_id="'.$id.'")';
+		$query['state_city'] = $this->db->get_where('giftstore_users', $where)->row_array();
+		$where1 = '(user_status=1)';
+		$query['states'] = $this->db->get_where(' `giftstore_users', $where1)->result_array();
+		$query['cities'] = $this->db->get_where(' `giftstore_users', $where1)->result_array();
+
+		return $query;
 	}
 	public function update_endusers($data)
 	{	
