@@ -62,6 +62,7 @@ $route['customer_wishlist'] = 'index/customer_wishlist';
 $route['customer_orders'] = 'index/customer_orders';
 $route['customer_order'] = 'index/customer_order';
 $route['recipient_category/(:any)'] = 'index/recipient_category/$1';
+$route['track_order'] = 'index/track_order';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
