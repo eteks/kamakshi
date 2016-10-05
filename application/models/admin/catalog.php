@@ -372,38 +372,112 @@ class Catalog extends CI_Model {
 	}	
 	public function get_product_attribute_sets(){
 		//get list of product attribute sets from database using mysql query 
-		$this->db->select('att.*,pro.product_title');
-		$this->db->from('giftstore_product_attribute_group AS att');
-		$this->db->join('giftstore_product AS pro', 'pro.product_id = att.product_mapping_id', 'inner');
-		$this->db->order_by('product_attribute_group_id','desc');	
-		$query = $this->db->get();
-		echo "<pre>";
-		print_r($query->result_array());
-		echo "</pre>";
-		foreach ($query->result_array() as $key=>$value)
-		{
-			$array_data = explode(",", $value['product_attribute_value_combination_id']);
-			echo $value['product_attribute_value_combination_id'];
-			$condition = "product_attribute_value_combination_id IN(".$value['product_attribute_value_combination_id'].")";
-			$this->db->select('group.*,val.*');
-			$this->db->from('giftstore_product_attribute_group AS group');
-			$this->db->join('giftstore_product_attribute_val AS val','inner');
-			$this->db->order_by('product_attribute_group_id','desc');	
-			$query1 = $this->db->get();
-			echo "<pre>";
-			print_r($query1->result_array());
-			echo "</pre>";
-			// print_r(explode(",", $value['product_attribute_value_combination_id']));	
-		}
+		// $this->db->select('att.*,pro.product_title');
+		// $this->db->from('giftstore_product_attribute_group AS att');
+		// $this->db->join('giftstore_product AS pro', 'pro.product_id = att.product_mapping_id', 'inner');
+		// $this->db->order_by('product_attribute_group_id','desc');	
+		// $query = $this->db->get();
+		// echo "<pre>";
+		// print_r($query->result_array());
+		// echo "</pre>";
+		// foreach ($query->result_array() as $key=>$value)
+		// {
+		// 	$array_data = explode(",", $value['product_attribute_value_combination_id']);
+		// 	echo $value['product_attribute_value_combination_id'];
+		// 	$condition = "product_attribute_value_combination_id IN(".$value['product_attribute_value_combination_id'].")";
+		// 	$this->db->select('group.*,val.*');
+		// 	$this->db->from('giftstore_product_attribute_group AS group');
+		// 	$this->db->join('giftstore_product_attribute_val AS val','inner');
+		// 	$this->db->order_by('product_attribute_group_id','desc');	
+		// 	$query1 = $this->db->get();
+		// 	echo "<pre>";
+		// 	print_r($query1->result_array());
+		// 	echo "</pre>";
+		// 	// print_r(explode(",", $value['product_attribute_value_combination_id']));	
+		// }
 
-		$this->db->select('val.*');
-		$this->db->from('giftstore_product_attribute_value AS val');
+		// $this->db->select('val.*');
+		// $this->db->from('giftstore_product_attribute_value AS val');
+
 		// foreach ($query->result_array() as $key => $value) {
 		// 	$combine_data = array(explode(",",$value['product_attribute_value_combination_id']));
 		// 	$query->result_array()['product_attribute_value_combination_id'] = $combine_data;
 		// 	array_push($query->result_array(),$combine_data);
 		// }
+
+		// SELECT *
+		// FROM `giftstore_product_attribute_value` AS c
+		// INNER JOIN 
+		// (
+		//     SELECT product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
+		// 	FROM giftstore_product_attribute_group t
+		// 	CROSS JOIN numbers n
+		// 	WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '' ) ) )
+		// )AS a ON a.value = c.product_attribute_value_id
+		// INNER JOIN 
+		// (
+		//     SELECT product_attribute_id,product_attribute
+		// 	FROM giftstore_product_attribute
+		// )AS pa ON pa.product_attribute_id = c.product_attribute_id
 		
+		$query = $this->db->query("SELECT *
+				FROM `giftstore_product_attribute_value` AS c
+				INNER JOIN 
+				(
+				    SELECT product_mapping_id,product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
+					FROM giftstore_product_attribute_group t
+					CROSS JOIN numbers n
+					WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '' ) ) )
+				)AS a ON a.value = c.product_attribute_value_id
+				INNER JOIN 
+				(
+				    SELECT product_attribute_id,product_attribute
+					FROM giftstore_product_attribute
+				)AS pa ON pa.product_attribute_id = c.product_attribute_id
+				INNER JOIN
+				(
+					SELECT product_id,product_title from giftstore_product
+				) AS p ON p.product_id = a.product_mapping_id");
+		
+		// $this->db->select('*');
+		// $this->db->from('giftstore_product_attribute_value AS c');
+		// $this->db->join('SELECT product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ",", n.n ), ",", -1 ) value FROM giftstore_product_attribute_group t CROSS JOIN numbers n WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ",", "" ) ) ) AS a','a.value = c.product_attribute_value_id','inner');
+		// $this->db->join('SELECT product_attribute_id,product_attribute FROM giftstore_product_attribute AS pa','pa.product_attribute_id = c.product_attribute_id','inner');
+		// $query = $this->db->get();
+		
+		// echo "<pre>";
+		// print_r($query->result_array());
+		// echo "</pre>";
+		$res_array =array();
+		foreach ($query->result_array() as $key => $value) {
+			// $tmp =array();
+			// echo $key."<br>";
+			// echo $value['product_attribute_value']."<br>";
+			// echo $value['product_attribute']."<br>";
+			$key_new = $value['product_attribute'];
+			// echo $key_new;
+			// print_r($res_array);
+
+			// if (array_key_exists($key_new,$res_array)){
+			// 	echo "key exists";
+			// 	$tmp[$key_new][] = $value['product_attribute_value'];
+			// }
+			// else
+				// echo "check".array_key_exists($key_new,$res_array)."<br>";
+				if(array_key_exists($key_new,$res_array)){
+					print_r($res_array);
+					$res_array[$key_new] = $value['product_attribute_value'];
+				}
+				else
+					$res_array[$key_new] = $value['product_attribute_value'];
+				// echo $tmp;
+			// $res_array[$value['product_attribute']] = $value['product_attribute_value'];		
+			// echo $res_array[$value['product_attribute']]."<br>";
+			array_push($res_array,$res_array[$key_new]);
+		}
+		echo "<pre>";
+		print_r($res_array);
+		echo "</pre>";
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
