@@ -814,24 +814,18 @@ class Adminindex extends CI_Controller {
 		    $this->form_validation->set_rules($validation_rules);
 		    if ($this->form_validation->run() == FALSE) {
 		    	foreach($validation_rules as $row){
-		            $field = $row['field'];          //getting field name
-		            $error = form_error($field);    //getting error for field name
-		                                            //form_error() is inbuilt function
-		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
-		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
-		            }
-	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
+	            $field = $row['field'];          //getting field name
+	            $error = form_error($field);    //getting error for field name
+	                                            //form_error() is inbuilt function
+	            //if error is their for field then only add in $errors_array array
+	            // echo "error".$error;
+	            if (strpos($errors,"field is required.") !== false){  
+	             $status = array(
+	                'error_message' => 'Please fill out all mandatory fields'
+	             );
+        		}
     		}
+		}
     		else{
 				if (!empty($errors)) {
 					$status = strip_tags($errors);
@@ -1156,21 +1150,14 @@ class Adminindex extends CI_Controller {
 		            //if error is their for field then only add in $errors_array array
 		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
     		else{
 				if (!empty($errors)) {
-					$status = strip_tags($errors);
+					$status['error_message'] = strip_tags($error);
 				}
 				else{
 					$data = array(
@@ -1358,8 +1345,26 @@ class Adminindex extends CI_Controller {
 	public function product_attribute_sets()
 	{	
 		//get list of product attribute from database and store it in array variable 'attribute' with key 'attribute_list'
-		$attribute_sets['attribute_sets_list'] = $this->catalog->get_product_attribute_sets();
-		
+		// $attribute_sets['attribute_sets_list'] = $this->catalog->get_product_attribute_sets();
+		$attribute_sets = $this->catalog->get_product_attribute_sets();
+		$resatt = array();
+		foreach($attribute_sets as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'product_attribute_value')
+		            $resatt[$arr['product_mapping_id']][$k] = $this->get_arrayvalues_bykeyvalue($attribute_sets, $k, 'product_mapping_id', $arr['product_mapping_id']);
+		        else if($k == 'product_attribute')
+		        	$resatt[$arr['product_mapping_id']][$k] = $this->get_arrayvalues_bykeyvalue($attribute_sets, $k, 'product_mapping_id', $arr['product_mapping_id']);
+		        else
+		            $resatt[$arr['product_mapping_id']][$k] = $v;
+
+		    }
+		}
+		echo "<pre>";
+		print_r($resatt);
+		echo "</pre>";
+
 		//call the product attribute views i.e rendered page and pass the product attribute data in the array variable 'attribute'
 		$this->load->view('admin/product_attribute_sets',$attribute_sets);
 	}

@@ -10,7 +10,7 @@
                         </li>
                          <li>
                             <!-- <a href="<?php echo base_url(); ?>index.php/category/<?php echo $product_details->category_id; ?>/<?php echo $product_details->subcategory_id; ?>"><?php echo $product_details->subcategory_name;  ?></a> -->
-                            <a href="#"><?php echo $product_details->subcategory_name;  ?></a>
+                            <?php echo $product_details->subcategory_name;  ?>
                         </li>
                         <li><?php echo $product_details->product_title;  ?></li>
                         <input type="hidden" value="<?php echo $product_details->product_id; ?>" id="product_id" />
@@ -43,6 +43,7 @@
                         <?php endforeach; ?>
                         <?php endif; ?>   
                         <div class="col-sm-3">
+<<<<<<< HEAD
                         <!-- <div id="thumbs" class="row">
                                 <?php foreach($product_image_details as $pro_det): ?>
                                 <div class="col-xs-12 images-list">
@@ -72,6 +73,30 @@
 							        </div>
                        </div>
                        </div>
+=======
+                            <div class="thumb_carosel">
+							    <div>
+							        <div id="thumbs2">
+							            <div class="inner">
+							                <ul>
+                                                <?php 
+                                                    if(!empty($product_image_details)):
+                                                    foreach($product_image_details as $pro_det): 
+                                                ?>
+    					                        <li class="product_thumb_images">
+						                            <a class="thumb" href="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>"></a>
+						                        </li>
+                                                <?php 
+                                                    endforeach;
+                                                    endif;
+                                                ?>
+		                                    </ul>
+						                </div>
+						            </div>
+						        </div>
+                            </div>
+                        </div>
+>>>>>>> c89c437dca37381577ba79a41e655a02f7514047
                         <div class="col-sm-5">
                             <div class="box1">
                                 <h1 class="text-center"><?php echo $product_details->product_title;  ?></h1>

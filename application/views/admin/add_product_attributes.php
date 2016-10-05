@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,7 +42,11 @@
                 </div>
             </div>
             <div class="box-content">
-            <p class="error_msg_reg"><?php if (isset($error_message)) echo $error_message; ?></p>
+<?php } ?>
+            <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
+                <?php ?>
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes" enctype="multipart/form-data" name="category_form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Product Attribute<span class="fill_symbol"> *</span></label>
@@ -72,7 +77,7 @@
                     <button type="submit" class="btn submit-btn btn-default" name="category_submit">Submit</button>
                     </div>
                 </form>
-
+<?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -85,4 +90,6 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>
+
 
