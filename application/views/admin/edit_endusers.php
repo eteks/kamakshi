@@ -82,7 +82,7 @@
                     </div>
                     <div class="control-group">
                         <label for="sel_a">State</label>
-                    <select name="state_name" id="sel_city" class="product-type-filter form-control state_act">
+                    <select name="state_name" id="sel_city" class="product-type-filter form-control state_act" disabled="">
                    <option value="" >Select State</option>
                     <?php foreach ($state_list as $state_row): ?>
                          <?php   
@@ -95,7 +95,7 @@
                     </div>
                     <div class="control-group">
                         <label for="sel_a">City</label>
-                    <select name="city_name" id="sel_city" class="product-type-filter form-control city_act">
+                    <select name="city_name" id="sel_city" class="product-type-filter form-control city_act" disabled="">
                    <option value="" >Select City</option>
                     <?php foreach ($city_list as $city_row): ?>
                          <?php   
@@ -145,7 +145,11 @@
     </div>
     <!--/span-->
 </div><!--/row-->
-
+<script>
+$(document).ready(function(){
+$('#user_dob').datepicker();
+});
+</script>
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->\

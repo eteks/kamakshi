@@ -967,6 +967,7 @@ class Adminindex extends CI_Controller {
 		$validation_rules = array(
 	       array(
 	             'field'   => 'state_name',
+	             'disabled' => 'disabled',
 	             'label'   => 'State',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),
@@ -1345,26 +1346,22 @@ class Adminindex extends CI_Controller {
 	public function product_attribute_sets()
 	{	
 		//get list of product attribute from database and store it in array variable 'attribute' with key 'attribute_list'
-		// $attribute_sets['attribute_sets_list'] = $this->catalog->get_product_attribute_sets();
 		$attribute_sets = $this->catalog->get_product_attribute_sets();
 		$resatt = array();
 		foreach($attribute_sets as $arr)
 		{
 		    foreach($arr as $k => $v)
 		    {
-		        if($k == 'product_attribute_value')
-		            $resatt[$arr['product_mapping_id']][$k] = $this->get_arrayvalues_bykeyvalue($attribute_sets, $k, 'product_mapping_id', $arr['product_mapping_id']);
-		        else if($k == 'product_attribute')
-		        	$resatt[$arr['product_mapping_id']][$k] = $this->get_arrayvalues_bykeyvalue($attribute_sets, $k, 'product_mapping_id', $arr['product_mapping_id']);
+		        if($k == 'product_attribute')
+		        	$resatt[$arr['product_attribute_group_id']][$k] = $this->get_arrayvalues_bykeyvalue($attribute_sets, $k, 'product_attribute_group_id', $arr['product_attribute_group_id']);
+		        else if($k == 'product_attribute_value')
+		        	$resatt[$arr['product_attribute_group_id']][$k] = $this->get_arrayvalues_bykeyvalue($attribute_sets, $k, 'product_attribute_group_id', $arr['product_attribute_group_id']);
 		        else
-		            $resatt[$arr['product_mapping_id']][$k] = $v;
+		            $resatt[$arr['product_attribute_group_id']][$k] = $v;
 
 		    }
 		}
-		echo "<pre>";
-		print_r($resatt);
-		echo "</pre>";
-
+		$attribute_sets['attribute_sets_list'] = $resatt;
 		//call the product attribute views i.e rendered page and pass the product attribute data in the array variable 'attribute'
 		$this->load->view('admin/product_attribute_sets',$attribute_sets);
 	}
