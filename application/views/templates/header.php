@@ -80,7 +80,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="popup_login" id="login" class="front-end_form" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/ajax_controller/popup_login" id="login" class="front-end_form" method="post">
                             <div class="registeration_status">
                             </div>
                             <div class="form-group"> 
@@ -93,6 +93,15 @@
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </p>
                         </form>
+                        <div>
+                        	<a href="#" class="forgot_pwd"><strong>Forgot Password</strong></a>
+                        	<div class="form-group forgot_pwd-modal"> 
+                                <input type="text" class="form-control" id="forgot_pwd-modal" name="popup_email" placeholder="email" style="top: 3px;">
+                                <p class="text-center">
+                                <button class="btn btn-primary" style="margin-top: 12px;"><i class="fa fa-sign-in"></i>Retrieve Password</button>
+                            </p>
+                            </div>
+                         </div>   
                         <p class="text-center text-muted">Not registered yet?</p>
                         <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
                     </div>

@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-md-9" id="checkout">
                     <div class="box">
-                        <form method="post" id="checkout_form" action="<?php echo base_url(); ?>/payment_gateway">
+                        <form method="post" id="checkout_form" action="<?php echo base_url(); ?>/index.php/payumoney">
                             <h1>Checkout</h1>
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active address_label"><a><i class="fa fa-map-marker"></i><br>Address</a>
@@ -30,7 +30,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="firstname">Firstname</label>
-                                                    <input type="text" name="fname" class="form-control" id="firstname" maxlength="20">
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" maxlength="20">
                                                 </div>  
                                             </div>
                                             <div class="col-sm-6">
@@ -94,7 +94,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="phone">Mobile number</label>
-                                                    <input type="text" name="telephone" class="form-control" id="phone" maxlength="10">
+                                                    <input type="text" name="phone" class="form-control" id="phone" maxlength="10">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -181,6 +181,8 @@
                                             <a class="btn btn-default checkout_button" id="checkout_order_submit" data-type="address"><i class="fa fa-chevron-left"></i>Back to Address </a>
                                         </div>
                                         <div class="pull-right">
+                                            <input type="hidden" name="checkout_session_value" class="order_session_id_checkout"  value="<?php echo $orderitem_session_id_checkout; ?>">
+                                            <input type="hidden" name="amount" class="total_amount_hidden" id="total_amount_hidden" value="">
                                             <button type="submit" class="btn btn-primary">Place an order<i class="fa fa-chevron-right"></i>
                                             </button>
                                         </div>

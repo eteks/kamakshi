@@ -911,7 +911,7 @@ class Adminindex extends CI_Controller {
 			}
     	}
 		$status['state_list'] = $this->location->get_state();
-		$status['state_list'] = $this->location->get_state();
+		// $status['state_list'] = $this->location->get_state();
 		$this->load->view('admin/add_area',$status);
 	}
 	public function edit_area()
