@@ -114,6 +114,13 @@ $("#phone,#zip").keypress(function (e) {
         return false;
     }
 });
+// Forgot Password-Added by thangam
+ $(".forgot_pwd-modal").hide();
+ 	$(".forgot_pwd").show();
+ $('.forgot_pwd').click(function(){
+ 	$('#login').hide();
+ $(".forgot_pwd-modal").toggle();
+ 	});
 
 // Checkout address button
 $('#checkout_address_submit').on('click',function() {
