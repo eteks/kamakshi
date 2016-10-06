@@ -1,12 +1,9 @@
 <?php include "templates/header.php"; ?>
  
     <div id="all">
-
-        <div id="content">
+      <div id="content">
             <div class="container">
-
                 <div class="col-md-12">
-
                     <ul class="breadcrumb">
                         <li><a href="<?php echo base_url(); ?>index.php/">Home</a>
                         </li>
@@ -14,9 +11,7 @@
                         </li>
                         <li>Order # 1735</li>
                     </ul>
-
                 </div>
-
                 <div class="col-md-3">
                     <!-- *** CUSTOMER MENU ***
  _________________________________________________________ -->
@@ -25,40 +20,34 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Customer section</h3>
                         </div>
-
                         <div class="panel-body">
-
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="active">
-                                    <a href="<?php echo base_url(); ?>index.php/customer_orders/"><i class="fa fa-list"></i> My orders</a>
+                                <li class="">
+                                    <a href="<?php echo base_url(); ?>index.php/customer_orders/"><i class="fa fa-list"></i> My Orders</a>
                                 </li>
+                                <!-- <li>
+                                    <a href="<?php echo base_url(); ?>index.php/customer_wishlist/"><i class="fa fa-heart"></i> My Wishlist</a>
+                                </li> -->
                                 <li>
-                                    <a href="<?php echo base_url(); ?>index.php/customer_wishlist/"><i class="fa fa-heart"></i> My wishlist</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url(); ?>index.php/customer_account/"><i class="fa fa-user"></i> My account</a>
+                                    <a href="<?php echo base_url(); ?>index.php/customer_account/"><i class="fa fa-user"></i> My Account</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url(); ?>index.php/"><i class="fa fa-sign-out"></i> Logout</a>
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                     <!-- /.col-md-3 -->
 
                     <!-- *** CUSTOMER MENU END *** -->
                 </div>
-
                 <div class="col-md-9" id="customer-order">
                     <div class="box">
                         <h1>Order #1735</h1>
-
                         <p class="lead">Order #1735 was placed on <strong>22/06/2013</strong> and is currently <strong>Being prepared</strong>.</p>
                         <p class="text-muted">If you have any questions, please feel free to <a href="<?php echo base_url(); ?>index.php/contact/">contact us</a>, our customer service center is working for you 24/7.</p>
 
                         <hr>
-
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -120,7 +109,6 @@
 
                         </div>
                         <!-- /.table-responsive -->
-
                         <div class="row addresses">
                             <div class="col-md-6">
                                 <h2>Invoice address</h2>
@@ -141,15 +129,12 @@
                                     <br>Country</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
 
     </div>
     <!-- /#all -->

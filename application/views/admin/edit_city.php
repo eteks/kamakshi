@@ -47,6 +47,7 @@
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_city/<?php echo $city_edit['city_id']; ?>" enctype="multipart/form-data" name="edit_city_form">
                 	<div class="form-errors"></div>
                      <div class="control-group">
+                     	<input type="hidden" name="state_name" value="1" />
                         <label for="sel_a">State<span class="fill_symbol"> *</span></label>
                     <select name="state_name" id="sel_a" class="product-type-filter form-control city_act" disabled="true">
                    <option value="" >Select State</option>

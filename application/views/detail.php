@@ -97,7 +97,7 @@
 
                                 <p class="text-center buttons">
                                     <a class="btn btn-primary" id="add_to_cart_details"><i class="fa fa-shopping-cart"></i> Add to cart</a> 
-                                    <a class="btn btn-default" href="basket.html"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                    <a class="btn btn-default" href="<?php echo base_url(); ?>index.php/customer_wishlist"><i class="fa fa-heart"></i> Add to wishlist</a>
                                 </p>
                                 <p class="add_to_cart_section"> </p>
                             </div>

@@ -50,6 +50,7 @@
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_area/<?php echo $area_edit['area_id']; ?>" enctype="multipart/form-data" name="edit_area_form">
                  <div class="form-errors"></div>
                   <div class="control-group">
+                  	<input type="hidden" name="state_name" value="1" />
                         <label for="sel_a">State<span class="fill_symbol"> *</span></label>
                     <select name="state_name" id="sel_state" class="product-type-filter form-control state_act" disabled="true">
                    <option value="" >Select State</option>
@@ -63,6 +64,7 @@
                     </select>
                     </div>
                     <div class="control-group">
+                    	<input type="hidden" name="city_name" value="1" />
                         <label for="sel_a">City<span class="fill_symbol"> *</span></label>
                     <select name="city_name" id="sel_city" class="product-type-filter form-control city_act" disabled="true">
                    <option value="" >Select City</option>

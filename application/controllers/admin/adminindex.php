@@ -721,28 +721,18 @@ class Adminindex extends CI_Controller {
 	          ),   
 	    );
 	    $this->form_validation->set_rules($validation_rules);
-	    if ($this->form_validation->run() == FALSE) {
-	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
-    	}
+		            }
+	        	}
+    		}
     	else{
     		if(!empty($_POST)){
 				if (!empty($errors)) {
@@ -759,11 +749,11 @@ class Adminindex extends CI_Controller {
 					$result = $this->catalog->insert_product_attributes($data);
 					if($result)
 						$status = array(
-	                		'error_message' => "Product Attribute Inserted Successfully!"
+	                		$status['error_message'] => "Product Attribute Inserted Successfully!"
 	             		);
 					else
 						$status = array(
-	                		'error_message' => "Product Attribute Already Exists!"
+	                		$status['error_message'] => "Product Attribute Already Exists!"
 	             		);
 				}		
 			}
@@ -801,20 +791,18 @@ class Adminindex extends CI_Controller {
 		          ),   
 		    );
 		    $this->form_validation->set_rules($validation_rules);
-		    if ($this->form_validation->run() == FALSE) {
-		    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-        		}
-    		}
-		}
+	    if ($this->form_validation->run() == FALSE) {
+	    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+        }
     		else{
 				if (!empty($errors)) {
 					$status = strip_tags($errors);
@@ -828,15 +816,14 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->catalog->update_product_attribute($data);
 					if($result)
-						$status = "Product Attribute Updated Successfully!";
+						$status['error_message'] = "Product Attribute Updated Successfully!";
 					else
-						$status = "Product Attribute Already Exists!";
+						$status['error_message'] = "Product Attribute Already Exists!";
 				}		
     		}
-    		$data['status'] = $status;
 		}
-		$data['attribute_data'] = $this->catalog->get_product_attribute_data($id);
-		$this->load->view('admin/edit_product_attributes',$data);
+		$status['attribute_data'] = $this->catalog->get_product_attribute_data($id);
+		$this->load->view('admin/edit_product_attributes',$status);
 	}
 	public function area()
 	{	
@@ -884,28 +871,18 @@ class Adminindex extends CI_Controller {
 	          ),      
 	    );
 	    $this->form_validation->set_rules($validation_rules);
-	    if ($this->form_validation->run() == FALSE) {
-	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
-    	}
+		            }
+	        	}
+    		}
     	else {
     		if(!empty($_POST)) {
 				if (!empty($errors)) {
@@ -924,19 +901,15 @@ class Adminindex extends CI_Controller {
 					$result = $this->location->insert_area($data);
 					if($result)
 						$status = array(
-	                		'error_message' => "Area Inserted Successfully!"
+	                		$status['error_message'] => "Area Inserted Successfully!"
 	             		);
 					else
 						$status = array(
-	                		'error_message' => "Area Already Exists!"
+	                		$status['error_message'] => "Area Already Exists!"
 	             		);
 				}		
 			}
     	}
-		// print_r($status);
-		// $data_values = $this->location->get_area_data($id);
-		// $data['area_add']	= $data_values['state_city'];
-		// $data['states']	= $data_values['states'];	
 		$status['state_list'] = $this->location->get_state();
 		$status['state_list'] = $this->location->get_state();
 		$this->load->view('admin/add_area',$status);
@@ -1052,31 +1025,21 @@ class Adminindex extends CI_Controller {
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
 	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
-    	}
+		            }
+	        	}
+        }
     	else {
     		if(!empty($_POST)) {
 				if (!empty($errors)) {
 					$status = array(
-	                	'error_message' => strip_tags($errors)
+	                	$status['error_message'] => strip_tags($errors)
 	             	);
 				}
 				else{
@@ -1088,11 +1051,11 @@ class Adminindex extends CI_Controller {
 					$result = $this->location->insert_city($data);
 					if($result)
 						$status = array(
-	                		'error_message' => "City Inserted Successfully!"
+	                		$status['error_message'] => "City Inserted Successfully!"
 	             		);
 					else
 						$status = array(
-	                		'error_message' => "City Already Exists!"
+	                		$status['error_message'] => "City Already Exists!"
 	             		);
 				}		
 			}
@@ -1158,17 +1121,16 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->update_city($data);
 					if($result)
-						$status = "City Updated Successfully!";
+						$status['error_message'] = "City Updated Successfully!";
 					else
-						$status = "City Already Exists!";
+						$status['error_message'] = "City Already Exists!";
 				}		
     		}
-    		$data['status'] = $status;
 		}
 		$data_values = $this->location->get_city_data($id);
-		$data['city_edit']	= $data_values['state_city'];
-		$data['states']	= $data_values['states'];
-		$this->load->view('admin/edit_city',$data);
+		$status['city_edit']	= $data_values['state_city'];
+		$status['states']	= $data_values['states'];
+		$this->load->view('admin/edit_city',$status);
 	}
 	public function state()
 	{	
@@ -1293,6 +1255,10 @@ class Adminindex extends CI_Controller {
 		$transaction['transaction_list'] = $this->location->get_transaction();	
 		$this->load->view('admin/transaction',$transaction);
 	}
+	public function admin_nopage()
+	{
+			$this->load->view('admin/admin_404');
+	}
 	public function add_state()
 	{	
 		$status = array();//array is initialized
@@ -1311,33 +1277,21 @@ class Adminindex extends CI_Controller {
 	    );
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
-	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
-	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
+	            foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
 	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
-	            }
-        	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
+		            }
+	        	}
     	}
-    	else{
+		else{
     		if(!empty($_POST)){
 				if (!empty($errors)) {
-					$status = array(
-	                	'error_message' => strip_tags($errors)
-	             	);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data = array(
@@ -1347,15 +1301,15 @@ class Adminindex extends CI_Controller {
 					$result = $this->location->insert_state($data);
 					if($result)
 						$status = array(
-	                		'error_message' => "State Inserted Successfully!"
+	                		$status['error_message'] => "State Inserted Successfully!"
 	             		);
 					else
 						$status = array(
-	                		'error_message' => "State Already Exists!"
+	                		$status['error_message'] => "State Already Exists!"
 	             		);
-				}		
+				}	
 			}
-    	}
+		}	
 		// print_r($status);	
 		$status['state_list'] = $this->location->get_state();
 		$this->load->view('admin/add_state',$status);
@@ -1391,19 +1345,11 @@ class Adminindex extends CI_Controller {
 		            $error = form_error($field);    //getting error for field name
 		                                            //form_error() is inbuilt function
 		            //if error is their for field then only add in $errors_array array
-		            // echo "error".$error;
 		            if($error){
-		                if (strpos($error,"field is required.") !== false){
-		                    $errors = $error; 
-		                    break;
-		                }
-		                else
-		                    $errors[$field] = $error; 
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
 		            }
 	        	}
-		        if (strpos($errors,"field is required.") !== false){  
-		             $status = 'Please fill out all mandatory fields';
-		        }
     		}
 			else{
 					$data = array(
@@ -1413,15 +1359,14 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->update_state($data);
 					if($result)
-						$status = "State Updated Successfully!";
+						$status['error_message'] = "State Updated Successfully!";
 					else
-						$status = "State Already Exists!";
-				}
-    		$data['status'] = $status;
+						$status['error_message'] = "State Already Exists!";
+				}		
 		}
-		$data['state_data'] = $this->location->get_state_data($id);
+		$status['state_data'] = $this->location->get_state_data($id);
 		// print_r($data);
-		$this->load->view('admin/edit_state',$data);
+		$this->load->view('admin/edit_state',$status);
 	}
 	public function loadcategory_reference()
 	{	
