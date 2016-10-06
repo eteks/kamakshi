@@ -68,15 +68,23 @@
             </td>
             <td class="center"><span class="<?php if($usr["adminuser_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($usr["adminuser_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td class="center"><?php echo date("d/m/Y", strtotime($usr["adminuser_create_date"])); ?></td>
-            <td class="center">
-                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $usr["adminuser_id"] ?>">
-                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
-                </a>
-                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
-                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                    Delete
-                </a>
+            <td class="center">             
+                    <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers/<?php echo $usr["adminuser_id"] ?>">
+                        <i class="glyphicon glyphicon-edit icon-white"></i>
+                        Edit
+                    </a>
+                <?php if($usr['adminuser_is_superuser'] == 1 ) { ?>
+                    <span class="restrict">
+                    <a class="btn btn-danger" title="Delete">
+                        <i class="glyphicon glyphicon-trash icon-white"><div class="restrict_tooltip">Delete not possible.</div></i>
+                        Delete
+                    </a>
+                    </span>
+                <?php } else { ?>
+                    <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                        Delete
+                <?php } ?>
             </td>
         </tr>
     <?php endforeach ?>

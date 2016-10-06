@@ -374,4 +374,45 @@ $(document).ready(function() {
         $('.checkbox_array_hidden').val(checkbox_array);
     });
     //************ End ***********
+
+    //Code to delete record using ajax
+    //************ Start ***********
+    $(document).on("click", ".delete", function () {
+        var myId = $(this).data('id');
+        $(".modal-body #vId").val( myId );
+    });
+
+    $(document).on("click", ".yes_btn_act", function () {
+        var myId = $(".modal-body #vId").val();
+        form_data = {'table_name':$('.table_name').val(),'field_name':$('.field_name').val(),'id':myId};
+        // alert(JSON.stringify(form_data));
+        $.ajax({
+           type: "POST",
+           url: $('.action').val(),
+           data: form_data,
+           dataType: 'json',  
+           cache: false,
+           success: function(data) {    
+                if(data == 1){ 
+                    $('a[data-id*='+myId+']').parents('tr').remove();
+                    $('#myModal1,.modal,.modal-backdrop,.fade').hide();
+                    $('.error_msg_del').text("Record Deleted Successfully").show();
+                    window.setTimeout(function(){location.reload()},1000);
+                }
+           }
+        });        
+    });
+    //************ End *************
+
+    // Menu Events code to add active class and set slidetoggle
+    //*********** Start ************
+    $('.nav-stacked li').on('click',function(){
+        $('.nav-stacked li').not(this).removeClass('active');
+    });
+    var list_section = $('.main-menu');
+    list_section.find('li').click(function() {
+        $(this).children('.sub-menu').slideDown();
+        $(this).siblings().children('.sub-menu').slideUp("slow");
+    });
+    //*********** End ************
 });

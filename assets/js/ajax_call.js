@@ -86,8 +86,10 @@ $(document ).ajaxComplete(function() {
                         var shipping_amount = parseFloat(res.replace(',',''));
                         var total_amount = sub_total + shipping_amount;
                         var total_amount_final = Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2});
+                        var total_paymnet =  total_amount_final.replace(',','');
                         $('.ordinary_shipping_amount').html(res);
-                        $('.product_final_amount').html(total_amount_final);              
+                        $('.product_final_amount').html(total_amount_final);  
+                        $('.total_amount_hidden').val(total_paymnet);             
                     }
                 }
             });
@@ -129,7 +131,7 @@ $(document ).ajaxComplete(function() {
     /* -----------    Ajax for listing page start  ---------- */
 
     // Price filtering
-    $(document).bind('mouseup','.addui-slider-handle',function() {
+    $(document).on('mouseup','.addui-slider-handle',function() {
         var price_range =  $('.addui-slider-input').val().split(',');
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
@@ -323,13 +325,13 @@ $(document ).ajaxComplete(function() {
         var this_status = $(this).find('.registeration_status');
         jQuery.ajax({
         type: "POST",
-        url: "../ajax_controller/"+$(this).attr('action'),
+        url: $(this).attr('action'),
         data: form_data,
             success: function(res) {
                 if (res)
                 {   
                     if(res=="success") {
-                      window.location.href = "../";
+                      location.reload();
                     }
                     else {
                         this_status.html(res);

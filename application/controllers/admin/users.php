@@ -95,6 +95,7 @@ class Users extends CI_Controller {
 				'adminuser_email' => $this->input->post('adminuser_email'),
 				'adminuser_mobile' => $this->input->post('adminuser_mobile'),
 				);
+				// print_r($data);
 				$result = $this->usersmodel->update_adminusers($data);
 				if($result)
 					$status['error_message'] = "User Updated Successfully!";

@@ -34,6 +34,10 @@
         </div>
     </div>
    <div class="box-content">
+        <p class='error_msg_del alert alert-info'></p>
+        <input type="hidden" class="table_name" value="giftstore_product_attribute">
+        <input type="hidden" class="field_name" value="product_attribute_id">
+        <input type="hidden" class="action" value="<?php echo base_url(); ?>index.php/admin/delete">
         <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
@@ -60,7 +64,7 @@
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
-                <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                <a class="btn btn-danger delete" href="#myModal1" data-toggle="modal" data-id="<?php echo $att["product_attribute_id"] ?>" title="Delete">
                     <i class="glyphicon glyphicon-trash icon-white"></i>
                     Delete
                 </a>
@@ -93,7 +97,7 @@
 				</center>
 			</div>
 			<div id="delete_btn" class="modal-footer footer_model_button" >
-				<a name="action" id="del_link" class="btn btn-danger popup_btn" id="popup_btn1 href=""  value="Delete">Yes</a>
+				<a name="action" class="btn btn-danger popup_btn yes_btn_act" id="popup_btn1" value="Delete">Yes</a>
 				<button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
 			</div>
     </div><!--/row-->

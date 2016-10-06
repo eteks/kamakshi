@@ -80,7 +80,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="popup_login" id="login" class="front-end_form" method="post">
+                        <form action="<?php echo base_url(); ?>index.php/ajax_controller/popup_login" id="login" class="front-end_form" method="post">
                             <div class="registeration_status">
                             </div>
                             <div class="form-group"> 
