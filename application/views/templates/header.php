@@ -53,7 +53,7 @@
                     ?>
                         <li class="login_menu"> Welcome <?php echo $session_data['user_name']; ?>
                         </li>
-                        <li class="login_menu"> <a href="<?php echo base_url(); ?>index.php/index/profile"> Profile </a>
+                        <li class="login_menu"> <a href="<?php echo base_url(); ?>index.php/index/customer_order/"> Profile </a>
                         </li>
                         <li> <a href="<?php echo base_url(); ?>index.php/index/logout"> Logout </a>
                         </li>

@@ -348,8 +348,8 @@
 		opacity: 1;
 	}
 	100% {
-		width: 200%;
-		height: 200%;
+		width: 150%;
+		height: 150%;
 		opacity: 0;
 	}
 }
@@ -361,8 +361,8 @@
 		opacity: 1;
 	}
 	100% {
-		width: 200%;
-		height: 200%;
+		width: 150%;
+		height: 150%;
 		opacity: 0;
 	}
 }

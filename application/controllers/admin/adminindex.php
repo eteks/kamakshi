@@ -1202,6 +1202,10 @@ class Adminindex extends CI_Controller {
 	{	
 		$this->load->view('admin/transaction');
 	}
+	public function admin_nopage()
+	{
+			$this->load->view('admin/admin_404');
+	}
 	public function add_state()
 	{	
 		$status = array();//array is initialized
