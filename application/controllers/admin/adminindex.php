@@ -560,7 +560,7 @@ class Adminindex extends CI_Controller {
 	       array(
 	             'field'   => 'product_title',
 	             'label'   => 'Product Title',
-	             'rules'   => 'trim|required|xss_clean'
+	             'rules'   => 'trim|required|xss_clean|is_unique[giftstore_product.product_title]'
 	          ),
 	       array(
 	             'field'   => 'product_description',
