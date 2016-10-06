@@ -560,7 +560,7 @@ class Adminindex extends CI_Controller {
 	       array(
 	             'field'   => 'product_title',
 	             'label'   => 'Product Title',
-	             'rules'   => 'trim|required|xss_clean'
+	             'rules'   => 'trim|required|xss_clean|is_unique[giftstore_product.product_title]'
 	          ),
 	       array(
 	             'field'   => 'product_description',
@@ -1254,6 +1254,10 @@ class Adminindex extends CI_Controller {
 	{
 		$transaction['transaction_list'] = $this->location->get_transaction();	
 		$this->load->view('admin/transaction',$transaction);
+	}
+	public function admin_nopage()
+	{
+			$this->load->view('admin/admin_404');
 	}
 	public function add_state()
 	{	

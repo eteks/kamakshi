@@ -179,14 +179,25 @@ $(document).ready(function() {
         var attribute_length = [];
         var sum = 0;
         var $error = false;
-        // alert($('.attribute_group').length);
-        if($('.attribute_status').is(":checked")){
+        var return_value = false;
+        $('.product_default_field').each(function(){
+            if($(this).val() == ''){
+                $error = true; 
+                return_value = true;
+            }       
+            else{
+                return_value = false;
+            }
+                 
+        });
+        if($('.attribute_status').is(":checked") && !($error)){
             //To Check any empty values passing in attributes block
             $(this).find('.attribute_group').find('.attribute_validate').each(function(){
                 if($(this).val() == '')
                 {        
                     $error = true;    
                     $(this).addClass('attribute_error');
+                    $('.error_msg_reg').hide();
                     // e.preventDefault();             
                 }
                 else{
@@ -199,9 +210,36 @@ $(document).ready(function() {
                     sum += parseFloat(this.value);
                 });
                 $("#product_totalitems_hidden").val(sum);
-                return true;
+
+                attribute_group_length = $('.attribute_group').length;
+                // alert(attribute_group_length);
+                // To show error when same attribute group contains same attributes while click submit button
+                // This same logic checked for group add attribute button
+                for(i=1;i<=attribute_group_length;i++){
+                    // alert("#attribute_group"+i);
+                    var equal_check_array = [];
+                    $(this).find('#attribute_group'+i).find('.att_equal').each(function(){
+                        if($('option:selected',this).val() != ''){
+                            equal_check_array.push($('option:selected',this).val());
+                        }
+                    });
+                    var hasDups = !equal_check_array.every(function(v,i) {
+                      return equal_check_array.indexOf(v) == i;
+                    });
+                    // alert(JSON.stringify(equal_check_array));
+                    if (hasDups){
+                        // alert("dupicate");
+                        $("html, body").animate({ scrollTop: 800 }, "slow");
+                        $('.attribute_group_message').hide();
+                        $('.attribute_duplicate_message').show();
+                        return_value = false;
+                    }
+                    else{
+                        return_value = true;
+                    }
+                }     
             }
-            else if($('.attribute_group').length > 1){
+            if($('.attribute_group').length > 1){
                 $('.clone_attribute_group').each(function(){
                     attribute_length.push($(this).find('.clone_attribute').length);
                 });
@@ -210,21 +248,18 @@ $(document).ready(function() {
                 });
                 if (hasDups){
                     $('.attribute_group_message').hide();
-                    return true;
+                    return_value = true;
                 }
                 else{
                     $("html, body").animate({ scrollTop: 800 }, "slow");
                     $('.attribute_duplicate_message').hide();
                     $('.attribute_group_message').show();
-                    return false;
+                    return_value = false;
                 }
             }  
-            else{
-                return false;
-            }
-            
-            // return false;
-        }   
+            // alert(return_value);
+            return return_value;
+        }  
         // return false;   
     });
     $(document).delegate("[name='select_attribute[]']",'change',function(){

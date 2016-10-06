@@ -51,21 +51,21 @@
              <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
                         <label for="titlename">Product Title<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php echo set_value('product_title');?>">
+                        <input type="text" class="form-control product_default_field" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php echo set_value('product_title');?>">
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
-                        <input type="file" id="category_image" name="product_image[]" multiple="multiple">
+                        <input type="file" id="category_image" name="product_image[]" multiple="multiple" class="product_default_field">
                         <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                     </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>
-                        <textarea type="text" class="form-control" id="description" placeholder="Enter description" name="product_description"><?php echo set_value('product_description');?></textarea>
+                        <textarea type="text" class="form-control product_default_field" id="description" placeholder="Enter description" name="product_description"><?php echo set_value('product_description');?></textarea>
                     </div> 
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control category_act" name="select_category">
+                            <select id="sel_c" class="product-type-filter form-control category_act product_default_field" name="select_category">
                             <option value="">Select Category</option>
                                 <?php foreach ($category_list as $cat): ?>
                                     <option value="<?php echo $cat["category_id"] ?>"><?php echo $cat["category_name"] ?></option>
@@ -76,7 +76,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose SubCategory<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control subcategory_act" name="select_subcategory">
+                            <select id="sel_c" class="product-type-filter form-control subcategory_act product_default_field" name="select_subcategory">
                             <option value="">Select Subcategory</option>
                             </select>
                         </div>
@@ -84,7 +84,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Recipient<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control recipient_act" name="select_recipient">
+                            <select id="sel_c" class="product-type-filter form-control recipient_act product_default_field" name="select_recipient">
                             <option value="">Select Recipient</option>
                             </select>
                         </div>
@@ -107,7 +107,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select name="product_status" id="sel_c" class="product-type-filter form-control city_act">
+                            <select name="product_status" id="sel_c" class="product-type-filter form-control city_act product_default_field">
                                 <option value="">Select</option>
                                 <option value="1" <?php echo set_select('product_status', '1',false); ?>>Active</option>
                                 <option value="0" <?php echo set_select('product_status', '0',false); ?>>Inactive</option>

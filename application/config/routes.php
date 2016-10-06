@@ -63,6 +63,7 @@ $route['customer_orders'] = 'index/customer_orders';
 $route['customer_order'] = 'index/customer_order';
 $route['recipient_category/(:any)'] = 'index/recipient_category/$1';
 $route['track_order'] = 'index/track_order';
+$route['404_page'] = 'index/nopage';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
@@ -111,8 +112,8 @@ $route['adminindex/edit_order'] = 'adminindex/edit_order';
 $route['adminindex/orderitem'] = 'adminindex/orderitem';
 $route['adminindex/edit_orderitem'] = 'adminindex/edit_orderitem';
 $route['adminindex/edit_transaction'] = 'adminindex/edit_transaction';
-
-
+// $route['adminindex/admin_404'] = 'admin/adminindex/admin_nopage';
+$route['admin/admin_404'] = 'admin/adminindex/admin_nopage';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
