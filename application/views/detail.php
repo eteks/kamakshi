@@ -13,7 +13,7 @@
                             <?php echo $product_details->subcategory_name;  ?>
                         </li>
                         <li><?php echo $product_details->product_title;  ?></li>
-                        <input type="hidden" value="<?php echo $product_details->product_id; ?>" id="product_id" />
+                        <input type="hidden" value="<?php echo $product_details->product_id; ?>" id="product_id" class="product_id_detail" />
                     </ul>
                 </div>
                 <div class="col-md-12">
@@ -35,14 +35,36 @@
                             </div>
                             <!-- /.ribbon -->
                         </div>
-                        <?php if(!empty($attribute_array)): foreach($attribute_array as $attribute): ?>
-                            <label> <?php echo $attribute['product_attribute']; ?> </label>
-                            <select>
-                                <option value="<?php echo $attribute['product_attribute_value_id']; ?>"> <?php echo $attribute['product_attribute_value']; ?> </option> 
-                            </select>
-                        <?php endforeach; ?>
-                        <?php endif; ?>   
-                        <div class="col-sm-3">
+                            <!-- Dummy dropdown for functionality purpose -->
+                            <select class="dummy_dropdown">
+                        <?php
+                            if(!empty($product_attributes)):
+                            $temp_attribute = array();
+                            $temp_value = array();
+                            foreach($product_attributes as $attribute):
+                                if (!in_array($attribute['product_attribute_id'], $temp_attribute)):
+                                    $temp_attribute[] = $attribute['product_attribute_id'];
+                        ?>
+                                    </select>
+                                    <label> <?php echo $attribute['product_attribute']; ?> </label>
+                                    <select class="attributes" id="attribute_<?php echo $attribute['product_attribute']; ?>">
+                                <?php
+                                endif;  
+                                if (!in_array($attribute['product_attribute_value_id'], $temp_value)):   
+                                    $temp_value[] = $attribute['product_attribute_value_id'];
+                                ?> 
+                                    <option value="<?php echo $attribute['product_attribute_value_id']; ?>"> <?php echo $attribute['product_attribute_value']; ?> </option>           
+                                <?php endif; ?> 
+
+                            <?php endforeach; ?>
+                            </select>  <!-- / Dummy dropdown for functionality purpose -->
+                            <span class="attribute_status"> </span>
+                            <input type="hidden" value="<?php echo $product_attributes[0]['product_attribute_group_id']; ?>" class="ordinary_product_arrtibute_group" />
+                            <input type="hidden" value="<?php echo $product_attributes[0]['product_attribute_group_id']; ?>" class="update_product_arrtibute_group" />
+                            <input type="hidden" class="attribute_combination" value=""/>
+                            <?php endif; ?>  
+                            </select> 
+                            <div class="col-sm-3">
                             <div class="thumb_carosel">
 							    <div>
 							        <div id="thumbs2">
@@ -70,7 +92,8 @@
                                 <h1 class="text-center"><?php echo $product_details->product_title;  ?></h1>
                                 <p class="goToDescription"><a class="scroll-to" href="#details">Scroll to product details, material &amp; care and sizing</a>
                                 </p>
-                                <p class="price">Rs <?php echo $product_details->product_price;  ?></p>
+                                <p class="price product_detail_attribute_price">Rs <?php echo $product_details->product_price;  ?></p>
+                                <input type="hidden" value="<?php echo $product_details->product_price;  ?>" class="ordinary_price" />
 
                                 <p class="text-center buttons">
                                     <a class="btn btn-primary" id="add_to_cart_details"><i class="fa fa-shopping-cart"></i> Add to cart</a> 
@@ -254,34 +277,3 @@
     </div>
     <!-- /#all -->
 <?php include "templates/footer.php"; ?>
-
-
-
-<script>
-$(document).ready(function() {
-    //  AJAX for add to cart items
-    $("#add_to_cart_details").click(function() {
-        var pro_id = $('#product_id').val();
-        // var grp_id = $('#attribute_group_id').val();
-        var grp_id = "0";
-        jQuery.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "<?php echo base_url(); ?>" + "index.php/ajax_controller/add_to_cart_details",
-        data: {pro_id: pro_id , grp_id : grp_id},
-        success: function(res) {
-        if (res)
-        {
-           var order_count = res.order_count;
-           var add_to_cart_status = res.add_to_cart_status;
-           $('.add_to_cart').html(order_count);
-           $('.add_to_cart_section').html(add_to_cart_status);
-           $('.add_to_cart_section').slideDown(350);
-           $('.add_to_cart_section').slideUp(2000);
-        }
-        }
-        });
-    }); 
-
-});
-</script>

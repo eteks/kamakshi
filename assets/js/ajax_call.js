@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     /* -----------    Added by siva - Ajax call  ---------- */
     
-    var base_url = 'http://localhost/kamakshi/index.php/';
    
     /* -----------    Ajax for checkout page start  ---------- */
 
@@ -20,7 +19,7 @@ $(document ).ajaxComplete(function() {
         if(state_id!='') {    
             jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/get_city",
+            url: "../ajax_controller/get_city",
             data: {state_id: state_id},
                 success: function(res) {
                     if (res)
@@ -50,7 +49,7 @@ $(document ).ajaxComplete(function() {
         if(city_id!='' && state_id!='') {    
             jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/get_area",
+            url: "../ajax_controller/get_area",
             data: {city_id: city_id , state_id: state_id},
                 success: function(res) {
                     if (res)
@@ -79,7 +78,7 @@ $(document ).ajaxComplete(function() {
         if(area_id!='') {    
             jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/get_area_shipping",
+            url: "../ajax_controller/get_area_shipping",
             data: {area_id: area_id},
                 success: function(res) {
                     if (res)
@@ -107,7 +106,7 @@ $(document ).ajaxComplete(function() {
 
         jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/update_baseket_product",
+            url: "../ajax_controller/update_baseket_product",
             data: {updation_det : order_status},
             success: function(res) {
                 if (res)
@@ -130,7 +129,7 @@ $(document ).ajaxComplete(function() {
     /* -----------    Ajax for listing page start  ---------- */
 
     // Price filtering
-    $(document).on('mousedown','.addui-slider-handle',function() {
+    $(document).bind('mouseup','.addui-slider-handle',function() {
         var price_range =  $('.addui-slider-input').val().split(',');
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
@@ -156,7 +155,7 @@ $(document ).ajaxComplete(function() {
         }   
         jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/filtering_product",
+            url: "../ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
@@ -194,7 +193,7 @@ $(document ).ajaxComplete(function() {
         }   
         jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/filtering_product",
+            url: "../ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
@@ -231,7 +230,7 @@ $(document ).ajaxComplete(function() {
         }
         jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/filtering_product",
+            url: "../ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
@@ -268,7 +267,7 @@ $(document ).ajaxComplete(function() {
         }
         jQuery.ajax({
             type: "POST",
-            url: base_url + "ajax_controller/filtering_product",
+            url: "../ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
@@ -302,7 +301,7 @@ $(document ).ajaxComplete(function() {
         }
         jQuery.ajax({
         type: "POST",
-        url: base_url + "ajax_controller/filtering_product",
+        url: "../ajax_controller/filtering_product",
         data: datavalues,
             success: function(res) {
                 if (res)
@@ -324,13 +323,13 @@ $(document ).ajaxComplete(function() {
         var this_status = $(this).find('.registeration_status');
         jQuery.ajax({
         type: "POST",
-        url: base_url + "ajax_controller/"+$(this).attr('action'),
+        url: "../ajax_controller/"+$(this).attr('action'),
         data: form_data,
             success: function(res) {
                 if (res)
                 {   
                     if(res=="success") {
-                      window.location.href = base_url;
+                      window.location.href = "../";
                     }
                     else {
                         this_status.html(res);
@@ -350,7 +349,7 @@ $(document ).ajaxComplete(function() {
         var bas_pro_id = $(this).data('id');
         jQuery.ajax({
         type: "POST",
-        url: base_url + "ajax_controller/remove_baseket_product",
+        url: "../ajax_controller/remove_baseket_product",
         data: {bas_pro_id: bas_pro_id},
         success: function(res) {
             if (res)
@@ -371,7 +370,7 @@ $(document ).ajaxComplete(function() {
         });
         jQuery.ajax({
         type: "POST",
-        url: base_url + "ajax_controller/update_baseket_product",
+        url: "../ajax_controller/update_baseket_product",
         data: {updation_det : updation},
         success: function(res) {
             if (res)
@@ -390,7 +389,75 @@ $(document ).ajaxComplete(function() {
 
     /* -----------    Ajax for basket page end  ---------- */
 
+    /* -----------    Ajax for detail page start  ---------- */
 
+    $(".attributes").on('change',function() {
+        var attribute_value_id = [];
+        $('.attributes').each(function() {
+            attribute_value_id.push($(this).val());
+        });
+        $('.attribute_combination').val(attribute_value_id);
+        var ordinary_price =  $('.ordinary_price').val();
+        var atribute_combination = $('.attribute_combination').val();
+        var product_id = $('.product_id_detail').val();
+        var ordinary_group_id = $('.ordinary_product_arrtibute_group').val();
+        jQuery.ajax({
+            type: "POST",
+            url: "../ajax_controller/attribute_price",
+            dataType: "json",
+            data: {atribute_combination : atribute_combination, product_id : product_id},
+            success: function(res) {
+                if (res)
+                {   
+                    if(res!=0) {
+                        $('.product_detail_attribute_price').html(res.product_attribute_group_price);
+                        $('.update_product_arrtibute_group').val(res.product_attribute_group_id); 
+                    }
+                    else {
+                        $('.attribute_status').html("Not available");
+                        $('.attribute_status').fadeIn(350);
+                        $('.attribute_status').fadeOut(1000); 
+                        $('.attributes').prop("selectedIndex", 0);
+                        $('.product_detail_attribute_price').html(ordinary_price);
+                        $('.update_product_arrtibute_group').val(ordinary_group_id);
+
+                    }
+                }
+            }
+        });
+    });
+
+    //  Add to cart in detail page
+    $("#add_to_cart_details").click(function() {
+        var pro_id = $('#product_id').val();
+        var group_id_length = $('.update_product_arrtibute_group').length;
+        if(group_id_length > 0) {
+            var group_id = $('.update_product_arrtibute_group').val();
+            var datavalues = {pro_id: pro_id , grp_id : group_id};
+        }
+        else {
+            var datavalues = {pro_id: pro_id};
+        }
+        jQuery.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "../ajax_controller/add_to_cart_details",
+        data: datavalues,
+        success: function(res) {
+            if (res)
+            {
+               var order_count = res.order_count;
+               var add_to_cart_status = res.add_to_cart_status;
+               $('.add_to_cart').html(order_count);
+               $('.add_to_cart_section').html(add_to_cart_status);
+               $('.add_to_cart_section').slideDown(350);
+               $('.add_to_cart_section').slideUp(2000);
+            }
+        }
+        });
+    });
+
+    /* -----------    Ajax for detail page end  ---------- */
 
 
     /* -----------    Ended by siva - Ajax call  ---------- */

@@ -272,6 +272,12 @@
   margin: 10px 0;
   text-align: center;
 }
+.attribute_status {
+  color: #c24641;
+  display: none;
+  margin: 10px 0;
+  text-align: center;
+}
 .login_menu {
   color: #fff;
 }
@@ -279,6 +285,9 @@
   cursor: pointer;
 }
 .images_alignment,.position_images,.product_position {
+  display: none;
+}
+.dummy_dropdown {
   display: none;
 }
 /* Ended by siva*/

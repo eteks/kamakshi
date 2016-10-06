@@ -36,7 +36,7 @@
    <div class="box-content">
         <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll" >
     <thead>
-   <th class="product_small">Order Id</th>
+   <th class="product_small">Order No</th>
    <th class="product_small">User Id</th> 
    <th class="product">Tracking Id</th>
     <th class="product">Bank Reference Number</th>
@@ -45,43 +45,27 @@
    <th class="product_small">Amount</th>
     <th class="product_small">Currency</th>
     <th class="product_small">Status Code</th>
-     <th class="product_small">Created Date</th>
-    <th class="product_small">Delivery date</th>
-   <th class="product_small">Delivery time</th>
-     <th class="product_small">Total amount</th>
-     <th class="product_small">Staus</th>
+     <th class="product_small">Status Message</th>
+    <th class="product_small">Created date</th>
       <!-- <th class="product_small">Actions</th> -->
     </tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>Worth Name</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <!-- <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/users/edit_adminusers">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td> -->
-    </tr>
+     <tbody>
+    <?php foreach ($transaction_list as $transaction): ?>
+        <tr>
+            <td><?php echo $transaction["order_id"] ?></td>
+            <td><?php echo $transaction["user_id"] ?></td>
+            <td><?php echo $transaction["tracking_id"] ?></td>
+            <td><?php echo $transaction["bank_referrence_number"] ?></td>
+            <td class="center"><?php echo $transaction["payment_mode"] ?></td>
+            <td class="center"><?php echo $transaction["card_name"] ?></td>
+            <td class="center"><?php echo $transaction["amount"] ?></td>
+            <td class="center"><?php echo $transaction["currency"] ?></td>
+            <td class="center"><?php echo $transaction["status_code"] ?></td>
+            <td class="center"><?php echo $transaction["status_message"] ?></td>
+            <td class="center"><?php echo date("d/m/Y",strtotime($transaction["transaction_createddate"])); ?></td>
+        </tr>
+    <?php endforeach ?>
     </tbody>
     </table>
     </div>

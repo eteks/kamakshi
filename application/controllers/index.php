@@ -80,11 +80,11 @@ class Index extends CI_Controller
 
 		$categories_values = $this->index_model->get_product_details();
 		$categories['product_image_details'] = $categories_values['product_image_details'];
+        $categories['product_attributes'] = $categories_values['product_attributes'];
 		$categories['product_details'] = $categories_values['product_details'];
 		$categories['recommanded_products'] = $categories_values['recommanded_products'];
 		$categories['product_default_image'] = $categories_values['product_default_image'];
-		// print_r($categories['attribute_array']);
-		$this->load->view('detail',$categories);
+  		$this->load->view('detail',$categories);
 	}
 
     //  Checkout page

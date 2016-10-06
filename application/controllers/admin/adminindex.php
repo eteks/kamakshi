@@ -560,7 +560,7 @@ class Adminindex extends CI_Controller {
 	       array(
 	             'field'   => 'product_title',
 	             'label'   => 'Product Title',
-	             'rules'   => 'trim|required|xss_clean'
+	             'rules'   => 'trim|required|xss_clean|is_unique[giftstore_product.product_title]'
 	          ),
 	       array(
 	             'field'   => 'product_description',
@@ -568,36 +568,41 @@ class Adminindex extends CI_Controller {
 	             'rules'   => 'trim|required|xss_clean'
 	          ), 
 	       array(
-	             'field'   => 'select_category[]',
+	             'field'   => 'select_category',
 	             'label'   => 'Category',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),   
 	       array(
-	             'field'   => 'select_subcategory[]',
+	             'field'   => 'select_subcategory',
 	             'label'   => 'SubCategory',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),   
 	       array(
-	             'field'   => 'select_recipient[]',
+	             'field'   => 'select_recipient',
 	             'label'   => 'Recipient',
 	             'rules'   => 'trim|required|xss_clean'
 	          ),   
-	        array(
-	             'field'   => 'product_price',
-	             'label'   => 'Product Price',
-	             'rules'   => 'trim|required|xss_clean'
-	        ),
-	        array(
-	             'field'   => 'product_totalitems',
-	             'label'   => 'Totalitems',
-	             'rules'   => 'trim|required|xss_clean'
-	        ),   
 	        array(
 	             'field'   => 'product_status',
 	             'label'   => 'Status',
 	             'rules'   => 'trim|required|xss_clean'
 	        ),   
 	    );
+	    $status['attribute_check_status'] = isset($_POST['attribute_check_status'])?$_POST['attribute_check_status']:"";
+
+	    if($status['attribute_check_status'] == 0){
+	        array_push($validation_rules,array(
+	             'field'   => 'product_price',
+	             'label'   => 'Product Price',
+	             'rules'   => 'trim|required|xss_clean'
+	        ));
+	        array_push($validation_rules,array(
+	             'field'   => 'product_totalitems',
+	             'label'   => 'Totalitems',
+	             'rules'   => 'trim|required|xss_clean'
+	        ));
+	    }  	
+	    // print_r($validation_rules);   
 	    $this->form_validation->set_rules($validation_rules);
 	    if ($this->form_validation->run() == FALSE) {
 	    	foreach($validation_rules as $row){
@@ -605,21 +610,11 @@ class Adminindex extends CI_Controller {
 	            $error = form_error($field);    //getting error for field name
 	                                            //form_error() is inbuilt function
 	            //if error is their for field then only add in $errors_array array
-	            // echo "error".$error;
 	            if($error){
-	                if (strpos($error,"field is required.") !== false){
-	                    $errors = $error; 
-	                    break;
-	                }
-	                else
-	                    $errors[$field] = $error; 
+                    $status['error_message'] = strip_tags($error);
+                    break;
 	            }
         	}
-	        if (strpos($errors,"field is required.") !== false){  
-	             $status = array(
-	                'error_message' => 'Please fill out all mandatory fields'
-	             );
-	        }
     	}
     	else{
     		if(!empty($_POST)){
@@ -660,13 +655,11 @@ class Adminindex extends CI_Controller {
 					}
 				}else{
 					// echo "else";
-					$errors = "Please Upload Product Image";
+					$status['error_message'] = "Please Upload Product Image";
 					$category_image = '';
 				}	
 				if (!empty($errors)) {
-					$status = array(
-	                	'error_message' => strip_tags($errors)
-	             	);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data['product_basic'] = array(
@@ -683,13 +676,9 @@ class Adminindex extends CI_Controller {
 					$data['product_attributes'] = $attribute_group;
 					$result = $this->catalog->insert_product($data);
 					if($result)
-						$status = array(
-	                		'error_message' => "Product Inserted Successfully!"
-	             		);
+						$status['error_message'] = "Product Inserted Successfully!";
 					else
-						$status = array(
-	                		'error_message' => "Product Already Exists!"
-	             		);
+						$status['error_message'] = "Product Already Exists!";
 				}		
 			}
     	}
@@ -852,8 +841,8 @@ class Adminindex extends CI_Controller {
 	public function area()
 	{	
 		$area['area'] = $this->location->get_areas();
-		$city['state_list'] = $this->location->get_state();
-		$city['city_list'] = $this->location->get_state();
+		$area['state_list'] = $this->location->get_state();
+		$area['city_list'] = $this->location->get_state();
 		$this->load->view('admin/area',$area);
 	}
 	public function ajax_area()
@@ -1187,8 +1176,109 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/state',$state);
 	}
 	public function edit_order()
-	{	
-		$this->load->view('admin/edit_order');
+	{
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = array();//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'order_customer_name',
+		             'label'   => 'Customer Name',
+		             'rules'   => 'trim|required|xss_clean|min_length[5]|max_length[12]|callback_edit_unique[giftstore_users.user_id.user_name.'.$id.']'
+		          ),
+		       array(
+		             'field'   => 'order_shipping_line1',
+		             'label'   => 'Address',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'order_shipping_line2',
+		             'label'   => 'Address',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'order_shipping_email',
+		             'label'   => 'Email',
+		             'rules'   => 'trim|required|xss_clean|valid_email|callback_edit_unique[giftstore_users.user_id.user_email.'.$id.']'
+		          ),
+	          array(
+		             'field'   => 'order_total_items',
+		             'label'   => 'Date Of Birth',
+		             'rules'   => 'trim|required|xss_clean|date_valid'
+		          ),
+		      array(
+		             'field'   => 'order_shipping_mobile',
+		             'label'   => 'Mobile',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),  
+		      array(
+	             'field'   => 'order_shipping_state_id',
+	             'label'   => 'State',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'order_shipping_city_id',
+	             'label'   => 'City',
+	             'rules'   => 'trim|required|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'order_shipping_area_id',
+	             'label'   => 'Area',
+	             'rules'   => 'trim|required|xss_clean'
+	          ), 
+	          array(
+		             'field'   => 'order_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),  
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+    		}
+    		else{
+				$data = array(
+				'order_id' => $id,
+				'order_customer_name' => $this->input->post('customer_name'),
+				'order_shipping_line1' => $this->input->post('order_shipping_line1'),
+				'order_shipping_line2' => $this->input->post('order_shipping_line2'),
+				'order_shipping_email' => $this->input->post('order_shipping_email'),
+				'order_total_items' => $this->input->post('order_total_items'),
+				'order_shipping_mobile' => $this->input->post('order_shipping_mobile'),
+				'order_shipping_state_id' => $this->input->post('state_name'),
+				'order_shipping_city_id' => $this->input->post('city_name'),
+				'order_shipping_area_id' => $this->input->post('area_name'),
+				);
+				$result = $this->usersmodel->update_endusers($data);
+				if($result)
+					$status['error_message'] = "Order Updated Successfully!";
+				else
+					$status['error_message'] = "Something Went Wrong!";	
+    		}
+		}
+		$data_values = $this->location->get_order_data($id);
+		$status['order_data']	= $data_values['state_city'];
+		$status['state_list'] = $this->location->get_state();
+		$status['cities']	= $data_values['cities'];
+		$status['city_list'] = $this->location->get_city();
+		$status['area_list'] = $this->location->get_area();
+		$this->load->view('admin/edit_order',$status);	
 	}
 	public function orderitem()
 	{	
@@ -1199,8 +1289,9 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/edit_orderitem');
 	}
 	public function transaction()
-	{	
-		$this->load->view('admin/transaction');
+	{
+		$transaction['transaction_list'] = $this->location->get_transaction();	
+		$this->load->view('admin/transaction',$transaction);
 	}
 	public function admin_nopage()
 	{
@@ -1344,8 +1435,11 @@ class Adminindex extends CI_Controller {
 		echo json_encode($category_reference_data);
 	}
 	public function order()
-	{	
-		$this->load->view('admin/order');
+	{
+		$order['order_list'] = $this->location->get_order();
+		$order['state'] = $this->location->get_areas();
+		$order['city'] = $this->location->get_areas();	
+		$this->load->view('admin/order',$order);
 	}
 	public function product_attribute_sets()
 	{	
@@ -1365,6 +1459,9 @@ class Adminindex extends CI_Controller {
 
 		    }
 		}
+		// echo "<pre>";
+		// print_r($resatt);
+		// echo "</pre>";
 		$attribute_sets['attribute_sets_list'] = $resatt;
 		//call the product attribute views i.e rendered page and pass the product attribute data in the array variable 'attribute'
 		$this->load->view('admin/product_attribute_sets',$attribute_sets);
