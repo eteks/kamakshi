@@ -1462,6 +1462,13 @@ class Adminindex extends CI_Controller {
 		//call the product attribute views i.e rendered page and pass the product attribute data in the array variable 'attribute'
 		$this->load->view('admin/product_attribute_sets',$attribute_sets);
 	}
+	public function delete(){
+		$tablename = $this->input->post('table_name');
+		$fieldname = $this->input->post('field_name');
+		$id = $this->input->post('id');
+		$category_reference_data = $this->catalog->delete_data($tablename,$fieldname,$id);
+		echo $category_reference_data;
+	}
 }
 
 /* End of file welcome.php */

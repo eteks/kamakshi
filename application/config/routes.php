@@ -73,6 +73,7 @@ $route['adminindex/endusers'] = 'adminindex/endusers';
 $route['adminindex/edit_endusers'] = 'adminindex/edit_endusers';
 $route['admin/logout'] = 'admin/login/logout';
 $route['admin/dashboard'] = 'admin/adminindex/dashboard';
+$route['admin/delete'] = 'admin/adminindex/delete';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
@@ -91,6 +92,7 @@ $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
 $route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
 $route['adminindex/product_attribute_sets'] = 'adminindex/product_attribute_sets';
+// $route['adminindex/delete/(:any)/(:any)'] = 'adminindex/delete';
 
 
 

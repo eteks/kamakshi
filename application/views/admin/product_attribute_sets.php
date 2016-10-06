@@ -34,10 +34,10 @@
         </div>
     </div>
    <div class="box-content">
-        <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes">
+        <!-- <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
-        </a>
+        </a> -->
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll ">
     <thead>
     <tr>
