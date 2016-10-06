@@ -253,6 +253,7 @@ class Index_Model extends CI_Model {
     public function get_cart_details() {
 
         $basket_where =  '(bo.orderitem_session_id="'.$this->session->userdata('user_session_id').'" and bo.orderitem_status=1)';
+        $query['orderitem_session_id_checkout'] = $this->session->userdata('user_session_id');
         $basket_query = $this->db->select('*');
         $basket_query = $this->db->from('giftstore_orderitem bo');
         $basket_query = $this->db->join('giftstore_product bp','bo.orderitem_product_id=bp.product_id','inner');

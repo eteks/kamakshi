@@ -98,6 +98,7 @@ class Index extends CI_Controller
         $categories_values_basket = $this->index_model->get_cart_details();
         $categories['basket_details'] = $categories_values_basket['basket_details'];
         $categories['basket_count'] = $categories_values_basket['basket_count'];
+        $categories['orderitem_session_id_checkout'] = $categories_values_basket['orderitem_session_id_checkout'];
         // print_r($categories['basket_details']);
         $categories['state'] = $this->index_model->get_state();
         $this->load->view('checkout',$categories);
@@ -168,6 +169,25 @@ class Index extends CI_Controller
     {
         $this->load->view('checkout4');
     }
+
+    // Payment gateway
+    public function payumoney()
+    {
+        $this->load->view('payu/PayUMoney_form');
+    }
+
+    // Payment gateway sucess
+    public function pay_success()
+    {
+        $this->load->view('payu/success');
+    }
+
+    // Payment gateway failure
+    public function pay_failure()
+    {
+        $this->load->view('payu/failure');
+    }
+
     public function customer_account()
     {
         $categories_values_reg = $this->index_model->get_register();
