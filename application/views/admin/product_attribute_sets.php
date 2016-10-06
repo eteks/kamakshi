@@ -34,18 +34,21 @@
         </div>
     </div>
    <div class="box-content">
-        <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes">
+        <!-- <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
-        </a>
+        </a> -->
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll ">
     <thead>
     <tr>
 		<th class="product">Product Title</th>
 		<th class="product product_attr_set">Attribute Sets</th>
-		<th class="product_small product_attr_price">Price</th>
+		<!-- <th class="product_small product_attr_price">Price</th>
         <th class="product_small product_attr_count">Total Items</th>
-		<!-- <th class="product">Actions</th> -->
+        <th class="product_small product_attr_count">No. Of Items Sold</th> -->
+        <th class="product_small">Price</th>
+        <th class="product_small">Total Items</th>
+        <th class="product_small">No. Of Items Sold</th>
 	</tr>
     </thead>
     <tbody>
@@ -53,22 +56,26 @@
         <tr>
             <td><?php echo $att["product_title"] ?></td>
             <td>
-            	<table class="product_details">
+            	<!-- <table class="product_details">
 		            <tr><td>Size</td><td>: Large</td></tr>
 		            <tr><td>Color</td><td>: Red</td></tr>
 		            <tr><td>Size</td><td>: Large</td></tr>
 		            <tr><td>Color</td><td>: Red</td></tr>
-		        </table>
-                <!-- <?php
+		        </table> -->
+                <table class="product_details">
+                <?php
                     $att_res = array_map(null,$att['product_attribute'],$att['product_attribute_value']);
                     foreach ($att_res as $value) {
-                       echo $value[0]."  --  ".$value[1]; 
-                       echo "<br>";
+                        echo "<tr><td>".$value[0]."</td><td>:&nbsp;&nbsp;&nbsp;". $value[1]."</td></tr>";
                     }
-                ?> -->
+                ?>
+
+                </table>
+                
             </td>
             <td><?php echo $att["product_attribute_group_price"] ?></td>
-            <td><?php echo $att["product_attribute_group_totalitems"] ?></td> 
+            <td><?php echo $att["product_attribute_group_totalitems"] ?></td>
+            <td><?php echo $att["product_attribute_group_sold"] ?></td> 
         </tr>
     <?php endforeach ?>
     </tbody>

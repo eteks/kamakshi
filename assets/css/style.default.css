@@ -1883,9 +1883,9 @@ address {
  .col-xs-12.images-list {
     display: inline-flex !important;
 }
-.thumb {
+/*.thumb {
     margin-left:5px;
-}
+}*/
 .main-image-position{
 	width: 305px !important;
 }

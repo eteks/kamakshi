@@ -81,6 +81,7 @@
                         <input type="text" class="form-control" id="address1" placeholder="Enter Your Address" name="shipping_default_addr2" value="<?php if(!empty($enduser_data['shipping_default_addr2'])) echo $enduser_data['shipping_default_addr2']; ?>">
                     </div>
                     <div class="control-group">
+                    	<input type="hidden" name="state_name" value="1" />
                         <label for="sel_a">State</label>
                     <select name="state_name" id="sel_city" class="product-type-filter form-control state_act" disabled="">
                    <option value="" >Select State</option>
@@ -94,6 +95,7 @@
                     </select>
                     </div>
                     <div class="control-group">
+                    	<input type="hidden" name="city_name" value="1" />
                         <label for="sel_a">City</label>
                     <select name="city_name" id="sel_city" class="product-type-filter form-control city_act" disabled="">
                    <option value="" >Select City</option>

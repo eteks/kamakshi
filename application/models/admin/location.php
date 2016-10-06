@@ -244,4 +244,57 @@ class Location extends CI_Model {
 		$this->db->order_by('city.city_name','desc');
 		return $this->db->get()->result_array();
 	}
+	public function get_order()
+	{	
+		//get list of adminusers from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_order');
+		$this->db->order_by('order_createddate','desc');	
+		$query = $this->db->get();
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
+		public function get_transaction()
+	{	
+		//get list of adminusers from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_ccavenue_transaction');
+		$this->db->order_by('transaction_createddate','desc');	
+		$query = $this->db->get();
+
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
+		public function update_order($data)
+	{	
+		$this->db->where('order_id', $data['order_id']);
+		$this->db->update('giftstore_order', $data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->get() == false) {
+			return false;
+		}
+		return true;	
+	}	
+		public function get_order_data($id)
+	{	
+		$where = '(order_id="'.$id.'")';
+		$query['state_city'] = $this->db->get_where('giftstore_order', $where)->row_array();
+		$where1 = '(order_status=1)';
+		$query['states'] = $this->db->get_where(' `giftstore_order', $where1)->result_array();
+		$query['cities'] = $this->db->get_where(' `giftstore_order', $where1)->result_array();
+
+		return $query;
+	}
+		public function get_orders()
+	{
+		$this->db->select('*');
+		$this->db->from('giftstore_order order');
+		$this->db->join('giftstore_state state', 'state.state_id = order.order_shipping_state_id', 'inner');
+		$this->db->join('giftstore_city city', 'city.city_id = order.order_shipping_city_id', 'inner');
+		$this->db->join('giftstore_area area', 'area.area_id = order.order_shipping_area_id', 'inner');
+		$this->db->order_by('state.state_name','desc');
+		$this->db->order_by('city.city_name','desc');
+		$this->db->order_by('area.area_name','desc');
+		return $this->db->get()->result_array();
+	}
 }

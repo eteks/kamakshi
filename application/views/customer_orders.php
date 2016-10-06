@@ -28,13 +28,13 @@
 
                             <ul class="nav nav-pills nav-stacked">
                                 <li class="active">
-                                    <a href="<?php echo base_url(); ?>index.php/customer_orders/"><i class="fa fa-list"></i> My orders</a>
+                                    <a href="<?php echo base_url(); ?>index.php/customer_orders/"><i class="fa fa-list"></i> My Orders</a>
                                 </li>
+                                <!-- <li>
+                                    <a href="<?php echo base_url(); ?>index.php/customer_wishlist/"><i class="fa fa-heart"></i> My Wishlist</a>
+                                </li> -->
                                 <li>
-                                    <a href="<?php echo base_url(); ?>index.php/customer_wishlist/"><i class="fa fa-heart"></i> My wishlist</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url(); ?>index.php/customer_account/"><i class="fa fa-user"></i> My account</a>
+                                    <a href="<?php echo base_url(); ?>index.php/customer_account/"><i class="fa fa-user"></i> My Account</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url(); ?>index.php/"><i class="fa fa-sign-out"></i> Logout</a>

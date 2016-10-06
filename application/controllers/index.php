@@ -253,6 +253,10 @@ class Index extends CI_Controller
         $this->session->unset_userdata('login_session');
         redirect(base_url()); 
     }
+    public function nopage()
+    {
+        $this->load->view('404');
+    }
     public function track_order()
     {
         $this->load->view('track_order');

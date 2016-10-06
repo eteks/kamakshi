@@ -66,6 +66,7 @@ $route['customer_orders'] = 'index/customer_orders';
 $route['customer_order'] = 'index/customer_order';
 $route['recipient_category/(:any)'] = 'index/recipient_category/$1';
 $route['track_order'] = 'index/track_order';
+$route['404_page'] = 'index/nopage';
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';
@@ -76,6 +77,7 @@ $route['adminindex/endusers'] = 'adminindex/endusers';
 $route['adminindex/edit_endusers'] = 'adminindex/edit_endusers';
 $route['admin/logout'] = 'admin/login/logout';
 $route['admin/dashboard'] = 'admin/adminindex/dashboard';
+$route['admin/delete'] = 'admin/adminindex/delete';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
@@ -94,6 +96,7 @@ $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
 $route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
 $route['adminindex/product_attribute_sets'] = 'adminindex/product_attribute_sets';
+// $route['adminindex/delete/(:any)/(:any)'] = 'adminindex/delete';
 
 
 
@@ -114,8 +117,8 @@ $route['adminindex/edit_order'] = 'adminindex/edit_order';
 $route['adminindex/orderitem'] = 'adminindex/orderitem';
 $route['adminindex/edit_orderitem'] = 'adminindex/edit_orderitem';
 $route['adminindex/edit_transaction'] = 'adminindex/edit_transaction';
-
-
+// $route['adminindex/admin_404'] = 'admin/adminindex/admin_nopage';
+$route['admin/admin_404'] = 'admin/adminindex/admin_nopage';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
