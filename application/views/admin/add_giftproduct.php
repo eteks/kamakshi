@@ -58,6 +58,8 @@
                         <input type="file" id="category_image" name="product_image[]" multiple="multiple" class="product_default_field">
                         <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                     </div>
+                    <div class="edit-catpro-image preview_part">
+                    </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>
                         <textarea type="text" class="form-control product_default_field" id="description" placeholder="Enter description" name="product_description"><?php echo set_value('product_description');?></textarea>

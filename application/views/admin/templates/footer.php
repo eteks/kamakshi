@@ -21,5 +21,6 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/slick.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery.simpleFilePreview.js"></script>
 </body>
 </html>

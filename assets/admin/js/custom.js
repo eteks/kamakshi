@@ -415,4 +415,44 @@ $(document).ready(function() {
         $(this).siblings().children('.sub-menu').slideUp("slow");
     });
     //*********** End ************
+
+    if (window.File && window.FileList && window.FileReader) {
+        $("#category_image").on("change", function(e) {
+            old_image = parseInt($('.product-cat-images').length);
+            new_image = parseInt($(this)[0].files.length);
+            length = old_image + new_image;
+            if(length <=8){
+                var files = e.target.files,
+                filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) {
+                var f = files[i]
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                  var file = e.target;
+                  // $("<span class=\"pip\">" +
+                  //   "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                  //   "<br/><span class=\"remove\">Remove image</span>" +
+                  //   "</span>").insertAfter("#category_image");
+                  $("<div class=\"product-cat-images\">" +
+                    "<img class=\"edit_category_image\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                    "<span class=\"close-icon2\"><a><i class=\"glyphicon glyphicon-remove\"></i></a></span>" +
+                    "</div>").appendTo(".preview_part");
+                  $('.preview_part').show();
+                  $(".close-icon2").click(function(){
+                    $(this).parent(".product-cat-images").remove();
+                    if($(".product-cat-images").length == 0)
+                        $('.preview_part').hide();
+                  });
+                });
+                fileReader.readAsDataURL(f);
+              }
+            }  
+            else{
+                $(this).val('');
+                alert("8 files only allowed to upload");
+            } 
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
 });

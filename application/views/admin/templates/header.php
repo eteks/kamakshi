@@ -17,6 +17,7 @@
     <link href='<?php echo base_url(); ?>assets/admin/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
     <link href='<?php echo base_url(); ?>assets/admin/css/style.css' rel='stylesheet'>
     <link href="<?php echo base_url();?>assets/admin/css/datepicker.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/admin/css/simpleFilePreview.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>assets/admin/js/jquery.min.js"></script>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/admin/img/favicon.ico">
