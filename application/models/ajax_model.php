@@ -341,8 +341,104 @@ class Ajax_Model extends CI_Model {
         }
         echo $status;
     }
+
+	//  Get product attribute price
+    public function get_attribute_price() {
+        $attribute_details = array();
+        if($this->input->post('atribute_combination') && $this->input->post('product_id')) {
+            $attribute_where = '(product_mapping_id="'.$this->input->post('product_id').'" and  product_attribute_group_totalitems!=0)';
+            $this->db->where($attribute_where); 
+            $this->db->where_in('product_attribute_value_combination_id',$this->input->post('atribute_combination'));
+            $attribute_query = $this->db->get('giftstore_product_attribute_group');
+
+            if($attribute_query->num_rows() > 0) {
+                $attribute_details = $attribute_query->row_array();
+                // $attribute_price = $query['product_attribute_group_price'];
+            }
+        }
+        return $attribute_details;
+    }
+	
+	//  Get popup login status
+    public function get_profile_details_form_status() {
+        $current_user_session = $this->session->userdata("login_session");
+        $profile_insert_where = '(user_id="'.$current_user_session['user_id'].'")';
+        $profile_data = array(
+            'first_name' => $this->input->post('profile_firstname'),
+            'last_name' => $this->input->post('profile_lastname'),
+            'shipping_default_addr1' => $this->input->post('profile_address1'),
+            'shipping_default_addr2' => $this->input->post('profile_address2'),
+            'user_state_id' => $this->input->post('profile_state'),
+            'user_city_id' => $this->input->post('profile_city'),
+            'user_area_id' => $this->input->post('profile_area'),
+            'user_zip' => $this->input->post('profile_zip'),
+            'user_mobile' => $this->input->post('profile_mobile'),
+            'user_email' => $this->input->post('profile_email'),
+            'user_status' => '1'
+        );
+        $this->db->set($profile_data);
+        $this->db->where($profile_insert_where);
+        $this->db->update('giftstore_users', $profile_data);
+        echo "Updated successfully";
+    }
+
+	//  Get profile password change status
+    public function get_profile_password_form_status() {
+
+        $validation_rules = array(
+            array(
+                 'field'   => 'profile_old',
+                 'label'   => 'Old password',
+                 'rules'   => 'trim|required|xss_clean|callback_password_checking'
+              ),
+            array(
+                 'field'   => 'profile_new',
+                 'label'   => 'New password',
+                 'rules'   => 'trim|required|xss_clean'
+              ),
+            array(
+                 'field'   => 'profile_renew',
+                 'label'   => 'Confirm password',
+                 'rules'   => 'trim|required|matches[profile_new]'
+              ),   
+        );
+        $this->form_validation->set_rules($validation_rules);
+
+        if ($this->form_validation->run() == FALSE) {   
+            foreach($validation_rules as $row){
+                $field = $row['field'];         
+                $error = form_error($field);  
+                if($error){
+                    $status = strip_tags($error);
+                    break;
+                }
+            }
+        }
+        else {
+            $current_user_session = $this->session->userdata("login_session");
+            $profile_insert_where = '(user_id="'.$current_user_session['user_id'].'" and user_password="'.$this->input->post('profile_old').'")';
+            $profile_password_query = $this->db->get_where('giftstore_users',$profile_insert_where);
+            if ( $profile_password_query->num_rows() > 0 )
+            {
+                $profile_password_where =  '(user_id="'.$current_user_session['user_id'].'")';
+                $profile_password_data = array(
+                                            'user_password' => $this->input->post('profile_new'),
+                                            'user_status' => '1'
+                                        );
+                $this->db->set($profile_password_data);
+                $this->db->where($profile_password_where);
+                $this->db->update('giftstore_users',$profile_password_data);
+                $status = "Password updated successfully";
+            } 
+            else
+            {
+                $status = "Invalid password";
+            }
+        }
+        echo $status;
+    }
 	public function get_popup_forgot_pwd_status($data) {
-			echo "$data";
+			// echo "$data";
 				$condition = "user_email =" . "'" . $data. "'";				
                 $this->db->select('user_email');
                 $this->db->from('giftstore_users');
@@ -350,10 +446,10 @@ class Ajax_Model extends CI_Model {
                 $this->db->limit(1);
 
                 $query = $this->db->get();
-echo $query->num_rows();
+				// echo $query->num_rows();
                 if($query->num_rows() == 1)
                 {
-                	echo "test2";
+                	// echo "test2";
 			         $config['protocol'] = 'smtp';
 			         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
              		 $config['smtp_port'] = 25;
@@ -374,22 +470,6 @@ echo $query->num_rows();
                 		echo('Failed');
                         return FALSE;
                 }
-    }
-
-    //  Get product attribute price
-    public function get_attribute_price() {
-        $attribute_details = array();
-        if($this->input->post('atribute_combination') && $this->input->post('product_id')) {
-            $attribute_where = '(product_mapping_id="'.$this->input->post('product_id').'" and  product_attribute_group_totalitems!=0)';
-            $this->db->where($attribute_where); 
-            $this->db->where_in('product_attribute_value_combination_id',$this->input->post('atribute_combination'));
-            $attribute_query = $this->db->get('giftstore_product_attribute_group');
-
-            if($attribute_query->num_rows() > 0) {
-                $attribute_details = $attribute_query->row_array();
-                // $attribute_price = $query['product_attribute_group_price'];
-            }
-        }
-        return $attribute_details;
-    } 
+   		 }
 }
+

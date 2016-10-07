@@ -1,5 +1,4 @@
-
- <?php
+<?php
 // Merchant key here as provided by Payu
 $MERCHANT_KEY = "JBZaLc";
 

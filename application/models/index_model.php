@@ -340,29 +340,31 @@ class Index_Model extends CI_Model {
 
     // Get user profile details
     public function get_user_profile_details()
-    {   
-        // $current_user_session = $this->session->userdata("login_session");
-        // $profile_where = '(user_id="'.$current_user_session['user_id'].'")';
-        // $profile_query = $this->db->select('*');
-        // $profile_query = $this->db->from('giftstore_users gu');
-        // $profile_query = $this->db->join('giftstore_state',);  
+    {       
+        $profile['profile_get_area'] = array();
+        $profile['profile_get_city'] = array();
+        $current_user_session = $this->session->userdata("login_session");
+        $profile_where = '(gu.user_id="'.$current_user_session['user_id'].'")';
+        $profile_query = $this->db->select('*');
+        $profile_query = $this->db->from('giftstore_users gu');
+        $profile_query = $this->db->join('giftstore_state gs','gu.user_state_id=gs.state_id','left'); 
+        $profile_query = $this->db->join('giftstore_city gc','gu.user_city_id=gc.city_id','left');
+        $profile_query = $this->db->join('giftstore_area ga','gu.user_area_id=ga.area_id','left'); 
 
-        // $profile_query = $this->db->get_where('giftstore_users',$profile_where)->row_array();
+        $profile['user_profile_details'] = $this->db->where($profile_where)->get()->row_array();
 
-        // print_r($profile_query);
+        $profile_state_where = '(state_status=1)';
+        $profile['profile_get_state'] = $this->db->get_where('giftstore_state',$profile_state_where)->result_array();
 
-
-
-
-
-
-        // $this->db->select('*');
-        // $this->db->from('giftstore_category c');
-        // $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'inner');
-        // $query['recipients_category_list'] = $this->db->where($where)->get()->result_array();
-        // $rec_where = '(recipient_status=1 and recipient_id="'.$this->uri->segment(2).'")';
-        // $query['recipient_name'] = $this->db->get_where('giftstore_recipient',$rec_where)->row_array();
-        // return $query;
-    }
+        if(!empty($profile['user_profile_details']['user_state_id']) && !empty($profile['user_profile_details']['user_city_id'])) {
+            $profile_area_where = '(area_state_id="'.$profile['user_profile_details']['user_state_id'].'" and area_city_id="'.$profile['user_profile_details']['user_city_id'].'" and area_status=1)';
+            $profile['profile_get_area'] = $this->db->get_where('giftstore_area',$profile_area_where)->result_array();
+        }
+        if(!empty($profile['user_profile_details']['user_state_id'])) {
+            $profile_city_where = '(city_state_id="'.$profile['user_profile_details']['user_state_id'].'" and city_status=1)';
+            $profile['profile_get_city'] = $this->db->get_where('giftstore_city',$profile_city_where)->result_array();  
+        }
+        return $profile;
+   }
 
 }

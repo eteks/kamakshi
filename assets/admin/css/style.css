@@ -16,11 +16,11 @@
     width: 50px;
     position: relative;
 }
-.error_msg_reg,.error_msg_del,.photo_labelError{
+.error_msg_reg,.error_msg_del,.photo_labelError,.product_error,.product_error_message{
   color: #ff0000;
   font-size: 12px;
 }
-.error_msg_del,.photo_labelError{
+.error_msg_del,.photo_labelError,.product_error,.product_error_message{
   display: none;
 }
 @media(max-width: 640px){
@@ -453,13 +453,10 @@
     position: absolute;
     top: 35px;
 }
-
 .upload_image {
     max-width: 258px;
     position: relative;
 }
-
-
 .upload_image_remove {
     color: #c33 !important;
     left: 20px;
@@ -470,12 +467,15 @@
 .upload_image_remove:hover{
   visibility: hidden;
 }
+.product_lables{
+	width: 350px !important;
+}
 
 // ===========================
 //        IMAGE UPLOAD
 // ===========================
 
-   
+
 .simpleFilePreview_multiUI {
     background-color: #f2f2f2;
     border: 2px solid #fff;
@@ -517,35 +517,37 @@
     box-shadow: 0 0 4px 0 #555;
     cursor: pointer;
     display: block;
-    height: 90px !important;
+    height: 75px !important;
     margin-left: 10px;
+     margin-bottom: 10px;
     overflow: hidden;
     padding: 3px;
     position: relative;
     text-align: center;
-    width: 90px !important;
+    width: 75px !important;
 }
     .simpleFilePreview_preview{
-        height: 90px !important;
-        width: 90px !important;
+        height: 65px !important;
+        width: 62px !important;
     }
     .simpleFilePreview_multiUI{
         background-color: #ffffff !important;
         border: 0px !important;
         box-shadow: 0 0 0 0 #ffffff !important;
-        width: 500px !important;
+        min-width: 360px !important;
         margin-left : 0px !important;
     }
     .simpleFilePreview_multi{
         width: 450px !important;
     }
     .fa_small{
-        font-size: 30px !important;
+        font-size: 25px !important;
         color: #eb1c24 !important;
     }
     .simpleFilePreview_remove{
-        right: 20px !important;
-        top: 40px !important;
+        right: 3px !important;
+        text-align:center;
+        top: 25px !important;
     }
     .simpleFilePreview_input{
         padding-top: 35% !important;
@@ -561,12 +563,12 @@
       border: 2px solid #fff;
       border-radius: 4px;
       box-shadow: 0 0 0 1px #c1c1c1;
-      height: 130px;
+      height: 170px;
       margin-left: 75px;
       padding: 0px !important;
       position: relative;
       width: 230px !important;
-      overflow: auto;
+      overflow: hidden;
       @media (min-width: @grid-float-breakpoint){
         background-color: #f2f2f2;
         border: 2px solid #fff;
@@ -598,6 +600,3 @@
 // ===========================
 //      END IMAGE UPLOAD
 // ===========================
-
-
-

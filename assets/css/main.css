@@ -296,6 +296,7 @@
 .change_password {
   cursor: pointer;
   text-decoration: underline;
+  display: inline-block;
 }
 /* Ended by siva*/
 #owl-demo .owl-item > div img {
@@ -499,6 +500,7 @@
     margin-left: 2px !important;
     vertical-align: middle !important;
     width: 0 !important;
+     cursor: pointer;
 }
 .menu > .users-dropdownu{
     display: block !important;
@@ -512,7 +514,7 @@
     display: none;
     float: left !important;
     font-size: 14px !important;
-    left: 0;
+    /*left: 0 !important;*/
     list-style: outside none none !important;
     margin: 2px 0 0 !important;
     min-width:110px !important;
@@ -521,8 +523,11 @@
     text-align: left !important;
     top: 100% !important;
     z-index: 1000 !important;
-    margin-left:280px !important;
+    /*margin-left:280px !important;*/
     
+}
+.dropdown-menu{
+	/*left:0 !important;*/
 }
 .users-dropdown a{
 	background-color: #fff !important;
@@ -531,3 +536,24 @@
 .modal-backdrop{
 	z-index: 997 !important;
 }
+.dropdown-menu.users-dropdown a:hover{
+	background-color:#4fbfa8 !important;
+	color:#fff !important;
+}
+.login_button{
+	float: right;
+}
+.frgt_pwd{
+	float:left !important;
+	margin-bottom: 10px !important;
+}
+.social_icons{
+    margin-left: 60px;
+    margin-top: 30px;
+    position: relative;
+}    
+/*#all_products_section > .products_not_available{
+	background-color:#fff;
+	padding:10px !important;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+}*/
