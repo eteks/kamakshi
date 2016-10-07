@@ -107,6 +107,11 @@ class Ajax_Controller extends CI_Controller {
 		$data = $this->ajax_model->get_popup_login_status();
 		echo $data;
 	}
+		public function popup_forgot_pwd()
+	{	
+		$data = $this->ajax_model->get_popup_forgot_pwd_status();
+		echo $data;
+	}
 
 	// Product attributes combination
 	public function attribute_price()

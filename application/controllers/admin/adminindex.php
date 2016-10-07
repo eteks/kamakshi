@@ -718,7 +718,7 @@ class Adminindex extends CI_Controller {
 		}
 		if(!empty($_POST)){
 			// print_r($_POST);
-			$status = '';//array is initialized
+			$status = array();//array is initialized
 			$errors = '';
 			$validation_rules = array(
 		       array(
@@ -752,7 +752,9 @@ class Adminindex extends CI_Controller {
         }
     		else{
 				if (!empty($errors)) {
-					$status = strip_tags($errors);
+					$status = array(
+	                	'error_message' => strip_tags($errors)
+	             	);
 				}
 				else{
 					$data = array(

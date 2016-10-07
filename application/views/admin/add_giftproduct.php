@@ -53,7 +53,7 @@
              <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
                         <label for="titlename">Product Title<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control product_default_field" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php echo set_value('product_title');?>">
+                        <input type="text" class="form-control product_default_field product_lables" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php echo set_value('product_title');?>">
                         <span class="product_error_message">The Product Title field is required</span>
                     </div>  
                     <div class="form-group">
@@ -67,13 +67,13 @@
                     </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>
-                        <textarea type="text" class="form-control product_default_field" id="description" placeholder="Enter description" name="product_description"><?php echo set_value('product_description');?></textarea>
+                        <textarea type="text" class="form-control product_default_field product_lables" id="description" placeholder="Enter description" name="product_description"><?php echo set_value('product_description');?></textarea>
                         <span class="product_error_message">The Product Desciption field is required</span>
                     </div> 
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Category<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control category_act product_default_field" name="select_category">
+                            <select id="sel_c" class="product-type-filter form-control category_act product_default_field product_lables" name="select_category">
                             <option value="">Select Category</option>
                                 <?php foreach ($category_list as $cat): ?>
                                     <option value="<?php echo $cat["category_id"] ?>"><?php echo $cat["category_name"] ?></option>
@@ -85,7 +85,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose SubCategory<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control subcategory_act product_default_field" name="select_subcategory">
+                            <select id="sel_c" class="product-type-filter form-control subcategory_act product_default_field product_lables" name="select_subcategory">
                             <option value="">Select Subcategory</option>
                             </select>
                             <span class="product_error_message">The Product Subcategory field is required</span>
@@ -94,7 +94,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Choose Recipient<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control recipient_act product_default_field" name="select_recipient">
+                            <select id="sel_c" class="product-type-filter form-control recipient_act product_default_field product_lables" name="select_recipient">
                             <option value="">Select Recipient</option>
                             </select>
                             <span class="product_error_message">The Product Recipient field is required</span>
@@ -102,13 +102,13 @@
                     </div>
                      <div class="form-group price_group">
                         <label for="price">Price<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control price product_default_field" id="product_price" placeholder="Enter price" value="<?php echo set_value('product_price');?>">
+                        <input type="text" class="form-control price product_default_field product_lables" id="product_price" placeholder="Enter price" value="<?php echo set_value('product_price');?>">
                         <span class="product_error_message">The Product Price field is required</span>
                     </div> 
                     <input type="hidden" name="product_price" id="product_price_hidden">
-                     <div class="form-group items_group">
+                    <div class="form-group items_group">
                         <label for="total_iteams">Total Items<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control totalitem product_default_field" id="product_totalitems" placeholder="Enter total items" value="<?php echo set_value('product_totalitems');?>">
+                        <input type="text" class="form-control totalitem product_default_field product_lables" id="product_totalitems" placeholder="Enter total items" value="<?php echo set_value('product_totalitems');?>">
                         <span class="product_error_message">The Product Totalitems field is required</span>
                     </div> 
                     <input type="hidden" name="product_totalitems" id="product_totalitems_hidden">
@@ -120,7 +120,7 @@
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select name="product_status" id="sel_c" class="product-type-filter form-control city_act product_default_field">
+                            <select name="product_status" id="sel_c" class="product-type-filter form-control city_act product_default_field product_lables">
                                 <option value="">Select</option>
                                 <option value="1" <?php echo set_select('product_status', '1',false); ?>>Active</option>
                                 <option value="0" <?php echo set_select('product_status', '0',false); ?>>Inactive</option>
