@@ -120,6 +120,7 @@ $("#phone,#zip").keypress(function (e) {
  $('.forgot_pwd').click(function(){
  	$('#login').hide();
  $(".forgot_pwd-modal").toggle();
+ $(".forgot_pwd").hide();
  	});
 
 // Checkout address button

@@ -835,9 +835,7 @@ class Adminindex extends CI_Controller {
     	else {
     		if(!empty($_POST)) {
 				if (!empty($errors)) {
-					$status = array(
-	                	'error_message' => strip_tags($errors)
-	             	);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data = array(
@@ -849,13 +847,9 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->insert_area($data);
 					if($result)
-						$status = array(
-	                		$status['error_message'] => "Area Inserted Successfully!"
-	             		);
+	                		$status['error_message'] = "Area Inserted Successfully!";
 					else
-						$status = array(
-	                		$status['error_message'] => "Area Already Exists!"
-	             		);
+	                		$status['error_message'] = "Area Already Exists!";
 				}		
 			}
     	}
