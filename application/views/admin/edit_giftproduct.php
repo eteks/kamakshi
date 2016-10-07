@@ -83,6 +83,7 @@
                             <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
                            </div>
                         </div>
+                        <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                     </div>
                      <div class="form-group">
                         <label for="exampleInputEmail1">Description<span class="fill_symbol"> *</span></label>

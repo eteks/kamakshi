@@ -357,8 +357,8 @@
 		opacity: 1;
 	}
 	100% {
-		width: 150%;
-		height: 150%;
+		width: 140%;
+		height: 10%;
 		opacity: 0;
 	}
 }
@@ -370,8 +370,8 @@
 		opacity: 1;
 	}
 	100% {
-		width: 150%;
-		height: 150%;
+		width: 140%;
+		height: 140%;
 		opacity: 0;
 	}
 }
@@ -405,8 +405,8 @@
 		opacity: 1;
 	}
 	100% {
-		width: 150%;
-		height: 150%;
+		width: 140%;
+		height: 140%;
 		opacity: 0;
 	}
 }
@@ -418,8 +418,109 @@
 		opacity: 1;
 	}
 	100% {
-		width: 150%;
-		height: 150%;
+		width: 140%;
+		height: 140%;
 		opacity: 0;
 	}
+}
+.listing_images {
+	position: relative;
+}
+.listing_images::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(79,191,168,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.listing_images:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 140%;
+		height: 140%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 140%;
+		height: 140%;
+		opacity: 0;
+	}
+}
+.menu_category{
+    max-height: 365px !important;
+    /*min-height:365px !important;*/
+    overflow-y: auto !important;
+}
+.category_name{
+	font-size: 20px;
+	font-weight:500;
+	color:#777777;
+	
+}
+.drpdwn-icon {
+    border-left: 5px solid transparent !important;
+    border-right: 5px solid transparent !important;
+    border-top: 7px solid !important;
+    color: #fff !important;
+    display: inline-block !important;
+    height: 0 !important;
+    margin-left: 2px !important;
+    vertical-align: middle !important;
+    width: 0 !important;
+}
+.menu > .users-dropdownu{
+    display: block !important;
+}
+.users-dropdown {
+    background-clip: padding-box !important;
+    background-color: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+    display: none;
+    float: left !important;
+    font-size: 14px !important;
+    left: 0;
+    list-style: outside none none !important;
+    margin: 2px 0 0 !important;
+    min-width:110px !important;
+    padding: 5px 0 !important;
+    position: absolute !important;
+    text-align: left !important;
+    top: 100% !important;
+    z-index: 1000 !important;
+    margin-left:280px !important;
+    
+}
+.users-dropdown a{
+	background-color: #fff !important;
+	color: #555 !important;
+}
+.modal-backdrop{
+	z-index: 997 !important;
 }

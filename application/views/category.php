@@ -22,7 +22,8 @@
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-6 products-showing">
-                                Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products
+                            	<strong class="category_name">Watches</strong>
+                                <!-- Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products -->
                             </div>
                             <div class="col-sm-12 col-md-6  products-number-sort">
                                 <div class="row">

@@ -21,6 +21,8 @@ h1 {
 #top {
   background: #555555;
   padding: 10px 0;
+   position: relative;
+    z-index: 999;
 }
 #top .offer {
   color: #fff;
@@ -1116,6 +1118,7 @@ h1 {
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid transparent;
+  /*z-index:1;*/
 }
 @media (min-width: 768px) {
   .navbar {
@@ -2036,7 +2039,7 @@ address {
 }
 .category_product_name{
 	text-align:center;
-	background-color:#555;
+	background-color:#4fbfa8;
 	color:#fff;
 	padding:10px 10px;
 }

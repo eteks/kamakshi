@@ -129,7 +129,7 @@ $(document ).ajaxComplete(function() {
     /* -----------    Ajax for listing page start  ---------- */
 
     // Price filtering
-    $(document).bind('mouseup','.addui-slider-handle',function() {
+    $(document).on('mouseup','.addui-slider-handle',function() {
         var price_range =  $('.addui-slider-input').val().split(',');
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
