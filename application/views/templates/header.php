@@ -54,7 +54,7 @@
                         <li class="login_menu"> Welcome <?php echo $session_data['user_name']; ?>
                         	<span class="caret dropdown-toggle drpdwn-icon" data-toggle="dropdown"></span>
 							    <ul class="dropdown-menu users-dropdown">
-							      <li><a href="#">Profile</a></li>
+							      <li><a href="<?php echo base_url(); ?>index.php/profile/">Profile</a></li>
 							      <li class="divider"></li>
 							      <li><a href="<?php echo base_url(); ?>index.php/index/logout/">Logout</a></li>
 							    </ul>
@@ -95,20 +95,19 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password-modal" name="popup_password" placeholder="Password">
                             </div>
-                            <p class="text-center">
+                            <p class="text-center login_button">
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </p>
                         </form>
                         <div>
-                        	<a href="#" class="forgot_pwd"><strong>Forgot Password</strong></a>
+                        	<a href="#" class="forgot_pwd frgt_pwd"><strong>Forgot Password?</strong></a>
                         	<div class="form-group forgot_pwd-modal"> 
                                 <input type="text" class="form-control" id="forgot_pwd-modal" name="popup_email" placeholder="Email" style="top: 3px;">
                                 <p class="text-center">
-                                <button class="btn btn-primary" style="margin-top: 12px;"><i class="fa fa-sign-in"></i>Retrieve Password</button>
+                                <button class="btn btn-primary" style="margin-top: 20px;margin-bottom: -30px;"><i class="fa fa-sign-in"></i>Retrieve Password</button>
                             </p>
-                            </div>
-                             <div>
-						<ul>
+                            </div><br />
+						<ul class="social_icons">
 							<a href="https://www.facebook.com/" title="Facebook">
 							<i class="fa fa-facebook"></i>
 							<!-- Connect with facebook -->
@@ -120,8 +119,7 @@
 							<i class="fa fa-google-plus" aria-hidden="true"></i>
 							</a>							
 						</ul>
-					</div>
-                         </div>   
+					 </div>   
                         <p class="text-center text-muted">Not registered yet?</p>
                         <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
                     </div>                   
