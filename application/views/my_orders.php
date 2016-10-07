@@ -1,62 +1,25 @@
 <?php include "templates/header.php"; ?>
-
     <div id="all">
-
         <div id="content">
             <div class="container">
-
                 <div class="col-md-12">
-
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
+                        <li><a href="<?php echo base_url(); ?>">Home</a>
                         </li>
                         <li>My orders</li>
                     </ul>
-
                 </div>
-
                 <div class="col-md-3">
-                    <!-- *** CUSTOMER MENU ***
- _________________________________________________________ -->
-                    <div class="panel panel-default sidebar-menu">
-
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Customer section</h3>
-                        </div>
-
-                        <div class="panel-body">
-
-                            <ul class="nav nav-pills nav-stacked">
-                                <li class="active">
-                                    <a href="<?php echo base_url(); ?>index.php/customer_orders/"><i class="fa fa-list"></i> My Orders</a>
-                                </li>
-                                <!-- <li>
-                                    <a href="<?php echo base_url(); ?>index.php/customer_wishlist/"><i class="fa fa-heart"></i> My Wishlist</a>
-                                </li> -->
-                                <li>
-                                    <a href="<?php echo base_url(); ?>index.php/customer_account/"><i class="fa fa-user"></i> My Account</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url(); ?>index.php/"><i class="fa fa-sign-out"></i> Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <!-- /.col-md-3 -->
-
+                    <!-- *** CUSTOMER MENU *** -->
+                    <?php include "profile_sidebar.php"; ?> 
                     <!-- *** CUSTOMER MENU END *** -->
                 </div>
-
                 <div class="col-md-9" id="customer-orders">
                     <div class="box">
                         <h1>My orders</h1>
-
                         <p class="lead">Your orders on one place.</p>
                         <p class="text-muted">If you have any questions, please feel free to <a href="<?php echo base_url(); ?>index.php/contact/">contact us</a>, our customer service center is working for you 24/7.</p>
-
                         <hr>
-
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
@@ -124,9 +87,6 @@
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
-
-
     </div>
     <!-- /#all -->
 <?php include "templates/footer.php"; ?>

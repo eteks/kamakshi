@@ -3,12 +3,10 @@
         <div id="content">
             <div class="container">
                 <div class="col-md-12">
-	                <ul class="breadcrumb">
-                        <li><a href="<?php echo base_url(); ?>index.php/">Home</a>
+                    <ul class="breadcrumb">
+                        <li><a href="<?php echo base_url(); ?>">Home</a>
                         </li>
-                        <li><a href="#">My orders</a>
-                        </li>
-                        <li>Order # 1735</li>
+                        <li>My account</li>
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -16,108 +14,128 @@
                     <?php include "profile_sidebar.php"; ?>	
                     <!-- *** CUSTOMER MENU END *** -->
                 </div>
-
-                <div class="col-md-9" id="customer-order">
+                <div class="col-md-9">
                     <div class="box">
-                        <h1>Order #1735</h1>
+                        <h1>My account</h1>
+                        <p class="lead">Change your personal details or your password here.</p>
+                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        <p class="change_password"> Click here to change password </p>
+                        <form class="change_password_form">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                      <p class="password_error_msg"></p>
+                                    </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password_old">Old password</label>
+                                        <input type="password" class="form-control" id="password_old">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password_1">New password</label>
+                                        <input type="password" class="form-control" id="password_1">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password_2">Retype new password</label>
+                                        <input type="password" class="form-control" id="password_2">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
 
-                        <p class="lead">Order #1735 was placed on <strong>22/06/2013</strong> and is currently <strong>Being prepared</strong>.</p>
-                        <p class="text-muted">If you have any questions, please feel free to <a href="<?php echo base_url(); ?>index.php/contact/">contact us</a>, our customer service center is working for you 24/7.</p>
-
+                            <div class="col-sm-12 text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save new password</button>
+                            </div>
+                        </form>
                         <hr>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">Product</th>
-                                        <th>Quantity</th>
-                                        <th>Unit price</th>
-                                        <th>Discount</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="#">
-                                                <img src="<?php echo base_url(); ?>assets/img/detailsquare.jpg" alt="White Blouse Armani">
-                                            </a>
-                                        </td>
-                                        <td><a href="#">Flowers and Cakes</a>
-                                        </td>
-                                        <td>2</td>
-                                        <td>$123.00</td>
-                                        <td>$0.00</td>
-                                        <td>$246.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="#">
-                                                <img src="<?php echo base_url(); ?>assets/img/basketsquare.jpg" alt="Black Blouse Armani">
-                                            </a>
-                                        </td>
-                                        <td><a href="#">Fashion and Style</a>
-                                        </td>
-                                        <td>1</td>
-                                        <td>$200.00</td>
-                                        <td>$0.00</td>
-                                        <td>$200.00</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th colspan="5" class="text-right">Order subtotal</th>
-                                        <th>$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="5" class="text-right">Shipping and handling</th>
-                                        <th>$10.00</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="5" class="text-right">Tax</th>
-                                        <th>$0.00</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="5" class="text-right">Total</th>
-                                        <th>$456.00</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-
-                        </div>
-                        <!-- /.table-responsive -->
-
-                        <div class="row addresses">
-                            <div class="col-md-6">
-                                <h2>Invoice address</h2>
-                                <p>Name
-                                    <br>00/00 Street
-                                    <br>City
-                                    <br>Street No
-                                    <br>State
-                                    <br>Country</p>
+                        <h3>Personal details</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                      <p class="error_msg">Please fill all mandatory fields</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="firstname">Firstname</label>
+                                        <input type="text" class="form-control" id="firstname">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Lastname</label>
+                                        <input type="text" class="form-control" id="lastname">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h2>Shipping address</h2>
-                                <p>Name
-                                    <br>00/00 Street
-                                    <br>City
-                                    <br>Street No
-                                    <br>State
-                                    <br>Country</p>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="company">Company</label>
+                                        <input type="text" class="form-control" id="company">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="street">Street</label>
+                                        <input type="text" class="form-control" id="street">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="city">Company</label>
+                                        <input type="text" class="form-control" id="city">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="zip">ZIP</label>
+                                        <input type="text" class="form-control" id="zip">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <select class="form-control" id="state"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        <label for="country">Country</label>
+                                        <select class="form-control" id="country"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="phone">Telephone</label>
+                                        <input type="text" class="form-control" id="phone">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
-
-
     </div>
     <!-- /#all -->
 <?php include "templates/footer.php"; ?>

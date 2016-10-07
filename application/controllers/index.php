@@ -124,10 +124,21 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['user_profile_details'] = $this->index_model->get_user_profile_details();
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('profile',$categories);
     }
-
+    // My orders for registered users   
+    public function my_orders()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        // $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $this->load->view('my_orders', $categories);
+    }
 	public function reg_form()
     {
         $categories_values_reg = $this->index_model->get_register();
@@ -188,36 +199,17 @@ class Index extends CI_Controller
         $this->load->view('payu/failure');
     }
 
-    public function customer_account()
-    {
-        $categories_values_reg = $this->index_model->get_register();
-        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
-        $categories['order_details'] = $categories_values_reg['order_details'];
-        $categories['order_count'] = $categories_values_reg['order_count'];
-        $categories['giftstore_subcategory'] = $this->index_model->get_category();
-        $categories['recipient_list'] = $this->index_model->get_recipient_list();
-        $this->load->view('customer_account', $categories);
-    }
     public function customer_wishlist()
     {
         $categories_values_reg = $this->index_model->get_register();
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
-        $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('customer_wishlist', $categories);
     }
-    public function customer_orders()
-    {
-        $categories_values_reg = $this->index_model->get_register();
-        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
-        $categories['order_details'] = $categories_values_reg['order_details'];
-        $categories['order_count'] = $categories_values_reg['order_count'];
-        $categories['giftstore_subcategory'] = $this->index_model->get_category();
-        $categories['recipient_list'] = $this->index_model->get_recipient_list();
-        $this->load->view('customer_orders', $categories);
-    }
+   
 
     public function customer_order()
     {

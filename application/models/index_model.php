@@ -338,5 +338,31 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
+    // Get user profile details
+    public function get_user_profile_details()
+    {   
+        // $current_user_session = $this->session->userdata("login_session");
+        // $profile_where = '(user_id="'.$current_user_session['user_id'].'")';
+        // $profile_query = $this->db->select('*');
+        // $profile_query = $this->db->from('giftstore_users gu');
+        // $profile_query = $this->db->join('giftstore_state',);  
+
+        // $profile_query = $this->db->get_where('giftstore_users',$profile_where)->row_array();
+
+        // print_r($profile_query);
+
+
+
+
+
+
+        // $this->db->select('*');
+        // $this->db->from('giftstore_category c');
+        // $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'inner');
+        // $query['recipients_category_list'] = $this->db->where($where)->get()->result_array();
+        // $rec_where = '(recipient_status=1 and recipient_id="'.$this->uri->segment(2).'")';
+        // $query['recipient_name'] = $this->db->get_where('giftstore_recipient',$rec_where)->row_array();
+        // return $query;
+    }
 
 }
