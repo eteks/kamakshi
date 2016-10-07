@@ -114,7 +114,8 @@ class Users extends CI_Controller {
 	public function endusers()
 	{
 		//get list of end users from database and store it in array variable 'adminusers' with key 'adminusers_list'
-		$endusers['endusers_list'] = $this->usersmodel->get_endusers();
+		$endusers['endusers_list'] = $this->usersmodel->get_enduser();
+		// $endusers['endusers_list'] = $this->usersmodel->get_endusers();
 		// $endusers['state_list'] = $this->usersmodel->get_state();
 		// $endusers['city_list'] = $this->usersmodel->get_state();
 		

@@ -84,18 +84,41 @@
                             <div class="registeration_status">
                             </div>
                             <div class="form-group"> 
-                                <input type="text" class="form-control" id="email-modal" name="popup_email" placeholder="email">
+                                <input type="text" class="form-control" id="email-modal" name="popup_email" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" name="popup_password" placeholder="password">
+                                <input type="password" class="form-control" id="password-modal" name="popup_password" placeholder="Password">
                             </div>
                             <p class="text-center">
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </p>
                         </form>
+                        <div>
+                        	<a href="#" class="forgot_pwd"><strong>Forgot Password</strong></a>
+                        	<div class="form-group forgot_pwd-modal"> 
+                                <input type="text" class="form-control" id="forgot_pwd-modal" name="popup_email" placeholder="Email" style="top: 3px;">
+                                <p class="text-center">
+                                <button class="btn btn-primary" style="margin-top: 12px;"><i class="fa fa-sign-in"></i>Retrieve Password</button>
+                            </p>
+                            </div>
+                             <div>
+						<ul>
+							<a href="https://www.facebook.com/" title="Facebook">
+							<i class="fa fa-facebook"></i>
+							<!-- Connect with facebook -->
+							</a>							
+							<a href="https://twitter.com/" title="Twitter">
+							<i class="fa fa-twitter"></i> 
+							</a>							
+							<a href="https://plus.google.com/u/0/" title="Google Plus">
+							<i class="fa fa-google-plus" aria-hidden="true"></i>
+							</a>							
+						</ul>
+					</div>
+                         </div>   
                         <p class="text-center text-muted">Not registered yet?</p>
                         <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-                    </div>
+                    </div>                   
                 </div>
             </div>
         </div>

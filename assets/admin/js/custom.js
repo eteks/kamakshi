@@ -180,16 +180,19 @@ $(document).ready(function() {
         var sum = 0;
         var $error = false;
         var return_value = false;
-        $('.product_default_field').each(function(){
-            if($(this).val() == ''){
-                $error = true; 
-                return_value = true;
-            }       
-            else{
-                return_value = false;
-            }
-                 
-        });
+        if($('.photo_labelError').hasClass('error_input_field')){
+            $error = true;
+            return_value = false;
+        }
+        else{
+            $('.product_default_field').each(function(){
+                if($(this).val() == ''){
+                    $error = true; 
+                    return_value = true;
+                }                
+            });
+            return_value = true;
+        } 
         if($('.attribute_status').is(":checked") && !($error)){
             //To Check any empty values passing in attributes block
             $(this).find('.attribute_group').find('.attribute_validate').each(function(){
@@ -258,9 +261,10 @@ $(document).ready(function() {
                 }
             }  
             // alert(return_value);
-            return return_value;
+            // return return_value;
         }  
-        // return false;   
+        // alert(return_value);
+        return return_value; 
     });
     $(document).delegate("[name='select_attribute[]']",'change',function(){
         var new_selection = $(this).find('option:selected');
@@ -415,4 +419,51 @@ $(document).ready(function() {
         $(this).siblings().children('.sub-menu').slideUp("slow");
     });
     //*********** End ************
+
+    if (window.File && window.FileList && window.FileReader) {
+        $("#category_image").on("change", function(e) {
+            old_image = parseInt($('.product-cat-images').length);
+            new_image = parseInt($(this)[0].files.length);
+            length = old_image + new_image;
+            if(length <=8){
+                var files = e.target.files,
+                filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) {
+                var f = files[i]
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                  var file = e.target;
+                  // $("<span class=\"pip\">" +
+                  //   "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                  //   "<br/><span class=\"remove\">Remove image</span>" +
+                  //   "</span>").insertAfter("#category_image");
+                  $("<div class=\"product-cat-images\">" +
+                    "<img class=\"edit_category_image\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                    "<span class=\"close-icon2\"><a><i class=\"glyphicon glyphicon-remove\"></i></a></span>" +
+                    "</div>").appendTo(".preview_part");
+                  $('.preview_part').show();
+                  $(".close-icon2").click(function(){
+                    $(this).parent(".product-cat-images").remove();
+                    if($(".product-cat-images").length == 0)
+                        $('.preview_part').hide();
+                  });
+                });
+                fileReader.readAsDataURL(f);
+              }
+            }  
+            else{
+                $(this).val('');
+                alert("8 files only allowed to upload");
+            } 
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
+      
+      $('#image_upload').simpleFilePreview({
+        'buttonContent': '<i class="fa fa-plus-circle fa_small"></i>',
+        'shiftLeft': '',
+        'shiftRight': '',
+        'removeContent': 'Remove'
+      });
 });
