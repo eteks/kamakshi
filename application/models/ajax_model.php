@@ -342,7 +342,7 @@ class Ajax_Model extends CI_Model {
         echo $status;
     }
 
-    //  Get product attribute price
+	//  Get product attribute price
     public function get_attribute_price() {
         $attribute_details = array();
         if($this->input->post('atribute_combination') && $this->input->post('product_id')) {
@@ -358,8 +358,8 @@ class Ajax_Model extends CI_Model {
         }
         return $attribute_details;
     }
-
-    //  Get popup login status
+	
+	//  Get popup login status
     public function get_profile_details_form_status() {
         $current_user_session = $this->session->userdata("login_session");
         $profile_insert_where = '(user_id="'.$current_user_session['user_id'].'")';
@@ -382,7 +382,7 @@ class Ajax_Model extends CI_Model {
         echo "Updated successfully";
     }
 
-    //  Get profile password change status
+	//  Get profile password change status
     public function get_profile_password_form_status() {
 
         $validation_rules = array(
@@ -437,5 +437,39 @@ class Ajax_Model extends CI_Model {
         }
         echo $status;
     }
+	public function get_popup_forgot_pwd_status($data) {
+			// echo "$data";
+				$condition = "user_email =" . "'" . $data. "'";				
+                $this->db->select('user_email');
+                $this->db->from('giftstore_users');
+                $this->db->where($condition);
+                $this->db->limit(1);
+
+                $query = $this->db->get();
+				// echo $query->num_rows();
+                if($query->num_rows() == 1)
+                {
+                	// echo "test2";
+			         $config['protocol'] = 'smtp';
+			         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+             		 $config['smtp_port'] = 25;
+			         $config['smtp_user'] = $data;
+			         $config['smtp_pass'] = '********';          
+		              $this->load->library('email', $config);		
+						$this->email->from('thangamgold45@gmail.com', 'header.php');
+						$this->email->to($config['smtp_user']);						
+						$this->email->subject('Get your forgotten Password');
+						$this->email->message('Please go to this link to get your password.
+						       http://localhost/kamakshi/');
+						
+						$this->email->send();
+						echo "Please check your email for Password.";
+                }
+                else
+                {
+                		echo('Failed');
+                        return FALSE;
+                }
+   		 }
 }
 
