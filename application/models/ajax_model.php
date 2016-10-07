@@ -341,40 +341,39 @@ class Ajax_Model extends CI_Model {
         }
         echo $status;
     }
-	public function get_popup_forgot_pwd_status() {
-        $validation_rules = array(
-            array(
-                 'field'   => 'popup_email',
-                 'label'   => 'Email',
-                 'rules'   => 'trim|required|valid_email|xss_clean'
-              ), 
-        );
-        $this->form_validation->set_rules($validation_rules);
+	public function get_popup_forgot_pwd_status($data) {
+			echo "$data";
+				$condition = "user_email =" . "'" . $data. "'";				
+                $this->db->select('user_email');
+                $this->db->from('giftstore_users');
+                $this->db->where($condition);
+                $this->db->limit(1);
 
-        if ($this->form_validation->run() == FALSE) {   
-            foreach($validation_rules as $row){
-                $field = $row['field'];         
-                $error = form_error($field);  
-                if($error){
-                    $status = strip_tags($error);
-                    break;
+                $query = $this->db->get();
+echo $query->num_rows();
+                if($query->num_rows() == 1)
+                {
+                	echo "test2";
+			         $config['protocol'] = 'smtp';
+			         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+             		 $config['smtp_port'] = 25;
+			         $config['smtp_user'] = $data;
+			         $config['smtp_pass'] = '********';          
+		              $this->load->library('email', $config);		
+						$this->email->from('thangamgold45@gmail.com', 'header.php');
+						$this->email->to($config['smtp_user']);						
+						$this->email->subject('Get your forgotten Password');
+						$this->email->message('Please go to this link to get your password.
+						       http://localhost/kamakshi/');
+						
+						$this->email->send();
+						echo "Please check your email for Password.";
                 }
-            }
-        }
-        else {
-            $check_login_where = '(user_email="'.$this->input->post('popup_email').'")';
-            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
-            if($check_login_data->num_rows() > 0) {
-                $this->session->set_userdata("login_status","1");   
-                $user_session_details = $check_login_data->row_array();
-                $this->session->set_userdata("login_session",$user_session_details);
-                $status = "success";
-            }
-            else {
-                $status = "Password Sent To your Mail";  
-            }
-        }
-        echo $status;
+                else
+                {
+                		echo('Failed');
+                        return FALSE;
+                }
     }
 
     //  Get product attribute price

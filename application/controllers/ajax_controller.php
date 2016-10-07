@@ -107,10 +107,32 @@ class Ajax_Controller extends CI_Controller {
 		$data = $this->ajax_model->get_popup_login_status();
 		echo $data;
 	}
-		public function popup_forgot_pwd()
-	{	
-		$data = $this->ajax_model->get_popup_forgot_pwd_status();
-		echo $data;
+	//forgot -Pwd
+	public function popup_forgot_pwd()
+	{
+		$validation_rules = array(
+            array(
+                 'field'   => 'popup_forgot_email',
+                 'label'   => 'Email',
+                 'rules'   => 'trim|required|valid_email|xss_clean|callback_email_check'
+              ), 
+        );
+        $this->form_validation->set_rules($validation_rules);
+        if ($this->form_validation->run() == FALSE) {   
+            foreach($validation_rules as $row){
+                $field = $row['field'];         
+                $error = form_error($field);  
+                if($error){
+                    $status = strip_tags($error);
+                    break;
+                }
+            }
+        }
+		else {
+			
+					$status = $this->ajax_model->get_popup_forgot_pwd_status($this->input->post('popup_forgot_email'));
+		}
+		echo $status;
 	}
 
 	// Product attributes combination
