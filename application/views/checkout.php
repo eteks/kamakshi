@@ -22,6 +22,7 @@
                             </ul>
                             <div class="checkout_section">
                                 <div id="checkout_address">
+                                <p> <input type="checkbox" value="" checked> Use my profile details </p>
                                     <div class="content">
                                         <p class="error_msg">  </p>
                                         <div class="row">

@@ -358,14 +358,50 @@ class Ajax_Model extends CI_Model {
         }
         return $attribute_details;
     }
-    public function get_forgotpassword_status() {
+
+    //  Get popup login status
+    public function get_profile_details_form_status() {
+        $current_user_session = $this->session->userdata("login_session");
+        $profile_insert_where = '(user_id="'.$current_user_session['user_id'].'")';
+        $profile_data = array(
+            'first_name' => $this->input->post('profile_firstname'),
+            'last_name' => $this->input->post('profile_lastname'),
+            'shipping_default_addr1' => $this->input->post('profile_address1'),
+            'shipping_default_addr2' => $this->input->post('profile_address2'),
+            'user_state_id' => $this->input->post('profile_state'),
+            'user_city_id' => $this->input->post('profile_city'),
+            'user_area_id' => $this->input->post('profile_area'),
+            'user_zip' => $this->input->post('profile_zip'),
+            'user_mobile' => $this->input->post('profile_mobile'),
+            'user_email' => $this->input->post('profile_email'),
+            'user_status' => '1'
+        );
+        $this->db->set($profile_data);
+        $this->db->where($profile_insert_where);
+        $this->db->update('giftstore_users', $profile_data);
+        echo "Updated successfully";
+    }
+
+    //  Get profile password change status
+    public function get_profile_password_form_status() {
 
         $validation_rules = array(
             array(
-                 'field'   => 'popup_email',
-                 'label'   => 'Email',
-                 'rules'   => 'trim|required|valid_email|xss_clean|is_unique[giftstore_users.user_email]'
+                 'field'   => 'profile_old',
+                 'label'   => 'Old password',
+                 'rules'   => 'trim|required|xss_clean|callback_password_checking'
               ),
+            array(
+                 'field'   => 'profile_new',
+                 'label'   => 'New password',
+                 'rules'   => 'trim|required|xss_clean'
+              ),
+            array(
+                 'field'   => 'profile_renew',
+                 'label'   => 'Confirm password',
+                 'rules'   => 'trim|required|matches[profile_new]'
+              ),   
+        );
         $this->form_validation->set_rules($validation_rules);
 
         if ($this->form_validation->run() == FALSE) {   
@@ -381,19 +417,30 @@ class Ajax_Model extends CI_Model {
             }
         }
         else {
-            $reg_data = array(
-                'popup_email' => $this->input->post('popup_email'),
-                );
-            $this->db->insert('giftstore_users', $reg_data);
-            $check_login_where = '(user_email="'.$this->input->post('user_email').'" and  user_status=1 and user_password="'.$this->input->post('user_password').'")';
-            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
-            $this->session->set_userdata("login_status","1");   
-            $user_session_details = $check_login_data->row_array();
-            $this->session->set_userdata("login_session",$user_session_details);
-            $status = "success";
+            $current_user_session = $this->session->userdata("login_session");
+            $profile_insert_where = '(user_id="'.$current_user_session['user_id'].'" and user_password="'.$this->input->post('profile_old').'")';
+            $profile_password_query = $this->db->get_where('giftstore_users',$profile_insert_where);
+            if ( $profile_password_query->num_rows() > 0 )
+            {
+                $profile_password_where =  '(user_id="'.$current_user_session['user_id'].'")';
+                $profile_password_data = array(
+                                            'user_password' => $this->input->post('profile_new'),
+                                            'user_status' => '1'
+                                        );
+                $this->db->set($profile_password_data);
+                $this->db->where($profile_password_where);
+                $this->db->update('giftstore_users',$profile_password_data);
+                $status = "Password updated successfully";
+            } 
+            else
+            {
+                $status = "Invalid password";
+            }
         }
         echo $status;
     }
-
  
 }
+    
+      
+        

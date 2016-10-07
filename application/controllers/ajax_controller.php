@@ -108,6 +108,20 @@ class Ajax_Controller extends CI_Controller {
 		echo $data;
 	}
 
+	// Profile details form
+	public function profile_details_form()
+	{	
+		$data = $this->ajax_model->get_profile_details_form_status();
+		echo $data;
+	}
+
+	// Profile password change
+	public function profile_password_form()
+	{	
+		$data = $this->ajax_model->get_profile_password_form_status();
+		echo $data;
+	}
+
 	// Product attributes combination
 	public function attribute_price()
 	{	

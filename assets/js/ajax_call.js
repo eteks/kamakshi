@@ -322,6 +322,7 @@ $(document ).ajaxComplete(function() {
     $('.front-end_form').on('submit',function(e) {  
         e.preventDefault();
         var form_data =  $(this).serializeArray();
+        
         var this_status = $(this).find('.registeration_status');
         jQuery.ajax({
         type: "POST",

@@ -54,7 +54,7 @@
                         <li class="login_menu"> Welcome <?php echo $session_data['user_name']; ?>
                         	<span class="caret dropdown-toggle drpdwn-icon" data-toggle="dropdown"></span>
 							    <ul class="dropdown-menu users-dropdown">
-							      <li><a href="#">Profile</a></li>
+							      <li><a href="<?php echo base_url(); ?>index.php/profile/">Profile</a></li>
 							      <li class="divider"></li>
 							      <li><a href="<?php echo base_url(); ?>index.php/index/logout/">Logout</a></li>
 							    </ul>

@@ -124,7 +124,11 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
-        $categories['user_profile_details'] = $this->index_model->get_user_profile_details();
+        $categories_profile = $this->index_model->get_user_profile_details();
+        $categories['user_profile_details'] = $categories_profile['user_profile_details'];
+        $categories['profile_get_state'] = $categories_profile['profile_get_state'];
+        $categories['profile_get_city'] = $categories_profile['profile_get_city'];
+        $categories['profile_get_area'] = $categories_profile['profile_get_area'];
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('profile',$categories);
     }
