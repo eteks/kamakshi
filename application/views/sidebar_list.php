@@ -8,7 +8,7 @@
             <ul class="nav nav-pills nav-stacked category-menu">
                 <li>
                     <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat_name->category_id; ?>"><?php echo $cat_name->category_name; ?> <span class="badge pull-right"> <?php echo $cat_pro_count; ?></span></a>
-                    <ul>
+                    <ul class="menu_category">
                         <?php foreach ($gift_subcategory as $subcat):?>
                         <li>
                             <a  class="subcategories" data-id="<?php echo $subcat['subcategory_id'] ?>"><?php echo $subcat['subcategory_name'] ?></a>

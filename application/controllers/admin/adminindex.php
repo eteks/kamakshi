@@ -628,9 +628,9 @@ class Adminindex extends CI_Controller {
 				// echo count($_POST['select_attribute']);
 				// print_r($_FILES['product_image']['name']);
 				//Check whether user upload picture
-				if(!empty($_FILES['product_image']['name'])){
-					$filesCount = count($_FILES['product_image']['name']);
-					for($i = 0; $i < $filesCount; $i++){
+				$filesCount = count($_FILES['product_image']['name']);
+				if(!empty($_FILES['product_image']['name']) && $filesCount > 1){
+					for($i = 0; $i < $filesCount-1; $i++){
 						// array_push($product_image,$_FILES['userFiles']['name'][$i]);
 						$_FILES['userFile']['name'] = $_FILES['product_image']['name'][$i];
 		                $_FILES['userFile']['type'] = $_FILES['product_image']['type'][$i];
@@ -655,7 +655,7 @@ class Adminindex extends CI_Controller {
 					}
 				}else{
 					// echo "else";
-					$status['error_message'] = "Please Upload Product Image";
+					$errors = "Please Upload Product Image";
 					$category_image = '';
 				}	
 				if (!empty($errors)) {

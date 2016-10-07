@@ -52,7 +52,7 @@
                         <input type="text" class="form-control" id="category_name" placeholder="Enter Category Name" value="<?php if(!empty($category_data['category_name'])) echo $category_data['category_name']; ?>" name="edit_category_name">
                     </div>  
                     <div class="form-group">
-                        <label for="category_image">Category Image<span class="fill_symbol"> *</span></label><span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
+                        <label for="category_image">Category Image<span class="fill_symbol"> *</span></label>
                      <div class="category-product-image">
                         <input type="file" id="category_image" class="select-category-images" name="edit_category_image">
                         <?php
@@ -68,6 +68,7 @@
                             <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>">
                             <input type="hidden" value="<?php echo $img_source; ?>" name="old_path_name" />
                        </div>
+                       <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
                     </div>
                    <div class="control-group">
                         <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>

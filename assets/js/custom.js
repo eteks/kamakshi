@@ -222,6 +222,9 @@ if(dummy_dropdown_length > 0) {
     $('.dummy_dropdown').remove();
 }
 
+$('.change_password').on('click',function(){
+    $('.change_password_form').slideToggle();
+});
 
 // Ended by siva - calculation process in basket page end
 
