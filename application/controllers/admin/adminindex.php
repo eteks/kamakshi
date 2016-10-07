@@ -835,9 +835,7 @@ class Adminindex extends CI_Controller {
     	else {
     		if(!empty($_POST)) {
 				if (!empty($errors)) {
-					$status = array(
-	                	'error_message' => strip_tags($errors)
-	             	);
+					$status['error_message'] = strip_tags($errors);
 				}
 				else{
 					$data = array(
