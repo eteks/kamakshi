@@ -566,7 +566,8 @@
       border: 2px solid #fff;
       border-radius: 4px;
       box-shadow: 0 0 0 1px #c1c1c1;
-      height: 170px;
+      min-height: 90px;
+      max-height: 170px;
       margin-left: 75px;
       padding: 0px !important;
       position: relative;

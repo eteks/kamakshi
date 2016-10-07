@@ -108,6 +108,7 @@
                             </div>        
                             <!-- <a href="#" class="forgot_pwd frgt_pwd_2"><strong>Forgot Password?</strong></a> -->                                                  
                             <div class="form-group forgot_pwd-modal"> 
+                            	<label class="email_id">Email</label>
                                 <input type="text" class="form-control" id="email-modal" name="popup_forgot_email" placeholder="Email" style="top: 3px;">
                                <div class="form2_actions">
                                	<a href="#"><span class="cancel">Cancel</span></a>
