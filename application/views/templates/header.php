@@ -105,7 +105,7 @@
                             </div>        
                             <a href="#" class="forgot_pwd frgt_pwd"><strong>Forgot Password</strong></a>                                                  
                             <div class="form-group forgot_pwd-modal"> 
-                                <input type="text" class="form-control" id="email-modal" name="popup_email" placeholder="Email" style="top: 3px;">
+                                <input type="text" class="form-control" id="email-modal" name="popup_forgot_email" placeholder="Email" style="top: 3px;">
                                 <p class="text-center">
                                 <button class="btn btn-primary" style="margin-top: 20px;margin-bottom: -30px;"><i class="fa fa-sign-in"></i>Retrieve Password</button>
                             </p>
