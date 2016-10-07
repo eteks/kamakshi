@@ -187,7 +187,7 @@ class Location extends CI_Model {
 	 }
 	public function insert_area($data)
 	{
-		print_r($data);	
+		// print_r($data);	
 		// Query to check whether area name already exist or not
 		$condition = "area_name =" . "'" . $data['area_name'] . "'";
 		$this->db->select('*');

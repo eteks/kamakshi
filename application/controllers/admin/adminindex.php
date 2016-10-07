@@ -849,13 +849,9 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->insert_area($data);
 					if($result)
-						$status = array(
-	                		$status['error_message'] => "Area Inserted Successfully!"
-	             		);
+	                		$status['error_message'] = "Area Inserted Successfully!";
 					else
-						$status = array(
-	                		$status['error_message'] => "Area Already Exists!"
-	             		);
+	                		$status['error_message'] = "Area Already Exists!";
 				}		
 			}
     	}
@@ -999,13 +995,9 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->insert_city($data);
 					if($result)
-						$status = array(
-	                		$status['error_message'] => "City Inserted Successfully!"
-	             		);
+	                		$status['error_message'] = "City Inserted Successfully!";
 					else
-						$status = array(
-	                		$status['error_message'] => "City Already Exists!"
-	             		);
+	                		$status['error_message'] = "City Already Exists!";
 				}		
 			}
     	}
@@ -1249,13 +1241,9 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->location->insert_state($data);
 					if($result)
-						$status = array(
-	                		$status['error_message'] => "State Inserted Successfully!"
-	             		);
+	                		$status['error_message'] = "State Inserted Successfully!";
 					else
-						$status = array(
-	                		$status['error_message'] => "State Already Exists!"
-	             		);
+	                		$status['error_message'] = "State Already Exists!";
 				}	
 			}
 		}	
