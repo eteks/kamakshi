@@ -98,7 +98,7 @@ $(document).ready(function() {
 $('#checkout_form').submit(function (e) {
     e.preventDefault();
     var data = $(this).serializeFormJSON();
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     sessionStorage.setItem('checkout_details', JSON.stringify(data));
     /* Object
         email: "value"

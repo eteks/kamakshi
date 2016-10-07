@@ -17,12 +17,15 @@
                     <div class="filtering_sections filtering_titles"></div>
                   </div>
                     <!-- <div class="box product_name">
-                        <h1><?php echo $cat_name->category_name; ?></h1>
+                        <h1><?php 
+                        // echo $cat_name->category_name; 
+                        ?>
+                        <!--</h1>
                     </div> -->
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-6 products-showing">
-                            	<strong class="category_name">Watches</strong>
+                            	<strong class="category_name">Products for <?php echo $cat_name->category_name; ?></strong>
                                 <!-- Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products -->
                             </div>
                             <div class="col-sm-12 col-md-6  products-number-sort">
