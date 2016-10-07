@@ -98,7 +98,7 @@ $(document).ready(function() {
 $('#checkout_form').submit(function (e) {
     e.preventDefault();
     var data = $(this).serializeFormJSON();
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     sessionStorage.setItem('checkout_details', JSON.stringify(data));
     /* Object
         email: "value"
@@ -115,12 +115,16 @@ $("#phone,#zip").keypress(function (e) {
     }
 });
 // Forgot Password-Added by thangam
- $(".forgot_pwd-modal").hide();
- 	$(".forgot_pwd").show();
+  	$(".forgot_pwd").show();
  $('.forgot_pwd').click(function(){
+ 	$('#forget_password').show();
  	$('#login').hide();
- $(".forgot_pwd-modal").toggle();
- $(".forgot_pwd").hide();
+ $(".forgot_pwd-modal").show();
+ 	});
+ 	$('.cancel').click(function(){
+ 	$('#forget_password').hide();
+ 	$('#login').show();
+ $(".forgot_pwd-modal").show();
  	});
 
 // Checkout address button

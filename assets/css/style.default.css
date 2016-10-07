@@ -78,6 +78,7 @@ h1 {
 }
 #top #login-modal a {
   color: #4fbfa8;
+  /*text-align: right;*/
 }
 #top #login-modal p {
   font-weight: 300;
@@ -268,7 +269,7 @@ h1 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 85px;
+  padding: 71px 15px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -1490,6 +1491,7 @@ fieldset[disabled] .btn-primary.active {
 /* forms.less */
 label {
   font-weight: normal;
+  margin-left: 5px;
 }
 .form-control {
   -webkit-box-shadow: none;

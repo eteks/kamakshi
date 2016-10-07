@@ -1,9 +1,9 @@
 <?php
 // Merchant key here as provided by Payu
-$MERCHANT_KEY = "JBZaLc";
+$MERCHANT_KEY = "OwGF14";
 
 // Merchant Salt as provided by Payu
-$SALT = "GQs7yium";
+$SALT = "RjWAdXh0";
 
 // End point - change to https://secure.payu.in for LIVE mode
 $PAYU_BASE_URL = "https://test.payu.in";
@@ -68,6 +68,12 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
 ?>
 <html>
   <head>
+  <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#payumoney_form').submit();
+  });
+  </script>
   <script>
     var hash = '<?php echo $hash ?>';
     function submitPayuForm() {
@@ -80,56 +86,31 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
   </script>
   </head>
   <body onload="submitPayuForm()">
-    <h2>PayU Form</h2>
+    <!-- <h2>PayU Form</h2> -->
     <br/>
     <?php if($formError) { ?>
   
-      <span style="color:red">Please fill all mandatory fields.</span>
+      <!-- <span style="color:red">Please fill all mandatory fields.</span> -->
       <br/>
       <br/>
     <?php } ?>
-    <form action="<?php echo $action; ?>" method="post" name="payuForm">
+    <form id="payumoney_form" action="<?php echo $action; ?>" method="post" name="payuForm">
       <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
       <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
       <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-      <table>
-        <tr>
-          <td><b>Mandatory Parameters</b></td>
-        </tr>
-        <tr>
-          <td>Amount: </td>
-          <td><input type="hidden" name="amount" value="20" /></td>
-          <td>First Name: </td>
-          <td><input type="hidden" name="firstname" value="siva" /></td>
-        </tr>
-        <tr>
-          <td>Email: </td>
-          <td><input name="email" id="email" value="<?php echo (empty($posted['email'])) ? '' : $posted['email']; ?>" /></td>
-          <td>Phone: </td>
-          <td><input name="phone" value="<?php echo (empty($posted['phone'])) ? '' : $posted['phone']; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Product Info: </td>
-          <td colspan="3"><textarea name="productinfo"><?php echo (empty($posted['productinfo'])) ? '' : $posted['productinfo'] ?></textarea></td>
-        </tr>
-        <tr>
-          <td>Success URI: </td>
-          <td colspan="3"><input name="surl" value="<?php echo (empty($posted['surl'])) ? '' : $posted['surl'] ?>" size="64" /></td>
-        </tr>
-        <tr>
-          <td>Failure URI: </td>
-          <td colspan="3"><input name="furl" value="<?php echo (empty($posted['furl'])) ? '' : $posted['furl'] ?>" size="64" /></td>
-        </tr>
+      <!-- <input type="hidden" name="amount" value="<?php echo (empty($posted['amount'])) ? '' : $posted['amount'] ?>" /> -->
+      <input type="hidden" name="amount" value="1.00" />
+      <input type="hidden" name="firstname" value="<?php echo (empty($posted['firstname'])) ? '' : $posted['firstname'] ?>" />
+      <input type="hidden" name="email" id="email" value="<?php echo (empty($posted['email'])) ? '' : $posted['email'] ?>" />
+      <input type="hidden" name="phone" value="<?php echo (empty($posted['phone'])) ? '' : $posted['phone'] ?>" />
+      <input type="hidden" name="productinfo" value="none" /> 
+      <input type="hidden" name="surl" value="<?php echo base_url(); ?>index.php/index/pay_success" size="64" />
+      <input type="hidden" name="furl" value="<?php echo base_url(); ?>index.php/index/pay_failure" size="64" />
 
-        <tr>
-          <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
-        </tr>
-        <tr>
-          <?php if(!$hash) { ?>
-            <td colspan="4"><input type="submit" value="Submit" /></td>
-          <?php } ?>
-        </tr>
-      </table>
+      <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
+      <?php if(!$hash) { ?>
+        <!-- <input type="submit" value="Submit" /> -->
+      <?php } ?>
     </form>
   </body>
 </html>

@@ -95,24 +95,31 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password-modal" name="popup_password" placeholder="Password">
                             </div>
+                           <div class="form_actions">
                             <p class="text-center login_button">
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </p>
-                        </form>   
-                        <div class="modal-body">
-                        <form action="<?php echo base_url(); ?>index.php/ajax_controller/popup_forgot_pwd" id="login" class="front-end_form" method="post">
+                            <a href="#" class="forgot_pwd frgt_pwd"><strong>Forgot Password?</strong></a>
+                            <div class="cb"> </div> 
+                          </div>
+                        </form>
+                        <form action="<?php echo base_url(); ?>index.php/ajax_controller/popup_forgot_pwd" id="forget_password" class="front-end_form" method="post">
                             <div class="registeration_status">
                             </div>        
-                            <a href="#" class="forgot_pwd frgt_pwd"><strong>Forgot Password</strong></a>                                                  
+                            <!-- <a href="#" class="forgot_pwd frgt_pwd_2"><strong>Forgot Password?</strong></a> -->                                                  
                             <div class="form-group forgot_pwd-modal"> 
                                 <input type="text" class="form-control" id="email-modal" name="popup_forgot_email" placeholder="Email" style="top: 3px;">
+                               <div class="form2_actions">
+                               	<a href="#"><span class="cancel">Cancel</span></a>
                                 <p class="text-center">
-                                <button class="btn btn-primary" style="margin-top: 20px;margin-bottom: -30px;"><i class="fa fa-sign-in"></i>Retrieve Password</button>
-                            </p>
+                                <button class="btn btn-primary retrive_pwd"><i class="fa fa-sign-in"></i>Retrieve Password</button>
+                               </p>
+                               <div class="cb"> </div> 
+                              </div>
                             </div>
-                            </form>
-                            </div>                    
-                             <div>
+                        </form>
+                          </div>                   
+                           <div>
 							<ul class="social_icons">
 								<a href="https://www.facebook.com/" title="Facebook">
 								<i class="fa fa-facebook"></i>
@@ -127,8 +134,7 @@
 							</ul>
 							</div>  
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-                    </div>                                       
+                        <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>                                                           
                     </div>                       
             </div>
         </div>
