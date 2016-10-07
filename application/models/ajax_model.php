@@ -341,6 +341,41 @@ class Ajax_Model extends CI_Model {
         }
         echo $status;
     }
+	public function get_popup_forgot_pwd_status() {
+        $validation_rules = array(
+            array(
+                 'field'   => 'popup_email',
+                 'label'   => 'Email',
+                 'rules'   => 'trim|required|valid_email|xss_clean'
+              ), 
+        );
+        $this->form_validation->set_rules($validation_rules);
+
+        if ($this->form_validation->run() == FALSE) {   
+            foreach($validation_rules as $row){
+                $field = $row['field'];         
+                $error = form_error($field);  
+                if($error){
+                    $status = strip_tags($error);
+                    break;
+                }
+            }
+        }
+        else {
+            $check_login_where = '(user_email="'.$this->input->post('popup_email').'")';
+            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
+            if($check_login_data->num_rows() > 0) {
+                $this->session->set_userdata("login_status","1");   
+                $user_session_details = $check_login_data->row_array();
+                $this->session->set_userdata("login_session",$user_session_details);
+                $status = "success";
+            }
+            else {
+                $status = "Password Sent To your Mail";  
+            }
+        }
+        echo $status;
+    }
 
     //  Get product attribute price
     public function get_attribute_price() {
@@ -357,43 +392,5 @@ class Ajax_Model extends CI_Model {
             }
         }
         return $attribute_details;
-    }
-    public function get_forgotpassword_status() {
-
-        $validation_rules = array(
-            array(
-                 'field'   => 'popup_email',
-                 'label'   => 'Email',
-                 'rules'   => 'trim|required|valid_email|xss_clean|is_unique[giftstore_users.user_email]'
-              ),
-        $this->form_validation->set_rules($validation_rules);
-
-        if ($this->form_validation->run() == FALSE) {   
-            foreach($validation_rules as $row){
-                $field = $row['field'];         //getting field name
-                $error = form_error($field);    //getting error for field name
-                //form_error() is inbuilt function
-                //if error is their for field then only add in $errors_array array
-                if($error){
-                    $status = strip_tags($error);
-                    break;
-                }
-            }
-        }
-        else {
-            $reg_data = array(
-                'popup_email' => $this->input->post('popup_email'),
-                );
-            $this->db->insert('giftstore_users', $reg_data);
-            $check_login_where = '(user_email="'.$this->input->post('user_email').'" and  user_status=1 and user_password="'.$this->input->post('user_password').'")';
-            $check_login_data = $this->db->get_where('giftstore_users',$check_login_where);
-            $this->session->set_userdata("login_status","1");   
-            $user_session_details = $check_login_data->row_array();
-            $this->session->set_userdata("login_session",$user_session_details);
-            $status = "success";
-        }
-        echo $status;
-    }
-
- 
+    } 
 }
