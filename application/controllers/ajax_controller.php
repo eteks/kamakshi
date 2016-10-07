@@ -9,6 +9,7 @@ class Ajax_Controller extends CI_Controller {
 
 		// Load session library
         $this->load->library('session');
+		$this->load->library('email');
         $this->load->library(array('form_validation','session'));
         $this->load->helper(array('url','html','form'));
 

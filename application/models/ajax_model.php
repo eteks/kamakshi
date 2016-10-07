@@ -440,7 +440,7 @@ class Ajax_Model extends CI_Model {
 	public function get_popup_forgot_pwd_status($data) {
 			// echo "$data";
 				$condition = "user_email =" . "'" . $data. "'";				
-                $this->db->select('user_email');
+                $this->db->select('*');
                 $this->db->from('giftstore_users');
                 $this->db->where($condition);
                 $this->db->limit(1);
@@ -459,9 +459,10 @@ class Ajax_Model extends CI_Model {
 						$this->email->from('thangamgold45@gmail.com', 'header.php');
 						$this->email->to($config['smtp_user']);						
 						$this->email->subject('Get your forgotten Password');
-						$this->email->message('Please go to this link to get your password.
-						       http://localhost/kamakshi/');
-						
+						// $this->email->message('Please go to this link to get your password.
+						//        http://localhost/kamakshi/');
+                        $user_result = $query->row_array();
+						$this->email->message("Your registered password is ".$user_result['user_password']);
 						$this->email->send();
 						echo "Please check your email for Password.";
                 }
