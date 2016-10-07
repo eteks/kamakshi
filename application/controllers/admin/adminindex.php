@@ -556,68 +556,13 @@ class Adminindex extends CI_Controller {
 		$status = array();//array is initialized
 		$errors='';
 		$product_image = array();
-		$validation_rules = array(
-	       array(
-	             'field'   => 'product_title',
-	             'label'   => 'Product Title',
-	             'rules'   => 'trim|required|xss_clean|is_unique[giftstore_product.product_title]'
-	          ),
-	       array(
-	             'field'   => 'product_description',
-	             'label'   => 'Product Description',
-	             'rules'   => 'trim|required|xss_clean'
-	          ), 
-	       array(
-	             'field'   => 'select_category',
-	             'label'   => 'Category',
-	             'rules'   => 'trim|required|xss_clean'
-	          ),   
-	       array(
-	             'field'   => 'select_subcategory',
-	             'label'   => 'SubCategory',
-	             'rules'   => 'trim|required|xss_clean'
-	          ),   
-	       array(
-	             'field'   => 'select_recipient',
-	             'label'   => 'Recipient',
-	             'rules'   => 'trim|required|xss_clean'
-	          ),   
-	        array(
-	             'field'   => 'product_status',
-	             'label'   => 'Status',
-	             'rules'   => 'trim|required|xss_clean'
-	        ),   
-	    );
-	    $status['attribute_check_status'] = isset($_POST['attribute_check_status'])?$_POST['attribute_check_status']:"";
+		
+	    $status['attribute_check_status'] = isset($_POST['attribute_check_status'])?$_POST['attribute_check_status']:"";  
 
-	    if($status['attribute_check_status'] == 0){
-	        array_push($validation_rules,array(
-	             'field'   => 'product_price',
-	             'label'   => 'Product Price',
-	             'rules'   => 'trim|required|xss_clean'
-	        ));
-	        array_push($validation_rules,array(
-	             'field'   => 'product_totalitems',
-	             'label'   => 'Totalitems',
-	             'rules'   => 'trim|required|xss_clean'
-	        ));
-	    }  	
-	    // print_r($validation_rules);   
-	    $this->form_validation->set_rules($validation_rules);
-	    if ($this->form_validation->run() == FALSE) {
-	    	foreach($validation_rules as $row){
-	            $field = $row['field'];          //getting field name
-	            $error = form_error($field);    //getting error for field name
-	                                            //form_error() is inbuilt function
-	            //if error is their for field then only add in $errors_array array
-	            if($error){
-                    $status['error_message'] = strip_tags($error);
-                    break;
-	            }
-        	}
-    	}
-    	else{
-    		if(!empty($_POST)){
+		if(!empty($_POST)){
+			$status['check_product_is_unique'] = $this->catalog->check_product_is_unique($this->input->post('product_title'));
+
+			if($status['check_product_is_unique'] == true){
 				$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
 
 				$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
@@ -677,11 +622,13 @@ class Adminindex extends CI_Controller {
 					$result = $this->catalog->insert_product($data);
 					if($result)
 						$status['error_message'] = "Product Inserted Successfully!";
-					else
-						$status['error_message'] = "Product Already Exists!";
-				}		
-			}
-    	}
+				}	
+			}	
+			else{
+				$status['error_message'] = "Product Title Already Exists!";	
+			}		
+		}
+
 		// print_r($status);	
 		$status['category_list'] = $this->catalog->get_categories();
 		$status['attribute_list'] = $this->catalog->get_product_attributes();

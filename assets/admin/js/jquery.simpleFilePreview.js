@@ -252,6 +252,8 @@
         fn = (fn) ? ("" + fn) : null;
         p.find('.simpleFilePreview_input').hide();
         var i = p.find('.simpleFilePreview_preview');
+        //newly added
+        $('input[type=file]:last').removeClass('product_default_field');
         if (i && i.length) {
             i.attr('src', src);
         } else {

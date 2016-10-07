@@ -403,4 +403,15 @@ class Catalog extends CI_Model {
 		}
 		return false;
 	}
+	public function check_product_is_unique($product_title){
+		$condition = "product_title =" . "'" . $product_title . "'";
+		$this->db->select('product_title');
+		$this->db->from('giftstore_product');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+			return false;
+		}
+		return true;
+	}
 }
