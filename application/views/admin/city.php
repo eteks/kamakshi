@@ -34,6 +34,10 @@
         </div>
     </div>
    <div class="box-content">
+        <p class='error_msg_del alert alert-info'></p>
+        <input type="hidden" class="table_name" value="giftstore_city">
+        <input type="hidden" class="field_name" value="city_id">
+        <input type="hidden" class="action" value="<?php echo base_url(); ?>index.php/admin/delete">
         <a class="btn btn-success" id="add" href="<?php echo base_url(); ?>index.php/admin/adminindex/add_city">
         <i class="glyphicon glyphicon-edit icon-white"></i>
         Add
@@ -60,10 +64,10 @@
                         <i class="glyphicon glyphicon-edit icon-white"></i>
                         Edit
                     </a>
-                   <a class="btn btn-danger" href="#myModal1" data-toggle="modal" id="delete">
+                   <a class="btn btn-danger delete" href="#myModal1" data-toggle="modal" data-id="<?php echo $city["city_id"] ?>" title="Delete">
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         Delete
-                    </a>
+                   </a>
                 </td>
             </tr>
         <?php endforeach ?>
@@ -73,12 +77,22 @@
     </div>
     </div>
     <!--/span-->
-
-    </div><!--/row-->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body delete_message_style">
+                    <input type="hidden" name="delete" id="vId" value=""/>
+                        <button type="button" class="close popup_tx" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <center class="popup_tx">
+                            <h5>Are you sure you want to delete this item? </h5>
+                        </center>
+                </div>
+                <div id="delete_btn" class="modal-footer footer_model_button" >
+                    <a name="action" class="btn btn-danger popup_btn yes_btn_act" id="popup_btn1" value="Delete">Yes</a>                
+                    <button type="button" class="btn btn-info popup_btn" id="popup_btn" data-dismiss="modal">No</button>
+                </div>
+            </div><!--/row-->
         </div>
     </div>
-
-    
-
 </div><!--/.fluid-container-->
 <?php include "templates/footer.php" ?>

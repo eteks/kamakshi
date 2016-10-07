@@ -52,15 +52,17 @@ $route['category/(:any)'] = 'index/category/$1';
 $route['contact'] = 'index/contact';
 $route['basket'] = 'index/basket';
 $route['checkout'] = 'index/checkout';
-$route['checkout_order_review'] = 'index/checkout_order_review';
+$route['payumoney'] = 'index/payumoney';
+$route['pay_success'] = 'index/pay_success';
+$route['pay_failure'] = 'index/pay_failure';
+// $route['checkout_order_review'] = 'index/checkout_order_review';
 $route['checkout1'] = 'index/checkout1';
 $route['checkout2'] = 'index/checkout2';
 $route['checkout3'] = 'index/checkout3';
 $route['checkout4'] = 'index/checkout4';
-$route['customer_account'] = 'index/customer_account';
+$route['profile'] = 'index/profile';
 $route['customer_wishlist'] = 'index/customer_wishlist';
-$route['customer_orders'] = 'index/customer_orders';
-$route['customer_order'] = 'index/customer_order';
+$route['my_orders'] = 'index/my_orders';
 $route['recipient_category/(:any)'] = 'index/recipient_category/$1';
 $route['track_order'] = 'index/track_order';
 $route['404_page'] = 'index/nopage';
@@ -74,6 +76,7 @@ $route['adminindex/endusers'] = 'adminindex/endusers';
 $route['adminindex/edit_endusers'] = 'adminindex/edit_endusers';
 $route['admin/logout'] = 'admin/login/logout';
 $route['admin/dashboard'] = 'admin/adminindex/dashboard';
+$route['admin/delete'] = 'admin/adminindex/delete';
 $route['adminindex/category'] = 'adminindex/category';
 $route['adminindex/add_category'] = 'adminindex/add_category';
 $route['adminindex/edit_category/(:any)'] = 'adminindex/edit_category';
@@ -92,6 +95,7 @@ $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
 $route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
 $route['adminindex/product_attribute_sets'] = 'adminindex/product_attribute_sets';
+// $route['adminindex/delete/(:any)/(:any)'] = 'adminindex/delete';
 
 
 

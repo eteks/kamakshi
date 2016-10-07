@@ -393,4 +393,14 @@ class Catalog extends CI_Model {
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
+	public function delete_data($tablename,$fieldname,$id){
+		$condition = $fieldname. " =". $id;
+		$this->db->from($tablename);
+		$this->db->where($condition);
+		$this->db->delete();
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}
+		return false;
+	}
 }

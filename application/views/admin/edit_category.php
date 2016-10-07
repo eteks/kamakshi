@@ -64,7 +64,7 @@
                              <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
                              </a>
                             <?php } ?>
-                            <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <!-- <span class="close-icon"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span> -->
                             <input type="hidden" name="hidden_category_image" value="<?php echo $img_source; ?>">
                             <input type="hidden" value="<?php echo $img_source; ?>" name="old_path_name" />
                        </div>

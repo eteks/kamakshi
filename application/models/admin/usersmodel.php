@@ -68,7 +68,7 @@ class Usersmodel extends CI_Model {
 		//return all records in array format to the controller
 		return $query->result_array();
 	 }
-	public function get_endusers()
+	public function get_enduser()
 	{	
 		//get list of adminusers from database using mysql query 
 		$this->db->select('*');
@@ -78,6 +78,14 @@ class Usersmodel extends CI_Model {
 
 		//return all records in array format to the controller
 		return $query->result_array();
+	}
+	public function get_endusers()
+	{
+		$this->db->select('*');
+		$this->db->from('giftstore_area area');
+		$this->db->join('giftstore_state state', 'state.state_id = area.area_state_id', 'inner');
+		$this->db->order_by('area.area_name','desc');
+		return $this->db->get()->result_array();
 	}
 	public function get_endusers_data($id)
 	{	

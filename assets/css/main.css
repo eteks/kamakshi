@@ -290,6 +290,13 @@
 .dummy_dropdown {
   display: none;
 }
+.change_password_form {
+  display: none;
+}
+.change_password {
+  cursor: pointer;
+  text-decoration: underline;
+}
 /* Ended by siva*/
 #owl-demo .owl-item > div img {
     display: block;

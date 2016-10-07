@@ -43,6 +43,7 @@
             </div>
             <div class="box-content">
 <?php } ?>
+             <span class="photo_labelError">Invalid file type</span> 
              <p class="error_msg_reg test_product"><?php if (isset($error_message)) echo $error_message; ?></p>
              <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_giftproduct" enctype="multipart/form-data" name="product_form" id="add_giftproduct" class="form_submit">
              <input type="hidden" value="0">
@@ -55,8 +56,12 @@
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
-                        <input type="file" id="category_image" name="product_image[]" multiple="multiple" class="product_default_field">
+                        <!-- <input type="file" id="category_image" name="product_image[]" multiple="multiple" class="product_default_field"> -->
+                        <input type='file' id='image_upload' name='product_image[]' multiple='multiple'/> 
                         <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
+                    
+                    </div>
+                    <div class="edit-catpro-image preview_part">
                     </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>

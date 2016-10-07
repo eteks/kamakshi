@@ -10,6 +10,7 @@
 </section>
 <!-- external javascript -->
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
 <!-- library for cookie management -->
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.cookie.js"></script>
 <!-- library for table grid management -->
@@ -20,5 +21,6 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/slick.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery.simpleFilePreview.js"></script>
 </body>
 </html>

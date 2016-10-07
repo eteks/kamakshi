@@ -114,6 +114,13 @@ $("#phone,#zip").keypress(function (e) {
         return false;
     }
 });
+// Forgot Password-Added by thangam
+ $(".forgot_pwd-modal").hide();
+ 	$(".forgot_pwd").show();
+ $('.forgot_pwd').click(function(){
+ 	$('#login').hide();
+ $(".forgot_pwd-modal").toggle();
+ 	});
 
 // Checkout address button
 $('#checkout_address_submit').on('click',function() {
@@ -215,6 +222,9 @@ if(dummy_dropdown_length > 0) {
     $('.dummy_dropdown').remove();
 }
 
+$('.change_password').on('click',function(){
+    $('.change_password_form').slideToggle();
+});
 
 // Ended by siva - calculation process in basket page end
 
