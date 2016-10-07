@@ -442,6 +442,9 @@
   text-align:center !important;
   margin-top:-125px !important;
 }
+.label-warning {
+    background-color: #fa6702 !important;
+}
 /*CSS for image upload and preview*/
 .preview_part{
   display: none;

@@ -88,7 +88,7 @@
                             <!-- /.product -->
                         </div>
                         <?php endforeach; else: ?>
-                        <p>Product(s) not available.</p>
+                        <p class="not_available">Product(s) not available.</p>
                         <?php endif; ?>
                         <div class="cb"> </div>
                         <div class="bottom_pagination">

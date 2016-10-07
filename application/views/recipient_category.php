@@ -23,7 +23,7 @@
             <!-- *** HOT PRODUCT SLIDESHOW *** -->
             <div id="hot">
                 <div class="category_product">
-                	<h4 class="category_product_name"><?php echo $recipient_name['recipient_type']; ?></h4>
+                	<h4 class="category_product_name">Categories for <?php echo $recipient_name['recipient_type']; ?></h4>
                 </div>
                 <div class="container">
                     <div id="container"> 

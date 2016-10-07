@@ -34,36 +34,7 @@
                                 <div class="ribbon-background"></div>
                             </div>
                             <!-- /.ribbon -->
-                        </div>
-                            <!-- Dummy dropdown for functionality purpose -->
-                            <select class="dummy_dropdown">
-                        <?php
-                            if(!empty($product_attributes)):
-                            $temp_attribute = array();
-                            $temp_value = array();
-                            foreach($product_attributes as $attribute):
-                                if (!in_array($attribute['product_attribute_id'], $temp_attribute)):
-                                    $temp_attribute[] = $attribute['product_attribute_id'];
-                        ?>
-                                    </select>
-                                    <label> <?php echo $attribute['product_attribute']; ?> </label>
-                                    <select class="attributes" id="attribute_<?php echo $attribute['product_attribute']; ?>">
-                                <?php
-                                endif;  
-                                if (!in_array($attribute['product_attribute_value_id'], $temp_value)):   
-                                    $temp_value[] = $attribute['product_attribute_value_id'];
-                                ?> 
-                                    <option value="<?php echo $attribute['product_attribute_value_id']; ?>"> <?php echo $attribute['product_attribute_value']; ?> </option>           
-                                <?php endif; ?> 
-
-                            <?php endforeach; ?>
-                            </select>  <!-- / Dummy dropdown for functionality purpose -->
-                            <span class="attribute_status"> </span>
-                            <input type="hidden" value="<?php echo $product_attributes[0]['product_attribute_group_id']; ?>" class="ordinary_product_arrtibute_group" />
-                            <input type="hidden" value="<?php echo $product_attributes[0]['product_attribute_group_id']; ?>" class="update_product_arrtibute_group" />
-                            <input type="hidden" class="attribute_combination" value=""/>
-                            <?php endif; ?>  
-                            </select> 
+                        </div>      
                             <div class="col-sm-3">
                             <div class="thumb_carosel">
 							    <div>
@@ -89,6 +60,38 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="box1">
+                            <div class="product_attributes"
+                            	<!-- Dummy dropdown for functionality purpose -->
+			                            <select class="dummy_dropdown attr_value">
+			                        <?php
+			                            if(!empty($product_attributes)):
+			                            $temp_attribute = array();
+			                            $temp_value = array();
+			                            foreach($product_attributes as $attribute):
+			                                if (!in_array($attribute['product_attribute_id'], $temp_attribute)):
+			                                    $temp_attribute[] = $attribute['product_attribute_id'];
+			                        ?>
+			                                    </select>
+			                                    <label> <?php echo $attribute['product_attribute']; ?> </label>
+			                                    <select class="attributes attr_value" id="attribute_<?php echo $attribute['product_attribute']; ?>">
+			                                <?php
+			                                endif;  
+			                                if (!in_array($attribute['product_attribute_value_id'], $temp_value)):   
+			                                    $temp_value[] = $attribute['product_attribute_value_id'];
+			                                ?> 
+			                                    <option value="<?php echo $attribute['product_attribute_value_id']; ?>"> <?php echo $attribute['product_attribute_value']; ?> </option>           
+			                                <?php endif; ?> 
+			
+			                            <?php endforeach; ?>
+			                            </select>  <!-- / Dummy dropdown for functionality purpose -->
+			                            <span class="attribute_status"> </span>
+			                            <input type="hidden" value="<?php echo $product_attributes[0]['product_attribute_group_id']; ?>" class="ordinary_product_arrtibute_group" />
+			                            <input type="hidden" value="<?php echo $product_attributes[0]['product_attribute_group_id']; ?>" class="update_product_arrtibute_group" />
+			                            <input type="hidden" class="attribute_combination" value=""/>
+			                            <?php endif; ?>  
+			                            </select> 
+			                           <!-- Select attributes ends -->
+			                          </div>
                                 <h1 class="text-center"><?php echo $product_details->product_title;  ?></h1>
                                 <p class="goToDescription"><a class="scroll-to" href="#details">Scroll to product details, material &amp; care and sizing</a>
                                 </p>
