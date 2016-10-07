@@ -22,6 +22,7 @@
                             </ul>
                             <div class="checkout_section">
                                 <div id="checkout_address">
+                                <!-- <p> <input type="checkbox" value=""> Use my profile details </p> -->
                                     <div class="content">
                                         <p class="error_msg">  </p>
                                         <div class="row">
@@ -36,21 +37,21 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="lastname">Lastname</label>
-                                                    <input type="text" name="lname" class="form-control" id="lastname" maxlength="20">
+                                                    <input type="text" name="lastname" class="form-control" id="lastname" maxlength="20">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="company">Company</label>
-                                                    <input type="text" name="cname" class="form-control" id="company" maxlength="20">
+                                                    <label for="company">Address Line1</label>
+                                                    <input type="text" name="address1" class="form-control" id="company" maxlength="20">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="street">Street</label>
-                                                    <input type="text" name="street" class="form-control" id="street" maxlength="30">
+                                                    <label for="street">Address Line2</label>
+                                                    <input type="text" name="address2" class="form-control" id="street" maxlength="30">
                                                 </div>
                                             </div>
                                         </div>

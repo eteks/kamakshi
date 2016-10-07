@@ -94,10 +94,11 @@ $(document).ready(function() {
     };
 })(jQuery);
 
+//  To store checkout form values in json variable
 $('#checkout_form').submit(function (e) {
     e.preventDefault();
     var data = $(this).serializeFormJSON();
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     sessionStorage.setItem('checkout_details', JSON.stringify(data));
     /* Object
         email: "value"
@@ -105,7 +106,6 @@ $('#checkout_form').submit(function (e) {
         password: "value"
      */
 });
-
 
 
 //  Moibile number validation
@@ -210,16 +210,16 @@ $('#checkout_order_submit').on('click',function() {
 });
 
 //  Recipient list home
-$('.recipient_list_section').on('click',function() {
-    var this_val = $("a",$(this)).data('filter');
-    $('.recipient_home').hide();
-    $(this_val).fadeIn();
-});
+// $('.recipient_list_section').on('click',function() {
+//     var this_val = $("a",$(this)).data('filter');
+//     $('.recipient_home').hide();
+//     $(this_val).fadeIn();
+// });
 
-$('.recipient_all_section').on('click',function() {
-    $('.recipient_home').fadeIn();
-    $('.secondary_list').hide();
-});
+// $('.recipient_all_section').on('click',function() {
+//     $('.recipient_home').fadeIn();
+//     $('.secondary_list').hide();
+// });
 
 //  Remove dummy dropdown in detail page
 var dummy_dropdown_length = $('.dummy_dropdown').length;
@@ -230,6 +230,27 @@ if(dummy_dropdown_length > 0) {
 $('.change_password').on('click',function(){
     $('.change_password_form').slideToggle();
 });
+
+$('#profile_email').on('keyup',function() {
+    var profile_email_val = $(this);
+    // Email validation
+    if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(profile_email_val.val()) || profile_email_val=='') {
+        profile_email_val.addClass("error_mail_field");
+        $('.profile_submit').prop('disabled',true);
+        $('.profile_submit').css('pointer-events','none');
+        $('.profile_submit').css('title','Enter valid email id');    
+    }
+    else {
+        profile_email_val.removeClass("error_mail_field");
+        $('.profile_submit').prop('disabled',false);
+        $('.profile_submit').css('pointer-events','auto');
+        $('.profile_submit').css('title','Update');     
+    }
+});
+
+
+
+
 
 // Ended by siva - calculation process in basket page end
 
@@ -400,12 +421,15 @@ function centerContent()
         $(this).fadeIn(200);
 	});
 }
+
+
 $(document).ready(function () {
     var options = {
         navigation: true,
         pagination: true
     };
     $("#owl-demo").owlCarousel(options);
+
     function showProjectsbyCat(cat) {
         var owl = $("#owl-demo").data('owlCarousel');
         owl.addItem('<div/>', 0);
@@ -413,11 +437,12 @@ $(document).ready(function () {
         for (var i = 0; i < (nb - 1); i++) {
             owl.removeItem(1);
         }
-         if (cat == 'all') {
-            $('#projects-copy .project').each(function () {
+        if (cat == 'item1') {
+            $('#projects-copy .project.primary_list').each(function () {
                 owl.addItem($(this).clone());
             });
-        } else {
+        }
+        else {
             $('#projects-copy .project.' + cat).each(function () {
                 owl.addItem($(this).clone());
             });
@@ -425,11 +450,17 @@ $(document).ready(function () {
         owl.removeItem(0);
     }
     $('#owl-demo .project').clone().appendTo($('#projects-copy'));
+
     $('#product-terms a').click(function (e) {
         e.preventDefault();
         $('#product-terms a').removeClass('selected');
         cat = $(this).attr('ID');
         $(this).addClass('selected');
         showProjectsbyCat(cat);
+        centerContent();
     });
+    //  Added by siva - remove repeatation of category images
+    $('.product_category_name a:first-child').addClass('selected');
+    $('.product_category_name a:first-child').click();
+
 });

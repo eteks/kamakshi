@@ -33,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
+            <a class="navbar-brand" href="<?php echo base_url()."index.php/admin" ?>"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
             <span>Kamakshi Gifts</span></a>
             <?php if (!empty($this->session->userdata('logged_in'))){?>
                 <!-- user dropdown starts -->

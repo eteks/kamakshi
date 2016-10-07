@@ -59,219 +59,98 @@
             <!--Product Categories-->
             <div class="container">
                 <div id="product-terms" class="product_category_name"> 
-                	 <a id="all" class="selected" href="#">ALL</a>
-					 <a id="cat1" href="#">Men</a>
-					 <a id="cat2" href="#">Women</a>
-					 <a id="cat3" href="#">Boy</a>
-					 <a id="cat4" href="#">Girl</a>
-				</div>
-					<div id="owl-demo" class="owl-carousel">
-					    <div class="project cat1 cat4">
-					        <div class="product">
+                    <?php 
+                        if(!empty($recipient_list)): 
+                        foreach($recipient_list as $res_list):
+                    ?>
+                            <a id="item<?php echo $res_list['recipient_id']; ?>" class="" href="#"><?php echo $res_list['recipient_type']; ?></a>
+                    <?php
+                        endforeach;
+                        endif;
+                    ?>                                          
+        		</div>
+    			<div id="owl-demo" class="owl-carousel">
+					<?php 
+                        $array_temp = array();
+                        foreach ($category_recipient_list as $cat): 
+                                // echo "<pre>";
+                                // echo $cat['recipient_mapping_id'];
+                                // echo "</pre>";
+                        if (!in_array($cat['category_id'], $array_temp)):
+                        $array_temp[] = $cat['category_id'];
+                        if (!empty($cat['recipient_mapping_id'])):
+                    ?>   
+
+                        <div class="project item<?php echo $cat['recipient_mapping_id']; ?> primary_list">
+                            <div class="product">
                               <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
                                         <div class="front home_product_images">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
+                                                <img src="<?php echo base_url().$cat['category_image']; ?>" class="img-responsive position_images">
                                             </a>
                                         </div>
                                         <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
+                                            <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>">
+                                                <img src="<?php echo base_url().$cat['category_image']; ?>" class="img-responsive position_images">
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
+                                    <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>" class="invisible">
+                                    <img src="<?php echo base_url().$cat['category_image']; ?>" class="img-responsive position_images">
                                     </a>
                                 </div>
                                </div>
                                 <div class="text">
-                                    <h3><a href="http://localhost/kamakshi-admin2/kamakshi/index.php/detail/">Watches</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></h3>
                                     <br>
                                 </div>
                                 <!-- /.text -->
                             </div>
                             <!-- /.product -->
-					    </div>
-					    <div class="project cat1">
-					        <div class="product">
+                        </div>
+
+                        <?php 
+                        endif;
+                        else:
+                        ?>
+                        <div class="project item<?php echo $cat['recipient_mapping_id']; ?> secondary_list">
+                            <div class="product">
                               <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
                                         <div class="front home_product_images">
                                             <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
+                                                <img src="<?php echo base_url().$cat['category_image']; ?>" class="img-responsive position_images">
                                             </a>
                                         </div>
                                         <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
+                                            <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>">
+                                                <img src="<?php echo base_url().$cat['category_image']; ?>" class="img-responsive position_images">
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
+                                    <a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>" class="invisible">
+                                    <img src="<?php echo base_url().$cat['category_image']; ?>" class="img-responsive position_images">
                                     </a>
                                 </div>
                                </div>
                                 <div class="text">
-                                    <h3><a href="http://localhost/kamakshi-admin2/kamakshi/index.php/detail/">Watches</a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></h3>
                                     <br>
                                 </div>
                                 <!-- /.text -->
                             </div>
                             <!-- /.product -->
-					    </div>
-					    <div class="project cat1">
-					        <div class="product">
-                              <div class="home_category_image">
-                                <div class="flip-container home_product_images">
-                                    <div class="flipper home_product_images">
-                                        <div class="front home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                        <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                    </a>
-                                </div>
-                               </div>
-                                <div class="text">
-                                    <h3><a href="http://localhost/kamakshi-admin2/kamakshi/index.php/detail/">Watches</a></h3>
-                                    <br>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-					    </div>
-					    <div class="project cat2">
-					        <div class="product">
-                              <div class="home_category_image">
-                                <div class="flip-container home_product_images">
-                                    <div class="flipper home_product_images">
-                                        <div class="front home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                        <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                    </a>
-                                </div>
-                               </div>
-                                <div class="text">
-                                    <h3><a href="http://localhost/kamakshi-admin2/kamakshi/index.php/detail/">Watches</a></h3>
-                                    <br>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-					    </div>
-					    <div class="project cat2">
-					        <div class="product">
-                              <div class="home_category_image">
-                                <div class="flip-container home_product_images">
-                                    <div class="flipper home_product_images">
-                                        <div class="front home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                        <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                    </a>
-                                </div>
-                               </div>
-                                <div class="text">
-                                    <h3><a href="http://localhost/kamakshi-admin2/kamakshi/index.php/detail/">Watches</a></h3>
-                                    <br>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-					    </div>
-					    <div class="project cat2">
-					        <div class="product">
-                              <div class="home_category_image">
-                                <div class="flip-container home_product_images">
-                                    <div class="flipper home_product_images">
-                                        <div class="front home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                        <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                    </a>
-                                </div>
-                               </div>
-                                <div class="text">
-                                    <h3><a href="http://localhost/kamakshi-admin2/kamakshi/index.php/detail/">Watches</a></h3>
-                                    <br>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-					    </div>
-					    <div class="project cat3">
-					        <div class="product">
-                              <div class="home_category_image">
-                                <div class="flip-container home_product_images">
-                                    <div class="flipper home_product_images">
-                                        <div class="front home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                        <div class="back home_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
-                                                <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
-                                    <img src="<?php echo base_url(); ?>assets/img/detail/watch1_2.jpg" class="img-responsive position_images">
-                                    </a>
-                                </div>
-                               </div>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/">Watches</a></h3>
-                                    <br>
-                                </div>
-                                <!-- /.text -->
-                            </div>
-                            <!-- /.product -->
-					    </div>
-					</div>
-					<div id="projects-copy" class="hide"></div>
-					</div>
+                        </div>
+                    <?php
+                        endif;
+                        endforeach; 
+                    ?>
+            	</div>
+				<div id="projects-copy" class="hide"></div>
+			</div>
 				<!--Product Categories-->
             <!--Popular, Futured Products-->
              <div id="hot">
