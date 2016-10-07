@@ -462,7 +462,7 @@ class Ajax_Model extends CI_Model {
 						// $this->email->message('Please go to this link to get your password.
 						//        http://localhost/kamakshi/');
                         $user_result = $query->row_array();
-						$this->email->message("Your registered password is".$user_result['user_password']);
+						$this->email->message("Your registered password is ".$user_result['user_password']);
 						$this->email->send();
 						echo "Please check your email for Password.";
                 }
