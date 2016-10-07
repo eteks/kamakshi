@@ -9,11 +9,13 @@ $(document).ready(function() {
     	if($(this).is(":checked")){
     		$('.attribute_main_block').show();
             $('.price_group,.items_group').hide();
+            $('#product_price,#product_totalitems').removeClass('product_default_field');
             $('.attribute_check_status').val('1');
         }
     	else{
     		$('.attribute_main_block').hide();
             $('.price_group,.items_group').show();
+            $('#product_price,#product_totalitems').addClass('product_default_field');
             $('.attribute_check_status').val('0');
         }
     });
@@ -182,19 +184,26 @@ $(document).ready(function() {
         var return_value = false;
         if($('.photo_labelError').hasClass('error_input_field')){
             $error = true;
-            return_value = false;
         }
         else{
             $('.product_default_field').each(function(){
-                if($(this).val() == ''){
-                    $error = true; 
-                    return_value = true;
-                }                
+                if($(this).val() == ""){
+                    $error = true;     
+                    if($(this).attr('type') == "file")
+                        $('.product_error').text($(this).parents('.form-group').children('.product_error_message').text()).show();    
+                    else
+                        $('.product_error').text($(this).siblings('.product_error_message').text()).show(); 
+                    $('.product_error').addClass('error_input_field');
+                return false;
+                }   
+                else{
+                    $('.product_error').removeClass('error_input_field');
+                }    
             });
-            return_value = true;
         } 
         if($('.attribute_status').is(":checked") && !($error)){
             //To Check any empty values passing in attributes block
+            $('.product_error,.photo_labelError').hide();
             $(this).find('.attribute_group').find('.attribute_validate').each(function(){
                 if($(this).val() == '')
                 {        
@@ -261,10 +270,11 @@ $(document).ready(function() {
                 }
             }  
             // alert(return_value);
-            // return return_value;
+            return return_value;
         }  
-        // alert(return_value);
-        return return_value; 
+        if($('.product_error').hasClass('error_input_field') || $('.photo_labelError').hasClass('error_input_field'))
+            return false;
+        // alert("return");
     });
     $(document).delegate("[name='select_attribute[]']",'change',function(){
         var new_selection = $(this).find('option:selected');
@@ -338,6 +348,7 @@ $(document).ready(function() {
            // dataType: 'json',  
            success: function(data) {  
             $('.box-content').html(data);
+            simplefilepreview_function();
             if($('.attribute_check_status').val() == '1'){
                 $('.attribute_main_block').show();
                 $('.price_group,.items_group').hide();
@@ -459,11 +470,14 @@ $(document).ready(function() {
       } else {
         alert("Your browser doesn't support to File API")
       }
+      simplefilepreview_function();
+      function simplefilepreview_function(){
+        $('#image_upload').simpleFilePreview({
+            'buttonContent': '<i class="fa fa-plus-circle fa_small"></i>',
+            'shiftLeft': '',
+            'shiftRight': '',
+            'removeContent': 'Remove'
+        });
+      }
       
-      $('#image_upload').simpleFilePreview({
-        'buttonContent': '<i class="fa fa-plus-circle fa_small"></i>',
-        'shiftLeft': '',
-        'shiftRight': '',
-        'removeContent': 'Remove'
-      });
 });

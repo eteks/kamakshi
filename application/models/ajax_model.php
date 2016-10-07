@@ -406,10 +406,8 @@ class Ajax_Model extends CI_Model {
 
         if ($this->form_validation->run() == FALSE) {   
             foreach($validation_rules as $row){
-                $field = $row['field'];         //getting field name
-                $error = form_error($field);    //getting error for field name
-                //form_error() is inbuilt function
-                //if error is their for field then only add in $errors_array array
+                $field = $row['field'];         
+                $error = form_error($field);  
                 if($error){
                     $status = strip_tags($error);
                     break;
@@ -439,8 +437,5 @@ class Ajax_Model extends CI_Model {
         }
         echo $status;
     }
- 
 }
-    
-      
-        
+

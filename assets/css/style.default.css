@@ -484,6 +484,7 @@ h1 {
 }
 #content .info-bar .products-sort-by select {
   margin-left: 10px;
+  padding: 3px;
 }
 @media (max-width: 991px) {
   #content .info-bar .products-sort-by {
