@@ -605,8 +605,6 @@ class Adminindex extends CI_Controller {
 					$status['error_message'] = strip_tags($errors);
 				}
 				else{
-					echo "price".$this->input->post('product_price');
-					echo "totalitems".$this->input->post('product_totalitems');
 					$data['product_basic'] = array(
 						'product_title' => $this->input->post('product_title'),
 						'product_description' => $this->input->post('product_description'),
@@ -637,7 +635,21 @@ class Adminindex extends CI_Controller {
 	}
 	public function edit_giftproduct()
 	{	
-		$this->load->view('admin/edit_giftproduct');
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		$query_result = $this->catalog->get_giftproduct_data($id);
+
+		$status['giftproduct_data'] = $query_result['product_list'];
+		$status['subcategory_list'] = $query_result['subcategory_list'];
+		$status['recipient_list'] = $query_result['recipient_list'];
+		$status['product_attribute_list'] = $query_result['product_attribute_list'];
+
+		$status['category_list'] = $this->catalog->get_categories();
+		$this->load->view('admin/edit_giftproduct',$status);
 	}
 	public function product_attributes()
 	{	

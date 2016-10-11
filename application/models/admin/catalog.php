@@ -418,4 +418,31 @@ class Catalog extends CI_Model {
 		}
 		return true;
 	}
+	public function get_giftproduct_data($id)
+	{	
+		//Get Product default field data
+		$this->db->select('*');
+		$this->db->from('giftstore_product AS pro');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = pro.product_category_id', 'inner');
+		$this->db->join('giftstore_subcategory AS subcat', 'subcat.subcategory_id = pro.product_subcategory_id', 'inner');
+		$this->db->where('product_id', $id);
+		$query['product_list'] = $this->db->get()->row_array();
+
+		$category_id = $query['product_list']['product_category_id'];
+		$category_reference = $this->get_category_reference($category_id);
+		$query['subcategory_list'] = $category_reference['subcategory_category'];
+		$query['recipient_list'] = $category_reference['recipient_category'];
+
+		//Get Product Attribute Data
+
+		$this->db->select('*');
+		$this->db->from('giftstore_product_attribute_group AS progroup');
+		$this->db->where('product_mapping_id', $id);
+		$query['product_attribute_list'] = $this->db->get()->result_array();
+
+		// echo "<pre>";
+		// print_r($query['product_attribute_list']);
+		// echo "</pre>";
+		return $query;
+	}
 }

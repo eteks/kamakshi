@@ -30,7 +30,7 @@ $(document).ready(function() {
         if(selected_category != 'Select Category'){
 	         $.ajax({
 	               type: "POST",
-	               url: "loadcategory_reference",
+	               url: baseurl+"index.php/admin/adminindex/loadcategory_reference",
 	               data: form_data,
 	               dataType: 'json',  
 	               cache: false,
@@ -175,7 +175,7 @@ $(document).ready(function() {
     //     // return false;   
     // });
 
-    $('body').delegate("#add_giftproduct",'submit',function(e){ 
+    $('body').delegate("#add_giftproduct,#edit_giftproduct",'submit',function(e){ 
     // $("#add_giftproduct").submit(function(){ 
         // e.preventDefault();
         var attribute_length = [];
