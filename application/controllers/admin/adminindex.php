@@ -695,13 +695,9 @@ class Adminindex extends CI_Controller {
 					);
 					$result = $this->catalog->insert_product_attributes($data);
 					if($result)
-						$status = array(
-	                		$status['error_message'] => "Product Attribute Inserted Successfully!"
-	             		);
+						$status['error_message'] = "Product Attribute Inserted Successfully!";
 					else
-						$status = array(
-	                		$status['error_message'] => "Product Attribute Already Exists!"
-	             		);
+						$status['error_message'] = "Product Attribute Already Exists!";
 				}		
 			}
     	}

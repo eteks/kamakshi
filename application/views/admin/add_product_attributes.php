@@ -50,7 +50,7 @@
                 <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/add_product_attributes" enctype="multipart/form-data" name="category_form">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Product Attribute<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control" id="product_attribute" placeholder="Enter Product Attribute Name" name="product_attribute">
+                        <input type="text" class="form-control" id="product_attribute" placeholder="Enter Product Attribute Name" name="product_attribute" value="<?php echo set_value('product_attribute');?>">
                     </div>  
                     <div class="control-group">
                         <label class="control-label" for="selectError">Input Type Tags<span class="fill_symbol"> *</span></label>
@@ -68,8 +68,8 @@
                         <div class="controls">
                             <select name="product_attribute_status" id="sel_a" class="product-type-filter form-control">
                                 <option value="">Select</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1" <?php echo set_select('product_attribute_status', '1',false); ?>>Active</option>
+                                <option value="0" <?php echo set_select('product_attribute_status', '0',false); ?>>Inactive</option>
                             </select>
                         </div>
                     </div>
