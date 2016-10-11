@@ -64,6 +64,9 @@
 		        </table> -->
                 <table class="product_details">
                 <?php
+                    $att['product_attribute'] = is_array($att['product_attribute'])?$att['product_attribute']:array($att['product_attribute']);
+                    $att['product_attribute_value'] = is_array($att['product_attribute_value'])?$att['product_attribute_value']:array($att['product_attribute_value']);
+                    
                     $att_res = array_map(null,$att['product_attribute'],$att['product_attribute_value']);
                     foreach ($att_res as $value) {
                         echo "<tr><td>".$value[0]."</td><td>:&nbsp;&nbsp;&nbsp;". $value[1]."</td></tr>";

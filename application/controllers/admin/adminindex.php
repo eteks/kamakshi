@@ -563,13 +563,11 @@ class Adminindex extends CI_Controller {
 			$status['check_product_is_unique'] = $this->catalog->check_product_is_unique($this->input->post('product_title'));
 
 			if($status['check_product_is_unique'] == true){
-				$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
-
-				$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
-
-
-				$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
-
+				if($status['attribute_check_status'] == 1){
+					$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
+					$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
+					$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
+				}
 				// echo count($_POST['select_attribute']);
 				// print_r($_FILES['product_image']['name']);
 				//Check whether user upload picture
@@ -618,7 +616,8 @@ class Adminindex extends CI_Controller {
 						'product_status' => $this->input->post('product_status'),
 					);
 					$data['product_files'] = $product_image;
-					$data['product_attributes'] = $attribute_group;
+					if($status['attribute_check_status'] == 1)
+						$data['product_attributes'] = $attribute_group;
 					$result = $this->catalog->insert_product($data);
 					if($result)
 						$status['error_message'] = "Product Inserted Successfully!";
