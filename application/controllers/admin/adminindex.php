@@ -605,6 +605,8 @@ class Adminindex extends CI_Controller {
 					$status['error_message'] = strip_tags($errors);
 				}
 				else{
+					echo "price".$this->input->post('product_price');
+					echo "totalitems".$this->input->post('product_totalitems');
 					$data['product_basic'] = array(
 						'product_title' => $this->input->post('product_title'),
 						'product_description' => $this->input->post('product_description'),
