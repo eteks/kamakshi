@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php" ?>
         <!--/span-->
         <!-- left menu ends -->
@@ -41,46 +42,39 @@
                 </div>
             </div>
             <div class="box-content">
-                <form role="form">
+            <?php } ?>
+                <?php if (isset($error_message)){ 
+                    echo "<p class='error_msg_reg alert alert-info'>".$error_message."</p>";
+                }?>
+                <?php ?>
+                <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_orderitem/<?php echo $orderitem_data['orderitem_id']; ?>" class="form_submit" name="edit_orderitem_form" id="edit_orderitem_form"> 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Order Id<span class="fill_symbol"> *</span></label>
-                        <input type="email" class="form-control" id="orderid" placeholder="Enter Order Id">
-                    </div>   
-                    <div class="control-group">
-                        <label class="control-label" for="selectError">Product Id<span class="fill_symbol"> *</span></label>
-                        <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Product Id1</option>
-                                <option>Product Id2</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="selectError">Group<span class="fill_symbol"> *</span></label>
-                        <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Group1</option>
-                                <option>Group2</option>
-                            </select>
-                        </div>
-                    </div>
-                     <div class="form-group">
-                        <label for="exampleInputEmail1">Quantity<span class="fill_symbol"> *</span></label>
-                        <input type="email" class="form-control" id="quantity" placeholder="Enter price ">
+                        <label for="exampleInputEmail1">Order Id<span class="fill_symbol">*</span></label>
+                        <input type="text" class="form-control" id="orderid" placeholder="Enter Order Id" name="orderitem_order_id" value="<?php echo($orderitem_data['orderitem_order_id']); ?>">
                     </div> 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Price<span class="fill_symbol"> *</span></label>
-                        <input type="email" class="form-control price" id="" placeholder="Enter price ">
-                    </div> 
+                        <label for="last-name">Product Name<span class="fill_symbol">*</span></label>
+                        <input type="text" class="form-control" id="quantity" placeholder="Enter Product Name" name="orderitem_product_id" value="<?php echo($orderitem_data['orderitem_product_id']); ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Quantity<span class="fill_symbol">*</span></label>
+                        <input type="text" class="form-control" id="quantity" placeholder="Enter quantity" name="orderitem_quantity" value="<?php echo($orderitem_data['orderitem_quantity']); ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Price<span class="fill_symbol">*</span></label>
+                        <input type="text" class="form-control" id="price" placeholder="Enter price" name="orderitem_price" value="<?php echo($orderitem_data['orderitem_price']); ?>">
+                    </div>
                      <div class="control-group">
-                        <label class="control-label" for="selectError">Status<span class="fill_symbol"> *</span></label>
+                        <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
-                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
-                                 <option selected hidden>Select</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                            <select name="order_status" id="sel_c" class="product-type-filter form-control orderitem_act">
+                                <option value="">Select</option>
+                                <option value="1" <?php if ($orderitem_data['orderitem_status'] == 1) echo "selected"; ?>>
+                                    <span>Active</span>
+                                </option>
+                                <option value="0" <?php if ($orderitem_data['orderitem_status'] == 0) echo "selected"; ?>>
+                                    <span>Inactive</span>
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -88,6 +82,7 @@
                     <button type="submit" class="btn submit-btn btn-default">Submit</button>
                     </div>
                 </form>
+                <?php if(!$this->input->is_ajax_request()){ ?>
             </div>
         </div>
     </div>
@@ -100,3 +95,4 @@
 </div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
+<?php } ?>

@@ -113,7 +113,7 @@
                             <a href="#"><i class="glyphicon glyphicon-sort-by-order"></i><span> Order</span></a>
                             <ul class="nav nav-pills nav-stacked sub-menu">
                                 <li class="<?php if($uri_segment =="edit_order"){echo "active";}?>"><a href="<?php echo base_url(); ?>index.php/admin/adminindex/order">Order </a></li>
-                                <!--<li class="<?php //if($uri_segment =="edit_orderitem"){echo "active";}?>"><a href="<?php //echo base_url(); ?>index.php/admin/adminindex/orderitem">Order Item</a></li> -->
+                                <li class="<?php if($uri_segment =="edit_orderitem"){echo "active";}?>"><a href="<?php echo base_url(); ?>index.php/admin/adminindex/orderitem">Order Item</a></li> 
                                 <li><a href="<?php echo base_url(); ?>index.php/admin/adminindex/transaction">Transaction</a></li>
                             </ul>
                         </li>

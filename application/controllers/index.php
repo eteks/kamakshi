@@ -14,8 +14,8 @@ class Index extends CI_Controller
         // Load pagination library
         $this->load->library('ajax_pagination');
         $this->perPage = 14;
-    }
 
+    }
     // Index page
     public function index()
 	{
@@ -26,7 +26,9 @@ class Index extends CI_Controller
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();
       $categories['recipient_list'] = $this->index_model->get_recipient_list();
       $categories['category_recipient_list'] = $this->index_model->get_category_recipient();
+      // $categories['login_url'] = $this->login();
 	  $this->load->view('index',$categories);
+
     }
 	
 	public function register()

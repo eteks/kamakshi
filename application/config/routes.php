@@ -66,6 +66,8 @@ $route['my_orders'] = 'index/my_orders';
 $route['recipient_category/(:any)'] = 'index/recipient_category/$1';
 $route['track_order'] = 'index/track_order';
 $route['404_page'] = 'index/nopage';
+$route['oauth_login/facebook'] = 'oauth_login/facebook_login';
+
 
 //Route url for admin
 $route['admin'] = 'admin/login/index_login';

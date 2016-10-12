@@ -1191,12 +1191,86 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/edit_order',$status);	
 	}
 	public function orderitem()
-	{	
-		$this->load->view('admin/orderitem');
+	{
+		$orderitem['product_list'] = $this->catalog->get_products();
+		$orderitem['orderitem_list'] = $this->location->get_ordersitem();
+		$this->load->view('admin/orderitem',$orderitem);
 	}
 	public function edit_orderitem()
-	{	
-		$this->load->view('admin/edit_orderitem');
+	{
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = array();//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'orderitem_order_id',
+		             'label'   => 'Order',
+		             'rules'   => 'trim|required|xss_clean|max_length[12]|callback_edit_unique[giftstore_users.user_id.user_name.'.$id.']'
+		          ),
+		       array(
+		             'field'   => 'orderitem_product_id',
+		             'label'   => 'Product',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'orderitem_product_attribute_group_id',
+		             'label'   => 'Group',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'orderitem_quantity',
+		             'label'   => 'Quantity',
+		             'rules'   => 'trim|required|xss_clean|valid_email|callback_edit_unique[giftstore_users.user_id.user_email.'.$id.']'
+		          ),
+	          array(
+		             'field'   => 'orderitem_price',
+		             'label'   => 'Price',
+		             'rules'   => 'trim|required|xss_clean|date_valid'
+		          ),
+	          array(
+		             'field'   => 'orderitem_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),  
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+    		}
+    		else{
+				$data = array(
+				'orderitem_id' => $id,
+				'orderitem_product_id' => $this->input->post('orderitem_product_id'),
+				'orderitem_product_attribute_group_id' => $this->input->post('orderitem_product_attribute_group_id'),
+				'orderitem_quantity' => $this->input->post('orderitem_quantity'),
+				'orderitem_price' => $this->input->post('orderitem_price'),
+				);
+				$result = $this->location->update_orderitem($data);
+				if($result)
+					$status['error_message'] = "Orderitem Updated Successfully!";
+				else
+					$status['error_message'] = "Something Went Wrong!";	
+    		}
+		}
+		$status['orderitem_data'] = $this->location->get_orderitem_data($id);
+		// $data_values['orderitem_data'] = $this->location->get_orderitem_data($id);
+		$this->load->view('admin/edit_orderitem',$status);	
 	}
 	public function transaction()
 	{
