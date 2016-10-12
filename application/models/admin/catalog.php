@@ -435,11 +435,33 @@ class Catalog extends CI_Model {
 
 		//Get Product Attribute Data
 
-		$this->db->select('*');
-		$this->db->from('giftstore_product_attribute_group AS progroup');
-		$this->db->where('product_mapping_id', $id);
-		$query['product_attribute_list'] = $this->db->get()->result_array();
+		// $this->db->select('*');
+		// $this->db->from('giftstore_product_attribute_group AS progroup');
+		// $this->db->where('product_mapping_id', $id);
+		// $query['product_attribute_list'] = $this->db->get()->result_array();
 
+		$query['product_attribute_list'] = $this->db->query("SELECT * FROM giftstore_product_attribute_value AS c INNER JOIN ( SELECT product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value FROM giftstore_product_attribute_group t CROSS JOIN numbers n WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', ''))) AND t.product_mapping_id=$id) AS a ON a.value = c.product_attribute_value_id INNER JOIN giftstore_product_attribute AS pa ON c.product_attribute_id=pa.product_attribute_id")->result_array();
+
+		
+		// $query['product_attribute_list'] = $this->db->query("SELECT *
+		// 		FROM `giftstore_product_attribute_value` AS c
+		// 		INNER JOIN 
+		// 		(
+		// 		    SELECT product_mapping_id,product_attribute_group_id,product_attribute_group_price,	product_attribute_group_totalitems,product_attribute_group_sold, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
+		// 			FROM giftstore_product_attribute_group t
+		// 			CROSS JOIN numbers n
+		// 			WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '' ) ) )
+		// 			AND t.product_mapping_id=$id
+		// 		)AS a ON a.value = c.product_attribute_value_id
+		// 		INNER JOIN 
+		// 		(
+		// 		    SELECT product_attribute_id,product_attribute
+		// 			FROM giftstore_product_attribute
+		// 		)AS pa ON pa.product_attribute_id = c.product_attribute_id
+		// 		INNER JOIN
+		// 		(
+		// 			SELECT product_id,product_title from giftstore_product
+		// 		) AS p ON p.product_id = a.product_mapping_id")->result_array();
 		// echo "<pre>";
 		// print_r($query['product_attribute_list']);
 		// echo "</pre>";
