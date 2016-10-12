@@ -646,7 +646,22 @@ class Adminindex extends CI_Controller {
 		$status['giftproduct_data'] = $query_result['product_list'];
 		$status['subcategory_list'] = $query_result['subcategory_list'];
 		$status['recipient_list'] = $query_result['recipient_list'];
-		$status['product_attribute_list'] = $query_result['product_attribute_list'];
+		// $status['product_attribute_list'] = $query_result['product_attribute_list'];
+
+		$resatt = array();
+		foreach($query_result['product_attribute_list'] as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'product_attribute_id')
+		        	$resatt[$arr['product_attribute_group_id']][$k] = $this->get_arrayvalues_bykeyvalue($query_result['product_attribute_list'], $k, 'product_attribute_group_id', $arr['product_attribute_group_id']);
+		        else if($k == 'product_attribute_value')
+		        	$resatt[$arr['product_attribute_group_id']][$k] = $this->get_arrayvalues_bykeyvalue($query_result['product_attribute_list'], $k, 'product_attribute_group_id', $arr['product_attribute_group_id']);
+		        else
+		            $resatt[$arr['product_attribute_group_id']][$k] = $v;
+		    }
+		}
+		$status['product_attribute_list'] = $resatt;
 
 		$status['category_list'] = $this->catalog->get_categories();
 		$this->load->view('admin/edit_giftproduct',$status);
