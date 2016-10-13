@@ -50,8 +50,8 @@
              ?>
              <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct/<?php echo $giftproduct_data["product_id"]; ?>" enctype="multipart/form-data" name="product_form" id="edit_giftproduct" class="form_submit">
              <input type="hidden" value="0">
-             <input type="hidden" class="attribute_check_status" name="attribute_check_status" value="<?php if(isset($attribute_check_status)) 
-                echo $attribute_check_status; ?>">
+             <input type="hidden" class="attribute_check_status" name="attribute_check_status" value="<?php if(sizeof($product_attribute_list) > 0) 
+                echo "1"; ?>">
              <p class="product_tab">Basic Product Details</p>
                     <div class="form-group">
                         <label for="titlename">Product Title<span class="fill_symbol"> *</span></label>
@@ -108,20 +108,18 @@
                             <span class="product_error_message">The Product Recipient field is required</span>
                         </div>
                     </div>
-                    <?php if(sizeof($product_attribute_list) > 0) { ?>
-                         <div class="form-group price_group">
+                         <div class="form-group price_group" style="<?php if(sizeof($product_attribute_list) > 0) echo 'display:none'; ?>">
                             <label for="price">Price<span class="fill_symbol"> *</span></label>
-                            <input type="text" class="form-control price product_default_field product_lables" id="product_price" placeholder="Enter price" value="<?php echo set_value('product_price');?>">
+                            <input type="text" class="form-control price product_default_field product_lables" id="product_price" placeholder="Enter price" value="<?php if(!empty($giftproduct_data['product_price'])) echo $giftproduct_data['product_price']; ?>">
                             <span class="product_error_message">The Product Price field is required</span>
                         </div> 
                         <input type="hidden" name="product_price" id="product_price_hidden">
-                        <div class="form-group items_group">
+                        <div class="form-group items_group" style="<?php if(sizeof($product_attribute_list) > 0) echo 'display:none'; ?>">
                             <label for="total_iteams">Total Items<span class="fill_symbol"> *</span></label>
-                            <input type="text" class="form-control totalitem product_default_field product_lables" id="product_totalitems" placeholder="Enter total items" value="<?php echo set_value('product_totalitems');?>">
+                            <input type="text" class="form-control totalitem product_default_field product_lables" id="product_totalitems" placeholder="Enter total items" value="<?php if(!empty($giftproduct_data['product_totalitems'])) echo $giftproduct_data['product_totalitems']; ?>">
                             <span class="product_error_message">The Product Totalitems field is required</span>
                         </div> 
                         <input type="hidden" name="product_totalitems" id="product_totalitems_hidden">
-                    <?php } ?>
                     <!-- <div class="form-group">
                         <label for="sold">Sold</label>
                         <input type="text" class="form-control" id="sold" placeholder="Enter Sold" disabled="">
@@ -142,47 +140,58 @@
                     <p class="attribute_duplicate_message">Duplicate attribute option not allowed</p>
                     <p class="attribute_group_message">Every attribute group must have equal no. of attribute set</p>
                     <?php
-                    echo "<pre>";
-                    print_r($product_attribute_list);
-                    echo "</pre>";
+                    // echo sizeof($product_attribute_list);
+                    // echo "<pre>";
+                    // print_r($product_attribute_list);
+                    // echo "</pre>";
                     ?>
-                    <div class="attribute_main_block">
-                        <div class="attribute_group" id="attribute_group1">
-                            <div class="form-group attribute_block">
-                                <div class="clone_attribute_group">
-                                    <div class="clone_attribute" id="clone_attribute1">
-                                        <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
-                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes field_validate attribute_option_validate attribute_validate att_equal">
-                                                <option value="">Select Attribute</option>
-                                                <?php foreach ($attribute_list as $att): ?>
-                                                    <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
-                                                <?php endforeach ?>
-                                        </select>
-                                        <input class="form-control fl label-boxes field_validate attribute_option_validate attribute_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
-                                        <div class="add-rmv-btn">
-                                            <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
-                                            <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
-                                        </div>
-                                    </div> <!--  clone_attribute -->
-                               </div> <!-- clone_attribute_group -->
-                                 <div class="clr-screen"></div>
+                    <div class="attribute_main_block" style="<?php if(sizeof($product_attribute_list) > 0) echo 'display:block'; ?>">
+                        <?php 
+                        $i=1;
+                        foreach ($product_attribute_list as $key => $value) { 
+                            // echo sizeof($value['product_attribute_id']); ?>
+                            <input type="hidden" name="product_attribute_group_id[]" value="<?php echo $value['product_attribute_group_id']; ?>">
+                            <div class="attribute_group" id="<?php echo "attribute_group".$i; ?>">
+                                <div class="form-group attribute_block">
+                                    <div class="clone_attribute_group">
+                                    <?php for($i = 0; $i < sizeof($value['product_attribute_id']); $i++){ ?>
+                                        <div class="clone_attribute" id="<?php echo "clone_attribute".$i; ?>">
+                                            <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
+                                            <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes field_validate attribute_option_validate attribute_validate att_equal">
+                                                    <option value="">Select Attribute</option>
+                                                    <?php foreach ($attribute_list as $att): ?>
+                                                        <option value="<?php echo $att["product_attribute_id"] ?>" <?php if($value['product_attribute_id'][$i] == $att["product_attribute_id"] ) echo "selected"; ?>><?php echo $att["product_attribute"] ?></option>
+                                                    <?php endforeach ?>
+                                            </select>
+                                            <input class="form-control fl label-boxes field_validate attribute_option_validate attribute_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text" value="<?php echo $value['product_attribute_value'][$i];?>">
+                                            <div class="add-rmv-btn">
+                                                <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
+                                                <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
+                                            </div>
+                                        </div> <!--  clone_attribute -->
+                                    <?php } ?>
+                                   </div> <!-- clone_attribute_group -->
+                                     <div class="clr-screen"></div>
+                                </div>
+                                <div class="form-group attribute_block">
+                                    <label for="price" class="fl">Price</label>
+                                    <input type="text" class="form-control label-boxes attribute_validate price" id="product_attribute_price" placeholder="Enter price" name="product_attribute_price[]" value="<?php echo $value['product_attribute_group_price'];?>">
+                                </div> 
+                                 <div class="form-group attribute_block">
+                                    <label for="total_iteams" class="fl">Total Items</label>
+                                    <input type="text" class="form-control label-boxes attribute_validate" id="product_attribute_totalitems" placeholder="Enter total items" name="product_attribute_totalitems[]" value="<?php echo $value['product_attribute_group_totalitems'];?>">
+                                </div> 
+                                <div class="group group_action">
+                                    <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
+                                    <input type="button" value="Remove" class="btn submit-btn btn-default attibute_remove product-btns attribute_btn_disabled">      
+                                </div>  
                             </div>
-                            <div class="form-group attribute_block">
-                                <label for="price" class="fl">Price</label>
-                                <input type="text" class="form-control label-boxes attribute_validate price" id="product_attribute_price" placeholder="Enter price" name="product_attribute_price[]">
-                            </div> 
-                             <div class="form-group attribute_block">
-                                <label for="total_iteams" class="fl">Total Items</label>
-                                <input type="text" class="form-control label-boxes attribute_validate" id="product_attribute_totalitems" placeholder="Enter total items" name="product_attribute_totalitems[]">
-                            </div> 
-                            <div class="group group_action">
-                                <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
-                                <input type="button" value="Remove" class="btn submit-btn btn-default attibute_remove product-btns attribute_btn_disabled">      
-                            </div>  
-                        </div> 
-                    </div>                  
+                        <?php 
+                        $i++;
+                        } ?> 
+                        </div>               
                     <div class="group_values_block">
-                        <input type="hidden" class="group_values" name="group_values" value="1"> 
+                        <input type="hidden" class="group_values" name="group_values" value="<?php echo sizeof($product_attribute_list) ?>"> 
                     </div> <!-- group_values_block -->
                     <button type="submit" class="btn submit-btn btn-default submiit">Submit</button>
                 </form>

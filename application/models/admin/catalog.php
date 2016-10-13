@@ -407,8 +407,11 @@ class Catalog extends CI_Model {
 		}
 		return false;
 	}
-	public function check_product_is_unique($product_title){
-		$condition = "product_title =" . "'" . $product_title . "'";
+	public function check_product_is_unique($product_title,$id){
+		if(!empty($id))
+			$condition = "product_title =" . "'" . $product_title . "'AND product_id NOT IN (". $id.")";
+		else
+			$condition = "product_title =" . "'" . $product_title . "'";
 		$this->db->select('product_title');
 		$this->db->from('giftstore_product');
 		$this->db->where($condition);
@@ -427,6 +430,7 @@ class Catalog extends CI_Model {
 		$this->db->join('giftstore_subcategory AS subcat', 'subcat.subcategory_id = pro.product_subcategory_id', 'inner');
 		$this->db->where('product_id', $id);
 		$query['product_list'] = $this->db->get()->row_array();
+		// echo $this->db->last_query();
 
 		$category_id = $query['product_list']['product_category_id'];
 		$category_reference = $this->get_category_reference($category_id);
@@ -440,31 +444,70 @@ class Catalog extends CI_Model {
 		// $this->db->where('product_mapping_id', $id);
 		// $query['product_attribute_list'] = $this->db->get()->result_array();
 
-		$query['product_attribute_list'] = $this->db->query("SELECT * FROM giftstore_product_attribute_value AS c INNER JOIN ( SELECT product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value FROM giftstore_product_attribute_group t CROSS JOIN numbers n WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', ''))) AND t.product_mapping_id=$id) AS a ON a.value = c.product_attribute_value_id INNER JOIN giftstore_product_attribute AS pa ON c.product_attribute_id=pa.product_attribute_id")->result_array();
-
-		
-		// $query['product_attribute_list'] = $this->db->query("SELECT *
-		// 		FROM `giftstore_product_attribute_value` AS c
-		// 		INNER JOIN 
-		// 		(
-		// 		    SELECT product_mapping_id,product_attribute_group_id,product_attribute_group_price,	product_attribute_group_totalitems,product_attribute_group_sold, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
-		// 			FROM giftstore_product_attribute_group t
-		// 			CROSS JOIN numbers n
-		// 			WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '' ) ) )
-		// 			AND t.product_mapping_id=$id
-		// 		)AS a ON a.value = c.product_attribute_value_id
-		// 		INNER JOIN 
-		// 		(
-		// 		    SELECT product_attribute_id,product_attribute
-		// 			FROM giftstore_product_attribute
-		// 		)AS pa ON pa.product_attribute_id = c.product_attribute_id
-		// 		INNER JOIN
-		// 		(
-		// 			SELECT product_id,product_title from giftstore_product
-		// 		) AS p ON p.product_id = a.product_mapping_id")->result_array();
-		// echo "<pre>";
-		// print_r($query['product_attribute_list']);
-		// echo "</pre>";
+		$query['product_attribute_list'] = $this->db->query("SELECT * FROM giftstore_product_attribute_value AS c INNER JOIN ( SELECT product_attribute_group_id,product_attribute_group_price,	product_mapping_id,product_attribute_group_totalitems, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value FROM giftstore_product_attribute_group t CROSS JOIN numbers n WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', ''))) AND t.product_mapping_id=$id) AS a ON a.value = c.product_attribute_value_id INNER JOIN giftstore_product_attribute AS pa ON c.product_attribute_id=pa.product_attribute_id")->result_array();
 		return $query;
 	}
+	public function update_product($data)
+	{	
+		$data_product_basic = $data['product_basic'];
+		// $data_product_files = $data['product_files'];
+		$data_product_attributes = isset($data['product_attributes'])?$data['product_attributes']:"";
+		// echo "<pre>";
+		// print_r($data_product_attributes);
+		// echo "</pre>";
+		$this->db->where('product_id', $data_product_basic['product_id']);
+		$this->db->update('giftstore_product', $data_product_basic);
+		if(!empty($data_product_attributes)){
+			foreach($data_product_attributes as $key=>$value){
+				$product_attribute_group_id = $value[0];
+				$attributes = $value[1][0];
+				$price = $value[1][1];
+				$items = $value[1][2];
+				$product_attribute_inserted_id = array();
+				foreach ($attributes as $key => $value) {
+					$product_attribute_id = $attributes[$key][0];
+					$product_attribute_value = $attributes[$key][1];
+					$product_attributes_data = array(
+							'product_attribute_id' => $product_attribute_id ,
+							'product_attribute_value' => $product_attribute_value 
+					);
+					$this->db->select('*');
+					$this->db->from('giftstore_product_attribute_value');
+					$this->db->where($product_attributes_data);
+					$query = $this->db->get();
+					if($query->num_rows() > 0){
+						$query = $query->row_array();
+						$map_id = $query['product_attribute_value_id'];
+					}
+					else{
+						$this->db->insert('giftstore_product_attribute_value', $product_attributes_data);
+						$map_id = $this->db->insert_id();
+					}
+					array_push($product_attribute_inserted_id,$map_id);
+				}
+				$product_attributes_group = array(
+						'product_mapping_id' => $data_product_basic['product_id'] ,
+						'product_attribute_group_price' => $price ,
+						'product_attribute_group_totalitems' => $items,
+						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
+				);
+				$this->db->select('*');
+				$this->db->from('giftstore_product_attribute_group');
+				$this->db->where('product_attribute_group_id', $product_attribute_group_id);
+				$query1 = $this->db->get();
+				if($query1->num_rows() > 0){
+					$this->db->where('product_attribute_group_id', $product_attribute_group_id);
+					$this->db->update('giftstore_product_attribute_group', $product_attributes_group);
+				}
+				else{
+					$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
+				}
+			}
+		}		
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->trans_complete() == false) {
+			return false;
+		}
+		return true;	
+	}	
 }
