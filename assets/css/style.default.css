@@ -2005,6 +2005,11 @@ address {
 	width:175px;
 	height:235px;
 }
+.product_title{
+	min-width: 175px !important;
+	max-width: 175px !important;
+	/*padding: 7px !important;*/
+}
 .home_latest_product{
 	width: 175px !important;
     height: 213px !important;

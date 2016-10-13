@@ -8,12 +8,10 @@
                         <ul>
                             <li><a href="text.php">About us</a>
                             </li>
-                            <li><a href="text.php">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.php">FAQ</a>
-                            </li>
                             <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact us</a>
                             </li>
+                            <br />
+                            <br />
                         </ul>
                         <hr>
                         <h4>User section</h4>
