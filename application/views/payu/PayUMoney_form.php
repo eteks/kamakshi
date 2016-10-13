@@ -6,9 +6,8 @@ $MERCHANT_KEY = "OwGF14";
 $SALT = "RjWAdXh0";
 
 // End point - change to https://secure.payu.in for LIVE mode
-$PAYU_BASE_URL = "https://test.payu.in";
 // $PAYU_BASE_URL = "https://secure.payu.in";
-
+$PAYU_BASE_URL = "https://test.payu.in";
 
 $action = '';
 
@@ -17,7 +16,7 @@ if(!empty($_POST)) {
     //print_r($_POST);
   foreach($_POST as $key => $value) {    
     $posted[$key] = $value; 
-  
+	
   }
 }
 
@@ -43,17 +42,18 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
           || empty($posted['productinfo'])
           || empty($posted['surl'])
           || empty($posted['furl'])
-      || empty($posted['service_provider'])
+		  || empty($posted['service_provider'])
   ) {
     $formError = 1;
   } else {
     //$posted['productinfo'] = json_encode(json_decode('[{"name":"tutionfee","description":"","value":"500","isRequired":"false"},{"name":"developmentfee","description":"monthly tution fee","value":"1500","isRequired":"false"}]'));
-  $hashVarsSeq = explode('|', $hashSequence);
-    $hash_string = '';  
-  foreach($hashVarsSeq as $hash_var) {
+	$hashVarsSeq = explode('|', $hashSequence);
+    $hash_string = '';	
+	foreach($hashVarsSeq as $hash_var) {
       $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
       $hash_string .= '|';
     }
+
 
     $hash_string .= $SALT;
 
@@ -70,9 +70,9 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
   <head>
   <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.0.min.js"></script>
   <script>
-  $(document).ready(function() {
-    $('#payumoney_form').submit();
-  });
+    $(document).ready(function() {
+      $('#payumoney_form_0120_12').submit();
+    });
   </script>
   <script>
     var hash = '<?php echo $hash ?>';
@@ -89,25 +89,33 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
     <!-- <h2>PayU Form</h2> -->
     <br/>
     <?php if($formError) { ?>
-  
+	
       <!-- <span style="color:red">Please fill all mandatory fields.</span> -->
       <br/>
       <br/>
     <?php } ?>
-    <form id="payumoney_form" action="<?php echo $action; ?>" method="post" name="payuForm">
+    <form id="payumoney_form_0120_12" action="<?php echo $action; ?>" method="post" name="payuForm">
       <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
       <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
       <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-      <!-- <input type="hidden" name="amount" value="<?php echo (empty($posted['amount'])) ? '' : $posted['amount'] ?>" /> -->
       <input type="hidden" name="amount" value="1.00" />
-      <input type="hidden" name="firstname" value="<?php echo (empty($posted['firstname'])) ? '' : $posted['firstname'] ?>" />
-      <input type="hidden" name="email" id="email" value="<?php echo (empty($posted['email'])) ? '' : $posted['email'] ?>" />
-      <input type="hidden" name="phone" value="<?php echo (empty($posted['phone'])) ? '' : $posted['phone'] ?>" />
+      <input type="hidden" name="firstname" id="firstname" value="<?php echo (empty($posted['firstname'])) ? '' : $posted['firstname']; ?>" />
+      <input type="hidden" name="email" id="email" value="<?php echo (empty($posted['email'])) ? '' : $posted['email']; ?>" />
+      <input type="hidden" name="phone" value="<?php echo (empty($posted['phone'])) ? '' : $posted['phone']; ?>" />
       <input type="hidden" name="productinfo" value="none" /> 
-      <input type="hidden" name="surl" value="<?php echo base_url(); ?>index.php/index/pay_success" size="64" />
-      <input type="hidden" name="furl" value="<?php echo base_url(); ?>index.php/index/pay_failure" size="64" />
-
+      <input type="hidden" name="surl" value="<?php echo base_url(); ?>index.php/pay_success_0012KAMAKSHI_292" size="64" />
+      <input type="hidden" name="furl" value="<?php echo base_url(); ?>index.php/pay_failure" size="64" />
+      <input type="hidden" name="lastname" id="lastname" value="<?php echo (empty($posted['lastname'])) ? '' : $posted['lastname']; ?>" />
+      <input type="hidden" name="curl" value="<?php echo base_url(); ?>index.php/pay_cancel" />
+      <input type="hidden" name="address1" value="<?php echo (empty($posted['address1'])) ? '' : $posted['address1']; ?>" />
+      <input type="hidden" name="address2" value="<?php echo (empty($posted['address2'])) ? '' : $posted['address2']; ?>" />
+      <input type="hidden" name="city" value="<?php echo (empty($posted['city'])) ? '' : $posted['city']; ?>" />
+      <input type="hidden" name="country" value="<?php echo (empty($posted['country'])) ? '' : $posted['country']; ?>" />
+      <input type="hidden" name="zipcode" value="<?php echo (empty($posted['zipcode'])) ? '' : $posted['zipcode']; ?>" />
+      <input type="hidden" name="udf1" value="<?php echo (empty($posted['udf1'])) ? '' : $posted['udf1']; ?>" />
+      <input type="hidden" name="udf2" value="<?php echo (empty($posted['udf2'])) ? '' : $posted['udf2']; ?>" />
       <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
+
       <?php if(!$hash) { ?>
         <!-- <input type="submit" value="Submit" /> -->
       <?php } ?>

@@ -298,6 +298,41 @@
   text-decoration: underline;
   display: inline-block;
 }
+.product_loader {
+  background: rgba(0, 0, 0, 0) url("../img/ajax-loader.gif") no-repeat scroll center center !important;
+  background-color: #fff !important;
+}
+.orders_list {
+  display: none;
+}
+.orders_list td{
+  background-color: #ebedef;
+}
+.order_status_img img {
+  height: 50px;
+  width : 50px;
+}
+.order_status_total {
+  text-align: right;
+}
+.order-box {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+.order-box-header {
+  background: #ebeded none repeat scroll 0 0;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase;
+}
+.order-box-content {
+  padding: 15px;
+}
+.latest_products a {
+  cursor: text;
+}
+
 /* Ended by siva*/
 #owl-demo .owl-item > div img {
     display: block;
@@ -702,3 +737,6 @@ span.line {
 	font-weight:600;
 } 
 /*---- end of track order ----*/
+.fb{
+  height: 30px;
+}

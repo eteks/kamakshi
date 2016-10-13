@@ -1,5 +1,3 @@
-
-<!-- kalai idea -->
 <?php
 
 class Index_Model extends CI_Model {
@@ -311,18 +309,9 @@ class Index_Model extends CI_Model {
         $this->db->select('*');
         $this->db->from('giftstore_category c');
         $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'left');
-        // $this->db->join('giftstore_category c', 'rc.category_mapping_id=c.category_id', 'left');
-        
+
         $query = $this->db->where($where)->get()->result_array();
-
-        // echo "<pre>";
-        // print_r($query);
-        // echo "</pre>";
-
-
         return $query;
-
-
     }
 
     // Get Category based on recipient
@@ -365,6 +354,42 @@ class Index_Model extends CI_Model {
             $profile['profile_get_city'] = $this->db->get_where('giftstore_city',$profile_city_where)->result_array();  
         }
         return $profile;
-   }
+    }
+
+    // Get my orders list
+    public function get_my_orders()
+    {
+        $current_user_session = $this->session->userdata("login_session");
+        $myorder_where = '(order_user_id="'.$current_user_session['user_id'].'")';
+        $query = $this->db->get_where('giftstore_order',$myorder_where)->result_array();
+        return $query;
+    }
+
+    // Get my orders status
+    public function get_order_status()
+    {
+        $order_status_array = array();
+        if($this->uri->segment(2)) {
+            // Get product details
+            $order_status_where = '(go.orderitem_order_id="'.$this->uri->segment(2).'")';
+            $order_status_query = $this->db->select('*');
+            $order_status_query = $this->db->from('giftstore_orderitem go');
+            $order_status_query = $this->db->join('giftstore_product gp','go.orderitem_product_id=gp.product_id','inner');
+            $order_status_query = $this->db->join('giftstore_product_upload_image gpui','gp.product_id=gpui.product_mapping_id','inner');
+            $order_status_query = $this->db->where($order_status_where)->group_by('product_id');
+            $order_status_array['order_status'] = $order_status_query->get()->result_array();
+
+            // Get address
+            $order_status_address_where = '(go.order_id="'.$this->uri->segment(2).'")';
+            $order_status_address_query = $this->db->select('*');
+            $order_status_address_query = $this->db->from('giftstore_order go');
+            $order_status_address_query = $this->db->join('giftstore_state gs','go.order_shipping_state_id=gs.state_id','inner');
+            $order_status_address_query = $this->db->join('giftstore_city gc','go.order_shipping_city_id=gc.city_id','inner');
+            $order_status_address_query = $this->db->join('giftstore_area ga','go.order_shipping_area_id=ga.area_id','inner');
+            $order_status_address_query = $this->db->where($order_status_address_where);
+            $order_status_array['order_status_address'] = $order_status_address_query->get()->row_array();
+        }   
+        return $order_status_array;
+    }
 
 }

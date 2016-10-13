@@ -7,7 +7,8 @@ $(document).ready(function() {
     /* -----------    Ajax for checkout page start  ---------- */
 
 $(document ).ajaxComplete(function() {
-    $('.images_alignment,.position_images,.product_position').css('display','none');
+    $('.listing_product img').css('display','none');
+    $('.listing_product').addClass('product_loader');
     centerContent();
 });
 
@@ -431,7 +432,7 @@ $(document ).ajaxComplete(function() {
     });
 
     //  Add to cart in detail page
-    $("#add_to_cart_details").click(function() {
+    $("#add_to_cart_details").on('click',function() {
         var pro_id = $('#product_id').val();
         var group_id_length = $('.update_product_arrtibute_group').length;
         if(group_id_length > 0) {
@@ -461,6 +462,46 @@ $(document ).ajaxComplete(function() {
     });
 
     /* -----------    Ajax for detail page end  ---------- */
+
+     /* -----------    Ajax for myorders page start  ---------- */
+
+    //  Myorders list
+    $(".myorders_id").on('click',function() {
+        var order_id = $(this).data('order');
+        var this_order = $(this);
+        if($('.order'+order_id).hasClass('order_active')) {
+            $('.order'+order_id).removeClass('order_active');
+            $('.order'+order_id).slideUp(250);
+            this_order.html('View');
+        }
+        else {
+            jQuery.ajax({
+            type: "POST",
+            url: "../ajax_controller/myorders_list",
+            data: {order_id : order_id},
+                success: function(res) {
+                    if (res)
+                    {
+                        var obj = JSON.parse(res);
+                        var data = ''; 
+                        data += '<p> <strong> Total items : </strong> <span> '+obj.order_total_items+' </span> </p>';
+                        data += '<p> <strong> Total amount : </strong> <span> '+obj.order_total_amount+' </span> </p>';
+                        data += '<p> <strong> Order date : </strong> <span> '+obj.order_createddate.split(' ')[0]+' </span> </p>';
+                        data += '<p> <a href="'+baseurl+'index.php/order_status/'+order_id+'" class="btn btn-primary btn-sm">  View  Status </a> </p>';
+                        $('.orders_list').css('display','none');
+                        $('.orders_list').removeClass('order_active');
+                        $('.myorders_id').html('View');
+                        $('.order'+order_id).find('div').html(data); 
+                        $('.order'+order_id).addClass('order_active'); 
+                        $('.order'+order_id).slideDown(250);
+                        this_order.html('Hide'); 
+                    }   
+                }
+            });
+        }
+    });
+
+    /* -----------    Ajax for myorders page end  ---------- */
 
 
     /* -----------    Ended by siva - Ajax call  ---------- */

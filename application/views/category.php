@@ -58,26 +58,26 @@
                         if(!empty($product_category)): foreach ($product_category as $cat_pro):
                         ?>
                         <div class="col-md-4 col-sm-6">
-                            <div class="product">
+                            <div class="product listing_product">
                             	<div class="product_img_position">
-                                <div class="flip-container listing_images">
-                                    <div class="flipper listing_images">
-                                        <div class="front listing_images">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
-                                            <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
-                                            </a>
-                                        </div>
-                                        <div class="back listing_images">
-                                            <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
+                                    <div class="flip-container listing_images">
+                                        <div class="flipper listing_images">
+                                            <div class="front listing_images">
+                                                <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
                                                 <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
-                                            </a>
+                                                </a>
+                                            </div>
+                                            <div class="back listing_images">
+                                                <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
+                                                    <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
+                                                </a>
+                                            </div>
                                         </div>
+                                        <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="invisible">
+                                        <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
+                                        </a>
                                     </div>
-                                    <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="invisible">
-                                    <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
-                                    </a>
                                 </div>
-                               </div>
                                 <div class="text">
                                     <h3><a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>"> <?php echo $cat_pro['product_title']; ?> </a></h3>
                                     <p class="price">  Rs.<?php echo $cat_pro['product_price']; ?> </p>

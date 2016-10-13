@@ -9,6 +9,9 @@
 </div>
 </section>
 <!-- external javascript -->
+<script type="text/javascript">
+  var baseurl = "<?php echo base_url(); ?>";
+</script>
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
 <!-- library for cookie management -->

@@ -14,6 +14,7 @@ class Index extends CI_Controller
         // Load pagination library
         $this->load->library('ajax_pagination');
         $this->perPage = 14;
+        date_default_timezone_set('Asia/Kolkata');
     }
 
     // Index page
@@ -26,7 +27,9 @@ class Index extends CI_Controller
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();
       $categories['recipient_list'] = $this->index_model->get_recipient_list();
       $categories['category_recipient_list'] = $this->index_model->get_category_recipient();
+      // $categories['login_url'] = $this->login();
 	  $this->load->view('index',$categories);
+
     }
 	
 	public function register()
@@ -140,9 +143,25 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['my_orders'] = $this->index_model->get_my_orders();
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('my_orders', $categories);
     }
+
+    // Get order status by order id
+    public function order_status()
+    {   
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories_values_order_status = $this->index_model->get_order_status();
+        $categories['order_status'] = $categories_values_order_status['order_status'];
+        $categories['order_status_address'] = $categories_values_order_status['order_status_address'];
+        $this->load->view('order_status',$categories);
+    }
+
 	public function reg_form()
     {
         $categories_values_reg = $this->index_model->get_register();
@@ -201,6 +220,18 @@ class Index extends CI_Controller
     public function pay_failure()
     {
         $this->load->view('payu/failure');
+    }
+
+    // Payment gateway cancellation
+    public function pay_cancel()
+    {
+        $this->load->view('payu/cancel');
+    }
+
+    // Success page for after payment
+    public function success()
+    {
+        $this->load->view('payu/payment_success');
     }
 
     public function customer_wishlist()

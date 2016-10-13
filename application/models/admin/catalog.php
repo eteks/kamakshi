@@ -319,7 +319,7 @@ class Catalog extends CI_Model {
 	{	
 		$data_product_basic = $data['product_basic'];
 		$data_product_files = $data['product_files'];
-		$data_product_attributes = $data['product_attributes'];
+		$data_product_attributes = isset($data['product_attributes'])?$data['product_attributes']:"";
 		// Query to check whether category name already exist or not
 		$condition = "product_title =" . "'" . $data_product_basic['product_title'] . "'";
 		$this->db->select('*');
@@ -339,30 +339,34 @@ class Catalog extends CI_Model {
 	             						);
 				$this->db->insert('giftstore_product_upload_image', $product_image_map);
 			}
-			// echo sizeof($data_product_attributes);
-			foreach($data_product_attributes as $key=>$value){
-				$attributes = $data_product_attributes[$key][0];
-				$price = $data_product_attributes[$key][1];
-				$items = $data_product_attributes[$key][2];
-				$product_attribute_inserted_id = array();
-				foreach ($attributes as $key => $value) {
-					$product_attribute_id = $attributes[$key][0];
-					$product_attribute_value = $attributes[$key][1];
-					$product_attributes_data = array(
-						'product_attribute_id' => $product_attribute_id ,
-						'product_attribute_value' => $product_attribute_value 
+			// echo "<pre>";
+			// print_r($data_product_attributes);
+			// echo "</pre>";
+			if(!empty($data_product_attributes)){
+				foreach($data_product_attributes as $key=>$value){
+					$attributes = $data_product_attributes[$key][0];
+					$price = $data_product_attributes[$key][1];
+					$items = $data_product_attributes[$key][2];
+					$product_attribute_inserted_id = array();
+					foreach ($attributes as $key => $value) {
+						$product_attribute_id = $attributes[$key][0];
+						$product_attribute_value = $attributes[$key][1];
+						$product_attributes_data = array(
+							'product_attribute_id' => $product_attribute_id ,
+							'product_attribute_value' => $product_attribute_value 
+						);
+						$this->db->insert('giftstore_product_attribute_value', $product_attributes_data);
+						array_push($product_attribute_inserted_id,$this->db->insert_id());
+					}
+					$product_attributes_group = array(
+							'product_mapping_id' => $product_id ,
+							'product_attribute_group_price' => $price ,
+							'product_attribute_group_totalitems' => $items,
+							'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
 					);
-					$this->db->insert('giftstore_product_attribute_value', $product_attributes_data);
-					array_push($product_attribute_inserted_id,$this->db->insert_id());
+					$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
 				}
-				$product_attributes_group = array(
-						'product_mapping_id' => $product_id ,
-						'product_attribute_group_price' => $price ,
-						'product_attribute_group_totalitems' => $items,
-						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
-				);
-				$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
-			}
+			}		
 			if ($this->db->affected_rows() > 0) {
 				return true;
 			}
@@ -413,5 +417,54 @@ class Catalog extends CI_Model {
 			return false;
 		}
 		return true;
+	}
+	public function get_giftproduct_data($id)
+	{	
+		//Get Product default field data
+		$this->db->select('*');
+		$this->db->from('giftstore_product AS pro');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = pro.product_category_id', 'inner');
+		$this->db->join('giftstore_subcategory AS subcat', 'subcat.subcategory_id = pro.product_subcategory_id', 'inner');
+		$this->db->where('product_id', $id);
+		$query['product_list'] = $this->db->get()->row_array();
+
+		$category_id = $query['product_list']['product_category_id'];
+		$category_reference = $this->get_category_reference($category_id);
+		$query['subcategory_list'] = $category_reference['subcategory_category'];
+		$query['recipient_list'] = $category_reference['recipient_category'];
+
+		//Get Product Attribute Data
+
+		// $this->db->select('*');
+		// $this->db->from('giftstore_product_attribute_group AS progroup');
+		// $this->db->where('product_mapping_id', $id);
+		// $query['product_attribute_list'] = $this->db->get()->result_array();
+
+		$query['product_attribute_list'] = $this->db->query("SELECT * FROM giftstore_product_attribute_value AS c INNER JOIN ( SELECT product_attribute_group_id, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value FROM giftstore_product_attribute_group t CROSS JOIN numbers n WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', ''))) AND t.product_mapping_id=$id) AS a ON a.value = c.product_attribute_value_id INNER JOIN giftstore_product_attribute AS pa ON c.product_attribute_id=pa.product_attribute_id")->result_array();
+
+		
+		// $query['product_attribute_list'] = $this->db->query("SELECT *
+		// 		FROM `giftstore_product_attribute_value` AS c
+		// 		INNER JOIN 
+		// 		(
+		// 		    SELECT product_mapping_id,product_attribute_group_id,product_attribute_group_price,	product_attribute_group_totalitems,product_attribute_group_sold, SUBSTRING_INDEX( SUBSTRING_INDEX( t.product_attribute_value_combination_id, ',', n.n ) , ',', -1 ) value
+		// 			FROM giftstore_product_attribute_group t
+		// 			CROSS JOIN numbers n
+		// 			WHERE n.n <=1 + ( LENGTH( t.product_attribute_value_combination_id ) - LENGTH( REPLACE( t.product_attribute_value_combination_id, ',', '' ) ) )
+		// 			AND t.product_mapping_id=$id
+		// 		)AS a ON a.value = c.product_attribute_value_id
+		// 		INNER JOIN 
+		// 		(
+		// 		    SELECT product_attribute_id,product_attribute
+		// 			FROM giftstore_product_attribute
+		// 		)AS pa ON pa.product_attribute_id = c.product_attribute_id
+		// 		INNER JOIN
+		// 		(
+		// 			SELECT product_id,product_title from giftstore_product
+		// 		) AS p ON p.product_id = a.product_mapping_id")->result_array();
+		// echo "<pre>";
+		// print_r($query['product_attribute_list']);
+		// echo "</pre>";
+		return $query;
 	}
 }

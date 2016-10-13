@@ -30,7 +30,7 @@ $(document).ready(function() {
         if(selected_category != 'Select Category'){
 	         $.ajax({
 	               type: "POST",
-	               url: "loadcategory_reference",
+	               url: baseurl+"index.php/admin/adminindex/loadcategory_reference",
 	               data: form_data,
 	               dataType: 'json',  
 	               cache: false,
@@ -175,7 +175,7 @@ $(document).ready(function() {
     //     // return false;   
     // });
 
-    $('body').delegate("#add_giftproduct",'submit',function(e){ 
+    $('body').delegate("#add_giftproduct,#edit_giftproduct",'submit',function(e){ 
     // $("#add_giftproduct").submit(function(){ 
         // e.preventDefault();
         var attribute_length = [];
@@ -217,7 +217,9 @@ $(document).ready(function() {
                 }
             });
             if(!$error){
-                $("#product_price_hidden").val($('#attribute_group1').find('#price').val());
+                //To assign the first attribute price value as default product price
+                $("#product_price_hidden").val($('#attribute_group1').find('#product_attribute_price').val());
+                //To calculate the total no. of items in the product
                 $("[name='product_attribute_totalitems[]']").each(function(){
                     sum += parseFloat(this.value);
                 });

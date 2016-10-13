@@ -12,7 +12,7 @@
         Kamakshi -Giftshop
     </title>
     <meta name="keywords" content="">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
     <!-- styles -->
     <link href="<?php echo base_url(); ?>assets/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -120,12 +120,12 @@
                             </div>
                         </form>
                           </div>                   
-                           <div>
+                           <div id="facebook_login">
 							<ul class="social_icons">
-								<a href="https://www.facebook.com/" title="Facebook">
-								<i class="fa fa-facebook"></i>
+								<a href="<?php echo base_url(); ?>index.php/oauth_login/facebook"><img class='fb' src="assets/img/fb.png"."></a>
+								<!-- <i class="fa fa-facebook"></i> -->
 								<!-- Connect with facebook -->
-								</a>							
+								<!-- </a>							 -->
 								<a href="https://twitter.com/" title="Twitter">
 								<i class="fa fa-twitter"></i> 
 								</a>							

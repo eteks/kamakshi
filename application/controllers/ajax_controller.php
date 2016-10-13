@@ -34,6 +34,7 @@ class Ajax_Controller extends CI_Controller {
         $data['product_category'] =  $data_values['product_category'];
         $data['product_count'] =  $data_values['product_count'];
         //pagination configuration
+        		$config['base_url']    = base_url().'index.php/oauth_login/test';
         $config['target']      = '#all_products_section';
         $config['base_url']    = base_url().'index.php/ajax_controller/filtering_product';
         $config['total_rows']  = $data['product_count'];
@@ -154,6 +155,13 @@ class Ajax_Controller extends CI_Controller {
 	public function attribute_price()
 	{	
 		$data = $this->ajax_model->get_attribute_price();
+		echo json_encode($data);
+	}
+
+	// Get myorders list
+	public function myorders_list()
+	{	
+		$data = $this->ajax_model->get_myorders_list();
 		echo json_encode($data);
 	}
 
