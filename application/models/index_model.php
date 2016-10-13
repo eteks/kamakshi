@@ -1,5 +1,3 @@
-
-<!-- kalai idea -->
 <?php
 
 class Index_Model extends CI_Model {
@@ -311,18 +309,9 @@ class Index_Model extends CI_Model {
         $this->db->select('*');
         $this->db->from('giftstore_category c');
         $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'left');
-        // $this->db->join('giftstore_category c', 'rc.category_mapping_id=c.category_id', 'left');
-        
+
         $query = $this->db->where($where)->get()->result_array();
-
-        // echo "<pre>";
-        // print_r($query);
-        // echo "</pre>";
-
-
         return $query;
-
-
     }
 
     // Get Category based on recipient
@@ -365,6 +354,15 @@ class Index_Model extends CI_Model {
             $profile['profile_get_city'] = $this->db->get_where('giftstore_city',$profile_city_where)->result_array();  
         }
         return $profile;
-   }
+    }
+
+    // Get my orders list
+    public function get_my_orders()
+    {
+        $current_user_session = $this->session->userdata("login_session");
+        $myorder_where = '(order_user_id="'.$current_user_session['user_id'].'")';
+        $query = $this->db->get_where('giftstore_order',$myorder_where)->result_array();
+        return $query;
+    }
 
 }

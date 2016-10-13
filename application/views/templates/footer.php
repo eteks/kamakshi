@@ -1,6 +1,7 @@
           <!-- *** FOOTER ***
  _________________________________________________________ -->
-        <div id="footer" data-animate="fadeInUp">
+        <!-- <div id="footer" data-animate="fadeInUp"> -->
+        <div id="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">

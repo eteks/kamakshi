@@ -59,7 +59,7 @@
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label for="state">State</label>
-                                                    <select class="form-control" id="che_state" name="state">
+                                                    <select class="form-control" id="che_state" name="udf2">
                                                         <option value=""> Please select state </option>
                                                         <?php if(!empty($state)) : 
                                                             foreach($state as $state_row): ?>
@@ -81,7 +81,7 @@
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label for="area">Area</label>
-                                                    <select class="form-control" name="area" id="che_area">
+                                                    <select class="form-control" name="country" id="che_area">
                                                         <option value="">  </option>
                                                     </select>
                                                 </div>  
@@ -89,7 +89,7 @@
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label for="zip">ZIP</label>
-                                                    <input type="text" name="zip" class="form-control" id="zip" maxlength="6">
+                                                    <input type="text" name="zipcode" class="form-control" id="zip" maxlength="6">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -182,7 +182,7 @@
                                             <a class="btn btn-default checkout_button" id="checkout_order_submit" data-type="address"><i class="fa fa-chevron-left"></i>Back to Address </a>
                                         </div>
                                         <div class="pull-right">
-                                            <input type="hidden" name="checkout_session_value" class="order_session_id_checkout"  value="<?php echo $orderitem_session_id_checkout; ?>">
+                                            <input type="hidden" name="udf1" class="order_session_id_checkout"  value="<?php echo $orderitem_session_id_checkout; ?>">
                                             <input type="hidden" name="amount" class="total_amount_hidden" id="total_amount_hidden" value="">
                                             <button type="submit" class="btn btn-primary">Place an order<i class="fa fa-chevron-right"></i>
                                             </button>

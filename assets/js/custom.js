@@ -407,19 +407,26 @@ $('#profile_email').on('keyup',function() {
 });
 $(window).load(function()
 {
+    $('.images_alignment,.position_images,.product_position').css('display','none');
+    $('.product').addClass('product_loader');
 	centerContent();
 });
 $(window).resize(function()
 {
+    $('.images_alignment,.position_images,.product_position').css('display','none');
+    $('.product').addClass('product_loader');
 	centerContent();
 });
 function centerContent()
-{
-	$('.images_alignment,.position_images,.product_position').each(function(){
-		$(this).css("margin-left", -($(this).width())/2);
-		$(this).css("margin-top", -($(this).height())/2);
-        $(this).fadeIn(200);
-	});
+{   
+    setTimeout(function(){ 
+        $('.product').removeClass('product_loader');
+    	$('.images_alignment,.position_images,.product_position').each(function(){
+    		$(this).css("margin-left", -($(this).width())/2);
+    		$(this).css("margin-top", -($(this).height())/2);
+            $(this).fadeIn(200);
+    	});
+    },1000);
 }
 
 
@@ -437,7 +444,7 @@ $(document).ready(function () {
         for (var i = 0; i < (nb - 1); i++) {
             owl.removeItem(1);
         }
-        if (cat == 'item1') {
+        if (cat == 'item_all') {
             $('#projects-copy .project.primary_list').each(function () {
                 owl.addItem($(this).clone());
             });
@@ -457,6 +464,8 @@ $(document).ready(function () {
         cat = $(this).attr('ID');
         $(this).addClass('selected');
         showProjectsbyCat(cat);
+        $('.recipient_based_categories img').css('display','none');
+        $('.recipient_based_categories').addClass('product_loader');
         centerContent();
     });
     //  Added by siva - remove repeatation of category images

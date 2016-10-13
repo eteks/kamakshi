@@ -52,51 +52,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-info">Being prepared</span>
-                                        </td>
-                                        <td><a href="<?php echo base_url(); ?>index.php/customer_order/" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-info">Being prepared</span>
-                                        </td>
-                                        <td><a href="<?php echo base_url(); ?>index.php/customer_order/" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-success">Received</span>
-                                        </td>
-                                        <td><a href="<?php echo base_url(); ?>index.php/customer_order/" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-danger">Cancelled</span>
-                                        </td>
-                                        <td><a href="<?php echo base_url(); ?>index.php/customer_order/" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-warning">On hold</span>
-                                        </td>
-                                        <td><a href="<?php echo base_url(); ?>index.php/customer_order/" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    if(!empty($my_orders)) :
+                                    foreach($my_orders as $myorder_value) :
+                                    ?>
+                                        <tr>
+                                            <th> <?php echo $myorder_value['order_id']; ?> </th>
+                                            <td> <?php echo $myorder_value['order_delivery_date']; ?> </td>
+                                            <td> &#8377; <?php echo $myorder_value['order_total_amount']; ?> </td>
+                                            <td>
+                                                <span class="label label-info"> <?php echo $myorder_value['order_delivery_status']; ?> </span>
+                                            </td>
+                                            <td>
+                                                <span data-order="<?php echo $myorder_value['order_id']; ?>" class="btn btn-primary btn-sm myorders_id">View
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    endforeach;
+                                    endif;
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

@@ -14,6 +14,7 @@ class Index extends CI_Controller
         // Load pagination library
         $this->load->library('ajax_pagination');
         $this->perPage = 14;
+        date_default_timezone_set('Asia/Kolkata');
     }
 
     // Index page
@@ -140,6 +141,7 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['my_orders'] = $this->index_model->get_my_orders();
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('my_orders', $categories);
     }
@@ -201,6 +203,18 @@ class Index extends CI_Controller
     public function pay_failure()
     {
         $this->load->view('payu/failure');
+    }
+
+    // Payment gateway cancellation
+    public function pay_cancel()
+    {
+        $this->load->view('payu/cancel');
+    }
+
+    // Success page for after payment
+    public function success()
+    {
+        $this->load->view('payu/payment_success');
     }
 
     public function customer_wishlist()

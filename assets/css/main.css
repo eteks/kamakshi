@@ -298,6 +298,10 @@
   text-decoration: underline;
   display: inline-block;
 }
+.product_loader {
+  background: rgba(0, 0, 0, 0) url("../img/ajax-loader.gif") no-repeat scroll center center !important;
+  background-color: #fff !important;
+}
 /* Ended by siva*/
 #owl-demo .owl-item > div img {
     display: block;

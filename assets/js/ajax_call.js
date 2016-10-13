@@ -7,7 +7,8 @@ $(document).ready(function() {
     /* -----------    Ajax for checkout page start  ---------- */
 
 $(document ).ajaxComplete(function() {
-    $('.images_alignment,.position_images,.product_position').css('display','none');
+    $('.listing_product img').css('display','none');
+    $('.listing_product').addClass('product_loader');
     centerContent();
 });
 
