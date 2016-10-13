@@ -1,4 +1,7 @@
-<?php include "templates/header.php"; ?>
+<?php
+if(!empty($this->session->userdata("login_status"))):
+include "templates/header.php"; 
+?>
     <div id="all">
         <div id="content">
             <div class="container">
@@ -211,4 +214,8 @@
         <!-- /#content -->
     </div>
     <!-- /#all -->
-<?php include "templates/footer.php"; ?>
+<?php include "templates/footer.php"; 
+else :
+    redirect('index');
+endif;
+?>

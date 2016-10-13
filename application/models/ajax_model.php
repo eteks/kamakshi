@@ -481,6 +481,15 @@ class Ajax_Model extends CI_Model {
                 		echo('Failed');
                         return FALSE;
                 }
-   		 }
-}
+   	}
 
+    // Get myorders list based on order id
+    public function get_myorders_list() {
+        $myorders_array = array();
+        if($this->input->post('order_id')) {
+            $myorders_where = '(order_id="'.$this->input->post('order_id').'")';
+            $myorders_array = $this->db->get_where('giftstore_order',$myorders_where)->row_array();
+        }
+        return $myorders_array;    
+    }
+}
