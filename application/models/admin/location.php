@@ -253,17 +253,6 @@ class Location extends CI_Model {
 		//return all records in array format to the controller
 		return $query->result_array();
 	}
-		public function get_transaction()
-	{	
-		//get list of adminusers from database using mysql query 
-		$this->db->select('*');
-		$this->db->from('giftstore_ccavenue_transaction');
-		$this->db->order_by('transaction_createddate','desc');	
-		$query = $this->db->get();
-
-		//return all records in array format to the controller
-		return $query->result_array();
-	}
 		public function update_order($data)
 	{	
 		$this->db->where('order_id', $data['order_id']);
@@ -284,7 +273,7 @@ class Location extends CI_Model {
 
 		return $query;
 	}
-		public function get_orders()
+	public function get_orders()
 	{
 		$this->db->select('*');
 		$this->db->from('giftstore_order order');
@@ -295,5 +284,49 @@ class Location extends CI_Model {
 		$this->db->order_by('city.city_name','desc');
 		$this->db->order_by('area.area_name','desc');
 		return $this->db->get()->result_array();
+	}
+	public function get_orderitem()
+	{	
+		//get list of adminusers from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_orderitem');
+		$this->db->order_by('orderitem_createddate','desc');	
+		$query = $this->db->get();
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
+	public function update_orderitem($data)
+	{	
+		$this->db->where('orderitem_order_id', $data['orderitem_id']);
+		$this->db->update('giftstore_orderitem', $data);
+		// trans_complete() function is used to check whether updated query successfully run or not
+		if ($this->db->get() == false) {
+			return false;
+		}
+		return true;	
+	}
+	public function get_orderitem_data($id)
+	{	
+		$query = $this->db->get_where('giftstore_orderitem', array('orderitem_id' => $id));
+		return $query->row_array();
+	}
+	public function get_ordersitem()
+	{
+		$this->db->select('*');
+		$this->db->from('giftstore_orderitem orderitem');
+		$this->db->join('giftstore_product product', 'product.product_id = orderitem.orderitem_product_id', 'inner');
+		$this->db->order_by('product.product_title','desc');
+		return $this->db->get()->result_array();
+	}
+	public function get_transaction()
+	{	
+		//get list of adminusers from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_ccavenue_transaction');
+		$this->db->order_by('transaction_createddate','desc');	
+		$query = $this->db->get();
+
+		//return all records in array format to the controller
+		return $query->result_array();
 	}
 }

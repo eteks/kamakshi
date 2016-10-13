@@ -41,8 +41,8 @@
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll " >
     <thead> 
 		<th class="product_small">Order Id</th>
-		<th class="product_small">product Id</th>
-		<th class="product_small">Group</th>
+		<th class="product_small">Product Name</th>
+		<!-- <th class="product_small">Group</th> -->
 		<th class="product_small">Quantity</th>
 		<th class="product_small">Price</th>
 		<th class="product_small">Staus</th>
@@ -50,28 +50,28 @@
 		<th class="product_small">Actions</th>
 		</tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>Worth Name</td>
-        <td class="center">xyz@gmail.com</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <span class="label-warning label label-default">Pending</span>
-        </td>
-        <td class="center">2012/03/01</td>
-        <td class="center">
-            <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_orderitem">
-                <i class="glyphicon glyphicon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger delete" href="#myModal1" data-toggle="modal" data-id="" title="Delete">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-            </a>
-        </td>
-    </tr>
+<tbody>
+    <?php foreach ($orderitem_list as $orderitem): ?>
+        <tr>
+            <td><?php echo $orderitem["orderitem_order_id"] ?></td>
+            <td><?php echo $orderitem["product_title"] ?></td>
+            <!-- <td><?php echo $orderitem["orderitem_product_attribute_group_id"] ?></td> -->
+            <td><?php echo $orderitem["orderitem_quantity"] ?></td>
+            <td><?php echo $orderitem["orderitem_price"] ?></td>
+            <td class="center"><span class="<?php if($orderitem["orderitem_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($orderitem["orderitem_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
+            <td class="center"><?php echo date("d/m/Y", strtotime($orderitem["orderitem_createddate"])); ?></td>
+            <td class="center">
+                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_orderitem/<?php echo $orderitem["orderitem_id"] ?>">
+                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger delete" href="#myModal1" data-toggle="modal" data-id="<?php echo $orderitem["orderitem_id"] ?>" title="Delete">
+                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                    Delete
+                </a>
+            </td>
+        </tr>
+    <?php endforeach ?>
     </tbody>
     </table>
     </div>

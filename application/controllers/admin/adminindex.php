@@ -563,13 +563,11 @@ class Adminindex extends CI_Controller {
 			$status['check_product_is_unique'] = $this->catalog->check_product_is_unique($this->input->post('product_title'));
 
 			if($status['check_product_is_unique'] == true){
-				$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
-
-				$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
-
-
-				$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
-
+				if($status['attribute_check_status'] == 1){
+					$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
+					$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
+					$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
+				}
 				// echo count($_POST['select_attribute']);
 				// print_r($_FILES['product_image']['name']);
 				//Check whether user upload picture
@@ -618,7 +616,8 @@ class Adminindex extends CI_Controller {
 						'product_status' => $this->input->post('product_status'),
 					);
 					$data['product_files'] = $product_image;
-					$data['product_attributes'] = $attribute_group;
+					if($status['attribute_check_status'] == 1)
+						$data['product_attributes'] = $attribute_group;
 					$result = $this->catalog->insert_product($data);
 					if($result)
 						$status['error_message'] = "Product Inserted Successfully!";
@@ -636,7 +635,36 @@ class Adminindex extends CI_Controller {
 	}
 	public function edit_giftproduct()
 	{	
-		$this->load->view('admin/edit_giftproduct');
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		$query_result = $this->catalog->get_giftproduct_data($id);
+
+		$status['giftproduct_data'] = $query_result['product_list'];
+		$status['subcategory_list'] = $query_result['subcategory_list'];
+		$status['recipient_list'] = $query_result['recipient_list'];
+		// $status['product_attribute_list'] = $query_result['product_attribute_list'];
+
+		$resatt = array();
+		foreach($query_result['product_attribute_list'] as $arr)
+		{
+		    foreach($arr as $k => $v)
+		    {
+		        if($k == 'product_attribute_id')
+		        	$resatt[$arr['product_attribute_group_id']][$k] = $this->get_arrayvalues_bykeyvalue($query_result['product_attribute_list'], $k, 'product_attribute_group_id', $arr['product_attribute_group_id']);
+		        else if($k == 'product_attribute_value')
+		        	$resatt[$arr['product_attribute_group_id']][$k] = $this->get_arrayvalues_bykeyvalue($query_result['product_attribute_list'], $k, 'product_attribute_group_id', $arr['product_attribute_group_id']);
+		        else
+		            $resatt[$arr['product_attribute_group_id']][$k] = $v;
+		    }
+		}
+		$status['product_attribute_list'] = $resatt;
+
+		$status['category_list'] = $this->catalog->get_categories();
+		$this->load->view('admin/edit_giftproduct',$status);
 	}
 	public function product_attributes()
 	{	
@@ -1178,12 +1206,86 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/edit_order',$status);	
 	}
 	public function orderitem()
-	{	
-		$this->load->view('admin/orderitem');
+	{
+		$orderitem['product_list'] = $this->catalog->get_products();
+		$orderitem['orderitem_list'] = $this->location->get_ordersitem();
+		$this->load->view('admin/orderitem',$orderitem);
 	}
 	public function edit_orderitem()
-	{	
-		$this->load->view('admin/edit_orderitem');
+	{
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = array();//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		       array(
+		             'field'   => 'orderitem_order_id',
+		             'label'   => 'Order',
+		             'rules'   => 'trim|required|xss_clean|max_length[12]|callback_edit_unique[giftstore_users.user_id.user_name.'.$id.']'
+		          ),
+		       array(
+		             'field'   => 'orderitem_product_id',
+		             'label'   => 'Product',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'orderitem_product_attribute_group_id',
+		             'label'   => 'Group',
+		             'rules'   => 'trim|required|xss_clean'
+		          ), 
+		       array(
+		             'field'   => 'orderitem_quantity',
+		             'label'   => 'Quantity',
+		             'rules'   => 'trim|required|xss_clean|valid_email|callback_edit_unique[giftstore_users.user_id.user_email.'.$id.']'
+		          ),
+	          array(
+		             'field'   => 'orderitem_price',
+		             'label'   => 'Price',
+		             'rules'   => 'trim|required|xss_clean|date_valid'
+		          ),
+	          array(
+		             'field'   => 'orderitem_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean|min_length[10]|max_length[10]'
+		          ),  
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+    		}
+    		else{
+				$data = array(
+				'orderitem_id' => $id,
+				'orderitem_product_id' => $this->input->post('orderitem_product_id'),
+				'orderitem_product_attribute_group_id' => $this->input->post('orderitem_product_attribute_group_id'),
+				'orderitem_quantity' => $this->input->post('orderitem_quantity'),
+				'orderitem_price' => $this->input->post('orderitem_price'),
+				);
+				$result = $this->location->update_orderitem($data);
+				if($result)
+					$status['error_message'] = "Orderitem Updated Successfully!";
+				else
+					$status['error_message'] = "Something Went Wrong!";	
+    		}
+		}
+		$status['orderitem_data'] = $this->location->get_orderitem_data($id);
+		// $data_values['orderitem_data'] = $this->location->get_orderitem_data($id);
+		$this->load->view('admin/edit_orderitem',$status);	
 	}
 	public function transaction()
 	{
