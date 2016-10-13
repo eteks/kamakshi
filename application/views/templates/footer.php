@@ -1,5 +1,4 @@
-          <!-- *** FOOTER ***
- _________________________________________________________ -->
+          <!-- *** FOOTER *** -->
         <!-- <div id="footer" data-animate="fadeInUp"> -->
         <div id="footer">
             <div class="container">
@@ -9,12 +8,10 @@
                         <ul>
                             <li><a href="text.php">About us</a>
                             </li>
-                            <li><a href="text.php">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.php">FAQ</a>
-                            </li>
                             <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact us</a>
                             </li>
+                            <br />
+                            <br />
                         </ul>
                         <hr>
                         <h4>User section</h4>
@@ -97,8 +94,7 @@
         </div>
         <!-- /#footer -->
         <!-- *** FOOTER END *** -->
-        <!-- *** COPYRIGHT ***
- _________________________________________________________ -->
+        <!-- *** COPYRIGHT *** -->
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
@@ -113,8 +109,10 @@
         <!-- *** COPYRIGHT END *** -->
     </div>
     <!-- /#all -->
-    <!-- *** SCRIPTS TO INCLUDE ***
- _________________________________________________________ -->
+    <!-- *** SCRIPTS TO INCLUDE *** -->
+    <script type="text/javascript">
+        var baseurl = "<?php echo base_url(); ?>";
+    </script>
     <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.0.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.cookie.js"></script>

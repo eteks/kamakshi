@@ -51,7 +51,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="text">
+                            <div class="text product_title">
                                 <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $rec_list['category_id']; ?>"><?php echo $rec_list['category_name'] ?></a></h3>
                                 <br />
                             </div>

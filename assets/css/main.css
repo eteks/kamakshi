@@ -302,6 +302,37 @@
   background: rgba(0, 0, 0, 0) url("../img/ajax-loader.gif") no-repeat scroll center center !important;
   background-color: #fff !important;
 }
+.orders_list {
+  display: none;
+}
+.orders_list td{
+  background-color: #ebedef;
+}
+.order_status_img img {
+  height: 50px;
+  width : 50px;
+}
+.order_status_total {
+  text-align: right;
+}
+.order-box {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+.order-box-header {
+  background: #ebeded none repeat scroll 0 0;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase;
+}
+.order-box-content {
+  padding: 15px;
+}
+.latest_products a {
+  cursor: text;
+}
+
 /* Ended by siva*/
 #owl-demo .owl-item > div img {
     display: block;
@@ -360,6 +391,7 @@
 .home_product_images:hover::before {
 	-webkit-animation: circle .75s;
 	animation: circle .75s;
+	z-index: -1;
 }
 @-webkit-keyframes circle {
 	0% {
@@ -408,6 +440,7 @@
 .latest_product_images:hover::before {
 	-webkit-animation: circle .75s;
 	animation: circle .75s;
+	z-index: -1;
 }
 @-webkit-keyframes circle {
 	0% {
@@ -456,6 +489,8 @@
 .listing_images:hover::before {
 	-webkit-animation: circle .75s;
 	animation: circle .75s;
+	z-index:-1;
+	
 }
 @-webkit-keyframes circle {
 	0% {
@@ -603,6 +638,105 @@
 .email_id{
 	color:#555 !important;
 }
+.registeration_instructions{
+	padding: 0px 10px;
+}
+/*---- track order ----*/
+.track_order_details {
+    height: auto;
+}
+.track_order_status_process h1 {
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    padding: 10px;
+    text-align: center;
+    width: 97.5%;
+}
+span.line {
+    height: 5px;
+    width: 80%;
+    background-color:#F5998E;
+    display: block;
+    position: absolute;
+    top: 28%;
+    left: 170px;
+}
+.process{
+	text-align:center;
+	/*width:20%;*/
+	position:relative;
+	float:left;
+	/*margin-left:5%;*/
+}
+.process .imgcircle{
+	background-color:#98D091;
+}
+.process span.line{
+	background-color:#98D091; 
+}
+.process p {
+	/*margin-left:-65%;*/
+	font-size:15px;
+	font-weight:600;
+} 
+.imgcircle {
+	height:75px;
+	width:75px;
+	border-radius:50%;
+	background-color:#F5998E;
+	position:relative;
+	margin:0 auto;
+}
+.imgcircle img {
+	height:30px;
+	position:absolute;
+	top: 28%;
+	left: 30%;
+}
+.complete{
+	position:relative;
+	/*width:20%;*/
+	text-align:center;
+	float:left;
+}
+.complete p {
+	/*margin-left:-65%;*/
+	font-size:15px;
+	font-weight:600;
+} 
+/*.quality {
+	position:relative;
+	width:20%;
+	text-align:center;
+	float:left;
+}*/
+.dispatch{
+	position:relative;
+	/*width:20%;*/
+	text-align:center;
+	float:left;
+}
+.dispatch p {
+	/*margin-left:-65%;*/
+	font-size:15px;
+	font-weight:600;
+} 
+.delivery{
+	position:relative;
+	/*width:20%;*/
+	text-align:center;
+	float:left;
+	/*margin-right:-9%;*/
+}
+.delivery p {
+	/*margin-left:-65%;*/
+	font-size:15px;
+	font-weight:600;
+} 
+/*---- end of track order ----*/
 .fb{
   height: 30px;
 }

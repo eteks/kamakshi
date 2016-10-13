@@ -162,7 +162,7 @@
                                         </a>
                                     </div>
                                    </div>
-                                    <div class="text">
+                                    <div class="text product_title">
                                         <h3><a href="<?php echo base_url(); ?>index.php/detail/<?php echo $rec_pro['product_id']; ?>"><?php echo $rec_pro['product_title'] ?></a></h3>
                                         <h3> Rs <?php echo $rec_pro['product_price'] ?></h3>
                                         <br />

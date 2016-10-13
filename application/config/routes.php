@@ -49,6 +49,7 @@ $route['register'] = 'index/register';
 $route['detail/(:any)'] = 'index/detail/$1';
 // $route['category'] = 'index/category';
 $route['category/(:any)'] = 'index/category/$1';
+$route['order_status/(:any)'] = 'index/order_status/$1';
 $route['contact'] = 'index/contact';
 $route['basket'] = 'index/basket';
 $route['checkout'] = 'index/checkout';

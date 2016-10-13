@@ -147,6 +147,21 @@ class Index extends CI_Controller
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('my_orders', $categories);
     }
+
+    // Get order status by order id
+    public function order_status()
+    {   
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories_values_order_status = $this->index_model->get_order_status();
+        $categories['order_status'] = $categories_values_order_status['order_status'];
+        $categories['order_status_address'] = $categories_values_order_status['order_status_address'];
+        $this->load->view('order_status',$categories);
+    }
+
 	public function reg_form()
     {
         $categories_values_reg = $this->index_model->get_register();

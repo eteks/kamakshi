@@ -98,7 +98,7 @@
                                     </a>
                                 </div>
                                </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></h3>
                                     <br>
                                 </div>
@@ -130,7 +130,7 @@
                                     </a>
                                 </div>
                                </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></h3>
                                     <br>
                                 </div>
@@ -200,10 +200,9 @@
                                     </a>
                                 </div>
                                </div>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/<?php echo $pro['product_id']; ?>"><?php echo $pro['product_title'] ?></a>
-                                    <p><?php echo $pro['product_price'] ?></p>
-                                    </h3>
+                                <div class="text product_title">
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/<?php echo $pro['product_id']; ?>"><?php echo $pro['product_title'] ?></a></h3>
+                                    <h3><?php echo $pro['product_price'] ?></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->

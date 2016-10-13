@@ -1,4 +1,7 @@
-<?php include "templates/header.php"; ?>
+<?php
+if(!empty($this->session->userdata("login_status"))):
+include "templates/header.php"; 
+?>
     <div id="all">
         <div id="content">
             <div class="container">
@@ -45,7 +48,7 @@
                                 <thead>
                                     <tr>
                                         <th>Order</th>
-                                        <th>Date</th>
+                                        <th>Delivery Date</th>
                                         <th>Total</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -68,6 +71,12 @@
                                                 </span>
                                             </td>
                                         </tr>
+                                        <tr class="orders_list order<?php echo $myorder_value['order_id']; ?>">
+                                            <td> 
+                                                <div>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     <?php
                                     endforeach;
                                     endif;
@@ -84,4 +93,8 @@
         <!-- /#content -->
     </div>
     <!-- /#all -->
-<?php include "templates/footer.php"; ?>
+<?php include "templates/footer.php"; 
+else :
+    redirect('index');
+endif;
+?>
