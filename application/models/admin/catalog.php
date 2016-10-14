@@ -432,6 +432,13 @@ class Catalog extends CI_Model {
 		$query['product_list'] = $this->db->get()->row_array();
 		// echo $this->db->last_query();
 
+		$this->db->select('img.*');
+		$this->db->from('giftstore_product AS pro');
+		$this->db->join('giftstore_product_upload_image AS img', 'img.product_mapping_id = pro.product_id', 'inner');
+		$this->db->where('product_id', $id);
+		$this->db->order_by('product_createddate','desc');
+		$query['product_image'] = $this->db->get()->result_array();
+
 		$category_id = $query['product_list']['product_category_id'];
 		$category_reference = $this->get_category_reference($category_id);
 		$query['subcategory_list'] = $category_reference['subcategory_category'];

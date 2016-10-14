@@ -691,6 +691,7 @@ class Adminindex extends CI_Controller {
 	    }
 	    $query_result = $this->catalog->get_giftproduct_data($id);
 	    $status['giftproduct_data'] = $query_result['product_list'];
+	    $status['giftproduct_image'] = $query_result['product_image'];
 		$status['subcategory_list'] = $query_result['subcategory_list'];
 		$status['recipient_list'] = $query_result['recipient_list'];
 		$resatt = array();

@@ -47,6 +47,9 @@
                 // echo "<pre>";
                 // print_r($giftproduct_data);
                 // echo "</pre>";
+             echo "<pre>";
+             print_r($giftproduct_image);
+             echo "</pre>";
              ?>
              <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct/<?php echo $giftproduct_data["product_id"]; ?>" enctype="multipart/form-data" name="product_form" id="edit_giftproduct" class="form_submit">
              <input type="hidden" value="0">
@@ -60,8 +63,33 @@
                     </div>  
                     <div class="form-group">
                         <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
-                        <!-- <input type="file" id="category_image" name="product_image[]" multiple="multiple" class="product_default_field"> -->
-                        <input type='file' id='image_upload' name='product_image[]' multiple='multiple' class="product_default_field" /> 
+                        <!-- <input type='file' id='image_upload' name='product_image[]' multiple='multiple' class="product_default_field" />  -->
+                        <?php if (sizeof($giftproduct_image > 0)){ ?>
+                            <div class="simpleFilePreview_multiUI">
+                            <span class="simpleFilePreview_shiftRight simpleFilePreview_shifter"></span>
+                            <div class="simpleFilePreview_multiClip">
+                            <ul class="simpleFilePreview_multi" style="width: 535px;">
+                            <?php 
+                            $i = 0;
+                            foreach ($giftproduct_image as $key => $value) { ?>
+                                <li id="simpleFilePreview_<?php echo $i; ?>" class="simpleFilePreview" data-sfpallowmultiple="1">
+                                    <a class="simpleFilePreview_input" style="display: none;">
+                                        <span class="simpleFilePreview_inputButtonText">
+                                        <i class="fa fa-plus-circle fa_small"></i>
+                                        </span>
+                                    </a>
+                                    <span class="simpleFilePreview_remove" style="display: none;">Remove</span>
+                                    <input class="product_default_field simpleFilePreview_formInput" type="file" name="product_image[]" style="width: 61px; height: 61px;">
+                                    <img class="simpleFilePreview_preview " title="Remove this file" src="<?php echo $value['product_upload_image'] ?>">
+                                </li>
+                            <?php 
+                                $i++;
+                            } ?>
+                            </ul>
+                            </div>
+                            <span class="simpleFilePreview_shiftLeft simpleFilePreview_shifter"></span>
+                            </div>
+                        <?php } ?>
                         <span class="product_error_message">The Product Image field is required</span>
                         <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>   
                     </div>
