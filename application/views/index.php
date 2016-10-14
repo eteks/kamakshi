@@ -163,6 +163,7 @@
                                     <div class="portfolio_menu">
                                         <ul id="filters">
                                             <li class="active_prot_menu latest_products"><a href="#portfolio_menu" data-filter="*">Latest Products</a></li>
+                                            
                                         </ul>
                                    </div>
          
