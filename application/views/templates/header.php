@@ -73,6 +73,17 @@
                     </li> -->
                     <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
                     </li>
+                    <li>
+                        <a href="#" class="track_order_status_icon"> Track Order</a>
+                        <form method="POST" class="track_order_form" action="<?php echo base_url(); ?>index.php/track_order"> 
+                            <div class="input-group">
+                                <input type="text" placeholder="Order Id" name="track_order_id" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
                     <!-- <li><a href="#">Recently viewed</a>
                     </li> -->
                 </ul>

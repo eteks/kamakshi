@@ -187,6 +187,19 @@ class Index extends CI_Controller
         // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
+
+    // Track order status
+    public function track_order()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['trackorder_details'] = $this->index_model->get_trackorder_details();
+        $this->load->view('track_order',$categories);
+    }
+
     public function checkout1()
 	{
 		$this->load->view('checkout1');
@@ -283,10 +296,6 @@ class Index extends CI_Controller
     public function nopage()
     {
         $this->load->view('404');
-    }
-    public function track_order()
-    {
-        $this->load->view('track_order');
     }
 }
 /* End of file welcome.php */

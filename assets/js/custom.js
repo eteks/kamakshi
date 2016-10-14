@@ -248,7 +248,10 @@ $('#profile_email').on('keyup',function() {
     }
 });
 
-
+// Display search form for track order
+$('.track_order_status_icon').on('click',function(){
+    $('.track_order_form').fadeToggle();
+});
 
 
 

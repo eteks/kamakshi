@@ -321,7 +321,8 @@
   margin-bottom: 30px;
 }
 .order-box-header {
-  background: #ebeded none repeat scroll 0 0;
+  background: #555555 none repeat scroll 0 0;
+  color: #fff;
   font-weight: bold;
   padding: 10px;
   text-transform: uppercase;
@@ -331,6 +332,56 @@
 }
 .latest_products a {
   cursor: text;
+}
+.track_order_form {
+  display: none;
+  margin: 8px 0 0;
+  position: absolute;
+  right: -60px;
+}
+.track_order_form input{
+  width : 50% !important;
+  height: 28px;
+  float : right !important;
+}
+.track_order_form button{
+  padding-top : 3px;
+  padding-bottom : 3px;
+}
+.process_status_datails {
+  width : 100%;
+}
+.process_status_datails hr{
+  border-color: #555555;
+  margin: 10px 0px;
+  opacity: 0.1 !important;
+}
+.process_list {
+  list-style: none;
+  padding: 0;
+}
+.process_list li{
+  padding: 20px 0px;
+}
+.track_order_footer {
+
+}
+.track_order_footer h1{
+  font-size: 24px;
+}
+.track_order_footer p{
+  font-size: 14px;
+}
+#content hr{
+  border-color: #555555;
+  margin: 10px 0px;
+  opacity: 0.3;
+}
+.line_active {
+  background-color: #98d091 !important;
+}
+.track_active {
+  background-color: #98d091 !important;
 }
 
 /* Ended by siva*/
@@ -646,14 +697,12 @@
     height: auto;
 }
 .track_order_status_process h1 {
-    background-color: #fff;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    font-size: 28px;
+    color: #555555;
+    font-size: 26px;
     font-weight: 500;
-    margin-bottom: 30px;
-    padding: 10px;
+    margin: 10px auto 40px;
+    padding: 7px;
     text-align: center;
-    width: 97.5%;
 }
 span.line {
     height: 5px;
@@ -663,6 +712,7 @@ span.line {
     position: absolute;
     top: 28%;
     left: 170px;
+    z-index: -1;
 }
 .process{
 	text-align:center;
@@ -670,12 +720,6 @@ span.line {
 	position:relative;
 	float:left;
 	/*margin-left:5%;*/
-}
-.process .imgcircle{
-	background-color:#98D091;
-}
-.process span.line{
-	background-color:#98D091; 
 }
 .process p {
 	/*margin-left:-65%;*/

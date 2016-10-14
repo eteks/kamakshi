@@ -392,4 +392,15 @@ class Index_Model extends CI_Model {
         return $order_status_array;
     }
 
+    // Track order details
+    public function get_trackorder_details()
+    {
+        $track_order_status_array = array();
+        if($this->input->post('track_order_id')) {
+            $track_order_where = '(order_id="'.$this->input->post('track_order_id').'")';
+            $track_order_status_array = $this->db->get_where('giftstore_order',$track_order_where)->row_array();
+        }  
+        return $track_order_status_array;
+    }
+
 }
