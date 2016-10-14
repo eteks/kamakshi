@@ -31,6 +31,9 @@
     <link href="<?php echo base_url(); ?>assets/css/thumbnail-slider.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
     <link rel="shortcut icon" href="favicon.png">
+    <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "dd95200b-4b94-4ef1-a537-c65ad9d21ec8", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
   <!-- *** TOPBAR *** -->
@@ -50,8 +53,10 @@
                 <ul class="menu">
                     <?php if(!empty($this->session->userdata("login_status"))): 
                         $session_data = $this->session->userdata("login_session");
+                        // $facebook_session_data = $this->session->userdata("facebook_login_session");
                     ?>
                         <li class="login_menu"> Welcome <?php echo $session_data['user_name']; ?>
+                        <!-- <li class="login_menu"> Welcome <?php echo $facebook_session_data['user_name']; ?> -->
                         	<span class="caret dropdown-toggle drpdwn-icon" data-toggle="dropdown"></span>
 							    <ul class="dropdown-menu users-dropdown">
 							      <li><a href="<?php echo base_url(); ?>index.php/profile/">Profile</a></li>
@@ -130,19 +135,15 @@
                               </div>
                             </div>
                         </form>
-                          </div>                   
+                          </div>                 
                            <div id="facebook_login">
 							<ul class="social_icons">
-								<a href="<?php echo base_url(); ?>index.php/oauth_login/facebook"><img class='fb' src="assets/img/fb.png"."></a>
-								<!-- <i class="fa fa-facebook"></i> -->
-								<!-- Connect with facebook -->
-								<!-- </a>							 -->
-								<a href="https://twitter.com/" title="Twitter">
-								<i class="fa fa-twitter"></i> 
-								</a>							
-								<a href="https://plus.google.com/u/0/" title="Google Plus">
-								<i class="fa fa-google-plus" aria-hidden="true"></i>
-								</a>							
+								<a href="<?php echo $login_url; ?>">
+                                <img class="fb" src="assets/img/fb.png">
+                                </a>							
+								<a href="<?php echo $authUrl; ?>">
+                                <img class="fb" src="assets/img/google.png">
+                                </a>							
 							</ul>
 							</div>  
                         <p class="text-center text-muted">Not registered yet?</p>
