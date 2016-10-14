@@ -59,11 +59,12 @@
             <!--Product Categories-->
             <div class="container">
                 <div id="product-terms" class="product_category_name"> 
+                    <a id="item_all" class="" href="#"> All </a>
                     <?php 
                         if(!empty($recipient_list)): 
                         foreach($recipient_list as $res_list):
                     ?>
-                            <a id="item<?php echo $res_list['recipient_id']; ?>" class="" href="#"><?php echo $res_list['recipient_type']; ?></a>
+                        <a id="item<?php echo $res_list['recipient_id']; ?>" class="" href="#"><?php echo $res_list['recipient_type']; ?></a>
                     <?php
                         endforeach;
                         endif;
@@ -73,16 +74,11 @@
 					<?php 
                         $array_temp = array();
                         foreach ($category_recipient_list as $cat): 
-                                // echo "<pre>";
-                                // echo $cat['recipient_mapping_id'];
-                                // echo "</pre>";
                         if (!in_array($cat['category_id'], $array_temp)):
                         $array_temp[] = $cat['category_id'];
-                        if (!empty($cat['recipient_mapping_id'])):
                     ?>   
-
                         <div class="project item<?php echo $cat['recipient_mapping_id']; ?> primary_list">
-                            <div class="product">
+                            <div class="product recipient_based_categories">
                               <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
@@ -102,7 +98,7 @@
                                     </a>
                                 </div>
                                </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></h3>
                                     <br>
                                 </div>
@@ -110,13 +106,11 @@
                             </div>
                             <!-- /.product -->
                         </div>
-
                         <?php 
-                        endif;
                         else:
                         ?>
                         <div class="project item<?php echo $cat['recipient_mapping_id']; ?> secondary_list">
-                            <div class="product">
+                            <div class="product recipient_based_categories">
                               <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
@@ -136,7 +130,7 @@
                                     </a>
                                 </div>
                                </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></h3>
                                     <br>
                                 </div>
@@ -151,7 +145,7 @@
             	</div>
 				<div id="projects-copy" class="hide"></div>
 			</div>
-				<!--Product Categories-->
+			<!--Product Categories-->
             <!--Popular, Futured Products-->
              <div id="hot">
             <section id="our-works" class="page bg-style1">
@@ -192,25 +186,24 @@
                                 <div class="flip-container latest_product_images">
                                     <div class="flipper latest_product_images">
                                         <div class="front latest_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $pro['product_id']; ?>">
                                                 <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive product_position">
                                             </a>
                                         </div>
                                         <div class="back latest_product_images">
-                                            <a href="<?php echo base_url(); ?>index.php/detail/">
+                                            <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $pro['product_id']; ?>">
                                                 <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive product_position">
                                             </a>
                                         </div>
                                     </div>
-                                    <a href="<?php echo base_url(); ?>index.php/detail/" class="invisible">
+                                    <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $pro['product_id']; ?>" class="invisible">
                                     <img src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="" class="img-responsive product_position">
                                     </a>
                                 </div>
                                </div>
-                                <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/"><?php echo $pro['product_title'] ?></a>
-                                    <p><?php echo $pro['product_price'] ?></p>
-                                    </h3>
+                                <div class="text product_title">
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/<?php echo $pro['product_id']; ?>"><?php echo $pro['product_title'] ?></a></h3>
+                                    <h3><?php echo $pro['product_price'] ?></h3>
                                     <br />
                                 </div>
                                 <!-- /.text -->

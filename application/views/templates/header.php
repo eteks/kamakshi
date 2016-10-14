@@ -12,7 +12,7 @@
         Kamakshi -Giftshop
     </title>
     <meta name="keywords" content="">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
     <!-- styles -->
     <link href="<?php echo base_url(); ?>assets/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -78,6 +78,17 @@
                     </li> -->
                     <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
                     </li>
+                    <li>
+                        <a href="#" class="track_order_status_icon"> Track Order</a>
+                        <form method="POST" class="track_order_form" action="<?php echo base_url(); ?>index.php/track_order"> 
+                            <div class="input-group">
+                                <input type="text" placeholder="Order Id" name="track_order_id" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
                     <!-- <li><a href="#">Recently viewed</a>
                     </li> -->
                 </ul>
@@ -136,7 +147,7 @@
 							</ul>
 							</div>  
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>                                                           
+                        <p class="text-center text-muted registeration_instructions"><a href="<?php echo base_url(); ?>index.php/register/"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>                                                           
                     </div>                       
             </div>
         </div>

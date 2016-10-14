@@ -31,6 +31,9 @@
         </div>
         <div class="panel-body">
             <ul class="nav nav-pills nav-stacked category-menu">
+                <li>
+                    <a class="recipients" data-id="0"> All </a> 
+                </li>
                 <?php foreach ($gift_recipient as $recipient) : ?>
                     <li>
                         <a class="recipients" data-id="<?php echo $recipient['recipient_id']; ?>"><?php echo $recipient['recipient_type']; ?></a> 

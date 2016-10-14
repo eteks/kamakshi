@@ -17,7 +17,9 @@ class Index extends CI_Controller
         // Load facebook library and pass associative array which contains appId and secret key
         $this->load->library('facebook', array('appId' => '1047438518707100', 'secret' => '8495e9c0015d181c8a223cd5e3385d14'));
          $this->giftstore_users = $this->facebook->getUser();
+        date_default_timezone_set('Asia/Kolkata');
     }
+
     // Index page
     public function index()
 	{
@@ -237,9 +239,25 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['my_orders'] = $this->index_model->get_my_orders();
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('my_orders', $categories);
     }
+
+    // Get order status by order id
+    public function order_status()
+    {   
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories_values_order_status = $this->index_model->get_order_status();
+        $categories['order_status'] = $categories_values_order_status['order_status'];
+        $categories['order_status_address'] = $categories_values_order_status['order_status_address'];
+        $this->load->view('order_status',$categories);
+    }
+
 	public function reg_form()
     {
         $categories_values_reg = $this->index_model->get_register();
@@ -265,6 +283,19 @@ class Index extends CI_Controller
         // print_r($categories['basket_details']);
 		$this->load->view('basket',$categories);
 	}
+
+    // Track order status
+    public function track_order()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['trackorder_details'] = $this->index_model->get_trackorder_details();
+        $this->load->view('track_order',$categories);
+    }
+
     public function checkout1()
 	{
 		$this->load->view('checkout1');
@@ -298,6 +329,18 @@ class Index extends CI_Controller
     public function pay_failure()
     {
         $this->load->view('payu/failure');
+    }
+
+    // Payment gateway cancellation
+    public function pay_cancel()
+    {
+        $this->load->view('payu/cancel');
+    }
+
+    // Success page for after payment
+    public function success()
+    {
+        $this->load->view('payu/payment_success');
     }
 
     public function customer_wishlist()
@@ -349,10 +392,6 @@ class Index extends CI_Controller
     public function nopage()
     {
         $this->load->view('404');
-    }
-    public function track_order()
-    {
-        $this->load->view('track_order');
     }
 }
 /* End of file welcome.php */

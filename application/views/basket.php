@@ -121,7 +121,7 @@
                                 </a>
                                 </div>
                                </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3>Fashion and Style</h3>
                                     <p class="price">$143</p>
                                 </div>
@@ -149,7 +149,7 @@
                                 </a>
                                 </div>
                                </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3>Baby</h3>
                                     <p class="price">$143</p>
                                 </div>
@@ -177,7 +177,7 @@
                                 </a>
                                 </div>
                               </div>
-                                <div class="text">
+                                <div class="text product_title">
                                     <h3>T-Shirt</h3>
                                     <p class="price">$143</p>
                                 </div>

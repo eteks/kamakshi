@@ -158,4 +158,11 @@ class Ajax_Controller extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	// Get myorders list
+	public function myorders_list()
+	{	
+		$data = $this->ajax_model->get_myorders_list();
+		echo json_encode($data);
+	}
+
 } // end of the class
