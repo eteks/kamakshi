@@ -178,30 +178,35 @@
             <!--/.navbar-header -->
             <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="<?php echo base_url(); ?>index.php/">Home</a>
+                    <li class="kamakshi_header_menu" id="kamakshi_header_menu_home"><a href="<?php echo base_url(); ?>index.php/">Home</a>
                     </li>
-                    <li class="dropdown yamm-fw">
+                    <li class="kamakshi_header_menu dropdown yamm-fw" id="kamakshi_header_menu_category">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Categories<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
                                     <h5>Category</h5>
-                                    <?php foreach ($giftstore_category as $cat):?>
+                                    <?php 
+                                    if(!empty($giftstore_category)):    
+                                    foreach ($giftstore_category as $cat):?>
                                         <div class="col-sm-3">                                
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php 
+                                    endforeach;
+                                    endif;
+                                    ?>
                                     </div>
                                 </div>                                
                                 <!-- /.yamm-content -->
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown yamm-fw">
+                    <li class="kamakshi_header_menu dropdown yamm-fw" id="kamakshi_header_menu_recipient">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Recipient<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -230,9 +235,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="about-us"><a href="<?php echo base_url(); ?>index.php/">About Us</a>
+                    <li class="kamakshi_header_menu about-us" id="kamakshi_header_menu_about"><a href="<?php echo base_url(); ?>index.php/about">About Us</a>
                     </li>
-                    <li class="contact-us"><a href="<?php echo base_url(); ?>index.php/contact/">Contact US</a>
+                    <li class="kamakshi_header_menu contact-us" id="kamakshi_header_menu_contact"><a href="<?php echo base_url(); ?>index.php/contact/">Contact US</a>
                     </li>
                      </ul>
                     </li>
@@ -253,15 +258,19 @@
                 </div>
             </div>
             <div class="collapse clearfix" id="search">
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" action="<?php echo base_url(); ?>index.php/search_section" method="POST">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" name="search_keyword" placeholder="Search by product name">
                         <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                        </span>
                     </div>
                 </form>
             </div>
+            <?php
+            $fullurl = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            ?>
+            <input type="hidden" value="<?php echo $fullurl; ?>" class="full_site_url" />
             <!--/.nav-collapse -->
         </div>
         <!-- /.container -->

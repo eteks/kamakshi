@@ -13,7 +13,7 @@ class Index extends CI_Controller
         $this->load->helper(array('url','html','form'));
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 14;
+        $this->perPage = 4;
         // Load facebook library and pass associative array which contains appId and secret key
         $this->load->library('facebook', array('appId' => '1047438518707100', 'secret' => '8495e9c0015d181c8a223cd5e3385d14'));
          $this->giftstore_users = $this->facebook->getUser();
@@ -168,6 +168,30 @@ class Index extends CI_Controller
 		}
 	}
 
+    // Listing page with pagination for search option
+    public function search_section()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+
+        $category_values = $this->index_model->get_product_list($this->perPage);
+        $categories['search_keyword'] = $category_values['search_keyword'];
+        $categories['product_list'] = $category_values['product_list'];
+        $categories['cat_pro_count'] = $category_values['cat_pro_count'];
+        $config['target']      = '#all_products_section';
+        $config['base_url']    = base_url().'index.php/ajax_controller/filtering_search_product';
+        $config['total_rows']  = $categories['cat_pro_count'];
+        $config['per_page']    = $this->perPage;
+        $this->ajax_pagination->initialize($config);
+        // $categories['product_category'] = $category_values['product_category'];
+
+
+        $this->load->view('search',$categories);
+    }
+
     //  Product details page with attribute
 	public function detail()
 	{
@@ -214,6 +238,18 @@ class Index extends CI_Controller
 		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('contact',$categories);
 	}
+
+    // About us page
+    public function about()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        // $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        $this->load->view('about',$categories);
+    }
 
     // Profile for registered users
     public function profile()
@@ -392,7 +428,12 @@ class Index extends CI_Controller
     }
     public function nopage()
     {
-        $this->load->view('404');
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $this->load->view('404',$categories);
     }
 }
 /* End of file welcome.php */
