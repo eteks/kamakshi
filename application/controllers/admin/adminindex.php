@@ -674,10 +674,14 @@ class Adminindex extends CI_Controller {
 					// print_r($pieces);
 					$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
 
-					$final_attribute_group = array_map(null,$_POST['product_attribute_group_id'],$attribute_group);
-
-					// print_r($final_attribute_group);
-					$data['product_attributes'] = $final_attribute_group;
+					if(isset($_POST['product_attribute_group_id'])){
+						$final_attribute_group = array_map(null,$_POST['product_attribute_group_id'],$attribute_group);
+						// print_r($final_attribute_group);
+						$data['product_attributes_exists'] = $final_attribute_group;
+					}	
+					else{
+						$data['product_attributes_new'] = $attribute_group;
+					}		
 				}
 				// echo "<pre>";
 		  //   	print_r($data);
