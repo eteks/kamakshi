@@ -47,9 +47,9 @@
                 // echo "<pre>";
                 // print_r($giftproduct_data);
                 // echo "</pre>";
-             echo "<pre>";
-             print_r($giftproduct_image);
-             echo "</pre>";
+             // echo "<pre>";
+             // print_r($giftproduct_image);
+             // echo "</pre>";
              ?>
              <form role="form" method="POST" action="<?php echo base_url(); ?>index.php/admin/adminindex/edit_giftproduct/<?php echo $giftproduct_data["product_id"]; ?>" enctype="multipart/form-data" name="product_form" id="edit_giftproduct" class="form_submit">
              <input type="hidden" value="0">
@@ -61,40 +61,6 @@
                         <input type="text" class="form-control product_default_field product_lables" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php if(!empty($giftproduct_data['product_title'])) echo $giftproduct_data['product_title']; ?>">
                         <span class="product_error_message">The Product Title field is required</span>
                     </div>  
-                    <div class="form-group">
-                        <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
-                        <!-- <input type='file' id='image_upload' name='product_image[]' multiple='multiple' class="product_default_field" />  -->
-                        <?php if (sizeof($giftproduct_image > 0)){ ?>
-                            <div class="simpleFilePreview_multiUI">
-                            <span class="simpleFilePreview_shiftRight simpleFilePreview_shifter"></span>
-                            <div class="simpleFilePreview_multiClip">
-                            <ul class="simpleFilePreview_multi" style="width: 535px;">
-                            <?php 
-                            $i = 0;
-                            foreach ($giftproduct_image as $key => $value) { ?>
-                                <li id="simpleFilePreview_<?php echo $i; ?>" class="simpleFilePreview" data-sfpallowmultiple="1">
-                                    <a class="simpleFilePreview_input" style="display: none;">
-                                        <span class="simpleFilePreview_inputButtonText">
-                                        <i class="fa fa-plus-circle fa_small"></i>
-                                        </span>
-                                    </a>
-                                    <span class="simpleFilePreview_remove" style="display: none;">Remove</span>
-                                    <input class="product_default_field simpleFilePreview_formInput" type="file" name="product_image[]" style="width: 61px; height: 61px;">
-                                    <img class="simpleFilePreview_preview " title="Remove this file" src="<?php echo $value['product_upload_image'] ?>">
-                                </li>
-                            <?php 
-                                $i++;
-                            } ?>
-                            </ul>
-                            </div>
-                            <span class="simpleFilePreview_shiftLeft simpleFilePreview_shifter"></span>
-                            </div>
-                        <?php } ?>
-                        <span class="product_error_message">The Product Image field is required</span>
-                        <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>   
-                    </div>
-                    <div class="edit-catpro-image preview_part">
-                    </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>
                         <textarea type="text" class="form-control product_default_field product_lables" id="description" placeholder="Enter description" name="product_description"><?php if(!empty($giftproduct_data['product_description'])) echo $giftproduct_data['product_description']; ?></textarea>
@@ -173,6 +139,43 @@
                     // print_r($product_attribute_list);
                     // echo "</pre>";
                     ?>
+                    <?php if(sizeof($product_attribute_list) == 0){ ?>
+                        <div class="attribute_main_block">
+                        <div class="attribute_group" id="attribute_group1">
+                            <div class="form-group attribute_block">
+                                <div class="clone_attribute_group">
+                                    <div class="clone_attribute" id="clone_attribute1">
+                                        <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
+                                        <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes field_validate attribute_option_validate attribute_validate att_equal">
+                                                <option value="">Select Attribute</option>
+                                                <?php foreach ($attribute_list as $att): ?>
+                                                    <option value="<?php echo $att["product_attribute_id"] ?>"><?php echo $att["product_attribute"] ?></option>
+                                                <?php endforeach ?>
+                                        </select>
+                                        <input class="form-control fl label-boxes field_validate attribute_option_validate attribute_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text">
+                                        <div class="add-rmv-btn">
+                                            <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
+                                            <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
+                                        </div>
+                                    </div> <!--  clone_attribute -->
+                               </div> <!-- clone_attribute_group -->
+                                 <div class="clr-screen"></div>
+                            </div>
+                            <div class="form-group attribute_block">
+                                <label for="price" class="fl">Price</label>
+                                <input type="text" class="form-control label-boxes attribute_validate price" id="product_attribute_price" placeholder="Enter price" name="product_attribute_price[]">
+                            </div> 
+                             <div class="form-group attribute_block">
+                                <label for="total_iteams" class="fl">Total Items</label>
+                                <input type="text" class="form-control label-boxes attribute_validate" id="product_attribute_totalitems" placeholder="Enter total items" name="product_attribute_totalitems[]">
+                            </div> 
+                            <div class="group group_action">
+                                <input type="button" value="Add" class="btn submit-btn btn-default attibute_add product-btns">
+                                <input type="button" value="Remove" class="btn submit-btn btn-default attibute_remove product-btns attribute_btn_disabled">      
+                            </div>  
+                        </div> 
+                    </div>   
+                    <?php } else { ?>
                     <div class="attribute_main_block" style="<?php if(sizeof($product_attribute_list) > 0) echo 'display:block'; ?>">
                         <?php 
                         $i=1;
@@ -187,11 +190,14 @@
                                             <label for="total_iteams" class="attribute_label fl">Attribute Option</label>
                                             <select name="select_attribute[]" id="sel_c" class="product-type-filter form-control fl label-boxes field_validate attribute_option_validate attribute_validate att_equal">
                                                     <option value="">Select Attribute</option>
-                                                    <?php foreach ($attribute_list as $att): ?>
+                                                    <?php foreach ($attribute_list as $att): 
+                                                    if(is_array($value['product_attribute_id'])){ ?>
                                                         <option value="<?php echo $att["product_attribute_id"] ?>" <?php if($value['product_attribute_id'][$i] == $att["product_attribute_id"] ) echo "selected"; ?>><?php echo $att["product_attribute"] ?></option>
-                                                    <?php endforeach ?>
+                                                    <?php }else {?>
+                                                        <option value="<?php echo $att["product_attribute_id"] ?>" <?php if($value['product_attribute_id'] == $att["product_attribute_id"] ) echo "selected"; ?>><?php echo $att["product_attribute"] ?></option>
+                                                    <?php }endforeach ?>
                                             </select>
-                                            <input class="form-control fl label-boxes field_validate attribute_option_validate attribute_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text" value="<?php echo $value['product_attribute_value'][$i];?>">
+                                            <input class="form-control fl label-boxes field_validate attribute_option_validate attribute_validate" id="total_iteams" placeholder="Enter Attribute value" name="attribute_value[]" type="text" value="<?php if(is_array($value['product_attribute_id'])) echo $value['product_attribute_value'][$i]; else echo $value['product_attribute_value'];?>">
                                             <div class="add-rmv-btn">
                                                 <input value="Add" class="btn submit-btn btn-default attibute_add_btn attribute_action_btn" type="button">
                                                 <input value="Remove" class="btn submit-btn btn-default attibute_remove_btn attribute_action_btn attribute_btn_disabled" type="button">
@@ -217,9 +223,10 @@
                         <?php 
                         $i++;
                         } ?> 
-                        </div>               
+                        </div>   
+                    <?php } ?>            
                     <div class="group_values_block">
-                        <input type="hidden" class="group_values" name="group_values" value="<?php echo sizeof($product_attribute_list) ?>"> 
+                        <input type="hidden" class="group_values" name="group_values" value="<?php if(sizeof($product_attribute_list) > 0) echo sizeof($product_attribute_list); else echo "1"; ?>"> 
                     </div> <!-- group_values_block -->
                     <button type="submit" class="btn submit-btn btn-default submiit">Submit</button>
                 </form>

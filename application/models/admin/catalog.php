@@ -458,26 +458,31 @@ class Catalog extends CI_Model {
 	{	
 		$data_product_basic = $data['product_basic'];
 		// $data_product_files = $data['product_files'];
-		$data_product_attributes = isset($data['product_attributes'])?$data['product_attributes']:"";
+		$data_product_attributes_exists = isset($data['product_attributes_exists'])?$data['product_attributes_exists']:"";
 		// echo "<pre>";
-		// print_r($data_product_attributes);
+		// print_r($data_product_attributes_exists);
 		// echo "</pre>";
+		$data_product_attributes_new = isset($data['product_attributes_new'])?$data['product_attributes_new']:"";
 		$this->db->where('product_id', $data_product_basic['product_id']);
 		$this->db->update('giftstore_product', $data_product_basic);
-		if(!empty($data_product_attributes)){
-			foreach($data_product_attributes as $key=>$value){
+		// To update and remove existing attributes
+		if(!empty($data_product_attributes_exists)){
+			foreach($data_product_attributes_exists as $key=>$value){
 				$product_attribute_group_id = $value[0];
 				$attributes = $value[1][0];
 				$price = $value[1][1];
 				$items = $value[1][2];
 				$product_attribute_inserted_id = array();
-				foreach ($attributes as $key => $value) {
-					$product_attribute_id = $attributes[$key][0];
-					$product_attribute_value = $attributes[$key][1];
+				foreach ($attributes as $key => $value1) {
+					$product_attribute_id = $value1[0];
+					$product_attribute_value = $value1[1];
 					$product_attributes_data = array(
 							'product_attribute_id' => $product_attribute_id ,
 							'product_attribute_value' => $product_attribute_value 
 					);
+					// echo "<pre>";
+					// print_r($product_attributes_data);
+					// echo "</pre>";
 					$this->db->select('*');
 					$this->db->from('giftstore_product_attribute_value');
 					$this->db->where($product_attributes_data);
@@ -492,11 +497,13 @@ class Catalog extends CI_Model {
 					}
 					array_push($product_attribute_inserted_id,$map_id);
 				}
+				if(sizeof($product_attribute_inserted_id) > 0)
+					$product_attribute_inserted_id = implode(",", $product_attribute_inserted_id);
 				$product_attributes_group = array(
 						'product_mapping_id' => $data_product_basic['product_id'] ,
 						'product_attribute_group_price' => $price ,
 						'product_attribute_group_totalitems' => $items,
-						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
+						'product_attribute_value_combination_id' => $product_attribute_inserted_id	
 				);
 				$this->db->select('*');
 				$this->db->from('giftstore_product_attribute_group');
@@ -511,6 +518,32 @@ class Catalog extends CI_Model {
 				}
 			}
 		}		
+		// To store the attributes newly
+		if(!empty($data_product_attributes_new)){
+			foreach($data_product_attributes_new as $key=>$value){
+				$attributes = $value[0];
+				$price = $value[1];
+				$items = $value[2];
+				$product_attribute_inserted_id = array();
+				foreach ($attributes as $key => $value) {
+					$product_attribute_id = $attributes[$key][0];
+					$product_attribute_value = $attributes[$key][1];
+					$product_attributes_data = array(
+						'product_attribute_id' => $product_attribute_id ,
+						'product_attribute_value' => $product_attribute_value 
+					);
+					$this->db->insert('giftstore_product_attribute_value', $product_attributes_data);
+					array_push($product_attribute_inserted_id,$this->db->insert_id());
+				}
+				$product_attributes_group = array(
+						'product_mapping_id' => $data_product_basic['product_id'] ,
+						'product_attribute_group_price' => $price ,
+						'product_attribute_group_totalitems' => $items,
+						'product_attribute_value_combination_id' => implode(",", $product_attribute_inserted_id)
+				);
+				$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
+			}
+		}	
 		// trans_complete() function is used to check whether updated query successfully run or not
 		if ($this->db->trans_complete() == false) {
 			return false;

@@ -54,14 +54,14 @@
                 <!-- user dropdown ends -->
             <?php } ?>
 
-            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+            <ul class="collapse navbar-collapse nav navbar-nav top-menu visit_site">
                 <li><a href="<?php echo base_url(); ?>"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
-                <li>
+               <!--  <li>
                     <form class="navbar-search pull-left">
                         <input placeholder="Search" class="search-query form-control col-md-10" name="query"
                                type="text">
                     </form>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
