@@ -24,6 +24,8 @@
             <h3 class="panel-title">Price</h3>
         </div>
         <input data-addui='slider' data-min='0' data-max='1000' data-range='true' value='0,1000'/>
+        <!-- <div id="double_number_range"></div>
+        <input type="hidden" value="<?php echo $product_price; ?>" id="price_range_filter_value" /> -->
     </div>
     <div class="panel panel-default sidebar-menu">
         <div class="panel-heading">

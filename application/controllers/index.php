@@ -56,6 +56,7 @@ class Index extends CI_Controller
 		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
 		$categories['product_category'] = $category_values['product_category'];
+        $categories['product_price'] = $category_values['product_price'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
 		// print_r($categories);
 		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {

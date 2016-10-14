@@ -1,3 +1,18 @@
+// ;(function() {
+//     "use strict";
+//     var price_value = $('#price_range_filter_value').val().split(',');
+
+//     $("#double_number_range").rangepicker({
+//         type: "double",
+//         startValue: 0,
+//         endValue: price_value[1],
+//         translateSelectLabel: function(currentPosition, totalPosition) {
+//             return parseInt(price_value[1] * (currentPosition / totalPosition));
+//         }
+//     });
+
+// }());
+
 
 $(document).ready(function() {  
 
