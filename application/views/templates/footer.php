@@ -6,7 +6,7 @@
                     <div class="col-md-3 col-sm-6">
                         <h4>Pages</h4>
                         <ul>
-                            <li><a href="text.php">About us</a>
+                            <li><a href="<?php echo base_url(); ?>index.php/about">About us</a>
                             </li>
                             <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact us</a>
                             </li>
@@ -16,9 +16,9 @@
                         <hr>
                         <h4>User section</h4>
                         <ul>
-                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                            <li><a data-target="#login-modal" data-toggle="modal" href="#">Login</a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/register/">Regiter</a>
+                            <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
                             </li>
                         </ul>
                         <hr class="hidden-md hidden-lg hidden-sm">
@@ -28,24 +28,31 @@
                         <h4>Top categories</h4>
                         <h5>Gift By categories</h5>
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Baby</a>
-                            </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Beauty & Personal Care</a>
-                            </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Accessories</a>
-                            </li>
+                            <?php 
+                            if(!empty($giftstore_category)): 
+                            $result = array_slice($giftstore_category, -3, 3, true);    
+                            foreach ($result as $cat):?>
+                                <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></a>
+                                </li>
+                            <?php 
+                            endforeach;
+                            endif;
+                            ?>
                         </ul>
                          <hr />
                         <h5>Gift By Recipient</h5>
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Men</a>
+                            <?php 
+                            if(!empty($recipient_list)): 
+                            foreach ($recipient_list as $rec): 
+                            ?>
+                            <li>
+                                <a href="<?php echo base_url(); ?>index.php/recipient_category/<?php echo $rec['recipient_id']; ?>"> <?php echo $rec['recipient_type']; ?></a>
                             </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Women</a>
-                            </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Boy</a>
-                            </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/category/">Girl</a>
-                            </li>
+                            <?php
+                            endforeach;
+                            endif;
+                            ?>
                         </ul>
                         <hr class="hidden-md hidden-lg">
                     </div>
@@ -67,15 +74,15 @@
                     <div class="col-md-3 col-sm-6">
                         <h4>Get the news</h4>
                         <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                        <form>
+                        <!-- <form>
                             <div class="input-group">
                                 <input type="text" class="form-control">
                                 <span class="input-group-btn">
                                   <button class="btn btn-default" type="button">Subscribe!</button>
                                 </span>
-                      </div>
-                            <!-- /input-group -->
-                        </form>
+                        </div>
+                            
+                        </form> -->
                         <hr>
                         <h4>Stay in touch</h4>
                         <p class="social">
@@ -128,6 +135,7 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.isotope.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/ajax_call.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/range_picker.js"></script> <!-- price range-->
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/addSlider.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/Obj.min.js"></script>

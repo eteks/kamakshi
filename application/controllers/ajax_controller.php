@@ -15,7 +15,7 @@ class Ajax_Controller extends CI_Controller {
 
         // Load pagination library
         $this->load->library('ajax_pagination');
-        $this->perPage = 3;
+        $this->perPage = 4;
 	}
 
 	// Filtering for products
@@ -34,13 +34,41 @@ class Ajax_Controller extends CI_Controller {
         $data['product_category'] =  $data_values['product_category'];
         $data['product_count'] =  $data_values['product_count'];
         //pagination configuration
-        		$config['base_url']    = base_url().'index.php/oauth_login/test';
+       	// $config['base_url']    = base_url().'index.php/oauth_login/test';
         $config['target']      = '#all_products_section';
         $config['base_url']    = base_url().'index.php/ajax_controller/filtering_product';
         $config['total_rows']  = $data['product_count'];
         $config['per_page']    = $this->perPage;
         $this->ajax_pagination->initialize($config);
         $this->load->view('category',$data,false);
+        // $this->load->view('products_ajax',$data,false);
+    	// echo $products_subcategory_list;		
+	}
+
+	// Filtering for search products
+	public function filtering_search_product()
+	{	
+        $page = $this->input->post('page');
+        if(!$page){
+            $offset = 0;
+        }else{
+            $offset = $page;
+        }
+        $input['offset'] = $offset;
+        $input['limit'] = $this->perPage;
+        //get the posts data
+        $category_values = $this->ajax_model->get_filtering_search_product($input);
+        $categories['product_list'] = $category_values['product_list'];
+        $categories['cat_pro_count'] = $category_values['cat_pro_count'];
+
+        //pagination configuration
+        		// $config['base_url']    = base_url().'index.php/oauth_login/test';
+        $config['target']      = '#all_products_section';
+        $config['base_url']    = base_url().'index.php/ajax_controller/filtering_search_product';
+        $config['total_rows']  = $categories['cat_pro_count'];
+        $config['per_page']    = $this->perPage;
+        $this->ajax_pagination->initialize($config);
+        $this->load->view('search',$categories,false);
         // $this->load->view('products_ajax',$data,false);
     	// echo $products_subcategory_list;		
 	}

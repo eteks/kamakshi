@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "index";
-$route['404_override'] = '';
+$route['404_override'] = 'index/nopage';
 
 // $route['view/(:any)'] = 'todos/view';
 
@@ -67,8 +67,10 @@ $route['profile'] = 'index/profile';
 $route['customer_wishlist'] = 'index/customer_wishlist';
 $route['my_orders'] = 'index/my_orders';
 $route['recipient_category/(:any)'] = 'index/recipient_category/$1';
+$route['search_section'] = 'index/search_section';
 $route['track_order'] = 'index/track_order';
 $route['404_page'] = 'index/nopage';
+$route['about'] = 'index/about';
 $route['oauth_login/facebook'] = 'oauth_login/facebook_login';
 
 

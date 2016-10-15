@@ -1,3 +1,18 @@
+// ;(function() {
+//     "use strict";
+//     var price_value = $('#price_range_filter_value').val().split(',');
+
+//     $("#double_number_range").rangepicker({
+//         type: "double",
+//         startValue: 0,
+//         endValue: price_value[1],
+//         translateSelectLabel: function(currentPosition, totalPosition) {
+//             return parseInt(price_value[1] * (currentPosition / totalPosition));
+//         }
+//     });
+
+// }());
+
 
 $(document).ready(function() {  
 
@@ -253,136 +268,43 @@ $('.track_order_status_icon').on('click',function(){
     $('.track_order_form').fadeToggle();
 });
 
-
+if($('.full_site_url').length > 0) {
+    var site_value = $('.full_site_url').val();
+    var page_title = site_value.replace(baseurl,'');   
+    if(page_title=="") {
+        $('.kamakshi_header_menu').removeClass('active');
+        $('#kamakshi_header_menu_home').addClass('active');
+    }
+    else {
+        page_title = page_title.replace('index.php/','').split('/'); 
+        if(page_title[0]=="") {
+            $('.kamakshi_header_menu').removeClass('active');
+            $('#kamakshi_header_menu_home').addClass('active');
+        }
+        else if(page_title[0]=="category") {
+            $('.kamakshi_header_menu').removeClass('active');
+            $('#kamakshi_header_menu_category').addClass('active');
+        }
+        else if(page_title[0]=="recipient_category") {
+            $('.kamakshi_header_menu').removeClass('active');
+            $('#kamakshi_header_menu_recipient').addClass('active');    
+        }
+        else if(page_title[0]=="about") {
+            $('.kamakshi_header_menu').removeClass('active');
+            $('#kamakshi_header_menu_about').addClass('active'); 
+        }
+        else if(page_title[0]=="contact") {
+            $('.kamakshi_header_menu').removeClass('active');
+            $('#kamakshi_header_menu_contact').addClass('active');
+        }
+        else {
+            $('.kamakshi_header_menu').removeClass('active');
+        }
+    }
+}
 
 // Ended by siva - calculation process in basket page end
-
-
-    required_login=["email-modal","password-modal"];
-    required_login_reg=["email-log","password-log"];
-    required_signup=["name","password-reg","email-reg"];
-    login_email=jQuery("#email-modal");
-    reg_login_email=jQuery("#email-log");
-    reg_email=jQuery("#email-reg");
-    // email=jQuery("#email");
-    errornotice = jQuery("#error");
-
-    // jQuery("#login").submit(function(){ 
-    //     for (i=0;i<required_login.length;i++) {
-    //         var input = jQuery('#'+required_login[i]);
-    //         if ((input.val() == "")) 
-    //             {
-    //                 input.addClass("error_input_field");
-    //                 $('.error_msg').css('display','block');
-    //             } else {
-    //                 input.removeClass("error_input_field");
-    //                 $('.error_msg').css('display','none');
-    //             }
-    //         }
-
-    //         if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(login_email.val())) {
-    //             login_email.addClass("error_input_field_email");
-    //             }
-    //         else{
-    //             login_email.removeClass("error_input_field_email");                
-    //         }
-    //         //if any inputs on the page have the class 'error_input_field' the form will not submit
-    //         if (jQuery(":input").hasClass("error_input_field")  ) {
-    //             $('.error_msg').css('display','block');  
-    //             $('.error_email').css('display','none'); 
-    //             return false;
-    //         } 
-    //         else {
-    //         if(jQuery(":input").hasClass("error_input_field_email"))  {
-    //             $('.error_msg').css('display','none');
-    //             $('.error_email').css('display','block');                
-    //             return false;
-    //         }
-    //         else {
-    //             errornotice.hide();
-    //             $('.error_msg').css('display','none');
-    //             $('.error_email').css('display','none');
-    //             return true;
-    //         }
-    //     }  
-    // });
-    // jQuery("#login_reg").submit(function(){ 
-    //     for (i=0;i<required_login_reg.length;i++) {
-    //         var input = jQuery('#'+required_login_reg[i]);
-    //         if ((input.val() == "")) 
-    //             {
-    //                 input.addClass("error_input_field");
-    //                 $('.error_msg_log').css('display','block');
-    //             } else {
-    //                 input.removeClass("error_input_field");
-    //                 $('.error_msg_log').css('display','none');
-    //             }
-    //         }
-    //         if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(reg_login_email.val())) {
-    //             reg_login_email.addClass("error_input_field_email");
-    //             }
-    //         else{
-    //             reg_login_email.removeClass("error_input_field_email");                
-    //         }
-    
-    //         //if any inputs on the page have the class 'error_input_field' the form will not submit
-    //         if (jQuery(":input").hasClass("error_input_field")  ) {
-    //             $('.error_msg_log').css('display','block');
-    //             $('.error_log_email').css('display','none'); 
-    //             return false;
-    //         } 
-    //         else {
-    //         if(jQuery(":input").hasClass("error_input_field_email"))  {
-    //             $('.error_msg').css('display','none');
-    //             $('.error_log_email').css('display','block');                
-    //             return false;
-    //         } else {
-    //             errornotice.hide();
-    //             $('.error_msg_log').css('display','none');
-    //             $('.error_log_email').css('display','none');
-    //             return true;
-    //         }
-    //     }
-    // });
-    // jQuery("#signup").submit(function(){ 
-    //     for (i=0;i<required_signup.length;i++) {
-    //         var input = jQuery('#'+required_signup[i]);
-    //         if ((input.val() == "")) 
-    //             {
-    //                 input.addClass("error_input_field");
-    //                 // $('.error_msg_reg').css('display','block');
-    //             } else {
-    //                 input.removeClass("error_input_field");
-    //                 // $('.error_msg_reg').css('display','none');
-    //             }
-    //         }
-    //         if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(reg_email.val())) {
-    //             reg_email.addClass("error_input_field_email");
-    //             }
-    //         else{
-    //             reg_email.removeClass("error_input_field_email");                
-    //         }
-    //         //if any inputs on the page have the class 'error_input_field' the form will not submit
-    //         if (jQuery(":input").hasClass("error_input_field")  ) {
-    //             $('.error_msg_reg').css('display','block');
-    //             $('.error_reg_email').css('display','none'); 
-    //             return false;
-    //         } 
-    //         else {
-    //         if(jQuery(":input").hasClass("error_input_field_email"))  {
-    //             $('.error_msg_reg').css('display','none');
-    //             $('.error_reg_email').css('display','block');                
-    //             return false;
-    //         }
-    
-    //          else {
-    //             errornotice.hide();
-    //             $('.error_msg_reg').css('display','none');
-    //             $('.error_reg_email').css('display','none'); 
-    //             return true;
-    //         }
-    //     }   
-    // });    
+  
     var $container = $('#container'),
     $filterLinks = $('#filters a');
     $container.isotope({

@@ -69,6 +69,35 @@ class Ajax_Model extends CI_Model {
         return $query;
     }
 
+     //  To get products after filtering (filtering)
+    public function get_filtering_search_product($data) {
+
+        $start = $data['offset'];
+        $limit = $data['limit'];
+
+        $cat_product=$this->db->select('*');
+        $cat_product=$this->db->from('giftstore_product cp');
+        $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+        $where1 = '(cp.product_status=1 and cp.product_totalitems!=0)';
+        $cat_product=$this->db->like('cp.product_title',$this->input->post('keyword'));
+        $cat_product=$this->db->where($where1);
+        $cat_product=$this->db->limit($limit, $start);
+        $cat_product=$this->db->group_by('cp.product_id');
+        $cat_product=$this->db->order_by('product_price', 'asc');
+        $query['product_list'] = $this->db->get()->result_array();
+        
+        $cat_product1=$this->db->select('*');
+        $cat_product1=$this->db->from('giftstore_product cp');
+        $cat_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+        $where1 = '(cp.product_status=1 and cp.product_totalitems!=0)';
+        $cat_product1=$this->db->like('cp.product_title',$this->input->post('keyword'));
+        $cat_product1=$this->db->where($where1);
+        $cat_product1=$this->db->group_by('cp.product_id');
+        $cat_product1=$this->db->order_by('product_price', 'asc');
+        $query1 = $this->db->get()->result_array();
+        $query['cat_pro_count'] = count($query1);  
+        return $query;
+    }
 
 
     //  To get add to cart status and count
