@@ -124,9 +124,25 @@ if ( ! function_exists('insert_order_details')){
       $ci->db->update_batch('giftstore_orderitem', $orderitem_value, 'orderitem_id');
       // To set order_id in flashdata
       // Flash storage is used to stored value and we can retrieve data from flash storage only once. then it will be removed automatically. 
+      ini_set('display_errors', 1);
       $ci->session->unset_userdata('user_session_id');
       $ci->session->unset_userdata('general_session_id');
       $ci->session->set_flashdata('order_id',$order_id); 
+      /*Payment success email added by thangam*/
+               $config['protocol'] = 'smtp';
+               $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+                 $config['smtp_port'] = 25;
+               $config['smtp_user'] = "thangamgold45@gmail.com";
+               $config['smtp_pass'] = '********';          
+                  $ci->load->library('email', $config);   
+            $ci->email->from('thangamgold45@gmail.com', 'head');
+            $ci->email->to($config['smtp_user']);           
+            $ci->email->subject('Get your OrderID');
+            // $this->email->message('Please go to this link to get your password.
+            //        http://localhost/kamakshi/');
+            $ci->email->message("Your OrderID is ".$order_id);
+            $ci->email->send();
+            /*Payment success email ended by thangam*/
       redirect('success');
     }
 }

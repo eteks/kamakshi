@@ -134,6 +134,28 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
 		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('register',$categories);
 	}
@@ -152,6 +174,28 @@ class Index extends CI_Controller
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
 		$categories['product_category'] = $category_values['product_category'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
 		// print_r($categories);
 		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
     	    //pagination configuration
@@ -182,6 +226,28 @@ class Index extends CI_Controller
 		$categories['product_details'] = $categories_values['product_details'];
 		$categories['recommanded_products'] = $categories_values['recommanded_products'];
 		$categories['product_default_image'] = $categories_values['product_default_image'];
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
   		$this->load->view('detail',$categories);
 	}
 
@@ -199,6 +265,28 @@ class Index extends CI_Controller
         $categories['orderitem_session_id_checkout'] = $categories_values_basket['orderitem_session_id_checkout'];
         // print_r($categories['basket_details']);
         $categories['state'] = $this->index_model->get_state();
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
         $this->load->view('checkout',$categories);
 
     }
@@ -210,6 +298,28 @@ class Index extends CI_Controller
         $categories['order_details'] = $categories_values_reg['order_details'];
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
 		// $categories['giftstore_subcategory'] = $this->index_model->get_category();
 		$this->load->view('contact',$categories);
 	}
@@ -228,6 +338,28 @@ class Index extends CI_Controller
         $categories['profile_get_state'] = $categories_profile['profile_get_state'];
         $categories['profile_get_city'] = $categories_profile['profile_get_city'];
         $categories['profile_get_area'] = $categories_profile['profile_get_area'];
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('profile',$categories);
     }
@@ -240,6 +372,28 @@ class Index extends CI_Controller
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $categories['my_orders'] = $this->index_model->get_my_orders();
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
         // $categories['giftstore_subcategory'] = $this->index_model->get_category();
         $this->load->view('my_orders', $categories);
     }
@@ -255,6 +409,28 @@ class Index extends CI_Controller
         $categories_values_order_status = $this->index_model->get_order_status();
         $categories['order_status'] = $categories_values_order_status['order_status'];
         $categories['order_status_address'] = $categories_values_order_status['order_status_address'];
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
         $this->load->view('order_status',$categories);
     }
 
@@ -281,6 +457,28 @@ class Index extends CI_Controller
         $categories['basket_count'] = $categories_values_basket['basket_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
         // print_r($categories['basket_details']);
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
 		$this->load->view('basket',$categories);
 	}
 
@@ -293,6 +491,28 @@ class Index extends CI_Controller
         $categories['order_count'] = $categories_values_reg['order_count'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $categories['trackorder_details'] = $this->index_model->get_trackorder_details();
+        $categories['login_url'] = $this->facebook->getLoginUrl(
+        array('redirect_uri' => site_url('index/flogin'),'scope' => array("email")));
+      // $categories['login_url'] = $this->login();
+      // Include two files from google-php-client library in controller
+       require_once APPPATH . "libraries/google-api-php-client-master/src/Google/autoload.php";
+
+        // Store values in variables from project created in Google Developer Console
+        $client_id = '453011669156-1p390kn42rb5v6q8kmht31pi189mca0f.apps.googleusercontent.com';
+        $client_secret = '0Z9BKKyxXj8dOCOGHvxaD8Rg';
+        $redirect_uri = 'http://etekchnoservices.com/kamakshi';
+        $simple_api_key = 'AIzaSyCTOjoAiuhpE8scnTamgbpo-agSc-CiU_0';
+
+        // Create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setApplicationName("kamakshi");
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setDeveloperKey($simple_api_key);
+        $client->addScope("https://www.googleapis.com/auth/userinfo.email");
+        $authUrl = $client->createAuthUrl();
+        $categories['authUrl'] = $authUrl;
         $this->load->view('track_order',$categories);
     }
 
