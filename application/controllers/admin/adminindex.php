@@ -560,7 +560,7 @@ class Adminindex extends CI_Controller {
 	    $status['attribute_check_status'] = isset($_POST['attribute_check_status'])?$_POST['attribute_check_status']:"";  
 
 		if(!empty($_POST)){
-			$status['check_product_is_unique'] = $this->catalog->check_product_is_unique($this->input->post('product_title'));
+			$status['check_product_is_unique'] = $this->catalog->check_product_is_unique($this->input->post('product_title'),$id=NULL);
 
 			if($status['check_product_is_unique'] == true){
 				if($status['attribute_check_status'] == 1){
@@ -634,20 +634,70 @@ class Adminindex extends CI_Controller {
 		$this->load->view('admin/add_giftproduct',$status);
 	}
 	public function edit_giftproduct()
-	{	
+	{
+		// Code runs before data post i.e. to redirect edit product page with their id
 		$id = $this->uri->segment(4);
-		// echo "id".$id;
 		if (empty($id))
 		{
 			show_404();
 		}
-		$query_result = $this->catalog->get_giftproduct_data($id);
+		
+		$status = array();//array is initialized
+		
+		//Code runs after data post i.e. while update product
+	    if(!empty($_POST)){
+		    $status['attribute_check_status'] = isset($_POST['attribute_check_status'])?$_POST['attribute_check_status']:"";
 
-		$status['giftproduct_data'] = $query_result['product_list'];
+	    	// echo "<pre>";
+	    	// print_r($_POST);
+	    	// echo "</pre>";
+
+	    	$product_title = $this->input->post('product_title');
+	    	$status['check_product_is_unique'] = $this->catalog->check_product_is_unique($product_title,$id);
+	    	if($status['check_product_is_unique'] == true){
+	    		// echo "process";
+	    		$data['product_basic'] = array(
+	    				'product_id' => $id,
+						'product_title' => $this->input->post('product_title'),
+						'product_description' => $this->input->post('product_description'),
+						'product_category_id' => $this->input->post('select_category'),
+						'product_subcategory_id' => $this->input->post('select_subcategory'),
+						'product_recipient_id' => $this->input->post('select_recipient'),
+						'product_price' => $this->input->post('product_price'),
+						'product_totalitems' => $this->input->post('product_totalitems'),
+						'product_status' => $this->input->post('product_status'),
+				);
+				// $data['product_files'] = $product_image;
+				if($status['attribute_check_status'] == 1){
+					$attribute_value_merge = array_map(null,$_POST['select_attribute'],$_POST['attribute_value']);
+					$pieces = array_chunk($attribute_value_merge, ceil(count($attribute_value_merge) / $_POST['group_values']));
+					// print_r($pieces);
+					$attribute_group = array_map(null,$pieces,$_POST['product_attribute_price'],$_POST['product_attribute_totalitems']);
+
+					if(isset($_POST['product_attribute_group_id'])){
+						$final_attribute_group = array_map(null,$_POST['product_attribute_group_id'],$attribute_group);
+						// print_r($final_attribute_group);
+						$data['product_attributes_exists'] = $final_attribute_group;
+					}	
+					else{
+						$data['product_attributes_new'] = $attribute_group;
+					}		
+				}
+				// echo "<pre>";
+		  //   	print_r($data);
+		  //   	echo "</pre>";
+				$result = $this->catalog->update_product($data);
+				if($result)
+					$status['error_message'] = "Product Updated Successfully!";
+	    	}
+	    	else
+	    		$status['error_message'] = "Product Title Already Exists!";	
+	    }
+	    $query_result = $this->catalog->get_giftproduct_data($id);
+	    $status['giftproduct_data'] = $query_result['product_list'];
+	    $status['giftproduct_image'] = $query_result['product_image'];
 		$status['subcategory_list'] = $query_result['subcategory_list'];
 		$status['recipient_list'] = $query_result['recipient_list'];
-		// $status['product_attribute_list'] = $query_result['product_attribute_list'];
-
 		$resatt = array();
 		foreach($query_result['product_attribute_list'] as $arr)
 		{
@@ -662,8 +712,8 @@ class Adminindex extends CI_Controller {
 		    }
 		}
 		$status['product_attribute_list'] = $resatt;
-
 		$status['category_list'] = $this->catalog->get_categories();
+		$status['attribute_list'] = $this->catalog->get_product_attributes();
 		$this->load->view('admin/edit_giftproduct',$status);
 	}
 	public function product_attributes()

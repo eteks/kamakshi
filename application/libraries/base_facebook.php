@@ -417,6 +417,21 @@ abstract class BaseFacebook
 
     return $this->user = $this->getUserFromAvailableData();
   }
+  public function get_userWithEmail() {
+    if ( $this->session ) {
+    /**
+    * Retrieve Userâ€™s Profile Information
+    */
+    // Graph API to request user data
+    $request = ( new FacebookRequest( $this->session, 'GET', '/me?fields=id,name,email' ) )->execute();
+
+    // Get response as an array
+    $user = $request->getGraphObject()->asArray();
+
+    return $user;
+  }
+  return false;
+}
 
   /**
    * Determines the connected user by first examining any signed

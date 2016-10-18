@@ -121,8 +121,7 @@ class Index_Model extends CI_Model {
 
     public function get_category($limit)
     {
-        $start_price = 0.00;
-        $end_price = 1000.00;
+
         if ($this->uri->segment(2)) {
             $where                     = '(category_id="' . $this->uri->segment(2) . '")';
             $cat_query                 = $this->db->get_where('giftstore_category', $where);
@@ -140,7 +139,7 @@ class Index_Model extends CI_Model {
             $cat_product=$this->db->select('*');
             $cat_product=$this->db->from('giftstore_product cp');
             $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
-            $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and (cp.product_price BETWEEN "'.$start_price.'" and "'.$end_price.'"))';
+            $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0)';
             $cat_product=$this->db->where($where);
             $cat_product=$this->db->limit($limit, '0');
             $cat_product=$this->db->order_by('product_price', 'asc');
@@ -152,11 +151,14 @@ class Index_Model extends CI_Model {
             $cat_product1=$this->db->select('*');
             $cat_product1=$this->db->from('giftstore_product cp');
             $cat_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
-            $where1 = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0 and (cp.product_price BETWEEN "'.$start_price.'" and "'.$end_price.'"))';
+            $where1 = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0)';
             $cat_product1=$this->db->where($where1);
             $cat_product1=$this->db->group_by('cp.product_id');
             $cat_product1=$this->db->order_by('product_price', 'asc');
             $query1 = $cat_product1->get()->result_array();
+            $start_price = current($query1)['product_price'];
+            $end_price = end($query1)['product_price'];
+            $query['product_price'] = $start_price . ',' . $end_price;
             $query['cat_pro_count'] = count($query1);
 
             // if($this->uri->segment(3)){  
@@ -168,6 +170,37 @@ class Index_Model extends CI_Model {
                //  $cat_product=$this->db->group_by('cp.product_id');
                //  $query['product_category'] = $cat_product->get()->result_array();
             // }
+        }
+        return $query;
+    }
+
+    public function get_product_list($limit)
+    {
+
+        if ($this->input->post('search_keyword')) {
+
+            $cat_product=$this->db->select('*');
+            $cat_product=$this->db->from('giftstore_product cp');
+            $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+            $where1 = '(cp.product_status=1 and cp.product_totalitems!=0)';
+            $cat_product=$this->db->like('cp.product_title',$this->input->post('search_keyword'));
+            $cat_product=$this->db->where($where1);
+            $cat_product=$this->db->limit($limit, '0');
+            $cat_product=$this->db->group_by('cp.product_id');
+            $cat_product=$this->db->order_by('product_price', 'asc');
+            $query['product_list'] = $this->db->get()->result_array();
+            $query['search_keyword'] = $this->input->post('search_keyword');
+            
+            $cat_product1=$this->db->select('*');
+            $cat_product1=$this->db->from('giftstore_product cp');
+            $cat_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+            $where1 = '(cp.product_status=1 and cp.product_totalitems!=0)';
+            $cat_product1=$this->db->like('cp.product_title',$this->input->post('search_keyword'));
+            $cat_product1=$this->db->where($where1);
+            $cat_product1=$this->db->group_by('cp.product_id');
+            $cat_product1=$this->db->order_by('product_price', 'asc');
+            $query1 = $this->db->get()->result_array();
+            $query['cat_pro_count'] = count($query1);       
         }
         return $query;
     }
@@ -390,6 +423,17 @@ class Index_Model extends CI_Model {
             $order_status_array['order_status_address'] = $order_status_address_query->get()->row_array();
         }   
         return $order_status_array;
+    }
+
+    // Track order details
+    public function get_trackorder_details()
+    {
+        $track_order_status_array = array();
+        if($this->input->post('track_order_id')) {
+            $track_order_where = '(order_id="'.$this->input->post('track_order_id').'")';
+            $track_order_status_array = $this->db->get_where('giftstore_order',$track_order_where)->row_array();
+        }  
+        return $track_order_status_array;
     }
 
 }

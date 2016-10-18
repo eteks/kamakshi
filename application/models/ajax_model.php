@@ -69,6 +69,35 @@ class Ajax_Model extends CI_Model {
         return $query;
     }
 
+     //  To get products after filtering (filtering)
+    public function get_filtering_search_product($data) {
+
+        $start = $data['offset'];
+        $limit = $data['limit'];
+
+        $cat_product=$this->db->select('*');
+        $cat_product=$this->db->from('giftstore_product cp');
+        $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+        $where1 = '(cp.product_status=1 and cp.product_totalitems!=0)';
+        $cat_product=$this->db->like('cp.product_title',$this->input->post('keyword'));
+        $cat_product=$this->db->where($where1);
+        $cat_product=$this->db->limit($limit, $start);
+        $cat_product=$this->db->group_by('cp.product_id');
+        $cat_product=$this->db->order_by('product_price', 'asc');
+        $query['product_list'] = $this->db->get()->result_array();
+        
+        $cat_product1=$this->db->select('*');
+        $cat_product1=$this->db->from('giftstore_product cp');
+        $cat_product1=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
+        $where1 = '(cp.product_status=1 and cp.product_totalitems!=0)';
+        $cat_product1=$this->db->like('cp.product_title',$this->input->post('keyword'));
+        $cat_product1=$this->db->where($where1);
+        $cat_product1=$this->db->group_by('cp.product_id');
+        $cat_product1=$this->db->order_by('product_price', 'asc');
+        $query1 = $this->db->get()->result_array();
+        $query['cat_pro_count'] = count($query1);  
+        return $query;
+    }
 
 
     //  To get add to cart status and count
@@ -301,7 +330,35 @@ class Ajax_Model extends CI_Model {
                 $this->session->set_userdata("login_status","1");   
                 $user_session_details = $check_login_data->row_array();
                 $this->session->set_userdata("login_session",$user_session_details);
-                $status = "success";
+                $condition = "email_log =" . "'" . $data. "'";             
+                $this->db->select('*');
+                $this->db->from('giftstore_users');
+                $this->db->where($condition);
+                $this->db->limit(1);
+
+                $query = $this->db->get();
+                // echo $query->num_rows();
+                if($query->num_rows() == 1)
+                {
+                    // echo "test2";
+                     // ini_set('display_errors', 1);
+                     $config['protocol'] = 'smtp';
+                     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+                     $config['smtp_port'] = 25;
+                     $config['smtp_user'] = $data;
+                     $config['smtp_pass'] = '********';          
+                      $this->load->library('email', $config);       
+                        $this->email->from('thangamgold45@gmail.com', 'header');
+                        $this->email->to($config['smtp_user']);                     
+                        $this->email->subject('Get your Registered Mail Id');
+                        // $this->email->message('Please go to this link to get your password.
+                        //        http://localhost/kamakshi/');
+                        $user_result = $query->row_array();
+                        $this->email->message("Your registered mail is ".$user_result['email_log']);
+                        $this->email->send();
+                        echo "Registration success Please Check Your mail For Confirmation.";
+                }
+                // $status = "success";
             }
             else {
                 $status = "Please enter valid details";  

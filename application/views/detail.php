@@ -130,10 +130,12 @@
                         <div class="social">
                             <h4>Show it to your friends</h4>
                             <p>
-                                <a data-animate-hover="pulse" class="external facebook" href="#"><i class="fa fa-facebook"></i></a>
-                                <a data-animate-hover="pulse" class="external gplus" href="#" style="opacity: 1;"><i class="fa fa-google-plus"></i></a>
-                                <a data-animate-hover="pulse" class="external twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                <a data-animate-hover="pulse" class="email" href="#"><i class="fa fa-envelope"></i></a>
+                                <span class='st_googleplus_large' displayText='Google +'></span>
+                                <span class='st_facebook_large' displayText='Facebook'></span>
+                                <!-- <span class='st_twitter_large' displayText='Tweet'></span>
+                                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                <span class='st_pinterest_large' displayText='Pinterest'></span> -->
+                                <!-- <span class='st_email_large' displayText='Email'></span> -->
                             </p>
                         </div>
                     </div>

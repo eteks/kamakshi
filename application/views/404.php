@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
+                        <li><a href="<?php echo base_url(); ?>">Home</a>
                         </li>
                         <li>Page not found</li>
                     </ul>

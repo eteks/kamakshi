@@ -31,6 +31,9 @@
     <link href="<?php echo base_url(); ?>assets/css/thumbnail-slider.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
     <link rel="shortcut icon" href="favicon.png">
+    <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "dd95200b-4b94-4ef1-a537-c65ad9d21ec8", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body>
   <!-- *** TOPBAR *** -->
@@ -50,8 +53,10 @@
                 <ul class="menu">
                     <?php if(!empty($this->session->userdata("login_status"))): 
                         $session_data = $this->session->userdata("login_session");
+                        // $facebook_session_data = $this->session->userdata("facebook_login_session");
                     ?>
                         <li class="login_menu"> Welcome <?php echo $session_data['user_name']; ?>
+                        <!-- <li class="login_menu"> Welcome <?php echo $facebook_session_data['user_name']; ?> -->
                         	<span class="caret dropdown-toggle drpdwn-icon" data-toggle="dropdown"></span>
 							    <ul class="dropdown-menu users-dropdown">
 							      <li><a href="<?php echo base_url(); ?>index.php/profile/">Profile</a></li>
@@ -72,6 +77,17 @@
                     <!-- <li><a href="<?php //echo base_url(); ?>index.php/customer_orders/">Profile</a>
                     </li> -->
                     <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#" class="track_order_status_icon"> Track Order</a>
+                        <form method="POST" class="track_order_form" action="<?php echo base_url(); ?>index.php/track_order"> 
+                            <div class="input-group">
+                                <input type="text" placeholder="Order Id" name="track_order_id" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
                     </li>
                     <!-- <li><a href="#">Recently viewed</a>
                     </li> -->
@@ -119,19 +135,15 @@
                               </div>
                             </div>
                         </form>
-                          </div>                   
+                          </div>                 
                            <div id="facebook_login">
 							<ul class="social_icons">
-								<a href="<?php echo base_url(); ?>index.php/oauth_login/facebook"><img class='fb' src="assets/img/fb.png"."></a>
-								<!-- <i class="fa fa-facebook"></i> -->
-								<!-- Connect with facebook -->
-								<!-- </a>							 -->
-								<a href="https://twitter.com/" title="Twitter">
-								<i class="fa fa-twitter"></i> 
-								</a>							
-								<a href="https://plus.google.com/u/0/" title="Google Plus">
-								<i class="fa fa-google-plus" aria-hidden="true"></i>
-								</a>							
+								<a href="<?php echo $login_url; ?>">
+                                <img class="fb" src="assets/img/fb.png">
+                                </a>							
+								<a href="<?php echo $authUrl; ?>">
+                                <img class="fb" src="assets/img/google.png">
+                                </a>							
 							</ul>
 							</div>  
                         <p class="text-center text-muted">Not registered yet?</p>
@@ -166,30 +178,35 @@
             <!--/.navbar-header -->
             <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="<?php echo base_url(); ?>index.php/">Home</a>
+                    <li class="kamakshi_header_menu" id="kamakshi_header_menu_home"><a href="<?php echo base_url(); ?>index.php/">Home</a>
                     </li>
-                    <li class="dropdown yamm-fw">
+                    <li class="kamakshi_header_menu dropdown yamm-fw" id="kamakshi_header_menu_category">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Categories<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
                                     <h5>Category</h5>
-                                    <?php foreach ($giftstore_category as $cat):?>
+                                    <?php 
+                                    if(!empty($giftstore_category)):    
+                                    foreach ($giftstore_category as $cat):?>
                                         <div class="col-sm-3">                                
                                             <ul>
                                                 <li><a href="<?php echo base_url(); ?>index.php/category/<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php 
+                                    endforeach;
+                                    endif;
+                                    ?>
                                     </div>
                                 </div>                                
                                 <!-- /.yamm-content -->
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown yamm-fw">
+                    <li class="kamakshi_header_menu dropdown yamm-fw" id="kamakshi_header_menu_recipient">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Gift By Recipient<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -218,9 +235,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="about-us"><a href="<?php echo base_url(); ?>index.php/">About Us</a>
+                    <li class="kamakshi_header_menu about-us" id="kamakshi_header_menu_about"><a href="<?php echo base_url(); ?>index.php/about">About Us</a>
                     </li>
-                    <li class="contact-us"><a href="<?php echo base_url(); ?>index.php/contact/">Contact US</a>
+                    <li class="kamakshi_header_menu contact-us" id="kamakshi_header_menu_contact"><a href="<?php echo base_url(); ?>index.php/contact/">Contact US</a>
                     </li>
                      </ul>
                     </li>
@@ -241,15 +258,19 @@
                 </div>
             </div>
             <div class="collapse clearfix" id="search">
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" action="<?php echo base_url(); ?>index.php/search_section" method="POST">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" name="search_keyword" placeholder="Search by product name">
                         <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                        </span>
                     </div>
                 </form>
             </div>
+            <?php
+            $fullurl = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            ?>
+            <input type="hidden" value="<?php echo $fullurl; ?>" class="full_site_url" />
             <!--/.nav-collapse -->
         </div>
         <!-- /.container -->
