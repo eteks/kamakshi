@@ -740,3 +740,24 @@ span.line {
 .fb{
   height: 30px;
 }
+/*.styled-select {
+   background-image: url('../assets/img/dropdown-arrow.png') no-repeat 96% 0 !important;
+   height: 29px;
+   overflow: hidden;
+   width: 160px;
+}
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 3px; 
+   width: 160px;
+}
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+.blue    { background-color: #4fbfa8; }
+.blue select    { color: #fff; }*/
