@@ -1,6 +1,10 @@
 ;
 (function($) {
-    var edit_remove_photos = "";
+    // var edit_remove_photos = "";
+    if($('.edit_hidden_photos').length){
+        var product_hidden_image = $('.edit_hidden_photos').val().split(',');
+        product_hidden_image_remove = [];
+    }  
     $.fn.simpleFilePreview = function(o) {
         var n = this;
         if (!n || !n.length) {
@@ -140,13 +144,18 @@
                         p.parent().append("<input type='hidden' id='" + p.attr('id') + "_remove' name='removeFiles[]' value='" + p.attr('data-sfprid') + "' />");
                     }
                     p.parents('.simpleFilePreview_multi').width('-=' + p.width());
-                    if(edit_remove_photos == "")
-                        edit_remove_photos += $(this).attr('src');
-                    else
-                        edit_remove_photos = edit_remove_photos + ","+ $(this).attr('src');         
-                    var regex = new RegExp("/media/", 'g');
-                    $('.edit_remove_photos').val(edit_remove_photos.replace(regex,""));
+                    if($('.edit_hidden_photos').length){
+                        //own code to pass the remove product image id to hidden variable
+                        image_id = $(this).parents('.simpleFilePreview').find('.product_upload_image_id').val();
+                        remove_data = $.grep(product_hidden_image, function( n, i ) {
+                          return n == image_id;
+                        });
+                        product_hidden_image_remove.push(remove_data);
+                        $('.edit_remove_photos').val(product_hidden_image_remove);
+                    }                 
                     p.remove();
+                    if($('.simpleFilePreview_formInput').length == 1)
+                        $('.simpleFilePreview_formInput').addClass('product_default_field');
                 } else {
                     if (p.hasClass('simpleFilePreview_existing')) {
                         p.find('input.simpleFilePreview_formInput').show();

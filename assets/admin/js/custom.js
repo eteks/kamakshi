@@ -480,10 +480,7 @@ $(document).ready(function() {
             'shiftRight': '',
             'removeContent': 'Remove'
         });
-      }
-      $('.upload_image_remove').on('click',function() {
-        $(this).parents('.simpleFilePreview').remove();
-      });      
+      }  
 
       $(".select_multiple_option a").on('click', function() {
           $(".mutliSelect ul").slideToggle('fast');
@@ -521,7 +518,7 @@ $(window).load(function() {
         image_clone = $('.simpleFilePreview_multi li:last').clone(true);
         class_id = $('.simpleFilePreview_multi li:last').attr('id');
         id_data = Number(class_id.split('_')[1]) + 1;
-        image_clone.find('.edit_after_save,.editpost_image_change,.simpleFilePreview_input,.upload_image_remove').remove();
+        image_clone.find('.edit_after_save,.editpost_image_change,.simpleFilePreview_input').remove();
         image_clone.find('.simpleFilePreview_formInput').removeClass('product_default_field').removeClass('image_update');
         $('.simpleFilePreview_multi').append("<li id='simpleFilePreview_" + id_data + "' class='simpleFilePreview' data-sfpallowmultiple='1'>\
                                           <a class='simpleFilePreview_input'>\
