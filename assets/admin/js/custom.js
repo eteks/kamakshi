@@ -474,12 +474,59 @@ $(document).ready(function() {
       }
       simplefilepreview_function();
       function simplefilepreview_function(){
-        $('#image_upload').simpleFilePreview({
+        $('.image_file_input').simpleFilePreview({
             'buttonContent': '<i class="fa fa-plus-circle fa_small"></i>',
             'shiftLeft': '',
             'shiftRight': '',
             'removeContent': 'Remove'
         });
       }
-      
+      $('.upload_image_remove').on('click',function() {
+        $(this).parents('.simpleFilePreview').remove();
+      });      
+
+      $(".select_multiple_option a").on('click', function() {
+          $(".mutliSelect ul").slideToggle('fast');
+      });
+
+      $('.mutliSelect input[type="checkbox"]').on('click', function() {
+              var title =  $(this).next('span').text();
+              if ($(this).is(':checked')) {
+                if($('.select_content').length) {
+                    var html_comma = '<span class="module_comma"> , </span>';
+                    var html_content = '<span class="select_content" title="' + title + '">' + title + '</span>';
+                    var html = html_comma + html_content;
+                }
+                else
+                    var html = '<span class="select_content" title="' + title + '">' + title + '</span>';
+                $('.multiSel').append(html);
+                $(".hida").hide();
+              } else {
+                if($('span[title="' + title + '"]').index()==0) {
+                    $('span[title="' + title + '"]').next('.module_comma').remove();
+                    $('span[title="' + title + '"]').remove();
+                }
+                else {
+                    $('span[title="' + title + '"]').prev('.module_comma').remove();
+                    $('span[title="' + title + '"]').remove();
+                }
+
+              }
+        });
+
+});
+
+$(window).load(function() {
+    if ($('.simpleFilePreview_multiUI').hasClass('edit_image_available')) {
+        image_clone = $('.simpleFilePreview_multi li:last').clone(true);
+        class_id = $('.simpleFilePreview_multi li:last').attr('id');
+        id_data = Number(class_id.split('_')[1]) + 1;
+        image_clone.find('.edit_after_save,.editpost_image_change,.simpleFilePreview_input,.upload_image_remove').remove();
+        image_clone.find('.simpleFilePreview_formInput').removeClass('product_default_field').removeClass('image_update');
+        $('.simpleFilePreview_multi').append("<li id='simpleFilePreview_" + id_data + "' class='simpleFilePreview' data-sfpallowmultiple='1'>\
+                                          <a class='simpleFilePreview_input'>\
+                                          <span class='simpleFilePreview_inputButtonText'>\
+                                          <i class='fa fa-plus-circle fa_small'></i>\
+                                          </span></a>" + image_clone.html() + "</li>");
+    }
 });

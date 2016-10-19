@@ -61,6 +61,59 @@
                         <input type="text" class="form-control product_default_field product_lables" id="titlename" placeholder="Enter title Name" name="product_title" value="<?php if(!empty($giftproduct_data['product_title'])) echo $giftproduct_data['product_title']; ?>">
                         <span class="product_error_message">The Product Title field is required</span>
                     </div>  
+                    <div class="form-group">
+                        <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
+                        <!-- <input type='file' id='image_upload' name='product_image[]' multiple='multiple' class="product_default_field" />  -->
+                        <input type="hidden" name="edit_hidden_photos" class="edit_hidden_photos" value="{{edit_product.photos}}">
+                        <input type="hidden" name="edit_remove_photos" class="edit_remove_photos" value="">
+                        <?php if (sizeof($giftproduct_image) > 0){ ?>
+                            <div class="simpleFilePreview_multiUI edit_image_available">
+                            <span class="simpleFilePreview_shiftRight simpleFilePreview_shifter"></span>
+                            <div class="simpleFilePreview_multiClip">
+                            <ul class="simpleFilePreview_multi" style="width: 535px;">
+                            <?php 
+                            $i = 0;
+                            foreach ($giftproduct_image as $key => $value) { ?>
+                                <li id="simpleFilePreview_<?php echo $i; ?>" class="simpleFilePreview" data-sfpallowmultiple="1">
+                                    <a class="simpleFilePreview_input" style="display: none;">
+                                        <span class="simpleFilePreview_inputButtonText">
+                                        <i class="fa fa-plus-circle fa_small"></i>
+                                        </span>
+                                    </a>
+                                    <span class="simpleFilePreview_remove" style="display: none;">Remove</span>
+                                    <input class="product_default_field simpleFilePreview_formInput image_update image_file_input" type="file" name="product_image[]" style="width: 61px; height: 61px;z-index:0 !important;">
+                                    <img id="clean_img" class="edit_after_save simpleFilePreview_preview " title="Remove this file" src="<?php echo base_url().$value['product_upload_image'] ?>">
+                                    <!-- <span class="upload_image_remove">Remove</span> -->
+                                </li>
+                            <?php 
+                                $i++;
+                            } ?>
+                            </ul>
+                            </div>
+                            <span class="simpleFilePreview_shiftLeft simpleFilePreview_shifter"></span>
+                            </div>
+                        <?php } else {?>
+                            <div class="simpleFilePreview_multiUI edit_image_notavailable">
+                              <span class="simpleFilePreview_shiftRight simpleFilePreview_shifter"></span>
+                              <div class="simpleFilePreview_multiClip">
+                                  <ul class="simpleFilePreview_multi" style="width: 560px;">
+                                    <li id="simpleFilePreview_0" class="simpleFilePreview" data-sfpallowmultiple="1">
+                                    <a class="simpleFilePreview_input">
+                                    <span class="simpleFilePreview_inputButtonText">
+                                    <i class="fa fa-plus-circle fa_small"></i>
+                                    </span>
+                                    </a>
+                                    <span class="simpleFilePreview_remove" style="display: none;">Remove</span>
+                                    <input type='file' name='product_image[]' multiple='multiple' class="product_default_field image_file_input" />     
+                                    </li>
+                                  </ul>
+                              </div>
+                              <span class="simpleFilePreview_shiftLeft simpleFilePreview_shifter"></span>
+                          </div>
+                        <?php } ?>
+                        <span class="product_error_message">The Product Image field is required</span>
+                        <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>   
+                    </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>
                         <textarea type="text" class="form-control product_default_field product_lables" id="description" placeholder="Enter description" name="product_description"><?php if(!empty($giftproduct_data['product_description'])) echo $giftproduct_data['product_description']; ?></textarea>

@@ -189,7 +189,9 @@
     var setup = function(n, o) {
         var isMulti = n.is('[multiple]');
         n = n.removeAttr('multiple').addClass('simpleFilePreview_formInput');
-        if (window.location.href.indexOf("edit_postad_detail") <= -1) {
+        //this condition to check create div of simplefilepreview only while add product image
+        //when edit product page load, it restricts to create simplepreview div because, we manually load this file in own custom.js when window load
+        if (window.location.href.indexOf("edit_giftproduct") <= -1) {
             var c = $("<" + ((isMulti) ? 'li' : 'div') + " id='simpleFilePreview_" + ($.simpleFilePreview.uid++) + "' class='simpleFilePreview' data-sfpallowmultiple='" + ((isMulti) ? 1 : 0) + "'>" + "<a class='simpleFilePreview_input'><span class='simpleFilePreview_inputButtonText'>" + o.buttonContent + "</span></a>" + "<span class='simpleFilePreview_remove'>" + o.removeContent + "</span>" + "</" + ((isMulti) ? 'li' : 'div') + ">");
             n.before(c);
             c.append(n);
