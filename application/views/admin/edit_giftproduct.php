@@ -83,7 +83,7 @@
                                         </span>
                                     </a>
                                     <span class="simpleFilePreview_remove" style="display: none;">Remove</span>
-                                    <input class="simpleFilePreview_formInput image_update image_file_input" type="file" name="product_image[]" style="width: 61px; height: 61px;z-index:0 !important;">
+                                    <input class="simpleFilePreview_formInput image_update image_file_input" type="file" style="width: 61px; height: 61px;z-index:0 !important;">
                                     <img id="clean_img" class="edit_after_save simpleFilePreview_preview " title="Remove this file" src="<?php echo base_url().$value['product_upload_image'] ?>">
                                     <!-- <span class="upload_image_remove">Remove</span> -->
                                 </li>
@@ -116,7 +116,7 @@
                         <span class="product_error_message">The Product Image field is required</span>
                         <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span> 
                         <input type="hidden" name="edit_remove_photos" class="edit_remove_photos" value="">  
-                        <input type="hidden" name="edit_hidden_photos" class="edit_hidden_photos" value="<?php echo implode(",", $product_image_details);?>">
+                        <input type="hidden" name="edit_hidden_photos" class="edit_hidden_photos" value="<?php if(!empty($product_image_details)) echo implode(",", $product_image_details);?>">
                     </div>
                      <div class="form-group">
                         <label for="description">Description<span class="fill_symbol"> *</span></label>

@@ -519,7 +519,8 @@ $(window).load(function() {
         class_id = $('.simpleFilePreview_multi li:last').attr('id');
         id_data = Number(class_id.split('_')[1]) + 1;
         image_clone.find('.edit_after_save,.editpost_image_change,.simpleFilePreview_input').remove();
-        image_clone.find('.simpleFilePreview_formInput').removeClass('product_default_field').removeClass('image_update');
+        image_clone.find('.simpleFilePreview_formInput').removeClass('product_default_field').removeClass('image_update').attr('name','product_image[]');
+        image_clone.find('.product_upload_image_id').val("");
         $('.simpleFilePreview_multi').append("<li id='simpleFilePreview_" + id_data + "' class='simpleFilePreview' data-sfpallowmultiple='1'>\
                                           <a class='simpleFilePreview_input'>\
                                           <span class='simpleFilePreview_inputButtonText'>\

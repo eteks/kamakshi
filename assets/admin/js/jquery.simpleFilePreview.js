@@ -74,6 +74,9 @@
                             if (p.attr('data-sfpallowmultiple') == 1 && !p.find('.simpleFilePreview_preview').length) {
                                 var newId = $.simpleFilePreview.uid++;
                                 var newN = p.clone(true).attr('id', "simpleFilePreview_" + newId);
+                                //custom code
+                                newN.find('.product_upload_image_id').val("");
+                                
                                 newN.find('input.simpleFilePreview_formInput').attr('id', newN.find('input.simpleFilePreview_formInput').attr('id') + '_' + newId).val('');
                                 if ($('.simpleFilePreview_multiUI').hasClass('edit_image_notavailable')) {
                                     newN.find('.simpleFilePreview_input').css('display', 'block');
@@ -147,11 +150,13 @@
                     if($('.edit_hidden_photos').length){
                         //own code to pass the remove product image id to hidden variable
                         image_id = $(this).parents('.simpleFilePreview').find('.product_upload_image_id').val();
-                        remove_data = $.grep(product_hidden_image, function( n, i ) {
-                          return n == image_id;
-                        });
-                        product_hidden_image_remove.push(remove_data);
-                        $('.edit_remove_photos').val(product_hidden_image_remove);
+                        if(image_id){
+                            remove_data = $.grep(product_hidden_image, function( n, i ) {
+                                return n == image_id;
+                            });
+                            product_hidden_image_remove.push(remove_data);
+                            $('.edit_remove_photos').val(product_hidden_image_remove);
+                        }                       
                     }                 
                     p.remove();
                     if($('.simpleFilePreview_formInput').length == 1)

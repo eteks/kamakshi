@@ -635,6 +635,9 @@ class Adminindex extends CI_Controller {
 	}
 	public function edit_giftproduct()
 	{
+		// echo "<pre>";
+		// print_r($_FILES['product_image']);
+		// echo "</pre>";
 		// Code runs before data post i.e. to redirect edit product page with their id
 		$id = $this->uri->segment(4);
 		if (empty($id))
