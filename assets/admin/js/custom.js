@@ -1,3 +1,20 @@
+// It will call after window load and after ajax complete
+function image_after_window_ajax_load(){
+    if ($('.simpleFilePreview_multiUI').hasClass('edit_image_available')) {
+        image_clone = $('.simpleFilePreview_multi li:last').clone(true);
+        class_id = $('.simpleFilePreview_multi li:last').attr('id');
+        id_data = Number(class_id.split('_')[1]) + 1;
+        image_clone.find('.edit_after_save,.editpost_image_change,.simpleFilePreview_input').remove();
+        image_clone.find('.simpleFilePreview_formInput').removeClass('product_default_field').removeClass('image_update').attr('name','product_image[]');
+        image_clone.find('.product_upload_image_id').val("");
+        $('.simpleFilePreview_multi').append("<li id='simpleFilePreview_" + id_data + "' class='simpleFilePreview' data-sfpallowmultiple='1'>\
+                                          <a class='simpleFilePreview_input'>\
+                                          <span class='simpleFilePreview_inputButtonText'>\
+                                          <i class='fa fa-plus-circle fa_small'></i>\
+                                          </span></a>" + image_clone.html() + "</li>");
+    }
+}
+
 $(document).ready(function() {
     $("#add_area").validate({
         showErrors: function(errorMap, errorList) {
@@ -348,9 +365,13 @@ $(document).ready(function() {
            contentType: false,
            processData: false,
            // dataType: 'json',  
+           context: this, 
            success: function(data) {  
             $('.box-content').html(data);
             simplefilepreview_function();
+            if($(this).attr('id') == "edit_giftproduct"){
+                image_after_window_ajax_load();
+            }
             if($('.attribute_check_status').val() == '1'){
                 $('.attribute_main_block').show();
                 $('.price_group,.items_group').hide();
@@ -510,21 +531,8 @@ $(document).ready(function() {
 
               }
         });
-
 });
 
 $(window).load(function() {
-    if ($('.simpleFilePreview_multiUI').hasClass('edit_image_available')) {
-        image_clone = $('.simpleFilePreview_multi li:last').clone(true);
-        class_id = $('.simpleFilePreview_multi li:last').attr('id');
-        id_data = Number(class_id.split('_')[1]) + 1;
-        image_clone.find('.edit_after_save,.editpost_image_change,.simpleFilePreview_input').remove();
-        image_clone.find('.simpleFilePreview_formInput').removeClass('product_default_field').removeClass('image_update').attr('name','product_image[]');
-        image_clone.find('.product_upload_image_id').val("");
-        $('.simpleFilePreview_multi').append("<li id='simpleFilePreview_" + id_data + "' class='simpleFilePreview' data-sfpallowmultiple='1'>\
-                                          <a class='simpleFilePreview_input'>\
-                                          <span class='simpleFilePreview_inputButtonText'>\
-                                          <i class='fa fa-plus-circle fa_small'></i>\
-                                          </span></a>" + image_clone.html() + "</li>");
-    }
+    image_after_window_ajax_load();
 });

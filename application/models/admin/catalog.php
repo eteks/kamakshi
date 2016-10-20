@@ -457,7 +457,10 @@ class Catalog extends CI_Model {
 	public function update_product($data)
 	{	
 		$data_product_basic = $data['product_basic'];
-		// $data_product_files = $data['product_files'];
+		$data_product_files = $data['product_files'];
+		// echo "<pre>";
+		// print_r($data_product_files);
+		// echo "</pre>";
 		$data_product_attributes_exists = isset($data['product_attributes_exists'])?$data['product_attributes_exists']:"";
 		// echo "<pre>";
 		// print_r($data_product_attributes_exists);
@@ -465,6 +468,33 @@ class Catalog extends CI_Model {
 		$data_product_attributes_new = isset($data['product_attributes_new'])?$data['product_attributes_new']:"";
 		$this->db->where('product_id', $data_product_basic['product_id']);
 		$this->db->update('giftstore_product', $data_product_basic);
+
+		// To insert newly added images while update product
+		$product_id = $data_product_basic['product_id'];
+		foreach($data_product_files as $key => $value) {
+			$product_image_map = array(
+                					'product_mapping_id' => $product_id,
+                					'product_upload_image' => $value,
+             						);
+			$this->db->insert('giftstore_product_upload_image', $product_image_map);
+		}
+		//Code to remove image
+		if(!empty($data['removed_product'])){
+			// To remove image from folder
+			$condition = "product_upload_image_id IN(".$data['removed_product'].")";
+			$this->db->select('product_upload_image');
+			$this->db->from('giftstore_product_upload_image');
+			$this->db->where($condition);
+			$removedimage = $this->db->get()->result_array();
+			foreach ($removedimage as $key => $value) {
+				unlink(FCPATH.$value['product_upload_image']);
+			}
+			// To remove the photos which is removed while update product
+			$condition = "product_upload_image_id IN(".$data['removed_product'].")";
+			$this->db->from('giftstore_product_upload_image');
+			$this->db->where($condition);
+			$this->db->delete();				
+		}
 		// To update and remove existing attributes
 		if(!empty($data_product_attributes_exists)){
 			foreach($data_product_attributes_exists as $key=>$value){
