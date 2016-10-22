@@ -142,7 +142,8 @@
                 $(this).parents('.simpleFilePreview').find('.simpleFilePreview_remove').hide();
             }).on('click', '.simpleFilePreview_preview', function() {
                 var p = $(this).parents('.simpleFilePreview');
-                if (p.attr('data-sfpallowmultiple') == 1 && p.siblings('.simpleFilePreview').length && !p.parents('#upload_photos_div').children().hasClass('error_input_field')) {
+                // if (p.attr('data-sfpallowmultiple') == 1 && p.siblings('.simpleFilePreview').length && !p.parents('#upload_photos_div').children().hasClass('error_input_field')) {
+                if (p.attr('data-sfpallowmultiple') == 1 && p.siblings('.simpleFilePreview').length && !$('.photo_labelError').hasClass('error_input_field')) {
                     if (p.hasClass('simpleFilePreview_existing')) {
                         p.parent().append("<input type='hidden' id='" + p.attr('id') + "_remove' name='removeFiles[]' value='" + p.attr('data-sfprid') + "' />");
                     }
