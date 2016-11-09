@@ -27,6 +27,7 @@ class Adminindex extends CI_Controller {
 		$this->load->helper('form');
 		// Load form validation library
 		$this->load->library('form_validation');
+		date_default_timezone_set('Asia/Kolkata');
 	}
 	function edit_unique($value, $params) 
 	{
