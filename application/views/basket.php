@@ -95,13 +95,13 @@
                     </div>
                     <!-- /.box -->
                     <div class="row same-height-row">
-                        <div class="col-md-3 col-sm-6">
+                        <!-- <div class="col-md-3 col-sm-6">
                             <div class="box same-height">
                                 <h3>You may also like these products</h3>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
+                            <!-- <div class="product same-height">
                               <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
@@ -125,11 +125,11 @@
                                     <h3>Fashion and Style</h3>
                                     <p class="price">$143</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- /.product -->
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
+                            <!-- <div class="product same-height">
                               <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
@@ -153,11 +153,11 @@
                                     <h3>Baby</h3>
                                     <p class="price">$143</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- /.product -->
                         </div>
                         <div class="col-md-3 col-sm-6">
-                            <div class="product same-height">
+                            <!-- <div class="product same-height">
                             <div class="home_category_image">
                                 <div class="flip-container home_product_images">
                                     <div class="flipper home_product_images">
@@ -181,7 +181,7 @@
                                     <h3>T-Shirt</h3>
                                     <p class="price">$143</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- /.product -->
                         </div>
                     </div>

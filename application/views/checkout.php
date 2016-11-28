@@ -101,7 +101,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="text" name="email" class="form-control" id="email" maxlength="30">
+                                                    <input type="text" name="email" class="form-control" id="email" maxlength="">
                                                 </div>
                                             </div>
                                         </div>
