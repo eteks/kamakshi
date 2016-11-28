@@ -35,7 +35,9 @@
             </button>
             <a class="navbar-brand" href="<?php echo base_url()."index.php/admin" ?>"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
             <span>Kamakshi Gifts</span></a>
-            <?php if (!empty($this->session->userdata('logged_in'))){?>
+            <?php 
+            $user_session = $this->session->userdata("logged_in");
+            if (!empty($user_session)){?>
                 <!-- user dropdown starts -->
                 <div class="btn-group pull-right">
                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">

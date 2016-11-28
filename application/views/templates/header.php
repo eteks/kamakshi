@@ -51,7 +51,9 @@
             </div>
             <div class="col-md-6 adjt_cmn_cls_width" data-animate="fadeInDown">
                 <ul class="menu">
-                    <?php if(!empty($this->session->userdata("login_status"))): 
+                    <?php 
+                    $user_session = $this->session->userdata("login_status");
+                    if(!empty($user_session)):
                         $session_data = $this->session->userdata("login_session");
                         // $facebook_session_data = $this->session->userdata("facebook_login_session");
                     ?>

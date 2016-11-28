@@ -23,7 +23,7 @@ class Index extends CI_Controller
     // Index page
     public function index()
 	{
-         // ini_set('display_errors', 1);
+         //ini_set('display_errors', 1);
       $categories_values_reg = $this->index_model->get_register();
       $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
       $categories['order_details'] = $categories_values_reg['order_details'];
@@ -54,6 +54,8 @@ class Index extends CI_Controller
         $client->addScope("https://www.googleapis.com/auth/userinfo.email");
         $authUrl = $client->createAuthUrl();
         $categories['authUrl'] = $authUrl;
+
+        
         // // Send Client Request
         // $objOAuthService = new Google_Service_Oauth2($client);
         // if($client->isAccessTokenExpired()) {
