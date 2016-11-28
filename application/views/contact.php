@@ -41,16 +41,16 @@
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-phone"></i> Call </h3> 
-                                <p class="text-muted">Please feel free to call us.</p>                               
-                                <p>Phn: 044-28132593, <br />
-                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98840 32954, <br />
-                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72000 06273.
+                                <p class="text-muted contact_us_cnt">Please feel free to call us.</p>                               
+                                <p> <strong> 044-28132593,</strong> <br />
+                                	<strong>98840 32954,</strong> <br />
+                                	<strong>72000 06273.</strong>
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-envelope"></i> Email Support</h3>
-                                <p class="text-muted">Please feel free to write an email to us.</p>
+                                <p class="text-muted contact_us_cnt">Please feel free to write an email to us.</p>
                                 <ul>
                                     <li><strong><a href="mailto:">srividhya.anand@gmail.com</a></strong>
                                     </li>
