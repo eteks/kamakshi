@@ -13,15 +13,6 @@
                             <br />
                             <br />
                         </ul>
-                        <hr>
-                        <h4>User section</h4>
-                        <ul>
-                            <li><a data-target="#login-modal" data-toggle="modal" href="#">Login</a>
-                            </li>
-                            <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
-                            </li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg hidden-sm">
                     </div>
                     <!-- /.col-md-3 -->
                     <div class="col-md-3 col-sm-6">
@@ -39,7 +30,51 @@
                             endif;
                             ?>
                         </ul>
-                         <hr />
+                    </div>
+                    <!-- /.col-md-3 -->
+                   <div class="col-md-3 col-sm-6">
+                        <h4>Where to find us</h4>
+                        <p> REGISTERED OFFICE AT
+                        	<br />
+                        	<strong>KAMASKHI NURSERY</strong>
+                            <br />4,4th floor, Sreshta Anand Apartments,
+                            <br />No.15,16 & 17 Hanumantha Road, 
+                            <br />Balaji Nagar,Royapettah,
+                            <br />
+                            <strong>Chennai - 600014.</strong>
+                        </p>
+                    </div>
+                    <!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Get the news</h4>
+                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        <!-- <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" type="button">Subscribe!</button>
+                                </span>
+                        </div>
+                        </form> -->
+                    </div>
+                   <!-- /.col-md-3 -->
+                </div>
+               <!-- /.row -->
+               <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <hr>
+                        <h4>User section</h4>
+                        <ul>
+                            <li><a data-target="#login-modal" data-toggle="modal" href="#">Login</a>
+                            </li>
+                            <li><a href="<?php echo base_url(); ?>index.php/register/">Register</a>
+                            </li>
+                        </ul>
+                        <hr class="hidden-md hidden-lg hidden-sm">
+                    </div>
+                    <!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <hr />
                         <h5>Gift By Recipient</h5>
                         <ul>
                             <?php 
@@ -54,35 +89,15 @@
                             endif;
                             ?>
                         </ul>
-                        <hr class="hidden-md hidden-lg">
                     </div>
                     <!-- /.col-md-3 -->
                    <div class="col-md-3 col-sm-6">
-                        <h4>Where to find us</h4>
-                        <p><strong>Name Ltd.</strong>
-                            <br>00/00 Street
-                            <br>City
-                            <br>Street no
-                            <br>State
-                            <br>
-                            <strong>Country</strong>
-                        </p>
+                        <hr />
                        <a href="<?php echo base_url(); ?>index.php/contact/">Go to contact page</a>
                         <hr class="hidden-md hidden-lg">
                     </div>
                     <!-- /.col-md-3 -->
                     <div class="col-md-3 col-sm-6">
-                        <h4>Get the news</h4>
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                        <!-- <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-default" type="button">Subscribe!</button>
-                                </span>
-                        </div>
-                            
-                        </form> -->
                         <hr>
                         <h4>Stay in touch</h4>
                         <p class="social">

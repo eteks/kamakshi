@@ -1,7 +1,7 @@
 <?php include "templates/header.php"; ?>
     <div id="all">
         <div id="content">
-            <div class="container">
+            <div class="container adjt_cmn_cls_width">
                 <div class="col-md-12">
                     <div id="main-slider">
                         <div class="item">
@@ -25,7 +25,7 @@
                 <div class="category_product">
                 	<h4 class="category_product_name">Categories for <?php echo $recipient_name['recipient_type']; ?></h4>
                 </div>
-                <div class="container">
+                <div class="container adjt_cmn_cls_width">
                     <div id="container"> 
                     <?php
                         if(!empty($recipients_category_list)):
