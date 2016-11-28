@@ -2,22 +2,18 @@
     <div id="all">
         <div id="content">
             <div class="container">
-                <div class="col-md-12">
+                <div class="col-md-12 adjt_cmn_cls_width">
                     <ul class="breadcrumb">
                         <li><a href="<?php echo base_url(); ?>">Home</a>
                         </li>
                         <li> About </li>
                     </ul>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 adjt_cmn_cls_width">
                     <div class="box" id="contact">
                         <h1>About Us</h1>
-                        <h3>Mission</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <h3>Productive partnerships</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <h3>Tailored society publishing</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>                  
+                        <p>Kamakshi Nursery was founded in the year 1992 by Mrs. KAMAKSHI SRINIVASAN and Mr.P.S.SRINIVASAN.   They were avid plant lovers. They decided to cater to demand of indoor plants to the residence in the city of Chennai.  They pioneered the concept of renting indoor plants to corporate offices in the city.  We have completed 24 years of unbroken service to our valuable customers.   Today Kamakshi Nursery is run by Mrs.Srividhya Anand continuing the tradition and values set by our founders. </p>
+                        <p>We have promoted the concept of giving plants as a gift during the festive season, birthdays and other joyous occasions.  We also supply plants on a daily rental basis.</p>
                     </div>
                 </div>
                 <!-- /.col-md-9 -->

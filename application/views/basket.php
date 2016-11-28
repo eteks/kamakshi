@@ -2,7 +2,7 @@
     <div id="all">
         <div id="content">
             <div class="container">
-                <div class="col-md-12">
+                <div class="col-md-12 adjt_cmn_cls_width">
                     <ul class="breadcrumb">
                         <li><a href="<?php echo base_url(); ?>index.php">Home</a>
                         </li>

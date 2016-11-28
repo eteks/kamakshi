@@ -655,5 +655,35 @@ class Index extends CI_Controller
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $this->load->view('404',$categories);
     }
+	public function send_contact_mail()
+    {
+    	   if($this->input->post('firstname') && $this->input->post('lastname') && $this->input->post('email') && $this->input->post('subject') && $this->input->post('message')) 
+    	   {
+        		$config = Array(
+              		'protocol' => 'smtp',
+              		'smtp_host' => 'ssl://smtp.gmail.com',
+              		'smtp_port' => 465,
+              		'smtp_user' => 'sender@gmail.com',
+              		'smtp_pass' => 'password'
+    			);
+
+    			$this->load->library('email',$config);
+    			$this->email->set_newline("\r\n");
+
+    			$this->email->from("sender@gmail.com");
+    			$this->email->to("receiver@gmail.com");
+    			$this->email->subject("Email with Codeigniter");
+    			$this->email->message("This is email has been sent with Codeigniter");
+
+    			if($this->email->send())
+    			{
+        			echo "Your email was sent.!";
+    			}
+    			else 
+    			{
+        			echo "Your email was not sent.!";
+    			}
+		   }
+    }
 }
 /* End of file welcome.php */

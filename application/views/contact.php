@@ -5,7 +5,7 @@
         <div id="content">
             <div class="container">
 
-                <div class="col-md-12">
+                <div class="col-md-12 adjt_cmn_cls_width">
                     <ul class="breadcrumb">
                         <li><a href="<?php echo base_url(); ?>">Home</a>
                         </li>
@@ -15,7 +15,7 @@
                 </div>
 
 
-               <div class="col-md-12">
+               <div class="col-md-12 adjt_cmn_cls_width">
 
 
                     <div class="box" id="contact">
@@ -29,82 +29,79 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-map-marker"></i> Address</h3>
-                                <p>00/00 Street
-                                    <br>City
-                                    <br>Street No.
-                                    <br>State
-                                    <br>
-                                    <strong>Country</strong>
+                                    <p>REGISTERED OFFICE AT
+                                    <br />KAMASKHI NURSERY                              
+									<br />4,4th floor, Sreshta Anand Apartments,
+                                    <br />No.15,16 & 17 Hanumantha Road,
+                                    <br />Balaji Nagar, Royapettah,
+                                    <br />                                         
+                                    <strong>Chennai - 600014.</strong>
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
-                                <h3><i class="fa fa-phone"></i> Call center</h3>
-                                <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                                <p><strong>+00 000 000 000</strong>
+                                <h3><i class="fa fa-phone"></i> Call </h3> 
+                                <p class="text-muted">Please feel free to call us.</p>                               
+                                <p>Phn: 044-28132593, <br />
+                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98840 32954, <br />
+                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72000 06273.
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
-                                <h3><i class="fa fa-envelope"></i> Electronic support</h3>
-                                <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
+                                <h3><i class="fa fa-envelope"></i> Email Support</h3>
+                                <p class="text-muted">Please feel free to write an email to us.</p>
                                 <ul>
-                                    <li><strong><a href="mailto:">name@kamakshi.com</a></strong>
+                                    <li><strong><a href="mailto:">srividhya.anand@gmail.com</a></strong>
                                     </li>
-                                    <li><strong><a href="#">Ticketio</a></strong> - our ticketing support platform</li>
                                 </ul>
                             </div>
                             <!-- /.col-sm-4 -->
                         </div>
                         <!-- /.row -->
-
                         <hr>
-
                         <div id="map">
-
                         </div>
-
                         <hr>
-                        <h2>Contact form</h2>
-
-                        <form>
+                        <h2>Contact Form</h2>
+                        <form id="contactForm"  method="post" action="<?php echo base_url(); ?>index.php/index/send_contact_mail">
                             <div class="row">
                                 <div class="col-sm-12">
-                                      <p class="error_msg">Please fill all mandatory fields</p>
+                                      <p class="error_test">Please fill all fields</p>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="firstname">Firstname</label>
-                                        <input type="text" class="form-control" id="firstname">
+                                        <input type="text" class="form-control" id="firstname" name="firstname">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="lastname">Lastname</label>
-                                        <input type="text" class="form-control" id="lastname">
+                                        <input type="text" class="form-control" id="lastname"  name="lastname">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <input type="text" class="form-control" id="email" name="email">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="subject">Subject</label>
-                                        <input type="text" class="form-control" id="subject">
+                                        <input type="text" class="form-control" id="subject" name="subject">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="message">Message</label>
-                                        <textarea id="message" class="form-control"></textarea>
+                                        <textarea id="message" class="form-control" name="message"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-12 text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send message</button>
+                                    <button type="submit" class="btn btn-primary contact_submit_btn" name="contact_submit"><i class="fa fa-envelope-o"></i> Send message</button>
 
                                 </div>
                             </div>
@@ -120,33 +117,41 @@
             </div>
             <!-- /.container -->
         </div>
-        <!-- /#content -->
-
-
-    
+        <!-- /#content -->    
     </div>
     <!-- /#all -->
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLLvqcTSXKbvjj1UDU5phR2u3rpiTfvUw"></script>
+            <script type="application/javascript">
+                function initialize() {
+                    var mapOptions = {
+                        zoom: 18,
+                        scrollwheel: false,
+                        center: new google.maps.LatLng(13.048765, 80.268008)
+                    };
 
-    <script>
-        function initialize() {
-            var mapOptions = {
-                zoom: 15,
-                center: new google.maps.LatLng(49.1678136, 16.5671893),
-                mapTypeId: google.maps.MapTypeId.ROAD,
-                scrollwheel: false
-            }
-            var map = new google.maps.Map(document.getElementById('map'),
-                mapOptions);
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    // var contentString = '<div>' +
+                        // '<h1 class="map_data"><b>KAMASKHI NURSERY</b></h1>' +
+                        // '<h2 class="map_data">4,4th floor, Sreshta Anand Apartments,No.15,16 & 17 Hanumantha Road, Balaji Nagar, Royapettah, Chennai-600014.</h2>' +
+                        // '<h3 class="map_data">info@recruitteachers.com</h3>' +
+                        // '<h4 class="map_data">+91 95850 12949</h4>' +
+                        // '</div>';
+                    var marker = new google.maps.Marker({
+                        position: map.getCenter(),
+                        animation: google.maps.Animation.BOUNCE,
+                        icon: '<?php echo base_url(); ?>assets/img/map-marker.png',
+                        map: map,
+                        title: 'Kamakshi Nursery'
+                    });
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(map, marker);
+                    });
+                }
 
-            var myLatLng = new google.maps.LatLng(49.1681989, 16.5650808);
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map
-            });
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+                google.maps.event.addDomListener(window, 'load', initialize);
+            </script>
 <?php include "templates/footer.php"; ?>
