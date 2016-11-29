@@ -72,7 +72,9 @@
     //echo $_SERVER['REQUEST_URI']."<br>";
     //echo $this->config->item('admin_base_url')."<br>"; 
     ?>
-    <?php if (!empty($this->session->userdata('logged_in'))){?> 
+    <?php 
+        $user_session = $this->session->userdata("logged_in");
+        if (!empty($user_session)){?>
     <!-- left menu starts -->
     <div class="row">
         <div class="col-sm-2 col-lg-2">
