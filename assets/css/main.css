@@ -337,7 +337,7 @@
   display: none;
   margin: 8px 0 0;
   position: absolute;
-  right: -60px;
+  right: 0px;
 }
 .track_order_form input{
   width : 50% !important;
@@ -783,4 +783,53 @@ span.line {
 /*---- end of track order ----*/
 .fb{
   height: 30px;
+}
+/*.styled-select {
+   background-image: url('../assets/img/dropdown-arrow.png') no-repeat 96% 0 !important;
+   height: 29px;
+   overflow: hidden;
+   width: 160px;
+}
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 3px; 
+   width: 160px;
+}
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+.blue    { background-color: #4fbfa8; }
+.blue select    { color: #fff; }*/
+.adjt_cmn_cls_width{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+/*.form-name{
+  border-color: #ff0000 !important;
+}
+.text-danger {
+  color: #a94442 !important;
+}
+a.text-danger:hover {
+  color: #843534 !important;
+}*/
+.error_test {
+  color :#ff0000 ;
+  font-size : 12px; 
+  display : none;
+}
+.error_input_field {
+  /*background: #ffebeb !important;*/
+    box-shadow: 0 0 0px #ff0000;
+	padding: 3px 0px 3px 3px;
+  	margin: 5px 1px 3px 0px;
+  	border: 1px #ff0000;  
+}
+.contact_us_cnt{
+	margin-bottom: 5px !important;
 }

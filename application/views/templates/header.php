@@ -32,8 +32,8 @@
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
     <link rel="shortcut icon" href="favicon.png">
     <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "dd95200b-4b94-4ef1-a537-c65ad9d21ec8", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "dd95200b-4b94-4ef1-a537-c65ad9d21ec8", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> -->
 </head>
 <body>
   <!-- *** TOPBAR *** -->
@@ -49,9 +49,11 @@
             <div class="col-md-6 offer" data-animate="fadeInDown">
                 <a href="#" class="btn btn-success btn-sm" style="display: none;" data-animate-hover="shake"></a>  <a href="#"></a>
             </div>
-            <div class="col-md-6" data-animate="fadeInDown">
+            <div class="col-md-6 adjt_cmn_cls_width" data-animate="fadeInDown">
                 <ul class="menu">
-                    <?php if(!empty($this->session->userdata("login_status"))): 
+                    <?php 
+                    $user_session = $this->session->userdata("login_status");
+                    if(!empty($user_session)):
                         $session_data = $this->session->userdata("login_session");
                         // $facebook_session_data = $this->session->userdata("facebook_login_session");
                     ?>
@@ -76,8 +78,8 @@
                     <?php endif; ?>
                     <!-- <li><a href="<?php //echo base_url(); ?>index.php/customer_orders/">Profile</a>
                     </li> -->
-                    <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
-                    </li>
+                    <!-- <li><a href="<?php echo base_url(); ?>index.php/contact/">Contact</a>
+                    </li> -->
                     <li>
                         <a href="#" class="track_order_status_icon"> Track Order</a>
                         <form method="POST" class="track_order_form" action="<?php echo base_url(); ?>index.php/track_order"> 
@@ -139,10 +141,10 @@
                            <div id="facebook_login">
 							<ul class="social_icons">
 								<a href="<?php echo $login_url; ?>">
-                                <img class="fb" src="assets/img/fb.png">
+                                <img class="fb" src="<?php echo base_url(); ?>assets/img/fb.png">
                                 </a>							
 								<a href="<?php echo $authUrl; ?>">
-                                <img class="fb" src="assets/img/google.png">
+                                <img class="fb" src="<?php echo base_url(); ?>assets/img/google.png">
                                 </a>							
 							</ul>
 							</div>  

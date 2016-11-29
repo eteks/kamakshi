@@ -397,4 +397,68 @@ $(document).ready(function () {
     $('.product_category_name a:first-child').addClass('selected');
     $('.product_category_name a:first-child').click();
 
+//Added by velpandi - contact form validation
+ 
+ 	});
+ 	
+   $(document).ready(function () {
+	   	$('#firstname,#lastname').keydown(function (e) {
+	          if (e.ctrlKey || e.altKey) {
+	              e.preventDefault();
+	          } else {
+	              var key = e.keyCode;
+	              if (!((key == 8) || (key == 32) || (key == 46) || (key == 9) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+	                  e.preventDefault();
+	              }
+	          }
+	      });     
+          var required_register = ["firstname","lastname","email","subject","message"];
+               var reg_email=jQuery("#email");
+               var test=jQuery("#test");
+               var errornotice = jQuery("#error");
+               
+          $("#contactForm").on('submit',function(e){
+              e.preventDefault();
+                for (var i=0;i<required_register.length;i++) {
+            var input = jQuery('#'+required_register[i]);
+            if ((input.val() == "")) 
+                {
+                    input.addClass("error_input_field");
+                    $('.error_test').css('display','block'); 
+                } else {
+                    input.removeClass("error_input_field");
+                    $('.error_test').css('display','none'); 
+                }
+            }
+            if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(reg_email.val())) {
+            reg_email.addClass("error_input_field");
+                $('.error_email').css('display','block');
+                }
+                 else {
+                    reg_email.removeClass("error_input_field");
+                     $('.error_email').css('display','none');
+            }
+    
+            //if any inputs on the page have the class 'error_input_field' the form will not submit
+             if (jQuery(":input").hasClass("error_input_field")  ) {
+                 $('.error_test').css('display','block'); 
+                 $('.error_email').css('display','none'); 
+                 return false;
+             } 
+             else {
+                if(jQuery(":input").hasClass("error_input_field"))  {
+                 $('.error_test').css('display','none');
+                 $('.error_email').css('display','block');
+                 return false;
+                 }
+             else {
+                errornotice.hide();
+                 $('.error_test').css('display','none'); 
+                 $('.error_email').css('display','none');
+                 $(this).unbind();
+                 $(this).submit();
+             }
+         }
+ 	
+ });
 });

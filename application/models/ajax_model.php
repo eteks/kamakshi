@@ -331,7 +331,35 @@ class Ajax_Model extends CI_Model {
                 $this->session->set_userdata("login_status","1");   
                 $user_session_details = $check_login_data->row_array();
                 $this->session->set_userdata("login_session",$user_session_details);
-                $status = "success";
+                $condition = "email_log =" . "'" . $data. "'";             
+                $this->db->select('*');
+                $this->db->from('giftstore_users');
+                $this->db->where($condition);
+                $this->db->limit(1);
+
+                $query = $this->db->get();
+                // echo $query->num_rows();
+                if($query->num_rows() == 1)
+                {
+                    // echo "test2";
+                     // ini_set('display_errors', 1);
+                     $config['protocol'] = 'smtp';
+                     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+                     $config['smtp_port'] = 25;
+                     $config['smtp_user'] = $data;
+                     $config['smtp_pass'] = '********';          
+                      $this->load->library('email', $config);       
+                        $this->email->from('thangamgold45@gmail.com', 'header');
+                        $this->email->to($config['smtp_user']);                     
+                        $this->email->subject('Get your Registered Mail Id');
+                        // $this->email->message('Please go to this link to get your password.
+                        //        http://localhost/kamakshi/');
+                        $user_result = $query->row_array();
+                        $this->email->message("Your registered mail is ".$user_result['email_log']);
+                        $this->email->send();
+                        echo "Registration success Please Check Your mail For Confirmation.";
+                }
+                // $status = "success";
             }
             else {
                 $status = "Please enter valid details";  

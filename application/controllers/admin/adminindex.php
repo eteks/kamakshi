@@ -27,6 +27,7 @@ class Adminindex extends CI_Controller {
 		$this->load->helper('form');
 		// Load form validation library
 		$this->load->library('form_validation');
+		date_default_timezone_set('Asia/Kolkata');
 	}
 	function edit_unique($value, $params) 
 	{
@@ -635,6 +636,9 @@ class Adminindex extends CI_Controller {
 	}
 	public function edit_giftproduct()
 	{
+		// echo "<pre>";
+		// print_r($_FILES['product_image']);
+		// echo "</pre>";
 		// Code runs before data post i.e. to redirect edit product page with their id
 		$id = $this->uri->segment(4);
 		if (empty($id))
@@ -643,6 +647,7 @@ class Adminindex extends CI_Controller {
 		}
 		
 		$status = array();//array is initialized
+		$product_image = array();
 		
 		//Code runs after data post i.e. while update product
 	    if(!empty($_POST)){
@@ -686,9 +691,43 @@ class Adminindex extends CI_Controller {
 				// echo "<pre>";
 		  //   	print_r($data);
 		  //   	echo "</pre>";
-				$result = $this->catalog->update_product($data);
-				if($result)
-					$status['error_message'] = "Product Updated Successfully!";
+				//To pass newly upload image while edit product
+				$filesCount = count($_FILES['product_image']['name']);
+				if(!empty($_FILES['product_image']['name']) && $filesCount > 1){
+					for($i = 0; $i < $filesCount-1; $i++){
+						// array_push($product_image,$_FILES['userFiles']['name'][$i]);
+						$_FILES['userFile']['name'] = $_FILES['product_image']['name'][$i];
+		                $_FILES['userFile']['type'] = $_FILES['product_image']['type'][$i];
+		                $_FILES['userFile']['tmp_name'] = $_FILES['product_image']['tmp_name'][$i];
+		                $_FILES['userFile']['error'] = $_FILES['product_image']['error'][$i];
+		                $_FILES['userFile']['size'] = $_FILES['product_image']['size'][$i];
+
+						$config['upload_path'] = FCPATH.ADMIN_MEDIA_PATH; 
+						$config['allowed_types'] = FILETYPE_ALLOWED;//FILETYPE_ALLOWED which is defined constantly in constants file
+						$config['file_name'] = $_FILES['product_image']['name'][$i];
+
+						$this->upload->initialize($config);
+						if($this->upload->do_upload('userFile')){
+						    $uploadData = $this->upload->data();
+						    array_push($product_image,ADMIN_MEDIA_PATH.$uploadData['file_name']);
+							$product_image[$i] = ADMIN_MEDIA_PATH.$uploadData['file_name'];
+						}else{
+							$errors = $this->upload->display_errors();
+						    // array_push($product_image,'');
+						    $product_image[$i] = '';
+						}
+					}
+				}
+				if (!empty($errors)) {
+					$status['error_message'] = strip_tags($errors);
+				}
+				else{
+					$data['product_files'] = $product_image;
+					$data['removed_product'] = $_POST['edit_remove_photos'];
+					$result = $this->catalog->update_product($data);
+					if($result)
+						$status['error_message'] = "Product Updated Successfully!";
+				}		
 	    	}
 	    	else
 	    		$status['error_message'] = "Product Title Already Exists!";	

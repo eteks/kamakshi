@@ -604,6 +604,25 @@
       }
   }
 
+  .edit_after_save{
+    height: 92px;
+    left: 0;
+    position: relative;
+    width: 92px;
+  }
+  .upload_image_remove {
+    color: #c33 !important;
+    display: block !important;
+    font-weight: bold;
+    left: 7px;
+    position: absolute !important;
+    top: 24px !important;
+    z-index: 999;
+  }
+  .upload_image_remove:hover {
+    visibility: hidden;
+  }
+
 // ===========================
 //      END IMAGE UPLOAD
 // ===========================

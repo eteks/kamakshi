@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="category_image">Product Image<span class="fill_symbol"> *</span></label>
                         <!-- <input type="file" id="category_image" name="product_image[]" multiple="multiple" class="product_default_field"> -->
-                        <input type='file' id='image_upload' name='product_image[]' multiple='multiple' class="product_default_field" /> 
+                        <input type='file' name='product_image[]' multiple='multiple' class="product_default_field image_file_input" /> 
                         <span class="product_error_message">The Product Image field is required</span>
                         <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>   
                     </div>

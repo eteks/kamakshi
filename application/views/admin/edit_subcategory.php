@@ -57,8 +57,22 @@
                           <div class="multiple_dropdown"> 
                             <div class="select_multiple_option">
                                 <a id="admin_check">
-                                    <span class="hida">Select</span>  <i class="fa fa-caret-down"  aria-hidden="true"></i>  
-                                    <p class="multiSel"></p>  
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>  
+                                <p class="multiSel">
+                                <?php $count = sizeof($category_list);
+                                    $initial_count=0; 
+                                    foreach ($category_list as $catlist):
+                                        if (in_array($catlist["category_id"],$subcategory_category)){
+                                            if( $initial_count == 0 || $initial_count == $count) {
+                                                echo '<span class="select_content" title=" '.$catlist["category_name"].' "> '.$catlist["category_name"].' </span>';   
+                                            }
+                                            else
+                                                echo '<span class="module_comma"> , </span> <span class="select_content" title=" '.$catlist["category_name"].' "> '.$catlist["category_name"].'</span>';         
+                                            $initial_count++;
+                                        }
+                                    endforeach 
+                                ?>
+                                </p> 
                                 </a>
                             </div>
                             <div class="mutliSelect">

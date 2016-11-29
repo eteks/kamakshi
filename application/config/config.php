@@ -23,6 +23,7 @@
 |
 */
 $config['base_url'] = 'http://localhost/kamakshi';
+// $config['base_url'] = 'http://etekchnoservices.com/kamakshi';
 
 $config['admin_base_url'] = '/kamakshi/index.php/admin';
 
