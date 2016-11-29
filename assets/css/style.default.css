@@ -442,6 +442,7 @@ h1 {
 #content .panel.sidebar-menu ul.nav.category-menu li a {
   text-transform: uppercase;
   font-weight: bold;
+  cursor: pointer;
 }
 #content .panel.sidebar-menu ul.nav ul {
   list-style: none;

@@ -65,7 +65,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" id="email">
+                    <input type="email" name="email" class="form-control" id="email">
                 </div>
             </div>
 

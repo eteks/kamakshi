@@ -1,17 +1,19 @@
-// ;(function() {
-//     "use strict";
-//     var price_value = $('#price_range_filter_value').val().split(',');
+;(function() {
+    "use strict";
+    if($('#price_range_filter_value').length > 0) {
+        var price_value = $('#price_range_filter_value').val().split(',');
+        $("#double_number_range").rangepicker({
+        type: "double",
+        startValue: 0,
+        endValue: price_value[1],
+        translateSelectLabel: function(currentPosition, totalPosition) {
+            return parseInt(price_value[1] * (currentPosition / totalPosition));
+        }
+        });
+    }
+  
 
-//     $("#double_number_range").rangepicker({
-//         type: "double",
-//         startValue: 0,
-//         endValue: price_value[1],
-//         translateSelectLabel: function(currentPosition, totalPosition) {
-//             return parseInt(price_value[1] * (currentPosition / totalPosition));
-//         }
-//     });
-
-// }());
+}()); // Added by siva for price filter
 
 
 $(document).ready(function() {  
@@ -253,13 +255,10 @@ $('#profile_email').on('keyup',function() {
         profile_email_val.addClass("error_mail_field");
         $('.profile_submit').prop('disabled',true);
         $('.profile_submit').css('pointer-events','none');
-        $('.profile_submit').css('title','Enter valid email id');    
     }
     else {
-        profile_email_val.removeClass("error_mail_field");
         $('.profile_submit').prop('disabled',false);
         $('.profile_submit').css('pointer-events','auto');
-        $('.profile_submit').css('title','Update');     
     }
 });
 
@@ -302,6 +301,7 @@ if($('.full_site_url').length > 0) {
         }
     }
 }
+
 
 // Ended by siva - calculation process in basket page end
   
@@ -397,4 +397,68 @@ $(document).ready(function () {
     $('.product_category_name a:first-child').addClass('selected');
     $('.product_category_name a:first-child').click();
 
+//Added by velpandi - contact form validation
+ 
+ 	});
+ 	
+   $(document).ready(function () {
+	   	$('#firstname,#lastname').keydown(function (e) {
+	          if (e.ctrlKey || e.altKey) {
+	              e.preventDefault();
+	          } else {
+	              var key = e.keyCode;
+	              if (!((key == 8) || (key == 32) || (key == 46) || (key == 9) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+	                  e.preventDefault();
+	              }
+	          }
+	      });     
+          var required_register = ["firstname","lastname","email","subject","message"];
+               var reg_email=jQuery("#email");
+               var test=jQuery("#test");
+               var errornotice = jQuery("#error");
+               
+          $("#contactForm").on('submit',function(e){
+              e.preventDefault();
+                for (var i=0;i<required_register.length;i++) {
+            var input = jQuery('#'+required_register[i]);
+            if ((input.val() == "")) 
+                {
+                    input.addClass("error_input_field");
+                    $('.error_test').css('display','block'); 
+                } else {
+                    input.removeClass("error_input_field");
+                    $('.error_test').css('display','none'); 
+                }
+            }
+            if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(reg_email.val())) {
+            reg_email.addClass("error_input_field");
+                $('.error_email').css('display','block');
+                }
+                 else {
+                    reg_email.removeClass("error_input_field");
+                     $('.error_email').css('display','none');
+            }
+    
+            //if any inputs on the page have the class 'error_input_field' the form will not submit
+             if (jQuery(":input").hasClass("error_input_field")  ) {
+                 $('.error_test').css('display','block'); 
+                 $('.error_email').css('display','none'); 
+                 return false;
+             } 
+             else {
+                if(jQuery(":input").hasClass("error_input_field"))  {
+                 $('.error_test').css('display','none');
+                 $('.error_email').css('display','block');
+                 return false;
+                 }
+             else {
+                errornotice.hide();
+                 $('.error_test').css('display','none'); 
+                 $('.error_email').css('display','none');
+                 $(this).unbind();
+                 $(this).submit();
+             }
+         }
+ 	
+ });
 });

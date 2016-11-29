@@ -19,6 +19,7 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
+		echo "base_url(APPPATH."views/".style."/assets/css/main.css")";
 		$this->load->view('index');
 	}
 }

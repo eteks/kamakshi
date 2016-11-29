@@ -2,7 +2,7 @@
       <div id="all">
         <div id="content">
             <div class="container">
-                <div class="col-md-12">
+                <div class="col-md-12 adjt_cmn_cls_width">
                     <div id="main-slider">
                         <div class="item">
                             <img src="<?php echo base_url(); ?>assets/img/main-slider1.jpg" alt="" class="img-responsive">
@@ -22,30 +22,30 @@
             </div>
             <!-- *** ADVANTAGES HOMEPAGE *** -->
             <div id="advantages">
-                <div class="container">
+                <div class="container adjt_cmn_cls_width">
                     <div class="same-height-row">
                         <div class="col-sm-4">
-                            <div class="box same-height clickable">
+                            <div class="box same-height">
                                 <div class="icon"><i class="fa fa-heart"></i>
                                 </div>
-                                <h3><a href="#">We love our customers</a></h3>
+                                <h3><a>We love our customers</a></h3>
                                 <p>We are known to provide best possible service ever</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="box same-height clickable">
+                            <div class="box same-height">
                                 <div class="icon"><i class="fa fa-tags"></i>
                                 </div>
 
-                                <h3><a href="#">Best Services</a></h3>
+                                <h3><a>Best Services</a></h3>
                                 <p>To distinguish ourselves from surrounding specialty retailers, we provide numerous customized services that offer customers a satisfying and unique shopping experience.</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="box same-height clickable">
+                            <div class="box same-height">
                                 <div class="icon"><i class="fa fa-thumbs-up"></i>
                                 </div>
-                                <h3><a href="#">Key to Success</a></h3>
+                                <h3><a>Key to Success</a></h3>
                                 <p>Establish a "Brand Identity" that personifies high-quality, gift giving merchandise and outstanding customer service.</p>
                             </div>
                         </div>
@@ -151,16 +151,14 @@
             <section id="our-works" class="page bg-style1">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 adjt_cmn_cls_width">
                             <div class="portfolio">
                                 <div class="portfoloi_content_area" >
                                     <div class="portfolio_menu">
                                         <ul id="filters">
                                             <li class="active_prot_menu latest_products"><a href="#portfolio_menu" data-filter="*">Latest Products</a></li>
-                                            
                                         </ul>
                                    </div>
-         
                                 </div>
                         
                             </div>

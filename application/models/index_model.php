@@ -176,6 +176,9 @@ class Index_Model extends CI_Model {
 
     public function get_product_list($limit)
     {
+        $query['product_list'] = array();;
+        $query['cat_pro_count'] = array();; 
+        $query['search_keyword'] = array();;
 
         if ($this->input->post('search_keyword')) {
 
