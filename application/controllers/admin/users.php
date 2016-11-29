@@ -10,6 +10,7 @@ class Users extends CI_Controller {
 		$this->load->helper(array('form','custom'));
 		// Load form validation library
 		$this->load->library('form_validation');
+		date_default_timezone_set('Asia/Kolkata');
 	}
 	public function adminusers()
 	{	
