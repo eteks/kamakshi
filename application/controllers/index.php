@@ -156,7 +156,7 @@ class Index extends CI_Controller
 		// print_r($categories);
 		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
     	    //pagination configuration
-            $config['target']      = '#all_products_section';
+            $config['target']      = '.all_products_section_ajax';
             $config['base_url']    = base_url().'index.php/ajax_controller/filtering_product';
             $config['total_rows']  = $categories['cat_pro_count'];
             $config['per_page']    = $this->perPage;
@@ -181,7 +181,7 @@ class Index extends CI_Controller
         $categories['search_keyword'] = $category_values['search_keyword'];
         $categories['product_list'] = $category_values['product_list'];
         $categories['cat_pro_count'] = $category_values['cat_pro_count'];
-        $config['target']      = '#all_products_section';
+        $config['target']      = '.all_products_section_ajax';
         $config['base_url']    = base_url().'index.php/ajax_controller/filtering_search_product';
         $config['total_rows']  = $categories['cat_pro_count'];
         $config['per_page']    = $this->perPage;
@@ -261,7 +261,7 @@ class Index extends CI_Controller
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
         $categories_profile = $this->index_model->get_user_profile_details();
         $categories['user_profile_details'] = $categories_profile['user_profile_details'];
-        $categories['user_profile'] = $this->facebook->api('/me/');
+        // $categories['user_profile'] = $this->facebook->api('/me/');
         $categories['profile_get_state'] = $categories_profile['profile_get_state'];
         $categories['profile_get_city'] = $categories_profile['profile_get_city'];
         $categories['profile_get_area'] = $categories_profile['profile_get_area'];

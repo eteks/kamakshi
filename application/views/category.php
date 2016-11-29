@@ -52,6 +52,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="all_products_section_ajax">
                     <?php } ?>
                     <div id="all_products_section" class="row products">
                         <?php 
@@ -90,15 +91,21 @@
                             </div>
                             <!-- /.product -->
                         </div>
-                        <?php endforeach; else: ?>
-                        <p class="not_available">Product(s) not available.</p>
-                        <?php endif; ?>
+                        <?php 
+                        endforeach; 
+                        ?>
                         <div class="cb"> </div>
                         <div class="bottom_pagination">
                             <?php echo $this->ajax_pagination->create_links(); ?> 
                         </div>
+                        <?php
+                        else: 
+                        ?>
+                        <p class="not_available">Product(s) not available.</p>
+                        <?php endif; ?>
                     </div>
 <?php if(!$this->input->is_ajax_request()){ ?>
+                </div>
                 </div>
                 <!-- /.col-md-9 -->
             </div>

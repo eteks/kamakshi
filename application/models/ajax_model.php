@@ -181,6 +181,7 @@ class Ajax_Model extends CI_Model {
         return $query_status;
     }
 
+
     //  Update quantity in basket
     public function get_update_product() {
         if($this->input->post('updation_det')) {
@@ -520,5 +521,40 @@ class Ajax_Model extends CI_Model {
             $myorders_array = $this->db->get_where('giftstore_order',$myorders_where)->row_array();
         }
         return $myorders_array;    
+    }
+
+    // Get profile details in checkout page
+    public function get_checkout_profile_detail() {
+    	$profile_details['profile_get_city'] = array();
+    	$profile_details['profile_get_area'] = array();
+        $profile_details['shipping_amount'] = array();
+        if($this->input->post('user_value')) {
+        	$current_session = $this->session->userdata("login_session");
+            $profile_user_where = '(user_id="'.$current_session['user_id'].'")';
+            $profile_details['profile_details'] = $this->db->get_where('giftstore_users',$profile_user_where)->row_array();
+        	$profile_state_where = '(state_status=1)';
+        	$profile_details['state'] = $this->db->get_where('giftstore_state',$profile_state_where)->result_array();
+
+        	if(!empty($profile_details['profile_details']['user_state_id']) && !empty($profile_details['profile_details']['user_city_id'])) {
+	            $profile_area_where = '(area_state_id="'.$profile_details['profile_details']['user_state_id'].'" and area_city_id="'.$profile_details['profile_details']['user_city_id'].'" and area_status=1)';
+	            $profile_details['profile_get_area'] = $this->db->get_where('giftstore_area',$profile_area_where)->result_array();
+        	}
+	        if(!empty($profile_details['profile_details']['user_state_id'])) {
+	            $profile_city_where = '(city_state_id="'.$profile_details['profile_details']['user_state_id'].'" and city_status=1)';
+	            $profile_details['profile_get_city'] = $this->db->get_where('giftstore_city',$profile_city_where)->result_array(); 
+
+            }
+            if(!empty($profile_details['profile_details']['user_area_id'])) {
+                $profile_shipping_where = '(area_id="'.$profile_details['profile_details']['user_area_id'].'" and area_status=1)';
+                $profile_details['shipping_amount'] = $this->db->get_where('giftstore_area',$profile_shipping_where)->row_array();
+
+            }
+
+            
+
+
+
+        }
+        return $profile_details;    
     }
 }

@@ -260,7 +260,7 @@
             <div class="collapse clearfix" id="search">
                 <form class="navbar-form" role="search" action="<?php echo base_url(); ?>index.php/search_section" method="POST">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search_keyword" placeholder="Search by product name">
+                        <input type="text" class="form-control" name="search_keyword" placeholder="Search by product name" required>
                         <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                        </span>

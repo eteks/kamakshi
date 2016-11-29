@@ -206,7 +206,7 @@ class Ajax_pagination{
                 var datavalues = {page: page,keyword :keyword };    
             }
             else {
-                var price_range =  $('.addui-slider-input').val().split(',');  
+                var price_range =  $('#price_range_filter_value').val().split(',');  
                 var start_value = parseFloat(price_range[0]).toFixed(2);
                 var end_value = parseFloat(price_range[1]).toFixed(2);
                 var sort_val = $('.sort_products').val();
