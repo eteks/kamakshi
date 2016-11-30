@@ -1,5 +1,7 @@
 <?php
-if(!empty($this->session->userdata("login_status"))):
+// if(!empty($this->session->userdata("login_status"))):
+$user_session = $this->session->userdata("login_status");
+if (!empty($user_session)):
 include "templates/header.php"; 
 ?>
     <div id="all">

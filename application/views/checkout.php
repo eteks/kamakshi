@@ -24,7 +24,8 @@
                             <div class="checkout_section">
                                 <div id="checkout_address">
                                 <?php
-                                if(!empty($this->session->userdata("login_status"))): 
+                                $user_session = $this->session->userdata("login_status");
+                                if (!empty($user_session)){?>
                                 ?>
                                 <p> <input type="checkbox" id="checkout_profile_details"> Use my profile details </p>
                                 <?php
