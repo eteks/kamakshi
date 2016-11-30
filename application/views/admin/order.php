@@ -78,7 +78,7 @@
             <td class="center"><?php echo date("d/m/Y", strtotime($order["order_createddate"])); ?></td>
             <td class="center"><span class="<?php if($order["order_status"] ==1 ){ ?>label-success<?php } ?> label label-default"><?php if($order["order_status"] ==1 )echo "Active";else echo "InActive"; ?></span></td>
             <td class="center">
-                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_order/<?php echo $order["order_user_id"] ?>">
+                <a class="btn btn-info" href="<?php echo base_url(); ?>index.php/admin/adminindex/edit_order/<?php echo $order["order_id"] ?>">
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
