@@ -426,7 +426,7 @@ $('.select-label').on('mouseout', function(){
         var this_status = $(this).find('.registeration_status');
         jQuery.ajax({
         type: "POST",
-        url: baseurl+'index.php/'+$(this).attr('action'),
+        url: $(this).attr('action'),
         data: form_data,
             success: function(res) {
                 if (res)
