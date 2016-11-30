@@ -35,7 +35,7 @@ class Ajax_Controller extends CI_Controller {
         $data['product_count'] =  $data_values['product_count'];
         //pagination configuration
        	// $config['base_url']    = base_url().'index.php/oauth_login/test';
-        $config['target']      = '#all_products_section';
+        $config['target']      = '.all_products_section_ajax';
         $config['base_url']    = base_url().'index.php/ajax_controller/filtering_product';
         $config['total_rows']  = $data['product_count'];
         $config['per_page']    = $this->perPage;
@@ -63,7 +63,7 @@ class Ajax_Controller extends CI_Controller {
 
         //pagination configuration
         		// $config['base_url']    = base_url().'index.php/oauth_login/test';
-        $config['target']      = '#all_products_section';
+        $config['target']      = '.all_products_section_ajax';
         $config['base_url']    = base_url().'index.php/ajax_controller/filtering_search_product';
         $config['total_rows']  = $categories['cat_pro_count'];
         $config['per_page']    = $this->perPage;
@@ -191,6 +191,18 @@ class Ajax_Controller extends CI_Controller {
 	{	
 		$data = $this->ajax_model->get_myorders_list();
 		echo json_encode($data);
+	}
+
+	// Get profile details in checkout page
+	public function checkout_profile_detail()
+	{	
+		$data_values = $this->ajax_model->get_checkout_profile_detail();
+		$data['profile_details'] = $data_values['profile_details'];
+        $data['state'] = $data_values['state'];
+        $data['profile_get_city'] = $data_values['profile_get_city'];
+        $data['profile_get_area'] = $data_values['profile_get_area'];
+        $data['shipping_amount'] = $data_values['shipping_amount'];
+		$this->load->view('checkout',$data,false);
 	}
 
 } // end of the class

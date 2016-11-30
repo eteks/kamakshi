@@ -17,10 +17,15 @@
                     <div class="box info-bar">
                         <div class="row">
                             <div class="col-sm-12 col-md-6 products-showing">
-                            	<strong class="category_name">Products for "<?php echo $search_keyword; ?>" </strong>
+                            	<strong class="category_name">Products for "<?php 
+                                if(!empty($search_keyword)) :
+                                    echo $search_keyword; 
+                                endif;
+                                ?>" </strong>
                             </div>
                         </div>
                     </div>
+                    <div class="all_products_section_ajax">
                     <?php }?>
                     <div id="all_products_section" class="row products">
                         <?php 
@@ -62,20 +67,27 @@
                         </div>
                         <?php 
                         endforeach; 
+                        ?>
+                        <div class="cb"> </div>
+                            <div class="bottom_pagination">
+                                <?php echo $this->ajax_pagination->create_links(); ?> 
+                            </div>
+                        <?php
                         else: 
                         ?>
                         <p class="not_available"> No product(s) found for this keyword.</p>
                         <?php 
                         endif; 
                         ?>
-                        <div class="cb"> </div>
-                        <div class="bottom_pagination">
-                            <?php echo $this->ajax_pagination->create_links(); ?> 
-                        </div>
                     </div>
-                </div>
                 <?php if(!$this->input->is_ajax_request()){ ?>
-                    <input type="hidden" class="search_keyword_section" value="<?php echo $search_keyword; ?>" />
+                    </div>
+                    </div>
+                    <input type="hidden" class="search_keyword_section" value="<?php 
+                                if(!empty($search_keyword)) :
+                                    echo $search_keyword; 
+                                endif;
+                                ?>" />
                 <!-- /.col-md-9 -->
             </div>
             <!-- /.container -->

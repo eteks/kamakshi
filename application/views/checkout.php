@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php"; ?>
  
     <div id="all">
@@ -22,7 +23,19 @@
                             </ul>
                             <div class="checkout_section">
                                 <div id="checkout_address">
-                                <!-- <p> <input type="checkbox" value=""> Use my profile details </p> -->
+                                <?php
+                                $user_session = $this->session->userdata("login_status");
+                                if (!empty($user_session)):?>
+                                ?>
+                                <p> <input type="checkbox" id="checkout_profile_details"> Use my profile details </p>
+                                <?php
+                                endif;
+                                ?>
+                                <div class="checkout_content">
+                                <?php 
+
+                                } 
+                                ?>
                                     <div class="content">
                                         <p class="error_msg">  </p>
                                         <div class="row">
@@ -31,13 +44,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="firstname">Firstname</label>
-                                                    <input type="text" name="firstname" class="form-control" id="firstname" maxlength="20">
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" maxlength="20" value="<?php if(!empty($profile_details)) : echo $profile_details['first_name']; endif;?>">
                                                 </div>  
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="lastname">Lastname</label>
-                                                    <input type="text" name="lastname" class="form-control" id="lastname" maxlength="20">
+                                                    <input type="text" name="lastname" class="form-control" id="lastname" maxlength="20" value="<?php if(!empty($profile_details)) : echo $profile_details['last_name']; endif;?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -45,13 +58,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="company">Address Line1</label>
-                                                    <input type="text" name="address1" class="form-control" id="company" maxlength="20">
+                                                    <input type="text" name="address1" class="form-control" id="company" maxlength="20" value="<?php if(!empty($profile_details)) : echo $profile_details['shipping_default_addr1']; endif;?>">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="street">Address Line2</label>
-                                                    <input type="text" name="address2" class="form-control" id="street" maxlength="30">
+                                                    <input type="text" name="address2" class="form-control" id="street" maxlength="30" value="<?php if(!empty($profile_details)) : echo $profile_details['shipping_default_addr2']; endif;?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,11 +74,30 @@
                                                     <label for="state">State</label>
                                                     <select class="form-control" id="che_state" name="udf2">
                                                         <option value=""> Please select state </option>
-                                                        <?php if(!empty($state)) : 
-                                                            foreach($state as $state_row): ?>
-                                                                <option value="<?php echo $state_row['state_id']; ?>"> <?php echo $state_row['state_name']; ?> </option>  
-                                                        <?php endforeach; 
-                                                                endif;
+                                                        <?php 
+                                                        if(!empty($state)) : 
+                                                        foreach($state as $state_row): 
+                                                        if(!empty($profile_details)) { 
+                                                            if($state_row['state_id'] == $profile_details['user_state_id']) {
+                                                        ?>  
+                                                                <option selected value="<?php echo $state_row['state_id']; ?>"> <?php echo $state_row['state_name']; ?> </option>
+                                                        <?php
+                                                                }
+                                                            else 
+                                                                {
+                                                        ?>
+                                                                <option value="<?php echo $state_row['state_id']; ?>"> <?php echo $state_row['state_name']; ?> </option>
+                                                        <?php
+                                                                }
+                                                            }
+                                                        else 
+                                                            {
+                                                        ?>
+                                                            <option value="<?php echo $state_row['state_id']; ?>"> <?php echo $state_row['state_name']; ?> </option>
+                                                        <?php 
+                                                            }
+                                                        endforeach; 
+                                                        endif;
                                                         ?>
                                                     </select>
                                                 </div>
@@ -73,8 +105,23 @@
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label for="city">City</label>
-                                                    <select class="form-control" id="che_city" name="city">
-                                                        <option value=""> </option>
+                                                        <select class="form-control" id="che_city" name="city">
+                                                        <?php 
+                                                        if(!empty($profile_get_city) && !empty($profile_details)) : 
+                                                        foreach($profile_get_city as $city_row): 
+                                                            if($city_row['city_id'] == $profile_details['user_city_id']) {
+                                                        ?>  
+                                                                <option selected value="<?php echo $city_row['city_id']; ?>"> <?php echo $city_row['city_name']; ?> </option>
+                                                        <?php
+                                                            }
+                                                            else {
+                                                        ?>
+                                                                <option value="<?php echo $city_row['city_id']; ?>"> <?php echo $city_row['city_name']; ?> </option>
+                                                        <?php
+                                                            }
+                                                        endforeach; 
+                                                        endif;
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -82,29 +129,46 @@
                                                 <div class="form-group">
                                                     <label for="area">Area</label>
                                                     <select class="form-control" name="country" id="che_area">
-                                                        <option value="">  </option>
+                                                        <?php 
+                                                        if(!empty($profile_get_area) && !empty($profile_details)) : 
+                                                        foreach($profile_get_area as $area_row): 
+                                                            if($area_row['area_id'] == $profile_details['user_area_id']) :
+                                                        ?>  
+                                                                <option selected value="<?php echo $area_row['area_id']; ?>"> <?php echo $area_row['area_name']; ?> </option>
+                                                        <?php
+                                                            else :
+                                                        ?>
+                                                                <option value="<?php echo $area_row['area_id']; ?>"> <?php echo $area_row['area_name']; ?> </option>
+                                                        <?php
+                                                        endif;
+                                                        endforeach; 
+                                                        endif;
+                                                        ?>
                                                     </select>
                                                 </div>  
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label for="zip">ZIP</label>
-                                                    <input type="text" name="zipcode" class="form-control" id="zip" maxlength="6">
+                                                    <input type="text" name="zipcode" class="form-control" id="zip" maxlength="6" value="<?php if(!empty($profile_details)) : echo $profile_details['user_zip']; endif;?>">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="phone">Mobile number</label>
-                                                    <input type="text" name="phone" class="form-control" id="phone" maxlength="10">
+                                                    <input type="text" name="phone" class="form-control" id="phone" maxlength="10" value="<?php if(!empty($profile_details)) : echo $profile_details['user_mobile']; endif;?>">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="text" name="email" class="form-control" id="email" maxlength="30">
+                                                    <input type="text" name="email" class="form-control" id="email" maxlength="30" value="<?php if(!empty($profile_details)) : echo $profile_details['user_email']; endif;?>">
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <input type="hidden" value="<?php if(!empty($shipping_amount)) : echo $shipping_amount['area_delivery_charge']; endif;?>" class="shipping_checkout_area" />
+                                    <?php if(!$this->input->is_ajax_request()){ ?>
                                     </div>
                                     <div class="box-footer">
                                         <div class="pull-left">
@@ -251,3 +315,4 @@
     </div>
     <!-- /#all -->
 <?php include "templates/footer.php"; ?>
+<?php } ?>

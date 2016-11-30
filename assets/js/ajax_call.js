@@ -6,7 +6,7 @@ $(document).ready(function() {
    
     /* -----------    Ajax for checkout page start  ---------- */
 
-$(document ).ajaxComplete(function() {
+$(document).ajaxComplete(function() {
     $('.listing_product img').css('display','none');
     $('.listing_product').addClass('product_loader');
     centerContent();
@@ -14,13 +14,13 @@ $(document ).ajaxComplete(function() {
 
 
     // Load city based on state
-    $("#che_state").on('change',function() {
+    $(document).on('change','#che_state',function() {
         var state_id = $(this).val();
         var state_name = $('option:selected',$(this)).text();
         if(state_id!='') {    
             jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/get_city",
+            url: baseurl+"index.php/ajax_controller/get_city",
             data: {state_id: state_id},
                 success: function(res) {
                     if (res)
@@ -43,14 +43,14 @@ $(document ).ajaxComplete(function() {
     });
 
     // Load area based on city
-    $("#che_city").on('change',function() {
+    $(document).on('change','#che_city',function() {
         var city_id = $(this).val();
         var city_name = $('option:selected',$(this)).text();
         var state_id = $("#che_state").val();
         if(city_id!='' && state_id!='') {    
             jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/get_area",
+            url: baseurl+"index.php/ajax_controller/get_area",
             data: {city_id: city_id , state_id: state_id},
                 success: function(res) {
                     if (res)
@@ -73,13 +73,16 @@ $(document ).ajaxComplete(function() {
     });
 
     // Load shipping amount based on area
-    $("#che_area").on('change',function() {
+    $(document).on('change','#che_area',function() {
         var area_id = $(this).val();
-        var sub_total = parseFloat($('.ordinary_total_amount').val().replace(',',''));
+        if($('.ordinary_total_amount').length > 0) {
+            var sub_total = parseFloat($('.ordinary_total_amount').val().replace(',',''));
+        }
+
         if(area_id!='') {    
             jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/get_area_shipping",
+            url: baseurl+"index.php/ajax_controller/get_area_shipping",
             data: {area_id: area_id},
                 success: function(res) {
                     if (res)
@@ -109,7 +112,7 @@ $(document ).ajaxComplete(function() {
 
         jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/update_baseket_product",
+            url: baseurl+"index.php/ajax_controller/update_baseket_product",
             data: {updation_det : order_status},
             success: function(res) {
                 if (res)
@@ -127,13 +130,105 @@ $(document ).ajaxComplete(function() {
         });
     });
 
+    // Order status verification
+    $('#checkout_profile_details').on('click',function() {
+         if($('.ordinary_total_amount').length > 0) {
+            var sub_total = parseFloat($('.ordinary_total_amount').val().replace(',',''));
+        }
+        if($(this).is(':checked')) {
+            var user_value = 1;     
+            jQuery.ajax({
+                type: "POST",
+                url: baseurl+"index.php/ajax_controller/checkout_profile_detail",
+                data: {user_value : user_value},
+                success: function(res) {
+                    if(res) {
+                        $('.checkout_content').html(res);
+                        var shipping_amt = $('.shipping_checkout_area').val();
+                        var shipping_amount = parseFloat(shipping_amt.replace(',',''));
+                        var total_amount = sub_total + shipping_amount;
+                        var total_amount_final = Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2});
+                        var total_paymnet =  total_amount_final.replace(',','');
+                        $('.ordinary_shipping_amount').html(shipping_amt);
+                        $('.product_final_amount').html(total_amount_final);  
+                        $('.total_amount_hidden').val(total_paymnet);
+                    }
+                }
+            });
+        }
+
+    });
+
     /* -----------    Ajax for checkout page end  ---------- */
 
     /* -----------    Ajax for listing page start  ---------- */
 
-    // Price filtering
-    $(document).on('mouseup','.addui-slider-handle',function() {
-        var price_range =  $('.addui-slider-input').val().split(',');
+
+//  Price range filter start
+var down = 0;
+var up = 0;
+$('.select-label').on('mousedown', function(){ 
+    down = 1;      
+});
+$('.select-label').on('mouseup', function(){ 
+    up = 1;  
+    var select_value_filter = [];
+    $('.select-label').each(function() {
+        select_value_filter.push($(this).text());
+    });
+    var price_range = [];
+    price_range[0] =  Math.min.apply(Math, select_value_filter);
+    price_range[1] =  Math.max.apply(Math, select_value_filter);
+    $('#price_range_filter_value').val(price_range[0]+','+price_range[1]);
+
+    var start_value = parseFloat(price_range[0]).toFixed(2);
+    var end_value = parseFloat(price_range[1]).toFixed(2);
+    var cat_id = $('#category_id').val();
+    var sort_val = $('.sort_products').val();
+    var sub_categories_filter_length = $('.sub_categories_filter').length;
+    var recipients_filter_length = $('.recipients_filter').length;
+    if(sub_categories_filter_length > 0 && recipients_filter_length > 0) {
+        var sub_id = $('.sub_categories_filter').find('a').data('id');
+        var rec_id = $('.recipients_filter').find('a').data('id');
+        var datavalues = {sub_id: sub_id ,cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort:sort_val};
+    }
+    else if(sub_categories_filter_length > 0) {
+        var sub_id = $('.sub_categories_filter').find('a').data('id');
+        var datavalues = {sub_id: sub_id ,cat_id: cat_id , s_val : start_value, e_val : end_value, sort:sort_val};
+    }
+    else if(recipients_filter_length > 0) {
+        var rec_id = $('.recipients_filter').find('a').data('id');
+        var datavalues = {cat_id: cat_id , rec_id : rec_id, s_val : start_value, e_val : end_value, sort : sort_val};
+    }
+    else {
+        var datavalues = { cat_id: cat_id , s_val : start_value, e_val : end_value, sort : sort_val};
+    }   
+    jQuery.ajax({
+        type: "POST",
+        url: baseurl+"index.php/ajax_controller/filtering_product",
+        data: datavalues,
+        success: function(res) {
+            if (res)
+            {
+                $('.all_products_section_ajax').html(res);
+            }
+        }
+    });
+    down = 0 ;
+    up = 0 ; 
+});
+$('.select-label').on('mouseout', function(){ 
+
+    if(up!=1 && down==1) {
+        var select_value_filter = [];
+        $('.select-label').each(function() {
+            select_value_filter.push($(this).text());
+        });
+        var price_range = [];
+        price_range[0] =  Math.min.apply(Math, select_value_filter);
+        price_range[1] =  Math.max.apply(Math, select_value_filter);
+        $('#price_range_filter_value').val(price_range[0]+','+price_range[1]);
+
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
         var cat_id = $('#category_id').val();
@@ -158,20 +253,25 @@ $(document ).ajaxComplete(function() {
         }   
         jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/filtering_product",
+            url: baseurl+"index.php/ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
                 {
-                    $('#all_products_section').html(res);
+                    $('.all_products_section_ajax').html(res);
                 }
             }
         });
-    });
+        down = 0 ;
+        up = 0 ;
+    }
+});
+
+//  Price range filter end
 
     // Sort filtering
     $('.sort_products').on('change',function() {
-        var price_range =  $('.addui-slider-input').val().split(',');
+        var price_range =  $('#price_range_filter_value').val().split(',');
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
         var cat_id = $('#category_id').val();
@@ -196,20 +296,20 @@ $(document ).ajaxComplete(function() {
         }   
         jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/filtering_product",
+            url: baseurl+"index.php/ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
                 {
-                    $('#all_products_section').html(res);
+                    $('.all_products_section_ajax').html(res);
                 }
             }
         });
     });
 
     //  Subcategories filtering
-    $(".subcategories").click(function() {
-        var price_range =  $('.addui-slider-input').val().split(',');  
+    $(".subcategories").on('click',function() {
+        var price_range =  $('#price_range_filter_value').val().split(',');  
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
         var sort_val = $('.sort_products').val();
@@ -233,20 +333,20 @@ $(document ).ajaxComplete(function() {
         }
         jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/filtering_product",
+            url: baseurl+"index.php/ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
                 {
-                    $('#all_products_section').html(res);
+                    $('.all_products_section_ajax').html(res);
                 }
             }
         });
     });
 
     //  Reipients fitering
-    $(".recipients").click(function() {
-        var price_range =  $('.addui-slider-input').val().split(',');  
+    $(".recipients").on('click',function() {
+        var price_range =  $('#price_range_filter_value').val().split(',');  
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
         var sort_val = $('.sort_products').val();
@@ -270,12 +370,12 @@ $(document ).ajaxComplete(function() {
         }
         jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/filtering_product",
+            url: baseurl+"index.php/ajax_controller/filtering_product",
             data: datavalues,
             success: function(res) {
                 if (res)
                 {
-                    $('#all_products_section').html(res);
+                    $('.all_products_section_ajax').html(res);
                 }
             }
         });
@@ -284,7 +384,7 @@ $(document ).ajaxComplete(function() {
     //  Remove option filtering
     $(document).on('click','.filtering_link',function() {  
         $(this).closest('span').remove();
-        var price_range =  $('.addui-slider-input').val().split(',');  
+        var price_range =  $('#price_range_filter_value').val().split(',');  
         var start_value = parseFloat(price_range[0]).toFixed(2);
         var end_value = parseFloat(price_range[1]).toFixed(2);
         var sort_val = $('.sort_products').val();
@@ -304,12 +404,12 @@ $(document ).ajaxComplete(function() {
         }
         jQuery.ajax({
         type: "POST",
-        url: "../ajax_controller/filtering_product",
+        url: baseurl+"index.php/ajax_controller/filtering_product",
         data: datavalues,
             success: function(res) {
                 if (res)
                 {
-                    $('#all_products_section').html(res);
+                    $('.all_products_section_ajax').html(res);
                 }
             }
         });
@@ -323,7 +423,6 @@ $(document ).ajaxComplete(function() {
     $('.front-end_form').on('submit',function(e) {  
         e.preventDefault();
         var form_data =  $(this).serializeArray();
-        
         var this_status = $(this).find('.registeration_status');
         jQuery.ajax({
         type: "POST",
@@ -333,7 +432,7 @@ $(document ).ajaxComplete(function() {
                 if (res)
                 {   
                     if(res=="success") {
-                      location.reload();
+                      window.location.href = baseurl;
                     }
                     else {
                         this_status.html(res);
@@ -353,7 +452,7 @@ $(document ).ajaxComplete(function() {
         var bas_pro_id = $(this).data('id');
         jQuery.ajax({
         type: "POST",
-        url: "../ajax_controller/remove_baseket_product",
+        url: baseurl+"index.php/ajax_controller/remove_baseket_product",
         data: {bas_pro_id: bas_pro_id},
         success: function(res) {
             if (res)
@@ -374,7 +473,7 @@ $(document ).ajaxComplete(function() {
         });
         jQuery.ajax({
         type: "POST",
-        url: "../ajax_controller/update_baseket_product",
+        url: baseurl+"index.php/ajax_controller/update_baseket_product",
         data: {updation_det : updation},
         success: function(res) {
             if (res)
@@ -407,7 +506,7 @@ $(document ).ajaxComplete(function() {
         var ordinary_group_id = $('.ordinary_product_arrtibute_group').val();
         jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/attribute_price",
+            url: baseurl+"index.php/ajax_controller/attribute_price",
             dataType: "json",
             data: {atribute_combination : atribute_combination, product_id : product_id},
             success: function(res) {
@@ -445,7 +544,7 @@ $(document ).ajaxComplete(function() {
         jQuery.ajax({
         type: "POST",
         dataType: "json",
-        url: "../ajax_controller/add_to_cart_details",
+        url: baseurl+"index.php/ajax_controller/add_to_cart_details",
         data: datavalues,
         success: function(res) {
             if (res)
@@ -463,7 +562,7 @@ $(document ).ajaxComplete(function() {
 
     /* -----------    Ajax for detail page end  ---------- */
 
-     /* -----------    Ajax for myorders page start  ---------- */
+    /* -----------    Ajax for myorders page start  ---------- */
 
     //  Myorders list
     $(".myorders_id").on('click',function() {
@@ -477,7 +576,7 @@ $(document ).ajaxComplete(function() {
         else {
             jQuery.ajax({
             type: "POST",
-            url: "../ajax_controller/myorders_list",
+            url: baseurl+"index.php/ajax_controller/myorders_list",
             data: {order_id : order_id},
                 success: function(res) {
                     if (res)
@@ -503,8 +602,9 @@ $(document ).ajaxComplete(function() {
 
     /* -----------    Ajax for myorders page end  ---------- */
 
-
     /* -----------    Ended by siva - Ajax call  ---------- */
 
 
 }); // end document
+
+

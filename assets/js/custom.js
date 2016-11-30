@@ -1,17 +1,19 @@
-// ;(function() {
-//     "use strict";
-//     var price_value = $('#price_range_filter_value').val().split(',');
+;(function() {
+    "use strict";
+    if($('#price_range_filter_value').length > 0) {
+        var price_value = $('#price_range_filter_value').val().split(',');
+        $("#double_number_range").rangepicker({
+        type: "double",
+        startValue: 0,
+        endValue: price_value[1],
+        translateSelectLabel: function(currentPosition, totalPosition) {
+            return parseInt(price_value[1] * (currentPosition / totalPosition));
+        }
+        });
+    }
+  
 
-//     $("#double_number_range").rangepicker({
-//         type: "double",
-//         startValue: 0,
-//         endValue: price_value[1],
-//         translateSelectLabel: function(currentPosition, totalPosition) {
-//             return parseInt(price_value[1] * (currentPosition / totalPosition));
-//         }
-//     });
-
-// }());
+}()); // Added by siva for price filter
 
 
 $(document).ready(function() {  
@@ -253,13 +255,10 @@ $('#profile_email').on('keyup',function() {
         profile_email_val.addClass("error_mail_field");
         $('.profile_submit').prop('disabled',true);
         $('.profile_submit').css('pointer-events','none');
-        $('.profile_submit').css('title','Enter valid email id');    
     }
     else {
-        profile_email_val.removeClass("error_mail_field");
         $('.profile_submit').prop('disabled',false);
         $('.profile_submit').css('pointer-events','auto');
-        $('.profile_submit').css('title','Update');     
     }
 });
 
@@ -302,6 +301,7 @@ if($('.full_site_url').length > 0) {
         }
     }
 }
+
 
 // Ended by siva - calculation process in basket page end
   
