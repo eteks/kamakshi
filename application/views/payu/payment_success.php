@@ -3,7 +3,8 @@
 ?>	
   	<div id="all">
   		<?php 
-  		if(!empty($this->session->flashdata('order_id'))) { 
+  		$order_session = $this->session->flashdata("order_id");
+        if(!empty($order_session)){
   		?>
 	       	<h2> Your payment was successfully completed. Please check your order status. </h2>
 	       	<h4> Please note your order id - <?php echo $this->session->flashdata('order_id'); ?> </h4>
