@@ -24,7 +24,7 @@
                     </div> -->
                     <div class="box info-bar">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 products-showing">
+                            <div class="col-sm-12 col-md-6 products-showing"> 
                             	<strong class="category_name">Products for <?php echo $cat_name->category_name; ?></strong>
                                 <!-- Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products -->
                             </div>
