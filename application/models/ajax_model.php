@@ -518,27 +518,20 @@ class Ajax_Model extends CI_Model {
 				// echo $query->num_rows();
                 if($query->num_rows() == 1)
                 {
-                	// echo "test2";
-			         $config['protocol'] = 'smtp';
-			         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-             		 $config['smtp_port'] = 25;
-			         $config['smtp_user'] = $data;
-			         $config['smtp_pass'] = '********';          
-		              $this->load->library('email', $config);		
-						$this->email->from('thangamgold45@gmail.com', 'header.php');
-						$this->email->to($config['smtp_user']);						
-						$this->email->subject('Get your forgotten Password');
-						// $this->email->message('Please go to this link to get your password.
-						//        http://localhost/kamakshi/');
-                        $user_result = $query->row_array();
-						$this->email->message("Your registered password is ".$user_result['user_password']);
-						$this->email->send();
-						echo "Please check your email for Password.";
+                    $config = $this->config->load('email', true);
+                    $this->load->library('email', $config);       
+                    $this->email->from($config['smtp_user'], 'Kamakshi');
+                    $this->email->to($data);                			
+					$this->email->subject('Get your forgotten Password');
+                    $user_result = $query->row_array();
+					$this->email->message("Your registered password is ".$user_result['user_password']);
+					$this->email->send();
+					echo "Please check your email for Password.";
                 }
                 else
                 {
-                		echo('Failed');
-                        return FALSE;
+            		echo('Failed');
+                    return FALSE;
                 }
    	}
 
