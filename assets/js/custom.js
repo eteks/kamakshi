@@ -43,7 +43,6 @@ $(document).ready(function() {
     $('.product_quantity').on('change',function(){
         $('#checkout_button').attr('disabled',true);
         $('#checkout_button').prop('title',"To update the basket");
- 
     });
 
     $('.product_quantity').on('keyup',function() {
@@ -52,8 +51,6 @@ $(document).ready(function() {
         var overall_updated_total = 0;
 
         if(this_value <= 0) {
-            alert("Enter product quantity correctly");
-            $(this).val('1');
             this_value = 1;
         }
         var orderitem_price = this_parent.find('.ordinary_orderitem_price').val();
@@ -81,6 +78,16 @@ $(document).ready(function() {
        
         this_parent.find('.update_basket_details').attr('data-quantity',this_value);
     });
+
+    // Blur function fo quantity
+    $('.product_quantity').on('blur',function() {
+        var this_value = $(this).val();
+        if(this_value <= 0) {
+            $(this).val('1');
+            $(this).focus();
+        }
+    });
+
 
 
 
