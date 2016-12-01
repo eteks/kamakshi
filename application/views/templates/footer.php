@@ -34,20 +34,17 @@
                     <!-- /.col-md-3 -->
                    <div class="col-md-3 col-sm-6">
                         <h4>Where to find us</h4>
-                        <p> REGISTERED OFFICE AT
-                        	<br />
-                        	<strong>KAMASKHI NURSERY</strong>
+                        <p class="foo_address"> <strong>KAMASKHI NURSERY</strong>
                             <br />4,4th floor, Sreshta Anand Apartments,
                             <br />No.15,16 & 17 Hanumantha Road, 
                             <br />Balaji Nagar,Royapettah,
-                            <br />
-                            <strong>Chennai - 600014.</strong>
+                            <br />Chennai - 600014.
                         </p>
                     </div>
                     <!-- /.col-md-3 -->
                     <div class="col-md-3 col-sm-6">
                         <h4>Get the news</h4>
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        <p class="foo_address">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                         <!-- <form>
                             <div class="input-group">
                                 <input type="text" class="form-control">
@@ -75,7 +72,7 @@
                     <!-- /.col-md-3 -->
                     <div class="col-md-3 col-sm-6">
                         <hr />
-                        <h5>Gift By Recipient</h5>
+                        <h4>Gift By Recipient</h4>
                         <ul>
                             <?php 
                             if(!empty($recipient_list)): 
