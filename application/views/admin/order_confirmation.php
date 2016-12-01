@@ -53,20 +53,22 @@
 			<table width="580"  class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#ffffff" style="margin:0 auto;box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);">
 				   <tr>
                     <td colspan="2" style="font-size: 20px; color: #000; font-weight: normal; text-align: center; font-family: Roboto, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px" bgcolor="#fff">
-						Thank you for Your Order
+                    <div><?php echo $display_message;?>
+                    Thank you for Your Order</div>
+						
                     </td>
                    </tr>
                    <tr>
                     <td colspan="2" style="font-size: 13px;min-width:564px;max-width:564px;min-height: 100px !important; color: #000; font-weight: normal; text-align: center; font-family: Roboto, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px" bgcolor="#fff">
-						Your order has been received and is now being processed.
+						<!-- Your order has been received and is now being processed. -->
                     </td>
                    </tr>
                    <tr>
                     <td style="font-size: 13px; color: #000; font-weight: normal; text-align: left; font-family: Roboto, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px" bgcolor="#fff">
-						Your order Number is: #000000
+						<!-- Your order Number is: #000000 -->
                     </td>
                     <td style="font-size: 13px; color: #000; font-weight: normal; text-align: left; font-family: Roboto, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px" bgcolor="#fff">
-						Your order Date is: #00-00-0000
+						<!-- Your order Date is: #00-00-0000 -->
                     </td>
                    </tr>
            </table><!-- End One Column -->             
