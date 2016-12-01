@@ -162,7 +162,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="text" name="email" class="form-control" id="email" maxlength="30" value="<?php if(!empty($profile_details)) : echo $profile_details['user_email']; endif;?>">
+                                                    <input type="text" name="email" class="form-control" id="email" value="<?php if(!empty($profile_details)) : echo $profile_details['user_email']; endif;?>">
                                                 </div>
                                             </div>
                                         </div>

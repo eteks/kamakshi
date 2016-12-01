@@ -19,7 +19,7 @@
                         <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
                         <p class="text-muted">If you have any questions, please feel free to <a href="<?php echo base_url(); ?>index.php/contact/">contact us</a>, our customer service center is working for you 24/7.</p>
                         <hr>
-                        <form role="form" class="front-end_form" action="ajax_controller/registeration" id="signup" method="post">
+                        <form role="form" class="front-end_form" action="<?php echo base_url(); ?>index.php/ajax_controller/registeration" id="signup" method="post">
                             <div class="registeration_status">
                             </div>
                             <div class="form-group">
@@ -47,7 +47,7 @@
                         <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
                             mi vitae est. Mauris placerat eleifend leo.</p>
                         <hr>
-                        <form role="form" class="front-end_form" action="ajax_controller/register_login" id="login_reg" method="post">
+                        <form role="form" class="front-end_form" action="<?php echo base_url(); ?>index.php/ajax_controller/register_login" id="login_reg" method="post">
                             <div class="registeration_status">
                             </div>
                             <div class="form-group">
