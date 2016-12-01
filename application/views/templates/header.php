@@ -214,23 +214,22 @@
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5>Recipient</h5>
-                                            <ul>
-                                                <?php 
-                                                    if(!empty($recipient_list)): 
-                                                    foreach ($recipient_list as $rec): 
-                                                ?>
+                                    	<h5>Recipient</h5>
+                                    	<?php 
+                                           if(!empty($recipient_list)): 
+                                            foreach ($recipient_list as $rec): 
+                                        ?>
+                                        <div class="col-sm-3">                                            
+                                            <ul>                                              
                                                     <li>
                                                         <a href="<?php echo base_url(); ?>index.php/recipient_category/<?php echo $rec['recipient_id']; ?>"> <?php echo $rec['recipient_type']; ?></a>
-                                                    </li>
-                                                <?php
-                                                    endforeach;
-                                                    endif;
-                                                ?>
+                                                    </li>                                                
                                             </ul>
                                         </div>
-                                        
+                                        <?php
+                                          endforeach;
+                                          endif;
+                                        ?>
                                     </div>
                                 </div>
                                 <!-- /.yamm-content -->
