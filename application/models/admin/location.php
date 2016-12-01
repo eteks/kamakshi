@@ -318,6 +318,69 @@ class Location extends CI_Model {
 		$this->db->order_by('product.product_title','desc');
 		return $this->db->get()->result_array();
 	}
+	public function get_trackorder()
+	{	
+
+		//get list of adminusers from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_order');
+		$this->db->order_by('order_createddate','desc');	
+		$query = $this->db->get();
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
+	public function update_trackorder($data)
+	{	
+		$trackorder_data = array(
+        'order_delivery_status' => $data['order_delivery_status']);
+        $this->db->set($trackorder_data);
+        $this->db->where('order_id', $data['order_id']);
+        $this->db->update('giftstore_order', $trackorder_data);
+		return true;	
+	}	
+	public function get_trackorder_data($id)
+	{	
+		$where = '(order_id="'.$id.'")';
+		$query = $this->db->get_where('giftstore_order', $where)->row_array();
+		// $where = '(order_status=1)';
+
+		return $query;
+	}
+	public function get_processing_status($data) {
+			// echo "$data";
+				$condition = "order_delivery_status =" . "'" . 'processing'. "'";				
+                $this->db->select('*');
+                $this->db->from('giftstore_order');
+                $this->db->where($condition);
+                $this->db->limit(1);
+
+                $query = $this->db->get();
+				// echo $query->num_rows();
+                if($query->num_rows() == 1)
+                {
+                	// echo "test2";
+			         $config['protocol'] = 'smtp';
+			         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+             		 $config['smtp_port'] = 25;
+			         $config['smtp_user'] = 'thangam@etekchnoservices.com';
+			         $config['smtp_pass'] = '********';          
+		              $this->load->library('email', $config);		
+						$this->email->from('thangamgold45@gmail.com', 'header.php');
+						$this->email->to($config['smtp_user']);						
+						$this->email->subject('Get your order detail');
+						// $this->email->message('Please go to this link to get your password.
+						//        http://localhost/kamakshi/');
+                        $user_result = $query->row_array();
+						$this->email->message("Your order is in process");
+						$this->email->send();
+						echo "Please check your email.";
+                }
+                else
+                {
+                		echo('Failed');
+                        return FALSE;
+                }
+   	}
 	public function get_transaction()
 	{	
 		//get list of adminusers from database using mysql query 

@@ -23,6 +23,7 @@ class Adminindex extends CI_Controller {
 		$this->load->model('admin/catalog');
 		$this->load->model('admin/location');
 		$this->load->library('upload');
+		$this->load->library('email');
 		// Load form helper library
 		$this->load->helper('form');
 		// Load form validation library
@@ -1503,6 +1504,137 @@ class Adminindex extends CI_Controller {
 		$order['state'] = $this->location->get_areas();
 		$order['city'] = $this->location->get_areas();	
 		$this->load->view('admin/order',$order);
+	}
+	public function trackorder()
+	{
+		$trackorder['trackorder_list'] = $this->location->get_trackorder();
+		$this->load->view('admin/trackorder',$trackorder);
+	}
+	public function edit_trackorder()
+	{
+		
+		$id = $this->uri->segment(4);
+		// echo "id".$id;
+		if (empty($id))
+		{
+			show_404();
+		}
+		if(!empty($_POST)){
+			// print_r($_POST);
+			$status = array();//array is initialized
+			$errors = '';
+			$validation_rules = array(
+		      array(
+	             'field'   => 'order_user_id',
+	             'label'   => 'User Id',
+	             'rules'   => 'trim|xss_clean'
+	          ),
+	          array(
+	             'field'   => 'order_id',
+	             'label'   => 'Order Id',
+	             'rules'   => 'trim|xss_clean'
+	          ),
+	          array(
+		             'field'   => 'order_delivery_status',
+		             'label'   => 'Status',
+		             'rules'   => 'trim|required|xss_clean|'
+		          ),  
+	          array(
+		             'field'   => 'order_delivery_date',
+		             'label'   => 'Delivery Date',
+		             'rules'   => 'trim|required|xss_clean|date_valid'
+		          ),
+		    );
+		    $this->form_validation->set_rules($validation_rules);
+		    if ($this->form_validation->run() == FALSE) {
+		    	foreach($validation_rules as $row){
+		            $field = $row['field'];          //getting field name
+		            $error = form_error($field);    //getting error for field name
+		                                            //form_error() is inbuilt function
+		            //if error is their for field then only add in $errors_array array
+		            if($error){
+	                    $status['error_message'] = strip_tags($error);
+	                    break;
+		            }
+	        	}
+    		}
+    		else{
+    			$ci =& get_instance();	
+		$ci->config->load('email', true);
+		$status = $ci->config->item('email');
+		$this->email->initialize($status);
+				$data = array(
+				'order_id' => $id,
+				'order_delivery_status' => $this->input->post('order_delivery_status'),
+				'order_delivery_date' => $this->input->post('order_delivery_date'),
+				'order_shipping_email' => $this->input->post('order_shipping_email'),
+				);
+				$result = $this->location->update_trackorder($data);
+				if($result)
+					$status['error_message'] = "Track Order Updated Successfully!";
+				$order_delivery_status = $_POST["order_delivery_status"];
+			  		$from_email = $status['smtp_user'];
+			  		if( $order_delivery_status == "processing"){
+					$subject = "Order Details";
+					$message = 'test';
+					$this->email->initialize($status);
+					$this->email->from($from_email, 'Kamakshi');
+					$this->email->to($data['order_shipping_email']);
+					$this->email->subject($subject);
+					$this->email->message($message);
+					/* Check whether mail send or not*/
+					if($this->email->send()){
+						echo($message);
+				}
+			}
+				else if( $order_delivery_status == "completed"){
+					$subject = "Order Details";
+					$message = 'test';
+					$this->email->initialize($status);
+					$this->email->from($from_email, 'Kamakshi');
+					$this->email->to($data['order_shipping_email']);
+					$this->email->subject($subject);
+					$this->email->message($message);
+					/* Check whether mail send or not*/
+					if($this->email->send()){
+						echo($message);
+				}
+			}
+			else if( $order_delivery_status == "shipped"){
+			  $subject = "Order Details";
+			  $message = "Order Shipped";
+			  echo($message);
+			  $this->email->initialize($status);
+					$this->email->from($from_email, 'Kamakshi');
+					$this->email->to($data['order_shipping_email']);
+					$this->email->subject($subject);
+					$this->email->message($message);
+					/* Check whether mail send or not*/
+					if($this->email->send()){
+						echo($message);
+			 }
+			}
+			 else if( $order_delivery_status == "delivered"){
+			  $subject = "Order Details";
+			  $message = "Order delivered"; 
+			  echo($message);
+			  $this->email->initialize($status);
+					$this->email->from($from_email, 'Kamakshi');
+					$this->email->to($data['order_shipping_email']);
+					$this->email->subject($subject);
+					$this->email->message($message);
+					/* Check whether mail send or not*/
+					if($this->email->send()){
+						echo($message);
+			 }
+		}
+				else
+					$status['error_message'] = "Something Went Wrong!";	
+    		}
+		}
+		$trackorder_return = $this->location->get_trackorder_data($id);		
+		$status['trackorder_data'] = $trackorder_return;
+		$this->load->view('admin/edit_trackorder',$status);	
 	}
 	public function product_attribute_sets()
 	{	

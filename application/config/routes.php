@@ -102,6 +102,7 @@ $route['adminindex/add_product_attributes'] = 'adminindex/add_product_attributes
 $route['adminindex/edit_product_attributes/(:any)'] = 'adminindex/edit_product_attributes';
 $route['adminindex/loadcategory_reference'] = 'adminindex/loadcategory_reference';
 $route['adminindex/product_attribute_sets'] = 'adminindex/product_attribute_sets';
+$route['track_order'] = 'index/track_order';
 // $route['adminindex/delete/(:any)/(:any)'] = 'adminindex/delete';
 
 
@@ -122,6 +123,8 @@ $route['adminindex/order'] = 'adminindex/order';
 $route['adminindex/edit_order'] = 'adminindex/edit_order';
 $route['adminindex/orderitem'] = 'adminindex/orderitem';
 $route['adminindex/edit_orderitem'] = 'adminindex/edit_orderitem';
+$route['adminindex/trackorder'] = 'adminindex/trackorder';
+$route['adminindex/edit_trackorder'] = 'adminindex/edit_trackorder';
 $route['adminindex/edit_transaction'] = 'adminindex/edit_transaction';
 // $route['adminindex/admin_404'] = 'admin/adminindex/admin_nopage';
 $route['admin/admin_404'] = 'admin/adminindex/admin_nopage';
