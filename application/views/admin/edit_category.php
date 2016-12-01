@@ -60,7 +60,7 @@
                         ?>
                          <!-- <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/> -->
                             <?php if($img_source != '') {?>
-                             <a class='dispaly_hide_offer' href='<?php echo $img_source; ?>' target='_blank'>
+                             <a class='dispaly_hide_offer' href='<?php echo base_url().$img_source; ?>' target='_blank'>
                              <img class='edit_category_image' src='<?php echo base_url().$img_source; ?>'/>
                              </a>
                             <?php } ?>
