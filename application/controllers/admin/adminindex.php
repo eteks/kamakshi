@@ -1602,7 +1602,7 @@ class Adminindex extends CI_Controller {
 					$config = $this->config->load('email', true);
                     $this->load->library('email', $config);       
                     $this->email->from($config['smtp_user'], 'Kamakshi');
-                    $this->email->to('order_shipping_email'); 		
+                    $this->email->to($data['order_shipping_email']);
 					$this->email->subject($status['subject']);
 					$this->email->message($message);
 					$this->email->display_message($status['display_message']);
