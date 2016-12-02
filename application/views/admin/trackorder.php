@@ -40,7 +40,7 @@
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive scroll " >
     <thead> 
 		<th class="product_small">Order Id</th>
-		<th class="product_small">User Id</th>
+		<th class="product">User Order Email</th>
 		<th class="product_small">Date Of Ordered</th>
 		<th class="product_small">Order Deliver Status</th>
 		<th class="product_small">Date Of Delivered</th>
@@ -51,7 +51,7 @@
     <?php foreach ($trackorder_list as $trackorder): ?>
         <tr>
             <td><?php echo $trackorder["order_id"] ?></td>
-            <td><?php echo $trackorder["order_user_id"] ?></td>
+            <td><?php echo $trackorder["order_shipping_email"] ?></td>
             <td class="center"><?php echo date("d/m/Y", strtotime($trackorder["order_createddate"])); ?></td>
             <td class="center"><?php echo($trackorder["order_delivery_status"]); ?></td>
             <td class="center"><?php echo date("d/m/Y", strtotime($trackorder["order_delivery_date"])); ?></td>

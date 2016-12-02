@@ -91,7 +91,7 @@ $('#user_dob').datepicker();
 </script> -->
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
-</div><!--/fluid-row-->\
+</div><!--/fluid-row-->
 </div>
 <?php include "templates/footer.php" ?>
 <?php } ?>

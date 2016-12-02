@@ -1572,46 +1572,44 @@ class Adminindex extends CI_Controller {
 					$order_delivery_status = $_POST["order_delivery_status"];
 			  		if( $order_delivery_status == "processing"){
 		  			$track_status = true;
-					$data['subject'] = "Order Details";
-					$data['message'] = 'test';
+					$status['subject'] = "Order Details";
+					$status['display_message'] = 'Your order has been received and is now being processed!';
+					$message = $this->load->view('admin/order_confirmation.php',$status,TRUE);
 					}
 				else if( $order_delivery_status == "completed"){
 					$track_status = true;
-					$data['subject'] = "Order Details";
-					$data['display_message'] = 'Your Order is completed!';
-					$data['message'] = $this->load->view('admin/order_confirmation.php',$data,TRUE);
-			}
-			else if( $order_delivery_status == "shipped"){
-			  $track_status = true;
-			  $data['subject'] = "Order Details";
-			  $data['message'] = "Order Shipped";
-			  $data['display_message'] = 'Your Order is Shipped!';
-			  $data['message'] = $this->load->view('admin/order_confirmation.php',$data,TRUE);
-			}
-			 else if( $order_delivery_status == "delivered"){
-			 	$track_status = true;
-			  $data['subject'] = "Order Details";
-			  $data['message'] = "Order delivered"; 
-			  $data['display_message'] = 'Your Order is Delivered!';
-			  $data['message'] = $this->load->view('admin/order_confirmation.php',$data,TRUE);
-		}
+					$status['subject'] = "Order Details";
+					$status['display_message'] = 'Your Order is completed!';
+					$message = $this->load->view('admin/order_confirmation.php',$data,TRUE);
+					}
+				else if( $order_delivery_status == "shipped"){
+				  $track_status = true;
+				  $status['subject'] = "Order Details";
+				  $status['display_message'] = 'We thought you would like to know that we shipped your items,and that this completes your order.';
+				  $message = $this->load->view('admin/order_confirmation.php',$data,TRUE);
+					}
+			 	else if( $order_delivery_status == "delivered"){
+	 	  		$track_status = true;
+			  	$status['subject'] = "Order Details";
+			  	$status['display_message'] = 'Your Order is Delivered!';
+			  	$message = $this->load->view('admin/order_confirmation.php',$data,TRUE);
+					}
 				else
 					$status['error_message'] = "Something Went Wrong!";	
-				$track_status = FALSE;
-    		}
-    		if($track_status){
-				$config = $this->config->load('email', true);
+					$track_status = FALSE;
+    				}
+    			if($track_status){
+					$config = $this->config->load('email', true);
                     $this->load->library('email', $config);       
                     $this->email->from($config['smtp_user'], 'Kamakshi');
-                    $this->email->to('order_shipping_email'); 		
-					$this->email->subject($subject);
+                    $this->email->to($data['order_shipping_email']);
+					$this->email->subject($status['subject']);
 					$this->email->message($message);
-					$this->email->display_message($display_message);
+					$this->email->display_message($status['display_message']);
 					$this->email->send();
 					echo "Please check your email for Track Order Status.";
-			}	
-		}
-		
+				}	
+			}		
 		$trackorder_return = $this->location->get_trackorder_data($id);		
 		$status['trackorder_data'] = $trackorder_return;
 		$this->load->view('admin/edit_trackorder',$status);	
