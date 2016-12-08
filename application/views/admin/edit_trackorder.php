@@ -48,13 +48,17 @@
                  <div class="form-errors"></div>
                     <div class="form-group">
                         <label for="order_user_id">Order User Id<span class="fill_symbol"> *</span></label>
-                        <input type="text" class="form-control" id="order_user_id" disabled="readonly" name="order_user_id" placeholder="Order User Id"
+                        <input type="text" class="form-control" id="order_user_id" disabled="readonly" placeholder="Order User Id"
                         value="<?php if ($trackorder_data['order_user_id'] === NULL) echo "None"; else echo($trackorder_data['order_user_id']); ?>" >
                     </div>
                     <div class="form-group">
                         <label for="order_id">Order Id<span class="fill_symbol"> *</span></label>
                         <input type="text" class="form-control" id="order_id" disabled="readonly" name="order_id" placeholder="Order User Id"
                         value="<?php if(!empty($trackorder_data['order_id'])) echo $trackorder_data['order_id']; ?>" >
+                        <input type="hidden" name="order_id"
+                        value="<?php echo($trackorder_data['order_id']); ?>" >
+                        <input type="hidden" name="order_shipping_email"
+                        value="<?php echo($trackorder_data['order_shipping_email']); ?>" >
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
