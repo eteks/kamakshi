@@ -279,6 +279,17 @@ function docReady() {
             "sLengthMenu": "_MENU_ records per page"
         }
     });
+    $('.datatable').wrap("<div id='table_wrapper_Datatable' style='\n\
+                                        overflow: auto;\n\
+                                        overflow-y: hidden;\n\
+                                        -ms-overflow-y: hidden\n\
+                                        position:relative;\n\
+                                        margin-right:5px;\n\
+                                        padding-bottom: 15px;\n\
+                                        display:block;\n\
+                                   '>/");
+
+
     $('.btn-close').click(function (e) {
         e.preventDefault();
         $(this).parent().parent().parent().fadeOut();

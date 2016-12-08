@@ -83,9 +83,9 @@
 #delete_btn{
 	text-align: center;
 }
-.scroll{
+/*.scroll{
 	display:block;
-}
+}*/
 /*Added by Velpandi*/
 .edit-catpro-image {
      padding: 0 0 10px;
@@ -159,8 +159,8 @@
 	border: none !important;
 }
 .scroll{
-	display:block;
-	overflow-x:auto;
+/*	display:block;
+	overflow-x:auto;*/
 	width: 100%;
 }
 .btn-info {
@@ -223,22 +223,22 @@
 .dataTables_filter {
     float: right;
 }
-.product{
+/*.product{
 	width: 100%;
 	max-width:300px !important;
 	min-width: 250px !important;
-}
+}*/
 .popup_btn{
 	width:50px;
 }
 .popup_tx h5{
 	font-size: 18px;
 }
-.product_small{
+/*.product_small{
 	width: 100%;
 	max-width:150px !important;
 	min-width: 140px !important;
-}
+}*/
 .group_action{
     position: relative;
     right: -150px;
