@@ -21,40 +21,37 @@
                     <div class="box" id="contact">
                         <h1>Contact</h1>
 
-                        <p class="lead">Are you curious about something? Do you have some kind of problem with our products?</p>
-                        <p>Please feel free to contact us, our customer service center is working for you 24/7.</p>
-
+                        <p class="lead">Do you have any queries ? Please feel free to contact us!</p>
+                        
                         <hr>
 
                         <div class="row">
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-map-marker"></i> Address</h3>
-                                    <p>REGISTERED OFFICE AT
-                                    <br />KAMASKHI NURSERY                              
-									<br />4,4th floor, Sreshta Anand Apartments,
-                                    <br />No.15,16 & 17 Hanumantha Road,
-                                    <br />Balaji Nagar, Royapettah,
-                                    <br />                                         
-                                    <strong>Chennai - 600014.</strong>
+                                    <p class="contact_addr">Registered Office : <span class="fb"> Kamakshi Nursery       </span>                                   
+									  <br/> 4,4th floor, Sreshta Anand Apartments,
+                                      <br/>  No.15,16 & 17 Hanumantha Road,
+                                        Balaji Nagar, Royapettah,
+                                        Chennai - 600014.
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-phone"></i> Call </h3> 
-                                <p class="text-muted contact_us_cnt">Please feel free to call us.</p>                               
-                                <p> <strong> 044-28132593,</strong> <br />
-                                	<strong>98840 32954,</strong> <br />
-                                	<strong>72000 06273.</strong>
+                                <p class="text-muted contact_us_cnt">Please feel free to call us.</p>                              
+                                <p class="contact_addr"> 
+                                    <span class="call_label">  Office </span>: 044 28132593 <br/>
+                                    <span class="call_label">  Cell </span>: +91 98840 32954 <br/>
+                                    <span class="call_label">  Cell  </span>: +91 72000 06273 <br/>
                                 </p>
                             </div>
                             <!-- /.col-sm-4 -->
                             <div class="col-sm-4">
                                 <h3><i class="fa fa-envelope"></i> Email Support</h3>
                                 <p class="text-muted contact_us_cnt">Please feel free to write an email to us.</p>
-                                <ul>
-                                    <li><strong><a href="mailto:">srividhya.anand@gmail.com</a></strong>
-                                    </li>
-                                </ul>
+                                <p> 
+                                    <span class="call_label">  Email </span> : <a href="mailto:srividhya.anand@gmail.com"> srividhya.anand@gmail.com </a> 
+                                </p>
                             </div>
                             <!-- /.col-sm-4 -->
                         </div>

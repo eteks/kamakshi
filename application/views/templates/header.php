@@ -30,7 +30,7 @@
     <link href="<?php echo base_url(); ?>assets/css/thumbs2.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/thumbnail-slider.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/admin/img/favicon.ico">
     <script type="text/javascript">var switchTo5x=true;</script>
 <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "dd95200b-4b94-4ef1-a537-c65ad9d21ec8", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> -->

@@ -700,7 +700,7 @@ h1 {
 #content #details .social p a.instagram {
   background-color: #cd4378;
 }
-#content #details .social p a.email {
+#content #details .social p a.linkedin {
   background-color: #4a7f45;
 }
 @media (max-width: 991px) {
@@ -972,8 +972,8 @@ h1 {
 #footer .social a.instagram:hover {
   background-color: #cd4378;
 }
-#footer .social a.email:hover {
-  background-color: #4a7f45;
+#footer .social a.linkedin:hover {
+  background-color: #4875B4;
 }
 #copyright {
   background: #333;
@@ -2087,4 +2087,14 @@ address {
     line-height: 27px;
     text-align: center;
 }
-
+.fb {
+  font-weight: bold;
+}
+.call_label {
+  display: inline-block;
+  width: 12%;
+  font-weight: 500;
+}
+p.contact_addr {
+  line-height : 26px;
+}
