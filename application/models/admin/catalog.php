@@ -327,6 +327,8 @@ class Catalog extends CI_Model {
 		$this->db->where($condition);
 		// $this->db->limit(1);
 		$query = $this->db->get();
+		if(empty($data_product_basic['product_recipient_id']))
+			$data_product_basic['product_recipient_id'] = NULL;
 		if ($query->num_rows() == 0) {
 			// Query to insert data in database
 			$this->db->insert('giftstore_product', $data_product_basic);

@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Recipient<span class="fill_symbol"> *</span></label>
+                        <label class="control-label" for="sel_c">Choose Recipient<!-- <span class="fill_symbol"> *</span> --></label>
                         <div class="controls">
                             <select id="sel_c" class="product-type-filter form-control recipient_act product_lables" name="select_recipient">
                             <option value="">Select Recipient</option>
