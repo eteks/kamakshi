@@ -136,8 +136,8 @@ class Catalog extends CI_Model {
 		//get list of subcategories from database using mysql query 	
 		$this->db->select('rec.*,cat.category_name');
 		$this->db->from('giftstore_recipient AS rec');
-		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'inner');
-		$this->db->join('giftstore_category AS cat', 'cat.category_id = reccat.category_mapping_id', 'inner');
+		$this->db->join('giftstore_recipient_category AS reccat', 'reccat.recipient_mapping_id = rec.recipient_id', 'left');
+		$this->db->join('giftstore_category AS cat', 'cat.category_id = reccat.category_mapping_id', 'left');
 		// $this->db->group_by('subcategory_id');
 		$this->db->order_by('recipient_createddate','desc');
 		
@@ -467,6 +467,8 @@ class Catalog extends CI_Model {
 		// echo "<pre>";
 		// print_r($data_product_attributes_exists);
 		// echo "</pre>";
+		if(empty($data_product_basic['product_recipient_id']))
+			$data_product_basic['product_recipient_id'] = NULL;
 		$data_product_attributes_new = isset($data['product_attributes_new'])?$data['product_attributes_new']:"";
 		$this->db->where('product_id', $data_product_basic['product_id']);
 		$this->db->update('giftstore_product', $data_product_basic);

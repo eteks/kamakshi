@@ -146,9 +146,9 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="sel_c">Choose Recipient<span class="fill_symbol"> *</span></label>
+                        <label class="control-label" for="sel_c">Choose Recipient</span></label>
                         <div class="controls">
-                            <select id="sel_c" class="product-type-filter form-control recipient_act product_default_field product_lables" name="select_recipient">
+                            <select id="sel_c" class="product-type-filter form-control recipient_act product_lables" name="select_recipient">
                             <option value="">Select Recipient</option>
                                 <?php foreach ($recipient_list as $rec): ?>
                                     <option value="<?php echo $rec["recipient_id"] ?>" <?php if($rec["recipient_id"]== $giftproduct_data['product_recipient_id']) echo "selected"; ?>><?php echo $rec["recipient_type"] ?></option>
