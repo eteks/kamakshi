@@ -112,6 +112,17 @@
                         <input type="text" class="form-control" id="sold" placeholder="Enter Sold" disabled="">
                         <input type="hidden" name="product_sold">
                     </div>  -->
+                    <div class="form-group items_group">
+                        <label for="total_iteams">Applicable city to deliver<span class="fill_symbol"> *</span></label>
+                        <a href='#' id='select-all'>select all</a>
+                        <span>/<span>
+                        <a href='#' id='deselect-all'>deselect all</a>
+                        <select id='custom-headers' multiple='multiple' class="searchable" name="applicable_city">
+                        <?php foreach ($city_list as $city): ?>
+                          <option value="<?php echo $city["city_id"] ?>"><?php echo $city["city_name"] ?></option>
+                        <?php endforeach ?>
+                        </select>
+                    </div> 
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
                         <div class="controls">
@@ -178,5 +189,52 @@
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 </div>
+<script type="text/javascript" >
+$(document).ready(function() {
+    $('.searchable').multiSelect({
+      selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"12\"'>",
+      selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"4\"'>",
+      afterInit: function(ms){
+        var that = this,
+            $selectableSearch = that.$selectableUl.prev(),
+            $selectionSearch = that.$selectionUl.prev(),
+            selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+            selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+        that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+        .on('keydown', function(e){
+          if (e.which === 40){
+            that.$selectableUl.focus();
+            return false;
+          }
+        });
+
+        that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+        .on('keydown', function(e){
+          if (e.which == 40){
+            that.$selectionUl.focus();
+            return false;
+          }
+        });
+      },
+      afterSelect: function(){
+        this.qs1.cache();
+        this.qs2.cache();
+      },
+      afterDeselect: function(){
+        this.qs1.cache();
+        this.qs2.cache();
+      }
+    });
+    $('#select-all').click(function(){
+      $('.searchable').multiSelect('select_all');
+      return false;
+    });
+    $('#deselect-all').click(function(){
+      $('.searchable').multiSelect('deselect_all');
+      return false;
+    });
+});
+</script>
 <?php include "templates/footer.php" ?>
 <?php } ?>

@@ -87,6 +87,8 @@ $(document).ajaxComplete(function() {
                 success: function(res) {
                     if (res)
                     {   
+                        if(sub_total > 2000)
+                            res = 0;
                         var shipping_amount = parseFloat(res.replace(',',''));
                         var total_amount = sub_total + shipping_amount;
                         var total_amount_final = Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2});

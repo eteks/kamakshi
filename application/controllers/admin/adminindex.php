@@ -633,6 +633,7 @@ class Adminindex extends CI_Controller {
 		// print_r($status);	
 		$status['category_list'] = $this->catalog->get_categories();
 		$status['attribute_list'] = $this->catalog->get_product_attributes();
+		$status['city_list'] = $this->catalog->get_cities();
 		$this->load->view('admin/add_giftproduct',$status);
 	}
 	public function edit_giftproduct()

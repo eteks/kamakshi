@@ -584,4 +584,15 @@ class Catalog extends CI_Model {
 		}
 		return true;	
 	}	
+	public function get_cities()
+	{	
+		//get list of cities from database using mysql query 
+		$this->db->select('*');
+		$this->db->from('giftstore_city');
+		$this->db->order_by('city_createddate','desc');	
+		$query = $this->db->get();
+		
+		//return all records in array format to the controller
+		return $query->result_array();
+	}
 }
