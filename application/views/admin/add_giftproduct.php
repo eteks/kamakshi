@@ -112,12 +112,12 @@
                         <input type="text" class="form-control" id="sold" placeholder="Enter Sold" disabled="">
                         <input type="hidden" name="product_sold">
                     </div>  -->
-                    <div class="form-group items_group">
+                    <div class="form-group">
                         <label for="total_iteams">Applicable city to deliver<span class="fill_symbol"> *</span></label>
                         <a href='#' id='select-all'>select all</a>
                         <span>/<span>
                         <a href='#' id='deselect-all'>deselect all</a>
-                        <select id='custom-headers' multiple='multiple' class="searchable" name="applicable_city">
+                        <select id='custom-headers' multiple='multiple' class="searchable" name="applicable_city[]">
                         <?php foreach ($city_list as $city): ?>
                           <option value="<?php echo $city["city_id"] ?>"><?php echo $city["city_name"] ?></option>
                         <?php endforeach ?>
@@ -190,7 +190,7 @@
 </div><!--/fluid-row-->
 </div>
 <script type="text/javascript" >
-$(document).ready(function() {
+function multiselect(){
     $('.searchable').multiSelect({
       selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"12\"'>",
       selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"4\"'>",
@@ -234,6 +234,9 @@ $(document).ready(function() {
       $('.searchable').multiSelect('deselect_all');
       return false;
     });
+}
+$(document).ready(function() {
+    multiselect();
 });
 </script>
 <?php include "templates/footer.php" ?>

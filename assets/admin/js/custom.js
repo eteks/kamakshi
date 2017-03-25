@@ -377,6 +377,7 @@ $(document).ready(function() {
                 $('.price_group,.items_group').hide();
                 $('.attribute_status').attr("checked",true);
             }
+            multiselect();
            }
         });
         // return false;

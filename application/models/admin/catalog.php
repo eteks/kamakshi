@@ -368,7 +368,19 @@ class Catalog extends CI_Model {
 					);
 					$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
 				}
-			}		
+			}	
+			// $json_data = array();
+			// // json_encode all params values that are not strings
+			// $applicable_city = $this->input->post('applicable_city');
+		 //    foreach ($applicable_city as $value) {
+		 //    	$city_datas = array(
+		 //    		'product_id' => $product_id,
+		 //    		'city_id' => $value
+		 //    	);
+		 //    	array_push($json_data, $city_datas);	        
+		 //    }
+		 //    print_r(json_encode($json_data));
+			// $string = file_get_contents("product_city.json");	
 			if ($this->db->affected_rows() > 0) {
 				return true;
 			}
