@@ -369,19 +369,21 @@ class Catalog extends CI_Model {
 					$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
 				}
 			}	
-			// $json_data = array();
-			// json_encode all params values that are not strings
-			$applicable_city = $this->input->post('applicable_city');
-		    foreach ($applicable_city as $value) {
-		    	$city_datas = array(
-		    		'product_mapped_id' => $product_id,
-		    		'city_mapped_id' => $value
-		    	);
-		    	// array_push($json_data, $city_datas);
-		    	$this->db->insert('giftstore_product_city', $city_datas);	        
-		    }
-		    // print_r(json_encode($json_data));
-			// $string = file_get_contents("product_city.json");	
+			if($this->input->post('selectall_status') != 0){
+				// $json_data = array();
+				// json_encode all params values that are not strings
+				$applicable_city = $this->input->post('applicable_city');
+			    foreach ($applicable_city as $value) {
+			    	$city_datas = array(
+			    		'product_mapped_id' => $product_id,
+			    		'city_mapped_id' => $value
+			    	);
+			    	// array_push($json_data, $city_datas);
+			    	$this->db->insert('giftstore_product_city', $city_datas);	        
+			    }
+			    // print_r(json_encode($json_data));
+				// $string = file_get_contents("product_city.json");
+			}	
 			if ($this->db->affected_rows() > 0) {
 				return true;
 			}
@@ -591,6 +593,22 @@ class Catalog extends CI_Model {
 				$this->db->insert('giftstore_product_attribute_group', $product_attributes_group);
 			}
 		}	
+		$condition = "product_mapped_id =". $data_product_basic['product_id']; 
+		$this->db->from('giftstore_product_city');
+		$this->db->where($condition);
+		$this->db->delete();
+		if($this->input->post('selectall_status') != 0){
+			// json_encode all params values that are not strings
+			$applicable_city = $this->input->post('applicable_city');
+		    foreach ($applicable_city as $value) {
+		    	$city_datas = array(
+		    		'product_mapped_id' => $data_product_basic['product_id'],
+		    		'city_mapped_id' => $value
+		    	);
+		    	// array_push($json_data, $city_datas);
+		    	$this->db->insert('giftstore_product_city', $city_datas);	        
+		    }
+		}	
 		// trans_complete() function is used to check whether updated query successfully run or not
 		if ($this->db->trans_complete() == false) {
 			return false;
@@ -607,5 +625,21 @@ class Catalog extends CI_Model {
 		
 		//return all records in array format to the controller
 		return $query->result_array();
+	}
+	public function get_product_cities($id)
+	{	
+		//get list of cities for the product from database using mysql query 
+		$condition = "product_mapped_id =". $id; 
+		$this->db->select('city_mapped_id');
+		$this->db->from('giftstore_product_city');
+		$this->db->order_by('created_date','desc');	
+		$this->db->where($condition);
+		$query = $this->db->get()->result_array();
+		$newarray = array();
+		foreach ($query as $value) {
+		    $newarray[] = $value['city_mapped_id'];
+		}
+		//return all records in array format to the controller
+		return $newarray;
 	}
 }

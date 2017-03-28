@@ -113,7 +113,7 @@
                         <input type="hidden" name="product_sold">
                     </div>  -->
                     <div class="form-group">
-                        <label for="total_iteams">Applicable city to deliver<span class="fill_symbol"> *</span></label>
+                        <label for="total_iteams">Applicable city to deliver<!-- <span class="fill_symbol"> *</span> --></label>
                         <a href='#' id='select-all'>select all</a>
                         <span>/<span>
                         <a href='#' id='deselect-all'>deselect all</a>
@@ -122,6 +122,7 @@
                           <option value="<?php echo $city["city_id"] ?>"><?php echo $city["city_name"] ?></option>
                         <?php endforeach ?>
                         </select>
+                        <input type="hidden" class="selectall_status" name="selectall_status" value="0">
                     </div> 
                     <div class="control-group">
                         <label class="control-label" for="sel_c">Status<span class="fill_symbol"> *</span></label>
@@ -192,8 +193,9 @@
 <script type="text/javascript" >
 function multiselect(){
     $('.searchable').multiSelect({
-      selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"12\"'>",
-      selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"4\"'>",
+      // selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='try \"12\"'>",
+      selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder=''>",
+      selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder=''>",
       afterInit: function(ms){
         var that = this,
             $selectableSearch = that.$selectableUl.prev(),

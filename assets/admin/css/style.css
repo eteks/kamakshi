@@ -622,7 +622,13 @@
   .upload_image_remove:hover {
     visibility: hidden;
   }
+  .ms-container .ms-list{
+  width: 150px;
+}
+.search-input{
+  width: 150px !important;
+  margin: 10px 0 !important;
+}
 
-// ===========================
-//      END IMAGE UPLOAD
-// ===========================
+
+

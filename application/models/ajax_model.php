@@ -585,13 +585,18 @@ class Ajax_Model extends CI_Model {
         foreach ($_POST['product_id'] as $value) {
             $city_product_where = '(product_mapped_id="'.$value.'")';
             $resultant_query = $this->db->get_where('giftstore_product_city',$city_product_where)->result_array();
-            if($resultant_query->num_rows() > 0) {
+            if(count($resultant_query) > 0) {
                 $data_where = '(product_mapped_id="'.$value.'" and city_mapped_id="'.$_POST['city_id'].'")';
                 $dec_query = $this->db->get_where('giftstore_product_city',$data_where)->row_array();
-                if($dec_query->num_rows() > 0) 
+                if(count($dec_query) > 0) 
                     $status = 1;
-                else
+                else{
                     $status = 0;
+                    $order_session_id = $this->session->userdata('user_session_id');
+                    $basket_remove_where='(orderitem_product_id="'.$value.'" and orderitem_session_id= "'.$order_session_id.'")';
+                    $this->db->where($basket_remove_where);
+                    $this->db->delete('giftstore_orderitem');
+                }
                 $data_json = array('product_id' => $value,'status' => $status);
                 array_push($res_json, $data_json);
             }
@@ -601,6 +606,7 @@ class Ajax_Model extends CI_Model {
                 array_push($res_json, $data_json);
             }
         }
-        echo json_encode($res_json);
+        // return json_encode($res_json);
+        return $res_json;
     }
 }

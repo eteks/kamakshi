@@ -144,6 +144,7 @@
                                                         endif;
                                                         ?>
                                                     </select>
+                                                    <input type="hidden" class="ship_amt">
                                                 </div>  
                                             </div>
                                             <div class="col-sm-6 col-md-3">
@@ -275,7 +276,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Order subtotal</td>
-                                        <th>&#8377; <?php echo number_format(ceil($total),2); ?></th>
+                                        <th>&#8377; <span class="order_subtotal"><?php echo number_format(ceil($total),2); ?></span></th>
                                         <input type="hidden" value="<?php echo number_format($total,2); ?>" class="ordinary_total_amount" />
                                     </tr>
                                     <tr>

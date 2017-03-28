@@ -195,6 +195,11 @@ $(document).ready(function() {
     $('body').delegate("#add_giftproduct,#edit_giftproduct",'submit',function(e){ 
     // $("#add_giftproduct").submit(function(){ 
         // e.preventDefault();
+        if($(this).is('#add_giftproduct'))
+            $('.selectall_status').val($('.ms-list li.ms-selected').length);
+        else
+            $('.selectall_status').val($('.ms-list li:not(.ms-selected)').length);
+        
         var attribute_length = [];
         var sum = 0;
         var $error = false;

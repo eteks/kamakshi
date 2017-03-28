@@ -51,7 +51,7 @@ $active_record = TRUE;
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
-$db['default']['database'] = 'giftstore_updated';
+$db['default']['database'] = 'giftstore';
 //server settings
 // $db['default']['hostname'] = 'mysql1110.ixwebhosting.com';
 // $db['default']['username'] = 'BBBmcmf_gift123';

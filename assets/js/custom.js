@@ -221,21 +221,49 @@ $('#checkout_address_submit').on('click',function() {
         // alert(city_id);
         jQuery.ajax({
             type: "POST",
-            dataType: "json",
             url: baseurl+"index.php/ajax_controller/check_city_applicable",
+            dataType: 'json',
             data: {'product_id' : updation,'city_id':city_id},
             success: function(res) {
-                // if (res)
-                // {   
-                //     if(res=="success") {
-                //         $('#checkout_button').attr('disabled',false);
-                //         $('#checkout_button').prop('title',"Proceed to checkout");
-                //     }  
-                //     $('.updations_status').html(res);
-                //     $('.updations_status').slideDown(350);
+                $.each(res, function(i){
+                    status = res[i].status;
+                     $( ".basket_product_items" ).each(function() {
+                        total_amount = 0;
+                        if($(this).val() == res[i].product_id && status == 0){
+                            $(this).parents('tr').addClass('product_city');
+                            if($(this).parents('tr').hasClass('product_city')){
+                                if($(this).parents('tr').find('td:last').hasClass('icon_warning'))
+                                    $(this).parents('tr').find('td:last').remove();
+                                $(this).parents('tr').append('<td class="icon_warning"><i class="fa fa-cog" title="This product is not available for the city you have choosen"></i></td>');
+                            }
+                            //Calculation to calculate overall amount
+                            $('.product_total').each(function(){
+                                if(!$(this).parents('tr').hasClass('product_city')){
+                                    product_amount = parseFloat($.trim($(this).text()).replace(',', ''));
+                                    total_amount += product_amount;                                }
+                            });
+                            $('.product_overall_total').html(Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2}));
+                            $('.product_overall_total').attr('data-value',total_amount);
+                            $('.overall_total_product_amount,.ordinary_total_amount').val(Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2}));
+                            $('.order_subtotal,.ordinary_total_amount,.product_final_amount').text(Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2}));
+                            
+                            //To add with shipping amount
+                            if(total_amount >= 2000)
+                                res = Math.ceil(0).toLocaleString('en-US', {minimumFractionDigits: 2});
+                            else
+                                res = $('.ship_amt').val();
+                            var shipping_amount = parseFloat(res.replace(',',''));
+                            var total_amount_res = total_amount + shipping_amount;
+                            var total_amount_final = Math.ceil(total_amount_res).toLocaleString('en-US', {minimumFractionDigits: 2});
+                            var total_paymnet =  total_amount_final.replace(',','');
+                            $('.ordinary_shipping_amount').html(res);
+                            $('.product_final_amount').html(total_amount_final);  
+                            $('.total_amount_hidden').val(total_paymnet);       
+                            $('.ship_amt').val(res);
 
-                // }
-                alert(res);
+                        }
+                    });
+                });
             }
         });
         $('.error_msg').slideUp();

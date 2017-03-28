@@ -2098,3 +2098,8 @@ address {
 p.contact_addr {
   line-height : 26px;
 }
+.product_city{
+  color:transparent;
+  text-shadow:0 0 2px #555;
+  cursor: hand;
+}

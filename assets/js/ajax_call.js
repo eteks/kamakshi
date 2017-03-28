@@ -87,15 +87,16 @@ $(document).ajaxComplete(function() {
                 success: function(res) {
                     if (res)
                     {   
-                        if(sub_total > 2000)
-                            res = 0;
+                        if(sub_total >= 2000)
+                            res = Math.ceil(0).toLocaleString('en-US', {minimumFractionDigits: 2});
                         var shipping_amount = parseFloat(res.replace(',',''));
                         var total_amount = sub_total + shipping_amount;
                         var total_amount_final = Math.ceil(total_amount).toLocaleString('en-US', {minimumFractionDigits: 2});
                         var total_paymnet =  total_amount_final.replace(',','');
                         $('.ordinary_shipping_amount').html(res);
                         $('.product_final_amount').html(total_amount_final);  
-                        $('.total_amount_hidden').val(total_paymnet);             
+                        $('.total_amount_hidden').val(total_paymnet);       
+                        $('.ship_amt').val(res);
                     }
                 }
             });
