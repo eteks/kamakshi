@@ -579,4 +579,28 @@ class Ajax_Model extends CI_Model {
         }
         return $profile_details;    
     }
+    public function check_product_in_city(){
+        $res_json = array();
+        $status = 0;
+        foreach ($_POST['product_id'] as $value) {
+            $city_product_where = '(product_mapped_id="'.$value.'")';
+            $resultant_query = $this->db->get_where('giftstore_product_city',$city_product_where)->result_array();
+            if($resultant_query->num_rows() > 0) {
+                $data_where = '(product_mapped_id="'.$value.'" and city_mapped_id="'.$_POST['city_id'].'")';
+                $dec_query = $this->db->get_where('giftstore_product_city',$data_where)->row_array();
+                if($dec_query->num_rows() > 0) 
+                    $status = 1;
+                else
+                    $status = 0;
+                $data_json = array('product_id' => $value,'status' => $status);
+                array_push($res_json, $data_json);
+            }
+            else{
+                $status = 1;
+                $data_json = array('product_id' => $value,'status' => $status);
+                array_push($res_json, $data_json);
+            }
+        }
+        echo json_encode($res_json);
+    }
 }

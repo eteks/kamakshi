@@ -212,6 +212,32 @@ $('#checkout_address_submit').on('click',function() {
         $('.error_msg').slideDown();
     }
     else {
+        var updation=[];
+        $('.amount_structure').each(function() {
+            var product_id = $(this).find('.basket_product_items').val();
+            updation.push(product_id);
+        });
+        city_id = $( "#che_city option:selected" ).val();
+        // alert(city_id);
+        jQuery.ajax({
+            type: "POST",
+            dataType: "json",
+            url: baseurl+"index.php/ajax_controller/check_city_applicable",
+            data: {'product_id' : updation,'city_id':city_id},
+            success: function(res) {
+                // if (res)
+                // {   
+                //     if(res=="success") {
+                //         $('#checkout_button').attr('disabled',false);
+                //         $('#checkout_button').prop('title',"Proceed to checkout");
+                //     }  
+                //     $('.updations_status').html(res);
+                //     $('.updations_status').slideDown(350);
+
+                // }
+                alert(res);
+            }
+        });
         $('.error_msg').slideUp();
         $('#checkout_address').hide();
         $('#checkout_order').slideDown(800);

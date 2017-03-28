@@ -204,5 +204,13 @@ class Ajax_Controller extends CI_Controller {
         $data['shipping_amount'] = $data_values['shipping_amount'];
 		$this->load->view('checkout',$data,false);
 	}
+	public function check_city_applicable(){
+		// print_r($_POST['product_id']);
+		// echo $_POST['city_id'];
+		// echo "check_city_applicable";
+		$res = $this->ajax_model->check_product_in_city();
+		return $res;
+		
+	}
 
 } // end of the class
