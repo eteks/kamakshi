@@ -600,14 +600,16 @@ class Catalog extends CI_Model {
 		if($this->input->post('selectall_status') != 0){
 			// json_encode all params values that are not strings
 			$applicable_city = $this->input->post('applicable_city');
-		    foreach ($applicable_city as $value) {
-		    	$city_datas = array(
-		    		'product_mapped_id' => $data_product_basic['product_id'],
-		    		'city_mapped_id' => $value
-		    	);
-		    	// array_push($json_data, $city_datas);
-		    	$this->db->insert('giftstore_product_city', $city_datas);	        
-		    }
+			if(!empty($applicable_city)){
+			    foreach ($applicable_city as $value) {
+			    	$city_datas = array(
+			    		'product_mapped_id' => $data_product_basic['product_id'],
+			    		'city_mapped_id' => $value
+			    	);
+			    	// array_push($json_data, $city_datas);
+			    	$this->db->insert('giftstore_product_city', $city_datas);	        
+			    }
+			}
 		}	
 		// trans_complete() function is used to check whether updated query successfully run or not
 		if ($this->db->trans_complete() == false) {
