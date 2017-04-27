@@ -98,6 +98,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
       <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
       <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
       <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
+      <!-- <input type="hidden" name="amount" value="<?php echo $amount ?>" /> -->
       <input type="hidden" name="amount" value="1.00" />
       <input type="hidden" name="firstname" id="firstname" value="<?php echo (empty($posted['firstname'])) ? '' : $posted['firstname']; ?>" />
       <input type="hidden" name="email" id="email" value="<?php echo (empty($posted['email'])) ? '' : $posted['email']; ?>" />
