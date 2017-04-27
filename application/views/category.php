@@ -64,26 +64,26 @@
                                     <div class="flip-container listing_images">
                                         <div class="flipper listing_images">
                                             <div class="front listing_images">
-                                                <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
+                                                <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $cat_pro['product_id']; ?>">
                                                 <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
                                                 </a>
                                             </div>
                                             <div class="back listing_images">
-                                                <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>">
+                                                <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $cat_pro['product_id']; ?>">
                                                     <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
                                                 </a>
                                             </div>
                                         </div>
-                                        <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="invisible">
+                                        <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="invisible">
                                         <img src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="" class="img-responsive images_alignment">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="text">
-                                    <h3><a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>"> <?php echo $cat_pro['product_title']; ?> </a></h3>
+                                    <h3><a href="<?php echo base_url(); ?>index.php/detail/<?php echo $cat_pro['product_id']; ?>"> <?php echo $cat_pro['product_title']; ?> </a></h3>
                                     <p class="price">  Rs.<?php echo $cat_pro['product_price']; ?> </p>
                                     <p class="buttons">
-                                        <a href="<?php echo base_url(); ?>/index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="btn btn-default">View detail</a>
+                                        <a href="<?php echo base_url(); ?>index.php/detail/<?php echo $cat_pro['product_id']; ?>" class="btn btn-default">View detail</a>
                                         <!-- <a data-id="<?php echo $cat_pro['product_id']; ?>" class="btn btn-primary add_to_cart_items"><i class="fa fa-shopping-cart"></i>Add to cart</a> -->
                                     </p>
                                 </div>

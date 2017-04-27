@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-9" id="checkout">
                     <div class="box">
-                        <form method="post" id="checkout_form" action="<?php echo base_url(); ?>/index.php/payumoney">
+                        <form method="post" id="checkout_form" action="<?php echo base_url(); ?>index.php/payumoney">
                             <h1>Checkout</h1>
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active address_label"><a><i class="fa fa-map-marker"></i><br>Address</a>

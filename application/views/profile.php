@@ -81,7 +81,7 @@ include "templates/header.php";
                         </form>
                         <hr>
                         <h3>Personal details</h3>
-                        <form id="profile_form" class="front-end_form" action="<?php echo base_url(); ?>/index.php/ajax_controller/profile_details_form">
+                        <form id="profile_form" class="front-end_form" action="<?php echo base_url(); ?>index.php/ajax_controller/profile_details_form">
                             <div class="registeration_status">
                             </div>
                             <div class="row">
