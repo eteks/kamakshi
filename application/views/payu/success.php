@@ -19,7 +19,8 @@ if(!empty($_POST["status"])) {
   $productinfo=$_POST["productinfo"];
   $email=$_POST["email"];
 }
-$salt="RjWAdXh0";
+// $salt="RjWAdXh0";
+$salt="e5iIg1jwi8";
 
 If (isset($_POST["additionalCharges"])) {
   $additionalCharges=$_POST["additionalCharges"];

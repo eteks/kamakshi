@@ -121,7 +121,7 @@ if ( ! function_exists('insert_order_details')){
                               'orderitem_order_id' => $order_id,
                             );
       }
-      $ci->db->update_batch('giftstore_orderitem', $orderitem_value, 'orderitem_id');
+      $ci->db->set('giftstore_orderitem', $orderitem_value, 'orderitem_id');
       // To set order_id in flashdata
       // Flash storage is used to stored value and we can retrieve data from flash storage only once. then it will be removed automatically. 
       ini_set('display_errors', 1);

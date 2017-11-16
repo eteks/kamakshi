@@ -1,9 +1,11 @@
 <?php
 // Merchant key here as provided by Payu
-$MERCHANT_KEY = "OwGF14";
+// $MERCHANT_KEY = "OwGF14";
+$MERCHANT_KEY = "rjQUPktU";
 
 // Merchant Salt as provided by Payu
-$SALT = "RjWAdXh0";
+// $SALT = "RjWAdXh0";
+$SALT = "e5iIg1jwi8";
 
 // End point - change to https://secure.payu.in for LIVE mode
 // $PAYU_BASE_URL = "https://secure.payu.in";
